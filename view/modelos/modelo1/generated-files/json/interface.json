@@ -1,0 +1,74 @@
+{
+  "QPushButton": [
+    {
+      "name": "menuBtn",
+      "icon": "Qss/icons/icons/material_design/menu.png"
+    },
+    {
+      "name": "homeBtn",
+      "icon": "Qss/icons/icons/feather/home.png"
+    },
+    {
+      "name": "dataBtn",
+      "icon": "Qss/icons/icons/feather/list.png"
+    },
+    {
+      "name": "reportsBtn",
+      "icon": "Qss/icons/icons/feather/printer.png"
+    },
+    {
+      "name": "graphsBtn",
+      "icon": "Qss/icons/icons/feather/pie-chart.png"
+    },
+    {
+      "name": "settingsBtn",
+      "icon": "Qss/icons/icons/feather/settings.png"
+    },
+    {
+      "name": "infoBtn",
+      "icon": "Qss/icons/icons/feather/info.png"
+    },
+    {
+      "name": "helpBtn",
+      "icon": "Qss/icons/icons/feather/help-circle.png"
+    },
+    {
+      "name": "closeCenterMenuBtn",
+      "icon": "Qss/icons/icons/feather/x-circle.png"
+    },
+    {
+      "name": "notificationBtn",
+      "icon": "Qss/icons/icons/feather/bell.png"
+    },
+    {
+      "name": "moreBtn",
+      "icon": "Qss/icons/icons/feather/more-horizontal.png"
+    },
+    {
+      "name": "profileBtn",
+      "icon": "Qss/icons/icons/feather/user.png"
+    },
+    {
+      "name": "minimizeBtn",
+      "icon": "Qss/icons/icons/feather/window_minimize.png"
+    },
+    {
+      "name": "restoreBtn",
+      "icon": "Qss/icons/icons/feather/square.png"
+    },
+    {
+      "name": "closeBtn",
+      "icon": "Qss/icons/icons/feather/window_close.png"
+    },
+    {
+      "name": "closeRightMenuBtn",
+      "icon": "Qss/icons/icons/feather/x-circle.png"
+    }
+  ],
+  "QLabel": [
+    {
+      "name": "label_9",
+      "pixmap": "Qss/icons/icons/material_design/search.png"
+    }
+  ]
+}
