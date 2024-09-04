@@ -152,7 +152,7 @@ CREATE TABLE `pessoa` (
 --
 
 INSERT INTO `pessoa` (`idPessoa`, `nome`, `CPF_CNPJ`, `nascimento`, `telefone`, `email`, `cargo`) VALUES
-(1, 'Gabriel Alcantara Dias Prestes', '663.300.190-88', '2000-08-15', '(61) 3615-2089', 'emailgenerico@gmail.com', 'Apoio'),
+(1, 'Janaina Pinheiros Silva', '663.300.190-88', '2000-08-15', '(61) 3615-2089', 'emailgenerico@gmail.com', 'Apoio'),
 (2, 'Laís Malu Rebeca da Paz', '192.458.327-59', '1981-08-20', '(46) 2578-6303', 'potoasdfeafafemdfmakfmskmfkmfkamamd@gmail.com', 'Patrimônio'),
 (3, 'Enzo Diogo Martin Silva', '931.825.487-35', '1998-07-04', '(79) 3963-7319', 'fdsfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsd@gmail.com', 'Limpeza'),
 (4, 'Renato Bernardo Yuri das Neves', '727.882.631-47', '1987-03-06', '(71) 3860-2221', 'fdsfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsd@gmail.com', 'Docente'),
