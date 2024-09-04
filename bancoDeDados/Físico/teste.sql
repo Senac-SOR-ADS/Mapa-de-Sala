@@ -18,7 +18,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `mapasala`
+-- Banco de dados: `teste`
+CREATE DATABASE IF NOT EXISTS `teste`
+COLLATE 'utf8_bin';
+USE `teste`;
+
 --
 
 -- --------------------------------------------------------
