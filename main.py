@@ -1,15 +1,16 @@
-from model.conexao import ConexaoBD
-
+from model.meuModelo import MeuBd
 
 if __name__ == "__main__":
 
     try:
-        db = ConexaoBD()
-
+        db = MeuBd()
         db.conectar()
 
-        db.buscar_um("SELECT * FROM sala WHERE idSala=1")
-        db.buscar_todos("SELECT * FROM sala")
+        '''Em produção é necessario tirar o print do
+        return de dentro das funções'''
+
+        db.buscar_um("SELECT * FROM testetabela WHERE id=1")
+        db.buscar_todos("SELECT * FasfROM testetabela")
 
         db.desconectar()
 
