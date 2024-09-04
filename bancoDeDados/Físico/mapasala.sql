@@ -56,7 +56,7 @@ INSERT INTO `area` (`idArea`, `nome`) VALUES
 -- Estrutura para tabela `cursos`
 --
 
-CREATE TABLE `cursos` (
+CREATE TABLE `curso` (
   `idCurso` int(11) NOT NULL,
   `idArea` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE `cursos` (
 -- Despejando dados para a tabela `cursos`
 --
 
-INSERT INTO `cursos` (`idCurso`, `idArea`, `nome`, `oferta`, `periodo`, `cargaHoraria`, `horasDia`, `qtdAlunos`) VALUES
+INSERT INTO `curso` (`idCurso`, `idArea`, `nome`, `oferta`, `periodo`, `cargaHoraria`, `horasDia`, `qtdAlunos`) VALUES
 (1, 1, 'Power BI', '245685', 'Manhã', 1200, '03:30:00', 17),
 (2, 3, 'Reiki', '487563', 'Tarde', 1080, '00:00:02', 9),
 (3, 4, 'Documentário', '478651', 'Manhã', 72, '00:00:04', 7),
@@ -86,7 +86,7 @@ INSERT INTO `cursos` (`idCurso`, `idArea`, `nome`, `oferta`, `periodo`, `cargaHo
 -- Estrutura para tabela `equipamentos`
 --
 
-CREATE TABLE `equipamentos` (
+CREATE TABLE `equipamento` (
   `idEquipamento` int(11) NOT NULL,
   `idArea` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE `equipamentos` (
 -- Despejando dados para a tabela `equipamentos`
 --
 
-INSERT INTO `equipamentos` (`idEquipamento`, `idArea`, `nome`, `marca`, `quantidade`) VALUES
+INSERT INTO `equipamento` (`idEquipamento`, `idArea`, `nome`, `marca`, `quantidade`) VALUES
 (1, 3, 'Maca', 'seila', 7),
 (2, 5, 'cadeira', 'hyperX', 4),
 (3, 8, 'Concha', 'Eletrolux', 40),
@@ -133,7 +133,7 @@ INSERT INTO `login` (`idLogin`, `idPessoa`, `email`, `senha`) VALUES
 -- Estrutura para tabela `pessoas`
 --
 
-CREATE TABLE `pessoas` (
+CREATE TABLE `pessoa` (
   `idPessoa` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `CPF_CNPJ` varchar(18) NOT NULL,
@@ -147,7 +147,7 @@ CREATE TABLE `pessoas` (
 -- Despejando dados para a tabela `pessoas`
 --
 
-INSERT INTO `pessoas` (`idPessoa`, `nome`, `CPF_CNPJ`, `nascimento`, `telefone`, `email`, `cargo`) VALUES
+INSERT INTO `pessoa` (`idPessoa`, `nome`, `CPF_CNPJ`, `nascimento`, `telefone`, `email`, `cargo`) VALUES
 (1, 'Gabriel Alcantara Dias Prestes', '663.300.190-88', '2000-08-15', '(61) 3615-2089', 'emailgenerico@gmail.com', 'Apoio'),
 (2, 'Laís Malu Rebeca da Paz', '192.458.327-59', '1981-08-20', '(46) 2578-6303', 'potoasdfeafafemdfmakfmskmfkmfkamamd@gmail.com', 'Patrimônio'),
 (3, 'Enzo Diogo Martin Silva', '931.825.487-35', '1998-07-04', '(79) 3963-7319', 'fdsfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsd@gmail.com', 'Limpeza'),
@@ -232,14 +232,14 @@ ALTER TABLE `area`
 --
 -- Índices de tabela `cursos`
 --
-ALTER TABLE `cursos`
+ALTER TABLE `curso`
   ADD PRIMARY KEY (`idCurso`),
-  ADD KEY `area_cursos` (`idArea`);
+  ADD KEY `area_curso` (`idArea`);
 
 --
 -- Índices de tabela `equipamentos`
 --
-ALTER TABLE `equipamentos`
+ALTER TABLE `equipamento`
   ADD PRIMARY KEY (`idEquipamento`),
   ADD KEY `area_equipamento` (`idArea`);
 
@@ -253,7 +253,7 @@ ALTER TABLE `login`
 --
 -- Índices de tabela `pessoas`
 --
-ALTER TABLE `pessoas`
+ALTER TABLE `pessoa`
   ADD PRIMARY KEY (`idPessoa`);
 
 --
@@ -286,13 +286,13 @@ ALTER TABLE `area`
 --
 -- AUTO_INCREMENT de tabela `cursos`
 --
-ALTER TABLE `cursos`
+ALTER TABLE `curso`
   MODIFY `idCurso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `equipamentos`
 --
-ALTER TABLE `equipamentos`
+ALTER TABLE `equipamento`
   MODIFY `idEquipamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -304,7 +304,7 @@ ALTER TABLE `login`
 --
 -- AUTO_INCREMENT de tabela `pessoas`
 --
-ALTER TABLE `pessoas`
+ALTER TABLE `pessoa`
   MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
@@ -326,29 +326,29 @@ ALTER TABLE `sala`
 --
 -- Restrições para tabelas `cursos`
 --
-ALTER TABLE `cursos`
-  ADD CONSTRAINT `area_cursos` FOREIGN KEY (`idArea`) REFERENCES `area` (`idArea`);
+ALTER TABLE `curso`
+  ADD CONSTRAINT `area_curso` FOREIGN KEY (`idArea`) REFERENCES `area` (`idArea`);
 
 --
 -- Restrições para tabelas `equipamentos`
 --
-ALTER TABLE `equipamentos`
+ALTER TABLE `equipamento`
   ADD CONSTRAINT `area_equipamento` FOREIGN KEY (`idArea`) REFERENCES `area` (`idArea`);
 
 --
 -- Restrições para tabelas `login`
 --
 ALTER TABLE `login`
-  ADD CONSTRAINT `pessoa_login` FOREIGN KEY (`idPessoa`) REFERENCES `pessoas` (`idPessoa`);
+  ADD CONSTRAINT `pessoa_login` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`);
 
 --
 -- Restrições para tabelas `reserva`
 --
 ALTER TABLE `reserva`
-  ADD CONSTRAINT `curso_reserva` FOREIGN KEY (`idCurso`) REFERENCES `cursos` (`idCurso`),
-  ADD CONSTRAINT `equipamento_reserva` FOREIGN KEY (`idEquipamento`) REFERENCES `equipamentos` (`idEquipamento`),
+  ADD CONSTRAINT `curso_reserva` FOREIGN KEY (`idCurso`) REFERENCES `curso` (`idCurso`),
+  ADD CONSTRAINT `equipamento_reserva` FOREIGN KEY (`idEquipamento`) REFERENCES `equipamento` (`idEquipamento`),
   ADD CONSTRAINT `login_reserva` FOREIGN KEY (`idLogin`) REFERENCES `login` (`idLogin`),
-  ADD CONSTRAINT `pessoa_reserva` FOREIGN KEY (`idPessoa`) REFERENCES `pessoas` (`idPessoa`),
+  ADD CONSTRAINT `pessoa_reserva` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`),
   ADD CONSTRAINT `sala_reserva` FOREIGN KEY (`idSala`) REFERENCES `sala` (`idSala`);
 COMMIT;
 
