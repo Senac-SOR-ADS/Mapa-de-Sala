@@ -42,7 +42,6 @@ class ConexaoBD:
             self.__conexao().close()
 
     def buscar(self, query, param=None) -> list:
-        cur = None
         try:
             cur = self.__conexao().cursor()
             cur.execute(query, param)
@@ -58,7 +57,6 @@ class ConexaoBD:
             return resultado
 
     def buscarTodos(self, query, param=None) -> list:
-        cur = None
         try:
             cur = self.__conexao().cursor()
             cur.execute(query, param)
@@ -73,21 +71,20 @@ class ConexaoBD:
             if cur:
                 cur.close()
             return resultado
-        
+
     def alterarDados(self, query, param=None):
-        cur = None
         try:
             cur = self.__conexao().cursor()
             cur.execute(query, param)
             self.commit()
-            
-            print("Dado inserido com sucesso")
+            print("Dados alterados com sucesso")
+            return cur
+
         except Exception as e:
-            print(f"Erro ao inserir dados: {e}")
-            cur = list()
+            print(f"Erro ao alterar dados: {e}")
 
     def commit(self):
         self.__conexao().commit()
 
-    def __conexao(self) -> bool:
+    def __conexao(self):
         return self.__conn
