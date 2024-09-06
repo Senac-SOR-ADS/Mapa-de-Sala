@@ -6,20 +6,20 @@ class Equipamentos:
         self.quantidade = quantidade
         self.__area = area
  
-    def get_Nome(self):
+    def get_nome(self):
         return self.__nome
    
-    def nomeset(self, nome):
+    def set_nome(self, nome):
         self.__nome = nome
  
-    def marcaget(self):
+    def get_marca(self):
         return self.__marca
    
-    def nomeset(self, marca):
+    def set_nome(self, marca):
         self.__marca = marca
  
-    def areaget(self):
+    def get_area(self):
         return self.__area
    
-    def areaset(self, area):
+    def set_area(self, area):
         self.__area = area
