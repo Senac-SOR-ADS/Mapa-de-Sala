@@ -1,17 +1,12 @@
-from model.meuModelo import MeuBd
+from model.conexao import ConexaoBD
 
 if __name__ == "__main__":
 
     try:
-        db = MeuBd()
+        db = ConexaoBD()
         db.conectar()
 
-        '''Em produção é necessario tirar o print do
-        return de dentro das funções'''
-
-        db.buscar_um("SELECT * FROM testetabela WHERE id=1")
-        db.buscar_todos("SELECT * FasfROM testetabela")
-
+        db.alterarDados("DELETE FROM `sala` WHERE `idSala` = 7")
         db.desconectar()
 
     except ConnectionError as err:
