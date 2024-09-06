@@ -1,3 +1,6 @@
+from conexao import ConexaoBD
+
+
 class Sala:
     def __init__(self, nome_da_sala, tipo, predio, equipamentos, capacidade, observacao) -> None:
         self.nome_da_sala = nome_da_sala
@@ -6,6 +9,7 @@ class Sala:
         self.__equipamentos = equipamentos
         self.capacidade = capacidade
         self.observacao = observacao
+        self.__banco = ConexaoBD()
  
     def get_equipamentos(self):
         return self.__equipamentos

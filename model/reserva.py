@@ -1,3 +1,6 @@
+from conexao import ConexaoBD
+
+
 class Reserva:
     def __init__(self, idEquipamentos, idLogin, idPessoa, idCurso, idSala, dia, horaInicio, horaFim, observacao):
         self.__idEquipametos = idEquipamentos
@@ -9,6 +12,7 @@ class Reserva:
         self.__horaInicio = horaInicio
         self.__horaFim = horaFim
         self.observacao = observacao 
+        self.__banco = ConexaoBD
     
     def get_idEquipamentos(self):
         return self.__idEquipametos

@@ -1,10 +1,14 @@
+from conexao import ConexaoBD
+
+
 class Equipamentos:
     def __init__(self, nome, marca, quantidade, area) -> None:
-        # caracteristicas atributos
+        # caracteristicas atributos 
         self.__nome = nome
         self.__marca = marca
         self.quantidade = quantidade
         self.__area = area
+        self.__banco = ConexaoBD()
  
     def get_nome(self):
         return self.__nome
@@ -23,3 +27,5 @@ class Equipamentos:
    
     def set_area(self, area):
         self.__area = area
+
+    

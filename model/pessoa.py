@@ -1,3 +1,6 @@
+from conexao import ConexaoBD
+
+
 class Pessoa:
     def __init__(self, nome, cpf_cnpj, nascimento, telefone, email, cargo) -> None:
         self.__nome = nome  
@@ -6,6 +9,7 @@ class Pessoa:
         self.telefone = telefone
         self.email = email
         self.cargo = cargo
+        self.__banco = ConexaoBD()
  
     def get_nome(self):
         return self.__nome

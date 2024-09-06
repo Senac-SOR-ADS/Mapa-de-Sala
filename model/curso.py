@@ -1,3 +1,6 @@
+from conexao import ConexaoBD
+
+
 class Curso:
     def __init__(self, idArea, nome, oferta, periodo, cargaHoraria, horasDia, qtdAlunos):
         self.__idArea = idArea
@@ -7,6 +10,7 @@ class Curso:
         self.__cargaHoraria = cargaHoraria
         self.__horasDia = horasDia
         self.__qtdAlunos = qtdAlunos
+        self.__banco = ConexaoBD()
     
     def get_idArea(self):
         return self.__idArea
