@@ -25,11 +25,11 @@ class ConexaoBD:
         try:
             self.__conn = connector.connect(**config)
 
-            if not self.__conn.is_connected():
+            if not self.__conexao().is_connected():
                 raise Exception('Não foi conectado')
 
             # print("Conectado")  # Debug
-            return self.__conn.is_connected()
+            return self.__conexao().is_connected()
 
         except connector.Error as err:
             self.__conn = None
@@ -37,41 +37,32 @@ class ConexaoBD:
             return False
 
     def desconectar(self) -> bool:
-        if self.__conn.is_connected():
+        if self.__conexao().is_connected():
             # print("Desconectado") # Debug
-            self.__conn.close()
+            self.__conexao().close()
 
-    def buscar_um(self, query, param=None) -> list:
-        cur = None
+    def buscar(self, query, param=None) -> list:
         try:
-            if not self.__conn.is_connected():
-                self.conectar()
-
-            cur = self.__conn.cursor()
+            cur = self.__conexao().cursor()
             cur.execute(query, param)
             resultado = cur.fetchone()
-            print(f"Busca única: {resultado}")
 
+            print(f"Busca única: {resultado}")
         except Exception as e:
             print(f"Erro ao buscar um: {e}")
             resultado = list()
-
         finally:
             if cur:
                 cur.close()
             return resultado
 
-    def buscar_todos(self, query, param=None) -> list:
-        cur = None
+    def buscarTodos(self, query, param=None) -> list:
         try:
-            if not self.__conn.is_connected():
-                self.conectar()
-
-            cur = self.__conn.cursor()
+            cur = self.__conexao().cursor()
             cur.execute(query, param)
             resultado = cur.fetchall()
-            print(f"Busca completa: {resultado}")
 
+            print(f"Busca completa: {resultado}")
         except Exception as e:
             print(f"Erro ao buscar todos: {e}")
             resultado = list()
@@ -81,8 +72,19 @@ class ConexaoBD:
                 cur.close()
             return resultado
 
-    def commit(self):
-        self.__conn.commit()
+    def alterarDados(self, query, param=None):
+        try:
+            cur = self.__conexao().cursor()
+            cur.execute(query, param)
+            self.commit()
+            print("Dados alterados com sucesso")
+            return cur
 
-    def __conexao(self) -> bool:
+        except Exception as e:
+            print(f"Erro ao alterar dados: {e}")
+
+    def commit(self):
+        self.__conexao().commit()
+
+    def __conexao(self):
         return self.__conn
