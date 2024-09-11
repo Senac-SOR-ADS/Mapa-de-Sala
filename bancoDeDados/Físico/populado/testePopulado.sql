@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/09/2024 às 14:27
+-- Tempo de geração: 11/09/2024 às 14:57
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -18,9 +18,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `teste`
+-- Banco de dados: `mapasalat`
 --
-
+CREATE DATABASE IF NOT EXISTS `mapasalat`
+COLLATE 'utf8_bin';
+USE `mapasalat`;
 -- --------------------------------------------------------
 
 --
@@ -145,12 +147,9 @@ CREATE TABLE `ocupado` (
 --
 
 INSERT INTO `ocupado` (`qtdOcupado`, `idReserva`, `idEquipamento`) VALUES
-(2, 1, 2),
-(10, 1, 5),
 (10, 6, 5),
-(5, 1, 5),
 (5, 7, 2),
-(1, 7, 2);
+(1, 6, 4);
 
 -- --------------------------------------------------------
 
@@ -278,8 +277,8 @@ ALTER TABLE `login`
 -- Índices de tabela `ocupado`
 --
 ALTER TABLE `ocupado`
-  ADD KEY `reserva_teste` (`idReserva`),
-  ADD KEY `equipamento_teste` (`idEquipamento`);
+  ADD KEY `equipamento_ocupado` (`idEquipamento`),
+  ADD KEY `reserva_ocupado` (`idReserva`);
 
 --
 -- Índices de tabela `pessoa`
@@ -370,6 +369,13 @@ ALTER TABLE `equipamento`
 --
 ALTER TABLE `login`
   ADD CONSTRAINT `pessoa_login` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`);
+
+--
+-- Restrições para tabelas `ocupado`
+--
+ALTER TABLE `ocupado`
+  ADD CONSTRAINT `equipamento_ocupado` FOREIGN KEY (`idEquipamento`) REFERENCES `equipamento` (`idEquipamento`),
+  ADD CONSTRAINT `reserva_ocupado` FOREIGN KEY (`idReserva`) REFERENCES `reserva` (`idReserva`);
 
 --
 -- Restrições para tabelas `reserva`
