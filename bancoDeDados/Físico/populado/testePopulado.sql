@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/08/2024 às 16:53
+-- Tempo de geração: 11/09/2024 às 14:27
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -19,10 +19,6 @@ SET time_zone = "+00:00";
 
 --
 -- Banco de dados: `teste`
-CREATE DATABASE IF NOT EXISTS `teste`
-COLLATE 'utf8_bin';
-USE `teste`;
-
 --
 
 -- --------------------------------------------------------
@@ -57,7 +53,7 @@ INSERT INTO `area` (`idArea`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cursos`
+-- Estrutura para tabela `curso`
 --
 
 CREATE TABLE `curso` (
@@ -72,22 +68,22 @@ CREATE TABLE `curso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Despejando dados para a tabela `cursos`
+-- Despejando dados para a tabela `curso`
 --
 
 INSERT INTO `curso` (`idCurso`, `idArea`, `nome`, `oferta`, `periodo`, `cargaHoraria`, `horasDia`, `qtdAlunos`) VALUES
-(1, 1, 'Power BI', '245685', 'Manhã', 1200, '03:30:00', 17),
-(2, 3, 'Reiki', '487563', 'Tarde', 1080, '00:00:02', 9),
-(3, 4, 'Documentário', '478651', 'Manhã', 72, '00:00:04', 7),
+(1, 1, 'Power BI', '245685', 'Manhã', 121013, '00:00:04', 17),
+(2, 3, 'Reiki', '487563', 'Tarde', 231830, '00:00:02', 9),
+(3, 4, 'Documentário', '478651', 'Manhã', 0, '00:00:04', 7),
 (4, 8, 'Doces Finos', '532148', 'Noite', 24, '00:00:02', 25),
-(5, 9, 'Gestão Fiscal', '856432', 'Tarde', 46, '00:00:04', 30),
-(6, 2, 'Alongamento de Cílios', '214589', 'Manhã', 65, '00:00:02', 12),
+(5, 9, 'Gestão Fiscal', '856432', 'Tarde', 0, '00:00:04', 30),
+(6, 2, 'Alongamento de Cílios', '214589', 'Manhã', 0, '00:00:02', 12),
 (7, 12, 'Atendente de Farmacia', '547893', 'Tarde', 58, '00:00:04', 24);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `equipamentos`
+-- Estrutura para tabela `equipamento`
 --
 
 CREATE TABLE `equipamento` (
@@ -99,7 +95,7 @@ CREATE TABLE `equipamento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Despejando dados para a tabela `equipamentos`
+-- Despejando dados para a tabela `equipamento`
 --
 
 INSERT INTO `equipamento` (`idEquipamento`, `idArea`, `nome`, `marca`, `quantidade`) VALUES
@@ -127,14 +123,39 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`idLogin`, `idPessoa`, `email`, `senha`) VALUES
-(1, 5, 'elisa-assis95@amoreencantos.com', 'senha123'),
-(2, 1, 'emailgenerico@gmail.com', 'senha456'),
-(3, 8, 'maria_isabelly_nascimento@oticascarol.com.br', 'senha101112');
+(1, 1, 'emailgenerico@gmail.com', 'senha456'),
+(5, 2, 'potoasdfeafafemdfmakfmskmfkmfkamamd@gmail.com', 'lais123'),
+(6, 8, 'maria_isabelly_nascimento@oticascarol.com.br', 'marmaria123'),
+(7, 10, 'raimundo_ricardo_caldeira@outlook.com', 'raimundoneto');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `pessoas`
+-- Estrutura para tabela `ocupado`
+--
+
+CREATE TABLE `ocupado` (
+  `qtdOcupado` int(11) NOT NULL,
+  `idReserva` int(11) NOT NULL,
+  `idEquipamento` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Despejando dados para a tabela `ocupado`
+--
+
+INSERT INTO `ocupado` (`qtdOcupado`, `idReserva`, `idEquipamento`) VALUES
+(2, 1, 2),
+(10, 1, 5),
+(10, 6, 5),
+(5, 1, 5),
+(5, 7, 2),
+(1, 7, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `pessoa`
 --
 
 CREATE TABLE `pessoa` (
@@ -148,11 +169,11 @@ CREATE TABLE `pessoa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Despejando dados para a tabela `pessoas`
+-- Despejando dados para a tabela `pessoa`
 --
 
 INSERT INTO `pessoa` (`idPessoa`, `nome`, `CPF_CNPJ`, `nascimento`, `telefone`, `email`, `cargo`) VALUES
-(1, 'Janaina Pinheiros Silva', '663.300.190-88', '2000-08-15', '(61) 3615-2089', 'emailgenerico@gmail.com', 'Apoio'),
+(1, 'Janaina Pereira Silva', '663.300.190-88', '2000-08-15', '(61) 3615-2089', 'emailgenerico@gmail.com', 'Apoio'),
 (2, 'Laís Malu Rebeca da Paz', '192.458.327-59', '1981-08-20', '(46) 2578-6303', 'potoasdfeafafemdfmakfmskmfkmfkamamd@gmail.com', 'Patrimônio'),
 (3, 'Enzo Diogo Martin Silva', '931.825.487-35', '1998-07-04', '(79) 3963-7319', 'fdsfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsd@gmail.com', 'Limpeza'),
 (4, 'Renato Bernardo Yuri das Neves', '727.882.631-47', '1987-03-06', '(71) 3860-2221', 'fdsfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsd@gmail.com', 'Docente'),
@@ -171,7 +192,6 @@ INSERT INTO `pessoa` (`idPessoa`, `nome`, `CPF_CNPJ`, `nascimento`, `telefone`, 
 
 CREATE TABLE `reserva` (
   `idReserva` int(11) NOT NULL,
-  `idEquipamento` int(11) DEFAULT NULL,
   `idLogin` int(11) NOT NULL,
   `idPessoa` int(11) NOT NULL,
   `idCurso` int(11) NOT NULL,
@@ -186,10 +206,10 @@ CREATE TABLE `reserva` (
 -- Despejando dados para a tabela `reserva`
 --
 
-INSERT INTO `reserva` (`idReserva`, `idEquipamento`, `idLogin`, `idPessoa`, `idCurso`, `idSala`, `dia`, `hrInicio`, `hrFim`, `observacao`) VALUES
-(1, 3, 1, 4, 6, 2, '2024-09-02', '08:00:00', '12:00:00', NULL),
-(4, NULL, 3, 5, 4, 9, '2024-08-29', '19:00:00', '22:30:00', NULL),
-(5, 3, 2, 7, 4, 2, '2024-08-29', '13:00:00', '17:00:00', 'Uma boca de um fogão quebrado');
+INSERT INTO `reserva` (`idReserva`, `idLogin`, `idPessoa`, `idCurso`, `idSala`, `dia`, `hrInicio`, `hrFim`, `observacao`) VALUES
+(6, 1, 1, 7, 18, '2024-09-15', '08:00:00', '12:00:00', NULL),
+(7, 5, 5, 6, 19, '2024-09-11', '10:00:00', '17:00:00', NULL),
+(8, 7, 1, 3, 20, '2024-10-15', '17:00:00', '22:30:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -212,16 +232,16 @@ CREATE TABLE `sala` (
 --
 
 INSERT INTO `sala` (`idSala`, `nome`, `tipo`, `predio`, `equipamentos`, `capacidade`, `observacao`) VALUES
-(1, 'j01', 'labolatorio de informatica', '2', '30', 30, 'ar-condicionado quebrado'),
-(2, 'cozinha', 'cozinha industrial', '1', '2fogao industrial, 20mesas, 30 cadeiras', 40, ''),
-(3, 'h03', 'Sala de idiomas', '2', '30computadores, 30 cadeiras30', 30, '10 computadores em manutenção'),
-(4, 'jardim', 'area externa', '2', 'mesas grandes 2, 4 bancos grandes', 0, 'guarda sol danificcados'),
-(5, 'sala q3', 'Studio de som', '1', 'teclado, microfone, abafador de audio', 15, ''),
-(6, 'Sala de hardware', 'lab de infraestrutura', '2', 'hack de roteadores, painel de controles, cabeamento de internet, peças de computadores', 25, 'painel de controles queimados'),
-(7, 'Sala ensino meido E1', 'sala convencional ensino medio', '1', '13 notebooks, uma lousa digital', 35, ''),
-(8, 'lab quimica', 'laboratorio', '2', 'produtos quimicos, esqueleto', 20, 'Produtos perigosos, uso de EPI obrigatorio'),
-(9, 'Estetica', 'lab de Estetica', '2', 'pinças, maquiagem, maca', 18, ''),
-(10, 'informatica', 'sala de informatica', '1', '25 computadores', 25, 'Somente 15 computadores funcionando');
+(11, 'j01', 'labolatorio de informatica', '2', '30', 30, 'ar-condicionado quebrado'),
+(12, 'cozinha', 'cozinha industrial', '1', '2fogao industrial, 20mesas, 30 cadeiras', 40, ''),
+(13, 'h03', 'Sala de idiomas', '2', '30computadores, 30 cadeiras30', 30, '10 computadores em manutenção'),
+(14, 'jardim', 'area externa', '2', 'mesas grandes 2, 4 bancos grandes', 0, 'guarda sol danificcados'),
+(15, 'sala q3', 'Studio de som', '1', 'teclado, microfone, abafador de audio', 15, ''),
+(16, 'Sala de hardware', 'lab de infraestrutura', '2', 'hack de roteadores, painel de controles, cabeamento de internet, peças de computadores', 25, 'painel de controles queimados'),
+(17, 'Sala ensino meido E1', 'sala convencional ensino medio', '1', '13 notebooks, uma lousa digital', 35, ''),
+(18, 'lab quimica', 'laboratorio', '2', 'produtos quimicos, esqueleto', 20, 'Produtos perigosos, uso de EPI obrigatorio'),
+(19, 'Estetica', 'lab de Estetica', '2', 'pinças, maquiagem, maca', 18, ''),
+(20, 'informatica', 'sala de informatica', '1', '25 computadores', 25, 'Somente 15 computadores funcionando');
 
 --
 -- Índices para tabelas despejadas
@@ -234,14 +254,14 @@ ALTER TABLE `area`
   ADD PRIMARY KEY (`idArea`);
 
 --
--- Índices de tabela `cursos`
+-- Índices de tabela `curso`
 --
 ALTER TABLE `curso`
   ADD PRIMARY KEY (`idCurso`),
   ADD KEY `area_curso` (`idArea`);
 
 --
--- Índices de tabela `equipamentos`
+-- Índices de tabela `equipamento`
 --
 ALTER TABLE `equipamento`
   ADD PRIMARY KEY (`idEquipamento`),
@@ -255,7 +275,14 @@ ALTER TABLE `login`
   ADD KEY `pessoa_login` (`idPessoa`);
 
 --
--- Índices de tabela `pessoas`
+-- Índices de tabela `ocupado`
+--
+ALTER TABLE `ocupado`
+  ADD KEY `reserva_teste` (`idReserva`),
+  ADD KEY `equipamento_teste` (`idEquipamento`);
+
+--
+-- Índices de tabela `pessoa`
 --
 ALTER TABLE `pessoa`
   ADD PRIMARY KEY (`idPessoa`);
@@ -265,7 +292,6 @@ ALTER TABLE `pessoa`
 --
 ALTER TABLE `reserva`
   ADD PRIMARY KEY (`idReserva`),
-  ADD KEY `equipamento_reserva` (`idEquipamento`),
   ADD KEY `pessoa_reserva` (`idPessoa`),
   ADD KEY `curso_reserva` (`idCurso`),
   ADD KEY `sala_reserva` (`idSala`),
@@ -288,13 +314,13 @@ ALTER TABLE `area`
   MODIFY `idArea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT de tabela `cursos`
+-- AUTO_INCREMENT de tabela `curso`
 --
 ALTER TABLE `curso`
   MODIFY `idCurso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de tabela `equipamentos`
+-- AUTO_INCREMENT de tabela `equipamento`
 --
 ALTER TABLE `equipamento`
   MODIFY `idEquipamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
@@ -303,10 +329,10 @@ ALTER TABLE `equipamento`
 -- AUTO_INCREMENT de tabela `login`
 --
 ALTER TABLE `login`
-  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de tabela `pessoas`
+-- AUTO_INCREMENT de tabela `pessoa`
 --
 ALTER TABLE `pessoa`
   MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
@@ -315,26 +341,26 @@ ALTER TABLE `pessoa`
 -- AUTO_INCREMENT de tabela `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `sala`
 --
 ALTER TABLE `sala`
-  MODIFY `idSala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idSala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restrições para tabelas despejadas
 --
 
 --
--- Restrições para tabelas `cursos`
+-- Restrições para tabelas `curso`
 --
 ALTER TABLE `curso`
   ADD CONSTRAINT `area_curso` FOREIGN KEY (`idArea`) REFERENCES `area` (`idArea`);
 
 --
--- Restrições para tabelas `equipamentos`
+-- Restrições para tabelas `equipamento`
 --
 ALTER TABLE `equipamento`
   ADD CONSTRAINT `area_equipamento` FOREIGN KEY (`idArea`) REFERENCES `area` (`idArea`);
@@ -350,7 +376,6 @@ ALTER TABLE `login`
 --
 ALTER TABLE `reserva`
   ADD CONSTRAINT `curso_reserva` FOREIGN KEY (`idCurso`) REFERENCES `curso` (`idCurso`),
-  ADD CONSTRAINT `equipamento_reserva` FOREIGN KEY (`idEquipamento`) REFERENCES `equipamento` (`idEquipamento`),
   ADD CONSTRAINT `login_reserva` FOREIGN KEY (`idLogin`) REFERENCES `login` (`idLogin`),
   ADD CONSTRAINT `pessoa_reserva` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`),
   ADD CONSTRAINT `sala_reserva` FOREIGN KEY (`idSala`) REFERENCES `sala` (`idSala`);
