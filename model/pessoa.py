@@ -2,7 +2,14 @@ from conexao import ConexaoBD
 
 
 class Pessoa:
+<<<<<<< Updated upstream
     def __init__(self, nome, cpf_cnpj, nascimento, telefone, email, cargo) -> None:
+=======
+    def __init__(self, idPessoa) -> None:
+        self.__idPessoa = idPessoa
+
+    def cadastrar(self, nome, cpf_cnpj, nascimento, telefone, email, cargo):
+>>>>>>> Stashed changes
         self.__nome = nome  
         self.__cpf_cnpj = cpf_cnpj
         self.__nascimento = nascimento
@@ -28,3 +35,6 @@ class Pessoa:
    
     def set_nascimento(self, nascimento):
         self.__nascimento = nascimento
+
+    def getIdPessoa(self):
+        return self.__idPessoa

@@ -28,7 +28,7 @@ class ConexaoBD:
             if not self.__conexao().is_connected():
                 raise Exception('Não foi conectado')
 
-            # print("Conectado")  # Debug
+            print("Conectado")  # Debug
             return self.__conexao().is_connected()
 
         except connector.Error as err:
@@ -88,3 +88,8 @@ class ConexaoBD:
 
     def __conexao(self):
         return self.__conn
+
+if __name__ == "__main__":
+    bd = ConexaoBD()
+    bd.conectar()
+    bd.desconectar()
