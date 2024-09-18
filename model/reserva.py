@@ -2,8 +2,7 @@ from conexao import ConexaoBD
 
 
 class Reserva:
-    def __init__(self, idEquipamentos, idLogin, idPessoa, idCurso, idSala, dia, horaInicio, horaFim, observacao):
-        self.__idEquipametos = idEquipamentos
+    def __init__(self, idLogin, idPessoa, idCurso, idSala, dia, horaInicio, horaFim, observacao = None):
         self.__idLogin = idLogin
         self.__idPessoa = idPessoa
         self.__idCurso = idCurso
@@ -11,14 +10,8 @@ class Reserva:
         self.__dia = dia
         self.__horaInicio = horaInicio
         self.__horaFim = horaFim
-        self.observacao = observacao 
-        self.__banco = ConexaoBD
-    
-    def get_idEquipamentos(self):
-        return self.__idEquipametos
-    
-    def set_idEquipamentos(self, idEquipamentos):
-        self.__idEquipametos = idEquipamentos
+        self.__observacao = observacao
+        self.__banco = ConexaoBD()
 
     def get_idLogin(self):
         return self.__idLogin
@@ -62,4 +55,52 @@ class Reserva:
     def set_horaFim(self, horaFim):
         self.__horaFim = horaFim
 
+    def fazer_reserva(self):
+        self.__banco.conectar()
+        query_verifica = "SELECT * FROM reserva WHERE hrInicio BETWEEN %s AND %s AND dia = %s AND idSala = %s OR hrFim BETWEEN %s AND %s"
+        parametros_verifica = (self.__horaInicio, self.__horaFim, self.__dia, self.__idSala, self.__horaInicio, self.__horaFim)
+        resultado = self.__banco.buscarTodos(query_verifica, parametros_verifica)
+        if resultado != []:
+            print("Dentro desse intervalo já existe uma reserva")
+        else:
+            query = "INSERT INTO reserva (idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, observacao) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+            parametros = (self.__idLogin, self.__idPessoa, self.__idCurso, self.__idSala, self.__dia, self.__horaInicio, self.__horaFim, self.__observacao)
+            self.__banco.alterarDados(query, parametros)
+            self.__banco.desconectar()
+
+    def retornar_reserva(self):
+        self.__banco.conectar()
+        query = "SELECT * FROM reserva"
+        self.__banco.buscarTodos(query)
+        self.__banco.desconectar()
     
+    def retornar_reserva_login(self):
+        self.__banco.conectar()
+        query = "SELECT p.nome, r.hrInicio, r.hrFim, r.dia FROM reserva r JOIN login l ON r.idLogin = l.idLogin JOIN pessoa p ON l.idPessoa = p.idPessoa WHERE r.dia = %s; "
+        parametro = ([self.__dia])
+        self.__banco.buscarTodos(query, parametro)
+        self.__banco.desconectar()
+
+    def retorna_reserva_pessoa(self):
+        self.__banco.conectar()
+        query = "SELECT p.nome, r.hrInicio, r.hrFim, r.dia FROM reserva r JOIN pessoa p ON p.idPessoa = r.idPessoa WHERE r.dia = %s; "
+        parametro = ([self.__dia])
+        self.__banco.buscarTodos(query, parametro)
+        self.__banco.desconectar()
+    
+    def retorna_reserva_sala(self):
+        self.__banco.conectar()
+        query = "SELECT r.dia, s.nome AS nomeSala, p.nome AS nomeDocente, r.hrInicio, r.hrFim, c.oferta AS curso FROM reserva r JOIN sala s ON r.idSala = s.idSala JOIN pessoa p ON r.idPessoa = p.idPessoa JOIN curso c ON r.idCurso = c.idCurso; "
+        self.__banco.buscarTodos(query)
+        self.__banco.desconectar()
+    
+    def retorna_reserva_dia(self):
+        self.__banco.conectar()
+        query = "SELECT p.nome, r.hrInicio, r.hrFim, r.dia, c.nome FROM reserva r JOIN pessoa p ON p.idPessoa = r.idPessoa JOIN curso c ON r.idCurso = c.idCurso WHERE r.dia = %s"
+        parametro = ([self.__dia])
+        self.__banco.buscarTodos(query, parametro)
+        self.__banco.desconectar()
+
+if __name__ == "__main__":
+    teste = Reserva(1, 3, 5, 15, '2024/09/20', '09:00:00', '10:00:00')
+    teste.fazer_reserva()
