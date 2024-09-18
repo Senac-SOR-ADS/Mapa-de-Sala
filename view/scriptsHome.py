@@ -10,6 +10,12 @@ class interfaceHome(QMainWindow):
         try:
             loadUi('', self) #Carregar o arquivo UI
 
+        except Exception as e:
+            print(f"Erro ao carregar a interface: {e}")
+            sys.exit(1)
+
+#######CONEXÕES SERÃO ADICIONADAS APÓS A CRIAÇÃO DA HOME ORIGINAL#######
+
 if __name__ == "__main__":
     app = QApplication([])
     widget = interfaceHome()
