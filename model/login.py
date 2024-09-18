@@ -9,17 +9,17 @@ class Login:
         self.__idPessoa = None
         self.__banco = ConexaoBD()
 
-    def get_idLogin(self):
+    def getIdLogin(self):
         return self.__idLogin
 
-    def set_idLogin(self, id):
+    def setIdLogin(self, id):
         self.__idLogin = id
     
-    def get_idPessoa(self):
+    def getIdPessoa(self):
         return self.__idPessoa
 
-    def set_idPessoa(self):
-        self.__idPessoa
+    def setIdPessoa(self, id):
+        self.__idPessoa = id
 
     def getEmail(self):
         return self.__email
@@ -38,19 +38,13 @@ class Login:
 
         try:
             if self.getEmail() == resultado[2] and self.getSenha() ==  resultado[3]:
-                self.set_idLogin(resultado[0])
-                print(f"id Login: {resultado[0]}")
-                self.__idPessoa = resultado[1]
-                print(f"id Pessoa: {resultado[1]}")
+                self.setIdLogin(resultado[0])
+                self.setIdPessoa(resultado[1])
                 return True
         except:
             return False
 
 if __name__ == "__main__":
-    login = Login(email='emailgenerico@gmail.com', senha='senha456')
-    if login.validarLogin():
-        print("validado!")
-    else:
-        print("erro")
 
-    # print(type(login.validarLogin()))
+    login = Login(email='emailgenerico@gmail.com', senha='senha456')
+    login.validarLogin()
