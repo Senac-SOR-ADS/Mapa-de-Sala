@@ -49,7 +49,7 @@ class interfaceLogin(QMainWindow):
     def redirecionarHome(self):
         # Obtém o caminho absoluto para o arquivo main.py na mesma pasta do script de login
         script_dir = os.path.dirname(os.path.abspath(__file__))
-        main_path = os.path.join(script_dir, 'modelo2\main.py')
+        main_path = os.path.join(script_dir, 'modelo2\main.py') #Arquivo onde será usado o UI da Home
         
         # Executa o arquivo main.py
         subprocess.Popen(['python', main_path])
