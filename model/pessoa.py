@@ -2,7 +2,10 @@ from conexao import ConexaoBD
 
 
 class Pessoa:
-    def __init__(self, nome, cpf_cnpj, nascimento, telefone, email, cargo) -> None:
+    def __init__(self, idPessoa) -> None:
+        self.idPessoa = idPessoa
+
+    def cadastrar(self, nome, cpf_cnpj, nascimento, telefone, email, cargo):
         self.__nome = nome  
         self.__cpf_cnpj = cpf_cnpj
         self.__nascimento = nascimento
