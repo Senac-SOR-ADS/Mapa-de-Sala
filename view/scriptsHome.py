@@ -10,11 +10,22 @@ class interfaceHome(QMainWindow):
         try:
             loadUi('', self) #Carregar o arquivo UI
 
+            # Remove a barra de título e as bordas da janela
+            self.setWindowFlags(Qt.FramelessWindowHint)
+
+            # Define a janela como transparente
+            self.setAttribute(Qt.WA_TranslucentBackground)
+
+            # Verifica se os widgets foram carregados corretamente
+            self.check_widgets()
+
         except Exception as e:
             print(f"Erro ao carregar a interface: {e}")
             sys.exit(1)
 
 #######CONEXÕES SERÃO ADICIONADAS APÓS A CRIAÇÃO DA HOME ORIGINAL#######
+
+
 
 if __name__ == "__main__":
     app = QApplication([])

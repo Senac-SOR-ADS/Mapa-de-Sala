@@ -10,9 +10,10 @@ class interfaceLogin(QMainWindow):
         super().__init__()
         try:
             loadUi('interfaceLogin.ui', self)  # Carregar o arquivo de interface UI
-            
+
             # Remove a barra de título e as bordas da janela
             self.setWindowFlags(Qt.FramelessWindowHint)
+            
             # Define a janela como transparente
             self.setAttribute(Qt.WA_TranslucentBackground)
             
