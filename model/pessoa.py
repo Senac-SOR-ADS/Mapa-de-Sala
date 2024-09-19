@@ -2,10 +2,7 @@ from conexao import ConexaoBD
 
 
 class Pessoa:
-    def __init__(self, idPessoa) -> None:
-        self.idPessoa = idPessoa
-
-    def cadastrar(self, nome, cpf_cnpj, nascimento, telefone, email, cargo):
+    def __init__(self, nome, cpf_cnpj, nascimento, telefone, email, cargo) -> None:
         self.__nome = nome  
         self.__cpf_cnpj = cpf_cnpj
         self.__nascimento = nascimento
@@ -31,3 +28,20 @@ class Pessoa:
    
     def set_nascimento(self, nascimento):
         self.__nascimento = nascimento
+        
+        
+        
+        
+    def inserir_pessoa(self):
+        self.__banco.conectar()
+
+        query = "INSERT INTO `pessoa`(`nome`, `CPF_CNPJ`, `nascimento`, `telefone`, `email`, `cargo`) VALUES (%s, %s, %s, %s, %s, %s)"
+        parametros = (self.__nome, self.__cpf_cnpj, self.__nascimento, self.telefone, self.email, self.cargo)
+        resultado = self.__banco(query,  parametros)
+
+        self.__banco.desconectar()
+
+
+if __name__ == "__main__":
+    login = Pessoa('otavio henrique', '879.987.548.32', '2024-10-15', 'otavio@otavio.com', 'Chefe')
+    login.inserir_pessoa()
