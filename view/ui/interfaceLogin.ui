@@ -103,7 +103,7 @@ border-radius:10px
       <string>LOGIN</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="inputEmail">
      <property name="geometry">
       <rect>
        <x>330</x>
@@ -131,7 +131,7 @@ padding-bottom:7px;</string>
       <string>EMAIL</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="inputSenha">
      <property name="geometry">
       <rect>
        <x>330</x>
@@ -159,7 +159,7 @@ padding-bottom:7px;</string>
       <string>SENHA</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="btnEntrar">
      <property name="geometry">
       <rect>
        <x>330</x>
