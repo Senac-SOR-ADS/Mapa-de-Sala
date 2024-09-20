@@ -61,5 +61,3 @@ class Reserva:
     
     def set_horaFim(self, horaFim):
         self.__horaFim = horaFim
-
-    
