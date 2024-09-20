@@ -1,4 +1,3 @@
-
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt, QTimer, pyqtSlot
@@ -8,7 +7,7 @@ class LoginInterface(QMainWindow):
     def __init__(self):
         super().__init__()
         loadUi('view/ui/interfaceLogin.ui',self)
-        
+
         # Remove a barra de título e as bordas da janela
         self.setWindowFlags(Qt.FramelessWindowHint)
 
@@ -20,7 +19,8 @@ class LoginInterface(QMainWindow):
     def on_btnEntrar_clicked(self):
         self.getEmailSenha()
 
-    def getEmailSenha(self):
+
+        def getEmailSenha(self):
         email = self.inputEmail.text()
         senha = self.inputSenha.text()
 
@@ -35,23 +35,14 @@ class LoginInterface(QMainWindow):
 
         self.limparCampos(self.inputEmail)
         self.limparCampos(self.inputSenha)
-    
-
 
 
     def limparCampos(self, campo):
         campo.clear()
 
 
-
-
-
-
 if __name__ == "__main__":
     app = QApplication([])
     widget = LoginInterface()
     widget.show()
-
     app.exec_()
-
-
