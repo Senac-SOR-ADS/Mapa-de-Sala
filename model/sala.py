@@ -43,18 +43,19 @@ class Sala:
         cls.__banco.desconectar
         return resultado
     
-    @classmethod
-    def cadastrar_sala(cls):
-        cls.__banco.conectar()
+
+    def cadastrar_sala(self):
+        self.__banco.conectar()
         query = '''INSERT INTO `sala`(`nome`, `tipo`, `predio`, `equipamentos`, `capacidade`, `observacao`) VALUES (%s, %s, %s, %s, %s, %s); '''
-        parametros = (cls.nome, cls.tipo, cls.predio, cls.__equipamentos, cls.capacidade, cls.observacao)
-        resultado = cls.__banco.commit(query, parametros)
-        cls.__banco.desconectar()
+        parametros = (self.nome, self.tipo, self.predio, self.__equipamentos, self.capacidade, self.observacao)
+        resultado = self.__banco.alterarDados(query, parametros)
+        self.__banco.desconectar()
         return resultado
    
-# if __name__ == "__main__":
-#     sala = Sala.cadastrar_sala()
-#     print(sala)
+if __name__ == "__main__":
+    teste = Sala('nome', 'tipo', 'predio', 'equipamentos', 'capacidade', 'observacao')
+    teste.cadastrar_sala()
+    print(teste)
 
 
 # if __name__ == "__main__":
