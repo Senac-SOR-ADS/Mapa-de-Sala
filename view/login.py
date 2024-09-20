@@ -9,7 +9,7 @@ class interfaceLogin(QMainWindow):
     def __init__(self):
         super().__init__()
         try:
-            loadUi('interfaceLogin.ui', self)  # Carregar o arquivo de interface UI
+            loadUi('view/interfaceLogin.ui', self)  # Carregar o arquivo de interface UI
 
             # Remove a barra de título e as bordas da janela
             self.setWindowFlags(Qt.FramelessWindowHint)
@@ -46,15 +46,6 @@ class interfaceLogin(QMainWindow):
             QMessageBox.warning(self, "Aviso", "Dados incompletos")
             QTimer.singleShot(2000, lambda: self.limparCampos(self.inputEmail))  # Limpa após 2 segundos
             QTimer.singleShot(2000, lambda: self.limparCampos(self.inputSenha))  # Limpa após 2 segundos
-
-    def redirecionarHome(self):
-        # Obtém o caminho absoluto para o arquivo main.py na mesma pasta do script de login
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        main_path = os.path.join(script_dir, 'modelo2\main.py') #Arquivo onde será usado o UI da Home
-        
-        # Executa o arquivo main.py
-        subprocess.Popen(['python', main_path])
-        self.close()  # Fecha a janela atual de login
 
     def limparCampos(self, campo):
         campo.clear()
