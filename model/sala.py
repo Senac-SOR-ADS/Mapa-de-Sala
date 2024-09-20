@@ -48,8 +48,7 @@ class Sala:
         cls.__banco.conectar()
         query = '''INSERT INTO `sala`(`nome`, `tipo`, `predio`, `equipamentos`, `capacidade`, `observacao`) VALUES (%s, %s, %s, %s, %s, %s); '''
         parametros = (cls.nome, cls.tipo, cls.predio, cls.__equipamentos, cls.capacidade, cls.observacao)
-        resultado = cls.__banco.execute(query, parametros)
-        cls.__banco.commit()
+        resultado = cls.__banco.commit(query, parametros)
         cls.__banco.desconectar()
         return resultado
    
