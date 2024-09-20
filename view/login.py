@@ -25,11 +25,12 @@ class LoginInterface(QMainWindow):
         senha = self.inputSenha.text()
 
         if (email != '' and senha !=''):
-            self.respostaLogin.setText('LOGANDO...')
+            self.respostaLoginLogando.setText('LOGANDO...')
+            QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaLoginLogando))
         else:
-            texto = 'Dados incompletos'
-            self.respostaLogin.setText(texto)
-            QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaLogin))
+            texto = 'DADOS INCOMPLETOS.'
+            self.respostaLoginDadosIncompleto.setText(texto)
+            QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaLoginDadosIncompleto))
 
 
         self.limparCampos(self.inputEmail)
