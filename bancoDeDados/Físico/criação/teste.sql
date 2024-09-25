@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/08/2024 às 16:53
+-- Tempo de geração: 11/09/2024 às 14:50
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -18,12 +18,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `teste`
-CREATE DATABASE IF NOT EXISTS `teste`
-COLLATE 'utf8_bin';
-USE `teste`;
-
+-- Banco de dados: `mapasalat`
 --
+CREATE DATABASE IF NOT EXISTS `mapasalat`
+COLLATE 'utf8_bin';
+USE `mapasalat`;
 
 -- --------------------------------------------------------
 
@@ -39,7 +38,7 @@ CREATE TABLE `area` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cursos`
+-- Estrutura para tabela `curso`
 --
 
 CREATE TABLE `curso` (
@@ -56,7 +55,7 @@ CREATE TABLE `curso` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `equipamentos`
+-- Estrutura para tabela `equipamento`
 --
 
 CREATE TABLE `equipamento` (
@@ -83,7 +82,19 @@ CREATE TABLE `login` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `pessoas`
+-- Estrutura para tabela `ocupado`
+--
+
+CREATE TABLE `ocupado` (
+  `qtdOcupado` int(11) NOT NULL,
+  `idReserva` int(11) NOT NULL,
+  `idEquipamento` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `pessoa`
 --
 
 CREATE TABLE `pessoa` (
@@ -104,7 +115,6 @@ CREATE TABLE `pessoa` (
 
 CREATE TABLE `reserva` (
   `idReserva` int(11) NOT NULL,
-  `idEquipamento` int(11) DEFAULT NULL,
   `idLogin` int(11) NOT NULL,
   `idPessoa` int(11) NOT NULL,
   `idCurso` int(11) NOT NULL,
@@ -142,14 +152,14 @@ ALTER TABLE `area`
   ADD PRIMARY KEY (`idArea`);
 
 --
--- Índices de tabela `cursos`
+-- Índices de tabela `curso`
 --
 ALTER TABLE `curso`
   ADD PRIMARY KEY (`idCurso`),
   ADD KEY `area_curso` (`idArea`);
 
 --
--- Índices de tabela `equipamentos`
+-- Índices de tabela `equipamento`
 --
 ALTER TABLE `equipamento`
   ADD PRIMARY KEY (`idEquipamento`),
@@ -163,7 +173,14 @@ ALTER TABLE `login`
   ADD KEY `pessoa_login` (`idPessoa`);
 
 --
--- Índices de tabela `pessoas`
+-- Índices de tabela `ocupado`
+--
+ALTER TABLE `ocupado`
+  ADD KEY `reserva_teste` (`idReserva`),
+  ADD KEY `equipamento_teste` (`idEquipamento`);
+
+--
+-- Índices de tabela `pessoa`
 --
 ALTER TABLE `pessoa`
   ADD PRIMARY KEY (`idPessoa`);
@@ -173,7 +190,6 @@ ALTER TABLE `pessoa`
 --
 ALTER TABLE `reserva`
   ADD PRIMARY KEY (`idReserva`),
-  ADD KEY `equipamento_reserva` (`idEquipamento`),
   ADD KEY `pessoa_reserva` (`idPessoa`),
   ADD KEY `curso_reserva` (`idCurso`),
   ADD KEY `sala_reserva` (`idSala`),
@@ -193,56 +209,56 @@ ALTER TABLE `sala`
 -- AUTO_INCREMENT de tabela `area`
 --
 ALTER TABLE `area`
-  MODIFY `idArea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idArea` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `cursos`
+-- AUTO_INCREMENT de tabela `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `idCurso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idCurso` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `equipamentos`
+-- AUTO_INCREMENT de tabela `equipamento`
 --
 ALTER TABLE `equipamento`
-  MODIFY `idEquipamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idEquipamento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `login`
 --
 ALTER TABLE `login`
-  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `pessoas`
+-- AUTO_INCREMENT de tabela `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `sala`
 --
 ALTER TABLE `sala`
-  MODIFY `idSala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idSala` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para tabelas despejadas
 --
 
 --
--- Restrições para tabelas `cursos`
+-- Restrições para tabelas `curso`
 --
 ALTER TABLE `curso`
   ADD CONSTRAINT `area_curso` FOREIGN KEY (`idArea`) REFERENCES `area` (`idArea`);
 
 --
--- Restrições para tabelas `equipamentos`
+-- Restrições para tabelas `equipamento`
 --
 ALTER TABLE `equipamento`
   ADD CONSTRAINT `area_equipamento` FOREIGN KEY (`idArea`) REFERENCES `area` (`idArea`);
@@ -254,11 +270,17 @@ ALTER TABLE `login`
   ADD CONSTRAINT `pessoa_login` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`);
 
 --
+-- Restrições para tabelas `ocupado`
+--
+ALTER TABLE `ocupado`
+  ADD CONSTRAINT `equipamento_ocupado` FOREIGN KEY (`idEquipamento`) REFERENCES `equipamento` (`idEquipamento`),
+  ADD CONSTRAINT `reserva_ocupado` FOREIGN KEY (`idReserva`) REFERENCES `reserva` (`idReserva`);
+
+--
 -- Restrições para tabelas `reserva`
 --
 ALTER TABLE `reserva`
   ADD CONSTRAINT `curso_reserva` FOREIGN KEY (`idCurso`) REFERENCES `curso` (`idCurso`),
-  ADD CONSTRAINT `equipamento_reserva` FOREIGN KEY (`idEquipamento`) REFERENCES `equipamento` (`idEquipamento`),
   ADD CONSTRAINT `login_reserva` FOREIGN KEY (`idLogin`) REFERENCES `login` (`idLogin`),
   ADD CONSTRAINT `pessoa_reserva` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`idPessoa`),
   ADD CONSTRAINT `sala_reserva` FOREIGN KEY (`idSala`) REFERENCES `sala` (`idSala`);
