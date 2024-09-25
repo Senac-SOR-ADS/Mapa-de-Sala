@@ -32,6 +32,7 @@ class Equipamentos:
         
 
     def cadastrar_equipamento(self, id_area):
+        """essa função é para cadastrar um equipamento"""
         self.__banco.conectar()
         query = "INSERT INTO `equipamento`(`idArea`, `nome`, `marca`, `quantidade`) VALUES (%s, %s, %s, %s)"
         params = [id_area, self.__nome, self.__marca, self.quantidade]
@@ -42,6 +43,7 @@ class Equipamentos:
     
     @classmethod
     def retorna_equipamento_reservado(cls):
+        """essa função retorna todos os equipamentos que já foram reservados"""
         cls.__banco.conectar()
         query = "SELECT e.nome FROM equipamento e RIGHT JOIN ocupado o ON o.idEquipamento = e.idEquipamento"
         resultado = cls.__banco.buscarTodos(query)
@@ -50,6 +52,7 @@ class Equipamentos:
     
     @classmethod
     def retorna_equipamentos_sem_reserva(cls):
+        """a função retorna todos os equipamentos que ainda não foram cadastrados"""
         cls.__banco.conectar()
         query ="SELECT e.nome FROM ocupado o RIGHT JOIN equipamento e ON o.idEquipamento = e.idEquipamento WHERE o.idEquipamento IS NULL;"
         resultado = cls.__banco.buscarTodos(query)
@@ -58,6 +61,7 @@ class Equipamentos:
     
     @classmethod
     def retorna_todos_equipamentos(cls):
+        """essa função mostra todos os equipamentos cadastrados"""
         cls.__banco.conectar()
         query = "SELECT nome FROM equipamento"
         resultado = cls.__banco.buscarTodos(query)
@@ -66,6 +70,7 @@ class Equipamentos:
     
     @classmethod
     def retorna_sala_equipamento(cls):
+        """função que retorna em qual sala o equipamento reservado está"""
         cls.__banco.conectar()
         query = "SELECT e.nome AS nomeEquipamento, e.marca, r.idSala, s.nome AS nomeSala FROM equipamento e INNER JOIN ocupado o ON e.idEquipamento = o.idEquipamento INNER JOIN reserva r ON o.idReserva = r.idReserva INNER JOIN sala s ON r.idSala = s.idSala "
         resultado = cls.__banco.buscarTodos(query)
@@ -75,6 +80,7 @@ class Equipamentos:
     
     @classmethod
     def retorna_nome_quantidade_sala_docente_equipamento(cls):
+        """essa função retorna o nome do equipamento a quantidade, em qual sala ele está e o docente que fez a reserva"""
         cls.__banco.conectar()
         query = "SELECT e.nome AS nomeEquipamento, r.idPessoa, r.idSala, p.nome AS nomePessoa, s.nome AS nomeSala FROM equipamento e INNER JOIN ocupado o ON e.idEquipamento = o.idEquipamento INNER JOIN reserva r ON o.idReserva = r.idReserva INNER JOIN sala s ON r.idSala = s.idSala INNER JOIN pessoa p ON r.idPessoa = p.idPessoa"
         resultado =cls.__banco.buscarTodos(query)
@@ -86,6 +92,6 @@ class Equipamentos:
     
     
 if __name__ == "__main__":
-    teste = Equipamentos('Monitor', 'Dell', 10, 'Tecnologia da Informação')
+    teste = Equipamentos('Panela de Pressão', 'Eletrolux', 20, 'Gastronomia')
     res = teste.cadastrar_equipamento(1)
     print(res)
