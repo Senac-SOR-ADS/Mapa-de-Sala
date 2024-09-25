@@ -18,7 +18,7 @@ class ReservaInterface(QMainWindow):
         inicio = self.inicioReserva.text().strip() 
         fim = self.fimReserva.text().strip() 
         observacao = self.observacaoReserva.text().strip() 
-
+        
         dados = {"nomeDocente":nomeDocenteResponsavel, 
                  "nomeSala":nomeSala, 
                  "nomeCurso":nomeCurso,
