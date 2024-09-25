@@ -7,35 +7,28 @@ class LoginInterface(QMainWindow):
     def __init__(self):
         super().__init__()
         loadUi('view/ui/interfaceLogin.ui',self)
-
         # Remove a barra de título e as bordas da janela
         self.setWindowFlags(Qt.FramelessWindowHint)
-
         # Define a janela como transparente
         self.setAttribute(Qt.WA_TranslucentBackground)
-    
 
     @pyqtSlot()
     def on_btnEntrar_clicked(self):
-        self.getEmailSenha()
+        return self.getEmailSenha()
 
-
-        def getEmailSenha(self):
-        email = self.inputEmail.text()
+    def getEmailSenha(self):
+        email = self.inputEmail.text().strip()
         senha = self.inputSenha.text()
+        return (email, senha)        
 
-        if (email != '' and senha !=''):
-            self.respostaLoginLogando.setText('LOGANDO...')
-            QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaLoginLogando))
-        else:
-            texto = 'DADOS INCOMPLETOS.'
-            self.respostaLoginDadosIncompleto.setText(texto)
-            QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaLoginDadosIncompleto))
+    def validandoDados(self):
+        self.respostaLoginLogando.setText('LOGANDO...')
+        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaLoginLogando))
 
-
-        self.limparCampos(self.inputEmail)
-        self.limparCampos(self.inputSenha)
-
+    def dadosInvalidos(self):
+        texto = 'DADOS INCOMPLETOS.'
+        self.respostaLoginDadosIncompleto.setText(texto)
+        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaLoginDadosIncompleto))
 
     def limparCampos(self, campo):
         campo.clear()
