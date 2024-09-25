@@ -2,15 +2,13 @@ from conexao import ConexaoBD
 
 
 class Equipamentos:
-    __banco = ConexaoBD()
-    
     def __init__(self, nome, marca, quantidade, area) -> None:
         # caracteristicas atributos 
         self.__nome = nome
         self.__marca = marca
         self.quantidade = quantidade
         self.__area = area
-        self.__idArea = None
+        self.__banco = ConexaoBD()
  
     def get_nome(self):
         return self.__nome
@@ -29,7 +27,6 @@ class Equipamentos:
    
     def set_area(self, area):
         self.__area = area
-        
 
     def cadastrar_equipamento(self, id_area):
         """essa função é para cadastrar um equipamento"""
@@ -93,5 +90,5 @@ class Equipamentos:
     
 if __name__ == "__main__":
     teste = Equipamentos('Panela de Pressão', 'Eletrolux', 20, 'Gastronomia')
-    res = teste.cadastrar_equipamento(1)
+    res = teste.cadastrar_equipamento() #<--NUMERO DA AREA DO EQUIPAMENTO QUANDO FOR CADASTRAR EQUIPAMENTO
     print(res)
