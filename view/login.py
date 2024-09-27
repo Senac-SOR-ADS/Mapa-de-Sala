@@ -3,7 +3,7 @@ from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt, QTimer, pyqtSlot
 
 
-class LoginInterface(QMainWindow):
+class LoginInterface(QDialog):
     def __init__(self):
         super().__init__()
         loadUi('view/ui/interfaceLogin.ui',self)
@@ -12,9 +12,9 @@ class LoginInterface(QMainWindow):
         # Define a janela como transparente
         self.setAttribute(Qt.WA_TranslucentBackground)
 
-    @pyqtSlot()
-    def on_btnEntrar_clicked(self):
-        return self.getEmailSenha()
+    # @pyqtSlot()
+    # def on_btnEntrar_clicked(self):
+    #     return self.getEmailSenha()
 
     def getEmailSenha(self):
         email = self.inputEmail.text().strip()
@@ -39,3 +39,4 @@ if __name__ == "__main__":
     widget = LoginInterface()
     widget.show()
     app.exec_()
+

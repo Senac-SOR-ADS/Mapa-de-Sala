@@ -1,4 +1,4 @@
-from conexao import ConexaoBD
+from .conexao import ConexaoBD
 
 
 class Login:
