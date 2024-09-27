@@ -1,4 +1,4 @@
-from conexao import ConexaoBD
+from .conexao import ConexaoBD
 
 
 class Login:
@@ -45,6 +45,5 @@ class Login:
             return False
 
 if __name__ == "__main__":
-
     login = Login(email='emailgenerico@gmail.com', senha='senha456')
     login.validarLogin()

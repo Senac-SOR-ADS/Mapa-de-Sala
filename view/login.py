@@ -3,7 +3,7 @@ from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt, QTimer, pyqtSlot
 
 
-class LoginInterface(QMainWindow):
+class LoginInterface(QDialog):
     def __init__(self):
         super().__init__()
         loadUi('view/ui/interfaceLogin.ui',self)
