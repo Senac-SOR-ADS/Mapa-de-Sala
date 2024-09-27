@@ -44,6 +44,7 @@ class Sala:
         return resultado
     
 
+
     def cadastrar_sala(self):
         self.__banco.conectar()
         query = '''INSERT INTO `sala`(`nome`, `tipo`, `predio`, `equipamentos`, `capacidade`, `observacao`) VALUES (%s, %s, %s, %s, %s, %s); '''
@@ -71,4 +72,4 @@ if __name__ == "__main__":
 # if __name__ == "__main__":
 #     buscar_sala_predio2 = Sala.buscar_sala_predio2()
 #     print(buscar_sala_predio2)
-    
+

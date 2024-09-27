@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1271</width>
-    <height>903</height>
+    <width>600</width>
+    <height>417</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,26 +17,26 @@
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>150</y>
+      <x>10</x>
+      <y>10</y>
       <width>571</width>
       <height>391</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton#pushButton{
+     <string notr="true">QPushButton{
 	background-color:rgba(85,98,112,255);
 	color:rgba(255,255,255,200);
 	border-radius:5px
 }
 
-QPushButton#pushButton:pressed{
+QPushButton:pressed{
 	padding-left:5px;
 	padding-top:5px;
 	background-position:calc(100%-5px)center;
 }
 
-QPushButton#pushButton:hover{
+QPushButton:hover{
 	background-color:rgba(255, 140, 0);
 	color:0;
 }
@@ -103,7 +103,7 @@ border-radius:10px
       <string>LOGIN</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="inputEmail">
      <property name="geometry">
       <rect>
        <x>330</x>
@@ -131,7 +131,7 @@ padding-bottom:7px;</string>
       <string>EMAIL</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="inputSenha">
      <property name="geometry">
       <rect>
        <x>330</x>
@@ -159,7 +159,7 @@ padding-bottom:7px;</string>
       <string>SENHA</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="btnEntrar">
      <property name="geometry">
       <rect>
        <x>330</x>
@@ -252,19 +252,59 @@ color:rgb(255,255,255)
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QLabel" name="respostaLoginDadosIncompleto">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>350</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:red;
+font: 75 8pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="respostaLoginLogando">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>350</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:green;
+font: 75 8pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="respostaLogin_4">
+    <property name="geometry">
+     <rect>
+      <x>1020</x>
+      <y>510</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:red;
+font: 75 8pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1271</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
