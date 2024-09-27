@@ -125,7 +125,7 @@
                 <string>Menu</string>
                </property>
                <property name="icon">
-                <iconset resource="icones/teste.qrc">
+                <iconset>
                  <normaloff>:/newPrefix/menu-regular-24 (1).png</normaloff>:/newPrefix/menu-regular-24 (1).png</iconset>
                </property>
                <property name="iconSize">
@@ -191,7 +191,7 @@
                 <string>Início</string>
                </property>
                <property name="icon">
-                <iconset resource="icones/teste.qrc">
+                <iconset>
                  <normaloff>:/newPrefix/home-regular-24.png</normaloff>:/newPrefix/home-regular-24.png</iconset>
                </property>
                <property name="iconSize">
@@ -208,7 +208,7 @@
                 <string>Documentos e Relatórios</string>
                </property>
                <property name="icon">
-                <iconset resource="icones/teste.qrc">
+                <iconset>
                  <normaloff>:/newPrefix/file-blank-regular-24.png</normaloff>:/newPrefix/file-blank-regular-24.png</iconset>
                </property>
                <property name="iconSize">
@@ -225,7 +225,7 @@
                 <string>Imprimir Relatórios</string>
                </property>
                <property name="icon">
-                <iconset resource="icones/teste.qrc">
+                <iconset>
                  <normaloff>:/newPrefix/printer-regular-24.png</normaloff>:/newPrefix/printer-regular-24.png</iconset>
                </property>
                <property name="iconSize">
@@ -242,7 +242,7 @@
                 <string>Ajuda</string>
                </property>
                <property name="icon">
-                <iconset resource="icones/teste.qrc">
+                <iconset>
                  <normaloff>:/newPrefix/help-circle-regular-24.png</normaloff>:/newPrefix/help-circle-regular-24.png</iconset>
                </property>
                <property name="iconSize">
@@ -259,7 +259,7 @@
                 <string>Configurações</string>
                </property>
                <property name="icon">
-                <iconset resource="icones/teste.qrc">
+                <iconset>
                  <normaloff>:/newPrefix/cog-regular-24.png</normaloff>:/newPrefix/cog-regular-24.png</iconset>
                </property>
                <property name="iconSize">
@@ -316,7 +316,7 @@
                 <string>Sair</string>
                </property>
                <property name="icon">
-                <iconset resource="icones/teste.qrc">
+                <iconset>
                  <normaloff>:/newPrefix/exit-regular-24.png</normaloff>:/newPrefix/exit-regular-24.png</iconset>
                </property>
                <property name="iconSize">
@@ -405,7 +405,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap resource="icones/imagens.qrc">:/newPrefix/logoSenac.png</pixmap>
+                <pixmap>:/newPrefix/logoSenac.png</pixmap>
                </property>
                <property name="scaledContents">
                 <bool>true</bool>
@@ -459,7 +459,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="icones/teste.qrc">
+                <iconset>
                  <normaloff>:/newPrefix/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/newPrefix/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
                </property>
                <property name="iconSize">
@@ -476,7 +476,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="icones/teste.qrc">
+                <iconset>
                  <normaloff>:/newPrefix/square-rounded-regular-24.png</normaloff>:/newPrefix/square-rounded-regular-24.png</iconset>
                </property>
                <property name="iconSize">
@@ -505,7 +505,7 @@ padding: 10px;
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="icones/teste.qrc">
+                <iconset>
                  <normaloff>:/newPrefix/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/newPrefix/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
                </property>
                <property name="iconSize">
@@ -546,7 +546,7 @@ padding: 10px;
              </sizepolicy>
             </property>
             <property name="currentIndex">
-             <number>4</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="inicio">
              <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -565,7 +565,7 @@ padding: 10px;
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="icones/imagens.qrc">:/newPrefix/logoSenac.png</pixmap>
+                    <pixmap>:/newPrefix/logoSenac.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -602,270 +602,6 @@ padding: 10px;
                       </property>
                       <property name="text">
                        <string>Senac Sorocaba</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="cadastroEquipamento">
-             <widget class="QLabel" name="label_11">
-              <property name="geometry">
-               <rect>
-                <x>420</x>
-                <y>200</y>
-                <width>331</width>
-                <height>121</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>cadastro de equipamentos</string>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="cadastroPessoa">
-             <widget class="QLabel" name="label_12">
-              <property name="geometry">
-               <rect>
-                <x>370</x>
-                <y>190</y>
-                <width>371</width>
-                <height>191</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>cadastro de pessoas</string>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="cadastroCurso">
-             <widget class="QLabel" name="label_13">
-              <property name="geometry">
-               <rect>
-                <x>430</x>
-                <y>310</y>
-                <width>421</width>
-                <height>111</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>cadastro de curso</string>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="reserva">
-             <layout class="QHBoxLayout" name="horizontalLayout_7">
-              <item>
-               <widget class="QFrame" name="frame_6">
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_9">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item alignment="Qt::AlignHCenter">
-                  <widget class="QLabel" name="label_5">
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Reserva de Salas</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_7">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_8">
-                    <item>
-                     <widget class="QFrame" name="campoReserva">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <widget class="QLabel" name="label_4">
-                       <property name="geometry">
-                        <rect>
-                         <x>20</x>
-                         <y>20</y>
-                         <width>47</width>
-                         <height>13</height>
-                        </rect>
-                       </property>
-                       <property name="text">
-                        <string>Sala</string>
-                       </property>
-                      </widget>
-                      <widget class="QLineEdit" name="salaInput">
-                       <property name="geometry">
-                        <rect>
-                         <x>20</x>
-                         <y>50</y>
-                         <width>113</width>
-                         <height>20</height>
-                        </rect>
-                       </property>
-                      </widget>
-                      <widget class="QLabel" name="label_7">
-                       <property name="geometry">
-                        <rect>
-                         <x>20</x>
-                         <y>90</y>
-                         <width>47</width>
-                         <height>13</height>
-                        </rect>
-                       </property>
-                       <property name="text">
-                        <string>Curso</string>
-                       </property>
-                      </widget>
-                      <widget class="QLineEdit" name="cursoInput">
-                       <property name="geometry">
-                        <rect>
-                         <x>20</x>
-                         <y>120</y>
-                         <width>113</width>
-                         <height>20</height>
-                        </rect>
-                       </property>
-                      </widget>
-                      <widget class="QLabel" name="label_8">
-                       <property name="geometry">
-                        <rect>
-                         <x>20</x>
-                         <y>160</y>
-                         <width>47</width>
-                         <height>13</height>
-                        </rect>
-                       </property>
-                       <property name="text">
-                        <string>Docente</string>
-                       </property>
-                      </widget>
-                      <widget class="QLineEdit" name="docenteInput">
-                       <property name="geometry">
-                        <rect>
-                         <x>10</x>
-                         <y>190</y>
-                         <width>113</width>
-                         <height>20</height>
-                        </rect>
-                       </property>
-                      </widget>
-                      <widget class="QLabel" name="label_9">
-                       <property name="geometry">
-                        <rect>
-                         <x>10</x>
-                         <y>230</y>
-                         <width>47</width>
-                         <height>13</height>
-                        </rect>
-                       </property>
-                       <property name="text">
-                        <string>Equipamentos</string>
-                       </property>
-                      </widget>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="campoLista">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_11">
-                       <item>
-                        <widget class="QLabel" name="label_6">
-                         <property name="styleSheet">
-                          <string notr="true">background-color: #FFF;</string>
-                         </property>
-                         <property name="text">
-                          <string>Lista de equipamentos vai ficar aki</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="label_10">
-                         <property name="text">
-                          <string>Observações:</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignBottom">
-                  <widget class="QFrame" name="frame_8">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_10">
-                    <item alignment="Qt::AlignVCenter">
-                     <widget class="QPushButton" name="pushButton_4">
-                      <property name="font">
-                       <font>
-                        <pointsize>10</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color: blue;
-color: #FFF;
-padding: 5px;
-border-radius: 20px;
-border: none;</string>
-                      </property>
-                      <property name="text">
-                       <string>RESERVAR</string>
                       </property>
                      </widget>
                     </item>
