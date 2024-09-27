@@ -1,34 +1,34 @@
-import sys
-import os
-from PyQt6 import *
-from PyQt6.uic import loadUi
-from PyQt6.QtCore import Qt, QTimer
-
-class interfaceHome(QMainWindow):
+from PyQt5.QtWidgets import *
+from PyQt5.uic import loadUi
+from cadastrandoPessoas import cadastrandoPessoas
+from reserva import ReservaInterface
+ 
+class HomePrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
-        try:
-            loadUi('', self) #Carregar o arquivo UI
+        loadUi('view/ui/interfaceHomeV1.ui',self)
 
-            # Remove a barra de título e as bordas da janela
-            self.setWindowFlags(Qt.FramelessWindowHint)
+        # Criando instancias das interfaces
+        self.interfCasPessoa = cadastrandoPessoas()
+        self.interfReserva = ReservaInterface()
+        self.inserirTelas( [self.interfCasPessoa, self.interfReserva] )
 
-            # Define a janela como transparente
-            self.setAttribute(Qt.WA_TranslucentBackground)
+        self.btnCadastrarPessoa.clicked.connect(lambda: self.trocarTela(self.interfCasPessoa))
+        self.btnReserva.clicked.connect(lambda: self.trocarTela(self.interfReserva))
+        self.btnIncio.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.inicio))
 
-            # Verifica se os widgets foram carregados corretamente
-            self.check_widgets()
+    def inserirTelas(self, telas):
+        for interface in telas:
+            self.stackedWidget.addWidget(interface)
 
-        except Exception as e:
-            print(f"Erro ao carregar a interface: {e}")
-            sys.exit(1)
-
-#######CONEXÕES SERÃO ADICIONADAS APÓS A CRIAÇÃO DA HOME ORIGINAL#######
-
-
-
+    def trocarTela(self, tela):
+        """Função para trocar as tela. Necessario
+        passar a classe da tela"""
+        self.stackedWidget.setCurrentWidget(tela)
+        
 if __name__ == "__main__":
     app = QApplication([])
-    widget = interfaceHome()
+    widget = HomePrincipal()
     widget.show()
     app.exec_()
+ 
