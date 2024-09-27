@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt, QTimer, pyqtSlot
 
 
 
-class cadastrandoPessoas(QMainWindow):
+class cadastrandoPessoas(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('view/ui/cadastroPessoas.ui',self)
@@ -39,11 +39,5 @@ class cadastrandoPessoas(QMainWindow):
 
     def limparCampos(self, campo):
         campo.clear()
-
-if __name__ == "__main__":
-    app = QApplication([])
-    widget = cadastrandoPessoas()
-    widget.show()
-    app.exec_()
 
 

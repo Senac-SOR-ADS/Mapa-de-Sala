@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt, QTimer, pyqtSlot
 
 
 
-class ReservaInterface(QMainWindow):
+class ReservaInterface(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('view/ui/reserva.ui',self)
@@ -44,11 +44,4 @@ class ReservaInterface(QMainWindow):
 
     def limparCampos(self, campo):
         campo.clear()
-
-if __name__ == "__main__":
-    app = QApplication([])
-    widget = ReservaInterface()
-    widget.show()
-    app.exec_()
-
 
