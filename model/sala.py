@@ -4,8 +4,8 @@ from conexao import ConexaoBD
 class Sala:
     __banco = ConexaoBD()
 
-    def __init__(self, nome_da_sala, tipo, predio, equipamentos, capacidade, observacao) -> None:
-        self.nome_da_sala = nome_da_sala
+    def __init__(self, nome, tipo, predio, equipamentos, capacidade, observacao) -> None:
+        self.nome = nome
         self.tipo = tipo
         self.predio = predio
         self.__equipamentos = equipamentos
@@ -43,31 +43,33 @@ class Sala:
         cls.__banco.desconectar
         return resultado
     
-    @classmethod
-    def cadastrar_sala(cls):
-        cls.__banco.conectar()
-        query = '''INSERT INTO `sala`(`nome_da_sala`, `tipo`, `predio`, `equipamentos`, `capacidade`, `observacao`) VALUES (%s, %s, %s, %s, %s, %s); '''
-        parametros = (cls.nome_da_sala, cls.tipo, cls.predio, cls.__equipamentos, cls.capacidade, cls.observacao)
-        resultado = cls.__banco.commit(query, parametros)
-        cls.__banco.desconectar()
+
+
+    def cadastrar_sala(self):
+        self.__banco.conectar()
+        query = '''INSERT INTO `sala`(`nome`, `tipo`, `predio`, `equipamentos`, `capacidade`, `observacao`) VALUES (%s, %s, %s, %s, %s, %s); '''
+        parametros = (self.nome, self.tipo, self.predio, self.__equipamentos, self.capacidade, self.observacao)
+        resultado = self.__banco.alterarDados(query, parametros)
+        self.__banco.desconectar()
         return resultado
-    
+   
 if __name__ == "__main__":
-    sala = Sala.cadastrar_sala()
-    print(sala)
+    teste = Sala('nome', 'tipo', 'predio', 'equipamentos', 'capacidade', 'observacao')
+    teste.cadastrar_sala()
+    print(teste)
 
 
-if __name__ == "__main__":
-    teste_buscar_sala = Sala.buscar_sala()
-    print(teste_buscar_sala)
+# if __name__ == "__main__":
+#     teste_buscar_sala = Sala.buscar_sala()
+#     print(teste_buscar_sala)
 
 
-if __name__ == "__main__":
-    buscar_sala_predio1 = Sala.buscar_sala_predio1()
-    print(buscar_sala_predio1)
+# if __name__ == "__main__":
+#     buscar_sala_predio1 = Sala.buscar_sala_predio1()
+#     print(buscar_sala_predio1)
 
 
-if __name__ == "__main__":
-    buscar_sala_predio2 = Sala.buscar_sala_predio2()
-    print(buscar_sala_predio2)
-    
+# if __name__ == "__main__":
+#     buscar_sala_predio2 = Sala.buscar_sala_predio2()
+#     print(buscar_sala_predio2)
+
