@@ -1,13 +1,13 @@
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
 
-class HomePrincipal(QMainWindow):
+class CadastrarSalas(QMainWindow):
     def __init__(self):
         super().__init__()
-        loadUi('view/ui/interfaceHomeV1.ui',self)
+        loadUi('view/ui/cadastroSalas.ui',self)
 
 if __name__ == "__main__":
     app = QApplication([])
-    widget = HomePrincipal()
+    widget = CadastrarSalas()
     widget.show()
     app.exec_()
