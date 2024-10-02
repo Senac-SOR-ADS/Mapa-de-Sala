@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1260</width>
-    <height>784</height>
+    <height>778</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -185,7 +185,7 @@
              <item>
               <widget class="QPushButton" name="btnIncio">
                <property name="styleSheet">
-                <string notr="true"/>
+                <string notr="true">padding: 10px;</string>
                </property>
                <property name="text">
                 <string>Início</string>
@@ -204,6 +204,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnRelatorioDocumentos">
+               <property name="styleSheet">
+                <string notr="true">padding: 10px;</string>
+               </property>
                <property name="text">
                 <string>Documentos e Relatórios</string>
                </property>
@@ -221,6 +224,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnImprimir">
+               <property name="styleSheet">
+                <string notr="true">padding: 10px;</string>
+               </property>
                <property name="text">
                 <string>Imprimir Relatórios</string>
                </property>
@@ -238,6 +244,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnAjuda">
+               <property name="styleSheet">
+                <string notr="true">padding: 10px;</string>
+               </property>
                <property name="text">
                 <string>Ajuda</string>
                </property>
@@ -255,6 +264,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnConfiguracoes">
+               <property name="styleSheet">
+                <string notr="true">padding: 10px;</string>
+               </property>
                <property name="text">
                 <string>Configurações</string>
                </property>
@@ -275,6 +287,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnCadastrarPessoa">
+            <property name="styleSheet">
+             <string notr="true">padding: 10px;</string>
+            </property>
             <property name="text">
              <string>Cadastrar Pessoas</string>
             </property>
@@ -282,6 +297,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnReserva">
+            <property name="styleSheet">
+             <string notr="true">padding: 10px;</string>
+            </property>
             <property name="text">
              <string>Reserva</string>
             </property>
@@ -638,8 +656,6 @@ padding: 10px;
    </layout>
   </widget>
  </widget>
- <resources>
-  <include location="icones/imagens.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
