@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt, QTimer, pyqtSlot
+from PyQt5.QtCore import Qt, QTimer
 
 
 
@@ -8,10 +8,6 @@ class cadastroPessoas(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('view/ui/cadastroPessoas.ui',self)
-    
-    @pyqtSlot()
-    def on_btnCadastrar_clicked(self):
-        return self.getDadosCadastro()
     
     def getDadosCadastro(self):
         nomePessoas = self.nomePessoas.text().strip()
