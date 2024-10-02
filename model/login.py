@@ -39,9 +39,9 @@ class Login:
         try:
             senhaBanco = resultado[3]
             senhaBanco = senhaBanco.encode('utf-8')
-            teste = self.getSenha()
+            senhaUsuario = self.getSenha()
  
-            if self.getEmail() == resultado[2] and Criptografia.validarSenha(teste, senhaBanco):
+            if self.getEmail() == resultado[2] and Criptografia.validarSenha(senhaUsuario, senhaBanco):
                 self.setIdLogin(resultado[0])
                 self.setIdPessoa(resultado[1])
                 return True
