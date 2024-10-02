@@ -193,7 +193,7 @@
      <string>Observações</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="cadastrarSala">
+   <widget class="QPushButton" name="btnCadastrarSala">
     <property name="geometry">
      <rect>
       <x>340</x>
