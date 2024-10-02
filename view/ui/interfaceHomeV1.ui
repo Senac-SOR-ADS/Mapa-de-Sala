@@ -274,6 +274,20 @@
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="btnCadastrarPessoa">
+            <property name="text">
+             <string>Cadastrar Pessoas</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnReserva">
+            <property name="text">
+             <string>Reserva</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="verticalSpacer">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -625,7 +639,6 @@ padding: 10px;
   </widget>
  </widget>
  <resources>
-  <include location="icones/teste.qrc"/>
   <include location="icones/imagens.qrc"/>
  </resources>
  <connections/>
