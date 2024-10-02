@@ -1,221 +1,210 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>497</width>
-    <height>365</height>
+    <width>400</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Cadastro de Salas</string>
+   <string>Form</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>61</x>
-      <y>52</y>
-      <width>65</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Nome da Sala</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="nomeSala">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>52</y>
-      <width>133</width>
-      <height>20</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>61</x>
-      <y>78</y>
-      <width>65</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Tipo de Sala</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>61</x>
-      <y>104</y>
-      <width>65</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Prédio</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>61</x>
-      <y>130</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Equipamentos</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="tipoEquipamento">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>130</y>
-      <width>133</width>
-      <height>20</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>61</x>
-      <y>156</y>
-      <width>65</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Capacidade</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="mediaCapacidade">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>156</y>
-      <width>133</width>
-      <height>20</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="tipoSala">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>78</y>
-      <width>133</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="editable">
-     <bool>false</bool>
-    </property>
-    <property name="currentText">
-     <string>Laboratório</string>
-    </property>
-    <property name="insertPolicy">
-     <enum>QComboBox::InsertAlphabetically</enum>
-    </property>
-    <property name="sizeAdjustPolicy">
-     <enum>QComboBox::AdjustToMinimumContentsLength</enum>
-    </property>
-    <item>
-     <property name="text">
-      <string>Laboratório</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Jardinagem</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QComboBox" name="nomePredio">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>104</y>
-      <width>133</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="editable">
-     <bool>false</bool>
-    </property>
-    <property name="currentText">
-     <string notr="true">Prédio 1</string>
-    </property>
-    <property name="insertPolicy">
-     <enum>QComboBox::InsertAlphabetically</enum>
-    </property>
-    <item>
-     <property name="text">
-      <string>Prédio 1</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Prédio 2</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>190</y>
-      <width>261</width>
-      <height>61</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>190</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Observações</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="cadastrarSala">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>280</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Cadastrar Sala</string>
-    </property>
-   </widget>
+  <widget class="QLineEdit" name="nomeSala">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>28</y>
+     <width>133</width>
+     <height>20</height>
+    </rect>
+   </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionSalas">
-   <property name="checkable">
-    <bool>false</bool>
+  <widget class="QLineEdit" name="lineEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>166</y>
+     <width>261</width>
+     <height>61</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cadastrarSala">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>256</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
    </property>
    <property name="text">
-    <string>Salas</string>
+    <string>Cadastrar Sala</string>
    </property>
-  </action>
+  </widget>
+  <widget class="QComboBox" name="tipoSala">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>54</y>
+     <width>133</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="editable">
+    <bool>false</bool>
+   </property>
+   <property name="currentText">
+    <string>Laboratório</string>
+   </property>
+   <property name="insertPolicy">
+    <enum>QComboBox::InsertAlphabetically</enum>
+   </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QComboBox::AdjustToMinimumContentsLength</enum>
+   </property>
+   <item>
+    <property name="text">
+     <string>Laboratório</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Jardinagem</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>54</y>
+     <width>65</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tipo de Sala</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>106</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Equipamentos</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="mediaCapacidade">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>132</y>
+     <width>133</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>132</y>
+     <width>65</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Capacidade</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>166</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Observações</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>28</y>
+     <width>65</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Nome da Sala</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="tipoEquipamento">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>106</y>
+     <width>133</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>80</y>
+     <width>65</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Prédio</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="nomePredio">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>80</y>
+     <width>133</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="editable">
+    <bool>false</bool>
+   </property>
+   <property name="currentText">
+    <string notr="true">Prédio 1</string>
+   </property>
+   <property name="insertPolicy">
+    <enum>QComboBox::InsertAlphabetically</enum>
+   </property>
+   <item>
+    <property name="text">
+     <string>Prédio 1</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Prédio 2</string>
+    </property>
+   </item>
+  </widget>
  </widget>
  <resources/>
  <connections/>
