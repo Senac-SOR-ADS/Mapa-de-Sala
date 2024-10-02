@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
-from cadastrandoPessoas import cadastrandoPessoas
-from reserva import ReservaInterface
+from .cadastroPessoas import cadastroPessoas
+from .reserva import ReservaInterface
 
 
 class HomePrincipal(QMainWindow):
@@ -10,7 +10,7 @@ class HomePrincipal(QMainWindow):
         loadUi('view/ui/interfaceHomeV1.ui',self)
 
    # Criando instancias das interfaces
-        self.interfCasPessoa = cadastrandoPessoas()
+        self.interfCasPessoa = cadastroPessoas()
         self.interfReserva = ReservaInterface()
         self.inserirTelas( [self.interfCasPessoa, self.interfReserva] )
 

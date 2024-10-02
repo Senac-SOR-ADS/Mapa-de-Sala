@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt, QTimer, pyqtSlot
 
 
 
-class cadastrandoPessoas(QWidget):
+class cadastroPessoas(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('view/ui/cadastroPessoas.ui',self)
