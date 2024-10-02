@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
-from cadastrandoPessoas import cadastrandoPessoas
-from reserva import ReservaInterface
+from .cadastrandoPessoas import cadastrandoPessoas
+from .reserva import ReservaInterface
 
 
 class HomePrincipal(QMainWindow):
