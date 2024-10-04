@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt, QTimer
+from PyQt5.QtCore import QTimer
 
 class cadastroPessoas(QWidget):
     def __init__(self):
@@ -33,5 +33,6 @@ class cadastroPessoas(QWidget):
 
     def limparCampos(self, campo):
         campo.clear()
+
 
 
