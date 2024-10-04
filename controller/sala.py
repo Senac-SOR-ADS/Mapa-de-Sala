@@ -8,13 +8,15 @@ class SalaController(CadastrarSalas):
 
         self.cadastrarSala.clicked.connect(self.cadastroDeSala)
 
+    def validarCampos(self):
+        if not self.nomeSala.text().strip():
+            print('Falta o nome da sala')
+            return False
+        if not self.tipoSala.currentText().strip():
+            print('Falta o tipo da sala')
+            return False
+
     def cadastroDeSala(self):
-        for i in self.getCadastroSalas():
-            if not i:
-                print('não vai cadastrar')
-                return False
-            else:
-                pass
-        # nomeRetornado, tipoRetornado, predioRetornado, equipamentoRetornado, capacidadeRetornada, feedbackRetornado = self.getCadastroSalas()
-        # sala = Sala(nomeRetornado, tipoRetornado, predioRetornado, equipamentoRetornado, capacidadeRetornada, feedbackRetornado)
-        # sala.cadastrar_sala()
+        nomeRetornado, tipoRetornado, predioRetornado, equipamentoRetornado, capacidadeRetornada, feedbackRetornado = self.getCadastroSalas()
+        sala = Sala(nomeRetornado, tipoRetornado, predioRetornado, equipamentoRetornado, capacidadeRetornada, feedbackRetornado)
+        sala.cadastrar_sala()
