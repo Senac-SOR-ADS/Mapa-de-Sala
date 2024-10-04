@@ -6,8 +6,15 @@ class SalaController(CadastrarSalas):
         super().__init__()
         self.show()
 
-        self.btnCadastrarSala.clicked.connect(self.cadastroDeSala)
+        self.cadastrarSala.clicked.connect(self.cadastroDeSala)
 
     def cadastroDeSala(self):
-        nomeRetornado, tipoRetornado, predioRetornado, equipamentoRetornado, capacidadeRetornada = self.getCadastroSalas()
-        sala = Sala(nomeRetornado, tipoRetornado, predioRetornado, equipamentoRetornado, capacidadeRetornada, '')
+        for i in self.getCadastroSalas():
+            if not i:
+                print('não vai cadastrar')
+                return False
+            else:
+                pass
+        # nomeRetornado, tipoRetornado, predioRetornado, equipamentoRetornado, capacidadeRetornada, feedbackRetornado = self.getCadastroSalas()
+        # sala = Sala(nomeRetornado, tipoRetornado, predioRetornado, equipamentoRetornado, capacidadeRetornada, feedbackRetornado)
+        # sala.cadastrar_sala()
