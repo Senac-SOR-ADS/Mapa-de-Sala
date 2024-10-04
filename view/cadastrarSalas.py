@@ -1,16 +1,12 @@
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt, pyqtSlot
+from PyQt5.QtCore import Qt
 
 class CadastrarSalas(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('view/ui/cadastroSalas.ui',self)
 
-    @pyqtSlot()
-    def on_btnCadastrarSala_clicked(self):
-        return self.getCadastroSalas()
-    
     def getCadastroSalas(self):
         nome = self.nomeSala.text().strip()
         sala = self.tipoSala.currentText().strip()

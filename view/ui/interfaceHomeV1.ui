@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1260</width>
-    <height>784</height>
+    <height>778</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -126,7 +126,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/menu-regular-24 (1).png</normaloff>:/newPrefix/menu-regular-24 (1).png</iconset>
+                 <normaloff>icones/menu-regular-24 (1).png</normaloff>icones/menu-regular-24 (1).png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -185,14 +185,14 @@
              <item>
               <widget class="QPushButton" name="btnIncio">
                <property name="styleSheet">
-                <string notr="true"/>
+                <string notr="true">padding: 10px;</string>
                </property>
                <property name="text">
                 <string>Início</string>
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/home-regular-24.png</normaloff>:/newPrefix/home-regular-24.png</iconset>
+                 <normaloff>icones/home-regular-24.png</normaloff>icones/home-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -204,12 +204,15 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnRelatorioDocumentos">
+               <property name="styleSheet">
+                <string notr="true">padding: 10px;</string>
+               </property>
                <property name="text">
                 <string>Documentos e Relatórios</string>
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/file-blank-regular-24.png</normaloff>:/newPrefix/file-blank-regular-24.png</iconset>
+                 <normaloff>icones/file-blank-regular-24.png</normaloff>icones/file-blank-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -221,12 +224,15 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnImprimir">
+               <property name="styleSheet">
+                <string notr="true">padding: 10px;</string>
+               </property>
                <property name="text">
                 <string>Imprimir Relatórios</string>
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/printer-regular-24.png</normaloff>:/newPrefix/printer-regular-24.png</iconset>
+                 <normaloff>icones/printer-regular-24.png</normaloff>icones/printer-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -238,12 +244,15 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnAjuda">
+               <property name="styleSheet">
+                <string notr="true">padding: 10px;</string>
+               </property>
                <property name="text">
                 <string>Ajuda</string>
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/help-circle-regular-24.png</normaloff>:/newPrefix/help-circle-regular-24.png</iconset>
+                 <normaloff>icones/help-circle-regular-24.png</normaloff>icones/help-circle-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -255,12 +264,15 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnConfiguracoes">
+               <property name="styleSheet">
+                <string notr="true">padding: 10px;</string>
+               </property>
                <property name="text">
                 <string>Configurações</string>
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/cog-regular-24.png</normaloff>:/newPrefix/cog-regular-24.png</iconset>
+                 <normaloff>icones/cog-regular-24.png</normaloff>icones/cog-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -275,6 +287,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnCadastrarPessoa">
+            <property name="styleSheet">
+             <string notr="true">padding: 10px;</string>
+            </property>
             <property name="text">
              <string>Cadastrar Pessoas</string>
             </property>
@@ -282,6 +297,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnReserva">
+            <property name="styleSheet">
+             <string notr="true">padding: 10px;</string>
+            </property>
             <property name="text">
              <string>Reserva</string>
             </property>
@@ -331,7 +349,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/exit-regular-24.png</normaloff>:/newPrefix/exit-regular-24.png</iconset>
+                 <normaloff>icones/exit-regular-24.png</normaloff>icones/exit-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -419,7 +437,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/newPrefix/logoSenac.png</pixmap>
+                <pixmap>icones/logoSenac.png</pixmap>
                </property>
                <property name="scaledContents">
                 <bool>true</bool>
@@ -474,7 +492,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/newPrefix/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                 <normaloff>icones/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -491,7 +509,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/square-rounded-regular-24.png</normaloff>:/newPrefix/square-rounded-regular-24.png</iconset>
+                 <normaloff>icones/square-rounded-regular-24.png</normaloff>icones/square-rounded-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -520,7 +538,7 @@ padding: 10px;
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/newPrefix/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                 <normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -579,7 +597,7 @@ padding: 10px;
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap>:/newPrefix/logoSenac.png</pixmap>
+                    <pixmap>icones/logoSenac.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -638,8 +656,6 @@ padding: 10px;
    </layout>
   </widget>
  </widget>
- <resources>
-  <include location="icones/imagens.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
