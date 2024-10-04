@@ -9,7 +9,7 @@ class CadastrarCurso(QWidget):
 
     def getCadastroCurso(self):
         nome = self.nomeCurso.text().strip()
-        periodo = self.periodoCurso.text().strip()
+        periodo = self.periodoCurso.currentText().strip()
         horas = self.horasPorDia.text().strip()
         oferta = self.ofertaCurso.text().strip()
         carga = self.cargaCurso.text().strip()
@@ -28,4 +28,5 @@ class CadastrarCurso(QWidget):
 
     def limparCampos(self, campo):
         campo.clear()
+
 
