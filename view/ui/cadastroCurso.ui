@@ -172,16 +172,6 @@
      <string>Cadastrar</string>
     </property>
    </widget>
-   <widget class="QDateEdit" name="periodoCurso">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>250</y>
-      <width>110</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="cargaCurso">
     <property name="geometry">
      <rect>
@@ -217,6 +207,31 @@
     <property name="text">
      <string/>
     </property>
+   </widget>
+   <widget class="QComboBox" name="periodoCurso">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>250</y>
+      <width>111</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Manhã</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Tarde</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Noite</string>
+     </property>
+    </item>
    </widget>
   </widget>
  </widget>

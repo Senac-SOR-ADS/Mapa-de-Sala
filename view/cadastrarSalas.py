@@ -13,8 +13,10 @@ class CadastrarSalas(QWidget):
         predio = self.nomePredio.currentText().strip()
         equipamento = self.tipoEquipamento.text().strip()
         capacidade = self.mediaCapacidade.text().strip()
+        feedback = self.feedbackText.text().strip()
 
-        return(nome, sala, predio, equipamento, capacidade)
-    
+        return(nome, sala, predio, equipamento, capacidade, feedback)
+
+
 
     
