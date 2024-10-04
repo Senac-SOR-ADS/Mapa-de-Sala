@@ -6,10 +6,6 @@ class CadastrarSalas(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('view/ui/cadastroSalas.ui',self)
-
-    @pyqtSlot()
-    def on_btnCadastrarSala_clicked(self):
-        return self.getCadastroSalas()
     
     def getCadastroSalas(self):
         nome = self.nomeSala.text().strip()

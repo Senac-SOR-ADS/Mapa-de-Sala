@@ -126,7 +126,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/menu-regular-24 (1).png</normaloff>:/newPrefix/menu-regular-24 (1).png</iconset>
+                 <normaloff>icones/menu-regular-24 (1).png</normaloff>icones/menu-regular-24 (1).png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -192,7 +192,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/home-regular-24.png</normaloff>:/newPrefix/home-regular-24.png</iconset>
+                 <normaloff>icones/home-regular-24.png</normaloff>icones/home-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -212,7 +212,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/file-blank-regular-24.png</normaloff>:/newPrefix/file-blank-regular-24.png</iconset>
+                 <normaloff>icones/file-blank-regular-24.png</normaloff>icones/file-blank-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -232,7 +232,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/printer-regular-24.png</normaloff>:/newPrefix/printer-regular-24.png</iconset>
+                 <normaloff>icones/printer-regular-24.png</normaloff>icones/printer-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -252,7 +252,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/help-circle-regular-24.png</normaloff>:/newPrefix/help-circle-regular-24.png</iconset>
+                 <normaloff>icones/help-circle-regular-24.png</normaloff>icones/help-circle-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -272,7 +272,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/cog-regular-24.png</normaloff>:/newPrefix/cog-regular-24.png</iconset>
+                 <normaloff>icones/cog-regular-24.png</normaloff>icones/cog-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -349,7 +349,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/exit-regular-24.png</normaloff>:/newPrefix/exit-regular-24.png</iconset>
+                 <normaloff>icones/exit-regular-24.png</normaloff>icones/exit-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -437,7 +437,7 @@
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>:/newPrefix/logoSenac.png</pixmap>
+                <pixmap>imagem/logoSenac.png</pixmap>
                </property>
                <property name="scaledContents">
                 <bool>true</bool>
@@ -492,7 +492,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/newPrefix/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                 <normaloff>icones/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -509,7 +509,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/square-rounded-regular-24.png</normaloff>:/newPrefix/square-rounded-regular-24.png</iconset>
+                 <normaloff>icones/square-rounded-regular-24.png</normaloff>icones/square-rounded-regular-24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -538,7 +538,7 @@ padding: 10px;
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>:/newPrefix/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/newPrefix/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                 <normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -597,7 +597,7 @@ padding: 10px;
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap>:/newPrefix/logoSenac.png</pixmap>
+                    <pixmap>imagem/logoSenac.png</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>

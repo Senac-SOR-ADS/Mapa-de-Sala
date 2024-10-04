@@ -27,12 +27,6 @@ class ReservaInterface(QWidget):
                  "fim":fim,
                  "observações":observacao}
         return dados
-    
-    @pyqtSlot()
-    def on_btnFazerReserva_clicked(self):
-        """Função para realizar os tratamentos dos dados após o click 
-        no botão btnFazerReserva(Reserva)"""
-        return self.getDados()
         
     def validandoDados(self):
         self.feedbackReserva.setText('Reserva realizada.')

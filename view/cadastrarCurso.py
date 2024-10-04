@@ -7,10 +7,6 @@ class CadastrarCurso(QWidget):
         super().__init__()
         loadUi('view/ui/cadastroCurso.ui',self)
 
-    @pyqtSlot()
-    def on_btnCadastrarCurso_clicked(self):
-        return self.getCadastroCurso()
-
     def getCadastroCurso(self):
         nome = self.nomeCurso.text().strip()
         periodo = self.periodoCurso.text().strip()

@@ -12,10 +12,6 @@ class LoginInterface(QDialog):
         # Define a janela como transparente
         self.setAttribute(Qt.WA_TranslucentBackground)
 
-    @pyqtSlot()
-    def on_btnEntrar_clicked(self):
-        return self.getEmailSenha()
-
     def getEmailSenha(self):
         email = self.inputEmail.text().strip()
         senha = self.inputSenha.text()

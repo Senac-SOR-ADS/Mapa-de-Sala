@@ -6,10 +6,6 @@ class CadastrarArea(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('view/ui/cadastroArea.ui',self)
-
-    @pyqtSlot()
-    def on_btnCadastrarArea_clicked(self):
-        return self.getCadastroArea()
     
     def getCadastroArea(self):
         area = self.cadastrarArea.text().strip()
