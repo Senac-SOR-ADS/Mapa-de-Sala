@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt, pyqtSlot
+from PyQt5.QtCore import Qt
 
 class CadastrarSalas(QWidget):
     def __init__(self):
