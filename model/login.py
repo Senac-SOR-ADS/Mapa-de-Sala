@@ -23,10 +23,10 @@ class Login:
  
     def getEmail(self):
         return self.__email
-    
+   
     def getSenha(self):
         return self.__senha
-
+ 
     def validarLogin(self):
         self.__banco.conectar()
  

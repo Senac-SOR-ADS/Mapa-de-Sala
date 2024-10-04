@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt, QTimer, pyqtSlot
+from PyQt5.QtCore import Qt, QTimer
 
 
 class LoginInterface(QDialog):
@@ -11,10 +11,6 @@ class LoginInterface(QDialog):
         self.setWindowFlags(Qt.FramelessWindowHint)
         # Define a janela como transparente
         self.setAttribute(Qt.WA_TranslucentBackground)
-
-    @pyqtSlot()
-    def on_btnEntrar_clicked(self):
-        return self.getEmailSenha()
 
     def getEmailSenha(self):
         email = self.inputEmail.text().strip()
