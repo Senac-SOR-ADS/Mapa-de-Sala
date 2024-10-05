@@ -1,16 +1,12 @@
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt, QTimer, pyqtSlot
+from PyQt5.QtCore import QTimer
 
-class CadastrarArea(QMainWindow):
+class CadastrarArea(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('view/ui/cadastroArea.ui',self)
 
-    @pyqtSlot()
-    def on_btnCadastrarArea_clicked(self):
-        return self.getCadastroArea()
-    
     def getCadastroArea(self):
         area = self.cadastrarArea.text().strip()
 
@@ -29,8 +25,6 @@ class CadastrarArea(QMainWindow):
     def limparCampos(self, campo):
         campo.clear()
 
-if __name__ == "__main__":
-    app = QApplication([])
-    widget = CadastrarArea()
-    widget.show()
-    app.exec_()
+
+
+

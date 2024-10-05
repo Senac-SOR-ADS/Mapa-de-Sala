@@ -1,25 +1,22 @@
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt, QTimer, pyqtSlot
+from PyQt5.QtCore import QTimer
 
-class CadastrarCurso(QMainWindow):
+class CadastrarCurso(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('view/ui/cadastroCurso.ui',self)
 
-    @pyqtSlot()
-    def on_btnCadastrarCurso_clicked(self):
-        return self.getCadastroCurso()
-
     def getCadastroCurso(self):
+        area = self.campoArea.currentText().strip()
         nome = self.nomeCurso.text().strip()
-        periodo = self.periodoCurso.text().strip()
-        horas = self.horasPorDia.text().strip()
         oferta = self.ofertaCurso.text().strip()
+        periodo = self.periodoCurso.currentText().strip()
         carga = self.cargaCurso.text().strip()
+        horas = self.horasPorDia.text().strip()
         alunos = self.quantidadeAlunos.text().strip()
         
-        return(nome, periodo, horas, oferta, carga, alunos)
+        return(area, nome, oferta, periodo, carga, horas, alunos)
 
     def validandoDados(self):
         self.respostaCadastrando.setText('CADASTRANDO...')
@@ -33,8 +30,4 @@ class CadastrarCurso(QMainWindow):
     def limparCampos(self, campo):
         campo.clear()
 
-if __name__ == "__main__":
-    app = QApplication([])
-    widget = CadastrarCurso()
-    widget.show()
-    app.exec_()
+
