@@ -2,6 +2,8 @@ from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
 from .cadastroPessoas import cadastroPessoas
 from .reserva import ReservaInterface
+from .cadastrarArea import CadastrarArea
+from .cadastrarCurso import CadastrarCurso
 
 
 class HomePrincipal(QMainWindow):
@@ -12,11 +14,15 @@ class HomePrincipal(QMainWindow):
    # Criando instancias das interfaces
         self.interfCasPessoa = cadastroPessoas()
         self.interfReserva = ReservaInterface()
-        self.inserirTelas( [self.interfCasPessoa, self.interfReserva] )
+        self.interfCasArea = CadastrarArea()
+        self.interfCasCurso = CadastrarCurso()
+        self.inserirTelas( [self.interfCasPessoa, self.interfReserva, self.interfCasArea, self.interfCasCurso] )
 
         self.btnCadastrarPessoa.clicked.connect(lambda: self.trocarTela(self.interfCasPessoa))
         self.btnReserva.clicked.connect(lambda: self.trocarTela(self.interfReserva))
         self.btnIncio.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.inicio))
+        self.btnArea.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasArea))
+        self.btnCurso.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasCurso))
 
     def inserirTelas(self, telas):
         for interface in telas:

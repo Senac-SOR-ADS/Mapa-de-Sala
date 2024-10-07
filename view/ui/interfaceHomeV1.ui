@@ -245,7 +245,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btnAjuda">
+              <widget class="QPushButton" name="btnReserva">
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
@@ -253,34 +253,7 @@
                 <string notr="true">padding: 10px;</string>
                </property>
                <property name="text">
-                <string>Ajuda</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>icones/help-circle-regular-24.png</normaloff>icones/help-circle-regular-24.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnConfiguracoes">
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">padding: 10px;</string>
-               </property>
-               <property name="text">
-                <string>Configurações</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>icones/cog-regular-24.png</normaloff>icones/cog-regular-24.png</iconset>
+                <string>Reserva</string>
                </property>
                <property name="iconSize">
                 <size>
@@ -317,7 +290,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btnReserva">
+           <widget class="QPushButton" name="btnArea">
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
@@ -326,6 +299,13 @@
             </property>
             <property name="text">
              <string>Área</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnCurso">
+            <property name="text">
+             <string>Cursos</string>
             </property>
            </widget>
           </item>
@@ -341,6 +321,29 @@
              </size>
             </property>
            </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnConfiguracoes">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">padding: 10px;</string>
+            </property>
+            <property name="text">
+             <string>Configurações</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>icones/cog-regular-24.png</normaloff>icones/cog-regular-24.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+           </widget>
           </item>
           <item alignment="Qt::AlignLeft|Qt::AlignBottom">
            <widget class="QFrame" name="frame_3">
