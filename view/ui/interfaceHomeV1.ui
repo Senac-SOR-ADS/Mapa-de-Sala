@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1260</width>
-    <height>778</height>
+    <height>742</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,20 +22,26 @@
 	margin-bottom-left-radius: 10px;
 }
 
-#btnsJanela QPushButton {
-	margin-left: 5px;
-}</string>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <property name="styleSheet">
-    <string notr="true">* {
+#MenuLateral #subMenuLateral QPushButton {
 	margin: 0;
 	padding: 0;
 	background: none;
 	background-color: transparent;
 	border: none;
 }
-</string>
+
+
+#btnsJanela QPushButton {
+	margin-left: 5px;
+}
+
+#btnMenu, #btnSair {
+	padding:10px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
@@ -55,7 +61,7 @@
     </property>
     <item alignment="Qt::AlignLeft">
      <widget class="QWidget" name="menuLateralEsquerdo" native="true">
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
        <property name="spacing">
         <number>0</number>
        </property>
@@ -185,7 +191,8 @@
              <item>
               <widget class="QPushButton" name="btnIncio">
                <property name="styleSheet">
-                <string notr="true">padding: 10px;</string>
+                <string notr="true">padding: 10px;
+</string>
                </property>
                <property name="text">
                 <string>Início</string>
@@ -291,7 +298,17 @@
              <string notr="true">padding: 10px;</string>
             </property>
             <property name="text">
-             <string>Cadastrar Pessoas</string>
+             <string>Pessoas</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>icones/person_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/person_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -301,7 +318,7 @@
              <string notr="true">padding: 10px;</string>
             </property>
             <property name="text">
-             <string>Reserva</string>
+             <string>Área</string>
             </property>
            </widget>
           </item>
