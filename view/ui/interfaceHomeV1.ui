@@ -37,6 +37,12 @@
 
 #btnMenu, #btnSair {
 	padding:10px;
+}
+
+#btnMenu {
+	margin-left: 10px;
+	padding: 0;
+	padding-right: 3px;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -123,16 +129,19 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="QPushButton" name="btnMenu">
+              <widget class="QPushButton" name="btnFecharMenu">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="toolTip">
                 <string>Menu</string>
                </property>
                <property name="text">
-                <string>Menu</string>
+                <string>Fechar Menu</string>
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>icones/menu-regular-24 (1).png</normaloff>icones/menu-regular-24 (1).png</iconset>
+                 <normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -190,6 +199,9 @@
              </property>
              <item>
               <widget class="QPushButton" name="btnIncio">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">padding: 10px;
 </string>
@@ -211,11 +223,14 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnRelatorioDocumentos">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">padding: 10px;</string>
                </property>
                <property name="text">
-                <string>Documentos e Relatórios</string>
+                <string>Relatórios</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -230,27 +245,10 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btnImprimir">
-               <property name="styleSheet">
-                <string notr="true">padding: 10px;</string>
-               </property>
-               <property name="text">
-                <string>Imprimir Relatórios</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>icones/printer-regular-24.png</normaloff>icones/printer-regular-24.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QPushButton" name="btnAjuda">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">padding: 10px;</string>
                </property>
@@ -271,6 +269,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnConfiguracoes">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">padding: 10px;</string>
                </property>
@@ -294,6 +295,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnCadastrarPessoa">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">padding: 10px;</string>
             </property>
@@ -314,6 +318,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnReserva">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">padding: 10px;</string>
             </property>
@@ -361,6 +368,9 @@
              </property>
              <item>
               <widget class="QPushButton" name="btnSair">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string>Sair</string>
                </property>
@@ -437,6 +447,31 @@
               <number>0</number>
              </property>
              <item>
+              <widget class="QPushButton" name="btnMenu">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>Menu</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>icones/menu-regular-24 (1).png</normaloff>icones/menu-regular-24 (1).png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QLabel" name="logo">
                <property name="minimumSize">
                 <size>
@@ -504,6 +539,9 @@
              </property>
              <item>
               <widget class="QPushButton" name="btnMinimizar">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -521,6 +559,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnTelaCheia">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -543,6 +584,9 @@
                  <width>100</width>
                  <height>0</height>
                 </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true">#fecharPagina:hover {
@@ -674,5 +718,38 @@ padding: 10px;
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnMenu</sender>
+   <signal>pressed()</signal>
+   <receiver>subMenuLateral</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>160</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>123</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnFecharMenu</sender>
+   <signal>pressed()</signal>
+   <receiver>subMenuLateral</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>85</x>
+     <y>24</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>106</x>
+     <y>476</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
