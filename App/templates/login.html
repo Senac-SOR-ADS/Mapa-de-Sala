@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Página Inicial - Gestão de Logins{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Login</h1>
+
+    <!-- Formulário para realizar login -->
+    <form action="/login" method="POST" class="form-login">
+        <fieldset>
+            <legend>Acesso ao Sistema</legend>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required maxlength="100" class="form-control" placeholder="Digite seu email">
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required minlength="8" class="form-control" placeholder="Digite sua senha">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Login</button>
+        </fieldset>
+    </form>
+    <hr>
+</div>
+
+{% endblock %}
