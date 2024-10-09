@@ -13,7 +13,6 @@ def check_template_access(app):
     except Exception as e:
         logging.error(f" Erro ao encontrar template: {e}")
 
-if __name__ == '__main__':
     # Conectando ao banco de dados
     bd = ConexaoBD()
     if bd.conectar():
