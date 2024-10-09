@@ -5,7 +5,7 @@ from PyQt5.QtCore import QTimer
 class cadastroPessoas(QWidget):
     def __init__(self):
         super().__init__()
-        loadUi('view/ui/cadastroPessoas.ui',self)
+        loadUi('App/view/ui/cadastroPessoas.ui',self)
     
     def getDadosCadastro(self):
         nomePessoas = self.nomePessoas.text().strip()

@@ -7,7 +7,7 @@ from PyQt5.QtCore import QTimer
 class ReservaInterface(QWidget):
     def __init__(self):
         super().__init__()
-        loadUi('view/ui/reserva.ui',self)
+        loadUi('App/view/ui/reserva.ui',self)
 
     def getDados(self)->dict:
         """Pegando o dados na interface e retornando os valores"""
