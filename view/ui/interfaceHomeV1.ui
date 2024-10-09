@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1260</width>
-    <height>778</height>
+    <height>742</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,20 +22,32 @@
 	margin-bottom-left-radius: 10px;
 }
 
-#btnsJanela QPushButton {
-	margin-left: 5px;
-}</string>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <property name="styleSheet">
-    <string notr="true">* {
+#MenuLateral #subMenuLateral QPushButton {
 	margin: 0;
 	padding: 0;
 	background: none;
 	background-color: transparent;
 	border: none;
 }
-</string>
+
+
+#btnsJanela QPushButton {
+	margin-left: 5px;
+}
+
+#btnMenu, #btnSair {
+	padding:10px;
+}
+
+#btnMenu {
+	margin-left: 10px;
+	padding: 0;
+	padding-right: 3px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
@@ -55,7 +67,7 @@
     </property>
     <item alignment="Qt::AlignLeft">
      <widget class="QWidget" name="menuLateralEsquerdo" native="true">
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
        <property name="spacing">
         <number>0</number>
        </property>
@@ -117,16 +129,19 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="QPushButton" name="btnMenu">
+              <widget class="QPushButton" name="btnFecharMenu">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="toolTip">
                 <string>Menu</string>
                </property>
                <property name="text">
-                <string>Menu</string>
+                <string>Fechar Menu</string>
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>icones/menu-regular-24 (1).png</normaloff>icones/menu-regular-24 (1).png</iconset>
+                 <normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -184,8 +199,12 @@
              </property>
              <item>
               <widget class="QPushButton" name="btnIncio">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
-                <string notr="true">padding: 10px;</string>
+                <string notr="true">padding: 10px;
+</string>
                </property>
                <property name="text">
                 <string>Início</string>
@@ -204,11 +223,14 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnRelatorioDocumentos">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">padding: 10px;</string>
                </property>
                <property name="text">
-                <string>Documentos e Relatórios</string>
+                <string>Relatórios</string>
                </property>
                <property name="icon">
                 <iconset>
@@ -223,56 +245,15 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btnImprimir">
+              <widget class="QPushButton" name="btnReserva">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">padding: 10px;</string>
                </property>
                <property name="text">
-                <string>Imprimir Relatórios</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>icones/printer-regular-24.png</normaloff>icones/printer-regular-24.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnAjuda">
-               <property name="styleSheet">
-                <string notr="true">padding: 10px;</string>
-               </property>
-               <property name="text">
-                <string>Ajuda</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>icones/help-circle-regular-24.png</normaloff>icones/help-circle-regular-24.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnConfiguracoes">
-               <property name="styleSheet">
-                <string notr="true">padding: 10px;</string>
-               </property>
-               <property name="text">
-                <string>Configurações</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>icones/cog-regular-24.png</normaloff>icones/cog-regular-24.png</iconset>
+                <string>Reserva</string>
                </property>
                <property name="iconSize">
                 <size>
@@ -287,21 +268,44 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnCadastrarPessoa">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">padding: 10px;</string>
             </property>
             <property name="text">
-             <string>Cadastrar Pessoas</string>
+             <string>Pessoas</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>icones/person_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/person_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btnReserva">
+           <widget class="QPushButton" name="btnArea">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">padding: 10px;</string>
             </property>
             <property name="text">
-             <string>Reserva</string>
+             <string>Área</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnCurso">
+            <property name="text">
+             <string>Cursos</string>
             </property>
            </widget>
           </item>
@@ -317,6 +321,29 @@
              </size>
             </property>
            </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnConfiguracoes">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">padding: 10px;</string>
+            </property>
+            <property name="text">
+             <string>Configurações</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>icones/cog-regular-24.png</normaloff>icones/cog-regular-24.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+           </widget>
           </item>
           <item alignment="Qt::AlignLeft|Qt::AlignBottom">
            <widget class="QFrame" name="frame_3">
@@ -344,6 +371,9 @@
              </property>
              <item>
               <widget class="QPushButton" name="btnSair">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string>Sair</string>
                </property>
@@ -420,6 +450,31 @@
               <number>0</number>
              </property>
              <item>
+              <widget class="QPushButton" name="btnMenu">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>Menu</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>icones/menu-regular-24 (1).png</normaloff>icones/menu-regular-24 (1).png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QLabel" name="logo">
                <property name="minimumSize">
                 <size>
@@ -487,6 +542,9 @@
              </property>
              <item>
               <widget class="QPushButton" name="btnMinimizar">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -504,6 +562,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="btnTelaCheia">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -526,6 +587,9 @@
                  <width>100</width>
                  <height>0</height>
                 </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true">#fecharPagina:hover {
@@ -657,5 +721,38 @@ padding: 10px;
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnMenu</sender>
+   <signal>pressed()</signal>
+   <receiver>subMenuLateral</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>160</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>123</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnFecharMenu</sender>
+   <signal>pressed()</signal>
+   <receiver>subMenuLateral</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>85</x>
+     <y>24</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>106</x>
+     <y>476</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
