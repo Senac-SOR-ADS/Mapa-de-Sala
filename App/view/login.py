@@ -6,7 +6,7 @@ from PyQt5.QtCore import Qt, QTimer
 class LoginInterface(QDialog):
     def __init__(self):
         super().__init__()
-        loadUi('view/ui/interfaceLogin.ui',self)
+        loadUi('App/view/ui/interfaceLogin.ui',self)
         # Remove a barra de título e as bordas da janela
         self.setWindowFlags(Qt.FramelessWindowHint)
         # Define a janela como transparente
