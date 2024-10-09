@@ -1,4 +1,4 @@
-from conexao import ConexaoBD
+from App.model.conexao import ConexaoBD
 
 
 class Pessoa:
