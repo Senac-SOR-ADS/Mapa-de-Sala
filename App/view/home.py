@@ -33,6 +33,17 @@ class HomePrincipal(QMainWindow):
         passar a classe da tela"""
         self.stackedWidget.setCurrentWidget(tela)
         
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.moving = True
+            self.offset = event.pos()
+
+    def mouseMoveEvent(self, event):
+        if self.moving:
+            self.move(self.pos() + event.pos() - self.offset)
+
+    def mouseReleaseEvent(self, event):
+        self.moving = False
         
 if __name__ == "__main__":
     app = QApplication([])
