@@ -1,18 +1,8 @@
-from model.login import Login
-from view.login import LoginInterface
+from App.model.login import Login
 
 
-class LoginController(LoginInterface):
-    def __init__(self):
-        super().__init__()
-        self.show()
-
-        self.btnEntrar.clicked.connect(self.validarLogin)
-
-    def validarLogin(self):
-        emailRetornado, senhaRetornada = self.getEmailSenha()
-        login = Login(email=emailRetornado, senha=senhaRetornada)
-        if login.validarLogin():
-            self.accept()
-        else:
-            self.dadosInvalidos()
+def validarLogin(email, senha):
+    login = Login(email, senha)
+    if login.validarLogin():
+        return True
+    return False
