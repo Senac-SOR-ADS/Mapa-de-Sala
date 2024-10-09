@@ -8,5 +8,5 @@ if __name__ == "__main__":
     
     if login.exec_():
         main = HomeController()
-        app.exec_()
+    app.exec_()
       
