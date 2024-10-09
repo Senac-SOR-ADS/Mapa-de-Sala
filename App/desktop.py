@@ -8,5 +8,6 @@ login = LoginInterface()
 
 if login.exec_():
     main = HomePrincipal()
-app.exec_()
+    main.show()
+    app.exec_()
     

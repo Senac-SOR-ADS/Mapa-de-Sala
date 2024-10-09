@@ -5,7 +5,7 @@ from PyQt5.QtCore import QTimer
 class CadastrarCurso(QWidget):
     def __init__(self):
         super().__init__()
-        loadUi('view/ui/cadastroCurso.ui',self)
+        loadUi('App/view/ui/cadastroCurso.ui',self)
 
     def getCadastroCurso(self):
         area = self.campoArea.currentText().strip()

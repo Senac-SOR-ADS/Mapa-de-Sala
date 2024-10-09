@@ -9,7 +9,7 @@ from .cadastrarCurso import CadastrarCurso
 class HomePrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
-        loadUi('view/ui/interfaceHomeV1.ui',self)
+        loadUi('App/view/ui/interfaceHomeV1.ui',self)
 
    # Criando instancias das interfaces
         self.interfCasPessoa = cadastroPessoas()
