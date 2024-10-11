@@ -2,14 +2,24 @@ import logging
 import sys
 from flask import Flask
 from App.routes.routes import routes
-
+from datetime import timedelta
+from os import urandom
 from App.model.conexao import ConexaoBD
+
+# Inicializa a aplicação Flask
 app = Flask(__name__)
+
 app.register_blueprint(routes)
+
+# Configurações da chave secreta e sessão
+app.secret_key = urandom(12)
+app.permanent_session_lifetime = timedelta(minutes=10)
+app.session_refresh_each_request = True
 
 # Configuração básica do logging
 logging.basicConfig(level=logging.DEBUG)
 
+# Verificando o acesso ao template
 def check_template_access(app):
     """Verifica se o template 'home.html' está acessível."""
     try:
@@ -30,9 +40,3 @@ if bd.conectar():
 else:
     logging.error(" Erro ao conectar ao banco de dados.")
     sys.exit()
-
-# Verificando o acesso ao template
-
-
-# Executando a aplicação
-
