@@ -9,6 +9,7 @@ from .cadastrarCurso import CadastrarCurso
 
 class HomePrincipal(QMainWindow):
     def __init__(self):
+        self.moving = False
         super().__init__()
         loadUi('App/view/ui/interfaceHomeV1.ui',self)
 
@@ -35,6 +36,8 @@ class HomePrincipal(QMainWindow):
         self.stackedWidget.setCurrentWidget(tela)
         
     def mousePressEvent(self, event):
+        if event.button() == Qt.RightButton:
+            return
         if event.button() == Qt.LeftButton:
             self.moving = True
             self.offset = event.pos()
@@ -45,6 +48,7 @@ class HomePrincipal(QMainWindow):
 
     def mouseReleaseEvent(self, event):
         self.moving = False
+
         
 if __name__ == "__main__":
     app = QApplication([])
