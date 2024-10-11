@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer, pyqtSlot
 from App.controller.curso import cadastrarCurso
-from App.controller.area import listarAreas
+from App.controller.area import listarNomeAreas
 
 class CadastrarCurso(QWidget):
     def __init__(self):
@@ -13,12 +13,12 @@ class CadastrarCurso(QWidget):
 
     @pyqtSlot()
     def on_btnCadastrarCurso_clicked(self):
-        # print(listarAreas())
         nomeCurso = self.getCadastroCurso()
+        if 
         
         
     def comboxArea(self):
-        self.campoArea.addItems(listarAreas())
+        self.campoArea.addItems(listarNomeAreas())
             
         
     def getCadastroCurso(self):
