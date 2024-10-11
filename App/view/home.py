@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
+from PyQt5.QtCore import Qt
 from .cadastroPessoas import cadastroPessoas
 from .reserva import ReservaInterface
 from .cadastrarArea import CadastrarArea
@@ -10,6 +11,7 @@ class HomePrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
         loadUi('App/view/ui/interfaceHomeV1.ui',self)
+        self.moving = False
 
    # Criando instancias das interfaces
         self.interfCasPessoa = cadastroPessoas()
@@ -33,6 +35,20 @@ class HomePrincipal(QMainWindow):
         passar a classe da tela"""
         self.stackedWidget.setCurrentWidget(tela)
         
+    def mousePressEvent(self, event):
+        if event.button() == Qt.RightButton:
+            return
+        if event.button() == Qt.LeftButton:
+            self.moving = True
+            self.offset = event.pos()
+
+    def mouseMoveEvent(self, event):
+        if self.moving:
+            self.move(self.pos() + event.pos() - self.offset)
+
+    def mouseReleaseEvent(self, event):
+        self.moving = False
+
         
 if __name__ == "__main__":
     app = QApplication([])
