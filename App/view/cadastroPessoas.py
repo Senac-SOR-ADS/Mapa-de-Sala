@@ -1,5 +1,8 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
+from PyQt5.QtCore import pyqtSlot
+
+from App.controller.pessoa import cadastrarPessoa
 from PyQt5.QtCore import QTimer
 
 class cadastroPessoas(QWidget):
@@ -17,10 +20,10 @@ class cadastroPessoas(QWidget):
 
         dados = {"nome":nomePessoas,
                  "cpfCnpj":cpfCnpj,
-                 "email":email,
                  "dataDeNascimento":dataDeNascimento,
-                 "cargo":cargo,
-                 "telefone":telefone}
+                 "telefone":telefone,
+                 "email":email,
+                 "cargo":cargo}
         return dados
         
     def validandoDados(self):
@@ -34,5 +37,10 @@ class cadastroPessoas(QWidget):
     def limparCampos(self, campo):
         campo.clear()
 
-
-
+    @pyqtSlot()
+    def on_btnCadastrar_clicked(self):
+        campos = self.getDadosCadastro()
+        if cadastrarPessoa(*campos.values()):
+            self.validandoDados()
+        else:
+            self.dadosInvalidos()
