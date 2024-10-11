@@ -57,13 +57,6 @@ class Area:
         resultado = self.__banco.buscarTodos(query, parametro)
         self.__banco.desconectar()
         return resultado
-    
-    def consulta_nome_areas(self):
-        self.__banco.conectar()
-        query = 'SELECT nome FROM area'
-        resultado = self.__banco.buscarTodos(query)
-        self.__banco.desconectar()
-        return resultado
 
 if __name__ == '__main__':
     pass
