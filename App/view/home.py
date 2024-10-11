@@ -9,9 +9,9 @@ from .cadastrarCurso import CadastrarCurso
 
 class HomePrincipal(QMainWindow):
     def __init__(self):
-        self.moving = False
         super().__init__()
         loadUi('App/view/ui/interfaceHomeV1.ui',self)
+        self.moving = False
 
    # Criando instancias das interfaces
         self.interfCasPessoa = cadastroPessoas()
