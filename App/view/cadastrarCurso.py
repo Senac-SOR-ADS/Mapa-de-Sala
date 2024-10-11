@@ -1,12 +1,26 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import QTimer
+from PyQt5.QtCore import QTimer, pyqtSlot
+from App.controller.curso import cadastrarCurso
+from App.controller.area import listarAreas
 
 class CadastrarCurso(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('App/view/ui/cadastroCurso.ui',self)
+        self.comboxArea()
+        
 
+    @pyqtSlot()
+    def on_btnCadastrarCurso_clicked(self):
+        # print(listarAreas())
+        nomeCurso = self.getCadastroCurso()
+        
+        
+    def comboxArea(self):
+        self.campoArea.addItems(listarAreas())
+            
+        
     def getCadastroCurso(self):
         area = self.campoArea.currentText().strip()
         nome = self.nomeCurso.text().strip()
@@ -17,6 +31,8 @@ class CadastrarCurso(QWidget):
         alunos = self.quantidadeAlunos.text().strip()
         
         return(area, nome, oferta, periodo, carga, horas, alunos)
+    
+    
 
     def validandoDados(self):
         self.respostaCadastrando.setText('CADASTRANDO...')

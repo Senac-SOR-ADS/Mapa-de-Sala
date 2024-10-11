@@ -1,4 +1,4 @@
-from .conexao import ConexaoBD
+from App.model.conexao import ConexaoBD
 
 
 class Area:
@@ -55,6 +55,13 @@ class Area:
         query = "SELECT a.nome, c.nome FROM area a JOIN curso c ON a.idArea = c.idArea WHERE a.nome = %s"
         parametro = [self.__nome]
         resultado = self.__banco.buscarTodos(query, parametro)
+        self.__banco.desconectar()
+        return resultado
+    
+    def consulta_nome_areas(self):
+        self.__banco.conectar()
+        query = 'SELECT nome FROM area'
+        resultado = self.__banco.buscarTodos(query)
         self.__banco.desconectar()
         return resultado
 
