@@ -1,4 +1,4 @@
-from conexao import ConexaoBD
+from App.model.conexao import ConexaoBD
 
 
 class Pessoa:
@@ -71,14 +71,12 @@ class Pessoa:
             query = 'INSERT INTO pessoa (`nome`, `CPF_CNPJ`, `nascimento`, `telefone`, `email`, `cargo`) VALUES (%s, %s, %s, %s, %s, %s)'
             params = (nome, cpf_cnpj, nascimento, telefone, email, cargo)
             resposta = self.__banco.alterarDados(query, params)
-
             self.__set_idPessoa(resposta.lastrowid)
-
             self.__banco.desconectar()
-            return resposta
+            return True
+        
         except Exception as e:
-            print(e)
-            return e
+            return False
 
 if __name__ == "__main__":
 
