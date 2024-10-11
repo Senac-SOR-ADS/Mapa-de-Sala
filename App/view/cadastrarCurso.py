@@ -2,23 +2,32 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer, pyqtSlot
 from App.controller.curso import cadastrarCurso
-from App.controller.area import listarNomeAreas
+from App.controller.area import listarAreas
 
 class CadastrarCurso(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('App/view/ui/cadastroCurso.ui',self)
+        self.dicionarioDeAreas = listarAreas()
+        self.popularJanela()
+        
+    def popularJanela(self):
         self.comboxArea()
         
-
     @pyqtSlot()
     def on_btnCadastrarCurso_clicked(self):
-        nomeCurso = self.getCadastroCurso()
-        if 
-        
-        
+        info = self.getCadastroCurso()
+        idArea = self.dicionarioDeAreas[info[0]]
+        nome, oferta, periodo, carga, horas, alunos = info[1], info[2], info[3], info[4], info[5], info[6]
+        print(idArea, nome, oferta, periodo, carga, horas, alunos)
+        if cadastrarCurso(idArea, nome, oferta, periodo, carga, horas, alunos):
+            print('ok')
+            
+    
+
     def comboxArea(self):
-        self.campoArea.addItems(listarNomeAreas())
+        areas = self.dicionarioDeAreas.keys()
+        self.campoArea.addItems(areas)
             
         
     def getCadastroCurso(self):
