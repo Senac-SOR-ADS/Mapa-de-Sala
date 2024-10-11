@@ -1,0 +1,115 @@
+/* Definição de variáveis para cores */
+:root {
+    --primary-color: #3498db;
+    --warning-color: #f39c12;
+    --warning-hover: #e67e22;
+    --danger-color: #e74c3c;
+    --danger-hover: #c0392b;
+    --border-color: #bdc3c7;
+    --background-color: #ffffff;
+}
+
+/* Ajustes para botões */
+button.navbar-toggler {
+    border-color: var(--primary-color);
+}
+
+button.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%288, 150, 230, 0.8%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Estilos dos botões de ação */
+.btn-warning,
+.btn-danger {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    color: #fff;
+}
+
+.btn-warning:hover {
+    background-color: var(--warning-hover);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-hover);
+}
+
+/* Estilo dos campos do formulário */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Efeitos de foco em campos do formulário */
+.form-control:focus {
+    border-color: var(--primary-color);
+}
+
+/* Estilo para fieldset e legend */
+fieldset {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: var(--background-color);
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+/* Estilo para os cabeçalhos das páginas */
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Tabela estilizada */
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: var(--background-color);
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.table th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+    .table th, .table td {
+        padding: 8px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+}
