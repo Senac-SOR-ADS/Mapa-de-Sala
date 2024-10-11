@@ -40,10 +40,7 @@ class cadastroPessoas(QWidget):
     @pyqtSlot()
     def on_btnCadastrar_clicked(self):
         campos = self.getDadosCadastro()
-        print(campos)
-
-        # if cadastrarPessoa(campos[0], campos[1], campos[2], campos[3], campos[4], campos[5]):
-        #     self.validandoDados()
-        #     self.limparCampos()
-        # else:
-        #     self.dadosInvalidos()
+        if cadastrarPessoa(*campos.values()):
+            self.validandoDados()
+        else:
+            self.dadosInvalidos()
