@@ -12,13 +12,28 @@
     --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilos gerais */
 body {
-    /* Estiliza o corpo da página */
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-family);
 }
 
+h1 {
+    color: var(--header-bg-color);
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+h2,
+h3 {
+    color: var(--header-bg-color);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Estilos do header */
 header {
     margin-bottom: 20px;
 }
@@ -34,7 +49,6 @@ header .navbar {
 
 .navbar-brand,
 .nav-link {
-    /* Estilo para links de navegação */
     color: var(--nav-link-color) !important;
     font-weight: bold;
     transition: color 0.3s ease;
@@ -42,20 +56,26 @@ header .navbar {
 }
 
 .nav-link:hover {
-    /* Estilo para link de navegação ao passar o mouse */
     color: var(--nav-link-hover-color) !important;
     background-color: rgba(52, 152, 219, 0.1);
     border-radius: 5px;
 }
 
 .nav-link.active {
-    /* Estilo para link de navegação ativo */
     color: var(--nav-link-hover-color) !important;
     font-weight: bold;
 }
 
+button.navbar-toggler {
+    border-color: var(--nav-link-hover-color);
+}
+
+button.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%288, 150, 230, 0.8%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Estilos do footer */
 footer {
-    /* Estilo para o rodapé */
     background-color: var(--footer-bg-color);
     color: var(--footer-text-color);
     padding: 20px 0;
@@ -66,51 +86,22 @@ footer {
 }
 
 footer small {
-    /* Estilo para texto pequeno no rodapé */
     color: var(--footer-small-text-color);
 }
 
 footer a {
-    /* Estilo para links no rodapé */
     color: var(--footer-text-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 footer a:hover {
-    /* Estilo para links no rodapé ao passar o mouse */
     color: var(--nav-link-hover-color);
     text-decoration: underline;
 }
 
-button.navbar-toggler {
-    /* Estilo para o botão de alternância da barra de navegação */
-    border-color: var(--nav-link-hover-color);
-}
-
-button.navbar-toggler-icon {
-    /* Ícone personalizado para o botão de alternância da barra de navegação */
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%288, 150, 230, 0.8%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-h1 {
-    /* Estilo para títulos principais */
-    color: var(--header-bg-color);
-    margin-bottom: 20px;
-    font-size: 2rem;
-    text-align: center;
-}
-
-h2,
-h3 {
-    /* Estilo para subtítulos */
-    color: var(--header-bg-color);
-    font-weight: bold;
-    margin-top: 10px;
-}
-
+/* Estilos responsivos */
 @media (max-width: 768px) {
-    /* Estilos responsivos para telas pequenas */
     h1 {
         font-size: 1.5rem;
     }
@@ -130,4 +121,13 @@ h3 {
     .navbar-nav {
         margin-top: 10px;
     }
+}
+
+/* Estilos adicionais */
+.bg-gradient {
+    background: linear-gradient(135deg, #FF7E5C, #FFB88C);
+}
+
+.border-warning {
+    border: 2px solid #FFD700;
 }
