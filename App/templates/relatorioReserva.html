@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Relatório - Mapa de Sala{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Relatório de Reservas</h1>
+
+    <!-- Formulário para gerar relatório -->
+    <form action="/relatorio" method="POST" class="form-relatorio">
+        <fieldset>
+            <legend>Gerar Relatório</legend>
+
+            <div class="form-group">
+                <label for="horaInicio">Hora de Início:</label>
+                <input type="time" id="horaInicio" name="horaInicio" class="form-control" placeholder="Selecione a hora de início">
+            </div>
+
+            <div class="form-group">
+                <label for="horaFim">Hora de Fim:</label>
+                <input type="time" id="horaFim" name="horaFim" class="form-control" placeholder="Selecione a hora de fim">
+            </div>
+
+            <div class="form-group">
+                <label for="periodoDia">Período do Dia:</label>
+                <select id="periodoDia" name="periodoDia" class="form-control">
+                    <option value="" disabled selected>Selecione o Período do Dia</option>
+                    <option value="manha">Manhã</option>
+                    <option value="tarde">Tarde</option>
+                    <option value="noite">Noite</option>
+                    <option value="customizado">Customizado</option> <!-- Adicionei a opção para customizado -->
+                </select>
+            </div>
+
+            <div id="customDateFields" style="display: none;">
+                <div class="form-group">
+                    <label for="dataInicio">Data de Início:</label>
+                    <input type="date" id="dataInicio" name="dataInicio" class="form-control" placeholder="Selecione a data de início">
+                </div>
+
+                <div class="form-group">
+                    <label for="dataFim">Data de Fim:</label>
+                    <input type="date" id="dataFim" name="dataFim" class="form-control" placeholder="Selecione a data de fim">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="idFuncionario">Buscar Funcionário:</label>
+                <select id="idFuncionario" name="idFuncionario" class="form-control">
+                    <option value="" disabled selected>Selecione o Funcionário (opcional)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="idSala">Buscar Sala:</label>
+                <select id="idSala" name="idSala" class="form-control">
+                    <option value="" disabled selected>Selecione a Sala (opcional)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="curso">Buscar Curso:</label>
+                <select id="curso" name="curso" class="form-control">
+                    <option value="" disabled selected>Selecione o Curso (opcional)</option>
+                </select>
+            </div>
+
+            <p class="text-muted">Preencha os campos desejados para filtrar o relatório.</p>
+
+            <button type="submit" class="btn btn-primary">Gerar Relatório</button>
+        </fieldset>
+    </form>
+    <hr>
+</div>
+
+<script>
+    document.getElementById('periodoDia').addEventListener('change', function() {
+        const customDateFields = document.getElementById('customDateFields');
+        // Mostra os campos de data se "customizado" for selecionado
+        customDateFields.style.display = (this.value === 'customizado') ? 'block' : 'none';
+    });
+</script>
+{% endblock %}

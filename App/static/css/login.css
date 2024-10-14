@@ -1,0 +1,116 @@
+/* Variáveis Globais */
+:root {
+    --primary-color: #3498db;
+    --primary-color-hover: #2980b9;
+    --text-color: #333;
+    --form-bg-color: #f8f8f8;
+    --form-border-color: #ccc;
+}
+
+/* Reset Básico */
+body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Estilo do Body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: hsla(0, 1%, 42%, 0.288);
+    color: var(--text-color);
+}
+
+/* Contêiner Principal */
+.container {
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    background-color: var(--form-bg-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulário */
+.form-container {
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 25px;
+    background: var(--form-bg-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título do Formulário */
+.login-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+/* Grupos de Formulário */
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--form-border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+}
+
+/* Botões */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color-hover);
+}
+
+/* Responsividade para Dispositivos Móveis */
+@media (max-width: 480px) {
+    .form-container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .login-title {
+        font-size: 1.8rem;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        font-size: 0.9rem;
+        padding: 10px 18px;
+    }
+}

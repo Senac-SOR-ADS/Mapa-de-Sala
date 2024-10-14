@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Salas - Mapa de Sala{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Cadastro de Salas</h1>
+
+    <!-- Formulário para adicionar uma nova sala -->
+    <form action="/cadastrar" method="POST" class="form-sala">
+        <fieldset>
+            <legend>Adicionar Nova Sala</legend>
+
+            <div class="form-group">
+                <label for="nomeSala">Nome da Sala:</label>
+                <input type="text" id="nomeSala" name="nomeSala" required maxlength="50" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="capacidade">Capacidade:</label>
+                <input type="number" id="capacidade" name="capacidade" required min="1" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="localizacao">Localização:</label>
+                <input type="text" id="localizacao" name="localizacao" required maxlength="100" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Adicionar Sala</button>
+        </fieldset>
+    </form>
+    <hr>
+</div>
+{% endblock %}

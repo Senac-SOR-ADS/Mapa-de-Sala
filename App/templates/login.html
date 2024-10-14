@@ -1,17 +1,13 @@
-{% extends "base.html" %}
-
-{% block title %}Página Inicial - Gestão de Logins{% endblock %}
-
 {% block content %}
-
+<link rel="stylesheet" href="../static/css/login.css">
 <div class="container">
-    <h1>Login</h1>
+    <h1 class="login-title">Login</h1>
 
     <!-- Formulário para realizar login -->
-    <form action="/login" method="POST" class="form-login">
+    <form action="/login" method="POST" class="form-container">
         <fieldset>
-            <legend>Acesso ao Sistema</legend>
-            
+
+
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required maxlength="100" class="form-control" placeholder="Digite seu email">
@@ -21,11 +17,10 @@
                 <label for="senha">Senha:</label>
                 <input type="password" id="senha" name="senha" required minlength="8" class="form-control" placeholder="Digite sua senha">
             </div>
-            
+
             <button type="submit" class="btn btn-primary">Login</button>
         </fieldset>
     </form>
-    <hr>
 </div>
 
 {% endblock %}

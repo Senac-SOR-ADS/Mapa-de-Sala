@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Equipamentos - Mapa de Sala{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Equipamentos</h1>
+
+    <!-- Tabela de equipamentos cadastrados -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID Equipamento</th>
+                <th>Área</th>
+                <th>Nome</th>
+                <th>Marca</th>
+                <th>Quantidade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <button class="btn btn-warning">Editar</button>
+                    <button class="btn btn-danger">Remover</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

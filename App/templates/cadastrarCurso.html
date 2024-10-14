@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Cursos - Mapa de Sala{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Cadastro de Cursos</h1>
+
+    <!-- Formulário para adicionar um novo curso -->
+    <form action="/cadastrar" method="POST" class="form-curso">
+        <fieldset>
+            <legend>Adicionar Novo Curso</legend>
+
+            <div class="form-group">
+                <label for="nome">Nome do Curso:</label>
+                <input type="text" id="nome" name="nome" required maxlength="100" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="oferta">Oferta:</label>
+                <input type="text" id="oferta" name="oferta" required maxlength="50" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="periodo">Período:</label>
+                <input type="text" id="periodo" name="periodo" required maxlength="50" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="cargaHoraria">Carga Horária:</label>
+                <input type="number" id="cargaHoraria" name="cargaHoraria" required min="1" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="idArea">Área do Curso:</label>
+                <select id="idArea" name="idArea" class="form-control" required>
+                    <option value="">Selecione a Área</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Adicionar Curso</button>
+        </fieldset>
+    </form>
+    <hr>
+</div>
+{% endblock %}
