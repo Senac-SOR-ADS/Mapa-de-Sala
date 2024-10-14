@@ -6,6 +6,7 @@ from os import urandom
 from App.model.conexao import ConexaoBD
 from App.routes import home, login, pessoa, reserva, sala, area, curso, equipamento
 
+
 # Inicializa a aplicação Flask
 app = Flask(__name__)
 
@@ -51,6 +52,7 @@ def check_template_access(app):
         logger.error(f"Erro ao tentar acessar o template 'home.html': {e}")
 
 # Executa a verificação de acesso ao template
+
 check_template_access(app)
 
 # Conectando ao banco de dados
@@ -61,3 +63,4 @@ if bd.conectar():
 else:
     logger.error("Falha ao conectar ao banco de dados.")
     sys.exit(1)
+
