@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QLineEdit, QComboBox, QDateEdit
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import pyqtSlot
 
@@ -15,27 +15,34 @@ class cadastroPessoas(QWidget):
         cpfCnpj = self.cpfCnpj.text().strip()
         email = self.email.text().strip()
         dataDeNascimento = self.dataDeNascimento.text().strip()
-        cargo = self.cargo.text().strip()
+        cargo = self.cargo.currentText()
         telefone = self.telefone.text().strip()
 
-        dados = {"nome":nomePessoas,
-                 "cpfCnpj":cpfCnpj,
-                 "dataDeNascimento":dataDeNascimento,
-                 "telefone":telefone,
-                 "email":email,
-                 "cargo":cargo}
+        dados = {"nome": nomePessoas,
+                 "cpfCnpj": cpfCnpj,
+                 "dataDeNascimento": dataDeNascimento,
+                 "telefone": telefone,
+                 "email": email,
+                 "cargo": cargo}
         return dados
         
     def validandoDados(self):
         self.respostaCadastro.setText('Cadastro realizado.')
-        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaCadastro))
+        QTimer.singleShot(2000, lambda: self.limparCampos(self.nomePessoas, self.cpfCnpj, self.email, self.dataDeNascimento, self.cargo, self.telefone))
 
     def dadosInvalidos(self):
-        self.respostaCadastro.setText('Dados incomoletos.')
-        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaCadastro))
+        self.respostaCadastro.setText('Dados incompletos.')
+        QTimer.singleShot(2000, lambda: self.limparCampos(self.nomePessoas, self.cpfCnpj, self.email, self.dataDeNascimento, self.cargo, self.telefone))
 
-    def limparCampos(self, campo):
-        campo.clear()
+    def limparCampos(self, *campos):
+        for campo in campos:
+            if isinstance(campo, QLineEdit):
+                campo.clear()
+            elif isinstance(campo, QComboBox):
+                campo.setCurrentIndex(0)
+            # elif isinstance(campo, QDateEdit):
+            #     campo.setDate(QDateEdit.currentDate()) 
+
 
     @pyqtSlot()
     def on_btnCadastrar_clicked(self):
