@@ -17,7 +17,28 @@ class LoginInterface(QDialog):
         # Define a janela como transparente
         self.setAttribute(Qt.WA_TranslucentBackground)
 
+        self.btnMenuBar.clicked.connect(self.showMenu)
+
         # self.btnEntrar.clicked.connect(self.validarLogin)
+
+    def showMenu(self):
+        # Cria o menu suspenso
+        self.menu = QMenu(self)
+        
+        # Adiciona ação "Minimizar"
+        minimize_action = self.menu.addAction("Minimizar")
+        minimize_action.triggered.connect(self.showMinimized)
+        
+        # Adiciona ação "Sair"
+        exit_action = self.menu.addAction("Sair")
+        exit_action.triggered.connect(self.closeApp)
+        
+        # Exibe o menu suspenso abaixo do botão de menu
+        self.menu.exec_(self.btnMenuBar.mapToGlobal(self.btnMenuBar.rect().bottomLeft()))
+
+    def closeApp(self):
+        # Fecha a aplicação
+        self.close()
 
     def getEmailSenha(self):
         email = self.inputEmail.text().strip()
@@ -32,7 +53,6 @@ class LoginInterface(QDialog):
         texto = 'DADOS INCOMPLETOS.'
         self.respostaLoginDadosIncompleto.setText(texto)
         QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaLoginDadosIncompleto))
-
 
     @pyqtSlot()
     def on_btnEntrar_clicked(self):
