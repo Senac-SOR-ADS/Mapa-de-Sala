@@ -74,35 +74,21 @@ CREATE TABLE `equipamento` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `login`
+-- Estrutura para tabela `sala`
 --
 
-CREATE TABLE `login` (
-  `idLogin` int(11) NOT NULL AUTO_INCREMENT,
-  `idPessoa` int(11) NOT NULL COMMENT 'ID da pessoa associada',
-  `email` varchar(100) NOT NULL UNIQUE COMMENT 'Email do login',
-  `senha` varchar(100) NOT NULL COMMENT 'Senha do login',
-  `nivelAcesso` ENUM('admin', 'user') NOT NULL DEFAULT 'user' COMMENT 'Nível de acesso do usuário',
-  PRIMARY KEY (`idLogin`),
-  FOREIGN KEY (`idPessoa`) REFERENCES `pessoa`(`idPessoa`) ON DELETE CASCADE
+CREATE TABLE `sala` (
+  `idSala` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) NOT NULL COMMENT 'Nome da sala',
+  `tipo` varchar(50) NOT NULL COMMENT 'Tipo da sala',
+  `predio` varchar(10) NOT NULL COMMENT 'Prédio onde a sala está localizada',
+  `equipamentos` varchar(255) NOT NULL COMMENT 'Equipamentos na sala',
+  `capacidade` int(11) NOT NULL COMMENT 'Capacidade da sala',
+  `observacao` varchar(255) DEFAULT NULL COMMENT 'Observação',
+  PRIMARY KEY (`idSala`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
-
---
--- Estrutura para tabela `ocupado`
---
-
-CREATE TABLE `ocupado` (
-  `qtdOcupado` int(11) NOT NULL COMMENT 'Quantidade de equipamentos ocupados',
-  `idReserva` int(11) NOT NULL COMMENT 'ID de reserva associada',
-  `idEquipamento` int(11) NOT NULL COMMENT 'ID do equipamento associado',
-  FOREIGN KEY (`idReserva`) REFERENCES `reserva`(`idReserva`) ON DELETE CASCADE,
-  FOREIGN KEY (`idEquipamento`) REFERENCES `equipamento` (`idEquipamento`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
 --
 -- Estrutura para tabela `pessoa`
 --
@@ -119,40 +105,58 @@ CREATE TABLE `pessoa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
+--
+-- Estrutura para tabela `login`
+--
+
+CREATE TABLE `login` (
+  `idLogin` int(11) NOT NULL AUTO_INCREMENT,
+  `idPessoa` int(11) NOT NULL COMMENT 'ID da pessoa associada',
+  `email` varchar(100) NOT NULL UNIQUE COMMENT 'Email do login',
+  `senha` varchar(100) NOT NULL COMMENT 'Senha do login',
+  `nivelAcesso` ENUM('admin', 'user') NOT NULL DEFAULT 'user' COMMENT 'Nível de acesso do usuário',
+  PRIMARY KEY (`idLogin`),
+  FOREIGN KEY (`idPessoa`) REFERENCES `pessoa`(`idPessoa`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
 
 --
 -- Estrutura para tabela `reserva`
 --
 
 CREATE TABLE `reserva` (
-  `idReserva` int(11) NOT NULL,
-  `idLogin` int(11) NOT NULL,
-  `idPessoa` int(11) NOT NULL,
-  `idCurso` int(11) NOT NULL,
-  `idSala` int(11) NOT NULL,
-  `dia` date NOT NULL,
-  `hrInicio` time NOT NULL,
-  `hrFim` time NOT NULL,
-  `observacao` varchar(255) DEFAULT NULL
+  `idReserva` int(11) NOT NULL AUTO_INCREMENT,
+  `idLogin` int(11) NOT NULL COMMENT 'ID do login associado',
+  `idPessoa` int(11) NOT NULL COMMENT 'ID da pessoa associada',
+  `idCurso` int(11) NOT NULL COMMENT 'ID do curso associado',
+  `idSala` int(11) NOT NULL COMMENT 'ID da sala associada',
+  `dia` date NOT NULL COMMENT 'Dia da reserva',
+  `hrInicio` time NOT NULL COMMENT 'Horário de início',
+  `hrFim` time NOT NULL COMMENT 'Horário de término',
+  `observacao` varchar(255) DEFAULT NULL COMMENT 'Observação',
+  PRIMARY KEY (`idReserva`),
+  FOREIGN KEY (`idLogin`) REFERENCES `login`(`idLogin`) ON DELETE CASCADE,
+  FOREIGN KEY (`idPessoa`) REFERENCES `pessoa`(`idPessoa`) ON DELETE CASCADE,
+  FOREIGN KEY (`idCurso`) REFERENCES `curso`(`idCurso`) ON DELETE CASCADE,
+  FOREIGN KEY (`idSala`) REFERENCES `sala`(`idSala`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `sala`
+-- Estrutura para tabela `ocupado`
 --
 
-CREATE TABLE `sala` (
-  `idSala` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) NOT NULL COMMENT 'Nome da sala',
-  `tipo` varchar(50) NOT NULL COMMENT 'Tipo da sala',
-  `predio` varchar(10) NOT NULL COMMENT 'Prédio onde a sala está localizada',
-  `equipamentos` varchar(255) NOT NULL COMMENT 'Equipamentos na sala',
-  `capacidade` int(11) NOT NULL COMMENT 'Capacidade da sala',
-  `observacao` varchar(255) DEFAULT NULL COMMENT 'Observação',
-  PRIMARY KEY (`idSala`)
+CREATE TABLE `ocupado` (
+  `qtdOcupado` int(11) NOT NULL COMMENT 'Quantidade de equipamentos ocupados',
+  `idReserva` int(11) NOT NULL COMMENT 'ID de reserva associada',
+  `idEquipamento` int(11) NOT NULL COMMENT 'ID do equipamento associado',
+  FOREIGN KEY (`idReserva`) REFERENCES `reserva`(`idReserva`) ON DELETE CASCADE,
+  FOREIGN KEY (`idEquipamento`) REFERENCES `equipamento` (`idEquipamento`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+-- Finalizando a transação
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
