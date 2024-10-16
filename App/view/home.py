@@ -14,6 +14,7 @@ class HomePrincipal(QMainWindow):
         self.moving = False
 
    # Criando instancias das interfaces
+        self.setWindowFlags(Qt.FramelessWindowHint)
         self.interfCasPessoa = cadastroPessoas()
         self.interfReserva = ReservaInterface()
         self.interfCasArea = CadastrarArea()
@@ -25,6 +26,9 @@ class HomePrincipal(QMainWindow):
         self.btnIncio.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.inicio))
         self.btnArea.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasArea))
         self.btnCurso.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasCurso))
+        self.btnMinimizar.clicked.connect(self.showMinimized)
+        self.btnTelaCheia.clicked.connect(self.showMaximized)
+        self.btnFecharPagina.clicked.connect(self.close)
 
     def inserirTelas(self, telas):
         for interface in telas:
