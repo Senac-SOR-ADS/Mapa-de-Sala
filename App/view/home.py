@@ -1,17 +1,24 @@
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, pyqtSlot
 from .cadastroPessoas import cadastroPessoas
 from .reserva import ReservaInterface
 from .cadastrarArea import CadastrarArea
 from .cadastrarCurso import CadastrarCurso
+from .cadastrarLogin import CadastroLogin
 
 
 class HomePrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
-        loadUi('App/view/ui/interfaceHomeV1.ui',self)
+        loadUi('App/view/ui/home.ui',self)
         self.moving = False
+        self.subMenuLateral.hide()
+        
+   # Criando parte interativa do menu
+   
+        self.btnMenu: QPushButton
+        self.subMenuLateral: QWidget
 
    # Criando instancias das interfaces
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -19,16 +26,25 @@ class HomePrincipal(QMainWindow):
         self.interfReserva = ReservaInterface()
         self.interfCasArea = CadastrarArea()
         self.interfCasCurso = CadastrarCurso()
-        self.inserirTelas( [self.interfCasPessoa, self.interfReserva, self.interfCasArea, self.interfCasCurso] )
+        self.interfCasLogin = CadastroLogin()
+        self.inserirTelas( [self.interfCasPessoa, self.interfReserva, self.interfCasArea, self.interfCasCurso, self.interfCasLogin] )
 
         self.btnCadastrarPessoa.clicked.connect(lambda: self.trocarTela(self.interfCasPessoa))
         self.btnReserva.clicked.connect(lambda: self.trocarTela(self.interfReserva))
         self.btnIncio.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.inicio))
         self.btnArea.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasArea))
         self.btnCurso.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasCurso))
+        self.btnCadastroLogin.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasLogin))
         self.btnMinimizar.clicked.connect(self.showMinimized)
-        self.btnTelaCheia.clicked.connect(self.showMaximized)
         self.btnFecharPagina.clicked.connect(self.close)
+        self.btnTelaCheia.clicked.connect(self.windowConnect)
+
+    # Faz o botão de Tela Cheia ao ser executado, retornar ao normal
+    def windowConnect(self):
+        if self.isMaximized():
+            self.showNormal()
+        else:
+            self.showMaximized()
 
     def inserirTelas(self, telas):
         for interface in telas:
@@ -52,6 +68,13 @@ class HomePrincipal(QMainWindow):
 
     def mouseReleaseEvent(self, event):
         self.moving = False
+    
+    @pyqtSlot()
+    def on_btnMenu_clicked(self):
+        if (self.subMenuLateral.isVisible()):
+            self.subMenuLateral.hide()
+        else:
+            self.subMenuLateral.show()
 
         
 if __name__ == "__main__":
