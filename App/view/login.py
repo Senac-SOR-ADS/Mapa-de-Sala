@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt, QTimer
+from PyQt5.QtCore import Qt, QTimer, QPoint
 from PyQt5.QtCore import pyqtSlot
 
 
@@ -17,8 +17,11 @@ class LoginInterface(QDialog):
         # Define a janela como transparente
         self.setAttribute(Qt.WA_TranslucentBackground)
 
+        self.old_pos = None
+
         # Faz a conexão do botão MenuBar
         self.btnMenuBar.clicked.connect(self.showMenu)
+
 
         # self.btnEntrar.clicked.connect(self.validarLogin)
 
@@ -40,6 +43,25 @@ class LoginInterface(QDialog):
     def closeApp(self):
         # Fecha a aplicação
         self.close()
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            # Captura a posição inicial do mouse
+            self.old_pos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        if self.old_pos:
+            # Calcula o deslocamento do mouse
+            delta = QPoint(event.globalPos() - self.old_pos)
+            # Move a janela pela diferença calculada
+            self.move(self.x() + delta.x(), self.y() + delta.y())
+            # Atualiza a posição do mouse
+            self.old_pos = event.globalPos()
+
+    def mouseReleaseEvent(self, event):
+        # Libera a janela ao soltar o botão do mouse
+        if event.button() == Qt.LeftButton:
+            self.old_pos = None
 
     def getEmailSenha(self):
         email = self.inputEmail.text().strip()
