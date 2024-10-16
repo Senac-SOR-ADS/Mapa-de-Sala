@@ -17,6 +17,7 @@ class LoginInterface(QDialog):
         # Define a janela como transparente
         self.setAttribute(Qt.WA_TranslucentBackground)
 
+        # Faz a conexão do botão MenuBar
         self.btnMenuBar.clicked.connect(self.showMenu)
 
         # self.btnEntrar.clicked.connect(self.validarLogin)

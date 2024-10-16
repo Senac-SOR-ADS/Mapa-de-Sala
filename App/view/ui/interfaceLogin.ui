@@ -309,6 +309,37 @@ font: 75 8pt &quot;MS Shell Dlg 2&quot;;</string>
        <height>23</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #0E46A3;
+    color: white; 
+    border: none; 
+    border-radius: 5px;
+    padding: 10px 20px; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
+
+QPushButton:hover {
+    background-color: #E55807;
+}
+
+QPushButton:pressed {
+    background-color: #1e6f9f; 
+    padding-left: 15px;
+    padding-top: 15px; 
+}
+
+QPushButton:disabled {
+    background-color: #bdc3c7;
+    color: #7f8c8d; 
+}
+
+QPushButton::menu-indicator {
+    image: none; 
+}
+</string>
+     </property>
      <property name="text">
       <string/>
      </property>
