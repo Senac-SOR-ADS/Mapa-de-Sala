@@ -545,6 +545,13 @@ padding: 10px;
               </widget>
              </item>
              <item>
+              <widget class="QPushButton" name="btnCadastroLogin">
+               <property name="text">
+                <string>Cadastro Login</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QPushButton" name="btnArea">
                <property name="minimumSize">
                 <size>
