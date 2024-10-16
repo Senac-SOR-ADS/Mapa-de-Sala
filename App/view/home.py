@@ -13,6 +13,7 @@ class HomePrincipal(QMainWindow):
         super().__init__()
         loadUi('App/view/ui/home.ui',self)
         self.moving = False
+        self.subMenuLateral.hide()
         
    # Criando parte interativa do menu
    
