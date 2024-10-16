@@ -27,8 +27,15 @@ class HomePrincipal(QMainWindow):
         self.btnArea.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasArea))
         self.btnCurso.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasCurso))
         self.btnMinimizar.clicked.connect(self.showMinimized)
-        self.btnTelaCheia.clicked.connect(self.showMaximized)
         self.btnFecharPagina.clicked.connect(self.close)
+        self.btnTelaCheia.clicked.connect(self.windowConnect)
+
+    # Faz o botão de Tela Cheia ao ser executado, retornar ao normal
+    def windowConnect(self):
+        if self.isMaximized():
+            self.showNormal()
+        else:
+            self.showMaximized()
 
     def inserirTelas(self, telas):
         for interface in telas:
