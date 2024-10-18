@@ -80,6 +80,14 @@ class Curso:
         resultado = cls.__banco.buscarTodos(query, params)
         cls.__banco.desconectar()
         return resultado
+    
+    @classmethod
+    def retorna_nomeId_cursos(cls):
+        cls.__banco.conectar()
+        query = "SELECT idCurso, nome FROM curso"
+        resultado = cls.__banco.buscarTodos(query)
+        cls.__banco.desconectar()
+        return resultado
 
 #  EXEMPLO PESQUISA AREA
 if __name__ == "__main__":
