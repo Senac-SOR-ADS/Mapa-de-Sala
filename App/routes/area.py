@@ -2,7 +2,7 @@ from flask import render_template, Blueprint
 from App.routes.login import login_required
 
 # Definindo o blueprint
-area_route = Blueprint('area', __name__, template_folder='templates')
+area_route = Blueprint('area_route', __name__, template_folder='templates')
 
 @area_route.route("/", methods=['GET', 'POST'])
 @login_required

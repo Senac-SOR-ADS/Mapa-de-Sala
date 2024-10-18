@@ -28,7 +28,7 @@
                     <option value="manha">Manhã</option>
                     <option value="tarde">Tarde</option>
                     <option value="noite">Noite</option>
-                    <option value="customizado">Customizado</option> <!-- Adicionei a opção para customizado -->
+                    <option value="customizado">Customizado</option>
                 </select>
             </div>
 
@@ -76,8 +76,7 @@
 <script>
     document.getElementById('periodoDia').addEventListener('change', function() {
         const customDateFields = document.getElementById('customDateFields');
-        // Mostra os campos de data se "customizado" for selecionado
-        customDateFields.style.display = (this.value === 'customizado') ? 'block' : 'none';
+         customDateFields.style.display = (this.value === 'customizado') ? 'block' : 'none';
     });
 </script>
 {% endblock %}
