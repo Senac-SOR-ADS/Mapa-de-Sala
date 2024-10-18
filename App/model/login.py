@@ -1,5 +1,5 @@
-from .conexao import ConexaoBD
-from .criptografia import Criptografia
+from App.model.conexao import ConexaoBD
+from App.model.criptografia import Criptografia
  
  
 class Login:
