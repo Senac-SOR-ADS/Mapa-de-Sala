@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow, QPushButton, QWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt, pyqtSlot
 from .cadastroPessoas import cadastroPessoas
