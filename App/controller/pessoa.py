@@ -15,6 +15,6 @@ def modificarData(dataNasc):
 
 
 def buscaPessoas():
-    todasPessoas = Pessoa().buscarPessoas()
+    todasPessoas = Pessoa.buscarPessoas()
     listaPessoas = {i[1]:i[0] for i in todasPessoas}
     return listaPessoas

@@ -13,6 +13,6 @@ def validarInputs(valores):
     return True
 
 def listarSala():
-    todasSalas = Sala('','','','','','').buscar_nomeId_sala()
+    todasSalas = Sala.buscar_nomeId_sala()
     listarSalas = {i[1]:i[0] for i in todasSalas}
     return(listarSalas)

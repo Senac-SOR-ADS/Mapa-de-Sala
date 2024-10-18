@@ -7,7 +7,6 @@ def cadastrarCurso(area, nome, oferta, periodo, carga, horas, alunos):
     return False
 
 def listarCursos():
-    todosCursos = Curso('','','','','','').retorna_nomeId_cursos()
+    todosCursos = Curso.retorna_nomeId_cursos()
     listaCursos = {i[1]:i[0] for i in todosCursos}
-    # print(listaCursos)
     return listaCursos

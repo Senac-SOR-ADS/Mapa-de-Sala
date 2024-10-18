@@ -2,6 +2,7 @@ from App.model.conexao import ConexaoBD
 
 
 class Pessoa:
+    __banco = ConexaoBD()
 
     def __init__(self) -> None:
 
@@ -12,7 +13,6 @@ class Pessoa:
         self.telefone = None
         self.email = None
         self.cargo = None
-        self.__banco = ConexaoBD()
 
     def get_idPessoa(self):
         return self.__idPessoa
@@ -78,13 +78,12 @@ class Pessoa:
         except Exception as e:
             return False
 
-
-    def buscarPessoas(self):
-        self.__banco.conectar()
-
+    @classmethod
+    def buscarPessoas(cls):
+        cls.__banco.conectar()
         query = 'SELECT idPessoa, nome FROM pessoa;'
-        resposta = self.__banco.buscarTodos(query)
-        self.__banco.desconectar()
+        resposta = cls.__banco.buscarTodos(query)
+        cls.__banco.desconectar()
         return resposta
     
 if __name__ == "__main__":

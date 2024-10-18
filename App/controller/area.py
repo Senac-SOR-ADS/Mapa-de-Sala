@@ -7,7 +7,7 @@ def cadastroDeArea(nomeArea):
     return False
 
 def listarAreas() -> dict:
-    todas_areas = Area('').consulta_areas()
+    todas_areas = Area.consulta_areas()
     listaNome = {i[1]:i[0] for i in todas_areas}
     return listaNome
 
