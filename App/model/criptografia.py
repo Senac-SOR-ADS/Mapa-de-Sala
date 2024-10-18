@@ -22,4 +22,5 @@ class Criptografia:
             return False
         
 if __name__ == '__main__':
-    pass
+    teste = Criptografia()
+    print(teste.criptografarSenha('123'))

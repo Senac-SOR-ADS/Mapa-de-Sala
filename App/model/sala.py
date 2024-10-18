@@ -43,6 +43,14 @@ class Sala:
         cls.__banco.desconectar
         return resultado
     
+    @classmethod
+    def buscar_nomeId_sala(cls):
+        cls.__banco.conectar()
+        query = '''SELECT idSala, nome FROM `sala`; '''
+        resultado = cls.__banco.buscarTodos(query)
+        cls.__banco.desconectar
+        return resultado
+    
 
 
     def cadastrar_sala(self):
