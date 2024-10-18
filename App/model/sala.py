@@ -1,4 +1,4 @@
-from .conexao import ConexaoBD
+from App.model.conexao import ConexaoBD
 
 
 class Sala:
@@ -39,6 +39,14 @@ class Sala:
     def buscar_sala_predio2(cls):
         cls.__banco.conectar()
         query = '''SELECT * FROM `sala` WHERE predio = 2;'''
+        resultado = cls.__banco.buscarTodos(query)
+        cls.__banco.desconectar
+        return resultado
+    
+    @classmethod
+    def buscar_nomeId_sala(cls):
+        cls.__banco.conectar()
+        query = '''SELECT idSala, nome FROM `sala`; '''
         resultado = cls.__banco.buscarTodos(query)
         cls.__banco.desconectar
         return resultado
