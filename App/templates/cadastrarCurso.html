@@ -50,8 +50,8 @@
                 <label for="area">Área do Curso:</label>
                 <select id="area" name="area" class="form-control" required>
                     <option value="" disabled selected>Selecione a Área do Curso</option>
-                    {% for values in valores%}
-                        <option value="{{values}}">{{valores[values]}}</option>
+                    {% for value in valores%}
+                        <option value="{{valores[value]}}">{{value}}</option>
                     {%endfor %}
                 </select>
             </div>
