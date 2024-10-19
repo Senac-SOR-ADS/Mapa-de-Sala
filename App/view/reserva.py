@@ -26,14 +26,14 @@ class ReservaInterface(QWidget):
         inicio = self.diaInicio.text().strip() 
         fim = self.diaFim.text().strip() 
         observacao = self.observacaoReserva.text().strip() 
-        cursoInicio = self.inicioCurso.currentTime().strip()
-        cursoFim = self.fimCurso.currentTime().strip()
-        segunda = self.segCheck.ch_check().strip()        
-        terca = self.terCheck.ch_check().strip()
-        quarta = self.quaCheck.ch_check().strip()
-        quinta = self.quiCheck.ch_check().strip()
-        sexta = self.sextaCheck.ch_check().strip()
-        sabado = self.sabCheck.ch_check().strip()
+        cursoInicio = self.inicioCurso.time().toString('HH:mm')
+        cursoFim = self.fimCurso.time().toString('HH:mm')
+        segunda = self.segCheck.isChecked()        
+        terca = self.terCheck.isChecked()
+        quarta = self.quaCheck.isChecked()
+        quinta = self.quiCheck.isChecked()
+        sexta = self.sextaCheck.isChecked()
+        sabado = self.sabCheck.isChecked()
 
         dados = {"nomeDocente":nomeDocenteResponsavel, 
                  "nomeSala":nomeSala, 
