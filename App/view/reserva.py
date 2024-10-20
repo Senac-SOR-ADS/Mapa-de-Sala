@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QDateEdit
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import QTimer, pyqtSlot
+from PyQt5.QtCore import QTimer, QDate, pyqtSlot
 from App.model.reserva import Reserva
 
 from App.controller.curso import listarCursos
@@ -9,13 +9,23 @@ from App.controller.sala import listarSala
 
 from App.model.login import Login
 
-
-
 class ReservaInterface(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('App/view/ui/reserva.ui',self)
         self.popularJanela()
+
+        # Os metodos abaixo servem para transformar o QDateEdit em um calendário
+        self.diaInicio = self.findChild(QDateEdit, 'diaInicio') 
+        self.diaFim = self.findChild(QDateEdit, 'diaFim')  
+
+        self.diaInicio.setCalendarPopup(True)
+        self.diaInicio.setDisplayFormat('dd/MM/yyyy')
+        self.diaInicio.setDate(QDate.currentDate())  
+
+        self.diaFim.setCalendarPopup(True)
+        self.diaFim.setDisplayFormat('dd/MM/yyyy')
+        self.diaFim.setDate(QDate.currentDate()) 
 
     def getDados(self)->dict:
         """Pegando o dados na interface e retornando os valores"""
