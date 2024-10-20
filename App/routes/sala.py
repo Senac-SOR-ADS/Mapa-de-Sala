@@ -36,7 +36,7 @@ def cadastrar_Sala():
 
             # Cadastrando o curso
             resultado = cadastrarSala(nome, tipo, predio, equipamento, capacidade, feedback)
-            return jsonify({'mensagem': 'Curso cadastrado com sucesso!', 'resultado': resultado}), 201
+            return jsonify({'mensagem': 'Sala cadastrada com sucesso!', 'resultado': resultado}), 201
 
         except Exception as e:
             return jsonify({'erro': f'Erro inesperado: {str(e)}'}), 500
