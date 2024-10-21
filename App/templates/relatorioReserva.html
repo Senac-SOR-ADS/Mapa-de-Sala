@@ -29,6 +29,7 @@
                     <option value="tarde">Tarde</option>
                     <option value="noite">Noite</option>
                     <option value="customizado">Customizado</option>
+
                 </select>
             </div>
 
@@ -77,6 +78,7 @@
     document.getElementById('periodoDia').addEventListener('change', function() {
         const customDateFields = document.getElementById('customDateFields');
          customDateFields.style.display = (this.value === 'customizado') ? 'block' : 'none';
+
     });
 </script>
 {% endblock %}

@@ -2,6 +2,7 @@ from flask import render_template, Blueprint, request, jsonify
 from App.routes.login import login_required
 from App.controller.pessoa import cadastrarPessoa
 
+
 # Definindo o blueprint
 pessoa_route = Blueprint('pessoa_route', __name__, template_folder='templates')
 
@@ -53,3 +54,4 @@ def modificarData(dataNasc):
         if len(data) == 3:
             return f'{data[2]}/{data[1]}/{data[0]}'    
     return None
+

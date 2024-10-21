@@ -6,11 +6,13 @@ from App.routes.logger_setup import logger
 from socket import gethostbyname, gethostname
 import sys
 
+
 # Inicializa a aplicação Flask
 app = Flask(__name__)
 app.config.from_object(Config)
 
 # Verifica o acesso ao template
+
 check_template_access(app)
 
 # Registra as rotas da aplicação
@@ -30,3 +32,4 @@ if bd.conectar():
 else:
     logger.critical("Falha ao conectar ao banco de dados.")
     sys.exit(1)
+

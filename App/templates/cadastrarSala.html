@@ -8,6 +8,7 @@
 
     <!-- Formulário para adicionar uma nova sala -->
     <form action="/sala/cadastrar" method="POST" class="form-sala">
+
         <fieldset>
             <legend>Adicionar Nova Sala</legend>
 
@@ -34,6 +35,7 @@
             <div class="form-group">
                 <label for="equipamento">Equipamento:</label>
                 <input type="text" id="equipamento" name="equipamento" required maxlength="100" class="form-control">
+
             </div>
 
             <div class="form-group">
@@ -45,6 +47,7 @@
             <div class="form-group">
                 <label for="feedback"> Feedback:</label>
                 <input type="text" id="feedback" name="feedback" required maxlength="100" class="form-control">
+
             </div>
 
             <button type="submit" class="btn btn-primary">Adicionar Sala</button>
@@ -58,4 +61,5 @@
         const customDateFields = document.getElementById('customDateFields');
     });
 </script>
+
 {% endblock %}

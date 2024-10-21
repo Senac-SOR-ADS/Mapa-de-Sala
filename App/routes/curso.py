@@ -3,6 +3,7 @@ from App.routes.login import login_required
 from App.controller.curso import cadastrarCurso
 from App.controller.area import listarAreas
 
+
 # Definindo o blueprint
 curso_route = Blueprint('curso_route', __name__, template_folder='templates')
 
@@ -49,3 +50,4 @@ def cadastrar_Curso():
 
 
     
+

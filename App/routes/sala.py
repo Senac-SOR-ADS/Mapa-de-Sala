@@ -2,6 +2,7 @@ from flask import render_template, Blueprint, request, jsonify
 from App.routes.login import login_required
 from App.controller.sala import cadastrarSala
 
+
 # Definindo o blueprint
 sala_route = Blueprint('sala_route', __name__, template_folder='templates')
 
@@ -41,4 +42,5 @@ def cadastrar_Sala():
         except Exception as e:
             return jsonify({'erro': f'Erro inesperado: {str(e)}'}), 500
            
+
     return render_template('cadastrarSala.html')

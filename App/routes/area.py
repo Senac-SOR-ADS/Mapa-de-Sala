@@ -5,10 +5,12 @@ from App.controller.area import cadastroDeArea, listarAreas
 # Definindo o blueprint
 area_route = Blueprint('area_route', __name__, template_folder='templates')
 
+
 @area_route.route("/", methods=['GET', 'POST'])
 @login_required
 def area():
     return render_template('area.html', valores=listarAreas())
+
 
 @area_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_required
@@ -34,3 +36,4 @@ def cadastrarArea():
             return jsonify({'erro': f'Erro inesperado: {str(e)}'}), 500
 
     return render_template('cadastrarArea.html')
+
