@@ -2,19 +2,19 @@ from flask import render_template, Blueprint
 from App.routes.login import login_required
 
 # Definindo o blueprint
-equipamento_route = Blueprint('equipamento_route', __name__, template_folder='templates')
+equipamento_route = Blueprint('equipamento_route', __name__, template_folder='templates/Equipamentos/')
 
 @equipamento_route.route("/", methods=['GET', 'POST'])
 @login_required
-def equipamentos():
-    return render_template('equipamento.html')
+def listarEquipamentos():
+    return render_template('/Equipamentos/listar.html')
 
 @equipamento_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_required
 def cadastrarEquipamento():
-    return render_template('cadastrarEquipamento.html')
+    return render_template('/Equipamentos/cadastrar.html')
 
-@equipamento_route.route("/ocupado", methods=['GET', 'POST'])
+@equipamento_route.route('/editar/<int:id>', methods=['GET'])
 @login_required
-def ocupadoEquipamento():
-    return render_template('ocupadoEquipamento.html')
+def EditarEquipamento():
+    return render_template('/Equipamentos/editar.html')

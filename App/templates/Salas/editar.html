@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Salas - Editar Sala{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Editar Sala</h1>
+
+    <form action="/sala/editar/{{ sala.id }}" method="POST" class="form-sala">
+        <fieldset>
+            <legend>Editar Sala</legend>
+
+            <div class="form-group">
+                <label for="nome">Nome da Sala:</label>
+                <input type="text" id="nome" name="nome" value="{{ sala.nome }}" required maxlength="100" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Editar Sala</button>
+        </fieldset>
+    </form>
+    <hr>
+</div>
+{% endblock %}

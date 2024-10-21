@@ -4,16 +4,16 @@ from App.controller.curso import cadastrarCurso, listarCursos
 from App.controller.area import listarAreas
 
 # Definindo o blueprint
-curso_route = Blueprint('curso_route', __name__, template_folder='templates')
+curso_route = Blueprint('curso_route', __name__, template_folder='templates/Cursos/')
 
 @curso_route.route("/", methods=['GET', 'POST'])
 @login_required
-def curso():
-    return render_template('curso.html', valores=listarCursos())
+def listarCurso():
+    return render_template('/Cursos/listar.html', valores=listarCursos())
 
 @curso_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_required
-def cadastrar_Curso():
+def cadastrarCurso():
     if request.method == 'POST':
         try:
             if request.is_json:
@@ -45,7 +45,9 @@ def cadastrar_Curso():
             return jsonify({'erro': f'Erro inesperado: {str(e)}'}), 500
     
     elif request.method == 'GET':
-        return render_template('cadastrarCurso.html', valores=listarAreas())
-
-
+        return render_template('/Cursos/cadastrar.html', valores=listarAreas())
     
+@curso_route.route('/editar/<int:id>', methods=['GET'])
+@login_required
+def EditarCurso():
+    return render_template('/Cursos/editar.html')

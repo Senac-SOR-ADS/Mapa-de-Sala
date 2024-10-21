@@ -3,16 +3,16 @@ from App.routes.login import login_required
 from App.controller.sala import cadastrarSala, listarSala
 
 # Definindo o blueprint
-sala_route = Blueprint('sala_route', __name__, template_folder='templates')
+sala_route = Blueprint('sala_route', __name__, template_folder='templates/Salas/')
 
 @sala_route.route("/", methods=['GET', 'POST'])
 @login_required
-def sala():
-    return render_template('sala.html', valores=listarSala())
+def listarSalas():
+    return render_template('/Salas/listar.html', valores=listarSala())
 
 @sala_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_required
-def cadastrar_Sala():
+def cadastrarSala():
     if request.method == 'POST':
         try:
             if request.is_json:
@@ -41,4 +41,9 @@ def cadastrar_Sala():
         except Exception as e:
             return jsonify({'erro': f'Erro inesperado: {str(e)}'}), 500
            
-    return render_template('cadastrarSala.html')
+    return render_template('/Salas/cadastrar.html')
+
+@sala_route.route('/editar/<int:id>', methods=['GET'])
+@login_required
+def editarSala():
+    return render_template('/Salas/editar.html')

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Equipamentos - Editar Equipamento{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Editar Equipamento</h1>
+
+    <form action="/equipamento/editar/{{ equipamento.id }}" method="POST" class="form-equipamento">
+        <fieldset>
+            <legend>Editar Equipamento</legend>
+
+            <div class="form-group">
+                <label for="idArea">Área:</label>
+                <select id="idArea" name="idArea" required class="form-control">
+                    <option value="" disabled>Selecione a área</option>
+                    {% for area in areas %}
+                        <option value="{{ area.id }}" {% if equipamento.idArea == area.id %}selected{% endif %}>{{ area.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="nome">Nome do Equipamento:</label>
+                <input type="text" id="nome" name="nome" value="{{ equipamento.nome }}" required maxlength="100" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="marca">Marca do Equipamento:</label>
+                <input type="text" id="marca" name="marca" value="{{ equipamento.marca }}" required maxlength="100" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" name="quantidade" value="{{ equipamento.quantidade }}" required min="1" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Editar Equipamento</button>
+        </fieldset>
+    </form>
+    <hr>
+</div>
+{% endblock %}
