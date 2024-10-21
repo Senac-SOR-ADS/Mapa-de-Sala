@@ -6,6 +6,7 @@ from App.model.reserva import Reserva
 from App.controller.curso import listarCursos
 from App.controller.pessoa import buscaPessoas
 from App.controller.sala import listarSala
+from App.controller.reserva import validarDia
 
 from App.model.login import Login
 
@@ -64,10 +65,15 @@ class ReservaInterface(QWidget):
     
     @pyqtSlot()
     def on_btnFazerReserva_clicked(self):
-        info = self.getDados()
-        idLogin = Login.getIdLogin()
-        if Reserva(idLogin, info).fazer_reserva():
-            print('ok')        
+        # info = self.getDados()
+        # idLogin = Login.getIdLogin()
+        # if Reserva(idLogin, info).fazer_reserva():
+        #     print('ok')       
+        DataInicio = self.getDados()
+        DataFim =  self.getDados()
+        DataInicio = DataInicio["inicio"]
+        DataFim = DataFim["fim"]
+        validarDia(DataInicio, DataFim)
             
 
     def popularJanela(self):
@@ -87,6 +93,10 @@ class ReservaInterface(QWidget):
         sala = listarSala().keys()
         self.salaReserva.addItems(sala)
 
+    def testeDias(self):
+        diaInicio = self.getDados().values()
+        print(diaInicio)
+        validarDia()
         
     
 
