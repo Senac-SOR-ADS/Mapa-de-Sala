@@ -6,7 +6,7 @@ from .reserva import ReservaInterface
 from .cadastrarArea import CadastrarArea
 from .cadastrarCurso import CadastrarCurso
 from .cadastrarLogin import CadastroLogin
-
+from .configurarTela import ConfigurarTela
 
 class HomePrincipal(QMainWindow):
     def __init__(self):
@@ -27,7 +27,8 @@ class HomePrincipal(QMainWindow):
         self.interfCasArea = CadastrarArea()
         self.interfCasCurso = CadastrarCurso()
         self.interfCasLogin = CadastroLogin()
-        self.inserirTelas( [self.interfCasPessoa, self.interfReserva, self.interfCasArea, self.interfCasCurso, self.interfCasLogin] )
+        self.interfCongiguracoes = ConfigurarTela()
+        self.inserirTelas( [self.interfCasPessoa, self.interfReserva, self.interfCasArea, self.interfCasCurso, self.interfCasLogin, self.interfCongiguracoes] )
 
         self.btnCadastrarPessoa.clicked.connect(lambda: self.trocarTela(self.interfCasPessoa))
         self.btnReserva.clicked.connect(lambda: self.trocarTela(self.interfReserva))
@@ -35,6 +36,7 @@ class HomePrincipal(QMainWindow):
         self.btnArea.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasArea))
         self.btnCurso.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasCurso))
         self.btnCadastroLogin.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasLogin))
+        self.btnConfiguracoes.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCongiguracoes))
         self.btnMinimizar.clicked.connect(self.showMinimized)
         self.btnFecharPagina.clicked.connect(self.close)
         self.btnTelaCheia.clicked.connect(self.windowConnect)

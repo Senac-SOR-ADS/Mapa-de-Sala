@@ -546,6 +546,9 @@ padding: 10px;
              </item>
              <item>
               <widget class="QPushButton" name="btnCadastroLogin">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string>Cadastro Login</string>
                </property>
@@ -577,6 +580,9 @@ padding: 10px;
                  <width>119</width>
                  <height>56</height>
                 </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
                 <string>Cursos</string>
