@@ -1,7 +1,6 @@
 from flask import render_template, Blueprint, request, jsonify
 from App.routes.login import login_required
-from App.controller.pessoa import cadastrarPessoa
-
+from App.controller.pessoa import cadastrarPessoa, buscaPessoas
 
 # Definindo o blueprint
 pessoa_route = Blueprint('pessoa_route', __name__, template_folder='templates')
@@ -9,7 +8,7 @@ pessoa_route = Blueprint('pessoa_route', __name__, template_folder='templates')
 @pessoa_route.route("/", methods=['GET', 'POST'])
 @login_required
 def funcionario():
-    return render_template('funcionario.html')
+    return render_template('funcionario.html', valores=buscaPessoas())
 
 @pessoa_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_required
@@ -48,10 +47,10 @@ def cadastrar_Funcionario():
     # Se o método for GET, renderiza o template do formulário
     return render_template('cadastrarFuncionario.html')
 
+# Verifica se a data está no formato 'AAAA-MM-DD e Retorna a data no formato 'DD/MM/AAAA''
 def modificarData(dataNasc):
     if '-' in dataNasc:
         data = dataNasc.split('-')
         if len(data) == 3:
             return f'{data[2]}/{data[1]}/{data[0]}'    
     return None
-

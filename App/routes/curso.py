@@ -1,8 +1,7 @@
 from flask import render_template, Blueprint, request, jsonify
 from App.routes.login import login_required
-from App.controller.curso import cadastrarCurso
+from App.controller.curso import cadastrarCurso, listarCursos
 from App.controller.area import listarAreas
-
 
 # Definindo o blueprint
 curso_route = Blueprint('curso_route', __name__, template_folder='templates')
@@ -10,7 +9,7 @@ curso_route = Blueprint('curso_route', __name__, template_folder='templates')
 @curso_route.route("/", methods=['GET', 'POST'])
 @login_required
 def curso():
-    return render_template('curso.html')
+    return render_template('curso.html', valores=listarCursos())
 
 @curso_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_required
@@ -50,4 +49,3 @@ def cadastrar_Curso():
 
 
     
-

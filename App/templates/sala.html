@@ -6,35 +6,35 @@
 
 <div class="container">
     <h1>Salas</h1>
-
-    <!-- Tabela de salas cadastradas -->
-    <table class="table table-striped">
+    <table class="table table-striped table-responsive">
         <thead>
             <tr>
-                <th>ID Sala</th>
                 <th>Nome</th>
-                <th>Tipo</th>
-                <th>Prédio</th>
-                <th>Capacidade</th>
-                <th>Observação</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
+            {% for value in valores %}
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ value }}</td>
                 <td>
-                    <button class="btn btn-warning">Editar</button>
-                    <button class="btn btn-danger">Remover</button>
+                    <button class="btn btn-warning" aria-label="Editar {{ value }}"> 
+                        <i class="fas fa-edit"></i> Editar
+                    </button>
+                    <button class="btn btn-danger" aria-label="Remover {{ value }}" onclick="confirmRemove('{{ value }}')"> 
+                        <i class="fas fa-trash"></i> Remover
+                    </button>
                 </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
 
+<script>
+    function confirmRemove(Name) {
+        if (confirm(`Você tem certeza que deseja remover a Sala "${Name}"?`)) {
+        }
+    }
+</script>
 {% endblock %}
