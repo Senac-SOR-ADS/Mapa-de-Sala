@@ -1,7 +1,9 @@
 from PyQt5.QtWidgets import QWidget, QDateEdit
 from PyQt5.uic import loadUi
+
 from PyQt5.QtCore import QTimer, QDate, pyqtSlot
 from App.model.reserva import Reserva
+
 
 from App.controller.curso import listarCursos
 from App.controller.pessoa import buscaPessoas
@@ -15,6 +17,7 @@ class ReservaInterface(QWidget):
         loadUi('App/view/ui/reserva.ui',self)
         self.popularJanela()
 
+
         # Os metodos abaixo servem para transformar o QDateEdit em um calendário
         self.diaInicio = self.findChild(QDateEdit, 'diaInicio') 
         self.diaFim = self.findChild(QDateEdit, 'diaFim')  
@@ -27,6 +30,7 @@ class ReservaInterface(QWidget):
         self.diaFim.setDisplayFormat('dd/MM/yyyy')
         self.diaFim.setDate(QDate.currentDate()) 
 
+
     def getDados(self)->dict:
         """Pegando o dados na interface e retornando os valores"""
         nomeDocenteResponsavel = self.nomeDocente.currentText().strip() 
@@ -36,6 +40,7 @@ class ReservaInterface(QWidget):
         inicio = self.diaInicio.text().strip() 
         fim = self.diaFim.text().strip() 
         observacao = self.observacaoReserva.text().strip() 
+
         cursoInicio = self.inicioCurso.time().toString('HH:mm')
         cursoFim = self.fimCurso.time().toString('HH:mm')
         segunda = self.segCheck.isChecked()        
@@ -44,6 +49,7 @@ class ReservaInterface(QWidget):
         quinta = self.quiCheck.isChecked()
         sexta = self.sextaCheck.isChecked()
         sabado = self.sabCheck.isChecked()
+
 
         dados = {"nomeDocente":nomeDocenteResponsavel, 
                  "nomeSala":nomeSala, 
