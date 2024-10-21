@@ -1,5 +1,5 @@
-from .conexao import ConexaoBD
-from .criptografia import Criptografia
+from App.model.conexao import ConexaoBD
+from App.model.criptografia import Criptografia
  
  
 class Login:
@@ -47,6 +47,13 @@ class Login:
                 return True
         except:
             return False
+        
+    def fazerLogin(self):
+        self.__banco.conectar()
+        query = "INSERT INTO `login`(`idPessoa`, `email`, `senha`) VALUES (%s, %s, %s)"
+        params = (self.getIdPessoa, self.getEmail, self.getSenha)
+        resultado = self.__banco.alterarDados(query, params)
+        return resultado
  
 if __name__ == "__main__":
     pass

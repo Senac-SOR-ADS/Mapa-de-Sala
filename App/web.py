@@ -1,66 +1,35 @@
-import logging
-import sys
 from flask import Flask
-from datetime import timedelta
-from os import urandom
+from App.routes.config import Config
 from App.model.conexao import ConexaoBD
-from App.routes import home, login, pessoa, reserva, sala, area, curso, equipamento
+from App.routes import register_routes, check_template_access
+from App.routes.logger_setup import logger
+from socket import gethostbyname, gethostname
+import sys
 
 
 # Inicializa a aplicação Flask
 app = Flask(__name__)
+app.config.from_object(Config)
 
-# Configurações de segurança e sessão
-app.secret_key = urandom(24)
-app.permanent_session_lifetime = timedelta(minutes=10)
-app.session_refresh_each_request = True
-
-# Configuração de logging
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-
-# Formato e saída do logging
-console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-console_handler.setFormatter(formatter)
-logger.addHandler(console_handler)
-
-# Lista de blueprints e seus respectivos prefixos
-blueprints = [
-    (home.home_route, '/'),
-    (login.login_route, '/login'),
-    (pessoa.pessoa_route, '/funcionario'),
-    (reserva.reserva_route, '/reserva'),
-    (sala.sala_route, '/sala'),
-    (area.area_route, '/area'),
-    (curso.curso_route, '/curso'),
-    (equipamento.equipamento_route, '/equipamento')
-]
-
-# Registra os blueprints no app
-for rota, prefixo in blueprints:
-    app.register_blueprint(rota, url_prefix=prefixo)
-
-# Função para verificar acesso ao template
-def check_template_access(app):
-    """Verifica se o template 'home.html' está acessível e loga a situação."""
-    try:
-        app.jinja_env.get_template('home.html')
-        logger.debug("Template 'home.html' encontrado com sucesso.")
-    except Exception as e:
-        logger.error(f"Erro ao tentar acessar o template 'home.html': {e}")
-
-# Executa a verificação de acesso ao template
+# Verifica o acesso ao template
 
 check_template_access(app)
 
-# Conectando ao banco de dados
+# Registra as rotas da aplicação
+register_routes(app)
+
+# Conecta ao banco de dados
 bd = ConexaoBD()
 if bd.conectar():
     logger.info("Conexão ao banco de dados estabelecida com sucesso.")
-    app.run(debug=True)
+
+    # Obtém o endereço IP local do servidor
+    ip_local = gethostbyname(gethostname())
+    logger.info(f"Iniciando o servidor no endereço IP: {ip_local}")
+
+    # Inicia o servidor Flask
+    app.run(host=ip_local, debug=False)
 else:
-    logger.error("Falha ao conectar ao banco de dados.")
+    logger.critical("Falha ao conectar ao banco de dados.")
     sys.exit(1)
 

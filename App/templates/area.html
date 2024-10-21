@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container">
     <h1>Áreas</h1>
-    <!-- Tabela de áreas cadastradas -->
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -14,15 +14,18 @@
             </tr>
         </thead>
         <tbody>
+            {% for value in valores %}
             <tr>
-                <td></td>
+                <td>{{ value }}</td>
+
                 <td>
                     <button class="btn btn-warning">Editar</button>
                     <button class="btn btn-danger">Remover</button>
                 </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
-</div>
 {% endblock %}
+

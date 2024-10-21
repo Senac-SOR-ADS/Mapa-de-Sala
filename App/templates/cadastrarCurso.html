@@ -7,7 +7,8 @@
     <h1>Cadastro de Cursos</h1>
 
     <!-- Formulário para adicionar um novo curso -->
-    <form action="/cadastrar" method="POST" class="form-curso">
+    <form action="/curso/cadastrar" method="POST" class="form-curso">
+
         <fieldset>
             <legend>Adicionar Novo Curso</legend>
 
@@ -22,19 +23,38 @@
             </div>
 
             <div class="form-group">
-                <label for="periodo">Período:</label>
-                <input type="text" id="periodo" name="periodo" required maxlength="50" class="form-control">
+                <label for="periodo">Período do Dia:</label>
+                <select id="periodo" name="periodo" class="form-control">
+                    <option value="" disabled selected>Selecione o Período do Dia</option>
+                    <option value="manha">Manhã</option>
+                    <option value="tarde">Tarde</option>
+                    <option value="noite">Noite</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <label for="cargaHoraria">Carga Horária:</label>
-                <input type="number" id="cargaHoraria" name="cargaHoraria" required min="1" class="form-control">
+                <label for="carga">Carga Horária:</label>
+                <input type="number" id="carga" name="carga" required min="1" class="form-control">
             </div>
 
             <div class="form-group">
-                <label for="idArea">Área do Curso:</label>
-                <select id="idArea" name="idArea" class="form-control" required>
-                    <option value="">Selecione a Área</option>
+                <label for="alunos">Alunos:</label>
+                <input type="number" id="alunos" name="alunos" required min="1" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="horas">Hora de Início:</label>
+                <input type="time" id="horas" name="horas" class="form-control" placeholder="Selecione a hora de início">
+            </div>
+
+            <div class="form-group">
+                <label for="area">Área do Curso:</label>
+                <select id="area" name="area" class="form-control" required>
+                    <option value="" disabled selected>Selecione a Área do Curso</option>
+                    {% for value in valores%}
+                        <option value="{{valores[value]}}">{{value}}</option>
+                    {%endfor %}
+
                 </select>
             </div>
 
@@ -43,4 +63,11 @@
     </form>
     <hr>
 </div>
+
+<script>
+    document.getElementById('periodo', 'area').addEventListener('change', function() {
+        const customDateFields = document.getElementById('customDateFields');
+    });
+</script>
+
 {% endblock %}
