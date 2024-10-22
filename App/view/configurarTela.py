@@ -35,6 +35,6 @@ class ConfigurarTela(QWidget):
 if __name__ == "__main__":
     import sys
     app = QApplication(sys.argv)
-    tela = ConfigurarTela()
-    tela.show()
+    widget = ConfigurarTela()
+    widget.show()
     sys.exit(app.exec_())
