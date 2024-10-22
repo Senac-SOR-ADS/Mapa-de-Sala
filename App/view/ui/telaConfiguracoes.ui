@@ -13,28 +13,18 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="widget" native="true">
+  <widget class="QPushButton" name="btnMudarTema">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>581</width>
-     <height>531</height>
+     <x>270</x>
+     <y>500</y>
+     <width>75</width>
+     <height>23</height>
     </rect>
    </property>
-   <widget class="QPushButton" name="btnMudarTema">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>330</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Mudar Tema</string>
-    </property>
-   </widget>
+   <property name="text">
+    <string>Mudar Tema</string>
+   </property>
   </widget>
  </widget>
  <resources/>
