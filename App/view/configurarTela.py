@@ -16,8 +16,9 @@ class ConfigurarTela(QWidget):
 
         self.temaAtual = 0
         self.temas = [
-            "background-color: white; color: black;",
-            "background-color: black; color: white;",
+            # Temas disponíveis
+            "background-color: #F0F0F0; color: #181C14;",
+            "background-color: #292929; color: #60CDFF;",
             "background-color: #282C34; color: #61AFEF;",
         ]
 
