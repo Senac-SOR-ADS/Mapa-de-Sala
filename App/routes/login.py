@@ -3,7 +3,7 @@ from functools import wraps
 from App.routes.acesso import validar_acesso, autenticar
 
 # Definindo o blueprint para a rota de login
-login_route = Blueprint('login_route', __name__, template_folder='templates')
+login_route = Blueprint('login_route', __name__, template_folder='templates/Login/')
 
 # Decorator para verificar se o usuário está autenticado
 def login_required(f):
@@ -26,4 +26,4 @@ def login():
         flash('Credenciais inválidas. Tente novamente.', 'error')
     elif request.method == 'GET' and validar_acesso():
         return redirect(url_for('home_route.home'))
-    return render_template('login.html')
+    return render_template('/Login/login.html')

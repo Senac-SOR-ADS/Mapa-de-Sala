@@ -4,6 +4,20 @@
 <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 bg-gradient">
     <div class="content-box p-5 d-flex flex-column justify-content-center align-items-center bg-light shadow-lg rounded border-warning">
         <h1 class="display-4 text-primary">Página Não Encontrada!</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="my-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
         <h2 class="text-danger">"Meu tesouro?</h2>
         <h3 class="text-dark">Se quiserem, podem pegá-lo!</h3>
         <h4 class="text-dark">Procurem-no! Ele contém tudo que este mundo pode oferecer!</h4>
@@ -11,7 +25,6 @@
         <a href="/" class="m-2 btn btn-lg btn-warning">Voltar para a Home, porque eu serei o Rei dos Piratas! 🏴‍☠️</a>
     </div>
 </div>
-
 
 
 {% endblock %}

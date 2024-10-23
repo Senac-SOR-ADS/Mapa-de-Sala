@@ -6,6 +6,20 @@
 <div class="container">
     <h1>Relatório de Reservas</h1>
 
+    <!-- Exibir mensagens de sucesso ou erro -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="my-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
     <!-- Formulário para gerar relatório -->
     <form action="/relatorio" method="POST" class="form-relatorio">
         <fieldset>
@@ -29,7 +43,6 @@
                     <option value="tarde">Tarde</option>
                     <option value="noite">Noite</option>
                     <option value="customizado">Customizado</option>
-
                 </select>
             </div>
 
@@ -78,7 +91,6 @@
     document.getElementById('periodoDia').addEventListener('change', function() {
         const customDateFields = document.getElementById('customDateFields');
          customDateFields.style.display = (this.value === 'customizado') ? 'block' : 'none';
-
     });
 </script>
 {% endblock %}

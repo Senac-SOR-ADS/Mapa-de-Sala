@@ -1,19 +1,23 @@
-from flask import render_template, Blueprint, request, jsonify
+from flask import render_template, Blueprint, request, flash, redirect, url_for
 from App.routes.login import login_required
-from App.controller.sala import cadastrarSala
-
+from App.controller import sala
 
 # Definindo o blueprint
-sala_route = Blueprint('sala_route', __name__, template_folder='templates')
+sala_route = Blueprint('sala_route', __name__, template_folder='templates/Salas/')
 
 @sala_route.route("/", methods=['GET', 'POST'])
 @login_required
-def sala():
-    return render_template('sala.html')
+def listarSalas():
+    try:
+        valores = sala.listarSala()
+    except Exception as e:
+        flash(f'Erro ao listar Salas: {str(e)}', 'danger')
+        valores = []
+    return render_template('/Salas/listar.html', valores=valores)
 
 @sala_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_required
-def cadastrar_Sala():
+def cadastrarSala():
     if request.method == 'POST':
         try:
             if request.is_json:
@@ -32,15 +36,20 @@ def cadastrar_Sala():
             feedback = dados.get('feedback')
 
             # Validação dos campos
-            if not all([nome, tipo, predio, equipamento, capacidade, feedback]):
-                return jsonify({'erro': 'Todos os campos são obrigatórios.'}), 400
+            if not all([nome, tipo, predio, capacidade]):
+                flash('Todos os campos são obrigatórios.', 'danger')
+                return
 
             # Cadastrando o curso
-            resultado = cadastrarSala(nome, tipo, predio, equipamento, capacidade, feedback)
-            return jsonify({'mensagem': 'Sala cadastrada com sucesso!', 'resultado': resultado}), 201
-
+            resultado = sala.cadastrarSala(nome, tipo, predio, equipamento, capacidade, feedback)
+            flash('Sala cadastrada com sucesso!', 'success')
+            return redirect(url_for('sala_route.cadastrarSala'))
         except Exception as e:
-            return jsonify({'erro': f'Erro inesperado: {str(e)}'}), 500
-           
+            flash(f'Erro ao cadastrar a Sala: {str(e)}', 'danger')
+ 
+    return render_template('/Salas/cadastrar.html')
 
-    return render_template('cadastrarSala.html')
+@sala_route.route('/editar/<int:id>', methods=['GET'])
+@login_required
+def editarSala():
+    return render_template('/Salas/editar.html')

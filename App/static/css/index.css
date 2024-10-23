@@ -1,90 +1,31 @@
-/* Definição de variáveis para cores */
-:root {
-    --primary-color: #3498db;
-    --warning-color: #f39c12;
-    --warning-hover: #e67e22;
-    --danger-color: #e74c3c;
-    --danger-hover: #c0392b;
-    --border-color: #bdc3c7;
-    --background-color: #ffffff;
-}
-
-/* Ajustes para botões */
-button.navbar-toggler {
-    border-color: var(--primary-color);
-}
-
-button.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%288, 150, 230, 0.8%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-/* Estilos dos botões de ação */
-.btn-warning,
-.btn-danger {
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn-warning {
-    background-color: var(--warning-color);
-    color: #fff;
-}
-
-.btn-warning:hover {
-    background-color: var(--warning-hover);
-}
-
-.btn-danger {
-    background-color: var(--danger-color);
-    color: #fff;
-}
-
-.btn-danger:hover {
-    background-color: var(--danger-hover);
-}
-
-/* Estilo dos campos do formulário */
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-control {
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 10px;
-    width: 100%;
-}
-
-/* Efeitos de foco em campos do formulário */
-.form-control:focus {
-    border-color: var(--primary-color);
-}
-
 /* Estilo para fieldset e legend */
 fieldset {
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: 6px;
     padding: 20px;
     margin-bottom: 20px;
-    background-color: var(--background-color);
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
 }
 
 legend {
     font-weight: bold;
     padding: 0 10px;
+    font-size: 1.1em;
 }
 
-/* Estilo para os cabeçalhos das páginas */
-h1 {
+/* Estilos do header */
+header {
     margin-bottom: 20px;
-    font-size: 24px;
 }
 
 /* Tabela estilizada */
 .table {
     border-collapse: collapse;
     width: 100%;
-    margin-bottom: 20px;
-    background-color: var(--background-color);
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
 }
 
 .table th,
@@ -96,20 +37,129 @@ h1 {
 
 .table th {
     background-color: var(--primary-color);
-    color: white;
+    color: #fff;
+    font-size: 1.1em;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: #f9f9f9;
 }
 
+.table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos adicionais */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos dos campos do formulário */
+.form-area,
+.form-curso,
+.form-funcionario,
+.form-sala,
+.form-ocupado,
+.form-relatorio,
+.form-reserva,
+.form-equipamento {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control,
+.form-select {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 12px;
+    width: 100%;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Estilos para os botões */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    color: #212529;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Estilos de texto */
+h1 {
+    color: var(--header-bg-color);
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+h2,
+h3 {
+    color: var(--header-bg-color);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+h1, h2, h3 {
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
 /* Responsividade para telas pequenas */
 @media (max-width: 768px) {
-    .table th, .table td {
-        padding: 8px;
+    .table th,
+    .table td {
+        padding: 10px;
+        font-size: 0.9em;
     }
-    
-    h1 {
-        font-size: 20px;
+}
+
+@media (max-width: 480px) {
+    .form-control,
+    .form-select {
+        padding: 10px;
     }
 }

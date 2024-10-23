@@ -3,6 +3,7 @@ from .home import home_route
 from .login import login_route
 from .pessoa import pessoa_route
 from .reserva import reserva_route
+from .relatorios import relatorio_route
 from .sala import sala_route
 from .area import area_route
 from .curso import curso_route
@@ -18,6 +19,7 @@ def register_routes(app: Flask) -> None:
         (login_route, '/login'),
         (pessoa_route, '/funcionario'),
         (reserva_route, '/reserva'),
+        (relatorio_route, '/relatorio'),       
         (sala_route, '/sala'),
         (area_route, '/area'),
         (curso_route, '/curso'),
@@ -34,7 +36,7 @@ def register_routes(app: Flask) -> None:
 
 def check_template_access(app: Flask) -> None:
     try:
-        app.jinja_env.get_template('home.html')
+        app.jinja_env.get_template('/Home/home.html')
         logger.info("Template 'home.html' encontrado com sucesso.")
     except Exception as e:
         logger.error(f"Erro ao acessar o template 'home.html': {e}", exc_info=True)

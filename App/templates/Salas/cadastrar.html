@@ -6,9 +6,22 @@
 <div class="container">
     <h1>Cadastro de Salas</h1>
 
+    <!-- Exibir mensagens de sucesso ou erro -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="my-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
     <!-- Formulário para adicionar uma nova sala -->
     <form action="/sala/cadastrar" method="POST" class="form-sala">
-
         <fieldset>
             <legend>Adicionar Nova Sala</legend>
 
@@ -19,23 +32,26 @@
 
             <div class="form-group">
                 <label for="tipo">Tipo de Sala:</label>
-                <input type="text" id="tipo" name="tipo" required maxlength="50" class="form-control">
+                <select id="tipo" name="tipo" class="form-control" required>
+                    <option value="" disabled selected>Selecione o Predio</option>
+                    <option value="Comum">Comum</option>
+                    <option value="Laboratorio">Laboratório</option>
+                    <option value="Biblioteca">biblioteca</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label for="predio">Predio:</label>
                 <select id="predio" name="predio" class="form-control" required>
                     <option value="" disabled selected>Selecione o Predio</option>
-                    <option value="1">Predio A</option>
-                    <option value="2">Predio B</option>
-                    <option value="3">Predio C</option>
+                    <option value="Prédio 1">Predio 1</option>
+                    <option value="Prédio 2">Predio 2</option>
                 </select>
             </div>
             
             <div class="form-group">
                 <label for="equipamento">Equipamento:</label>
-                <input type="text" id="equipamento" name="equipamento" required maxlength="100" class="form-control">
-
+                <input type="text" id="equipamento" name="equipamento" maxlength="100" class="form-control">
             </div>
 
             <div class="form-group">
@@ -45,9 +61,8 @@
 
 
             <div class="form-group">
-                <label for="feedback"> Feedback:</label>
-                <input type="text" id="feedback" name="feedback" required maxlength="100" class="form-control">
-
+                <label for="feedback"> Observações:</label>
+                <input type="text" id="feedback" name="feedback" maxlength="100" class="form-control">
             </div>
 
             <button type="submit" class="btn btn-primary">Adicionar Sala</button>
@@ -60,6 +75,8 @@
     document.getElementById('predio').addEventListener('change', function() {
         const customDateFields = document.getElementById('customDateFields');
     });
+    document.getElementById('tipo').addEventListener('change', function() {
+        const customDateFields = document.getElementById('customDateFields');
+    });
 </script>
-
 {% endblock %}

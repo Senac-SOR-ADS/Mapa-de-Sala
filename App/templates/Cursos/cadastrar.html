@@ -6,9 +6,22 @@
 <div class="container">
     <h1>Cadastro de Cursos</h1>
 
+    <!-- Exibir mensagens de sucesso ou erro -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="my-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
     <!-- Formulário para adicionar um novo curso -->
     <form action="/curso/cadastrar" method="POST" class="form-curso">
-
         <fieldset>
             <legend>Adicionar Novo Curso</legend>
 
@@ -33,18 +46,18 @@
             </div>
 
             <div class="form-group">
-                <label for="carga">Carga Horária:</label>
+                <label for="carga">Carga Horária Total:</label>
                 <input type="number" id="carga" name="carga" required min="1" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="horas">Horas Diárias do Curso</label>
+                <input type="time" id="horas" name="horas" class="form-control" placeholder="Selecione a hora de início">
             </div>
 
             <div class="form-group">
                 <label for="alunos">Alunos:</label>
                 <input type="number" id="alunos" name="alunos" required min="1" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label for="horas">Hora de Início:</label>
-                <input type="time" id="horas" name="horas" class="form-control" placeholder="Selecione a hora de início">
             </div>
 
             <div class="form-group">
@@ -54,7 +67,6 @@
                     {% for value in valores%}
                         <option value="{{valores[value]}}">{{value}}</option>
                     {%endfor %}
-
                 </select>
             </div>
 
@@ -65,9 +77,8 @@
 </div>
 
 <script>
-    document.getElementById('periodo', 'area').addEventListener('change', function() {
+    document.getElementById('periodo').addEventListener('change', function() {
         const customDateFields = document.getElementById('customDateFields');
     });
 </script>
-
 {% endblock %}

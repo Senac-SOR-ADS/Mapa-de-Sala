@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Página Inicial - Mapa de Sala{% endblock %}
+
+{% block content %}
+<div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="my-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <h3>Bem-vindo ao Mapa de Sala - Senac!</h3>
+    <p>Esta é a página inicial. Aqui você pode navegar pelos diferentes módulos do sistema.</p>
+</div>
+{% endblock %}

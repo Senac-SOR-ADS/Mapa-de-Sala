@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Cursos - Editar Curso{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Editar Curso</h1>
+
+    <!-- Exibir mensagens de sucesso ou erro -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="my-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <form action="/curso/editar/{{ curso.id }}" method="POST" class="form-curso">
+        <fieldset>
+            <legend>Editar Curso</legend>
+
+            <div class="form-group">
+                <label for="nome">Nome do Curso:</label>
+                <input type="text" id="nome" name="nome" value="{{ curso.nome }}" required maxlength="100" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="oferta">Oferta:</label>
+                <input type="text" id="oferta" name="oferta" value="{{ curso.oferta }}" required maxlength="50" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="periodo">Período do Dia:</label>
+                <select id="periodo" name="periodo" class="form-control" required>
+                    <option value="" disabled>Selecione o Período do Dia</option>
+                    <option value="manha" {% if curso.periodo == 'manha' %}selected{% endif %}>Manhã</option>
+                    <option value="tarde" {% if curso.periodo == 'tarde' %}selected{% endif %}>Tarde</option>
+                    <option value="noite" {% if curso.periodo == 'noite' %}selected{% endif %}>Noite</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="carga">Carga Horária:</label>
+                <input type="number" id="carga" name="carga" value="{{ curso.carga }}" required min="1" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="alunos">Alunos:</label>
+                <input type="number" id="alunos" name="alunos" value="{{ curso.alunos }}" required min="1" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="horas">Hora de Início:</label>
+                <input type="time" id="horas" name="horas" value="{{ curso.horas }}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="area">Área do Curso:</label>
+                <select id="area" name="area" class="form-control" required>
+                    <option value="" disabled>Selecione a Área do Curso</option>
+                    {% for value in valores %}
+                        <option value="{{ value.id }}" {% if curso.area_id == value.id %}selected{% endif %}>{{ value.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Editar Curso</button>
+        </fieldset>
+    </form>
+    <hr>
+</div>
+{% endblock %}
