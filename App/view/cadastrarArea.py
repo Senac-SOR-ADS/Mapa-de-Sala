@@ -21,7 +21,7 @@ class CadastrarArea(QWidget):
         area = self.cadastrarArea.text().strip()
 
         return(area)
-    
+
 
 
     def validandoDados(self):
