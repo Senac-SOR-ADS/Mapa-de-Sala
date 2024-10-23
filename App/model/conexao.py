@@ -73,6 +73,7 @@ class ConexaoBD:
             return cur
 
         except Exception as e:
+            print('erro: ', e)
             cur = None
 
     def commit(self):

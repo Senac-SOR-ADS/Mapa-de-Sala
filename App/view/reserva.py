@@ -4,13 +4,18 @@ from PyQt5.QtCore import QTimer, QDate, pyqtSlot
 from App.model.reserva import Reserva
 
 from App.controller.curso import listarCursos
-from App.controller.pessoa import buscaPessoas
+from App.controller.pessoa import buscaPessoas, modificarData
 from App.controller.sala import listarSala
 from App.controller.reserva import validarDia
 
 from App.model.login import Login
 
 class ReservaInterface(QWidget):
+    curso = listarCursos()
+    pessoa = buscaPessoas()
+    sala = listarSala()
+    
+    
     def __init__(self):
         super().__init__()
         loadUi('App/view/ui/reserva.ui',self)
@@ -30,12 +35,16 @@ class ReservaInterface(QWidget):
 
     def getDados(self)->dict:
         """Pegando o dados na interface e retornando os valores"""
-        nomeDocenteResponsavel = self.nomeDocente.currentText().strip() 
-        nomeSala = self.salaReserva.currentText().strip() 
-        nomeCurso = self.cursoReserva.currentText().strip() 
+        nomeDocenteResponsavel = self.nomeDocente.currentText().strip()
+        idDocente = self.pessoa[nomeDocenteResponsavel]
+        nomeSala = self.salaReserva.currentText().strip()
+        idSala = self.sala[nomeSala]
+        nomeCurso = self.cursoReserva.currentText().strip()
+        idCurso = self.curso[nomeCurso]
+        
         equipamentos = self.equipamentosReserva.text().strip() 
-        inicio = self.diaInicio.text().strip() 
-        fim = self.diaFim.text().strip() 
+        inicio = modificarData(self.diaInicio.text().strip() )
+        fim = modificarData(self.diaFim.text().strip() )
         observacao = self.observacaoReserva.text().strip() 
         cursoInicio = self.inicioCurso.time().toString('HH:mm')
         cursoFim = self.fimCurso.time().toString('HH:mm')
@@ -46,9 +55,9 @@ class ReservaInterface(QWidget):
         sexta = self.sextaCheck.isChecked()
         sabado = self.sabCheck.isChecked()
 
-        dados = {"nomeDocente":nomeDocenteResponsavel, 
-                 "nomeSala":nomeSala, 
-                 "nomeCurso":nomeCurso,
+        dados = {"idDocente":idDocente, 
+                 "idSala":idSala, 
+                 "idCurso":idCurso,
                  "equipamentos":equipamentos,
                  "inicio":inicio,
                  "fim":fim,
@@ -65,16 +74,20 @@ class ReservaInterface(QWidget):
     
     @pyqtSlot()
     def on_btnFazerReserva_clicked(self):
-        # info = self.getDados()
-        # idLogin = Login.getIdLogin()
+        info = self.getDados()
+        idLogin = 8
         # if Reserva(idLogin, info).fazer_reserva():
-        #     print('ok')       
-        DataInicio = self.getDados()
-        DataFim =  self.getDados()
-        DataInicio = DataInicio["inicio"]
-        DataFim = DataFim["fim"]
-        validarDia(DataInicio, DataFim)
-            
+        #     print('ok')
+        # dados = self.getDados()
+        # DataInicio = dados["inicio"]
+        # DataFim = dados["fim"]
+        # diasValidos = (dados['seg'], dados['ter'], dados['qua'], dados['qui'], dados['sexta'], dados['sab'], False)
+        # validarDia(DataInicio, DataFim, diasValidos)
+        if Reserva(idLogin, info['idDocente'], info['idCurso'], info['idSala'], info['inicio'], info['inicioCurso'], info['fimCurso'], info['observações']).fazer_reserva():
+            print('reservado com sucesso')
+        else:
+            print('Erro ao reservar')
+        
 
     def popularJanela(self):
         self.comboBoxCurso()
@@ -82,21 +95,19 @@ class ReservaInterface(QWidget):
         self.comboBoxSala()
 
     def comboBoxCurso(self):
-        curso = listarCursos().keys()
-        self.cursoReserva.addItems(curso)
+        self.cursoReserva.addItems(self.curso.keys())
 
     def comboBoxPessoa(self):
-        pessoa = buscaPessoas().keys()
-        self.nomeDocente.addItems(pessoa)
+        self.nomeDocente.addItems(self.pessoa.keys())
 
     def comboBoxSala(self):
-        sala = listarSala().keys()
-        self.salaReserva.addItems(sala)
+        self.salaReserva.addItems(self.sala.keys())
 
     def testeDias(self):
         diaInicio = self.getDados().values()
         print(diaInicio)
         validarDia()
+        
         
     
 
