@@ -15,24 +15,20 @@ class ConfigurarTela(QWidget):
         self.temaController.temaMudado.connect(self.atualizarTema)
 
         self.temaAtual = 0
-        self.temas = [
-            # Temas disponíveis
-            "background-color: #F0F0F0; color: #181C14;",
-            "background-color: #292929; color: #60CDFF;",
-            "background-color: #282C34; color: #61AFEF;",
-        ]
-
+        
         # Conecta à função de mudarTema
-        self.btnMudarTema.clicked.connect(self.mudarTema)
+        self.btnMudarTema.clicked.connect(self.atualizarTema)
 
     def mudarTema(self):
         tema = self.temas[self.temaAtual]
         self.temaAtual = (self.temaAtual + 1) % len(self.temas) # Atualiza o próximo tema
         self.temaController.temaMudado.emit(tema) # Emite o sinal sobre as trocas de temas
 
-    def atualizarTema(self, tema):
-        QApplication.instance().setStyleSheet(f"QWidget {{ {tema} }}")  
-
+    def atualizarTema(self):
+            self.setStyleSheet(open('App/view/ui/css/temaClaro/temaPrincipal.css').read()) 
+            self.setStyleSheet(open('App/view/ui/css/temaEscuro/temaPrincipal.css').read()) 
+            
+        
 if __name__ == "__main__":
     import sys
     app = QApplication(sys.argv)
