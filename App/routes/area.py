@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request, jsonify
+from flask import render_template, Blueprint, request, flash, redirect, url_for
 from App.routes.login import login_required
 from App.controller.area import cadastroDeArea, listarAreas
 
@@ -8,7 +8,13 @@ area_route = Blueprint('area_route', __name__, template_folder='templates/Areas/
 @area_route.route("/", methods=['GET', 'POST'])
 @login_required
 def listarArea():
-    return render_template('/Areas/listar.html', valores=listarAreas())
+    try:
+        valores = listarAreas()
+    except Exception as e:
+        flash(f'Erro ao listar Salas: {str(e)}', 'danger')
+        valores = []
+
+    return render_template('/Areas/listar.html', valores=valores)
 
 @area_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_required
@@ -27,12 +33,11 @@ def cadastrarArea():
 
             # Cadastrando a área
             resultado = cadastroDeArea(nomeArea)
-
-            return jsonify({'mensagem': ' Area cadastrada com sucesso!', 'resultado': resultado}), 201
-
+            flash('Area cadastrada com sucesso!', 'success')
+            return redirect(url_for('area_route.cadastrarArea'))
         except Exception as e:
-            return jsonify({'erro': f'Erro inesperado: {str(e)}'}), 500
-
+            flash(f'Erro ao cadastrar a Area: {str(e)}', 'danger')
+ 
     return render_template('/Areas/cadastrar.html')
 
 @area_route.route('/editar/<int:id>', methods=['GET'])

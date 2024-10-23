@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request, jsonify
+from flask import render_template, Blueprint, request, flash, redirect, url_for
 from App.routes.login import login_required
 from App.controller.pessoa import cadastrarPessoa, buscaPessoas
 
@@ -8,44 +8,47 @@ pessoa_route = Blueprint('pessoa_route', __name__, template_folder='templates/Fu
 @pessoa_route.route("/", methods=['GET', 'POST'])
 @login_required
 def listarFuncionario():
-    return render_template('/Funcionarios/listar.html', valores=buscaPessoas())
+    try:
+        valores = buscaPessoas()
+    except Exception as e:
+        flash(f'Erro ao listar pessoas: {str(e)}', 'danger')
+        valores = []
+
+    return render_template('Funcionarios/listar.html', valores=valores)
 
 @pessoa_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_required
 def cadastrarFuncionario():
     if request.method == 'POST':
+        if request.is_json:
+            dados = request.get_json()
+            print('Dados recebidos (JSON):', dados)  
+        else:
+            dados = request.form
+            print('Dados recebidos (Formulário):', dados)
+
+        # Captura os campos do formulário
+        nome = dados.get('nome')
+        cpfCnpj = dados.get('cpfCnpj')
+        dataNasc = dados.get('dataNasc')
+        telefone = dados.get('telefone')
+        email = dados.get('email')
+        cargo = dados.get('cargo')
+
+        # Modificando a data
+        dataNasc_modificada = modificarData(dataNasc)
+        if dataNasc_modificada is None:
+            flash('Data de nascimento inválida.', 'danger')
+            return render_template('Funcionarios/cadastrar.html')
+
         try:
-            # Verifica se a requisição é JSON ou Formulário
-            if request.is_json:
-                dados = request.get_json()
-                print('Dados recebidos (JSON):', dados)  
-            else:
-                dados = request.form
-                print('Dados recebidos (Formulário):', dados)
-
-            # Captura os campos do formulário
-            nome = dados.get('nome')
-            cpfCnpj = dados.get('cpfCnpj')
-            dataNasc = dados.get('dataNasc')
-            telefone = dados.get('telefone')
-            email = dados.get('email')
-            cargo = dados.get('cargo')
-
-            # Modificando a data
-            dataNasc_modificada = modificarData(dataNasc)
-            if dataNasc_modificada is None:
-                return jsonify({'erro': 'Data de nascimento inválida. Formato esperado: YYYY-MM-DD'}), 400
-
-            # Cadastrando a pessoa
-            resultado = cadastrarPessoa(nome, cpfCnpj, dataNasc_modificada, telefone, email, cargo)
-
-            return jsonify({'mensagem': 'Pessoa cadastrada com sucesso!', 'resultado': resultado}), 201
-
+            cadastrarPessoa(nome, cpfCnpj, dataNasc_modificada, telefone, email, cargo)
+            flash('Pessoa cadastrada com sucesso!', 'success')
+            return redirect(url_for('pessoa_route.cadastrarFuncionario'))
         except Exception as e:
-            return jsonify({'erro': f'Erro inesperado: {str(e)}'}), 500
+            flash(f'Erro ao cadastrar pessoa: {str(e)}', 'danger')
 
-    # Se o método for GET, renderiza o template do formulário
-    return render_template('/Funcionarios/cadastrar.html')
+    return render_template('Funcionarios/cadastrar.html')
 
 # Verifica se a data está no formato 'AAAA-MM-DD e Retorna a data no formato 'DD/MM/AAAA''
 def modificarData(dataNasc):
