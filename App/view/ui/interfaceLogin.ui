@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>572</width>
-    <height>393</height>
+    <width>679</width>
+    <height>701</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
+     <x>10</x>
+     <y>20</y>
      <width>571</width>
      <height>391</height>
     </rect>
@@ -284,6 +284,70 @@ font: 75 8pt &quot;MS Shell Dlg 2&quot;;</string>
     <property name="text">
      <string/>
     </property>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>40</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="btnMenuBar">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>31</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #0E46A3;
+    color: white; 
+    border: none; 
+    border-radius: 5px;
+    padding: 10px 20px; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
+
+QPushButton:hover {
+    background-color: #E55807;
+}
+
+QPushButton:pressed {
+    background-color: #1e6f9f; 
+    padding-left: 15px;
+    padding-top: 15px; 
+}
+
+QPushButton:disabled {
+    background-color: #bdc3c7;
+    color: #7f8c8d; 
+}
+
+QPushButton::menu-indicator {
+    image: none; 
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>icones/menu-regular-24 (1).png</normaloff>icones/menu-regular-24 (1).png</iconset>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

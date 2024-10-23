@@ -1,10 +1,11 @@
-from .conexao import ConexaoBD
+from App.model.conexao import ConexaoBD
 
 
 class Area:
+    __banco = ConexaoBD()
+    
     def __init__(self, nome) -> None:
         self.__nome = nome
-        self.__banco = ConexaoBD()
  
     def get_nome(self):
         return self.__nome
@@ -24,12 +25,13 @@ class Area:
             self.__banco.desconectar()
             return False
     
-    def consulta_areas(self):
+    @classmethod
+    def consulta_areas(cls):
         """Uma função que devolve todas as áreas"""
-        self.__banco.conectar()
+        cls.__banco.conectar()
         query = "SELECT * FROM area"
-        resultado = self.__banco.buscarTodos(query)
-        self.__banco.desconectar()
+        resultado = cls.__banco.buscarTodos(query)
+        cls.__banco.desconectar()
         return resultado
     
     def consulta_area_curso(self):

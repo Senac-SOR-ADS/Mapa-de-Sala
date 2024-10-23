@@ -1,4 +1,4 @@
-from conexao import ConexaoBD
+from App.model.conexao import ConexaoBD
  
 class Curso:
     __banco = ConexaoBD()
@@ -78,6 +78,14 @@ class Curso:
         query = "SELECT * FROM curso WHERE periodo = %s"
         params = [periodo]
         resultado = cls.__banco.buscarTodos(query, params)
+        cls.__banco.desconectar()
+        return resultado
+    
+    @classmethod
+    def retorna_nomeId_cursos(cls):
+        cls.__banco.conectar()
+        query = "SELECT idCurso, nome FROM curso"
+        resultado = cls.__banco.buscarTodos(query)
         cls.__banco.desconectar()
         return resultado
 
