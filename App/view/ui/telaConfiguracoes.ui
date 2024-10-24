@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
@@ -22,17 +25,29 @@
      <height>531</height>
     </rect>
    </property>
-   <widget class="QPushButton" name="btnMudarTema">
+   <widget class="QCheckBox" name="btnMudarTema">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>390</y>
-      <width>75</width>
-      <height>23</height>
+      <x>270</x>
+      <y>360</y>
+      <width>16</width>
+      <height>17</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="tabletTracking">
+     <bool>false</bool>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
     <property name="text">
-     <string>Mudar Tema</string>
+     <string/>
     </property>
    </widget>
   </widget>

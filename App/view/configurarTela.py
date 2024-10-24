@@ -10,11 +10,9 @@ class ConfigurarTela(QWidget):
         super().__init__()
         loadUi('App/view/ui/telaConfiguracoes.ui', self)
         
-        self.btnMudarTema.clicked.connect(self.mudarTema)
         # Instância do controlador dos temas
         self.temaController = TemaController()
         self.temaController.temaMudado.connect(self.funcaoTemaGlobal)
-
 
 
         self.temas = [
@@ -22,22 +20,39 @@ class ConfigurarTela(QWidget):
             'App/view/ui/css/temaEscuro/temaPrincipal.css'
         ]
         self.temaAtual = 0
+
+        # Configura o estado inicial do checkbox
+        self.btnMudarTema.setChecked(self.temaAtual == 1)
+        self.atualizarTema()
+
+        # Conecta o estado do checkbox à função de mudar tema
+        self.btnMudarTema.stateChanged.connect(self.mudarTema)
     
         
     def funcaoTemaGlobal(self, tema):
-        with open(tema, 'r') as f:
-            cssTema = f.read()
-        QApplication.instance().setStyleSheet(cssTema)
+        try:
+            with open(tema, 'r') as f:
+                cssTema = f.read()
+            # print(f'Conteúdo do CSS:\n{cssTema}')   
+            QApplication.instance().setStyleSheet(cssTema)
+            print(f'Tema aplicado')
+        except Exception as e:
+            print(f'Erro ao aplicar tema: {e}')
 
 
     def mudarTema(self):
+        #Atualiza o tema baseado no estado do checkbox
+        if self.btnMudarTema.isChecked():
+            self.temaAtual = 1  # Tema escuro
+        else:
+            self.temaAtual = 0
+        
         tema = self.temas[self.temaAtual]
-        self.temaAtual = (self.temaAtual + 1) % len(self.temas) 
         self.temaController.temaMudado.emit(tema)
 
-    def atualizarTema(self, tema):
-        with open(tema, 'r') as f:
-            self.setStyleSheet(f.read())
+    def atualizarTema(self):
+        tema = self.temas[self.temaAtual]
+        self.temaController.temaMudado.emit(tema)
         
 if __name__ == "__main__":
     import sys
