@@ -1,25 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}Gestão de Funcionario - Mapa de Sala{% endblock %}
+{% block title %}Gestão de Funcionários - Mapa de Funcionários{% endblock %}
 
 {% block content %}
-
-<div class="container">
-    <h1>Funcionario</h1>
-
-    <!-- Exibir mensagens de sucesso ou erro -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="my-4">
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
+<div class="container my-4">
+    <h1 class="text-center mb-4">Funcionários</h1>
     
     <table class="table table-striped table-responsive">
         <thead>
@@ -33,7 +18,7 @@
             <tr>
                 <td>{{ value }}</td>
                 <td>
-                    <button class="btn btn-warning" aria-label="Editar {{ value }}"> 
+                    <button class="btn btn-warning" aria-label="Editar {{ value }}" onclick="editEmployee('{{ value }}')"> 
                         <i class="fas fa-edit"></i> Editar
                     </button>
                     <button class="btn btn-danger" aria-label="Remover {{ value }}" onclick="confirmRemove('{{ value }}')"> 
@@ -47,9 +32,13 @@
 </div>
 
 <script>
-    function confirmRemove(Name) {
-        if (confirm(`Você tem certeza que deseja remover o Funcionario "${Name}"?`)) {
+    function confirmRemove(name) {
+        if (confirm(`Você tem certeza que deseja remover o funcionário "${name}"?`)) {
         }
+    }
+
+    function editEmployee(id) {
+        alert(`Função de edição para o funcionário ID ${id} ainda não implementada.`);
     }
 </script>
 {% endblock %}

@@ -3,51 +3,34 @@
 {% block title %}Gerenciamento de Equipamentos Ocupados - Mapa de Sala{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Gerenciamento de Equipamentos Ocupados</h1>
-
-    <!-- Exibir mensagens de sucesso ou erro -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="my-4">
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
+<div class="container my-4">
+    <h1 class="text-center my-4">Gerenciamento de Equipamentos Ocupados</h1>
 
     <form action="/ocupado" method="POST" class="form-ocupado">
         <fieldset>
-            <legend>Adicionar Ocupação de Equipamento</legend>
+            <legend class="mb-3">Adicionar Ocupação de Equipamento</legend>
 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label for="idReserva">Reserva:</label>
                 <select id="idReserva" name="idReserva" required class="form-control">
                     <option value="" disabled selected>Selecione a reserva</option>
                     <option value="1">Reserva 1</option>
                     <option value="2">Reserva 2</option>
                 </select>
+                <div class="invalid-feedback">Por favor, selecione uma reserva.</div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <label for="idEquipamento">Equipamento:</label>
                 <select id="idEquipamento" name="idEquipamento" required class="form-control">
                     <option value="" disabled selected>Selecione o equipamento</option>
                     <option value="1">Equipamento 1</option>
                     <option value="2">Equipamento 2</option>
                 </select>
+                <div class="invalid-feedback">Por favor, selecione um equipamento.</div>
             </div>
 
-            <div class="form-group">
-                <label for="qtdOcupado">Quantidade de Equipamentos Ocupados:</label>
-                <input type="number" id="qtdOcupado" name="qtdOcupado" required class="form-control" min="1">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Adicionar Ocupação</button>
+            <button type="submit" class="btn btn-primary w-100">Adicionar Ocupação</button>
         </fieldset>
     </form>
     <hr>

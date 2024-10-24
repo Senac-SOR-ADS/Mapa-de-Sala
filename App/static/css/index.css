@@ -1,165 +1,137 @@
-/* Estilo para fieldset e legend */
+/* Estilo geral do container */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* Estilo para o título */
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilo para fieldset */
 fieldset {
     border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 20px;
     margin-bottom: 20px;
-    background-color: #fff;
-    box-shadow: var(--box-shadow);
 }
 
+/* Estilo para legend */
 legend {
     font-weight: bold;
     padding: 0 10px;
-    font-size: 1.1em;
 }
 
-/* Estilos do header */
-header {
-    margin-bottom: 20px;
+/* Estilo para os formulários */
+.form-control {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px;
+    transition: border-color 0.3s;
 }
 
-/* Tabela estilizada */
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Estilo para botões */
+.btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+/* Estilo para mensagens de feedback */
+.invalid-feedback {
+    display: none;
+    color: var(--error-color);
+}
+
+input:invalid + .invalid-feedback {
+    display: block;
+}
+
+/* Estilo para a tabela */
 .table {
-    border-collapse: collapse;
     width: 100%;
-    margin: 20px 0;
-    background-color: #fff;
-    box-shadow: var(--box-shadow);
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Estilo do cabeçalho da tabela */
+.table thead {
+    background-color: #081b29;
+    color: #ffffff;
 }
 
 .table th,
 .table td {
     padding: 12px;
-    border: 1px solid var(--border-color);
     text-align: left;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .table th {
-    background-color: var(--primary-color);
-    color: #fff;
-    font-size: 1.1em;
+    font-weight: bold;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #f9f9f9;
+    background-color: #f2f2f2;
 }
 
 .table tbody tr:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: #e0e0e0;
 }
 
-/* Estilos adicionais */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+/* Estilo para a seção de erro 404 */
+.bg-light {
+    background-color: #f8f9fa !important;
 }
 
-/* Estilos dos campos do formulário */
-.form-area,
-.form-curso,
-.form-funcionario,
-.form-sala,
-.form-ocupado,
-.form-relatorio,
-.form-reserva,
-.form-equipamento {
-    display: flex;
-    flex-direction: column;
+.shadow-lg {
+    box-shadow: var(--box-shadow);
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-control,
-.form-select {
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 12px;
-    width: 100%;
-    transition: border-color 0.3s ease;
-    box-sizing: border-box;
-}
-
-.form-control:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-/* Estilos para os botões */
-.btn {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, opacity 0.3s;
-}
-
+/* Estilo para a seção do botão "Voltar" */
 .btn-warning {
-    background-color: var(--warning-color);
+    background-color: #ffc107;
     color: #212529;
 }
 
+.btn-warning:hover {
+    background-color: darken(#ffc107, 10%);
+}
+
+/* Estilo para botões de perigo */
 .btn-danger {
-    background-color: var(--danger-color);
+    background-color: var(--error-color);
     color: #fff;
 }
 
-.btn-primary {
-    background-color: var(--primary-color);
-    color: #fff;
+.btn-danger:hover {
+    background-color: darken(var(--error-color), 10%);
 }
 
-.btn:hover {
-    opacity: 0.8;
-}
-
-/* Estilos de texto */
-h1 {
-    color: var(--header-bg-color);
-    margin-bottom: 20px;
-    font-size: 2rem;
-    text-align: center;
-}
-
-h2,
-h3 {
-    color: var(--header-bg-color);
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-h1, h2, h3 {
-    color: var(--text-color);
-}
-
-h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-h2 {
-    font-size: 1.5rem;
-}
-
-h3 {
-    font-size: 1.25rem;
-}
-
-/* Responsividade para telas pequenas */
+/* Ajuste de Responsividade */
 @media (max-width: 768px) {
-    .table th,
-    .table td {
-        padding: 10px;
-        font-size: 0.9em;
-    }
-}
-
-@media (max-width: 480px) {
-    .form-control,
-    .form-select {
-        padding: 10px;
+    .content-box {
+        padding: 15px;
+        margin: 20px;
     }
 }

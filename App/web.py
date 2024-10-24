@@ -1,5 +1,5 @@
 from flask import Flask
-from App.routes.config import Config
+from App.routes.auth.config import Config
 from App.model.conexao import ConexaoBD
 from App.routes import register_routes, check_template_access
 from App.routes.logger_setup import logger

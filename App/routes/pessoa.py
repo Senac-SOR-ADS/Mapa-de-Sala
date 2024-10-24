@@ -1,23 +1,23 @@
 from flask import render_template, Blueprint, request, flash, redirect, url_for
-from App.routes.login import login_required
+from App.routes.auth.autenticar import login_auth
 from App.controller.pessoa import cadastrarPessoa, buscaPessoas
 
 # Definindo o blueprint
 pessoa_route = Blueprint('pessoa_route', __name__, template_folder='templates/Funcionarios/')
 
 @pessoa_route.route("/", methods=['GET', 'POST'])
-@login_required
+@login_auth
 def listarFuncionario():
     try:
         valores = buscaPessoas()
     except Exception as e:
-        flash(f'Erro ao listar pessoas: {str(e)}', 'danger')
+        flash(f'Erro ao listar funcionários: {str(e)}', 'danger')
         valores = []
 
     return render_template('Funcionarios/listar.html', valores=valores)
 
 @pessoa_route.route("/cadastrar", methods=['GET', 'POST'])
-@login_required
+@login_auth
 def cadastrarFuncionario():
     if request.method == 'POST':
         if request.is_json:
@@ -35,18 +35,23 @@ def cadastrarFuncionario():
         email = dados.get('email')
         cargo = dados.get('cargo')
 
+        # Validação dos campos obrigatórios
+        if not all([nome, cpfCnpj, dataNasc, telefone, email, cargo]):
+            flash('Todos os campos são obrigatórios.', 'danger')
+            return render_template('Funcionarios/cadastrar.html')
+
         # Modificando a data
         dataNasc_modificada = modificarData(dataNasc)
         if dataNasc_modificada is None:
-            flash('Data de nascimento inválida.', 'danger')
+            flash('Data de nascimento inválida. Por favor, insira no formato AAAA-MM-DD.', 'danger')
             return render_template('Funcionarios/cadastrar.html')
 
         try:
             cadastrarPessoa(nome, cpfCnpj, dataNasc_modificada, telefone, email, cargo)
-            flash('Pessoa cadastrada com sucesso!', 'success')
+            flash('Funcionário cadastrado com sucesso!', 'success')
             return redirect(url_for('pessoa_route.cadastrarFuncionario'))
         except Exception as e:
-            flash(f'Erro ao cadastrar pessoa: {str(e)}', 'danger')
+            flash(f'Erro ao cadastrar funcionário: {str(e)}', 'danger')
 
     return render_template('Funcionarios/cadastrar.html')
 
@@ -59,6 +64,6 @@ def modificarData(dataNasc):
     return None
 
 @pessoa_route.route('/editar/<int:id>', methods=['GET'])
-@login_required
+@login_auth
 def EditarFuncionario():
     return render_template('/Funcionarios/editar.html')

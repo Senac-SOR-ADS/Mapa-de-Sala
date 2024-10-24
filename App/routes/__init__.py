@@ -1,6 +1,7 @@
 from flask import Blueprint, Flask
+from .logger_setup import logger
+
 from .home import home_route
-from .login import login_route
 from .pessoa import pessoa_route
 from .reserva import reserva_route
 from .relatorios import relatorio_route
@@ -8,7 +9,8 @@ from .sala import sala_route
 from .area import area_route
 from .curso import curso_route
 from .equipamento import equipamento_route
-from .logger_setup import logger
+from .auth.login import login_route
+from .auth.logout import logout_route
 
 # Registra todos os blueprints na aplicação Flask.
 def register_routes(app: Flask) -> None:
@@ -17,6 +19,7 @@ def register_routes(app: Flask) -> None:
     blueprints = [
         (home_route, '/'),
         (login_route, '/login'),
+        (logout_route, '/logout'),
         (pessoa_route, '/funcionario'),
         (reserva_route, '/reserva'),
         (relatorio_route, '/relatorio'),       

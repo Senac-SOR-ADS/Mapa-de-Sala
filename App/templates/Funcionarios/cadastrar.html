@@ -6,20 +6,6 @@
 <div class="container my-4">
     <h1 class="text-center mb-4">Cadastro de Pessoas</h1>
 
-    <!-- Exibir mensagens de sucesso ou erro -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="my-4">
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
-
     <!-- Formulário para adicionar uma nova pessoa -->
     <form action="/funcionario/cadastrar" method="POST" class="form-funcionario">
         <fieldset>
@@ -57,13 +43,14 @@
 
             <div class="form-group mb-4">
                 <label for="cargo">Cargo:</label>
-                <select id="cargo" name="cargo" class="form-control">
+                <select id="cargo" name="cargo" class="form-control" required>
                     <option value="" disabled selected>Selecione o Cargo</option>
                     <option value="Comum">Comum</option>
                     <option value="Patrimonio">Patrimonio</option>
                     <option value="Apoio">Apoio</option>
                     <option value="Administrador">Administrador</option>
                 </select>
+                <div class="invalid-feedback">Por favor, selecione um cargo.</div>
             </div>
 
             <button type="submit" class="btn btn-primary w-100">Adicionar Pessoa</button>
@@ -72,9 +59,4 @@
     <hr>
 </div>
 
-<script>
-    document.getElementById('cargo').addEventListener('change', function() {
-        const customDateFields = document.getElementById('customDateFields');
-    });
-</script>
 {% endblock %}
