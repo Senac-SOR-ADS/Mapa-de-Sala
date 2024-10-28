@@ -14,6 +14,10 @@ def modificarData(dataNasc):
     data = dataNasc.split('/')
     return f'{data[2]}-{data[1]}-{data[0]}'
 
+def modificarData2(dataNasc):
+    data = dataNasc.split('-')
+    return f'{data[2]}/{data[1]}/{data[0]}'
+
 
 def buscaPessoas():
     todasPessoas = Pessoa.buscarPessoas()

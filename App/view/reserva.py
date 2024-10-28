@@ -6,7 +6,7 @@ from App.model.reserva import Reserva
 from App.controller.curso import listarCursos
 from App.controller.pessoa import buscaPessoas, modificarData
 from App.controller.sala import listarSala
-from App.controller.reserva import validarDia
+from App.controller.reserva import fazendoReserva, validarCadastro
 
 from App.model.login import Login
 
@@ -79,14 +79,9 @@ class ReservaInterface(QWidget):
         # if Reserva(idLogin, info).fazer_reserva():
         #     print('ok')
         # dados = self.getDados()
-        # DataInicio = dados["inicio"]
-        # DataFim = dados["fim"]
-        # diasValidos = (dados['seg'], dados['ter'], dados['qua'], dados['qui'], dados['sexta'], dados['sab'], False)
-        # validarDia(DataInicio, DataFim, diasValidos)
-        if Reserva(idLogin, info['idDocente'], info['idCurso'], info['idSala'], info['inicio'], info['inicioCurso'], info['fimCurso'], info['observações']).fazer_reserva():
-            print('reservado com sucesso')
-        else:
-            print('Erro ao reservar')
+        diasValidos = (info['seg'], info['ter'], info['qua'], info['qui'], info['sexta'], info['sab'], False)
+        if validarCadastro(idLogin, info, diasValidos):
+            fazendoReserva(idLogin, info, diasValidos)
         
 
     def popularJanela(self):
@@ -103,15 +98,6 @@ class ReservaInterface(QWidget):
     def comboBoxSala(self):
         self.salaReserva.addItems(self.sala.keys())
 
-    def testeDias(self):
-        diaInicio = self.getDados().values()
-        print(diaInicio)
-        validarDia()
-        
-        
-    
-
-        
     def validandoDados(self):
         self.feedbackReserva.setText('Reserva realizada.')
         QTimer.singleShot(2000, lambda: self.limparCampos(self.feedbackReserva))
