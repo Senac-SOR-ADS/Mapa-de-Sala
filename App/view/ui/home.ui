@@ -22,20 +22,6 @@
 	margin-bottom-left-radius: 10px;
 }
 
-#subMenuLateral QPushButton:hover {
-	background-color: #000;
-	color: #FFF;
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
-}
-
-#subMenuLateral QPushButton:focus {
-	background-color: #000;
-	color: #FFF;
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
-}
-
 #btnFecharPagina:hover {
 	background-color: #E81123;
 	color: #FFF;
