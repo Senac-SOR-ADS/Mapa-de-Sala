@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QWidget, QStackedWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt, pyqtSlot
+from PyQt5.QtGui import QIcon
 from .cadastroPessoas import cadastroPessoas
 from .reserva import ReservaInterface
 from .cadastrarArea import CadastrarArea
@@ -52,13 +53,23 @@ class HomePrincipal(QMainWindow):
         self.btnMinimizar.clicked.connect(self.showMinimized)
         self.btnFecharPagina.clicked.connect(self.close)
         self.btnTelaCheia.clicked.connect(self.windowConnect)
-
+            
     # Faz o botão de Tela Cheia ao ser executado, retornar ao normal
     def windowConnect(self):
         if self.isMaximized():
             self.showNormal()
+            self.btnTelaCheia.setStyleSheet("""
+                                       #btnTelaCheia {
+                                           icon: url("App/view/ui/icones/square-rounded-regular-24.png"); 
+                                        }"""
+                                    )
         else:
             self.showMaximized()
+            self.btnTelaCheia.setStyleSheet("""
+                                       #btnTelaCheia {
+                                           icon: url("App/view/ui/icones/select_window_2_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"); 
+                                        }"""
+                                    )
 
     def inserirTelas(self, telas):
         for interface in telas:
@@ -100,12 +111,23 @@ class HomePrincipal(QMainWindow):
     def on_btnMenu_clicked(self):
         if (self.subMenuLateral.isVisible()):
             self.subMenuLateral.hide()
+            self.btnMenu.setStyleSheet("""
+                                       #btnMenu {
+                                           icon: url("App/view/ui/icones/menu-regular-24 (1).png"); 
+                                        }"""
+                                    )
         else:
             self.subMenuLateral.show()
+            self.btnMenu.setStyleSheet("""
+                                       #btnMenu {
+                                           icon: url("App/view/ui/icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"); 
+                                        }"""
+                                    )
     
     @pyqtSlot()
     def on_btnFecharMenuQuebrado_clicked(self):
         self.subMenuQuebrado.hide()
+        
         
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication

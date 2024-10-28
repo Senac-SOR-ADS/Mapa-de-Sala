@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1260</width>
-    <height>742</height>
+    <height>736</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,17 +22,46 @@
 	margin-bottom-left-radius: 10px;
 }
 
+#subMenuLateral QPushButton:hover {
+	background-color: #000;
+	color: #FFF;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+#subMenuLateral QPushButton:focus {
+	background-color: #000;
+	color: #FFF;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+#btnFecharPagina:hover {
+	background-color: #E81123;
+	color: #FFF;
+	icon: url(&quot;App/view/ui/icones/closeBranco.png&quot;);
+}
+
+#btnTelaCheia:hover {
+	background-color: #ccc;
+	color: #FFF;
+}
+
+#btnMinimizar:hover {
+	background-color: #ccc;
+	color: #FFF;
+}
+
+QPushButton {
+	border: none;
+}
+
 #MenuLateral #subMenuLateral QPushButton {
 	margin: 0;
 	padding: 0;
 	background: none;
 	background-color: transparent;
 	border: none;
-}
-
-
-#btnsJanela QPushButton {
-	margin-left: 5px;
 }
 
 #btnMenu, #btnSair {
@@ -79,6 +108,21 @@
        </sizepolicy>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_6">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QWidget" name="cabecalho" native="true">
          <property name="sizePolicy">
@@ -89,13 +133,13 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <property name="leftMargin">
-           <number>19</number>
+           <number>0</number>
           </property>
           <property name="topMargin">
            <number>0</number>
           </property>
           <property name="rightMargin">
-           <number>12</number>
+           <number>0</number>
           </property>
           <property name="bottomMargin">
            <number>0</number>
@@ -219,6 +263,9 @@
              <enum>QFrame::Raised</enum>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <property name="spacing">
+              <number>6</number>
+             </property>
              <property name="leftMargin">
               <number>0</number>
              </property>
@@ -235,8 +282,8 @@
               <widget class="QPushButton" name="btnMinimizar">
                <property name="minimumSize">
                 <size>
-                 <width>20</width>
-                 <height>20</height>
+                 <width>50</width>
+                 <height>40</height>
                 </size>
                </property>
                <property name="cursor">
@@ -261,8 +308,8 @@
               <widget class="QPushButton" name="btnTelaCheia">
                <property name="minimumSize">
                 <size>
-                 <width>20</width>
-                 <height>20</height>
+                 <width>50</width>
+                 <height>40</height>
                 </size>
                </property>
                <property name="cursor">
@@ -287,8 +334,8 @@
               <widget class="QPushButton" name="btnFecharPagina">
                <property name="minimumSize">
                 <size>
-                 <width>20</width>
-                 <height>20</height>
+                 <width>50</width>
+                 <height>40</height>
                 </size>
                </property>
                <property name="sizeIncrement">
@@ -296,6 +343,11 @@
                  <width>100</width>
                  <height>0</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>8</pointsize>
+                </font>
                </property>
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
@@ -311,7 +363,8 @@ padding: 10px;
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                 <normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>
+                 <normalon>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normalon>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
