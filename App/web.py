@@ -1,21 +1,22 @@
 from flask import Flask
-from App.routes.config import Config
+from App.routes.auth.config import Config
 from App.model.conexao import ConexaoBD
-from App.routes import register_routes, check_template_access
+from App.routes.register import register_routes, check_template_access
 from App.routes.logger_setup import logger
 from socket import gethostbyname, gethostname
 import sys
 
+# Código de saída para falha na conexão
+EXIT_CODE_CONNECTION_ERROR = 1
 
-# Inicializa a aplicação Flask
+# Inicializa a aplicação Flask com as configurações definidas
 app = Flask(__name__)
 app.config.from_object(Config)
 
-# Verifica o acesso ao template
-
+# Verifica se o template específico está acessível
 check_template_access(app)
 
-# Registra as rotas da aplicação
+# Registra todas as rotas configuradas na aplicação
 register_routes(app)
 
 # Conecta ao banco de dados

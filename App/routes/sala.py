@@ -1,22 +1,22 @@
 from flask import render_template, Blueprint, request, flash, redirect, url_for
-from App.routes.login import login_required
+from App.routes.auth.autenticar import login_auth
 from App.controller import sala
 
 # Definindo o blueprint
 sala_route = Blueprint('sala_route', __name__, template_folder='templates/Salas/')
 
 @sala_route.route("/", methods=['GET', 'POST'])
-@login_required
+@login_auth
 def listarSalas():
     try:
         valores = sala.listarSala()
     except Exception as e:
-        flash(f'Erro ao listar Salas: {str(e)}', 'danger')
+        flash(f'Erro ao listar salas: {str(e)}', 'danger')
         valores = []
     return render_template('/Salas/listar.html', valores=valores)
 
 @sala_route.route("/cadastrar", methods=['GET', 'POST'])
-@login_required
+@login_auth
 def cadastrarSala():
     if request.method == 'POST':
         try:
@@ -37,19 +37,19 @@ def cadastrarSala():
 
             # Validação dos campos
             if not all([nome, tipo, predio, capacidade]):
-                flash('Todos os campos são obrigatórios.', 'danger')
-                return
+                flash('Todos os campos (nome, tipo, prédio e capacidade) são obrigatórios.', 'danger')
+                return render_template('/Salas/cadastrar.html')
 
-            # Cadastrando o curso
+            # Cadastrando a sala
             resultado = sala.cadastrarSala(nome, tipo, predio, equipamento, capacidade, feedback)
             flash('Sala cadastrada com sucesso!', 'success')
             return redirect(url_for('sala_route.cadastrarSala'))
         except Exception as e:
-            flash(f'Erro ao cadastrar a Sala: {str(e)}', 'danger')
+            flash(f'Erro ao cadastrar a sala: {str(e)}', 'danger')
  
     return render_template('/Salas/cadastrar.html')
 
 @sala_route.route('/editar/<int:id>', methods=['GET'])
-@login_required
+@login_auth
 def editarSala():
     return render_template('/Salas/editar.html')

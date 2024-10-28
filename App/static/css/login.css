@@ -3,15 +3,16 @@
     --primary-color: #3498db;
     --primary-color-hover: #2980b9;
     --text-color: #333;
-    --form-bg-color: #f8f8f8;
-    --form-border-color: #ccc;
+    --form-bg-color: #ffffff;
+    --form-border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Reset Básico */
 body, h1, h2, h3, p, ul {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Estilo do Body */
@@ -20,28 +21,26 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: hsla(0, 1%, 42%, 0.288);
+    background-color: hsla(0, 1%, 95%, 1);
     color: var(--text-color);
 }
 
 /* Contêiner Principal */
 .container {
     width: 90%;
-    max-width: 500px;
+    max-width: 400px;
     padding: 20px;
     background-color: var(--form-bg-color);
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Formulário */
 .form-container {
-    max-width: 450px;
-    margin: 20px auto;
-    padding: 25px;
-    background: var(--form-bg-color);
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 /* Título do Formulário */
@@ -54,12 +53,13 @@ body {
 
 /* Grupos de Formulário */
 .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 label {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     font-weight: bold;
     color: var(--text-color);
 }
@@ -68,13 +68,15 @@ label {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid var(--form-border-color);
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1rem;
     outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-control:focus {
     border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
 }
 
 /* Botões */
@@ -82,21 +84,57 @@ label {
     background-color: var(--primary-color);
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 12px 20px;
     font-size: 1rem;
     cursor: pointer;
     width: 100%;
     margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary:hover {
     background-color: var(--primary-color-hover);
+    transform: scale(1.05);
+}
+
+/* Mensagens de Flash */
+.alert-container {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.alert {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.alert-info {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
 }
 
 /* Responsividade para Dispositivos Móveis */
 @media (max-width: 480px) {
-    .form-container {
+    .container {
         padding: 15px;
         margin: 10px;
     }
@@ -112,5 +150,9 @@ label {
     .btn-primary {
         font-size: 0.9rem;
         padding: 10px 18px;
+    }
+
+    .alert {
+        font-size: 0.85rem;
     }
 }

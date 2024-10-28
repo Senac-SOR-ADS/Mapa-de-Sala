@@ -3,33 +3,56 @@
 {% block title %}Gestão de Salas - Editar Sala{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Editar Sala</h1>
-
-    <!-- Exibir mensagens de sucesso ou erro -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="my-4">
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
+<div class="container my-4">
+    <h1 class="text-center mb-4">Editar Sala</h1>
 
     <form action="/sala/editar/{{ sala.id }}" method="POST" class="form-sala">
         <fieldset>
-            <legend>Editar Sala</legend>
+            <legend class="mb-3">Edição de Sala</legend>
+            <input type="hidden" id="id" name="id" value="{{ sala.id }}" />
 
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="nome">Nome da Sala:</label>
-                <input type="text" id="nome" name="nome" value="{{ sala.nome }}" required maxlength="100" class="form-control">
+                <input type="text" id="nome" name="nome" value="{{ sala.nome }}" required maxlength="100" class="form-control" aria-label="Nome da Sala">
+                <div class="invalid-feedback">Por favor, preencha o nome da sala.</div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Editar Sala</button>
+            <div class="form-group mb-3">
+                <label for="tipo">Tipo de Sala:</label>
+                <select id="tipo" name="tipo" class="form-control" required>
+                    <option value="Comum" {% if sala.tipo == 'Comum' %}selected{% endif %}>Comum</option>
+                    <option value="Laboratorio" {% if sala.tipo == 'Laboratorio' %}selected{% endif %}>Laboratório</option>
+                    <option value="Biblioteca" {% if sala.tipo == 'Biblioteca' %}selected{% endif %}>Biblioteca</option>
+                </select>
+                <div class="invalid-feedback">Por favor, selecione o tipo de sala.</div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="predio">Prédio:</label>
+                <select id="predio" name="predio" class="form-control" required>
+                    <option value="Prédio 1" {% if sala.predio == 'Prédio 1' %}selected{% endif %}>Prédio 1</option>
+                    <option value="Prédio 2" {% if sala.predio == 'Prédio 2' %}selected{% endif %}>Prédio 2</option>
+                </select>
+                <div class="invalid-feedback">Por favor, selecione o prédio.</div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="equipamento">Equipamento:</label>
+                <input type="text" id="equipamento" name="equipamento" value="{{ sala.equipamento }}" maxlength="100" class="form-control" aria-label="Equipamento" placeholder="Digite o equipamento utilizado">
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="capacidade">Capacidade:</label>
+                <input type="number" id="capacidade" name="capacidade" value="{{ sala.capacidade }}" required min="1" class="form-control" aria-label="Capacidade">
+                <div class="invalid-feedback">Por favor, preencha a capacidade de alunos.</div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="feedback">Observações:</label>
+                <input type="text" id="feedback" name="feedback" value="{{ sala.feedback }}" maxlength="100" class="form-control" aria-label="Observações" placeholder="Insira suas observações aqui">
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Editar Sala</button>
         </fieldset>
     </form>
     <hr>

@@ -1,165 +1,150 @@
-/* Estilo para fieldset e legend */
+/* =================== Estilo Geral do Container =================== */
+.container.my-4 {
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px 15px; 
+    background-color: var(--bg-color); /* Cinza claro */
+    border-radius: 10px;
+    box-shadow: var(--box-shadow); 
+    box-sizing: border-box; 
+}
+
+/* =================== Estilo para o Título =================== */
+h1 {
+    font-size: 2.5rem; 
+    margin-bottom: 20px; 
+    text-align: center; 
+    color: var(--primary-color); /* Azul suave */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* =================== Estilo para Fieldset =================== */
 fieldset {
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    padding: 20px;
+    border: 1px solid var(--border-color);  /* Borda padrão */
+    border-radius: 10px; 
+    padding: 20px; 
     margin-bottom: 20px;
-    background-color: #fff;
-    box-shadow: var(--box-shadow);
+    background-color: var(--light-bg-color); /* Fundo branco */
 }
 
+/* =================== Estilo para Legend =================== */
 legend {
+    font-weight: bold; 
+    padding: 0 12px; 
+    border-radius: 4px; 
+    background-color: var(--header-bg-color); /* Branco para o cabeçalho */
+    box-shadow: var(--box-shadow); 
+}
+
+/* =================== Estilo para Formulários =================== */
+.form-area,
+.form-curso,
+.form-equipamento,
+.form-relatorio,
+.form-ocupado,
+.form-reserva,
+.form-sala,
+.form-funcionario {
+    padding: 20px; 
+    border-radius: 8px; 
+    background-color: var(--light-bg-color); /* Branco para seções claras */
+    box-shadow: var(--box-shadow); /* Sombra leve */
+}
+
+/* Estilo comum para controles de formulário */
+.form-control {
+    border: 1px solid var(--border-color); /* Borda padrão */
+    border-radius: 0.25rem; 
+    padding: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Foco nos controles de formulário */
+.form-control:focus {
+    border-color: var(--secondary-color); /* Azul escuro */
+    box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
+}
+
+/* =================== Estilo para Botões =================== */
+.btn {
+    color: #fff; 
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 4px; 
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    cursor: pointer; 
     font-weight: bold;
-    padding: 0 10px;
-    font-size: 1.1em;
 }
 
-/* Estilos do header */
-header {
-    margin-bottom: 20px;
+/* Estilos para botões principais */
+.btn-primary {
+    background-color: var(--primary-color); /* Azul suave */
 }
 
-/* Tabela estilizada */
+.btn-primary:hover {
+    background-color: var(--secondary-color); /* Azul escuro */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para botões de aviso */
+.btn-warning {
+    background-color: var(--warning-color); /* Amarelo para alertas */
+    color: #212529; /* Cinza escuro */
+}
+
+.btn-warning:hover {
+    background-color: rgba(255, 193, 7, 0.9); /* Amarelo escuro ao passar o mouse */
+}
+
+/* Estilos para botões de erro */
+.btn-danger {
+    background-color: var(--error-color); /* Vermelho para erros */
+}
+
+.btn-danger:hover {
+    background-color: rgba(220, 53, 69, 0.9); /* Vermelho escuro ao passar o mouse */
+}
+
+/* =================== Estilo para Mensagens de Feedback =================== */
+.invalid-feedback {
+    display: none; 
+    color: var(--error-color); 
+}
+
+input:invalid + .invalid-feedback {
+    display: block; 
+}
+
+/* =================== Estilo para a Tabela =================== */
 .table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 20px 0;
-    background-color: #fff;
-    box-shadow: var(--box-shadow);
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+    border: 2px solid var(--border-color); /* Cinza claro para bordas */
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+
+/* =================== Estilo do Cabeçalho da Tabela =================== */
+.table thead {
+    background-color: var(--secondary-color); /* Azul escuro */
+    color: white; 
+    text-transform: uppercase;
 }
 
 .table th,
 .table td {
-    padding: 12px;
-    border: 1px solid var(--border-color);
-    text-align: left;
+    padding: 15px; 
+    text-align: left; 
+    border-bottom: 1px solid var(--border-color); /* Cinza claro para bordas */
 }
 
+/* Estilos para células da tabela */
 .table th {
-    background-color: var(--primary-color);
-    color: #fff;
-    font-size: 1.1em;
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #f9f9f9;
-}
-
-.table tbody tr:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-/* Estilos adicionais */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Estilos dos campos do formulário */
-.form-area,
-.form-curso,
-.form-funcionario,
-.form-sala,
-.form-ocupado,
-.form-relatorio,
-.form-reserva,
-.form-equipamento {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-control,
-.form-select {
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 12px;
-    width: 100%;
-    transition: border-color 0.3s ease;
-    box-sizing: border-box;
-}
-
-.form-control:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-/* Estilos para os botões */
-.btn {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, opacity 0.3s;
-}
-
-.btn-warning {
-    background-color: var(--warning-color);
-    color: #212529;
-}
-
-.btn-danger {
-    background-color: var(--danger-color);
-    color: #fff;
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    color: #fff;
-}
-
-.btn:hover {
-    opacity: 0.8;
-}
-
-/* Estilos de texto */
-h1 {
-    color: var(--header-bg-color);
-    margin-bottom: 20px;
-    font-size: 2rem;
-    text-align: center;
-}
-
-h2,
-h3 {
-    color: var(--header-bg-color);
     font-weight: bold;
-    margin-top: 10px;
 }
 
-h1, h2, h3 {
-    color: var(--text-color);
-}
-
-h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-h2 {
-    font-size: 1.5rem;
-}
-
-h3 {
-    font-size: 1.25rem;
-}
-
-/* Responsividade para telas pequenas */
-@media (max-width: 768px) {
-    .table th,
-    .table td {
-        padding: 10px;
-        font-size: 0.9em;
-    }
-}
-
-@media (max-width: 480px) {
-    .form-control,
-    .form-select {
-        padding: 10px;
-    }
+.table tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
 }
