@@ -69,6 +69,7 @@ class Reserva:
             
     
     def validar_dia_livre(self):
+        """Verifica se já existe uma reserva na data que foi requisitada"""
         self.__banco.conectar()
         query_verifica = "SELECT * FROM reserva WHERE idSala = %s AND dia = %s AND ((hrInicio < %s AND hrFim > %s) OR (hrInicio >= %s AND hrFim <= %s))"
         parametros_verifica = (self.__idSala, self.__dia, self.__horaFim, self.__horaInicio, self.__horaInicio, self.__horaFim)

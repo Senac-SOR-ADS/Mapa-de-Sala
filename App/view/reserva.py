@@ -43,8 +43,8 @@ class ReservaInterface(QWidget):
         idCurso = self.curso[nomeCurso]
         
         equipamentos = self.equipamentosReserva.text().strip() 
-        inicio = modificarData(self.diaInicio.text().strip() )
-        fim = modificarData(self.diaFim.text().strip() )
+        diaInicio = modificarData(self.diaInicio.text().strip() )
+        diaFim = modificarData(self.diaFim.text().strip() )
         observacao = self.observacaoReserva.text().strip() 
         cursoInicio = self.inicioCurso.time().toString('HH:mm')
         cursoFim = self.fimCurso.time().toString('HH:mm')
@@ -59,8 +59,8 @@ class ReservaInterface(QWidget):
                  "idSala":idSala, 
                  "idCurso":idCurso,
                  "equipamentos":equipamentos,
-                 "inicio":inicio,
-                 "fim":fim,
+                 "inicio":diaInicio,
+                 "fim":diaFim,
                  "observações":observacao,
                  "inicioCurso":cursoInicio,
                  "fimCurso":cursoFim,
@@ -76,9 +76,6 @@ class ReservaInterface(QWidget):
     def on_btnFazerReserva_clicked(self):
         info = self.getDados()
         idLogin = 8
-        # if Reserva(idLogin, info).fazer_reserva():
-        #     print('ok')
-        # dados = self.getDados()
         diasValidos = (info['seg'], info['ter'], info['qua'], info['qui'], info['sexta'], info['sab'], False)
         if validarCadastro(idLogin, info, diasValidos):
             fazendoReserva(idLogin, info, diasValidos)
