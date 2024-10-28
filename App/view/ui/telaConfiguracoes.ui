@@ -13,6 +13,18 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QCheckBox::indicator {
+                width: 30px;
+                height: 30px;
+            }
+            QCheckBox::indicator:unchecked {
+                image: url(&quot;icones/toggleOff.png&quot;);
+            }
+            QCheckBox::indicator:checked {
+                image: url(&quot;icones/toggleOn.png&quot;);
+            }</string>
+  </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
