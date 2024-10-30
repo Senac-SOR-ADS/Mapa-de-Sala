@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Áreas - Mapa de Sala{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <h1 class="text-center mb-4">Cadastro de Áreas</h1>
+
+
+    <!-- Formulário para adicionar uma nova área -->
+    <form action="/area/cadastrar" method="POST" class="form-area">
+        <fieldset>
+            <legend class="mb-3">Adicionar Nova Área</legend>
+
+            <div class="form-group mb-3">
+                <label for="nomeArea">Nome da Área:</label>
+                <input type="text" id="nomeArea" name="nomeArea" required maxlength="50" class="form-control" aria-label="Nome da Área">
+                <div class="invalid-feedback">Por favor, preencha o nome da área.</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Adicionar Área</button>
+        </fieldset>
+    </form>
+    <hr>
+</div>
+{% endblock %}

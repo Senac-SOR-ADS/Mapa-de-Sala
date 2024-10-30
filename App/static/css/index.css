@@ -1,0 +1,153 @@
+/* =================== Estilo Geral do Container =================== */
+.container.my-4 {
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px 15px; 
+    background-color: var(--bg-color); /* Cinza claro */
+    border-radius: 10px;
+    box-shadow: var(--box-shadow); 
+    box-sizing: border-box; 
+}
+
+/* =================== Estilo para o Título =================== */
+h1 {
+    font-size: 2.5rem; 
+    margin-bottom: 20px; 
+    text-align: center; 
+    color: var(--primary-color); /* Azul suave */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* =================== Estilo para Fieldset =================== */
+fieldset {
+    border: 1px solid var(--border-color);  /* Borda padrão */
+    border-radius: 10px; 
+    padding: 20px; 
+    margin-bottom: 20px;
+    background-color: var(--light-bg-color); /* Fundo branco */
+}
+
+/* =================== Estilo para Legend =================== */
+legend {
+    font-weight: bold; 
+    padding: 0 12px; 
+    border-radius: 4px; 
+    background-color: var(--header-bg-color); /* Branco para o cabeçalho */
+    box-shadow: var(--box-shadow); 
+}
+
+/* =================== Estilo para Formulários =================== */
+.form-area,
+.form-curso,
+.form-equipamento,
+.form-relatorio,
+.form-ocupado,
+.form-reserva,
+.form-sala,
+.form-funcionario {
+    padding: 20px; 
+    border-radius: 8px; 
+    background-color: var(--light-bg-color); /* Branco para seções claras */
+    box-shadow: var(--box-shadow); /* Sombra leve */
+}
+
+/* Estilo comum para controles de formulário */
+.form-control {
+    border: 1px solid var(--border-color); /* Borda padrão */
+    border-radius: 0.25rem; 
+    padding: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Foco nos controles de formulário */
+.form-control:focus {
+    border-color: var(--secondary-color); /* Azul escuro */
+    box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
+}
+
+/* =================== Estilo para Botões =================== */
+.btn {
+    color: #fff; 
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 4px; 
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    cursor: pointer; 
+    font-weight: bold;
+}
+
+/* Estilos para botões principais */
+.btn-primary {
+    background-color: var(--primary-color); /* Azul suave */
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color); /* Azul escuro */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para botões de aviso */
+.btn-warning {
+    background-color: var(--warning-color); /* Amarelo para alertas */
+    color: #212529; /* Cinza escuro */
+}
+
+.btn-warning:hover {
+    background-color: rgba(255, 193, 7, 0.9); /* Amarelo escuro ao passar o mouse */
+}
+
+/* Estilos para botões de erro */
+.btn-danger {
+    background-color: var(--error-color); /* Vermelho para erros */
+}
+
+.btn-danger:hover {
+    background-color: rgba(220, 53, 69, 0.9); /* Vermelho escuro ao passar o mouse */
+}
+
+/* =================== Estilo para Mensagens de Feedback =================== */
+/* Esconde feedback de erro por padrão */
+.invalid-feedback {
+    display: none;
+    color: var(--error-color);
+}
+
+/* Exibe feedback de erro apenas quando o formulário tem a classe `was-validated` */
+.was-validated input:invalid + .invalid-feedback {
+    display: block;
+}
+
+/* =================== Estilo para a Tabela =================== */
+.table {
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+    border: 2px solid var(--border-color); /* Cinza claro para bordas */
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+
+/* =================== Estilo do Cabeçalho da Tabela =================== */
+.table thead {
+    background-color: var(--secondary-color); /* Azul escuro */
+    color: white; 
+    text-transform: uppercase;
+}
+
+.table th,
+.table td {
+    padding: 15px; 
+    text-align: left; 
+    border-bottom: 1px solid var(--border-color); /* Cinza claro para bordas */
+}
+
+/* Estilos para células da tabela */
+.table th {
+    font-weight: bold;
+}
+
+.table tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+

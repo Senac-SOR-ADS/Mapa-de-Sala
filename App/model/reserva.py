@@ -57,27 +57,19 @@ class Reserva:
 
     def fazer_reserva(self):
         """Uma função para você tentar fazer uma reserva, caso já exista uma reserva no mesmo horário, dia e sala, ele alerta você. Caso contrário ele faz a reserva"""
-        if self.validar_dia_livre():
-            self.__banco.conectar()
+        self.__banco.conectar()
+        query_verifica = "SELECT * FROM reserva WHERE idSala = %s AND dia = %s AND ((hrInicio < %s AND hrFim > %s) OR (hrInicio >= %s AND hrFim <= %s))"
+        parametros_verifica = (self.__idSala, self.__dia, self.__horaFim, self.__horaInicio, self.__horaInicio, self.__horaFim)
+        resultado = self.__banco.buscarTodos(query_verifica, parametros_verifica)
+        if resultado != []:
+            print("Dentro desse intervalo já existe uma reserva")
+            return False
+        else:
             query = "INSERT INTO reserva (idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, observacao) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
             parametros = (self.__idLogin, self.__idPessoa, self.__idCurso, self.__idSala, self.__dia, self.__horaInicio, self.__horaFim, self.__observacao)
             self.__banco.alterarDados(query, parametros)
             self.__banco.desconectar()
             return True
-        else:
-            return False
-            
-    
-    def validar_dia_livre(self):
-        """Verifica se já existe uma reserva na data que foi requisitada"""
-        self.__banco.conectar()
-        query_verifica = "SELECT * FROM reserva WHERE idSala = %s AND dia = %s AND ((hrInicio < %s AND hrFim > %s) OR (hrInicio >= %s AND hrFim <= %s))"
-        parametros_verifica = (self.__idSala, self.__dia, self.__horaFim, self.__horaInicio, self.__horaInicio, self.__horaFim)
-        resultado = self.__banco.buscarTodos(query_verifica, parametros_verifica)
-        self.__banco.desconectar()
-        if resultado:
-            return False
-        return True
 
     def retornar_reserva(self):
         """Uma função para devolver os dados da tabela de reserva do banco"""

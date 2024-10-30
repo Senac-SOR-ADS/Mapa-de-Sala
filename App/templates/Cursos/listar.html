@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Cursos - Mapa de Sala{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <h1 class="text-center mb-4">Cursos</h1>
+    
+    <fieldset>
+        <legend class="mb-3">Lista de Cursos</legend>
+        <table class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for value in valores %}
+                <tr>
+                    <td>{{ value }}</td>
+                    <td>
+                        <button class="btn btn-warning" aria-label="Editar {{ value }}" onclick="window.location.href='/curso/editar/{{ value }}'"> 
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn btn-danger" aria-label="Remover {{ value }}" onclick="confirmRemove('{{ value }}')"> 
+                            <i class="fas fa-trash"></i> Remover
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </fieldset>
+</div>
+
+<script>
+    function confirmRemove(name) {
+        if (confirm(`Você tem certeza que deseja remover o Curso "${name}"?`)) {
+            // Implementar a lógica de remoção aqui.
+        }
+    }
+</script>
+{% endblock %}

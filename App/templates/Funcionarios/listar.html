@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Funcionários - Mapa de Funcionários{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <h1 class="text-center mb-4">Funcionários</h1>
+    
+    <fieldset>
+        <legend class="mb-3">Lista de Funcionários</legend>
+        <table class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for value in valores %}
+                <tr>
+                    <td>{{ value }}</td>
+                    <td>
+                        <button class="btn btn-warning" aria-label="Editar {{ value }}" onclick="editEmployee('{{ value }}')"> 
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn btn-danger" aria-label="Remover {{ value }}" onclick="confirmRemove('{{ value }}')"> 
+                            <i class="fas fa-trash"></i> Remover
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </fieldset>
+</div>
+
+<script>
+    function confirmRemove(name) {
+        if (confirm(`Você tem certeza que deseja remover o funcionário "${name}"?`)) {
+            // Implementar a lógica de remoção aqui.
+        }
+    }
+
+    function editEmployee(id) {
+        alert(`Função de edição para o funcionário ID ${id} ainda não implementada.`);
+        // Aqui você pode adicionar a lógica para redirecionar para a página de edição
+        // window.location.href = `/funcionario/editar/${id}`;
+    }
+</script>
+{% endblock %}

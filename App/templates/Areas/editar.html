@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Áreas - Editar Área{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <h1 class="text-center mb-4">Editar Área</h1>
+
+    <form action="/area/editar/{{ area.id }}" method="POST" class="form-area">
+        <fieldset>
+            <legend class="mb-3">Edição de Área</legend>
+
+            <div class="form-group mb-3">
+                <label for="nomeArea">Nome da Área:</label>
+                <input type="text" id="nomeArea" name="nomeArea" value="{{ area.nomeArea }}" required maxlength="50" class="form-control" aria-label="Nome da Área">
+                <div class="invalid-feedback">Por favor, preencha o nome da área.</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Editar Área</button>
+        </fieldset>
+    </form>
+    <hr>
+</div>
+{% endblock %}

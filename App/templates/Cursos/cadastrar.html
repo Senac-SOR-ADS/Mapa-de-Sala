@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Cursos - Cadastro{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <h1 class="text-center mb-4">Cadastro de Cursos</h1>
+
+    <!-- Formulário para adicionar um novo curso -->
+    <form action="/curso/cadastrar" method="POST" class="form-curso">
+        <fieldset>
+            <legend class="mb-3">Adicionar Novo Curso</legend>
+
+            <div class="form-group mb-3">
+                <label for="nome">Nome do Curso:</label>
+                <input type="text" id="nome" name="nome" required maxlength="100" class="form-control" aria-label="Nome do Curso">
+                <div class="invalid-feedback">Por favor, preencha o nome do curso.</div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="oferta">Oferta:</label>
+                <input type="text" id="oferta" name="oferta" required maxlength="50" class="form-control" aria-label="Oferta">
+                <div class="invalid-feedback">Por favor, preencha a oferta.</div>
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="periodo">Período do Dia:</label>
+                <select id="periodo" name="periodo" class="form-control" required>
+                    <option value="" disabled selected>Selecione o Período do Dia</option>
+                    <option value="manha">Manhã</option>
+                    <option value="tarde">Tarde</option>
+                    <option value="noite">Noite</option>
+                </select>
+                <div class="invalid-feedback">Por favor, selecione o período do dia.</div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="carga">Carga Horária Total:</label>
+                <input type="number" id="carga" name="carga" required min="1" class="form-control" aria-label="Carga Horária Total">
+                <div class="invalid-feedback">Por favor, preencha a carga horária total.</div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="horas">Horas do Curso:</label>
+                <input type="time" id="horas" name="horas" class="form-control" aria-label="Horas Diárias do Curso" required>
+                <div class="invalid-feedback">Por favor, preencha a carga horária diária do curso.</div>
+            </div>            
+
+            <div class="form-group mb-3">
+                <label for="alunos">Alunos:</label>
+                <input type="number" id="alunos" name="alunos" required min="1" class="form-control" aria-label="Alunos">
+                <div class="invalid-feedback">Por favor, preencha o número de alunos.</div>
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="area">Área do Curso:</label>
+                <select id="area" name="area" class="form-control" required>
+                    <option value="" disabled selected>Selecione a Área do Curso</option>
+                    {% for value in valores %}
+                        <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">Por favor, selecione a área do curso.</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Adicionar Curso</button>
+        </fieldset>
+    </form>
+    <hr>
+</div>
+{% endblock %}

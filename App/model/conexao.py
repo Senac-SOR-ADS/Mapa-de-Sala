@@ -31,7 +31,7 @@ class ConexaoBD:
             return self.__conexao().is_connected()
 
         except connector.Error as err:
-            self.__conn = connector.CMySQLConnection()
+            self.__conn = None
             return False
 
     def desconectar(self) -> bool:
@@ -47,6 +47,8 @@ class ConexaoBD:
         except Exception as e:
             resultado = list()
         finally:
+            if cur:
+                cur.close()
             return resultado
 
     def buscarTodos(self, query, param=None) -> list:
@@ -59,6 +61,8 @@ class ConexaoBD:
             resultado = list()
 
         finally:
+            if cur:
+                cur.close()
             return resultado
 
     def alterarDados(self, query, param=None):
@@ -69,7 +73,6 @@ class ConexaoBD:
             return cur
 
         except Exception as e:
-            print('erro: ', e)
             cur = None
 
     def commit(self):
