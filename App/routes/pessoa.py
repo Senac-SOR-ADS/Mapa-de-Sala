@@ -8,13 +8,26 @@ pessoa_route = Blueprint('pessoa_route', __name__, template_folder='templates/Fu
 @pessoa_route.route("/", methods=['GET', 'POST'])
 @login_auth
 def listarFuncionario():
+    page = request.args.get('page', 1, type=int)
+    per_page = 10
+
     try:
-        valores = buscaPessoas()
+        all_employees = buscaPessoas()
+        if not isinstance(all_employees, dict):
+            raise ValueError("Esperava um dicionário de funcionários")
+
+        employee_list = [(key, value) for key, value in all_employees.items()]
+
+        total_items = len(employee_list)
+        start = (page - 1) * per_page
+        end = start + per_page
+        funcionarios_paginated = employee_list[start:end]
+
     except Exception as e:
         flash(f'Erro ao listar funcionários: {str(e)}', 'danger')
-        valores = []
+        return render_template('Funcionarios/listar.html', valores=[], total_items=0, page=1, per_page=per_page)
 
-    return render_template('Funcionarios/listar.html', valores=valores)
+    return render_template('Funcionarios/listar.html', valores=funcionarios_paginated, total_items=total_items, page=page, per_page=per_page)
 
 @pessoa_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_auth
@@ -39,20 +52,9 @@ def cadastrarFuncionario():
         if not all([nome, cpfCnpj, dataNasc, telefone, email, cargo]):
             flash('Todos os campos são obrigatórios.', 'danger')
             return render_template('Funcionarios/cadastrar.html')
-        
-                # Verificação de e-mail existente
-        # if email_existe(email):  # Função que verifica se o e-mail já existe no banco
-        #     flash('Este e-mail já está registrado. Por favor, use um e-mail diferente.', 'danger')
-        #     return render_template('Funcionarios/cadastrar.html')
-
-        # Modificando a data
-        dataNasc_modificada = modificarData(dataNasc)
-        if dataNasc_modificada is None:
-            flash('Data de nascimento inválida. Por favor, insira no formato AAAA-MM-DD.', 'danger')
-            return render_template('Funcionarios/cadastrar.html')
 
         try:
-            cadastrarPessoa(nome, cpfCnpj, dataNasc_modificada, telefone, email, cargo)
+            cadastrarPessoa(nome, cpfCnpj, dataNasc, telefone, email, cargo)
             flash('Funcionário cadastrado com sucesso!', 'success')
             return redirect(url_for('pessoa_route.cadastrarFuncionario'))
         except Exception as e:
@@ -60,13 +62,6 @@ def cadastrarFuncionario():
 
     return render_template('Funcionarios/cadastrar.html')
 
-# Verifica se a data está no formato 'AAAA-MM-DD e Retorna a data no formato 'DD/MM/AAAA''
-def modificarData(dataNasc):
-    if '-' in dataNasc:
-        data = dataNasc.split('-')
-        if len(data) == 3:
-            return f'{data[2]}/{data[1]}/{data[0]}'    
-    return None
 
 @pessoa_route.route('/editar/<int:id>', methods=['GET'])
 @login_auth

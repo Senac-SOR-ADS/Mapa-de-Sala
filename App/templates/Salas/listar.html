@@ -16,9 +16,9 @@
                 </tr>
             </thead>
             <tbody>
-                {% for value in valores %}
+                {% for sala in valores %}
                 <tr>
-                    <td>{{ value }}</td>
+                    <td>{{ sala[0] }}</td>
                     <td>
                         <button class="btn btn-warning" aria-label="Editar {{ value }}" onclick="window.location.href='/sala/editar/{{ value }}'"> 
                             <i class="fas fa-edit"></i> Editar
@@ -32,12 +32,23 @@
             </tbody>
         </table>
     </fieldset>
+
+    <!-- Paginação -->
+    <div class="pagination mt-4">
+        {% if page > 1 %}
+        <a class="btn btn-secondary" href="{{ url_for('sala_route.listarSala', page=page - 1) }}">Anterior</a>
+        {% endif %}
+        <span class="mx-2">Página {{ page }} de {{ (total_items // per_page) + (1 if total_items % per_page > 0 else 0) }}</span>
+        {% if page * per_page < total_items %}
+        <a class="btn btn-secondary" href="{{ url_for('sala_route.listarSala', page=page + 1) }}">Próxima</a>
+        {% endif %}
+    </div>
+</div>
 </div>
 
 <script>
     function confirmRemove(name) {
         if (confirm(`Você tem certeza que deseja remover a Sala "${name}"?`)) {
-            // Implementar a lógica de remoção aqui.
         }
     }
 </script>

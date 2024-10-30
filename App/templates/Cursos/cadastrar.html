@@ -56,12 +56,13 @@
                 <label for="area">Área do Curso:</label>
                 <select id="area" name="area" class="form-control" required>
                     <option value="" disabled selected>Selecione a Área do Curso</option>
-                    {% for value in valores %}
-                        <option value="{{ value }}">{{ value }}</option>
+                    {% for area, id in valores.items() %}
+                        <option value="{{ id }}">{{ area }}</option> 
                     {% endfor %}
                 </select>
+            </div>            
                 <div class="invalid-feedback">Por favor, selecione a área do curso.</div>
-            </div>
+            </div>           
 
             <button type="submit" class="btn btn-primary w-100">Adicionar Curso</button>
         </fieldset>
