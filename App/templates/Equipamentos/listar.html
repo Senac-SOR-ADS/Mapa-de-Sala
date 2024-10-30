@@ -6,34 +6,38 @@
 <div class="container my-4">
     <h1 class="text-center mb-4">Equipamentos</h1>
     
-    <table class="table table-striped table-responsive">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for value in valores %}
-            <tr>
-                <td>{{ value }}</td>
-                <td>
-                    <button class="btn btn-warning" aria-label="Editar {{ value }}"> 
-                        <i class="fas fa-edit"></i> Editar
-                    </button>
-                    <button class="btn btn-danger" aria-label="Remover {{ value }}" onclick="confirmRemove('{{ value }}')"> 
-                        <i class="fas fa-trash"></i> Remover
-                    </button>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <fieldset>
+        <legend class="mb-3">Lista de Equipamentos</legend>
+        <table class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for value in valores %}
+                <tr>
+                    <td>{{ value }}</td>
+                    <td>
+                        <button class="btn btn-warning" aria-label="Editar {{ value }}" onclick="window.location.href='/equipamento/editar/{{ value }}'"> 
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn btn-danger" aria-label="Remover {{ value }}" onclick="confirmRemove('{{ value }}')"> 
+                            <i class="fas fa-trash"></i> Remover
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </fieldset>
 </div>
 
 <script>
-    function confirmRemove(Name) {
-        if (confirm(`Você tem certeza que deseja remover o Equipamentos "${Name}"?`)) {
+    function confirmRemove(name) {
+        if (confirm(`Você tem certeza que deseja remover o Equipamento "${name}"?`)) {
+            // Implementar a lógica de remoção aqui.
         }
     }
 </script>

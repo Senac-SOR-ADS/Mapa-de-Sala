@@ -3,38 +3,52 @@
 {% block title %}Gestão de Áreas - Mapa de Sala{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
+<div class="container my-4">
     <h1 class="text-center mb-4">Áreas</h1>
     
-    <table class="table table-striped table-responsive">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for value in valores %}
-            <tr>
-                <td>{{ value }}</td>
-                <td>
-                    <button class="btn btn-warning" aria-label="Editar {{ value }}" onclick="window.location.href='/area/editar/{{ value }}'"> 
-                        <i class="fas fa-edit"></i> Editar
-                    </button>
-                    <button class="btn btn-danger" aria-label="Remover {{ value }}" onclick="confirmRemove('{{ value }}')"> 
-                        <i class="fas fa-trash"></i> Remover
-                    </button>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <fieldset>
+        <legend class="mb-3">Lista de Áreas</legend>
+        <table class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for area in valores %}
+                <tr>
+                    <td>{{ area[0] }}</td>
+                    <td>
+                        <button class="btn btn-warning" aria-label="Editar {{ area[0] }}" onclick="window.location.href='/area/editar/{{ area[0] }}'"> 
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn btn-danger" aria-label="Remover {{ area[0] }}" onclick="confirmRemove('{{ area[0] }}')"> 
+                            <i class="fas fa-trash"></i> Remover
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </fieldset>
+
+    <!-- Paginação -->
+    <div class="pagination mt-4">
+        {% if page > 1 %}
+        <a class="btn btn-secondary" href="{{ url_for('area_route.listarArea', page=page - 1) }}">Anterior</a>
+        {% endif %}
+        <span class="mx-2">Página {{ page }} de {{ (total_items // per_page) + (1 if total_items % per_page > 0 else 0) }}</span>
+        {% if page * per_page < total_items %}
+        <a class="btn btn-secondary" href="{{ url_for('area_route.listarArea', page=page + 1) }}">Próxima</a>
+        {% endif %}
+    </div>
 </div>
 
 <script>
     function confirmRemove(name) {
         if (confirm(`Você tem certeza que deseja remover a área "${name}"?`)) {
-            // Implementar a lógica de remoção aqui.
+            window.location.href = `/area/remover/${name}`;
         }
     }
 </script>

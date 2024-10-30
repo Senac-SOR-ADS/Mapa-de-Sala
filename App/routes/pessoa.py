@@ -39,6 +39,11 @@ def cadastrarFuncionario():
         if not all([nome, cpfCnpj, dataNasc, telefone, email, cargo]):
             flash('Todos os campos são obrigatórios.', 'danger')
             return render_template('Funcionarios/cadastrar.html')
+        
+                # Verificação de e-mail existente
+        # if email_existe(email):  # Função que verifica se o e-mail já existe no banco
+        #     flash('Este e-mail já está registrado. Por favor, use um e-mail diferente.', 'danger')
+        #     return render_template('Funcionarios/cadastrar.html')
 
         # Modificando a data
         dataNasc_modificada = modificarData(dataNasc)

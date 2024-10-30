@@ -1,87 +1,157 @@
+/* =================== Variáveis Globais =================== */
 :root {
-    /* Variáveis globais */
-    --bg-color: #f4f4f9;
-    --text-color: #333;
-    --header-bg-color: #1f41db;
-    --primary-color: #3498db;
-    --nav-link-color: #2c3e50;
-    --nav-link-hover-color: var(--primary-color);
-    --footer-bg-color: #2c3e50;
-    --footer-text-color: #ffffff;
-    --footer-small-text-color: #bdc3c7;
-    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    --warning-color: #e67e22;
-    --secondary-color: #6c757d;
-    --light-bg-color: #f8f9fa;
-    --border-color: #bdc3c7;
-    --error-color: #dc3545;
+    /* Cores principais */
+    --primary-color: #007bff; /* Azul suave */
+    --secondary-color: #0056b3; /* Azul escuro */
+
+    /* Cores de fundo */
+    --bg-color: #f8f9fa; /* Cinza claro */
+    --header-bg-color: #ffffff; /* Branco para o cabeçalho */
+    --footer-bg-color: #343a40; /* Cinza escuro para o rodapé */
+    --light-bg-color: #ffffff; /* Branco para seções claras */
+
+    /* Cores de texto */
+    --text-color: #212529; /* Cinza escuro */
+    --footer-text-color: #ffffff; /* Branco para o texto do rodapé */
+    --footer-small-text-color: #adb5bd; /* Cinza claro para texto pequeno */
+
+    /* Cores para links */
+    --nav-link-color: #495057; /* Cinza médio para links */
+    --nav-link-hover-color: var(--primary-color); /* Azul para hover em links */
+
+    /* Cores de alerta e erro */
+    --warning-color: #ffc107; /* Amarelo para alertas */
+    --error-color: #dc3545; /* Vermelho para erros */
+
+    /* Estilos gerais */
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    --border-color: #dee2e6; /* Cinza claro para bordas */
+    --border-color-fieldset: #dc3545; /* Vermelho para bordas de erro */
 }
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+/* =================== Estilos da Navbar =================== */
+header {
+    position: relative;
 }
 
+/* Navbar Principal */
 .navbar {
     background-color: var(--header-bg-color);
+    box-shadow: var(--box-shadow);
     border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
+/* Container da Navbar */
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+}
+
+/* Nome da Marca */
+.navbar-brand {
+    font-weight: bold;
+    color: var(--nav-link-color);
+    text-decoration: none;
+    font-size: 1.25rem;
+}
+
+/*Links de Navegação */
 .nav-link {
     color: var(--nav-link-color);
-    transition: color 0.2s;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 0.25rem; 
+    transition: color 0.3s, background-color 0.3s;
 }
 
+ /* Efeito Hover nos Links */
 .nav-link:hover {
     color: var(--nav-link-hover-color);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
-.footer {
-    background-color: var(--footer-bg-color);
-    color: var(--footer-text-color);
-}
+/* Navegação da Navbar */
+.navbar-nav {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+} */
 
-.footer small {
-    color: var(--footer-small-text-color);
-}
-
-/* Estilos de alertas */
-.alert-container {
-    width: 100%;
-    margin-bottom: 15px;
-    position: relative;
+ /* Menu Dropdown */
+.dropdown-menu {
+    position: absolute;
+    box-shadow: var(--box-shadow);
+    border-radius: 0.25rem;
     z-index: 1000;
 }
 
+/* Itens do Menu Dropdown */
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    color: var(--nav-link-color);
+    transition: background-color 0.3s;
+}
+
+/* Efeito Hover nos Itens Dropdown */
+.dropdown-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+} */
+/* =================== Estilos do Footer =================== */
+footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    padding: 1rem;
+    text-align: center; /* Centraliza o texto do rodapé */
+}
+
+footer small {
+    color: var(--footer-small-text-color);
+}
+
+/* =================== Mensagens de Flash =================== */
+.alert-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
 .alert {
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    font-size: 0.95rem;
+    padding: 1rem; 
+    border-radius: 0.5rem; 
+    margin-bottom: 1rem; 
+    font-size: 1rem;
+    line-height: 1.5;
+    box-shadow: var(--box-shadow);
 }
 
-.alert-success {
-    background-color: #d4edda;
-    color: #155724;
-}
-
-.alert-error {
-    background-color: #f8d7da;
-    color: #721c24;
-}
-
-.alert-info {
-    background-color: #cce5ff;
-    color: #004085;
-}
-
-.alert-warning {
-    background-color: #fff3cd;
-    color: #856404;
-}
-
+/* =================== Responsividade =================== */
 @media (max-width: 768px) {
+    body {
+        font-size: 0.95rem;
+    }
+
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start; /* Alinha os itens à esquerda */
+    }
+
     .navbar-nav {
-        text-align: center;
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+    /* Ajuste no Rodapé em Telas Pequenas */
+    footer {
+        padding: 0.5rem;
     }
 }
