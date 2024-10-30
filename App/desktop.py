@@ -10,4 +10,3 @@ if login.exec_():
     main = HomePrincipal()
     main.show()
     app.exec_()
-        
