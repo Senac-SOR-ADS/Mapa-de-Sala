@@ -11,4 +11,6 @@ reserva_route = Blueprint('reserva_route', __name__, template_folder='templates/
 def cadastrarReserva():
     salas = listarSala()
     pessoas = buscaPessoas()
+
     return render_template('Reservas/cadastrar.html', salas=salas, pessoas=pessoas)
+

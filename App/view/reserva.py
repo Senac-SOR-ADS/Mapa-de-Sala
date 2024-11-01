@@ -3,6 +3,7 @@ from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer, QDate, pyqtSlot
 from App.model.reserva import Reserva
 
+
 from App.controller.curso import listarCursos
 from App.controller.pessoa import buscaPessoas, modificarData
 from App.controller.sala import listarSala
