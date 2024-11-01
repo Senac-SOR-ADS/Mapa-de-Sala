@@ -249,19 +249,19 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`idLogin`, `idPessoa`, `email`, `senha`, `nivelAcesso`) VALUES
-(1, 1, 'email@gmail.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
+(1, 1, 'email@gmail.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
 (5, 2, 'potoasdfeafafemdfmakfmskmfkmfkamamd@gmail.com', 'lais123', 'admin'),
 (6, 8, 'maria_isabelly_nascimento@oticascarol.com.br', 'marmaria123', 'user'),
 (7, 10, 'raimundo_ricardo_caldeira@outlook.com', 'raimundoneto', 'user'),
 (8, 3, 'enzo@gmail.com', 'enzo', 'admin'),
-(9, 12, 'otavio@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(10, 13, 'gabriel@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(11, 14, 'richard@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(12, 15, 'brunor@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(13, 16, 'nickolas@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(14, 17, 'brunom@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(15, 18, 'samuel@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(16, 24, 'jeff@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin');
+(9, 12, 'otavio@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(10, 13, 'gabriel@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(11, 14, 'richard@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(12, 15, 'brunor@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(13, 16, 'nickolas@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(14, 17, 'brunom@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(15, 18, 'samuel@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(16, 24, 'jeff@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin');
 
 -- --------------------------------------------------------
 

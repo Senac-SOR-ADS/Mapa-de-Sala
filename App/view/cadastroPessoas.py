@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget, QLineEdit, QComboBox, QDateEdit
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import pyqtSlot
 
-from App.controller.pessoa import cadastrarPessoa
+from App.controller.pessoa import cadastrarPessoa, modificarData
 from PyQt5.QtCore import QTimer
 
 class cadastroPessoas(QWidget):
@@ -20,7 +20,7 @@ class cadastroPessoas(QWidget):
 
         dados = {"nome": nomePessoas,
                  "cpfCnpj": cpfCnpj,
-                 "dataDeNascimento": dataDeNascimento,
+                 "dataDeNascimento": modificarData(dataDeNascimento),
                  "telefone": telefone,
                  "email": email,
                  "cargo": cargo}
