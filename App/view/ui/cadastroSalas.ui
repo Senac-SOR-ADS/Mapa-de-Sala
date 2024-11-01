@@ -56,7 +56,7 @@
     </rect>
    </property>
    <property name="editable">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="currentText">
     <string>Laboratório</string>
@@ -186,7 +186,7 @@
     </rect>
    </property>
    <property name="editable">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="currentText">
     <string notr="true">Prédio 1</string>
@@ -206,6 +206,15 @@
    </item>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>nomeSala</tabstop>
+  <tabstop>tipoSala</tabstop>
+  <tabstop>nomePredio</tabstop>
+  <tabstop>tipoEquipamento</tabstop>
+  <tabstop>mediaCapacidade</tabstop>
+  <tabstop>feedbackText</tabstop>
+  <tabstop>cadastrarSala</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
