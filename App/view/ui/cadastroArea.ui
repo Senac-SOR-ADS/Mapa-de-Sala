@@ -97,6 +97,10 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>cadastrarArea</tabstop>
+  <tabstop>btnCadastrarArea</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
