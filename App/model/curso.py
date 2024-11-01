@@ -90,7 +90,7 @@ class Curso:
         return resultado
 
     @classmethod
-    def deletar_registro(cls, idCurso):
+    def deletar(cls, idCurso):
         cls.__banco.conectar()
         query = "DELETE FROM curso WHERE idCurso = %s"
         param = [idCurso]
@@ -102,7 +102,7 @@ class Curso:
         return False
     
     @classmethod
-    def alterar_registro(cls, idCurso, idArea, nome, oferta, periodo, cargaHoraria, horasDia, qtdAlunos):
+    def atualizar(cls, idCurso, idArea, nome, oferta, periodo, cargaHoraria, horasDia, qtdAlunos):
         cls.__banco.conectar()
         query = "UPDATE curso SET idArea = %s, nome = %s, oferta = %s, periodo = %s, cargaHoraria = %s, horasDia = %s, qtdAlunos = %s WHERE idCurso = %s"
         params = [idArea, nome, oferta, periodo, cargaHoraria, horasDia, qtdAlunos, idCurso]

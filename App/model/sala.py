@@ -60,24 +60,29 @@ class Sala:
         resultado = self.__banco.alterarDados(query, parametros)
         self.__banco.desconectar()
         return resultado
+    
+    @classmethod
+    def deletar(cls, idSala):
+        cls.__banco.conectar()
+        query = "DELETE FROM sala WHERE idSala = %s"
+        parametro = [idSala]
+        resultado = cls.__banco.alterarDados(query, parametro)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            return True
+        return False
+    
+    @classmethod
+    def atualizar(cls, nome, tipo, predio, equipamento, capacidade, observacao, idSala):
+        cls.__banco.conectar()
+        query = "UPDATE sala SET `nome`= %s,`tipo`= %s,`predio`= %s,`equipamentos`= %s,`capacidade`= %s,`observacao`= %s WHERE idSala = %s"
+        parametro = [nome, tipo, predio, equipamento, capacidade, observacao, idSala]
+        resultado = cls.__banco.alterarDados(query, parametro)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            return True
+        return False
+    
    
 if __name__ == "__main__":
-    teste = Sala('nome', 'tipo', 'predio', 'equipamentos', 'capacidade', 'observacao')
-    teste.cadastrar_sala()
-    print(teste)
-
-
-# if __name__ == "__main__":
-#     teste_buscar_sala = Sala.buscar_sala()
-#     print(teste_buscar_sala)
-
-
-# if __name__ == "__main__":
-#     buscar_sala_predio1 = Sala.buscar_sala_predio1()
-#     print(buscar_sala_predio1)
-
-
-# if __name__ == "__main__":
-#     buscar_sala_predio2 = Sala.buscar_sala_predio2()
-#     print(buscar_sala_predio2)
-
+    pass
