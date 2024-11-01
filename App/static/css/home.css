@@ -1,5 +1,4 @@
 /* =================== Variáveis Globais =================== */
-/* Cores, Tipografia, e Sombra */
 :root {
     /* Cores principais */
     --primary-color: #007bff; /* Azul suave */
@@ -31,11 +30,11 @@
 }
 
 /* =================== Estilos da Navbar =================== */
-/* Navbar Principal */
 header {
     position: relative;
 }
 
+/* Navbar Principal */
 .navbar {
     background-color: var(--header-bg-color);
     box-shadow: var(--box-shadow);
@@ -49,7 +48,6 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 1rem;
-    gap: 0.5rem;
 }
 
 /* Nome da Marca */
@@ -60,23 +58,19 @@ header {
     font-size: 1.25rem;
 }
 
-/* Links de Navegação */
+/*Links de Navegação */
 .nav-link {
     color: var(--nav-link-color);
     padding: 0.5rem 1rem;
     text-decoration: none;
-    border-radius: 0.25rem;
+    border-radius: 0.25rem; 
     transition: color 0.3s, background-color 0.3s;
 }
 
+ /* Efeito Hover nos Links */
 .nav-link:hover {
     color: var(--nav-link-hover-color);
     background-color: rgba(0, 0, 0, 0.05);
-}
-
-.nav-link:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
 }
 
 /* Navegação da Navbar */
@@ -84,88 +78,53 @@ header {
     list-style: none;
     padding-left: 0;
     margin: 0;
-}
+} */
 
-/* Menu Dropdown */
+ /* Menu Dropdown */
 .dropdown-menu {
-    display: none;
     position: absolute;
-    background-color: white;
     box-shadow: var(--box-shadow);
     border-radius: 0.25rem;
     z-index: 1000;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
 }
 
 /* Itens do Menu Dropdown */
 .dropdown-item {
     padding: 0.5rem 1rem;
     color: var(--nav-link-color);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s;
 }
 
+/* Efeito Hover nos Itens Dropdown */
 .dropdown-item:hover {
     background-color: rgba(0, 0, 0, 0.05);
-}
-
+} */
 /* =================== Estilos do Footer =================== */
 footer {
     background-color: var(--footer-bg-color);
     color: var(--footer-text-color);
     padding: 1rem;
-    text-align: center;
+    text-align: center; /* Centraliza o texto do rodapé */
 }
 
 footer small {
     color: var(--footer-small-text-color);
 }
 
-@media (max-width: 768px) {
-    footer {
-        padding: 0.5rem;
-        text-align: center;
-    }
-}
-
 /* =================== Mensagens de Flash =================== */
 .alert-container {
     width: 100%;
-    margin-bottom: 15px;
-    position: relative;
-    z-index: 1000;
     max-width: 600px;
     margin: 0 auto 20px;
 }
 
 .alert {
-    padding: 1rem;
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
+    padding: 1rem; 
+    border-radius: 0.5rem; 
+    margin-bottom: 1rem; 
     font-size: 1rem;
     line-height: 1.5;
-}
-
-.alert-success {
-    background-color: #d4edda;
-    color: #155724;
-}
-
-.alert-error {
-    background-color: #f8d7da;
-    color: #721c24;
-}
-
-.alert-info {
-    background-color: #cce5ff;
-    color: #004085;
-}
-
-.alert-warning {
-    background-color: #fff3cd;
-    color: #856404;
+    box-shadow: var(--box-shadow);
 }
 
 /* =================== Responsividade =================== */
@@ -176,7 +135,7 @@ footer small {
 
     .navbar .container {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-start; /* Alinha os itens à esquerda */
     }
 
     .navbar-nav {
@@ -189,5 +148,10 @@ footer small {
 
     .table {
         font-size: 0.9rem;
+    }
+
+    /* Ajuste no Rodapé em Telas Pequenas */
+    footer {
+        padding: 0.5rem;
     }
 }

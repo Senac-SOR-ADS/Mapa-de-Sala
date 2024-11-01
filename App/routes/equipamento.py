@@ -7,7 +7,7 @@ equipamento_route = Blueprint('equipamento_route', __name__, template_folder='te
 
 @equipamento_route.route("/", methods=['GET', 'POST'])
 @login_auth
-def listarEquipamentos():
+def listarEquipamento():
     return render_template('/Equipamentos/listar.html')
 
 @equipamento_route.route("/cadastrar", methods=['GET', 'POST'])

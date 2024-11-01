@@ -12,4 +12,3 @@ def cadastrarReserva():
     salas = listarSala()
     pessoas = buscaPessoas()
     return render_template('Reservas/cadastrar.html', salas=salas, pessoas=pessoas)
-

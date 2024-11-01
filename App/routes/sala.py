@@ -7,13 +7,27 @@ sala_route = Blueprint('sala_route', __name__, template_folder='templates/Salas/
 
 @sala_route.route("/", methods=['GET', 'POST'])
 @login_auth
-def listarSalas():
+def listarSala():
+    page = request.args.get('page', 1, type=int)
+    per_page = 10
+
     try:
-        valores = sala.listarSala()
+        all_rooms = sala.listarSala()
+        if not isinstance(all_rooms, dict):
+            raise ValueError("Esperava um dicionário de salas")
+
+        sala_list = [(key, value) for key, value in all_rooms.items()]
+
+        total_items = len(sala_list)
+        start = (page - 1) * per_page
+        end = start + per_page
+        salas_paginated = sala_list[start:end]
+
     except Exception as e:
-        flash(f'Erro ao listar salas: {str(e)}', 'danger')
-        valores = []
-    return render_template('/Salas/listar.html', valores=valores)
+        flash(f'Erro ao listar as salas: {str(e)}', 'danger')
+        return render_template('/Salas/listar.html', valores=[], total_items=0, page=1, per_page=per_page)
+
+    return render_template('/Salas/listar.html', valores=salas_paginated, total_items=total_items, page=page, per_page=per_page)
 
 @sala_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_auth

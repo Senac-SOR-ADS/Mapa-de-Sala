@@ -19,18 +19,17 @@ check_template_access(app)
 # Registra todas as rotas configuradas na aplicação
 register_routes(app)
 
-# Conecta ao banco de dados
+# Inicializa e conecta ao banco de dados
 bd = ConexaoBD()
 if bd.conectar():
     logger.info("Conexão ao banco de dados estabelecida com sucesso.")
 
-    # Obtém o endereço IP local do servidor
+    # Obtém o endereço IP local do servidor para iniciar o Flask
     ip_local = gethostbyname(gethostname())
     logger.info(f"Iniciando o servidor no endereço IP: {ip_local}")
 
-    # Inicia o servidor Flask
-    app.run(host=ip_local, debug=False)
+    # Inicia o servidor Flask com o endereço IP local
+    app.run(host=ip_local, debug=True)
 else:
     logger.critical("Falha ao conectar ao banco de dados.")
-    sys.exit(1)
-
+    sys.exit(EXIT_CODE_CONNECTION_ERROR)

@@ -107,13 +107,15 @@ legend {
 }
 
 /* =================== Estilo para Mensagens de Feedback =================== */
+/* Esconde feedback de erro por padrão */
 .invalid-feedback {
-    display: none; 
-    color: var(--error-color); 
+    display: none;
+    color: var(--error-color);
 }
 
-input:invalid + .invalid-feedback {
-    display: block; 
+/* Exibe feedback de erro apenas quando o formulário tem a classe `was-validated` */
+.was-validated input:invalid + .invalid-feedback {
+    display: block;
 }
 
 /* =================== Estilo para a Tabela =================== */
@@ -148,4 +150,3 @@ input:invalid + .invalid-feedback {
 .table tr:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
-

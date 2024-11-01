@@ -16,14 +16,14 @@
                 </tr>
             </thead>
             <tbody>
-                {% for value in valores %}
+                {% for area in valores %}
                 <tr>
-                    <td>{{ value }}</td>
+                    <td>{{ area[0] }}</td>
                     <td>
-                        <button class="btn btn-warning" aria-label="Editar {{ value }}" onclick="window.location.href='/area/editar/{{ value }}'"> 
+                        <button class="btn btn-warning" aria-label="Editar {{ area[0] }}" onclick="window.location.href='/area/editar/{{ area[0] }}'"> 
                             <i class="fas fa-edit"></i> Editar
                         </button>
-                        <button class="btn btn-danger" aria-label="Remover {{ value }}" onclick="confirmRemove('{{ value }}')"> 
+                        <button class="btn btn-danger" aria-label="Remover {{ area[0] }}" onclick="confirmRemove('{{ area[0] }}')"> 
                             <i class="fas fa-trash"></i> Remover
                         </button>
                     </td>
@@ -32,12 +32,22 @@
             </tbody>
         </table>
     </fieldset>
+
+    <!-- Paginação -->
+    <div class="pagination mt-4">
+        {% if page > 1 %}
+        <a class="btn btn-secondary" href="{{ url_for('area_route.listarArea', page=page - 1) }}">Anterior</a>
+        {% endif %}
+        <span class="mx-2">Página {{ page }} de {{ (total_items // per_page) + (1 if total_items % per_page > 0 else 0) }}</span>
+        {% if page * per_page < total_items %}
+        <a class="btn btn-secondary" href="{{ url_for('area_route.listarArea', page=page + 1) }}">Próxima</a>
+        {% endif %}
+    </div>
 </div>
 
 <script>
     function confirmRemove(name) {
-        if (confirm(`Você tem certeza que deseja remover a área "${name}"?`)) {
-            // Implementar a lógica de remoção aqui.
+        if (confirm(`Você tem certeza que deseja remover a Area "${name}"?`)) {
         }
     }
 </script>

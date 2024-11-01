@@ -27,4 +27,3 @@ __all__ = [
     "register_routes",
     "check_template_access",
 ]
-
