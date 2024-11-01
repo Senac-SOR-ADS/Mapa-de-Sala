@@ -97,7 +97,7 @@ class Equipamentos:
         return False
     
     @classmethod
-    def alterar_registro(cls, idArea, nome, marca, quantidade, idEquipamento):
+    def atualizar(cls, idArea, nome, marca, quantidade, idEquipamento):
         cls.__banco.conectar()
         query = "UPDATE equipamento SET `idArea`= %s,`nome`= %s,`marca`= %s,`quantidade`= %s WHERE idEquipamento = %s"
         parametro = [idArea, nome, marca, quantidade, idEquipamento]
