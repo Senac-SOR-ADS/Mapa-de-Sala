@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
-from App.controller.sala import cadastrarSala, validarInputs
+from App.controller.sala import cadastrarSala
+from App.controller.utils import validarInputs
 
 
 class CadastrarSalas(QWidget):

@@ -1,6 +1,5 @@
 import logging
 
-
 class Log:
 
     def __init__(self, name="basic") -> None:
@@ -26,7 +25,6 @@ class Log:
 
     def critical(self, mensagemErro):
         self.logger.critical(mensagemErro)
-
 
 if __name__ == "__main__":
     bd = Log("banco")
