@@ -89,6 +89,29 @@ class Curso:
         cls.__banco.desconectar()
         return resultado
 
+    @classmethod
+    def deletar_registro(cls, idCurso):
+        cls.__banco.conectar()
+        query = "DELETE FROM curso WHERE idCurso = %s"
+        param = [idCurso]
+        resultado = cls.__banco.alterarDados(query, param)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            print('curso deletado')
+            return True
+        return False
+    
+    @classmethod
+    def alterar_registro(cls, idCurso, idArea, nome, oferta, periodo, cargaHoraria, horasDia, qtdAlunos):
+        cls.__banco.conectar()
+        query = "UPDATE curso SET idArea = %s, nome = %s, oferta = %s, periodo = %s, cargaHoraria = %s, horasDia = %s, qtdAlunos = %s WHERE idCurso = %s"
+        params = [idArea, nome, oferta, periodo, cargaHoraria, horasDia, qtdAlunos, idCurso]
+        resultado = cls.__banco.alterarDados(query, params)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            return True
+        return False
+
 #  EXEMPLO PESQUISA AREA
 if __name__ == "__main__":
     teste = Curso.retorna_curso_area(1)  # Passando um exemplo de AREA
