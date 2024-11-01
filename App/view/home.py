@@ -26,6 +26,9 @@ class HomePrincipal(QMainWindow):
         self.cadastros: QWidget
         self.busca: QWidget
         self.editar: QWidget
+        self.menuSimples: QWidget
+        
+        self.btnHome: QPushButton
 
    # Criando instancias das interfaces
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -40,22 +43,27 @@ class HomePrincipal(QMainWindow):
         
     #Telas dentro do menu para alterar as janelas pelo sub menu
         self.btnPessoa.clicked.connect(lambda: self.trocarTelaMenu(self.cadastros))
+        self.btnPessoas.clicked.connect(lambda: self.trocarTelaMenu(self.cadastros))
+        self.btnBusca.clicked.connect(lambda: self.trocarTelaMenu(self.busca))
         self.btnPesquisa.clicked.connect(lambda: self.trocarTelaMenu(self.busca))
-        self.btnEditar.clicked.connect(lambda: self.trocarTelaMenu(self.editar))
+        self.btnEditarSimples.clicked.connect(lambda: self.trocarTelaMenu(self.editar)) 
+        self.btnEditar.clicked.connect(lambda: self.trocarTelaMenu(self.editar)) 
         
     #btns da propria interface   
         self.btnCadastarSala.clicked.connect(lambda: self.trocarTela(self.interfcasSala))
         self.btnCadastroPessoa.clicked.connect(lambda: self.trocarTela(self.interfCasPessoa))
         self.btnReserva.clicked.connect(lambda: self.trocarTela(self.interfReserva))
         self.btnIncio.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.inicio))
+        self.btnHome.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.inicio))
         self.btnArea.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasArea))
         self.btnCurso.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasCurso))
         self.btnCadastroLogin.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasLogin))
         self.btnConfiguracoes.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCongiguracoes))
+        self.btnConfig.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCongiguracoes))
         self.btnMinimizar.clicked.connect(self.showMinimized)
         self.btnFecharPagina.clicked.connect(self.close)
         self.btnTelaCheia.clicked.connect(self.windowConnect)
-            
+        
     # Faz o botão de Tela Cheia ao ser executado, retornar ao normal
     def windowConnect(self):
         if self.isMaximized():
@@ -84,17 +92,37 @@ class HomePrincipal(QMainWindow):
     def trocarTela(self, tela):
         """Função para trocar as tela. Necessario
         passar a classe da tela"""
+        
         self.stackedWidget.setCurrentWidget(tela)
+        self.subMenuLateral.hide()
+        self.menuSimples.show()
+        self.btnMenu.setStyleSheet("""
+                                       #btnMenu {
+                                           icon: url("App/view/ui/icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"); 
+                                        }"""
+                                    )
     
     def trocarTelaMenu(self, menu):
         if self.subMenuQuebrado.isVisible():
             self.menuQuebrado.setCurrentWidget(menu)
+            self.subMenuLateral.hide()
+            self.menuSimples.show()
+            self.btnMenu.setStyleSheet("""
+                                       #btnMenu {
+                                           icon: url("App/view/ui/icones/menu-regular-24 (1).png"); 
+                                        }"""
+                                    )
         else:
             self.subMenuQuebrado.show()
             self.menuQuebrado.setCurrentWidget(menu)
-            
-        
-        
+            self.subMenuLateral.hide()
+            self.menuSimples.show()
+            self.btnMenu.setStyleSheet("""
+                                       #btnMenu {
+                                           icon: url("App/view/ui/icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"); 
+                                        }"""
+                                    )
+
     def mousePressEvent(self, event):
         if event.button() == Qt.RightButton:
             return
@@ -108,11 +136,18 @@ class HomePrincipal(QMainWindow):
 
     def mouseReleaseEvent(self, event):
         self.moving = False
+        
+    def menus(self):
+        if ( self.menuSimples.isHidden() ):
+            self.subMenuLateral.show()
+        else: 
+            self.subMenuLateral.close()
     
     @pyqtSlot()
     def on_btnMenu_clicked(self):
         if (self.subMenuLateral.isVisible()):
             self.subMenuLateral.hide()
+            self.menuSimples.show()
             self.btnMenu.setStyleSheet("""
                                        #btnMenu {
                                            icon: url("App/view/ui/icones/menu-regular-24 (1).png"); 
@@ -120,6 +155,7 @@ class HomePrincipal(QMainWindow):
                                     )
         else:
             self.subMenuLateral.show()
+            self.menuSimples.hide()
             self.btnMenu.setStyleSheet("""
                                        #btnMenu {
                                            icon: url("App/view/ui/icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"); 
