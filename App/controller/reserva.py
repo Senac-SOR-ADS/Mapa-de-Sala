@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from App.model.reserva import Reserva
-from App.controller.pessoa import modificarDataReserva
+from App.controller.utils import modificarDataReserva
 
 def fazendoReserva(idLogin, dados, diasValidos):
     diaInicio = modificarDataReserva(dados['diaInicio'])

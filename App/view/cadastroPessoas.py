@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import QWidget, QLineEdit, QComboBox, QDateEdit
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import pyqtSlot
-
-from App.controller.pessoa import cadastrarPessoa, modificarData
+from App.controller.pessoa import cadastrarPessoa
+from App.controller.utils import modificarData
 from PyQt5.QtCore import QTimer
 
 class cadastroPessoas(QWidget):
