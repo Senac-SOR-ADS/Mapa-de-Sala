@@ -59,6 +59,29 @@ class Area:
         resultado = self.__banco.buscarTodos(query, parametro)
         self.__banco.desconectar()
         return resultado
+    
+    @classmethod
+    def deletar(cls, idArea):
+        cls.__banco.conectar()
+        query = "DELETE FROM area WHERE idArea = %s"
+        parametro = [idArea]
+        resultado = cls.__banco.alterarDados(query, parametro)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            return True
+        return False            
+    
+    @classmethod
+    def alterar_area(cls, idArea, nome):
+        cls.__banco.conectar()
+        query = "UPDATE area SET nome = %s WHERE idArea = %s"
+        parametro = [nome, idArea]
+        resultado = cls.__banco.alterarDados(query, parametro)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            return True
+        return False
+        
 
 if __name__ == '__main__':
     pass

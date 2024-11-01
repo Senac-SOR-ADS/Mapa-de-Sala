@@ -217,6 +217,9 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
     <item>
      <property name="text">
       <string>Manhã</string>
@@ -242,6 +245,9 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
@@ -258,6 +264,16 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>nomeCurso</tabstop>
+  <tabstop>ofertaCurso</tabstop>
+  <tabstop>campoArea</tabstop>
+  <tabstop>periodoCurso</tabstop>
+  <tabstop>cargaCurso</tabstop>
+  <tabstop>horasPorDia</tabstop>
+  <tabstop>quantidadeAlunos</tabstop>
+  <tabstop>btnCadastrarCurso</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
