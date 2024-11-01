@@ -61,7 +61,7 @@ class Area:
         return resultado
     
     @classmethod
-    def remover_area(cls, idArea):
+    def deletar(cls, idArea):
         cls.__banco.conectar()
         query = "DELETE FROM area WHERE idArea = %s"
         parametro = [idArea]
