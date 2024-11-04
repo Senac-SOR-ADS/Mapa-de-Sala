@@ -1,21 +1,21 @@
 import bcrypt
 
+
 class Criptografia:
     TIPO_ENCODE = 'utf-8'
     
     @classmethod
-    def criptografarSenha(cls, senha: str) -> bytes:
-        """Criptografa a senha fornecida e retorna o hash gerado."""
-        senha_codificada = senha.encode(cls.TIPO_ENCODE)
+    def criptografarSenha(cls, senha: str)->bytes:
+        """Criptografa a senha que você passar para o método"""
+        senhaEncode = senha.encode(cls.TIPO_ENCODE)
         salt = bcrypt.gensalt()
-        return bcrypt.hashpw(senha_codificada, salt)
+        return bcrypt.hashpw(senhaEncode, salt)
     
     @classmethod
-    def validarSenha(cls, senha: str, senha_criptografada: bytes) -> bool:
-        """Valida se a senha fornecida corresponde à senha criptografada."""
-        senha_codificada = senha.encode(cls.TIPO_ENCODE)
-        if bcrypt.checkpw(senha_codificada, senha_criptografada):
-            print('Senhas idênticas!')
+    def validarSenha(cls, senha: str, senhaCriptografada: bytes):
+        """Valida se as senhas passadas são identicas"""
+        if bcrypt.checkpw(senha.encode(cls.TIPO_ENCODE), senhaCriptografada):
+            print('Senhas identicas!')
             return True
         else:
             print('Senhas não são iguais!')

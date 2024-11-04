@@ -1,4 +1,5 @@
 from App.model.conexao import ConexaoBD
+from App.model.criptografia import Criptografia
 
 class Pessoa:
     __banco = ConexaoBD()
@@ -54,7 +55,7 @@ class Pessoa:
     def __set_cargo(self, cargo):
         self.__cargo = cargo
 
-    # Métodos para cadastradar pessoas
+    # Método para cadastrar
     def cadastrar(self, nome, cpf_cnpj, nascimento, telefone, email, cargo):
         self.__set_nome(nome)
         self.__set_cpf_cnpj(cpf_cnpj)
@@ -66,21 +67,28 @@ class Pessoa:
         try:
             self.__banco.conectar()
 
+            # Inserção na tabela Pessoa
             query_pessoa = '''
             INSERT INTO pessoa (nome, CPF_CNPJ, nascimento, telefone, email, cargo)
             VALUES (%s, %s, %s, %s, %s, %s)
             '''
-            params_pessoa = (self.get_nome(), self.get_cpf_cnpj(), self.get_nascimento(),
-                             self.get_telefone(), self.get_email(), self.get_cargo())
+            params_pessoa = (self.get_nome(), self.get_cpf_cnpj(), self.get_nascimento(), self.get_telefone(), self.get_email(), self.get_cargo())
             resposta = self.__banco.alterarDados(query_pessoa, params_pessoa)
-            
             self.__set_idPessoa(resposta.lastrowid)
-            return self.get_idPessoa()
-        except Exception as e:
-            print(f"Erro ao cadastrar pessoa: {e}")
-            return None
-        finally:
+
+            # Inserção na tabela login
+            senha_criptografada = Criptografia.criptografarSenha(cpf_cnpj)
+            nivelAcesso = 'admin' if cargo == 'Administrador' else 'user'
+            query_login = '''
+            INSERT INTO login (idPessoa, email, senha, nivelAcesso)
+            VALUES (%s, %s, %s, %s)
+            '''
+            params_login = (self.get_idPessoa(), self.get_email(), senha_criptografada, nivelAcesso)
+            self.__banco.alterarDados(query_login, params_login)
             self.__banco.desconectar()
+            return True
+        except Exception:
+            return False
 
     # Métodos para listar pessoas cadastradas
     @classmethod
