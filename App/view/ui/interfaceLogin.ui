@@ -13,17 +13,8 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="widget" native="true">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>571</width>
-     <height>391</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
+  <property name="styleSheet">
+   <string notr="true">QPushButton{
 	background-color:rgba(85,98,112,255);
 	color:rgba(255,255,255,200);
 	border-radius:5px
@@ -36,12 +27,106 @@ QPushButton:pressed{
 }
 
 QPushButton:hover{
-	background-color:rgba(255, 140, 0);
+	background-color:rgb(255, 140, 0);
 	color:0;
 }
+
+
+QPushButton {
+    background-color: #0E46A3;
+    color: white; 
+    border: none; 
+    border-radius: 5px;
+    padding: 10px 20px; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
+
+QPushButton:hover {
+    background-color: #E55807;
+}
+
+QPushButton:pressed {
+    background-color: #1e6f9f; 
+    padding-left: 15px;
+    padding-top: 15px; 
+}
+
+QPushButton:disabled {
+    background-color: #bdc3c7;
+    color: #7f8c8d; 
+}
+
+QPushButton::menu-indicator {
+    image: none; 
+}
+
+#inputEmail {
+	background-color:rgba(0,0,0,0);
+	border:2px solid rgba(0,0,0,0);
+	border-bottom-color:rgba(46,82,101,200);
+	color:rgb(0,0,0);
+	padding-bottom:7px;
+}
+
+#inputSenha {
+	background-color:rgba(0,0,0,0);
+	border:2px solid rgba(0,0,0,0);
+	border-bottom-color:rgba(46,82,101,200);
+	color:rgb(0,0,0);
+	padding-bottom:7px;
+}
+
+#respostaLoginDadosIncompleto {
+	color:red;
+	font: 75 8pt &quot;MS Shell Dlg 2&quot;;
+}
+
+#respostaLoginLogando {
+	color:red;
+	font: 75 8pt &quot;MS Shell Dlg 2&quot;;
+}
+
+#titulo {
+	color:rgb(255,255,255);
+
+}
+
+#subtitulo {
+	color:rgb(255,255,255);
+}
+
+#loginLabel {
+	color:rgb(0,0,210);
+}
+
+#imagemInicio {
+	background: QLinearGradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0	
+	rgb(255, 140, 0), stop:1 rgb(0,0,210));
+	border-radius:10px;
+
+}
+
+#telaLogin {
+	background-color:rgba(255,255,255,255);
+	border-radius:10px;
+
+}
 </string>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>571</width>
+     <height>391</height>
+    </rect>
    </property>
-   <widget class="QLabel" name="label">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QLabel" name="telaLogin">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -51,15 +136,13 @@ QPushButton:hover{
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgba(255,255,255,255);
-border-radius:10px;
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="imagemInicio">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -69,17 +152,13 @@ border-radius:10px;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 140, 0 ), stop:1 rgba(0,0,210 ));
-border-radius:10px
-
-
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="loginLabel">
     <property name="geometry">
      <rect>
       <x>330</x>
@@ -96,7 +175,7 @@ border-radius:10px
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:rgba(0,0,210 );</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>LOGIN</string>
@@ -117,11 +196,7 @@ border-radius:10px
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgba(0,0,0,0);
-border:2px solid rgba(0,0,0,0);
-border-bottom-color:rgba(46,82,101,200);
-color:rgb(0,0,0);
-padding-bottom:7px;</string>
+     <string notr="true"/>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Normal</enum>
@@ -145,11 +220,7 @@ padding-bottom:7px;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgba(0,0,0,0);
-border:2px solid rgba(0,0,0,0);
-border-bottom-color:rgba(46,82,101,200);
-color:rgb(0,0,0);
-padding-bottom:7px;</string>
+     <string notr="true"/>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>
@@ -169,16 +240,19 @@ padding-bottom:7px;</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>ENTRAR</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="titulo">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -191,23 +265,19 @@ padding-bottom:7px;</string>
      <font>
       <family>Yu Gothic UI Semibold</family>
       <pointsize>55</pointsize>
-      <weight>7</weight>
+      <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-font: 63 55pt &quot;Yu Gothic UI Semibold&quot;;
-color:rgb(255,255,255)
-
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Senac</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QLabel" name="subtitulo">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -226,7 +296,7 @@ color:rgb(255,255,255)
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:rgb(255,255,255);</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Mapa de Sala</string>
@@ -261,8 +331,7 @@ color:rgb(255,255,255)
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:red;
-font: 75 8pt &quot;MS Shell Dlg 2&quot;;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
@@ -278,8 +347,7 @@ font: 75 8pt &quot;MS Shell Dlg 2&quot;;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:green;
-font: 75 8pt &quot;MS Shell Dlg 2&quot;;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
@@ -309,36 +377,11 @@ font: 75 8pt &quot;MS Shell Dlg 2&quot;;</string>
        <height>23</height>
       </rect>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
-      <string notr="true">QPushButton {
-    background-color: #0E46A3;
-    color: white; 
-    border: none; 
-    border-radius: 5px;
-    padding: 10px 20px; 
-    font-size: 14px; 
-    font-weight: bold; 
-}
-
-QPushButton:hover {
-    background-color: #E55807;
-}
-
-QPushButton:pressed {
-    background-color: #1e6f9f; 
-    padding-left: 15px;
-    padding-top: 15px; 
-}
-
-QPushButton:disabled {
-    background-color: #bdc3c7;
-    color: #7f8c8d; 
-}
-
-QPushButton::menu-indicator {
-    image: none; 
-}
-</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>
