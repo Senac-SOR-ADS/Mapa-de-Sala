@@ -8,6 +8,12 @@ from .cadastrarCurso import CadastrarCurso
 from .cadastrarLogin import CadastroLogin
 from .cadastrarSalas import CadastrarSalas
 from .configurarTela import ConfigurarTela
+from .editarArea import EditarArea
+from .editarCurso import EditarCurso
+from .editarLogin import EditarLogin
+from .editarReserva import EditarReserva
+from .editarPessoas import EditarPessoas
+
 
 class HomePrincipal(QMainWindow):
     def __init__(self):
@@ -38,8 +44,13 @@ class HomePrincipal(QMainWindow):
         self.interfCasCurso = CadastrarCurso()
         self.interfCasLogin = CadastroLogin()
         self.interfcasSala = CadastrarSalas()
+        self.interfEditArea = EditarArea()
+        self.interfEditCurso = EditarCurso()
+        self.interfEditLogin = EditarLogin()
+        self.interfEditReserva = EditarReserva()
+        self.interfEditPessoas = EditarPessoas()
         self.interfCongiguracoes = ConfigurarTela()
-        self.inserirTelas( [self.interfcasSala, self.interfCasPessoa, self.interfReserva, self.interfCasArea, self.interfCasCurso, self.interfCasLogin, self.interfCongiguracoes] )
+        self.inserirTelas( [self.interfcasSala, self.interfCasPessoa, self.interfReserva, self.interfCasArea, self.interfCasCurso, self.interfCasLogin, self.interfCongiguracoes, self.interfEditArea, self.interfEditCurso, self.interfEditLogin, self.interfEditReserva, self.interfEditPessoas] )
         
     #Telas dentro do menu para alterar as janelas pelo sub menu
         self.btnPessoa.clicked.connect(lambda: self.trocarTelaMenu(self.cadastros))
@@ -50,6 +61,11 @@ class HomePrincipal(QMainWindow):
         self.btnEditar.clicked.connect(lambda: self.trocarTelaMenu(self.editar)) 
         
     #btns da propria interface   
+        self.btnEditarArea.clicked.connect(lambda: self.trocarTela(self.interfEditArea))
+        self.btnEditaCurso.clicked.connect(lambda: self.trocarTela(self.interfEditCurso))
+        self.btnEditarLogin.clicked.connect(lambda: self.trocarTela(self.interfEditLogin))
+        self.btnEditarReserva.clicked.connect(lambda: self.trocarTela(self.interfEditReserva))
+        self.btnEditarPessoas.clicked.connect(lambda: self.trocarTela(self.interfEditPessoas))
         self.btnCadastarSala.clicked.connect(lambda: self.trocarTela(self.interfcasSala))
         self.btnCadastroPessoa.clicked.connect(lambda: self.trocarTela(self.interfCasPessoa))
         self.btnReserva.clicked.connect(lambda: self.trocarTela(self.interfReserva))
@@ -94,34 +110,14 @@ class HomePrincipal(QMainWindow):
         passar a classe da tela"""
         
         self.stackedWidget.setCurrentWidget(tela)
-        self.subMenuLateral.hide()
-        self.menuSimples.show()
-        self.btnMenu.setStyleSheet("""
-                                       #btnMenu {
-                                           icon: url("App/view/ui/icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"); 
-                                        }"""
-                                    )
     
     def trocarTelaMenu(self, menu):
         if self.subMenuQuebrado.isVisible():
             self.menuQuebrado.setCurrentWidget(menu)
-            self.subMenuLateral.hide()
-            self.menuSimples.show()
-            self.btnMenu.setStyleSheet("""
-                                       #btnMenu {
-                                           icon: url("App/view/ui/icones/menu-regular-24 (1).png"); 
-                                        }"""
-                                    )
         else:
             self.subMenuQuebrado.show()
             self.menuQuebrado.setCurrentWidget(menu)
-            self.subMenuLateral.hide()
-            self.menuSimples.show()
-            self.btnMenu.setStyleSheet("""
-                                       #btnMenu {
-                                           icon: url("App/view/ui/icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"); 
-                                        }"""
-                                    )
+            
 
     def mousePressEvent(self, event):
         if event.button() == Qt.RightButton:

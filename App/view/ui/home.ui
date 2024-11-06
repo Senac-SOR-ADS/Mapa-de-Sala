@@ -18,8 +18,20 @@
 	padding: 5px 10px;
 	text-align: left;
 	margin-bottom: 10px;
-	margin-top-left-radius: 10px;
-	margin-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+#cabecalho {
+	background-color: rgb(179, 179, 179);
+}
+
+#logoTitulo, #btnsJanela {
+	backgroud-color: transparent;
+}
+
+#menuSimples, #subMenuLateral {
+	background-color: #ccc;
 }
 
 #btnFecharPagina:hover {
@@ -42,11 +54,11 @@
 }
 
 
-QPushButton:hover{
+#subMenuLateral QPushButton:hover, #menuSimples QPushButton:hover{
 	background-color: skyblue;
 }
 
-QPushButton:focus{
+#subMenuLateral  QPushButton:focus, #menuSimples QPushButton:focus{
 	background-color: skyblue;
 }
 
@@ -424,6 +436,9 @@ padding: 10px;
              <property name="spacing">
               <number>6</number>
              </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
              <property name="topMargin">
               <number>0</number>
              </property>
@@ -433,9 +448,22 @@ padding: 10px;
              <property name="bottomMargin">
               <number>0</number>
              </property>
-             <item alignment="Qt::AlignVCenter">
+             <item>
               <widget class="QWidget" name="menuSimples" native="true">
                <layout class="QVBoxLayout" name="verticalLayout_11">
+                <item>
+                 <spacer name="verticalSpacer_4">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
                 <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                  <widget class="QPushButton" name="btnHome">
                   <property name="minimumSize">
@@ -618,7 +646,7 @@ padding: 10px;
                  <number>0</number>
                 </property>
                 <property name="leftMargin">
-                 <number>5</number>
+                 <number>0</number>
                 </property>
                 <property name="topMargin">
                  <number>0</number>
@@ -629,33 +657,6 @@ padding: 10px;
                 <property name="bottomMargin">
                  <number>0</number>
                 </property>
-                <item alignment="Qt::AlignLeft|Qt::AlignTop">
-                 <widget class="QFrame" name="frame_2">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_5">
-                   <property name="spacing">
-                    <number>0</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
-                  </layout>
-                 </widget>
-                </item>
                 <item>
                  <spacer name="verticalSpacer">
                   <property name="orientation">
@@ -691,13 +692,13 @@ padding: 10px;
                     <number>0</number>
                    </property>
                    <property name="topMargin">
-                    <number>10</number>
+                    <number>0</number>
                    </property>
                    <property name="rightMargin">
                     <number>0</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>10</number>
+                    <number>0</number>
                    </property>
                    <item>
                     <widget class="QPushButton" name="btnIncio">
@@ -963,7 +964,7 @@ padding: 10px;
                    </size>
                   </property>
                   <property name="currentIndex">
-                   <number>0</number>
+                   <number>1</number>
                   </property>
                   <widget class="QWidget" name="cadastros">
                    <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1032,7 +1033,7 @@ padding: 10px;
                   <widget class="QWidget" name="editar">
                    <layout class="QVBoxLayout" name="verticalLayout_10">
                     <item>
-                     <widget class="QPushButton" name="pushButton_5">
+                     <widget class="QPushButton" name="btnEditarPessoas">
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
@@ -1042,7 +1043,7 @@ padding: 10px;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="pushButton_6">
+                     <widget class="QPushButton" name="btnEditarReserva">
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
@@ -1052,12 +1053,32 @@ padding: 10px;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="pushButton_3">
+                     <widget class="QPushButton" name="btnEditarArea">
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Editar Cadastro</string>
+                       <string>Editar Área</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btnEditaCurso">
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="text">
+                       <string>Editar Curso</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btnEditarLogin">
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="text">
+                       <string>Editar Login</string>
                       </property>
                      </widget>
                     </item>
@@ -1216,9 +1237,9 @@ padding: 10px;
   <tabstop>btnCadastarSala</tabstop>
   <tabstop>btnCadastroPessoa</tabstop>
   <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_5</tabstop>
-  <tabstop>pushButton_6</tabstop>
-  <tabstop>pushButton_3</tabstop>
+  <tabstop>btnEditarPessoas</tabstop>
+  <tabstop>btnEditarReserva</tabstop>
+  <tabstop>btnEditarArea</tabstop>
   <tabstop>pushButton_2</tabstop>
   <tabstop>pushButton_4</tabstop>
  </tabstops>
