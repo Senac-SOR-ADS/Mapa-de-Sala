@@ -87,13 +87,13 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`idCurso`, `idArea`, `nome`, `oferta`, `periodo`, `cargaHoraria`, `horasDia`, `qtdAlunos`) VALUES
-(1, 1, 'Power BI', '245685', 'Manhã', 121013, '00:00:04', 17),
-(2, 3, 'Reiki', '487563', 'Tarde', 231830, '00:00:02', 9),
-(3, 4, 'Documentário', '478651', 'Manhã', 0, '00:00:04', 7),
-(4, 8, 'Doces Finos', '532148', 'Noite', 24, '00:00:02', 25),
-(5, 9, 'Gestão Fiscal', '856432', 'Tarde', 0, '00:00:04', 30),
-(6, 2, 'Alongamento de Cílios', '214589', 'Manhã', 0, '00:00:02', 12),
-(7, 12, 'Atendente de Farmacia', '547893', 'Tarde', 58, '00:00:04', 24),
+(1, 1, 'Power BI', '245685', 'Manhã', 121013, '04:00:00', 17),
+(2, 3, 'Reiki', '487563', 'Tarde', 231830, '02:00:00', 9),
+(3, 4, 'Documentário', '478651', 'Manhã', 0, '04:00:00', 7),
+(4, 8, 'Doces Finos', '532148', 'Noite', 24, '02:00:00', 25),
+(5, 9, 'Gestão Fiscal', '856432', 'Tarde', 0, '04:00:00', 30),
+(6, 2, 'Alongamento de Cílios', '214589', 'Manhã', 0, '02:00:00', 12),
+(7, 12, 'Atendente de Farmacia', '547893', 'Tarde', 58, '04:00:00', 24),
 (8, 10, 'Libras', '2478947', 'Tarde', 120, '04:00:00', 17),
 (9, 14, 'Ceramica', '457863', 'Noite', 24, '02:00:00', 13),
 (10, 33, 'piano', '40028', 'Manhã', 123, '04:00:00', 21),
@@ -181,7 +181,7 @@ CREATE TABLE `pessoa` (
   `nascimento` date NOT NULL COMMENT 'Data de nascimento',
   `telefone` varchar(15) NOT NULL COMMENT 'Telefone de contato',
   `email` varchar(100) NOT NULL UNIQUE COMMENT 'Email da pessoa',
-  `cargo` varchar(50) NOT NULL COMMENT 'Cargo ou função da pessoa'
+  `cargo` ENUM('Comum', 'Apoio', 'Patrimonio', 'Administrador') NOT NULL COMMENT 'Cargo ou função da pessoa'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -192,29 +192,19 @@ INSERT INTO `pessoa` (`idPessoa`, `nome`, `CPF_CNPJ`, `nascimento`, `telefone`, 
 (1, 'Enzo Silva Carvalho', '663.300.190-88', '2000-08-15', '(61) 3615-2089', 'emailgenerico@gmail.com', 'Apoio'),
 (2, 'Laís Malu Rebeca da Paz', '192.458.327-59', '1981-08-20', '(46) 2578-6303', 'potoasdfeafafemdfmakfmskmfkmfkamamd@gmail.com', 'Patrimônio'),
 (3, 'Enzo Diogo Martin Silva', '931.825.487-35', '1998-07-04', '(79) 3963-7319', 'fdsfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsd@gmail.com', 'Limpeza'),
-(4, 'Renato Bernardo Yuri das Neves', '727.882.631-47', '1987-03-06', '(71) 3860-2221', 'fdsfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsd@gmail.com', 'Docente'),
+(4, 'Renato Bernardo Yuri das Neves', '727.882.631-47', '1987-03-06', '(71) 3860-2221', 'emailqualquer@gmail.com', 'Docente'),
 (5, 'Elisa Mariane Adriana Assis', '44.196.017/0001-31', '1960-02-01', '(63) 2801-0368', 'elisa-assis95@amoreencantos.com', 'Chefe'),
 (6, 'Marcelo Vinicius Tiago Freitas', '054.675.039-79', '1992-03-17', '(68) 3937-9429', 'marcelo-freitas77@iclaud.com', 'Diretor'),
 (7, 'Marcela Alessandra Gomes', '284.319.150-56', '2001-02-09', '(42) 3667-9065', 'marcela_alessandra_gomes@callan.com.br', 'Manutenção'),
 (8, 'Maria Isabelly Jéssica Nascimento', '71.386.002/0001-09', '1992-01-19', '(44) 2533-0657', 'maria_isabelly_nascimento@oticascarol.com.br', 'Apoio'),
-(9, 'Marcelo Kauê Lorenzo Lima', '533.390.123-69', '1973-04-01', '(27) 2579-5552', 'marcelo_kaue_lima@me.com.br', 'Jardineiro'),
-(10, 'Raimundo Ricardo Anderson Caldeira', '28.653.414/0001-39', '1972-02-16', '(95) 3631-8354', 'raimundo_ricardo_caldeira@outlook.com', 'Patrimônio'),
-(11, 'Samuel', '123.123.123-90', '2006-10-19', '(15) 99120-6869', 'henrickysamuel.gon@gmail.com', 'Gerente Master'),
-(12, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
-(13, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
-(14, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
-(15, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
+(9, 'Otavio', '533.390.123-69', '1973-04-01', '(27) 2579-5552', 'otavio@g.com', 'Patrimônio'),
+(10, 'Gabriel', '28.653.414/0001-39', '1972-02-16', '(95) 3631-8354', 'gabriel@g.com', 'Patrimônio'),
+(11, 'Ricardo', '123.123.123-90', '2006-10-19', '(15) 99120-6869', 'richard@g.com', 'Gerente Master'),
+(12, 'Bruno Rodrigues', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'brunor@gmail.com', 'Gerente Master'),
+(13, 'Nickolas', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'nickolas@gmail.com', 'Gerente Master'),
+(14, 'Bruno Mendes', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'brunom@gmail.com', 'Gerente Master'),
+(15, 'Samuel', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'samuel@gmail.com', 'Gerente Master'),
 (16, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
-(17, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
-(18, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
-(19, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
-(20, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
-(21, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
-(22, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
-(23, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
-(24, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
-(25, 'Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master'),
-(26, 'samuel', '12312312312', '0000-00-00', '19/10/2006', 'gerente pro master fodão', '15991206868'),
 (27, 'samuel', '12312312312', '0000-00-00', '19/10/2006', 'gerente pro master fodão', '15991206868'),
 (28, 'otavio', '12312312312', '0000-00-00', '15991150990', 'o@g.c', 'gerente pro master fodão 2'),
 (29, 'gabriel', '12312312312', '0000-00-00', '15991102992', 'g@g.c', 'gerente pro master fodão III'),
@@ -249,19 +239,19 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`idLogin`, `idPessoa`, `email`, `senha`, `nivelAcesso`) VALUES
-(1, 1, 'email@gmail.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
+(1, 1, 'email@gmail.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
 (5, 2, 'potoasdfeafafemdfmakfmskmfkmfkamamd@gmail.com', 'lais123', 'admin'),
 (6, 8, 'maria_isabelly_nascimento@oticascarol.com.br', 'marmaria123', 'user'),
-(7, 10, 'raimundo_ricardo_caldeira@outlook.com', 'raimundoneto', 'user'),
+(7, 6, 'marcelo-freitas77@iclaud.com', 'marcelo123', 'user'),
 (8, 3, 'enzo@gmail.com', 'enzo', 'admin'),
-(9, 12, 'otavio@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(10, 13, 'gabriel@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(11, 14, 'richard@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(12, 15, 'brunor@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(13, 16, 'nickolas@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(14, 17, 'brunom@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(15, 18, 'samuel@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin'),
-(16, 24, 'jeff@g.com', '$2b$12$c/wrq2URb6gMCq74KJU2du0guhQtXaER3rUGQ3zWFVwXu7HcfjonG', 'admin');
+(9, 9, 'otavio@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(10, 10, 'gabriel@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(11, 11, 'richard@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(12, 12, 'brunor@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(13, 13, 'nickolas@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(14, 14, 'brunom@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(15, 15, 'samuel@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin'),
+(16, 16, 'jeff@g.com', '$2b$12$I0EQ29vq2sUG1IgX6HbIW.80QciN/TM.EWtZX9jX8O2qg0O2C1sre', 'admin');
 
 -- --------------------------------------------------------
 

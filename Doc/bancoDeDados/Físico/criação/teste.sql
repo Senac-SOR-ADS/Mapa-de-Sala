@@ -100,7 +100,7 @@ CREATE TABLE `pessoa` (
   `nascimento` date NOT NULL COMMENT 'Data de nascimento',
   `telefone` varchar(15) NOT NULL COMMENT 'Telefone de contato',
   `email` varchar(100) NOT NULL UNIQUE COMMENT 'Email da pessoa',
-  `cargo` varchar(50) NOT NULL COMMENT 'Cargo ou função da pessoa',
+  `cargo` ENUM('Comum', 'Apoio', 'Patrimonio', 'Administrador') NOT NULL COMMENT 'Cargo ou função da pessoa',
   PRIMARY KEY (`idPessoa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 

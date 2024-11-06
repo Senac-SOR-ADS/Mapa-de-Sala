@@ -207,6 +207,9 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
     <item>
      <property name="text">
       <string>Comum</string>
@@ -230,6 +233,15 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>nomePessoas</tabstop>
+  <tabstop>cpfCnpj</tabstop>
+  <tabstop>email</tabstop>
+  <tabstop>dataDeNascimento</tabstop>
+  <tabstop>cargo</tabstop>
+  <tabstop>telefone</tabstop>
+  <tabstop>btnCadastrar</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

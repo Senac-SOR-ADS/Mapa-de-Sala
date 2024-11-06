@@ -1,18 +1,16 @@
 from App.model.conexao import ConexaoBD
 
-
 class Pessoa:
     __banco = ConexaoBD()
 
     def __init__(self) -> None:
-
         self.__idPessoa = None
         self.__nome = None
         self.__cpf_cnpj = None
         self.__nascimento = None
-        self.telefone = None
-        self.email = None
-        self.cargo = None
+        self.__telefone = None
+        self.__email = None
+        self.__cargo = None
 
     def get_idPessoa(self):
         return self.__idPessoa
@@ -24,7 +22,7 @@ class Pessoa:
         return self.__nome
    
     def __set_nome(self, nome):
-        self.__nome = nome
+        self.__nome = nome.title()
  
     def get_cpf_cnpj(self):
         return self.__cpf_cnpj
@@ -56,8 +54,8 @@ class Pessoa:
     def __set_cargo(self, cargo):
         self.__cargo = cargo
 
+    # Métodos para cadastradar pessoas
     def cadastrar(self, nome, cpf_cnpj, nascimento, telefone, email, cargo):
-
         self.__set_nome(nome)
         self.__set_cpf_cnpj(cpf_cnpj)
         self.__set_nascimento(nascimento)
@@ -68,35 +66,81 @@ class Pessoa:
         try:
             self.__banco.conectar()
 
-            query = 'INSERT INTO pessoa (`nome`, `CPF_CNPJ`, `nascimento`, `telefone`, `email`, `cargo`) VALUES (%s, %s, %s, %s, %s, %s)'
-            params = (nome, cpf_cnpj, nascimento, telefone, email, cargo)
-            resposta = self.__banco.alterarDados(query, params)
+            query_pessoa = '''
+            INSERT INTO pessoa (nome, CPF_CNPJ, nascimento, telefone, email, cargo)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            '''
+            params_pessoa = (self.get_nome(), self.get_cpf_cnpj(), self.get_nascimento(),
+                             self.get_telefone(), self.get_email(), self.get_cargo())
+            resposta = self.__banco.alterarDados(query_pessoa, params_pessoa)
+            
             self.__set_idPessoa(resposta.lastrowid)
-            self.__banco.desconectar()
-            return True
-        
+            return self.get_idPessoa()
         except Exception as e:
+            print(f"Erro ao cadastrar pessoa: {e}")
+            return None
+        finally:
+            self.__banco.desconectar()
+
+    # Métodos para listar pessoas cadastradas
+    @classmethod
+    def buscar(cls):
+        try:
+            cls.__banco.conectar()
+            query = 'SELECT idPessoa, nome FROM pessoa;'
+            resposta = cls.__banco.buscarTodos(query)
+            cls.__banco.desconectar()
+            return resposta
+        except Exception:
+            return False
+    
+    # Método para buscar por id
+    @classmethod
+    def pesquisar_id(cls, idPessoa):
+        try:
+            cls.__banco.conectar()
+            query = 'SELECT * FROM pessoa WHERE idPessoa = %s;'
+            resposta = cls.__banco.buscar(query, (idPessoa,))
+            cls.__banco.desconectar()
+            return resposta
+        except Exception:
             return False
 
+    # Método para atualizar dados de uma pessoa
+    def atualizar(self, idPessoa, nome, cpf_cnpj, nascimento, telefone, email, cargo):
+        self.__set_idPessoa(idPessoa)
+        self.__set_nome(nome)
+        self.__set_cpf_cnpj(cpf_cnpj)
+        self.__set_nascimento(nascimento)
+        self.__set_telefone(telefone)
+        self.__set_email(email)
+        self.__set_cargo(cargo)
+        try:
+            self.__banco.conectar()
+            query = '''
+                UPDATE pessoa 
+                SET nome = %s, CPF_CNPJ = %s, nascimento = %s, telefone = %s, email = %s, cargo = %s 
+                WHERE idPessoa = %s
+            '''
+            params = (self.get_nome(), self.get_cpf_cnpj(), self.get_nascimento(), self.get_telefone(), self.get_email(), self.get_cargo(), self.get_idPessoa())
+            self.__banco.alterarDados(query, params)
+            self.__banco.desconectar()
+            return True
+        except Exception:
+            return False
+
+    # Método para remover uma pessoa do banco
     @classmethod
-    def buscarPessoas(cls):
-        cls.__banco.conectar()
-        query = 'SELECT idPessoa, nome FROM pessoa;'
-        resposta = cls.__banco.buscarTodos(query)
-        cls.__banco.desconectar()
-        return resposta
+    def deletar(cls, idPessoa):
+        try:
+            cls.__banco.conectar()
+            query = 'DELETE FROM pessoa WHERE idPessoa = %s;'
+            params = (idPessoa,)
+            cls.__banco.alterarDados(query, params)
+            cls.__banco.desconectar()
+            return True
+        except Exception:
+            return False
     
 if __name__ == "__main__":
-
-    p = Pessoa()
-    p.cadastrar('Jeff', '123.456.789-00', '2006-10-19', '(15) 99120-6869', 'jeff@gmail.com', 'Gerente Master')
-    # p.__set_nome('mario') # não pode acontece
-
-    print(p)
-    print(p.get_nome())
-    print(p.get_cpf_cnpj())
-    print(p.get_idPessoa())
-    
-    # print(p.get_id)
-
-
+    pass
