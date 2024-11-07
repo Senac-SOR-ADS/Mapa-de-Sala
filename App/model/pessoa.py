@@ -54,7 +54,7 @@ class Pessoa:
     def __set_cargo(self, cargo):
         self.__cargo = cargo
 
-    # Métodos para cadastradar pessoas
+    # =================== cadastrar ===================
     def cadastrar(self, nome, cpf_cnpj, nascimento, telefone, email, cargo):
         self.__set_nome(nome)
         self.__set_cpf_cnpj(cpf_cnpj)
@@ -65,7 +65,6 @@ class Pessoa:
 
         try:
             self.__banco.conectar()
-
             query_pessoa = '''
             INSERT INTO pessoa (nome, CPF_CNPJ, nascimento, telefone, email, cargo)
             VALUES (%s, %s, %s, %s, %s, %s)
@@ -82,7 +81,32 @@ class Pessoa:
         finally:
             self.__banco.desconectar()
 
-    # Métodos para listar pessoas cadastradas
+    # =================== atualizar ===================
+    def atualizar(self, idPessoa, nome, cpf_cnpj, nascimento, telefone, email, cargo):
+        self.__set_idPessoa(idPessoa)
+        self.__set_nome(nome)
+        self.__set_cpf_cnpj(cpf_cnpj)
+        self.__set_nascimento(nascimento)
+        self.__set_telefone(telefone)
+        self.__set_email(email)
+        self.__set_cargo(cargo)
+
+        try:
+            self.__banco.conectar()
+            query = '''
+                UPDATE pessoa 
+                SET nome = %s, CPF_CNPJ = %s, nascimento = %s, telefone = %s, email = %s, cargo = %s 
+                WHERE idPessoa = %s
+            '''
+            params = (self.get_nome(), self.get_cpf_cnpj(), self.get_nascimento(),
+                      self.get_telefone(), self.get_email(), self.get_cargo(), self.get_idPessoa())
+            self.__banco.alterarDados(query, params)
+            self.__banco.desconectar()
+            return True
+        except Exception:
+            return False
+
+    # =================== listar ===================
     @classmethod
     def buscar(cls):
         try:
@@ -94,7 +118,7 @@ class Pessoa:
         except Exception:
             return False
     
-    # Método para buscar por id
+    # =================== buscar Id ===================
     @classmethod
     def pesquisar_id(cls, idPessoa):
         try:
@@ -106,30 +130,7 @@ class Pessoa:
         except Exception:
             return False
 
-    # Método para atualizar dados de uma pessoa
-    def atualizar(self, idPessoa, nome, cpf_cnpj, nascimento, telefone, email, cargo):
-        self.__set_idPessoa(idPessoa)
-        self.__set_nome(nome)
-        self.__set_cpf_cnpj(cpf_cnpj)
-        self.__set_nascimento(nascimento)
-        self.__set_telefone(telefone)
-        self.__set_email(email)
-        self.__set_cargo(cargo)
-        try:
-            self.__banco.conectar()
-            query = '''
-                UPDATE pessoa 
-                SET nome = %s, CPF_CNPJ = %s, nascimento = %s, telefone = %s, email = %s, cargo = %s 
-                WHERE idPessoa = %s
-            '''
-            params = (self.get_nome(), self.get_cpf_cnpj(), self.get_nascimento(), self.get_telefone(), self.get_email(), self.get_cargo(), self.get_idPessoa())
-            self.__banco.alterarDados(query, params)
-            self.__banco.desconectar()
-            return True
-        except Exception:
-            return False
-
-    # Método para remover uma pessoa do banco
+    # =================== Remove ===================
     @classmethod
     def deletar(cls, idPessoa):
         try:
@@ -141,6 +142,6 @@ class Pessoa:
             return True
         except Exception:
             return False
-    
+
 if __name__ == "__main__":
     pass
