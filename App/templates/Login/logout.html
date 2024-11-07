@@ -8,6 +8,6 @@
     <div class="alert alert-success text-center" role="alert">
         Você saiu do sistema com sucesso.
     </div>
-    <a href="/home" class="btn btn-primary w-100">Voltar à Página Inicial</a>
+    <a href="{{ url_for('home_route.home') }}" class="btn btn-primary w-100">Voltar à Página Inicial</a>
 </div>
 {% endblock %}

@@ -98,46 +98,6 @@ label {
     transform: scale(1.05);
 }
 
-/* =================== Mensagens de Flash =================== */
-.alert-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    margin-bottom: 20px;
-}
-
-.alert {
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-.alert-success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.alert-error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-.alert-info {
-    background-color: #cce5ff;
-    color: #004085;
-    border: 1px solid #b8daff;
-}
-
-.alert-warning {
-    background-color: #fff3cd;
-    color: #856404;
-    border: 1px solid #ffeeba;
-}
-
 /* =================== Responsividade =================== */
 @media (max-width: 480px) {
     .container {

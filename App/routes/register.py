@@ -3,7 +3,7 @@ from .logger_setup import logger
 
 # Importa todas as rotas do sistema 
 from .home import home_route
-from .pessoa import pessoa_route
+from .pessoa import funcionario_route
 from .reserva import reserva_route
 from .relatorios import relatorio_route
 from .sala import sala_route
@@ -24,7 +24,7 @@ def register_routes(app: Flask) -> None:
         (home_route, '/'),
         (login_route, '/login'),
         (logout_route, '/logout'),
-        (pessoa_route, '/funcionario'),
+        (funcionario_route, '/funcionario'),
         (reserva_route, '/reserva'),
         (relatorio_route, '/relatorio'),       
         (sala_route, '/sala'),

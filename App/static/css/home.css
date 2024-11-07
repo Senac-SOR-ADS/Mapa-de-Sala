@@ -111,22 +111,6 @@ footer small {
     color: var(--footer-small-text-color);
 }
 
-/* =================== Mensagens de Flash =================== */
-.alert-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto 20px;
-}
-
-.alert {
-    padding: 1rem; 
-    border-radius: 0.5rem; 
-    margin-bottom: 1rem; 
-    font-size: 1rem;
-    line-height: 1.5;
-    box-shadow: var(--box-shadow);
-}
-
 /* =================== Responsividade =================== */
 @media (max-width: 768px) {
     body {

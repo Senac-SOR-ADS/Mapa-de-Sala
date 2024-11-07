@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, redirect, url_for, flash, session
+from flask import render_template, Blueprint, flash
 from App.routes.auth.autenticar import login_auth
 
 # Definindo o blueprint para a rota de home
@@ -15,4 +15,4 @@ def home():
 def page_not_found(error):
     """Tratamento de erro 404: Página não encontrada."""
     flash('Página não encontrada. Verifique o URL.', 'danger')
-    return render_template('/Home/error404.html'), 404
+    return render_template('/Error/error404.html'), 404
