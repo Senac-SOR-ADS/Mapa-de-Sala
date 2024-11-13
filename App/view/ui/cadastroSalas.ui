@@ -74,7 +74,12 @@
    </item>
    <item>
     <property name="text">
-     <string>Jardinagem</string>
+     <string>Comum</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Área Externa</string>
     </property>
    </item>
   </widget>

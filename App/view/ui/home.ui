@@ -23,7 +23,16 @@
 }
 
 #cabecalho {
-	background-color: rgb(179, 179, 179);
+	background-color: #fff;
+}
+
+#containerGeral {
+	background-color: #e4e8f0;
+
+}
+
+#inicio {
+	background-color: transparent;
 }
 
 #logoTitulo, #btnsJanela {
@@ -31,7 +40,7 @@
 }
 
 #menuSimples, #subMenuLateral {
-	background-color: #ccc;
+	background-color:#01498a;
 }
 
 #btnFecharPagina:hover {
@@ -42,24 +51,29 @@
 
 #suMenuLateral QPushButton {
 	border-radius: 10px;
+	color: #fff;
 }
 
 #frameBtns QPushButton {
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
+	color: #fff;
 }
 
 #menuSimples QPushButton {
 	border-radius: 10px;
+	color: #fff;
 }
 
 
 #subMenuLateral QPushButton:hover, #menuSimples QPushButton:hover{
-	background-color: skyblue;
+	background-color: #f6921e;
+	color: #fff;
 }
 
 #subMenuLateral  QPushButton:checked, #menuSimples QPushButton:checked{
-	background-color: skyblue;
+	background-color: #f6921e;
+	color: #fff;
 }
 
 #btnTelaCheia:hover {
@@ -89,12 +103,14 @@ QPushButton {
 }
 
 #btnMenu {
-	
+	color: #fff;
+	background-color: #f6921e;
 	padding: 0;
 	padding-right: 3px;
 }
 
 #btnFecharMenuQuebrado {
+	background-color: #f6921e;
 	border: none;
 	background-color: none;
 }</string>
@@ -153,7 +169,7 @@ QPushButton {
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <property name="leftMargin">
-           <number>0</number>
+           <number>9</number>
           </property>
           <property name="topMargin">
            <number>0</number>
@@ -1205,7 +1221,7 @@ padding: 10px;
            </widget>
           </item>
           <item>
-           <widget class="QStackedWidget" name="stackedWidget">
+           <widget class="QStackedWidget" name="container">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
