@@ -59,7 +59,7 @@
     <bool>true</bool>
    </property>
    <property name="currentText">
-    <string>Laboratório</string>
+    <string>Comum</string>
    </property>
    <property name="insertPolicy">
     <enum>QComboBox::InsertAlphabetically</enum>
@@ -69,12 +69,12 @@
    </property>
    <item>
     <property name="text">
-     <string>Laboratório</string>
+     <string>Comum</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Comum</string>
+     <string>Laboratório</string>
     </property>
    </item>
    <item>
