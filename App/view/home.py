@@ -132,31 +132,6 @@ class HomePrincipal(QMainWindow):
 
     def mouseReleaseEvent(self, event):
         self.moving = False
-        
-    def menus(self):
-        if ( self.menuSimples.isHidden() ):
-            self.subMenuLateral.show()
-        else: 
-            self.subMenuLateral.close()
-    
-    @pyqtSlot()
-    def on_btnMenu_clicked(self):
-        if (self.subMenuLateral.isVisible()):
-            self.subMenuLateral.hide()
-            self.menuSimples.show()
-            self.btnMenu.setStyleSheet("""
-                                       #btnMenu {
-                                           icon: url("App/view/ui/icones/menu-regular-24 (1).png"); 
-                                        }"""
-                                    )
-        else:
-            self.subMenuLateral.show()
-            self.menuSimples.hide()
-            self.btnMenu.setStyleSheet("""
-                                       #btnMenu {
-                                           icon: url("App/view/ui/icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"); 
-                                        }"""
-                                    )
     
     @pyqtSlot()
     def on_btnFecharMenuQuebrado_clicked(self):

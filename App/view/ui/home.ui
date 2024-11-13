@@ -58,7 +58,7 @@
 	background-color: skyblue;
 }
 
-#subMenuLateral  QPushButton:focus, #menuSimples QPushButton:focus{
+#subMenuLateral  QPushButton:checked, #menuSimples QPushButton:checked{
 	background-color: skyblue;
 }
 
@@ -213,6 +213,9 @@ QPushButton {
                  <width>24</width>
                  <height>24</height>
                 </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -488,6 +491,15 @@ padding: 10px;
                     <height>24</height>
                    </size>
                   </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
@@ -513,6 +525,12 @@ padding: 10px;
                     <width>24</width>
                     <height>24</height>
                    </size>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -540,6 +558,12 @@ padding: 10px;
                     <height>24</height>
                    </size>
                   </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
@@ -566,6 +590,12 @@ padding: 10px;
                     <height>24</height>
                    </size>
                   </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
@@ -591,6 +621,12 @@ padding: 10px;
                     <width>24</width>
                     <height>24</height>
                    </size>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -630,6 +666,12 @@ padding: 10px;
                     <width>24</width>
                     <height>24</height>
                    </size>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -728,6 +770,12 @@ padding: 10px;
                        <height>24</height>
                       </size>
                      </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -756,6 +804,12 @@ padding: 10px;
                        <width>24</width>
                        <height>24</height>
                       </size>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -786,6 +840,12 @@ padding: 10px;
                        <height>24</height>
                       </size>
                      </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -805,6 +865,12 @@ padding: 10px;
                      <property name="icon">
                       <iconset>
                        <normaloff>icones/edit_square_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/edit_square_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -834,6 +900,12 @@ padding: 10px;
                        <width>24</width>
                        <height>24</height>
                       </size>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -900,6 +972,12 @@ padding: 10px;
                        <width>24</width>
                        <height>24</height>
                       </size>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -1244,5 +1322,230 @@ padding: 10px;
   <tabstop>pushButton_4</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnHome</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnIncio</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>24</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>95</x>
+     <y>256</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnIncio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnHome</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>103</x>
+     <y>270</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>31</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnPesquisa</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnBusca</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>100</x>
+     <y>321</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>39</x>
+     <y>306</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnBusca</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnPesquisa</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>39</x>
+     <y>325</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>105</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnPessoa</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnPessoas</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>355</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>33</x>
+     <y>366</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnPessoas</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnPessoa</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>40</x>
+     <y>385</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>138</x>
+     <y>386</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnEditarSimples</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnEditar</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>30</x>
+     <y>422</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>168</x>
+     <y>420</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnEditar</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnEditarSimples</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>105</x>
+     <y>440</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>39</x>
+     <y>446</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnConfiguracoes</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnConfig</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>467</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>42</x>
+     <y>470</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnConfig</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnConfiguracoes</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>30</x>
+     <y>491</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>499</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnSairSimples</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnSair</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>40</x>
+     <y>713</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>113</x>
+     <y>716</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnSair</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnSairSimples</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>103</x>
+     <y>742</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>35</x>
+     <y>734</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnMenu</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>menuSimples</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>41</x>
+     <y>21</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>48</x>
+     <y>78</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnMenu</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>subMenuLateral</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>75</x>
+     <y>28</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>146</x>
+     <y>119</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
