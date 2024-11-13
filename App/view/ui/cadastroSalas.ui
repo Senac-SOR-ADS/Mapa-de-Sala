@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>499</width>
+    <height>475</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -74,7 +74,12 @@
    </item>
    <item>
     <property name="text">
-     <string>Jardinagem</string>
+     <string>Comum</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Área Externa</string>
     </property>
    </item>
   </widget>
