@@ -6,12 +6,6 @@ def cadastrarSala(nome, tipo, predio, equipamento, capacidade, feedback):
         return True
     return False
 
-def validarInputs(valores):
-    for i in valores:
-        if not i:
-            return False
-    return True
-
 def listarSala():
     todasSalas = Sala.buscar_nomeId_sala()
     listarSalas = {i[1]:i[0] for i in todasSalas}

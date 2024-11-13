@@ -36,11 +36,11 @@
     <!-- Paginação -->
     <div class="pagination mt-4">
         {% if page > 1 %}
-        <a class="btn btn-secondary" href="{{ url_for('area_route.listarArea', page=page - 1) }}">Anterior</a>
+        <a class="btn btn-secondary" href="{{ url_for('area_route.listar_Area', page=page - 1) }}">Anterior</a>
         {% endif %}
         <span class="mx-2">Página {{ page }} de {{ (total_items // per_page) + (1 if total_items % per_page > 0 else 0) }}</span>
         {% if page * per_page < total_items %}
-        <a class="btn btn-secondary" href="{{ url_for('area_route.listarArea', page=page + 1) }}">Próxima</a>
+        <a class="btn btn-secondary" href="{{ url_for('area_route.listar_Area', page=page + 1) }}">Próxima</a>
         {% endif %}
     </div>
 </div>

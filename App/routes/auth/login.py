@@ -10,7 +10,7 @@ def login():
         email = request.form.get("email")
         senha = request.form.get("senha")
         if autenticar(email, senha):
-            # flash('Login realizado com sucesso!', 'success')
+            flash('Login realizado com sucesso!', 'success')
             return redirect(url_for('home_route.home'))
         flash('Credenciais inválidas. Verifique seu e-mail e senha e tente novamente.', 'error')
     

@@ -3,53 +3,76 @@
 {% block title %}Gestão de Funcionário - Editar Funcionário{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="text-center my-4">Editar Funcionário</h1>
-    
-    <form action="/funcionario/editar/{{ funcionario.id }}" method="POST" class="form-funcionario">
+<div class="container my-4">
+    <h1 class="text-center mb-4">Editar Funcionário</h1>
+
+    <!-- Exibir mensagens de feedback -->
+    {% include "Error/message.html" %}
+
+    <!-- Formulário para editar funcionário -->
+    <form id="formEditarFuncionario" action="{{ url_for('funcionario_route.editar_Pessoa', id=funcionario.idPessoa) }}"
+        method="POST" class="form-funcionario needs-validation" novalidate>
         <fieldset>
             <legend class="mb-3">Edição de Funcionário</legend>
-            <input type="hidden" id="id" name="id" value="{{ funcionario.id }}" />
+            <input type="hidden" id="id" name="id" value="{{ funcionario.idPessoa }}" />
 
+            <!-- Campo Nome -->
             <div class="form-group mb-3">
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" value="{{ funcionario.nome }}" required maxlength="255" class="form-control" aria-label="Nome" />
+                <input type="text" id="nome" name="nome" value="{{ funcionario.nome or '' }}" required maxlength="255"
+                    class="form-control" aria-label="Nome" />
                 <div class="invalid-feedback">Por favor, preencha o nome.</div>
             </div>
 
+            <!-- Campo CPF/CNPJ -->
             <div class="form-group mb-3">
                 <label for="cpfCnpj">CPF/CNPJ:</label>
-                <input type="text" id="cpfCnpj" name="cpfCnpj" value="{{ funcionario.cpfCnpj }}" required maxlength="18" class="form-control" aria-label="CPF ou CNPJ" />
-                <div class="invalid-feedback">Por favor, preencha o CPF/CNPJ.</div>
+                <input type="text" id="cpfCnpj" name="cpfCnpj" value="{{ funcionario.cpfCnpj or '' }}" required maxlength="18"
+                    class="form-control" aria-label="CPF ou CNPJ" />
+                <div class="invalid-feedback">Por favor, preencha o CPF/CNPJ corretamente.</div>
             </div>
 
+            <!-- Campo Data de Nascimento -->
             <div class="form-group mb-3">
                 <label for="dataNasc">Data de Nascimento:</label>
-                <input type="date" id="dataNasc" name="dataNasc" value="{{ funcionario.dataNasc }}" required class="form-control" aria-label="Data de Nascimento" />
+                <input type="date" id="dataNasc" name="dataNasc" value="{{ funcionario.dataNasc or '' }}" required
+                    class="form-control" aria-label="Data de Nascimento" />
                 <div class="invalid-feedback">Por favor, preencha a data de nascimento.</div>
             </div>
 
+            <!-- Campo Telefone -->
             <div class="form-group mb-3">
                 <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" name="telefone" value="{{ funcionario.telefone }}" required maxlength="15" class="form-control" aria-label="Telefone" />
-                <div class="invalid-feedback">Por favor, preencha o telefone.</div>
+                <input type="tel" id="telefone" name="telefone" value="{{ funcionario.telefone or '' }}" required
+                    maxlength="15" class="form-control" aria-label="Telefone" />
+                <div class="invalid-feedback">Por favor, preencha o telefone corretamente.</div>
             </div>
 
+            <!-- Campo Email -->
             <div class="form-group mb-3">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="{{ funcionario.email }}" required maxlength="255" class="form-control" aria-label="Email" />
+                <input type="email" id="email" name="email" value="{{ funcionario.email or '' }}" required maxlength="255"
+                    class="form-control" aria-label="Email" />
                 <div class="invalid-feedback">Por favor, preencha um email válido.</div>
             </div>
 
+            <!-- Campo Cargo -->
             <div class="form-group mb-4">
                 <label for="cargo">Cargo:</label>
-                <input type="text" id="cargo" name="cargo" value="{{ funcionario.cargo }}" required maxlength="15" class="form-control" aria-label="Cargo" />
-                <div class="invalid-feedback">Por favor, preencha o cargo.</div>
+                <select id="cargo" name="cargo" class="form-control" required>
+                    <option value="" disabled {% if not funcionario.cargo %}selected{% endif %}>Selecione o Cargo</option>
+                    <option value="Comum" {% if funcionario.cargo == "Comum" %}selected{% endif %}>Comum</option>
+                    <option value="Patrimonio" {% if funcionario.cargo == "Patrimonio" %}selected{% endif %}>Patrimonio</option>
+                    <option value="Apoio" {% if funcionario.cargo == "Apoio" %}selected{% endif %}>Apoio</option>
+                    <option value="Administrador" {% if funcionario.cargo == "Administrador" %}selected{% endif %}>Administrador</option>
+                </select>
+                <div class="invalid-feedback">Por favor, selecione um cargo.</div>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Editar Funcionário</button>
+            <button type="submit" class="btn btn-primary w-100">Salvar Alterações</button>
         </fieldset>
     </form>
-    <hr />
+
 </div>
+
 {% endblock %}

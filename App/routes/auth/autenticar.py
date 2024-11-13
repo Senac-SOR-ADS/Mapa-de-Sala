@@ -22,3 +22,4 @@ def login_auth(f):
             return redirect(url_for('login_route.login'))
         return f(*args, **kwargs)
     return decorated_function
+

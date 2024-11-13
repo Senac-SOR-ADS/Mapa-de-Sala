@@ -3,7 +3,11 @@
 {% block title %}Página Inicial - Mapa de Sala{% endblock %}
 
 {% block content %}
-<div class="container my-4">
+
+    <!-- Exibir mensagens de feedback -->
+    {% include "Error/message.html" %}
+    
+<div class="container my-4">  
     <h1 class="text-center my-4">Bem-vindo ao Mapa de Sala - Senac!</h1>
     <p class="text-center mb-4">Esta é a página inicial. Aqui você pode navegar pelos diferentes módulos do sistema.</p>
 </div>

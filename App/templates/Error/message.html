@@ -1,0 +1,17 @@
+<!-- Exibir mensagens de feedback -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="alert-container">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show auto-dismiss" role="alert">
+                    <span class="alert-icon">
+                        {% if category == 'success' %}✔️{% elif category == 'error' %}❌{% elif category == 'info' %}ℹ️{% elif category == 'warning' %}⚠️{% endif %}
+                    </span>
+                    <span class="alert-message">{{ message }}</span>
+                    <button type="button" class="custom-close-btn" data-bs-dismiss="alert" aria-label="Fechar">&times;</button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+<script src="{{ url_for('static', filename='js/autoAlert.js') }}"></script>

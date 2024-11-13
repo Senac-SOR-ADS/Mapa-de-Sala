@@ -1,7 +1,7 @@
 # Importação do logger e rotas
 from .logger_setup import logger
 from .home import home_route
-from .pessoa import pessoa_route
+from .pessoa import funcionario_route
 from .reserva import reserva_route
 from .relatorios import relatorio_route
 from .sala import sala_route
@@ -15,7 +15,7 @@ from .auth.logout import logout_route
 __all__ = [
     "logger",
     "home_route",
-    "pessoa_route",
+    "funcionario_route",
     "reserva_route",
     "relatorio_route",
     "sala_route",

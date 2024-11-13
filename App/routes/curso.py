@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, request, flash, redirect, url_for
 from App.routes.auth.autenticar import login_auth
-from App.controller import curso
+from App.controller.curso import listarCursos, cadastrarCurso
 from App.controller.area import listarAreas
 
 # Definindo o blueprint
@@ -8,12 +8,12 @@ curso_route = Blueprint('curso_route', __name__, template_folder='templates/Curs
 
 @curso_route.route("/", methods=['GET', 'POST'])
 @login_auth
-def listarCurso():
+def listar_Curso():
     page = request.args.get('page', 1, type=int)
     per_page = 10
 
     try:
-        all_courses = curso.listarCursos()
+        all_courses = listarCursos()
         if not isinstance(all_courses, dict):
             raise ValueError("Esperava um dicionário de cursos")
 
@@ -32,7 +32,7 @@ def listarCurso():
 
 @curso_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_auth
-def cadastrarCurso():
+def cadastrar_Curso():
     if request.method == 'POST':
         try:
             dados = request.form  # Captura os dados do formulário
@@ -50,15 +50,15 @@ def cadastrarCurso():
             # Validação dos campos
             if not all([area, nome, oferta, periodo, carga, horas, alunos]):
                 flash('Todos os campos são obrigatórios.', 'danger')
-                return redirect(url_for('curso_route.cadastrarCurso'))
+                return redirect(url_for('curso_route.cadastrar_Curso'))
 
             # Cadastrando o curso
-            resultado = curso.cadastrarCurso(area, nome, oferta, periodo, carga, horas, alunos)
+            resultado = cadastrarCurso(area, nome, oferta, periodo, carga, horas, alunos)
             if resultado:
                 flash('Curso cadastrado com sucesso!', 'success')
             else:
                 flash('Erro ao cadastrar o curso.', 'danger')
-            return redirect(url_for('curso_route.cadastrarCurso'))
+            return redirect(url_for('curso_route.cadastrar_Curso'))
         except Exception as e:
             flash('Erro ao cadastrar o curso: {}'.format(str(e)), 'danger')
 

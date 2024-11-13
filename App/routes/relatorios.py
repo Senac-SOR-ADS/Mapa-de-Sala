@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint
 from App.routes.auth.autenticar import login_auth
-from App.controller.pessoa import buscaPessoas
+from App.controller.pessoa import buscarPessoas
 from App.controller.curso import listarCursos
 from App.controller.sala import listarSala
 
@@ -9,14 +9,14 @@ relatorio_route = Blueprint('relatorio_route', __name__, template_folder='templa
 
 @relatorio_route.route("/reservas", methods=['GET', 'POST'])
 @login_auth
-def listarReserva():
+def listar_Reserva():
     salas = listarSala()
-    pessoas = buscaPessoas()
+    pessoas = buscarPessoas()
     cursos = listarCursos()
 
     return render_template('/Relatorios/listarReservas.html', salas=salas, pessoas=pessoas, cursos=cursos)
 
 @relatorio_route.route("/ocupado", methods=['GET', 'POST'])
 @login_auth
-def ocupadoEquipamento():
+def ocupado_Equipamento():
     return render_template('/Relatorios/ocupadoEquipamento.html')

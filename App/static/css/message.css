@@ -1,0 +1,89 @@
+/* =================== Mensagens de Flash =================== */
+
+/* Container para centralizar os alertas */
+.alert-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+/* Estilo base para os alertas */
+.alert {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    box-shadow: var(--box-shadow, 0 2px 5px rgba(0, 0, 0, 0.1)); /* Sombra padrão */
+    position: relative;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Cores e bordas para diferentes tipos de alerta */
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-info {
+    background-color: #cce5ff;
+    color: #004085;
+    border: 1px solid #b8daff;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+/* Estilo do ícone de alerta */
+.alert-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+/* Estilo da mensagem */
+.alert-message {
+    flex: 1;
+}
+
+/* Estilo personalizado para o botão de fechamento */
+.custom-close-btn {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+/* Efeito de hover para o botão de fechamento */
+.custom-close-btn:hover {
+    color: #dc3545;
+}
+
+/* Estilo para os alertas com auto-desaparecimento */
+.auto-dismiss {
+    animation: fadeOut 3s forwards;
+}
+
+/* Animação de desaparecimento dos alertas */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}

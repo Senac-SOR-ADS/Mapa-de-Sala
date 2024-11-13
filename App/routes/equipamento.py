@@ -7,16 +7,16 @@ equipamento_route = Blueprint('equipamento_route', __name__, template_folder='te
 
 @equipamento_route.route("/", methods=['GET', 'POST'])
 @login_auth
-def listarEquipamento():
+def listar_Equipamento():
     return render_template('/Equipamentos/listar.html')
 
 @equipamento_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_auth
-def cadastrarEquipamento():
+def cadastrar_Equipamento():
     areas = listarAreas()
     return render_template('/Equipamentos/cadastrar.html', areas=areas)
 
 @equipamento_route.route('/editar/<int:id>', methods=['GET'])
 @login_auth
-def EditarEquipamento():
+def Editar_Equipamento():
     return render_template('/Equipamentos/editar.html')

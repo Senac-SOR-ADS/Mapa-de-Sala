@@ -2,6 +2,16 @@ import os
 import mysql.connector as connector
 from dotenv import load_dotenv
 
+def limparEnv():
+    try:
+        del os.environ["HOST"]
+        del os.environ["LOGIN"]
+        del os.environ["PASSWORD"]
+        del os.environ["DATABASE"]
+    except:
+        pass
+
+limparEnv()
 load_dotenv()
 
 

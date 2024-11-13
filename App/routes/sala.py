@@ -1,18 +1,18 @@
 from flask import render_template, Blueprint, request, flash, redirect, url_for
 from App.routes.auth.autenticar import login_auth
-from App.controller import sala
+from App.controller.sala import listarSala, cadastrarSala
 
 # Definindo o blueprint
 sala_route = Blueprint('sala_route', __name__, template_folder='templates/Salas/')
 
 @sala_route.route("/", methods=['GET', 'POST'])
 @login_auth
-def listarSala():
+def listar_Sala():
     page = request.args.get('page', 1, type=int)
     per_page = 10
 
     try:
-        all_rooms = sala.listarSala()
+        all_rooms = listarSala()
         if not isinstance(all_rooms, dict):
             raise ValueError("Esperava um dicionário de salas")
 
@@ -31,7 +31,7 @@ def listarSala():
 
 @sala_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_auth
-def cadastrarSala():
+def cadastrar_Sala():
     if request.method == 'POST':
         try:
             if request.is_json:
@@ -55,9 +55,9 @@ def cadastrarSala():
                 return render_template('/Salas/cadastrar.html')
 
             # Cadastrando a sala
-            resultado = sala.cadastrarSala(nome, tipo, predio, equipamento, capacidade, feedback)
+            resultado = cadastrarSala(nome, tipo, predio, equipamento, capacidade, feedback)
             flash('Sala cadastrada com sucesso!', 'success')
-            return redirect(url_for('sala_route.cadastrarSala'))
+            return redirect(url_for('sala_route.cadastrar_Sala'))
         except Exception as e:
             flash(f'Erro ao cadastrar a sala: {str(e)}', 'danger')
  

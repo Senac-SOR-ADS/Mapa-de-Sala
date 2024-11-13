@@ -194,6 +194,9 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="editable">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QComboBox" name="cursoReserva">
       <property name="geometry">
@@ -204,6 +207,9 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="editable">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QComboBox" name="nomeDocente">
       <property name="geometry">
@@ -213,6 +219,9 @@
         <width>161</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="editable">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QDateEdit" name="diaInicio">
@@ -243,6 +252,9 @@
         <width>111</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="editable">
+       <bool>true</bool>
       </property>
       <item>
        <property name="text">
@@ -337,7 +349,7 @@
            <height>53</height>
           </size>
          </property>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>20</x>
@@ -382,7 +394,7 @@
        </item>
        <item>
         <widget class="QWidget" name="widget_4" native="true">
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>20</x>
@@ -412,7 +424,7 @@
        </item>
        <item>
         <widget class="QWidget" name="widget_5" native="true">
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>20</x>
@@ -442,7 +454,7 @@
        </item>
        <item>
         <widget class="QWidget" name="widget_3" native="true">
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>20</x>
@@ -472,7 +484,7 @@
        </item>
        <item>
         <widget class="QWidget" name="widget_6" native="true">
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>20</x>
@@ -505,7 +517,7 @@
          <property name="tabletTracking">
           <bool>false</bool>
          </property>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>20</x>
@@ -539,6 +551,26 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>nomeDocente</tabstop>
+  <tabstop>salaReserva</tabstop>
+  <tabstop>equipamentosReserva</tabstop>
+  <tabstop>cursoReserva</tabstop>
+  <tabstop>periodoReserva</tabstop>
+  <tabstop>diaInicio</tabstop>
+  <tabstop>inicioCurso</tabstop>
+  <tabstop>diaFim</tabstop>
+  <tabstop>fimCurso</tabstop>
+  <tabstop>label_13</tabstop>
+  <tabstop>segCheck</tabstop>
+  <tabstop>terCheck</tabstop>
+  <tabstop>quaCheck</tabstop>
+  <tabstop>quiCheck</tabstop>
+  <tabstop>sextaCheck</tabstop>
+  <tabstop>sabCheck</tabstop>
+  <tabstop>observacaoReserva</tabstop>
+  <tabstop>btnFazerReserva</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

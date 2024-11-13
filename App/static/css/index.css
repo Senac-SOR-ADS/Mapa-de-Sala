@@ -66,46 +66,6 @@ legend {
     box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
 }
 
-/* =================== Estilo para Botões =================== */
-.btn {
-    color: #fff; 
-    padding: 10px 20px;
-    border: none; 
-    border-radius: 4px; 
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-    cursor: pointer; 
-    font-weight: bold;
-}
-
-/* Estilos para botões principais */
-.btn-primary {
-    background-color: var(--primary-color); /* Azul suave */
-}
-
-.btn-primary:hover {
-    background-color: var(--secondary-color); /* Azul escuro */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Estilos para botões de aviso */
-.btn-warning {
-    background-color: var(--warning-color); /* Amarelo para alertas */
-    color: #212529; /* Cinza escuro */
-}
-
-.btn-warning:hover {
-    background-color: rgba(255, 193, 7, 0.9); /* Amarelo escuro ao passar o mouse */
-}
-
-/* Estilos para botões de erro */
-.btn-danger {
-    background-color: var(--error-color); /* Vermelho para erros */
-}
-
-.btn-danger:hover {
-    background-color: rgba(220, 53, 69, 0.9); /* Vermelho escuro ao passar o mouse */
-}
-
 /* =================== Estilo para Mensagens de Feedback =================== */
 /* Esconde feedback de erro por padrão */
 .invalid-feedback {

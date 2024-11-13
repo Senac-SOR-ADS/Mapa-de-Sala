@@ -7,7 +7,7 @@ area_route = Blueprint('area_route', __name__, template_folder='templates/Areas/
 
 @area_route.route("/", methods=['GET', 'POST'])
 @login_auth
-def listarArea():
+def listar_Area():
     page = request.args.get('page', 1, type=int)
     per_page = 10
 
@@ -31,7 +31,7 @@ def listarArea():
 
 @area_route.route("/cadastrar", methods=['GET', 'POST'])
 @login_auth
-def cadastrarArea():
+def cadastrar_Area():
     if request.method == 'POST':
         try:
             dados = request.form
@@ -41,7 +41,7 @@ def cadastrarArea():
             resultado = cadastroDeArea(nomeArea)
 
             flash('Área cadastrada com sucesso!', 'success')
-            return redirect(url_for('area_route.cadastrarArea'))
+            return redirect(url_for('area_route.cadastrar_Area'))
         
         except Exception as e:
             flash(f'Erro ao cadastrar a área: {str(e)}', 'danger')
