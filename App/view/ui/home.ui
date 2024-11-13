@@ -22,21 +22,12 @@
 	border-bottom-left-radius: 10px;
 }
 
-#cabecalho {
-	background-color: #fff;
-}
-
 #containerGeral {
 	background-color: #e4e8f0;
-
 }
 
-#inicio {
-	background-color: transparent;
-}
-
-#logoTitulo, #btnsJanela {
-	backgroud-color: transparent;
+#cabecalho {
+	background-color: #fff;
 }
 
 #menuSimples, #subMenuLateral {
@@ -76,12 +67,7 @@
 	color: #fff;
 }
 
-#btnTelaCheia:hover {
-	background-color: #ccc;
-	color: #FFF;
-}
-
-#btnMinimizar:hover {
+#btnTelaCheia:hover, #btnMinimizar:hover {
 	background-color: #ccc;
 	color: #FFF;
 }
@@ -112,7 +98,6 @@ QPushButton {
 #btnFecharMenuQuebrado {
 	background-color: #f6921e;
 	border: none;
-	background-color: none;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -392,10 +377,7 @@ QPushButton {
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="styleSheet">
-                <string notr="true">#fecharPagina:hover {
-	background-color: red;
-padding: 10px;
-}</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string/>
@@ -630,7 +612,7 @@ padding: 10px;
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>icones/cog-regular-24.png</normaloff>icones/cog-regular-24.png</iconset>
+                    <normaloff>icones/iconConfig.png</normaloff>icones/iconConfig.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -675,7 +657,7 @@ padding: 10px;
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>icones/exit-regular-24.png</normaloff>icones/exit-regular-24.png</iconset>
+                    <normaloff>icones/iconLogout.png</normaloff>icones/iconLogout.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -770,8 +752,7 @@ padding: 10px;
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">padding: 10px;
-</string>
+                      <string notr="true"/>
                      </property>
                      <property name="text">
                       <string>Início</string>
@@ -806,7 +787,7 @@ padding: 10px;
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">padding: 10px;</string>
+                      <string notr="true"/>
                      </property>
                      <property name="text">
                       <string>Pesquisa</string>
@@ -841,7 +822,7 @@ padding: 10px;
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">padding: 10px;</string>
+                      <string notr="true"/>
                      </property>
                      <property name="text">
                       <string>Cadastros</string>
@@ -902,14 +883,14 @@ padding: 10px;
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">padding: 10px;</string>
+                      <string notr="true"/>
                      </property>
                      <property name="text">
                       <string>Configurações</string>
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/cog-regular-24.png</normaloff>icones/cog-regular-24.png</iconset>
+                       <normaloff>icones/iconConfig.png</normaloff>icones/iconConfig.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -981,7 +962,7 @@ padding: 10px;
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/exit-regular-24.png</normaloff>icones/exit-regular-24.png</iconset>
+                       <normaloff>icones/iconLogout.png</normaloff>icones/iconLogout.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -1058,7 +1039,7 @@ padding: 10px;
                    </size>
                   </property>
                   <property name="currentIndex">
-                   <number>1</number>
+                   <number>2</number>
                   </property>
                   <widget class="QWidget" name="cadastros">
                    <layout class="QVBoxLayout" name="verticalLayout_7">
