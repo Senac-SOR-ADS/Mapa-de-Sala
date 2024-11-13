@@ -22,7 +22,7 @@
 	border-bottom-left-radius: 10px;
 }
 
-#containerGeral {
+#containerPrincipall {
 	background-color: #e4e8f0;
 }
 
@@ -32,6 +32,11 @@
 
 #menuSimples, #subMenuLateral {
 	background-color:#01498a;
+}
+
+#menuQuebrado QPushButton {
+	color: #fff;
+	border-radius: 10px;
 }
 
 #btnFecharPagina:hover {
@@ -51,9 +56,20 @@
 	color: #fff;
 }
 
+#subMenuQuebrado {
+	background-color: #01498a;
+	color: #fff;
+}
+
+#subMenuQuebrado QPushButton:hover,  #subMenuQuebrado QPushButton:focus{
+	background-color: #f6921e;
+	color: #fff;
+}
+
 #menuSimples QPushButton {
 	border-radius: 10px;
 	color: #fff;
+
 }
 
 
@@ -84,20 +100,29 @@ QPushButton {
 	border: none;
 }
 
-#btnMenu, #btnSair {
+#btnMenu, #btnSair, #btnMenu2 {
 	padding:10px;
 }
 
-#btnMenu {
+#btnMenu, #btnMenu2 {
 	color: #fff;
 	background-color: #f6921e;
 	padding: 0;
 	padding-right: 3px;
 }
 
+#btnMenu2 {
+	border-radius: 10px;
+}
+
+#btnSair {
+	color: #fff;
+}
+
 #btnFecharMenuQuebrado {
 	background-color: #f6921e;
 	border: none;
+	border-radius: 10px;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -145,277 +170,8 @@ QPushButton {
         <number>0</number>
        </property>
        <item>
-        <widget class="QWidget" name="cabecalho" native="true">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <property name="leftMargin">
-           <number>9</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item alignment="Qt::AlignLeft">
-           <widget class="QFrame" name="logoTitulo">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QPushButton" name="btnMenu">
-               <property name="minimumSize">
-                <size>
-                 <width>99</width>
-                 <height>32</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>Menu</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>icones/iconMenu.png</normaloff>icones/iconMenu.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QLabel" name="logo">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>70</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="pixmap">
-                <pixmap>icones/logoSenac.png</pixmap>
-               </property>
-               <property name="scaledContents">
-                <bool>true</bool>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="titulo">
-               <property name="font">
-                <font>
-                 <pointsize>15</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Mapa de Sala</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item alignment="Qt::AlignRight">
-           <widget class="QFrame" name="btnsJanela">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_3">
-             <property name="spacing">
-              <number>6</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QPushButton" name="btnMinimizar">
-               <property name="minimumSize">
-                <size>
-                 <width>50</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>icones/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>16</width>
-                 <height>16</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnTelaCheia">
-               <property name="minimumSize">
-                <size>
-                 <width>50</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>icones/square-rounded-regular-24.png</normaloff>icones/square-rounded-regular-24.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>16</width>
-                 <height>16</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btnFecharPagina">
-               <property name="minimumSize">
-                <size>
-                 <width>50</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="sizeIncrement">
-                <size>
-                 <width>100</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>8</pointsize>
-                </font>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>
-                 <normalon>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normalon>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>16</width>
-                 <height>16</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QWidget" name="containerGeral" native="true">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="sizeIncrement">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_8">
+        <widget class="QWidget" name="widget" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_9">
           <property name="spacing">
            <number>0</number>
           </property>
@@ -435,7 +191,7 @@ QPushButton {
            <widget class="QWidget" name="menuLateral" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_7">
              <property name="spacing">
-              <number>6</number>
+              <number>0</number>
              </property>
              <property name="leftMargin">
               <number>0</number>
@@ -444,7 +200,7 @@ QPushButton {
               <number>0</number>
              </property>
              <property name="rightMargin">
-              <number>9</number>
+              <number>0</number>
              </property>
              <property name="bottomMargin">
               <number>0</number>
@@ -452,6 +208,40 @@ QPushButton {
              <item>
               <widget class="QWidget" name="menuSimples" native="true">
                <layout class="QVBoxLayout" name="verticalLayout_11">
+                <item>
+                 <widget class="QPushButton" name="btnMenu">
+                  <property name="minimumSize">
+                   <size>
+                    <width>99</width>
+                    <height>32</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>icones/iconMenu.png</normaloff>icones/iconMenu.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>24</width>
+                    <height>24</height>
+                   </size>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
                 <item>
                  <spacer name="verticalSpacer_4">
                   <property name="orientation">
@@ -683,20 +473,48 @@ QPushButton {
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_2">
                 <property name="spacing">
-                 <number>0</number>
+                 <number>6</number>
                 </property>
                 <property name="leftMargin">
-                 <number>0</number>
+                 <number>9</number>
                 </property>
                 <property name="topMargin">
-                 <number>0</number>
+                 <number>9</number>
                 </property>
                 <property name="rightMargin">
-                 <number>0</number>
+                 <number>9</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>0</number>
+                 <number>9</number>
                 </property>
+                <item>
+                 <widget class="QPushButton" name="btnMenu2">
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>Menu</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>icones/iconMenu.png</normaloff>icones/iconMenu.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>24</width>
+                    <height>24</height>
+                   </size>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
                 <item>
                  <spacer name="verticalSpacer">
                   <property name="orientation">
@@ -748,6 +566,11 @@ QPushButton {
                        <height>56</height>
                       </size>
                      </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
                      <property name="cursor">
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
@@ -782,6 +605,11 @@ QPushButton {
                        <width>119</width>
                        <height>56</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
                      </property>
                      <property name="cursor">
                       <cursorShape>PointingHandCursor</cursorShape>
@@ -818,6 +646,11 @@ QPushButton {
                        <height>56</height>
                       </size>
                      </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
                      <property name="cursor">
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
@@ -853,6 +686,11 @@ QPushButton {
                        <height>56</height>
                       </size>
                      </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
                      <property name="cursor">
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
@@ -878,6 +716,11 @@ QPushButton {
                        <width>119</width>
                        <height>56</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
                      </property>
                      <property name="cursor">
                       <cursorShape>PointingHandCursor</cursorShape>
@@ -922,6 +765,43 @@ QPushButton {
                   </property>
                  </spacer>
                 </item>
+                <item>
+                 <widget class="QPushButton" name="btnSair">
+                  <property name="minimumSize">
+                   <size>
+                    <width>119</width>
+                    <height>56</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>Sair</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>icones/iconLogout.png</normaloff>icones/iconLogout.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>24</width>
+                    <height>24</height>
+                   </size>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
                 <item alignment="Qt::AlignLeft|Qt::AlignBottom">
                  <widget class="QFrame" name="frame_3">
                   <property name="frameShape">
@@ -946,46 +826,26 @@ QPushButton {
                    <property name="bottomMargin">
                     <number>0</number>
                    </property>
-                   <item>
-                    <widget class="QPushButton" name="btnSair">
-                     <property name="minimumSize">
-                      <size>
-                       <width>119</width>
-                       <height>56</height>
-                      </size>
-                     </property>
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="text">
-                      <string>Sair</string>
-                     </property>
-                     <property name="icon">
-                      <iconset>
-                       <normaloff>icones/iconLogout.png</normaloff>icones/iconLogout.png</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>24</width>
-                       <height>24</height>
-                      </size>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                     <property name="autoExclusive">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
                   </layout>
                  </widget>
                 </item>
                </layout>
               </widget>
              </item>
-             <item alignment="Qt::AlignLeft|Qt::AlignTop">
+             <item>
               <widget class="QWidget" name="subMenuQuebrado" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>138</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <layout class="QVBoxLayout" name="verticalLayout">
                 <property name="spacing">
                  <number>0</number>
@@ -1004,6 +864,12 @@ QPushButton {
                 </property>
                 <item alignment="Qt::AlignRight|Qt::AlignTop">
                  <widget class="QPushButton" name="btnFecharMenuQuebrado">
+                  <property name="minimumSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
                   <property name="font">
                    <font>
                     <pointsize>21</pointsize>
@@ -1017,7 +883,7 @@ QPushButton {
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                    <normaloff>icones/closeBranco.png</normaloff>icones/closeBranco.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -1030,11 +896,17 @@ QPushButton {
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item alignment="Qt::AlignLeft">
                  <widget class="QStackedWidget" name="menuQuebrado">
+                  <property name="minimumSize">
+                   <size>
+                    <width>138</width>
+                    <height>0</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
-                    <width>126</width>
+                    <width>500</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1043,63 +915,117 @@ QPushButton {
                   </property>
                   <widget class="QWidget" name="cadastros">
                    <layout class="QVBoxLayout" name="verticalLayout_7">
-                    <item alignment="Qt::AlignTop">
+                    <item>
                      <widget class="QPushButton" name="btnCadastroLogin">
+                      <property name="maximumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Cadastrar Login</string>
                       </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
                      </widget>
                     </item>
-                    <item alignment="Qt::AlignTop">
+                    <item>
                      <widget class="QPushButton" name="btnReserva">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Reservar</string>
                       </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QPushButton" name="btnArea">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Cadastrar Área</string>
                       </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QPushButton" name="btnCurso">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Cadastrar Curso</string>
                       </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QPushButton" name="btnCadastarSala">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Cadastrar Sala</string>
                       </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QPushButton" name="btnCadastroPessoa">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Cadastrar Pessoa</string>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
                       </property>
                      </widget>
                     </item>
@@ -1109,51 +1035,96 @@ QPushButton {
                    <layout class="QVBoxLayout" name="verticalLayout_10">
                     <item>
                      <widget class="QPushButton" name="btnEditarPessoas">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Editar Pessoas</string>
                       </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QPushButton" name="btnEditarReserva">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Editar Reserva</string>
                       </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QPushButton" name="btnEditarArea">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Editar Área</string>
                       </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QPushButton" name="btnEditaCurso">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Editar Curso</string>
                       </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QPushButton" name="btnEditarLogin">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Editar Login</string>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
                       </property>
                      </widget>
                     </item>
@@ -1163,31 +1134,58 @@ QPushButton {
                    <layout class="QVBoxLayout" name="verticalLayout_9">
                     <item>
                      <widget class="QPushButton" name="pushButton_2">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Salas ocupadas</string>
                       </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QPushButton" name="pushButton_4">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>consultar Pessoa</string>
                       </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QPushButton" name="pushButton">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Consultar Relatório</string>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
                       </property>
                      </widget>
                     </item>
@@ -1198,85 +1196,358 @@ QPushButton {
                </layout>
               </widget>
              </item>
+             <item>
+              <widget class="QWidget" name="widget_2" native="true">
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QWidget" name="cabecalho" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_2">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item alignment="Qt::AlignLeft">
+                    <widget class="QFrame" name="logoTitulo">
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_4">
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <widget class="QLabel" name="logo">
+                        <property name="minimumSize">
+                         <size>
+                          <width>0</width>
+                          <height>0</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="pixmap">
+                         <pixmap>icones/logoSenac.png</pixmap>
+                        </property>
+                        <property name="scaledContents">
+                         <bool>true</bool>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="titulo">
+                        <property name="font">
+                         <font>
+                          <pointsize>15</pointsize>
+                          <weight>50</weight>
+                          <bold>false</bold>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Mapa de Sala</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item alignment="Qt::AlignRight">
+                    <widget class="QFrame" name="btnsJanela">
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_3">
+                      <property name="spacing">
+                       <number>6</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <widget class="QPushButton" name="btnMinimizar">
+                        <property name="minimumSize">
+                         <size>
+                          <width>50</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>icones/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>16</width>
+                          <height>16</height>
+                         </size>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="btnTelaCheia">
+                        <property name="minimumSize">
+                         <size>
+                          <width>50</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>icones/square-rounded-regular-24.png</normaloff>icones/square-rounded-regular-24.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>16</width>
+                          <height>16</height>
+                         </size>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="btnFecharPagina">
+                        <property name="minimumSize">
+                         <size>
+                          <width>50</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                        <property name="sizeIncrement">
+                         <size>
+                          <width>100</width>
+                          <height>0</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>8</pointsize>
+                         </font>
+                        </property>
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true"/>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>
+                          <normalon>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normalon>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>16</width>
+                          <height>16</height>
+                         </size>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QWidget" name="containerGeral" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="sizeIncrement">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QStackedWidget" name="container">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="currentIndex">
+                      <number>0</number>
+                     </property>
+                     <widget class="QWidget" name="inicio">
+                      <layout class="QHBoxLayout" name="horizontalLayout_5">
+                       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                        <widget class="QFrame" name="frame_4">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_6">
+                          <item>
+                           <widget class="QLabel" name="label">
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="pixmap">
+                             <pixmap>icones/logoSenac.png</pixmap>
+                            </property>
+                            <property name="scaledContents">
+                             <bool>true</bool>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="frame_5">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_8">
+                             <item>
+                              <widget class="QLabel" name="label_2">
+                               <property name="font">
+                                <font>
+                                 <pointsize>27</pointsize>
+                                </font>
+                               </property>
+                               <property name="text">
+                                <string>Mapa de Sala</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QLabel" name="label_3">
+                               <property name="font">
+                                <font>
+                                 <pointsize>11</pointsize>
+                                </font>
+                               </property>
+                               <property name="text">
+                                <string>Senac Sorocaba</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
             </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QStackedWidget" name="container">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="currentIndex">
-             <number>0</number>
-            </property>
-            <widget class="QWidget" name="inicio">
-             <layout class="QHBoxLayout" name="horizontalLayout_5">
-              <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-               <widget class="QFrame" name="frame_4">
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_6">
-                 <item>
-                  <widget class="QLabel" name="label">
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap>icones/logoSenac.png</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_5">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_8">
-                    <item>
-                     <widget class="QLabel" name="label_2">
-                      <property name="font">
-                       <font>
-                        <pointsize>27</pointsize>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>Mapa de Sala</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_3">
-                      <property name="font">
-                       <font>
-                        <pointsize>11</pointsize>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>Senac Sorocaba</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
            </widget>
           </item>
          </layout>
@@ -1289,7 +1560,6 @@ QPushButton {
   </widget>
  </widget>
  <tabstops>
-  <tabstop>btnMenu</tabstop>
   <tabstop>btnMinimizar</tabstop>
   <tabstop>btnTelaCheia</tabstop>
   <tabstop>btnFecharPagina</tabstop>
@@ -1303,10 +1573,7 @@ QPushButton {
   <tabstop>btnPessoa</tabstop>
   <tabstop>btnEditar</tabstop>
   <tabstop>btnConfiguracoes</tabstop>
-  <tabstop>btnSair</tabstop>
   <tabstop>btnFecharMenuQuebrado</tabstop>
-  <tabstop>btnCadastroLogin</tabstop>
-  <tabstop>btnReserva</tabstop>
   <tabstop>btnArea</tabstop>
   <tabstop>btnCurso</tabstop>
   <tabstop>btnCadastarSala</tabstop>
@@ -1321,18 +1588,82 @@ QPushButton {
  <resources/>
  <connections>
   <connection>
+   <sender>btnMenu</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>subMenuLateral</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>147</x>
+     <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnMenu</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>menuSimples</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>100</x>
+     <y>31</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>81</x>
+     <y>177</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnMenu2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>menuSimples</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>182</x>
+     <y>35</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>47</x>
+     <y>94</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnMenu2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>subMenuLateral</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>213</x>
+     <y>36</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>86</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>btnHome</sender>
    <signal>toggled(bool)</signal>
    <receiver>btnIncio</receiver>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>24</x>
-     <y>260</y>
+     <x>77</x>
+     <y>242</y>
     </hint>
     <hint type="destinationlabel">
-     <x>95</x>
-     <y>256</y>
+     <x>210</x>
+     <y>247</y>
     </hint>
    </hints>
   </connection>
@@ -1343,28 +1674,12 @@ QPushButton {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
+     <x>178</x>
      <y>270</y>
     </hint>
     <hint type="destinationlabel">
-     <x>31</x>
-     <y>268</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btnPesquisa</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>btnBusca</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>100</x>
-     <y>321</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>39</x>
-     <y>306</y>
+     <x>62</x>
+     <y>269</y>
     </hint>
    </hints>
   </connection>
@@ -1375,28 +1690,28 @@ QPushButton {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>39</x>
-     <y>325</y>
+     <x>76</x>
+     <y>300</y>
     </hint>
     <hint type="destinationlabel">
-     <x>105</x>
-     <y>326</y>
+     <x>180</x>
+     <y>304</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>btnPessoa</sender>
+   <sender>btnPesquisa</sender>
    <signal>toggled(bool)</signal>
-   <receiver>btnPessoas</receiver>
+   <receiver>btnBusca</receiver>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>90</x>
-     <y>355</y>
+     <x>148</x>
+     <y>322</y>
     </hint>
     <hint type="destinationlabel">
-     <x>33</x>
-     <y>366</y>
+     <x>76</x>
+     <y>319</y>
     </hint>
    </hints>
   </connection>
@@ -1407,12 +1722,28 @@ QPushButton {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>40</x>
-     <y>385</y>
+     <x>79</x>
+     <y>356</y>
     </hint>
     <hint type="destinationlabel">
-     <x>138</x>
-     <y>386</y>
+     <x>168</x>
+     <y>360</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnPessoa</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnPessoas</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>155</x>
+     <y>379</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>50</x>
+     <y>382</y>
     </hint>
    </hints>
   </connection>
@@ -1423,11 +1754,11 @@ QPushButton {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>30</x>
-     <y>422</y>
+     <x>67</x>
+     <y>412</y>
     </hint>
     <hint type="destinationlabel">
-     <x>168</x>
+     <x>165</x>
      <y>420</y>
     </hint>
    </hints>
@@ -1439,28 +1770,12 @@ QPushButton {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>105</x>
-     <y>440</y>
+     <x>168</x>
+     <y>433</y>
     </hint>
     <hint type="destinationlabel">
-     <x>39</x>
-     <y>446</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btnConfiguracoes</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>btnConfig</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>104</x>
-     <y>467</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>42</x>
-     <y>470</y>
+     <x>62</x>
+     <y>435</y>
     </hint>
    </hints>
   </connection>
@@ -1471,12 +1786,28 @@ QPushButton {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>30</x>
-     <y>491</y>
+     <x>72</x>
+     <y>472</y>
     </hint>
     <hint type="destinationlabel">
-     <x>131</x>
-     <y>499</y>
+     <x>215</x>
+     <y>471</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnConfiguracoes</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btnConfig</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>164</x>
+     <y>481</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>71</x>
+     <y>490</y>
     </hint>
    </hints>
   </connection>
@@ -1487,12 +1818,12 @@ QPushButton {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>40</x>
-     <y>713</y>
+     <x>78</x>
+     <y>702</y>
     </hint>
     <hint type="destinationlabel">
-     <x>113</x>
-     <y>716</y>
+     <x>176</x>
+     <y>703</y>
     </hint>
    </hints>
   </connection>
@@ -1503,44 +1834,12 @@ QPushButton {
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>742</y>
+     <x>156</x>
+     <y>713</y>
     </hint>
     <hint type="destinationlabel">
-     <x>35</x>
-     <y>734</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btnMenu</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>menuSimples</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>41</x>
-     <y>21</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>48</x>
-     <y>78</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btnMenu</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>subMenuLateral</receiver>
-   <slot>setHidden(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>75</x>
-     <y>28</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>119</y>
+     <x>85</x>
+     <y>715</y>
     </hint>
    </hints>
   </connection>
