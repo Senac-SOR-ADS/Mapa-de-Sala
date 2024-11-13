@@ -222,7 +222,7 @@ QPushButton {
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>icones/menu-regular-24 (1).png</normaloff>icones/menu-regular-24 (1).png</iconset>
+                 <normaloff>icones/iconMenu.png</normaloff>icones/iconMenu.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -499,7 +499,7 @@ padding: 10px;
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>icones/home-regular-24.png</normaloff>icones/home-regular-24.png</iconset>
+                    <normaloff>icones/iconHome.png</normaloff>icones/iconHome.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -534,7 +534,7 @@ padding: 10px;
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>icones/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                    <normaloff>icones/iconBusca.png</normaloff>icones/iconBusca.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -566,7 +566,7 @@ padding: 10px;
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>icones/person_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/person_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                    <normaloff>icones/iconPessoa.png</normaloff>icones/iconPessoa.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -598,7 +598,7 @@ padding: 10px;
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>icones/edit_square_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/edit_square_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                    <normaloff>icones/iconEdit.png</normaloff>icones/iconEdit.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -778,7 +778,7 @@ padding: 10px;
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/home-regular-24.png</normaloff>icones/home-regular-24.png</iconset>
+                       <normaloff>icones/iconHome.png</normaloff>icones/iconHome.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -813,7 +813,7 @@ padding: 10px;
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                       <normaloff>icones/iconBusca.png</normaloff>icones/iconBusca.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -848,7 +848,7 @@ padding: 10px;
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/person_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/person_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                       <normaloff>icones/iconPessoa.png</normaloff>icones/iconPessoa.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -880,7 +880,7 @@ padding: 10px;
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/edit_square_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/edit_square_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                       <normaloff>icones/iconEdit.png</normaloff>icones/iconEdit.png</iconset>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
