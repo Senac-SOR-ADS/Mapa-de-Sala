@@ -24,7 +24,7 @@ class CadastrarSalas(QWidget):
     def iniciandoCadastro(self):
         print('iniciando')
         valores = self.getCadastroSalas()
-        if not validarInputs(valores):
+        if not validarInputs(valores[:-1]):
             return False
 
         if cadastrarSala(valores[0], valores[1], valores[2], valores[3], valores[4], valores[5]):
