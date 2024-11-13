@@ -69,13 +69,13 @@ class HomePrincipal(QMainWindow):
         self.btnCadastarSala.clicked.connect(lambda: self.trocarTela(self.interfcasSala))
         self.btnCadastroPessoa.clicked.connect(lambda: self.trocarTela(self.interfCasPessoa))
         self.btnReserva.clicked.connect(lambda: self.trocarTela(self.interfReserva))
-        self.btnIncio.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.inicio))
-        self.btnHome.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.inicio))
-        self.btnArea.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasArea))
-        self.btnCurso.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasCurso))
-        self.btnCadastroLogin.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCasLogin))
-        self.btnConfiguracoes.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCongiguracoes))
-        self.btnConfig.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.interfCongiguracoes))
+        self.btnIncio.clicked.connect(lambda: self.container.setCurrentWidget(self.inicio))
+        self.btnHome.clicked.connect(lambda: self.container.setCurrentWidget(self.inicio))
+        self.btnArea.clicked.connect(lambda: self.container.setCurrentWidget(self.interfCasArea))
+        self.btnCurso.clicked.connect(lambda: self.container.setCurrentWidget(self.interfCasCurso))
+        self.btnCadastroLogin.clicked.connect(lambda: self.container.setCurrentWidget(self.interfCasLogin))
+        self.btnConfiguracoes.clicked.connect(lambda: self.container.setCurrentWidget(self.interfCongiguracoes))
+        self.btnConfig.clicked.connect(lambda: self.container.setCurrentWidget(self.interfCongiguracoes))
         self.btnMinimizar.clicked.connect(self.showMinimized)
         self.btnFecharPagina.clicked.connect(self.close)
         self.btnTelaCheia.clicked.connect(self.windowConnect)
@@ -99,7 +99,7 @@ class HomePrincipal(QMainWindow):
 
     def inserirTelas(self, telas):
         for interface in telas:
-            self.stackedWidget.addWidget(interface)
+            self.container.addWidget(interface)
     
     def inserirTelasMenu(self, menu):
         for i in menu:
@@ -109,7 +109,7 @@ class HomePrincipal(QMainWindow):
         """Função para trocar as tela. Necessario
         passar a classe da tela"""
         
-        self.stackedWidget.setCurrentWidget(tela)
+        self.container.setCurrentWidget(tela)
     
     def trocarTelaMenu(self, menu):
         if self.subMenuQuebrado.isVisible():
