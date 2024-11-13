@@ -1,15 +1,17 @@
 from PyQt5.QtWidgets import QWidget, QDateEdit
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer, QDate, pyqtSlot
-from App.model.reserva import Reserva
+
+# from App.model.reserva import Reserva
+# from App.model.login import Login
+# Não está sendo utilizado no arquivo
 
 from App.controller.curso import listarCursos
 from App.controller.pessoa import buscarPessoas
-from App.controller.utils import modificarData
 from App.controller.sala import listarSala
+from App.controller.utils import modificarData
 from App.controller.reserva import fazendoReserva, validarCadastro
 
-from App.model.login import Login
 
 class ReservaInterface(QWidget):
     curso = listarCursos()
