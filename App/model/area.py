@@ -72,7 +72,7 @@ class Area:
         return False            
     
     @classmethod
-    def alterar_area(cls, idArea, nome):
+    def atualizar(cls, idArea, nome):
         cls.__banco.conectar()
         query = "UPDATE area SET nome = %s WHERE idArea = %s"
         parametro = [nome, idArea]

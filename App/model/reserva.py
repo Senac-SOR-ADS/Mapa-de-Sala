@@ -2,6 +2,8 @@ from App.model.conexao import ConexaoBD
 
 
 class Reserva:
+    __banco = ConexaoBD()
+    
     def __init__(self, idLogin, idPessoa, idCurso, idSala, dia, horaInicio, horaFim, observacao = None):
         self.__idLogin = idLogin
         self.__idPessoa = idPessoa
@@ -11,7 +13,6 @@ class Reserva:
         self.__horaInicio = horaInicio
         self.__horaFim = horaFim
         self.__observacao = observacao
-        self.__banco = ConexaoBD()
 
     def get_idLogin(self):
         return self.__idLogin
@@ -57,7 +58,7 @@ class Reserva:
 
     def fazer_reserva(self):
         """Uma função para você tentar fazer uma reserva, caso já exista uma reserva no mesmo horário, dia e sala, ele alerta você. Caso contrário ele faz a reserva"""
-        if self.validar_dia_livre():
+        if self.validar_periodo():
             self.__banco.conectar()
             query = "INSERT INTO reserva (idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, observacao) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
             parametros = (self.__idLogin, self.__idPessoa, self.__idCurso, self.__idSala, self.__dia, self.__horaInicio, self.__horaFim, self.__observacao)
@@ -67,8 +68,8 @@ class Reserva:
         else:
             return False
             
-    
-    def validar_dia_livre(self):
+
+    def validar_periodo(self):
         """Verifica se já existe uma reserva na data que foi requisitada"""
         self.__banco.conectar()
         query_verifica = "SELECT * FROM reserva WHERE idSala = %s AND dia = %s AND ((hrInicio < %s AND hrFim > %s) OR (hrInicio >= %s AND hrFim <= %s))"
@@ -78,6 +79,18 @@ class Reserva:
         if resultado:
             return False
         return True
+    
+    @classmethod
+    def validar_troca(cls, idSala, dia, hrInicio, hrFim):
+        """Verifica se já existe uma reserva na data que foi requisitada"""
+        cls.__banco.conectar()
+        query_verifica = "SELECT * FROM reserva WHERE idSala = %s AND dia = %s AND ((hrInicio < %s AND hrFim > %s) OR (hrInicio >= %s AND hrFim <= %s))"
+        parametros_verifica = (idSala, dia, hrFim, hrInicio, hrInicio, hrFim)
+        resultado = cls.__banco.buscarTodos(query_verifica, parametros_verifica)
+        cls.__banco.desconectar()
+        if len(resultado) <= 1 :
+            return True
+        return False
 
     def retornar_reserva(self):
         """Uma função para devolver os dados da tabela de reserva do banco"""
@@ -121,6 +134,39 @@ class Reserva:
         resultado = self.__banco.buscarTodos(query, parametro)
         self.__banco.desconectar()
         return resultado
+    
+    @classmethod
+    def deletar(cls, idReserva):
+        cls.__banco.conectar()
+        query = "DELETE FROM reserva WHERE idReserva = %s"
+        parametro = [idReserva]
+        resultado = cls.__banco.alterarDados(query, parametro)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            return True
+        return False
+    
+    
+    @classmethod
+    def atualizar(cls, idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, observacao, idReserva):
+        cls.__banco.conectar()
+        query = "UPDATE reserva SET idLogin= %s, idPessoa= %s,idCurso= %s,idSala= %s,dia= %s,hrInicio= %s,hrFim= %s,observacao= %s WHERE idReserva = %s"
+        parametro = [idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, observacao, idReserva]
+        resultado = cls.__banco.alterarDados(query, parametro)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            return True
+        return False
+ 
+    
+    @classmethod
+    def trocar_sala(cls, idLogin, idSala, dia, hrInicio, hrFim):
+        cls.__banco.conectar()
+        query = "UPDATE reserva SET idLogin = %s, idSala = %s, dia = %s, hrInicio = %s, hrFim = %s"
+        parametro = [idLogin, idSala, dia, hrInicio, hrFim]
+        resultado = cls.__banco.alterarDados(query, parametro)
+        cls.__banco.desconectar()
+        
 
 if __name__ == "__main__":
     pass
