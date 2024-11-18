@@ -28,9 +28,6 @@ class CadastrarSalas(QWidget):
             return False
 
         if cadastrarSala(valores[0], valores[1], valores[2], valores[3], valores[4], valores[5]):
-            print('a')
             return True
-        else:
-            print('b')
-            return False
+        return False
     
