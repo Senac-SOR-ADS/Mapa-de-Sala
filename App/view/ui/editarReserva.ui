@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>863</width>
-    <height>651</height>
+    <width>813</width>
+    <height>738</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout_2">
+  <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QFrame" name="ReservaDeSala">
      <property name="frameShape">
@@ -61,17 +61,17 @@
        <string>PERIODO:</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnFazerReserva">
+     <widget class="QPushButton" name="btnEditarReserva">
       <property name="geometry">
        <rect>
-        <x>360</x>
-        <y>540</y>
-        <width>75</width>
+        <x>260</x>
+        <y>660</y>
+        <width>171</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>RESERVA</string>
+       <string>EDITAR RESERVA</string>
       </property>
      </widget>
      <widget class="QLabel" name="nomeDocenteResponsavel">
@@ -103,21 +103,21 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>320</x>
+        <x>280</x>
         <y>20</y>
-        <width>101</width>
+        <width>161</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>RESERVA  DE SALA</string>
+       <string>EDITAR RESERVA  DE SALA</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="observacaoReserva">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>420</y>
+        <x>120</x>
+        <y>530</y>
         <width>431</width>
         <height>101</height>
        </rect>
@@ -126,8 +126,8 @@
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>390</y>
+        <x>120</x>
+        <y>510</y>
         <width>81</width>
         <height>16</height>
        </rect>
@@ -275,8 +275,8 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>320</y>
+        <x>280</x>
+        <y>350</y>
         <width>91</width>
         <height>16</height>
        </rect>
@@ -331,164 +331,134 @@
        </rect>
       </property>
      </widget>
-     <widget class="QWidget" name="widget" native="true">
+     <widget class="QWidget" name="widget_8" native="true">
       <property name="geometry">
        <rect>
-        <x>209</x>
-        <y>310</y>
-        <width>451</width>
-        <height>71</height>
+        <x>140</x>
+        <y>400</y>
+        <width>411</width>
+        <height>81</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
         <widget class="QWidget" name="widget_9" native="true">
-         <widget class="QWidget" name="layoutWidget_2">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>10</y>
-            <width>20</width>
-            <height>34</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_7">
-           <item>
-            <widget class="QLabel" name="label_18">
-             <property name="text">
-              <string>Seg</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="segCheck">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_13">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_14">
+            <item>
+             <widget class="QLabel" name="label_18">
+              <property name="text">
+               <string>Seg</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="segCheck">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
         <widget class="QWidget" name="widget_4" native="true">
-         <widget class="QWidget" name="layoutWidget">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>10</y>
-            <width>18</width>
-            <height>34</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_5">
-           <item>
-            <widget class="QLabel" name="label_12">
-             <property name="text">
-              <string>Ter</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="terCheck">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_9">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QLabel" name="label_12">
+              <property name="text">
+               <string>Ter</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="terCheck">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
         <widget class="QWidget" name="widget_5" native="true">
-         <widget class="QWidget" name="layoutWidget">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>10</y>
-            <width>22</width>
-            <height>34</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_4">
-           <item>
-            <widget class="QLabel" name="label_14">
-             <property name="text">
-              <string>Qua</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="quaCheck">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_10">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QLabel" name="label_14">
+              <property name="text">
+               <string>Qua</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="quaCheck">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
         <widget class="QWidget" name="widget_3" native="true">
-         <widget class="QWidget" name="layoutWidget">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>11</y>
-            <width>18</width>
-            <height>34</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <widget class="QLabel" name="label_15">
-             <property name="text">
-              <string>Qui</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="quiCheck">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_8">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_15">
+              <property name="text">
+               <string>Qui</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="quiCheck">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
         <widget class="QWidget" name="widget_6" native="true">
-         <widget class="QWidget" name="layoutWidget">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>10</y>
-            <width>20</width>
-            <height>34</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_3">
-           <item>
-            <widget class="QLabel" name="label_16">
-             <property name="text">
-              <string>Sex</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="sextaCheck">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_11">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QLabel" name="label_16">
+              <property name="text">
+               <string>Sex</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="sextaCheck">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -496,32 +466,26 @@
          <property name="tabletTracking">
           <bool>false</bool>
          </property>
-         <widget class="QWidget" name="layoutWidget">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>10</y>
-            <width>20</width>
-            <height>34</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_6">
-           <item>
-            <widget class="QLabel" name="label_17">
-             <property name="text">
-              <string>Sab</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="sabCheck">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_12">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <widget class="QLabel" name="label_17">
+              <property name="text">
+               <string>Sab</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="sabCheck">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -547,7 +511,7 @@
   <tabstop>sextaCheck</tabstop>
   <tabstop>sabCheck</tabstop>
   <tabstop>observacaoReserva</tabstop>
-  <tabstop>btnFazerReserva</tabstop>
+  <tabstop>btnEditarReserva</tabstop>
  </tabstops>
  <resources/>
  <connections/>
