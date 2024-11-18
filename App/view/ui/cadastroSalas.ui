@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>499</width>
+    <height>475</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -59,7 +59,7 @@
     <bool>true</bool>
    </property>
    <property name="currentText">
-    <string>Laboratório</string>
+    <string>Comum</string>
    </property>
    <property name="insertPolicy">
     <enum>QComboBox::InsertAlphabetically</enum>
@@ -69,12 +69,23 @@
    </property>
    <item>
     <property name="text">
+     <string>Comum</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
      <string>Laboratório</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Jardinagem</string>
+     <string>Comum</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+
+     <string>Área Externa</string>
     </property>
    </item>
   </widget>
