@@ -27,7 +27,7 @@
        <rect>
         <x>220</x>
         <y>20</y>
-        <width>151</width>
+        <width>161</width>
         <height>16</height>
        </rect>
       </property>
@@ -224,6 +224,29 @@
         <string>Administrador</string>
        </property>
       </item>
+     </widget>
+     <widget class="QComboBox" name="alterarPessoas">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>80</y>
+        <width>69</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>50</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Alterar Cadastro:</string>
+      </property>
      </widget>
     </widget>
    </item>
