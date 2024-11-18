@@ -14,9 +14,9 @@ from App.controller.reserva import fazendoReserva, validarCadastro
 
 
 class ReservaInterface(QWidget):
-    curso = listarCursos()
-    pessoa = buscarPessoas()
-    sala = listarSala()
+    curso = listarCursos
+    pessoa = buscarPessoas
+    sala = listarSala
     
     
     def __init__(self):
@@ -85,18 +85,24 @@ class ReservaInterface(QWidget):
         
 
     def popularJanela(self):
-        self.comboBoxCurso()
-        self.comboBoxPessoa()
-        self.comboBoxSala()
+        self.comboBoxCurso(self.curso)
+        self.comboBoxPessoa(self.pessoa)
+        self.comboBoxSala(self.sala)
 
-    def comboBoxCurso(self):
+    def comboBoxCurso(self, listarCurso):
+        if type(listarCurso) != dict or list:
+            listarCurso = listarCurso()
         self.cursoReserva.addItems(self.curso.keys())
 
-    def comboBoxPessoa(self):
+    def comboBoxPessoa(self, buscarPessoa):
+        if type(buscarPessoa) != dict or list:
+            buscarPessoa = buscarPessoa()
         self.nomeDocente.addItems(self.pessoa.keys())
 
-    def comboBoxSala(self):
-        self.salaReserva.addItems(self.sala.keys())
+    def comboBoxSala(self, listarSalas):
+        if type(listarSalas) != dict or list:
+            listarSalas = listarSalas()
+        self.nomeDocente.addItems(self.sala.keys())
 
     def validandoDados(self):
         self.feedbackReserva.setText('Reserva realizada.')

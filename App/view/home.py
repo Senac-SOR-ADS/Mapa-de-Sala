@@ -9,7 +9,7 @@ from .cadastrarCurso import CadastrarCurso
 from .cadastrarLogin import CadastroLogin
 from .cadastrarSalas import CadastrarSalas
 from .configurarTela import ConfigurarTela
-# from .reserva import ReservaInterface
+from .reserva import ReservaInterface
 
 class HomePrincipal(QMainWindow):
     def __init__(self):
@@ -40,7 +40,7 @@ class HomePrincipal(QMainWindow):
         self.interfCasLogin = CadastroLogin
         self.interfCongiguracoes = ConfigurarTela
         self.interfCasCurso = CadastrarCurso
-        # self.interfReserva = ReservaInterface()
+        self.interfReserva = ReservaInterface
         
     #Telas dentro do menu para alterar as janelas pelo sub menu
         self.btnPessoa.clicked.connect(lambda: self.trocarTelaMenu(self.cadastros))
@@ -62,7 +62,7 @@ class HomePrincipal(QMainWindow):
         self.btnCadastarSala.clicked.connect(lambda: self.setInterfaceOnHome(self.interfcasSala))
         self.btnCadastroPessoa.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCasPessoa))
         self.btnCurso.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCasCurso))
-
+        self.btnReserva.clicked.connect(lambda: self.setInterfaceOnHome(self.interfReserva))
 
         self.btnConfiguracoes.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
         self.btnConfig.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
