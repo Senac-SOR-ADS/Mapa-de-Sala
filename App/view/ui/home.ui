@@ -1560,30 +1560,38 @@ QPushButton {
   </widget>
  </widget>
  <tabstops>
-  <tabstop>btnMinimizar</tabstop>
-  <tabstop>btnTelaCheia</tabstop>
-  <tabstop>btnFecharPagina</tabstop>
+  <tabstop>btnMenu</tabstop>
   <tabstop>btnHome</tabstop>
   <tabstop>btnBusca</tabstop>
   <tabstop>btnPessoas</tabstop>
   <tabstop>btnEditarSimples</tabstop>
   <tabstop>btnConfig</tabstop>
-  <tabstop>btnSairSimples</tabstop>
+  <tabstop>btnMenu2</tabstop>
+  <tabstop>btnIncio</tabstop>
   <tabstop>btnPesquisa</tabstop>
   <tabstop>btnPessoa</tabstop>
   <tabstop>btnEditar</tabstop>
   <tabstop>btnConfiguracoes</tabstop>
+  <tabstop>btnSairSimples</tabstop>
+  <tabstop>btnSair</tabstop>
   <tabstop>btnFecharMenuQuebrado</tabstop>
-  <tabstop>btnArea</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>btnMinimizar</tabstop>
+  <tabstop>btnTelaCheia</tabstop>
+  <tabstop>btnFecharPagina</tabstop>
+  <tabstop>btnEditarArea</tabstop>
   <tabstop>btnCurso</tabstop>
   <tabstop>btnCadastarSala</tabstop>
   <tabstop>btnCadastroPessoa</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>btnEditarPessoas</tabstop>
   <tabstop>btnEditarReserva</tabstop>
-  <tabstop>btnEditarArea</tabstop>
-  <tabstop>pushButton_2</tabstop>
-  <tabstop>pushButton_4</tabstop>
+  <tabstop>btnEditarPessoas</tabstop>
+  <tabstop>btnArea</tabstop>
+  <tabstop>btnCadastroLogin</tabstop>
+  <tabstop>btnReserva</tabstop>
+  <tabstop>btnEditaCurso</tabstop>
+  <tabstop>btnEditarLogin</tabstop>
  </tabstops>
  <resources/>
  <connections>

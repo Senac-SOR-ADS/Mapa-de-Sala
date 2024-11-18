@@ -3,6 +3,7 @@ from PyQt5.uic import loadUi
 from PyQt5.QtCore import pyqtSlot
 from App.controller.pessoa import cadastrarPessoa
 from App.controller.utils import modificarData
+from App.controller.utils import validarAcao
 from PyQt5.QtCore import QTimer
 
 class cadastroPessoas(QWidget):
@@ -49,5 +50,6 @@ class cadastroPessoas(QWidget):
         campos = self.getDadosCadastro()
         if cadastrarPessoa(*campos.values()):
             self.validandoDados()
+            validarAcao()
         else:
             self.dadosInvalidos()

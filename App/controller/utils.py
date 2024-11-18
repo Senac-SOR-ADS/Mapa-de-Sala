@@ -30,3 +30,7 @@ def validarInputs(valores):
 def modificarDataReserva(data):
     data = data.split('-')
     return f'{data[2]}/{data[1]}/{data[0]}'
+
+# Validar ação
+def validarAcao():
+    print("ok")
