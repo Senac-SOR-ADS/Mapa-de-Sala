@@ -15,8 +15,10 @@ class Criptografia:
     def validarSenha(cls, senha: str, senhaCriptografada: bytes):
         """Valida se as senhas passadas são identicas"""
         if bcrypt.checkpw(senha.encode(cls.TIPO_ENCODE), senhaCriptografada):
+            print('Senhas identicas!')
             return True
         else:
+            print('Senhas não são iguais!')
             return False
         
 if __name__ == '__main__':
