@@ -419,7 +419,7 @@ QPushButton::menu-indicator {
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>icones/menu-regular-24 (1).png</normaloff>icones/menu-regular-24 (1).png</iconset>
+       <normaloff>icones/iconMenu.png</normaloff>icones/iconMenu.png</iconset>
      </property>
     </widget>
    </widget>
