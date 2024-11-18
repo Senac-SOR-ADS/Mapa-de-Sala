@@ -166,6 +166,9 @@ class Reserva:
         parametro = [idLogin, idSala, dia, hrInicio, hrFim]
         resultado = cls.__banco.alterarDados(query, parametro)
         cls.__banco.desconectar()
+        if resultado.rowcount:
+            return True
+        return False
         
 
 if __name__ == "__main__":
