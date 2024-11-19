@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer, pyqtSlot
 from App.controller.area import cadastroDeArea
+from App.controller.utils import validarAcao
 
 class CadastrarArea(QWidget):
     def __init__(self):
@@ -12,9 +13,7 @@ class CadastrarArea(QWidget):
     def on_btnCadastrarArea_clicked(self):
         nomeArea = self.getCadastroArea()
         if cadastroDeArea(nomeArea):
-            print('ok')
-        else: 
-            print('não ok')
+           validarAcao() 
             
         
     def getCadastroArea(self):
