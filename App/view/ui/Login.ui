@@ -415,7 +415,7 @@ QPushButton::menu-indicator {
           <widget class="QWidget" name="widget" native="true">
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
-             <widget class="QLabel" name="respostaLoginLogando">
+             <widget class="QLabel" name="respostasErros">
               <property name="enabled">
                <bool>true</bool>
               </property>
@@ -425,8 +425,19 @@ QPushButton::menu-indicator {
                 <height>20</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
               <property name="text">
                <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>
