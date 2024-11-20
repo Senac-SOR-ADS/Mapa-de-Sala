@@ -175,7 +175,7 @@ border-radius: 15px;
             <bool>true</bool>
            </property>
            <property name="currentText">
-            <string>Nível de Acesso</string>
+            <string>🎖 Nível de Acesso</string>
            </property>
           </widget>
          </item>
