@@ -6,111 +6,211 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>757</width>
-    <height>583</height>
+    <width>784</width>
+    <height>656</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
+  <property name="styleSheet">
+   <string notr="true">QLineEdit, QComboBox {
+	background-color:rgba(0,0,0,0);
+	border:2px solid rgba(0,0,0,0);
+	border-bottom-color:rgba(46,82,101,200);
+	color:rgb(0,0,0);
+	padding-bottom:7px;
+}
+
+#btnCdastrarLogin {
+	background-color: #01498a;
+	color: #FFF;
+border: none;
+border-radius: 15px;
+}
+
+#btnCdastrarLogin:hover {
+	background-color: #f6921e;
+}
+
+#cadastrarLogin {
+	background-color:rgba(0,0,0,0);
+	border:2px solid rgba(0,0,0,0);
+	border-bottom-color:rgba(46,82,101,200);
+	color:rgb(0,0,0);
+	padding-bottom:7px;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+    <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Cadastar Login</string>
+     </property>
+    </widget>
+   </item>
    <item>
     <widget class="QFrame" name="frame">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLineEdit" name="email">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>120</y>
-        <width>113</width>
-        <height>20</height>
-       </rect>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>7</number>
       </property>
-     </widget>
-     <widget class="QLineEdit" name="senha">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>200</y>
-        <width>113</width>
-        <height>20</height>
-       </rect>
+      <property name="leftMargin">
+       <number>11</number>
       </property>
-     </widget>
-     <widget class="QComboBox" name="nivelAcesso">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>270</y>
-        <width>69</width>
-        <height>22</height>
-       </rect>
+      <property name="topMargin">
+       <number>11</number>
       </property>
-      <property name="editable">
-       <bool>true</bool>
+      <property name="rightMargin">
+       <number>11</number>
       </property>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>80</y>
-        <width>47</width>
-        <height>13</height>
-       </rect>
+      <property name="bottomMargin">
+       <number>11</number>
       </property>
-      <property name="text">
-       <string>Email</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>170</y>
-        <width>47</width>
-        <height>13</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Senha</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>240</y>
-        <width>91</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Nivel de Acesso</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnCdastrarLogin">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>340</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Cadastrar Login</string>
-      </property>
-     </widget>
+      <item>
+       <widget class="QWidget" name="widget_2" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>imagem/logoSenac.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="email">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>10</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="placeholderText">
+            <string>✉️ Digite o Email</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="senha">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>10</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="placeholderText">
+            <string>🔒 Digite a Senha</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="nivelAcesso">
+           <property name="editable">
+            <bool>true</bool>
+           </property>
+           <property name="currentText">
+            <string>Nível de Acesso</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnCdastrarLogin">
+     <property name="minimumSize">
+      <size>
+       <width>762</width>
+       <height>47</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>17</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Cadastrar Login</string>
+     </property>
     </widget>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>email</tabstop>
+  <tabstop>senha</tabstop>
+  <tabstop>nivelAcesso</tabstop>
+  <tabstop>btnCdastrarLogin</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
