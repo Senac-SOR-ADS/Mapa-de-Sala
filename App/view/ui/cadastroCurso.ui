@@ -31,6 +31,10 @@ border-radius: 15px;
 
 #btnCadastrarCurso:hover {
 	background-color: #f6921e;
+}
+
+#respostas {
+	color: red;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -164,27 +168,6 @@ border-radius: 15px;
        </property>
       </item>
      </widget>
-     <widget class="QComboBox" name="campoArea">
-      <property name="geometry">
-       <rect>
-        <x>540</x>
-        <y>80</y>
-        <width>231</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="editable">
-       <bool>true</bool>
-      </property>
-      <property name="currentText">
-       <string>Área</string>
-      </property>
-     </widget>
      <widget class="QLineEdit" name="ofertaCurso">
       <property name="geometry">
        <rect>
@@ -281,6 +264,45 @@ border-radius: 15px;
        <string>Horas por dia</string>
       </property>
      </widget>
+     <widget class="QComboBox" name="campoArea">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>80</y>
+        <width>231</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="editable">
+       <bool>true</bool>
+      </property>
+      <property name="currentText">
+       <string>Área</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>60</y>
+        <width>55</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Área</string>
+      </property>
+     </widget>
     </widget>
    </item>
    <item>
@@ -298,6 +320,21 @@ border-radius: 15px;
      </property>
      <property name="text">
       <string>Cadastrar</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="respostas">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>

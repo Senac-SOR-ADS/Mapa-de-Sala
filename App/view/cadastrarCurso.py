@@ -5,6 +5,8 @@ from App.controller.curso import cadastrarCurso
 from App.controller.area import listarAreas
 from App.controller.utils import validarAcao
 
+#respostas de sucesso e erro = respostas
+
 class CadastrarCurso(QWidget):
     def __init__(self):
         super().__init__()
