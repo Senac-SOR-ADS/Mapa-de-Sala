@@ -39,6 +39,10 @@ border-radius: 15px;
 	border-bottom-color:rgba(46,82,101,200);
 	color:rgb(0,0,0);
 	padding-bottom:7px;
+}
+
+#respostas {
+	color: red;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -200,6 +204,21 @@ border-radius: 15px;
      </property>
      <property name="text">
       <string>Cadastrar Login</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="respostas">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
