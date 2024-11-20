@@ -461,6 +461,12 @@ QPushButton::menu-indicator {
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>inputEmail</tabstop>
+  <tabstop>inputSenha</tabstop>
+  <tabstop>btnEntrar</tabstop>
+  <tabstop>btnMenuBar</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
