@@ -1,6 +1,113 @@
-QWidget {
-    background-color: #292929; 
-    color: #18dada;
-    
+#subMenuLateral QPushButton {
+	padding: 5px 10px;
+	text-align: left;
+	margin-bottom: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
 }
 
+#titulo, #tituloHome, #subTituloHome {
+	color: #66ffff;
+}
+
+#containerPrincipal {
+	background-color: #252526;
+}
+
+#cabecalho {
+	background-color: #333335;
+}
+
+#menuSimples, #subMenuLateral {
+	background-color: #1e1e1e;
+}
+
+#menuQuebrado QPushButton {
+	color: #fff;
+	border-radius: 10px;
+}
+
+#btnFecharPagina:hover {
+	background-color: #E81123;
+	color: #FFF;
+}
+
+#suMenuLateral QPushButton {
+	border-radius: 10px;
+	color: #fff;
+}
+
+#frameBtns QPushButton {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	color: #fff;
+}
+
+#subMenuQuebrado {
+	background-color: #37373d;
+	color: #fff;
+}
+
+#subMenuQuebrado QPushButton:hover,  #subMenuQuebrado QPushButton:focus{
+	background-color: #18dada;
+	color: #fff;
+}
+
+#menuSimples QPushButton {
+	border-radius: 10px;
+	color: #fff;
+
+}
+
+
+#subMenuLateral QPushButton:hover, #menuSimples QPushButton:hover{
+	background-color: #18dada;
+	color: #fff;
+}
+
+#subMenuLateral  QPushButton:checked, #menuSimples QPushButton:checked{
+	background-color: #18dada;
+	color: #fff;
+}
+
+#btnTelaCheia:hover, #btnMinimizar:hover {
+	background-color: #3b3b3d;
+	color: #FFF;
+}
+
+QPushButton {
+	border: none;
+}
+
+#MenuLateral #subMenuLateral QPushButton {
+	margin: 0;
+	padding: 0;
+	background: none;
+	background-color: transparent;
+	border: none;
+}
+
+#btnMenu, #btnSair, #btnMenu2 {
+	padding:10px;
+}
+
+#btnMenu, #btnMenu2 {
+	color: #fff;
+	background-color: #18dada;
+	padding: 0;
+	padding-right: 3px;
+}
+
+#btnMenu2 {
+	border-radius: 10px;
+}
+
+#btnSair {
+	color: #fff;
+}
+
+#btnFecharMenuQuebrado {
+	background-color: #18dada;
+	border: none;
+	border-radius: 10px;
+}

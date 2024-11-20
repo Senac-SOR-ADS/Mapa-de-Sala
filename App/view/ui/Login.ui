@@ -41,6 +41,15 @@
 	background-color: #fff;
 }
 
+#loginLabel {
+	margin-top: 30px;
+}
+
+#inputEmail, #inputSenha, #btnEntrar {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
 QPushButton:pressed {
 	padding-left:5px;
 	padding-top:5px;
@@ -48,13 +57,13 @@ QPushButton:pressed {
 }
 
 QPushButton:hover {
-	background-color:rgb(255, 140, 0);
+	background-color: #f6921e;
 	color:0;
 }
 
 
 QPushButton {
-    background-color: #0E46A3;
+    background-color: #01498a;
     color: white; 
     border: none; 
     border-radius: 5px;
@@ -63,7 +72,7 @@ QPushButton {
 }
 
 QPushButton:hover {
-    background-color: #E55807;
+    background-color: #f6921e;
 }
 
 QPushButton:pressed {
@@ -97,12 +106,7 @@ QPushButton::menu-indicator {
 	padding-bottom:7px;
 }
 
-#respostaLoginDadosIncompleto {
-	color:red;
-	
-}
-
-#respostaLoginLogando {
+#respostasErros {
 	color:red;
 	
 }
@@ -287,26 +291,19 @@ QPushButton::menu-indicator {
                <iconset>
                 <normaloff>icones/iconMenu.png</normaloff>icones/iconMenu.png</iconset>
               </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="verticalSpacer_6">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
+              <property name="iconSize">
                <size>
                 <width>20</width>
-                <height>40</height>
+                <height>20</height>
                </size>
               </property>
-             </spacer>
+             </widget>
             </item>
             <item>
              <widget class="QLabel" name="loginLabel">
               <property name="font">
                <font>
-                <pointsize>15</pointsize>
+                <pointsize>18</pointsize>
                 <weight>75</weight>
                 <bold>true</bold>
                </font>
@@ -331,6 +328,12 @@ QPushButton::menu-indicator {
             </item>
             <item>
              <widget class="QLineEdit" name="inputEmail">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>16777215</height>
+               </size>
+              </property>
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
@@ -362,6 +365,12 @@ QPushButton::menu-indicator {
             </item>
             <item>
              <widget class="QLineEdit" name="inputSenha">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>16777215</height>
+               </size>
+              </property>
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
