@@ -20,6 +20,8 @@
 
 #menuSimples, #subMenuLateral {
 	background-color: #1e1e1e;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
 }
 
 #menuQuebrado QPushButton {
@@ -46,6 +48,8 @@
 #subMenuQuebrado {
 	background-color: #37373d;
 	color: #fff;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
 }
 
 #subMenuQuebrado QPushButton:hover,  #subMenuQuebrado QPushButton:focus{
