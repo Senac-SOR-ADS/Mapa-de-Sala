@@ -24,13 +24,13 @@ class CadastrarArea(QWidget):
 
 
     def validandoDados(self):
-        self.respostaCadastrando.setText('CADASTRANDO...')
-        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaCadastrando))
+        self.resposta.setText('CADASTRANDO...')
+        QTimer.singleShot(2000, lambda: self.limparCampos(self.resposta))
 
     def dadosInvalidos(self):
         texto = 'DADOS INCOMPLETOS.'
-        self.respostaNaoCadastrado.setText(texto)
-        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaNaoCadastrado))
+        self.resposta.setText(texto)
+        QTimer.singleShot(2000, lambda: self.limparCampos(self.resposta))
 
     def limparCampos(self, campo):
         campo.clear()
