@@ -2,9 +2,14 @@
 
 /* Container para centralizar os alertas */
 .alert-container {
-    width: 100%;
+    position: fixed;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
     max-width: 600px;
-    margin: 0 auto 20px;
+    z-index: 1050;
+    margin-bottom: 20px;
 }
 
 /* Estilo base para os alertas */
@@ -16,10 +21,12 @@
     margin-bottom: 1rem;
     font-size: 1rem;
     line-height: 1.5;
-    box-shadow: var(--box-shadow, 0 2px 5px rgba(0, 0, 0, 0.1)); /* Sombra padrão */
+    box-shadow: var(--box-shadow, 0 2px 5px rgba(0, 0, 0, 0.1));
     position: relative;
     opacity: 1;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    max-width: 100%;
+    word-wrap: break-word;
 }
 
 /* Cores e bordas para diferentes tipos de alerta */
@@ -84,6 +91,21 @@
 
 /* Animação de desaparecimento dos alertas */
 @keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
+
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .alert-container {
+        top: 30px;
+        width: 95%;
+    }
+}
+
+@media (max-width: 576px) {
+    .alert-container {
+        top: 20px;
+    }
 }

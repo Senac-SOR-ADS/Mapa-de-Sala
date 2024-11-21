@@ -10,9 +10,10 @@ funcionario_route = Blueprint('funcionario_route', __name__, template_folder='te
 def listar_Pessoa():
     page = request.args.get('page', 1, type=int)
     per_page = 10
+    search_query = request.args.get('search', '', type=str)
 
     try:
-        all_employees = buscarPessoas()
+        all_employees = buscarPessoas(search_query)
         if not isinstance(all_employees, dict):
             raise ValueError("Esperava um dicionário de funcionários")
 
@@ -24,8 +25,9 @@ def listar_Pessoa():
 
     except Exception as e:
         flash(f'Erro ao listar funcionários: {str(e)}', 'danger')
-        return render_template('Funcionarios/listar.html', valores=[], total_items=0, page=1, per_page=per_page)
-    return render_template('Funcionarios/listar.html', valores=funcionarios_paginated, total_items=total_items, page=page, per_page=per_page)
+        return render_template('Funcionarios/listar.html', valores=[], total_items=0, page=1, per_page=per_page, search_query=search_query)
+    
+    return render_template('Funcionarios/listar.html', valores=funcionarios_paginated, total_items=total_items, page=page, per_page=per_page, search_query=search_query)
 
 # =================== cadastrar ===================
 @funcionario_route.route("/cadastrar", methods=['GET', 'POST'])
