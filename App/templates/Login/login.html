@@ -1,34 +1,92 @@
-{% block head %}
-<title>Página de Login - Mapa de Sala - Senac</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/message.css') }}">
-{% endblock %}
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
 
-{% block content %}
-<main class="container d-flex justify-content-center align-items-center flex-column py-4" role="main">
-    <h1 class="login-title">Login</h1>    
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Mapa de Sala - Senac</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/message.css') }}" />
+    <!-- Incluindo Font Awesome mais atualizada para ícones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <meta name="description" content="Tela de login do sistema Mapa de Sala do Senac. Acesse seu ambiente de sala de aula.">
+    <meta name="author" content="Senac">
+</head>
 
-    <!-- Exibir mensagens de feedback -->
-    {% include "Error/message.html" %}
+<body>
+    {% block content %}
+    <main>
+        <!-- Mensagens de feedback -->
+        {% include "Error/message.html" %}
 
-    <!-- Formulário para realizar login -->
-    <form action="{{ url_for('login_route.login') }}" method="POST" class="form-container mt-3" style="width: 100%; max-width: 400px;">
-        <fieldset>
+        <div class="container-login">
+            <!-- Imagem de Login -->
+            <section class="img-box" aria-hidden="true">
+                <img src="{{ url_for('static', filename='img/login/' + image) }}" alt="Ilustração de login" class="login-image" />
+            </section>
+            
+            <section class="logo-empresa" aria-hidden="true">
+                <img src="{{ url_for('static', filename='img/default.png') }}" alt="Logo da Empresa" class="logo-image" />
+            </section>
+                       
+            <!-- Caixa de Conteúdo -->
+            <section class="content-box">
+                <div class="form-box">
+                    <h2>Login</h2>
+                    <form action="{{ url_for('login_route.login') }}" method="POST" class="form-container" novalidate>
+                        <!-- Campo de E-mail -->
+                        <div class="input-box">
+                            <label for="email">E-mail:</label>
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-user-circle icon" aria-hidden="true"></i>
+                                <input type="email" id="email" name="email" required maxlength="100"
+                                    placeholder="Digite seu e-mail" aria-label="Digite seu e-mail de usuário"
+                                    autocomplete="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                            </div>
+                            <small id="emailHelp" class="form-text text-muted">
+                                Seu e-mail será utilizado para autenticação.
+                            </small>
+                        </div>
 
-            <div class="form-group mb-3">
-                <label for="email">E-mail:</label>
-                <input type="text" id="email" name="email" required maxlength="100" class="form-control"
-                    placeholder="Digite seu e-mail" aria-label="Digite seu e-mail de usuário">
-            </div>
+                        <!-- Campo de Senha -->
+                        <div class="input-box">
+                            <label for="senha">Senha:</label>
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-key icon" aria-hidden="true"></i>
+                                <input type="password" id="senha" name="senha" required minlength="3"
+                                    placeholder="Digite sua senha" aria-label="Digite sua senha"
+                                    autocomplete="current-password" />
+                                <i class="fa-solid fa-eye toggle-password" id="toggleSenha"
+                                    aria-label="Mostrar ou ocultar senha" role="button" tabindex="0" aria-controls="senha"></i>
+                            </div>
+                        </div>
 
-            <div class="form-group mb-3">
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha" required minlength="3" class="form-control"
-                    placeholder="Sua senha aqui" aria-label="Digite sua senha">
-            </div>
+                        <!-- Lembrar-me e Esqueceu a Senha -->
+                        <div class="remember">
+                            <label for="lembrar">
+                                <input type="checkbox" id="lembrar" name="lembrar" />
+                                Lembrar-me
+                            </label>
+                        </div>
 
-            <button type="submit" class="btn btn-primary w-100">Entrar</button>
-        </fieldset>
-    </form>
-</main>
-{% endblock %}
+                        <!-- Botão de Login -->
+                        <div class="input-box">
+                            <button type="submit" class="btn-submit" aria-label="Entrar">
+                                Entrar
+                            </button>
+                        </div>
+
+                        <!-- Mensagens de Feedback -->
+                        <p id="message" class="hidden" role="alert"></p>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+    {% endblock %}
+</body>
+
+<script src="{{ url_for('static', filename='js/formLogin.js') }}"></script>
+
+</html>

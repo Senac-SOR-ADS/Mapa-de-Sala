@@ -1,3 +1,5 @@
+import os
+import random
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from App.routes.auth.autenticar import validar_acesso, autenticar
 
@@ -6,15 +8,28 @@ login_route = Blueprint('login_route', __name__, template_folder='templates/Logi
 
 @login_route.route('/', methods=['GET', 'POST'])
 def login():
+    
+    # Caminho da pasta de imagens
+    img_folder = 'App/static/img/login/'
+    
+    # Listando todas as imagens na pasta
+    try:
+        images = [f for f in os.listdir(img_folder) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+    except FileNotFoundError:
+        images = []
+
+    # Selecionando uma imagem aleatória ou definindo uma imagem padrão
+    random_image = random.choice(images) if images else 'default.jpg'
+    
     if request.method == 'POST':
         email = request.form.get("email")
         senha = request.form.get("senha")
         if autenticar(email, senha):
-            flash('Login realizado com sucesso!', 'success')
             return redirect(url_for('home_route.home'))
         flash('Credenciais inválidas. Verifique seu e-mail e senha e tente novamente.', 'error')
     
     elif request.method == 'GET' and validar_acesso():
         return redirect(url_for('home_route.home'))
     
-    return render_template('Login/login.html')
+    # Renderizando o template com a imagem aleatória
+    return render_template('Login/login.html', image=random_image)
