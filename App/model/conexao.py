@@ -26,7 +26,6 @@ class ConexaoBD:
         self.__password = os.getenv("PASSWORD")
         self.__database = os.getenv("DATABASE")
         self.__conn = None
-        # log.debug("Instância ConexaoBD criada")
 
     def conectar(self) -> bool:
         config = {
@@ -37,10 +36,6 @@ class ConexaoBD:
         }
 
         try:
-            # if self.__conn and self.__conn.is_connected():
-            #     # log.warning("Conexão já ativa.")
-            #     return True
-            
             self.__conn = connector.connect(**config)
 
             if not self.__conexao().is_connected():
@@ -62,8 +57,6 @@ class ConexaoBD:
     def buscar(self, query, param=None) -> list:
         resultado = []
         try:
-            if not self.__conn or not self.__conn.is_connected():
-                self.conectar()
             cur = self.__conexao().cursor()
             cur.execute(query, param)
             resultado = cur.fetchone()
@@ -99,7 +92,6 @@ class ConexaoBD:
             cur = self.__conexao().cursor()
             cur.execute(query, param)
             self.commit()
-            cur.close()
             return cur
 
         except Exception as e:
@@ -113,7 +105,7 @@ class ConexaoBD:
     def __conexao(self):
         return self.__conn
 
-# if __name__ == "__main__":
-    # bd = ConexaoBD()
-    # bd.conectar()
-    # bd.desconectar()
+if __name__ == "__main__":
+    bd = ConexaoBD()
+    bd.conectar()
+    bd.desconectar()
