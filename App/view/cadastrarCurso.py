@@ -44,13 +44,13 @@ class CadastrarCurso(QWidget):
     
 
     def validandoDados(self):
-        self.respostaCadastrando.setText('CADASTRANDO...')
-        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaCadastrando))
+        self.respostas.setText('CADASTRANDO...')
+        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostas))
 
     def dadosInvalidos(self):
         texto = 'DADOS INCOMPLETOS.'
-        self.respostaCadastroIncompleto.setText(texto)
-        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaCadastroIncompleto))
+        self.respostas.setText(texto)
+        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostas))
 
     def limparCampos(self, campo):
         campo.clear()
