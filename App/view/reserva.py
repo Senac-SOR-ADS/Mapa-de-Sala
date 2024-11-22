@@ -14,11 +14,6 @@ from App.controller.reserva import fazendoReserva, validarCadastro
 
 
 class ReservaInterface(QWidget):
-    curso = listarCursos
-    pessoa = buscarPessoas
-    sala = listarSala
-    
-    
     def __init__(self):
         super().__init__()
         loadUi('App/view/ui/reserva.ui',self)
@@ -85,24 +80,27 @@ class ReservaInterface(QWidget):
         
 
     def popularJanela(self):
-        self.comboBoxCurso(self.curso)
-        self.comboBoxPessoa(self.pessoa)
-        self.comboBoxSala(self.sala)
+        """Popula os comboBoxes com dados do banco."""
+        self.comboBoxCurso()
+        self.comboBoxPessoa()
+        self.comboBoxSala()
 
-    def comboBoxCurso(self, listarCurso):
-        if type(listarCurso) != dict or list:
-            listarCurso = listarCurso()
-        self.cursoReserva.addItems(self.curso.keys())
+    def comboBoxCurso(self):
+        cursos = listarCursos()
+        self.cursoReserva.clear()
+        self.cursoReserva.addItems(cursos.keys())
 
-    def comboBoxPessoa(self, buscarPessoa):
-        if type(buscarPessoa) != dict or list:
-            buscarPessoa = buscarPessoa()
-        self.nomeDocente.addItems(self.pessoa.keys())
+    def comboBoxPessoa(self):
+        """Busca as pessoas no banco e popula o comboBox."""
+        pessoas = buscarPessoas()
+        self.nomeDocente.clear()
+        self.nomeDocente.addItems(pessoas.keys())
 
-    def comboBoxSala(self, listarSalas):
-        if type(listarSalas) != dict or list:
-            listarSalas = listarSalas()
-        self.nomeDocente.addItems(self.sala.keys())
+    def comboBoxSala(self):
+        """Busca as salas no banco e popula o comboBox."""
+        salas = listarSala()
+        self.salaReserva.clear()
+        self.salaReserva.addItems(salas.keys())
 
     def validandoDados(self):
         self.feedbackReserva.setText('Reserva realizada.')
