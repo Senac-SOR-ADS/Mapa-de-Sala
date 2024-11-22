@@ -24,7 +24,7 @@ class Sala:
         cls.__banco.conectar()
         query = '''SELECT * FROM sala;'''
         resultado = cls.__banco.buscarTodos(query)
-        cls.__banco.desconectar
+        cls.__banco.desconectar()
         return resultado
     
     @classmethod
@@ -32,7 +32,7 @@ class Sala:
         cls.__banco.conectar()  
         query = ''' SELECT * FROM `sala` WHERE predio = 1; '''
         resultado = cls.__banco.buscarTodos(query)
-        cls.__banco.desconectar
+        cls.__banco.desconectar()
         return resultado
     
     @classmethod
@@ -40,7 +40,7 @@ class Sala:
         cls.__banco.conectar()
         query = '''SELECT * FROM `sala` WHERE predio = 2;'''
         resultado = cls.__banco.buscarTodos(query)
-        cls.__banco.desconectar()
+        cls.__banco.desconectar
         return resultado
     
     @classmethod
@@ -48,7 +48,7 @@ class Sala:
         cls.__banco.conectar()
         query = '''SELECT idSala, nome FROM `sala`; '''
         resultado = cls.__banco.buscarTodos(query)
-        cls.__banco.desconectar()
+        cls.__banco.desconectar
         return resultado
     
 
