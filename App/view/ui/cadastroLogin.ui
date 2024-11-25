@@ -135,19 +135,6 @@ border-radius: 15px;
           <number>0</number>
          </property>
          <item>
-          <spacer name="verticalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
           <widget class="QLineEdit" name="email">
            <property name="minimumSize">
             <size>
@@ -169,19 +156,6 @@ border-radius: 15px;
           </widget>
          </item>
          <item>
-          <spacer name="verticalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
           <widget class="QLineEdit" name="senha">
            <property name="minimumSize">
             <size>
@@ -200,74 +174,14 @@ border-radius: 15px;
           </widget>
          </item>
          <item>
-          <spacer name="verticalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item alignment="Qt::AlignLeft|Qt::AlignBottom">
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>🎖 Nível de Acesso</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QComboBox" name="nivelAcesso">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="cursor">
-            <cursorShape>IBeamCursor</cursorShape>
-           </property>
-           <property name="mouseTracking">
-            <bool>false</bool>
-           </property>
-           <property name="acceptDrops">
-            <bool>false</bool>
-           </property>
            <property name="editable">
             <bool>true</bool>
            </property>
            <property name="currentText">
-            <string>admin</string>
+            <string>🎖 Nível de Acesso</string>
            </property>
-           <property name="currentIndex">
-            <number>0</number>
-           </property>
-           <item>
-            <property name="text">
-             <string>admin</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user</string>
-            </property>
-           </item>
           </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
        </widget>
