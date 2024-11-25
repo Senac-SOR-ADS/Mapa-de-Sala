@@ -78,14 +78,14 @@ class HomePrincipal(QMainWindow):
     ################################
     # Função correta para inserir interface
     def setInterfaceOnHome(self, interface:QWidget):
-        self.stackedWidget: QStackedWidget
+        self.container: QStackedWidget
         if type(interface) != QWidget: # precisa instanciar a interface
             interface = interface()
-        if self.stackedWidget.currentIndex() != 0:
-            self.stackedWidget.removeWidget(self.stackedWidget.currentWidget())
+        if self.container.currentIndex() != 0:
+            self.container.removeWidget(self.container.currentWidget())
         if interface != self.inicio:
-            self.stackedWidget.addWidget(interface)
-        self.stackedWidget.setCurrentWidget(interface)
+            self.container.addWidget(interface)
+        self.container.setCurrentWidget(interface)
 
     ################################
 
