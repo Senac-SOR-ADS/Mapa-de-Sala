@@ -22,14 +22,14 @@
 	padding-bottom:7px;
 }
 
-#btnCadastrarSala {
+#cadastrarSala {
 	background-color: #01498a;
 	color: #FFF;
 	border: none;
 	border-radius: 15px;
 }
  
-#btnCadastrarSala:hover {
+#cadastrarSala:hover {
 	background-color: #f6921e;
 }
  
@@ -37,7 +37,7 @@
 	color: red;
 }</string>
   </property>
-  <widget class="QPushButton" name="btnCadastrarSala">
+  <widget class="QPushButton" name="cadastrarSala">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -313,7 +313,7 @@
   <tabstop>tipoEquipamento</tabstop>
   <tabstop>mediaCapacidade</tabstop>
   <tabstop>feedbackText</tabstop>
-  <tabstop>btnCadastrarSala</tabstop>
+  <tabstop>cadastrarSala</tabstop>
  </tabstops>
  <resources/>
  <connections/>
