@@ -282,7 +282,7 @@ border-radius: 15px;
        <bool>true</bool>
       </property>
       <property name="currentText">
-       <string/>
+       <string>Área</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_2">
