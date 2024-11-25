@@ -22,11 +22,6 @@
      <height>461</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">QFrame{
-background-color: #e4e8f0;
-}</string>
-   </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
    </property>
@@ -42,9 +37,6 @@ background-color: #e4e8f0;
       <height>16</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">font: 75 9pt &quot;SansSerif&quot;;</string>
-    </property>
     <property name="text">
      <string>CADASTRO DE PESSOAS</string>
     </property>
@@ -57,9 +49,6 @@ background-color: #e4e8f0;
       <width>41</width>
       <height>16</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 75 9pt &quot;SansSerif&quot;;</string>
     </property>
     <property name="text">
      <string>NOME:</string>
@@ -74,9 +63,6 @@ background-color: #e4e8f0;
       <height>16</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">font: 75 9pt &quot;SansSerif&quot;;</string>
-    </property>
     <property name="text">
      <string>CPF/CNPJ:</string>
     </property>
@@ -89,9 +75,6 @@ background-color: #e4e8f0;
       <width>41</width>
       <height>16</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 75 9pt &quot;SansSerif&quot;;</string>
     </property>
     <property name="text">
      <string>EMAIL:</string>
@@ -106,9 +89,6 @@ background-color: #e4e8f0;
       <height>16</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">font: 75 9pt &quot;SansSerif&quot;;</string>
-    </property>
     <property name="text">
      <string>DATA DE NASCIMENTO:</string>
     </property>
@@ -121,9 +101,6 @@ background-color: #e4e8f0;
       <width>55</width>
       <height>16</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 75 9pt &quot;SansSerif&quot;;</string>
     </property>
     <property name="text">
      <string>CARGO:</string>
@@ -138,9 +115,6 @@ background-color: #e4e8f0;
       <height>16</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">font: 75 9pt &quot;SansSerif&quot;;</string>
-    </property>
     <property name="text">
      <string>TELEFONE:</string>
     </property>
@@ -154,11 +128,6 @@ background-color: #e4e8f0;
       <height>28</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-
-}</string>
-    </property>
     <property name="text">
      <string>CADASTRAR</string>
     </property>
@@ -171,11 +140,6 @@ background-color: #e4e8f0;
       <width>251</width>
       <height>22</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLineEdit{
-
-}</string>
     </property>
     <property name="text">
      <string/>
@@ -209,9 +173,6 @@ background-color: #e4e8f0;
       <width>110</width>
       <height>22</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
     </property>
    </widget>
    <widget class="QLineEdit" name="telefone">
