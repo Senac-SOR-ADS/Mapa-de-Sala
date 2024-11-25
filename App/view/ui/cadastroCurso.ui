@@ -149,6 +149,9 @@ border-radius: 15px;
         <height>22</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="editable">
        <bool>true</bool>
       </property>
@@ -236,6 +239,9 @@ border-radius: 15px;
         <pointsize>10</pointsize>
        </font>
       </property>
+      <property name="tabletTracking">
+       <bool>false</bool>
+      </property>
       <property name="placeholderText">
        <string>Quantidade de Alunos</string>
       </property>
@@ -278,6 +284,9 @@ border-radius: 15px;
         <pointsize>10</pointsize>
        </font>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="editable">
        <bool>true</bool>
       </property>
@@ -317,6 +326,9 @@ border-radius: 15px;
       <font>
        <pointsize>17</pointsize>
       </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="text">
       <string>Cadastrar</string>
