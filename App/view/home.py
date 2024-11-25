@@ -133,7 +133,7 @@ class HomePrincipal(QMainWindow):
             self.offset = event.pos()
 
     def mouseMoveEvent(self, event):
-        if self.moving:
+        if self.moving and not self.isMaximized():
             self.move(self.pos() + event.pos() - self.offset)
 
     def mouseReleaseEvent(self, event):
