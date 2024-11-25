@@ -74,7 +74,7 @@
        <string>RESERVA</string>
       </property>
      </widget>
-     <widget class="QLabel" name="nomeDocenteResponsavel">
+     <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
         <x>80</x>
