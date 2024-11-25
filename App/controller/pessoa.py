@@ -1,5 +1,6 @@
 from App.model.pessoa import Pessoa
 from App.controller.login import cadastrarLogin, atualizarCadastro
+from App.controller.utils import formatarCpf, formatarCnpj, formatarTelefone
 
 # =================== cadastrar ===================
 def cadastrarPessoa(nome, cpf_cnpj, data_nasc, telefone, email, cargo):
@@ -22,7 +23,6 @@ def atualizarPessoa(idPessoa, nome, cpfCnpj, dataNasc, telefone, email, cargo):
         pessoaModel = Pessoa()
         if pessoaModel.atualizar(idPessoa, nome, cpfCnpj, dataNasc, telefone, email, cargo):
             return {
-                "success": "Dados da pessoa atualizados com sucesso.",
                 "login_update": atualizarCadastro(idPessoa, email, cargo)
             }
         return {"error": "Falha ao atualizar os dados da pessoa."}
@@ -31,10 +31,15 @@ def atualizarPessoa(idPessoa, nome, cpfCnpj, dataNasc, telefone, email, cargo):
         return {"error": f"Erro ao atualizar os dados: {e}"}
 
 # =================== listar ===================
-def buscarPessoas() -> dict:
-    """Retorna um dicionário com todas as pessoas cadastradas, usando o nome como chave e o ID como valor."""
+def buscarPessoas(search_query: str = '') -> dict:
+    """Retorna um dicionário com todas as pessoas cadastradas, usando o nome como chave e o ID como valor.
+    Filtra os resultados com base no nome se a query de pesquisa for fornecida."""
 
     todasPessoas = Pessoa.buscar()
+
+    if search_query:
+        todasPessoas = [p for p in todasPessoas if search_query.lower() in p[1].lower()]
+    
     return {i[1]: i[0] for i in todasPessoas} if todasPessoas else {}
 
 # =================== buscar Id ===================
@@ -50,12 +55,16 @@ def buscarPessoaId(idPessoa):
         if not resultado or len(resultado) < 7:
             return {"error": "Pessoa não encontrada"}
 
+        # Formatando CPF, CNPJ e Telefone
+        cpfCnpj_formatado = formatarCpf(resultado[2]) if len(resultado[2]) == 11 else formatarCnpj(resultado[2])
+        telefone_formatado = formatarTelefone(resultado[4])
+
         return {
             "idPessoa": resultado[0],
             "nome": resultado[1],
-            "cpfCnpj": resultado[2],
+            "cpfCnpj": cpfCnpj_formatado,
             "dataNasc": resultado[3],
-            "telefone": resultado[4],
+            "telefone": telefone_formatado,
             "email": resultado[5],
             "cargo": resultado[6],
         }
