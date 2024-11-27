@@ -111,7 +111,7 @@ class HomePrincipal(QMainWindow):
             self.showNormal()
             self.btnTelaCheia.setStyleSheet("""
                                        #btnTelaCheia {
-                                           icon: url("App/view/ui/icones/square-rounded-regular-24.png"); 
+                                           icon: url("App/view/ui/icones/iconTelaCheia.png"); 
                                         }"""
                                     )
         else:
