@@ -9,6 +9,11 @@ from .cadastrarCurso import CadastrarCurso
 from .cadastrarLogin import CadastroLogin
 from .cadastrarSalas import CadastrarSalas
 from .configurarTela import ConfigurarTela
+from .editarPessoas import EditarPessoas
+from .editarArea import EditarArea
+from .editarCurso import EditarCurso
+from .editarLogin import EditarLogin
+from .editarReserva import EditarReserva
 
 from .reserva import ReservaInterface
 
@@ -43,6 +48,11 @@ class HomePrincipal(QMainWindow):
         self.interfCongiguracoes = ConfigurarTela
         self.interfCasCurso = CadastrarCurso
         self.interfReserva = ReservaInterface
+        self.interfEditPessoa = EditarPessoas
+        self.interfEditArea = EditarArea
+        self.interfEditCurso = EditarCurso
+        self.interfEditLogin = EditarLogin
+        self.interfEditReserva = EditarReserva
 
         
     #Telas dentro do menu para alterar as janelas pelo sub menu
@@ -59,6 +69,7 @@ class HomePrincipal(QMainWindow):
         #######################################
         self.btnIncio.clicked.connect(lambda: self.setInterfaceOnHome(self.inicio))
         self.btnHome.clicked.connect(lambda: self.setInterfaceOnHome(self.inicio))
+        self.btnHomeAtalho.clicked.connect(lambda: self.setInterfaceOnHome(self.inicio))
 
         self.btnCadastroLogin.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCasLogin))
         self.btnArea.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCasArea))
@@ -66,6 +77,11 @@ class HomePrincipal(QMainWindow):
         self.btnCadastroPessoa.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCasPessoa))
         self.btnCurso.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCasCurso))
         self.btnReserva.clicked.connect(lambda: self.setInterfaceOnHome(self.interfReserva))
+        self.btnEditarPessoas.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditPessoa))
+        self.btnEditarReserva.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditReserva))
+        self.btnEditarArea.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditArea))
+        self.btnEditaCurso.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditCurso))
+        self.btnEditarLogin.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditLogin))
 
         self.btnConfiguracoes.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
         self.btnConfig.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
