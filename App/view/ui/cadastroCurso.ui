@@ -288,10 +288,10 @@ border-radius: 15px;
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="editable">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="currentText">
-       <string>Área</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="label_2">
