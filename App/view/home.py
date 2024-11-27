@@ -118,7 +118,7 @@ class HomePrincipal(QMainWindow):
             self.showMaximized()
             self.btnTelaCheia.setStyleSheet("""
                                        #btnTelaCheia {
-                                           icon: url("App/view/ui/icones/select_window_2_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"); 
+                                           icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png"); 
                                         }"""
                                     )
 
