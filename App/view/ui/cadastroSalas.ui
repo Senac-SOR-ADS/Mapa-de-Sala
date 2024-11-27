@@ -15,8 +15,9 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QLineEdit, QComboBox {
-	background-color:rgba(0,0,0,0);
+	background-color: white;
 	border:2px solid rgba(0,0,0,0);
+	border-radius: 2px;
 	border-bottom-color:rgba(46,82,101,200);
 	color:rgb(0,0,0);
 	padding-bottom:7px;
@@ -82,6 +83,9 @@
       <height>101</height>
      </rect>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
     <property name="placeholderText">
      <string>Observações adicionais</string>
     </property>
@@ -126,6 +130,9 @@
       <width>133</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
     <property name="placeholderText">
      <string>Capacidade Média</string>
