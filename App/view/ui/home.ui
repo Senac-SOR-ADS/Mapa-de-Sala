@@ -44,7 +44,7 @@
 #btnFecharPagina:hover {
 	background-color: #E81123;
 	color: #FFF;
-	icon: url(&quot;App/view/ui/icones/closeBranco.png&quot;);
+	icon: url(&quot;App/view/ui/icones/iconCloseBranco.png&quot;);
 }
 
 #suMenuLateral QPushButton {
@@ -351,7 +351,7 @@ QPushButton {
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>icones/iconPessoa.png</normaloff>icones/iconPessoa.png</iconset>
+                    <normaloff>icones/iconAdd.png</normaloff>icones/iconAdd.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -631,7 +631,7 @@ QPushButton {
                       <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>Pesquisa</string>
+                      <string>Pesquisar</string>
                      </property>
                      <property name="icon">
                       <iconset>
@@ -671,11 +671,11 @@ QPushButton {
                       <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>Cadastros</string>
+                      <string>Cadastrar</string>
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/iconPessoa.png</normaloff>icones/iconPessoa.png</iconset>
+                       <normaloff>icones/iconAdd.png</normaloff>icones/iconAdd.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -896,7 +896,7 @@ QPushButton {
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>icones/closeBranco.png</normaloff>icones/closeBranco.png</iconset>
+                    <normaloff>icones/iconCloseBranco.png</normaloff>icones/iconCloseBranco.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -940,7 +940,7 @@ QPushButton {
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Cadastrar Login</string>
+                       <string>Login</string>
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
@@ -978,7 +978,7 @@ QPushButton {
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Cadastrar Área</string>
+                       <string>Área</string>
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
@@ -997,7 +997,7 @@ QPushButton {
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Cadastrar Curso</string>
+                       <string>Curso</string>
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
@@ -1016,7 +1016,7 @@ QPushButton {
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Cadastrar Sala</string>
+                       <string>Sala</string>
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
@@ -1035,7 +1035,7 @@ QPushButton {
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Cadastrar Pessoa</string>
+                       <string>Pessoa</string>
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
@@ -1058,7 +1058,7 @@ QPushButton {
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Editar Pessoas</string>
+                       <string>Pessoas</string>
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
@@ -1077,7 +1077,7 @@ QPushButton {
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Editar Reserva</string>
+                       <string>Reserva</string>
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
@@ -1096,7 +1096,7 @@ QPushButton {
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Editar Área</string>
+                       <string>Área</string>
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
@@ -1115,7 +1115,7 @@ QPushButton {
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Editar Curso</string>
+                       <string>Curso</string>
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
@@ -1134,7 +1134,7 @@ QPushButton {
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Editar Login</string>
+                       <string>Login</string>
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
@@ -1282,44 +1282,27 @@ QPushButton {
                     <number>0</number>
                    </property>
                    <item>
-                    <widget class="QLabel" name="logo">
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>0</height>
-                      </size>
+                    <widget class="QPushButton" name="btnHomeAtalho">
+                     <property name="font">
+                      <font>
+                       <pointsize>15</pointsize>
+                      </font>
                      </property>
-                     <property name="maximumSize">
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="text">
+                      <string>Mapa de Sala</string>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>imagem/logoSenac.png</normaloff>imagem/logoSenac.png</iconset>
+                     </property>
+                     <property name="iconSize">
                       <size>
                        <width>70</width>
                        <height>40</height>
                       </size>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="pixmap">
-                      <pixmap>icones/logoSenac.png</pixmap>
-                     </property>
-                     <property name="scaledContents">
-                      <bool>true</bool>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="titulo">
-                     <property name="font">
-                      <font>
-                       <pointsize>15</pointsize>
-                       <weight>50</weight>
-                       <bold>false</bold>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Mapa de Sala</string>
                      </property>
                     </widget>
                    </item>
@@ -1366,7 +1349,7 @@ QPushButton {
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>icones/remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                       <normaloff>icones/iconMinimezar.png</normaloff>icones/iconMinimezar.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -1392,7 +1375,7 @@ QPushButton {
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/square-rounded-regular-24.png</normaloff>icones/square-rounded-regular-24.png</iconset>
+                       <normaloff>icones/iconTelaCheia.png</normaloff>icones/iconTelaCheia.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -1432,8 +1415,7 @@ QPushButton {
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normaloff>
-                       <normalon>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</normalon>icones/close_24dp_000000_FILL0_wght400_GRAD0_opsz24.png</iconset>
+                       <normaloff>icones/iconClosePreto.png</normaloff>icones/iconClosePreto.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -1507,7 +1489,7 @@ QPushButton {
                           <string/>
                          </property>
                          <property name="pixmap">
-                          <pixmap>icones/logoSenac.png</pixmap>
+                          <pixmap>imagem/logoSenac.png</pixmap>
                          </property>
                          <property name="scaledContents">
                           <bool>true</bool>
