@@ -17,10 +17,10 @@
    <string notr="true">QLineEdit, QComboBox {
 	background-color: white;
 	border:2px solid rgba(0,0,0,0);
-	border-radius: 2px;
+	border-radius: 3px;
 	border-bottom-color:rgba(46,82,101,200);
 	color:rgb(0,0,0);
-	padding-bottom:7px;
+	padding-bottom:3px;
 }
 
 #cadastrarSala {
@@ -168,16 +168,16 @@
     <property name="geometry">
      <rect>
       <x>99</x>
-      <y>79</y>
+      <y>69</y>
       <width>81</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="editable">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="currentText">
      <string notr="true">Prédio 1</string>
@@ -213,16 +213,16 @@
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>19</y>
+      <y>9</y>
       <width>81</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="editable">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="currentText">
      <string>Comum</string>

@@ -17,7 +17,7 @@
    <string notr="true">QLineEdit, QComboBox, QTimeEdit, QDateEdit {
 	background-color: white;
 	border:2px solid rgba(0,0,0,0);
-	border-radius: 12px;
+	border-radius: 3px;
 	border-bottom-color:rgba(46,82,101,200);
 	color:rgb(0,0,0);
 	padding-bottom:7px;
@@ -55,7 +55,7 @@
       <property name="geometry">
        <rect>
         <x>560</x>
-        <y>67</y>
+        <y>60</y>
         <width>91</width>
         <height>16</height>
        </rect>
@@ -68,7 +68,7 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>140</y>
+        <y>130</y>
         <width>41</width>
         <height>16</height>
        </rect>
@@ -121,7 +121,7 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>68</y>
+        <y>60</y>
         <width>161</width>
         <height>16</height>
        </rect>
@@ -134,7 +134,7 @@
       <property name="geometry">
        <rect>
         <x>320</x>
-        <y>66</y>
+        <y>60</y>
         <width>31</width>
         <height>16</height>
        </rect>
@@ -207,9 +207,9 @@
       <property name="geometry">
        <rect>
         <x>560</x>
-        <y>92</y>
+        <y>82</y>
         <width>113</width>
-        <height>20</height>
+        <height>31</height>
        </rect>
       </property>
      </widget>
@@ -243,41 +243,41 @@
       <property name="geometry">
        <rect>
         <x>320</x>
-        <y>91</y>
+        <y>81</y>
         <width>111</width>
-        <height>21</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="editable">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QComboBox" name="cursoReserva">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>160</y>
+        <y>151</y>
         <width>161</width>
-        <height>22</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="editable">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QComboBox" name="nomeDocente">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>90</y>
+        <y>81</y>
         <width>161</width>
-        <height>22</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
@@ -291,9 +291,9 @@
       <property name="geometry">
        <rect>
         <x>171</x>
-        <y>216</y>
+        <y>207</y>
         <width>81</width>
-        <height>22</height>
+        <height>31</height>
        </rect>
       </property>
      </widget>
@@ -301,9 +301,9 @@
       <property name="geometry">
        <rect>
         <x>171</x>
-        <y>267</y>
+        <y>257</y>
         <width>81</width>
-        <height>21</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
@@ -314,16 +314,16 @@
       <property name="geometry">
        <rect>
         <x>320</x>
-        <y>160</y>
+        <y>151</y>
         <width>111</width>
-        <height>22</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="editable">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <item>
        <property name="text">
@@ -384,9 +384,9 @@
       <property name="geometry">
        <rect>
         <x>401</x>
-        <y>266</y>
+        <y>257</y>
         <width>118</width>
-        <height>22</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
@@ -397,9 +397,9 @@
       <property name="geometry">
        <rect>
         <x>401</x>
-        <y>216</y>
+        <y>207</y>
         <width>118</width>
-        <height>22</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">

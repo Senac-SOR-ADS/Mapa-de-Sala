@@ -100,7 +100,7 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>213</y>
+        <y>200</y>
         <width>131</width>
         <height>20</height>
        </rect>
@@ -144,16 +144,16 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>250</y>
+        <y>231</y>
         <width>111</width>
-        <height>22</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="editable">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <item>
        <property name="text">
@@ -274,9 +274,9 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>530</x>
-        <y>80</y>
+        <y>90</y>
         <width>231</width>
-        <height>51</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">

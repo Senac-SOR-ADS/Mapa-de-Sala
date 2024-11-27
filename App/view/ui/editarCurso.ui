@@ -17,7 +17,7 @@
    <string notr="true">QLineEdit, QComboBox {
 	background-color: white;
 	border:2px solid rgba(0,0,0,0);
-	border-radius: 5px;
+	border-radius: 4px;
 	border-bottom-color:rgba(46,82,101,200);
 	color:rgb(0,0,0);
 	padding-bottom:7px;
@@ -248,16 +248,16 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>250</y>
+      <y>241</y>
       <width>81</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="editable">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <item>
      <property name="text">
@@ -279,16 +279,16 @@
     <property name="geometry">
      <rect>
       <x>580</x>
-      <y>140</y>
+      <y>130</y>
       <width>69</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="editable">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label_8">
@@ -308,9 +308,9 @@
     <property name="geometry">
      <rect>
       <x>580</x>
-      <y>250</y>
+      <y>241</y>
       <width>69</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="cursor">
