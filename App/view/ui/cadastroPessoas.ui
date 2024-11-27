@@ -15,18 +15,19 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QLineEdit, QComboBox, QDateEdit {
-	background-color:rgba(0,0,0,0);
+	background-color: white;
 	border:2px solid rgba(0,0,0,0);
+	border-radius: 2px;
 	border-bottom-color:rgba(46,82,101,200);
 	color:rgb(0,0,0);
-	padding-bottom:7px;
+	padding-bottom:5px;
 }
 
 #btnCadastrar {
 	background-color: #01498a;
 	color: #FFF;
 	border: none;
-	border-radius: 5px;
+	border-radius: 6px;
 }
 
 #btnCadastrar:hover {
@@ -146,9 +147,9 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>50</y>
+      <y>41</y>
       <width>151</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
    </widget>
@@ -172,9 +173,9 @@
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>120</y>
+      <y>111</y>
       <width>110</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="cursor">
@@ -185,9 +186,9 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>180</y>
+      <y>171</y>
       <width>113</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -198,16 +199,16 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>180</y>
+      <y>171</y>
       <width>101</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="editable">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <item>
      <property name="text">
