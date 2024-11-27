@@ -15,8 +15,9 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QLineEdit, QComboBox {
-	background-color:rgba(0,0,0,0);
+	background-color: white;
 	border:2px solid rgba(0,0,0,0);
+	border-radius: 4px;
 	border-bottom-color:rgba(46,82,101,200);
 	color:rgb(0,0,0);
 	padding-bottom:7px;
@@ -25,8 +26,8 @@
 #btnEditarLogin {
 	background-color: #01498a;
 	color: #FFF;
-border: none;
-border-radius: 15px;
+	border: none;
+	border-radius: 15px;
 }
  
 #btnEditarLogin:hover {
@@ -56,9 +57,9 @@ border-radius: 15px;
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>120</y>
+      <y>109</y>
       <width>113</width>
-      <height>20</height>
+      <height>31</height>
      </rect>
     </property>
    </widget>
@@ -66,9 +67,9 @@ border-radius: 15px;
     <property name="geometry">
      <rect>
       <x>270</x>
-      <y>120</y>
+      <y>109</y>
       <width>113</width>
-      <height>20</height>
+      <height>31</height>
      </rect>
     </property>
    </widget>
@@ -76,16 +77,16 @@ border-radius: 15px;
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>250</y>
+      <y>241</y>
       <width>69</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="editable">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -144,9 +145,9 @@ border-radius: 15px;
     <property name="geometry">
      <rect>
       <x>500</x>
-      <y>120</y>
+      <y>110</y>
       <width>71</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="cursor">

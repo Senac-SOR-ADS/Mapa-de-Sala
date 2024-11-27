@@ -15,8 +15,9 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QLineEdit, QComboBox, QDateEdit {
-	background-color:rgba(0,0,0,0);
+	background-color: white;
 	border:2px solid rgba(0,0,0,0);
+	border-radius: 3px;
 	border-bottom-color:rgba(46,82,101,200);
 	color:rgb(0,0,0);
 	padding-bottom:7px;
@@ -147,9 +148,9 @@ border-radius: 15px;
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>80</y>
+      <y>71</y>
       <width>251</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -160,9 +161,9 @@ border-radius: 15px;
     <property name="geometry">
      <rect>
       <x>430</x>
-      <y>80</y>
+      <y>71</y>
       <width>151</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
    </widget>
@@ -170,9 +171,9 @@ border-radius: 15px;
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>150</y>
+      <y>141</y>
       <width>251</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
    </widget>
@@ -180,9 +181,9 @@ border-radius: 15px;
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>147</y>
+      <y>138</y>
       <width>110</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="cursor">
@@ -193,9 +194,9 @@ border-radius: 15px;
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>210</y>
+      <y>205</y>
       <width>113</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
    </widget>
@@ -203,9 +204,9 @@ border-radius: 15px;
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>215</y>
+      <y>206</y>
       <width>101</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="cursor">
@@ -234,32 +235,6 @@ border-radius: 15px;
       <string>Administrador</string>
      </property>
     </item>
-   </widget>
-   <widget class="QComboBox" name="alterarPessoas">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>320</y>
-      <width>69</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>290</y>
-      <width>91</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Alterar Cadastro:</string>
-    </property>
    </widget>
   </widget>
   <widget class="QPushButton" name="btnEditar">
@@ -299,7 +274,6 @@ border-radius: 15px;
   <tabstop>dataDeNascimento</tabstop>
   <tabstop>cargo</tabstop>
   <tabstop>telefone</tabstop>
-  <tabstop>alterarPessoas</tabstop>
   <tabstop>btnEditar</tabstop>
  </tabstops>
  <resources/>
