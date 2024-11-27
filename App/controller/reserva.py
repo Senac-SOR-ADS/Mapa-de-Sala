@@ -1,3 +1,4 @@
+
 from datetime import datetime, timedelta
 from App.model.reserva import Reserva
 from App.controller.utils import modificarDataReserva
@@ -12,27 +13,30 @@ def fazendoReserva(idLogin, dados, diasValidos):
     while diaAtual <= diaFim:
         diaSemana = diaAtual.weekday()
         if diasValidos[diaSemana]:
-            Reserva(idLogin, dados['idDocente'], dados['idCurso'], dados['idSala'], diaAtual, dados['inicioCurso'], dados['fimCurso'], dados['observações']).fazer_reserva()
+            Reserva(idLogin, dados['idDocente'], dados['idCurso'], dados['idSala'], diaAtual, dados['inicioCurso'], dados['fimCurso'], 0, dados['observações']).fazer_reserva()
         diaAtual += timedelta(days=1)
     print('Reserva feita com sucesso!')
     return True
         
-def validarCadastro(idLogin, dados, diasValidos):
+def validarCadastro(dados, diasValidos):
     diaInicio = modificarDataReserva(dados['diaInicio'])
     diaInicio = datetime.strptime(diaInicio, "%d/%m/%Y")
     diaFim = modificarDataReserva(dados['diaFim'])
     diaFim = datetime.strptime(diaFim, "%d/%m/%Y")
     diaAtual = diaInicio
+    listaDias = []
     
     while diaAtual <= diaFim:
         diaSemana = diaAtual.weekday()
+        validar = Reserva.validar_periodo(dados['idSala'], diaAtual, dados['inicioCurso'], dados['fimCurso'])
         if diasValidos[diaSemana]:
-            if not Reserva(idLogin, dados['idDocente'], dados['idCurso'], dados['idSala'], diaAtual, dados['inicioCurso'], dados['fimCurso'], dados['observações']).validar_periodo():
-                print(f'Na seguinte data já existe uma reserva: {diaAtual}')
-                return False
+            if validar:
+                listaDias.append(validar[0])
         diaAtual += timedelta(days=1)
-    print('Todos os dias estão livres')
-    return True
+    
+    if listaDias != []:
+        return listaDias
+    return False
 
 def trocar_reserva(dados1, dados2):
     if Reserva.atualizar(dados1['idLogin'], dados1['idPessoa'], dados1['idcurso'], dados1['idSala'], dados1['dia'], dados1['inicioCurso'], dados1['fimCurso'], dados1['observações'],  dados1['idReserva']):
@@ -49,4 +53,3 @@ def atualizarReserva(idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, o
     if Reserva.atualizar(idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, observacao, idReserva):
         return True
     return False
-

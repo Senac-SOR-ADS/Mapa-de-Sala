@@ -1,3 +1,4 @@
+
 from PyQt5.QtWidgets import QWidget, QDateEdit
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer, QDate, pyqtSlot
@@ -33,12 +34,15 @@ class ReservaInterface(QWidget):
 
     def getDados(self)->dict:
         """Pegando o dados na interface e retornando os valores"""
+        pessoas = buscarPessoas()
+        sala = listarSala()
+        curso = listarCursos() 
         nomeDocenteResponsavel = self.nomeDocente.currentText().strip()
-        idDocente = self.pessoa[nomeDocenteResponsavel]
+        idDocente = pessoas[nomeDocenteResponsavel]
         nomeSala = self.salaReserva.currentText().strip()
-        idSala = self.sala[nomeSala]
+        idSala = sala[nomeSala]
         nomeCurso = self.cursoReserva.currentText().strip()
-        idCurso = self.curso[nomeCurso]
+        idCurso = curso[nomeCurso]
         
         equipamentos = self.equipamentosReserva.text().strip() 
         diaInicio = modificarData(self.diaInicio.text().strip() )
@@ -75,9 +79,11 @@ class ReservaInterface(QWidget):
         info = self.getDados()
         idLogin = 8
         diasValidos = (info['seg'], info['ter'], info['qua'], info['qui'], info['sexta'], info['sab'], False)
-        if validarCadastro(idLogin, info, diasValidos):
+        validacao = validarCadastro(info, diasValidos)
+        if not validacao:
             fazendoReserva(idLogin, info, diasValidos)
-        
+        elif len(validacao) > 0:
+            print(f'Não foi possivel fazer a reserva {validacao}')
 
     def popularJanela(self):
         """Popula os comboBoxes com dados do banco."""
