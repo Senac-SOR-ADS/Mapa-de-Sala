@@ -65,6 +65,7 @@ CREATE TABLE RESERVA (
   dia DATE NOT NULL,
   hrInicio TIME NOT NULL,
   hrFim TIME NOT NULL,
+  chaveDevolvida BOOL NOT NULL,
   observacao VARCHAR(255) NULL,
   PRIMARY KEY(idReserva),
   INDEX RESERVAS_FKIndex2(SALA_idSala),

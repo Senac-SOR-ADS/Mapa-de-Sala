@@ -53,7 +53,9 @@ class Curso:
         params = [id_area, self.__nome, self.__oferta, self.__periodo, self.__cargaHoraria, self.__horasDia, self.__qtdAlunos]
         resultado = self.__banco.alterarDados(query, params)
         self.__banco.desconectar()
-        return resultado
+        if resultado:
+            return True
+        return False
  
     @classmethod
     def retorna_todos_cursos(cls):
