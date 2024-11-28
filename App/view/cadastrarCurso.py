@@ -19,8 +19,7 @@ class CadastrarCurso(QWidget):
     def on_btnCadastrarCurso_clicked(self):
         info = self.getCadastroCurso()
         idArea = self.dicionarioDeAreas[info[0]]
-        nome, oferta, periodo, carga, horas, alunos = info[1], info[2], info[3], info[4], info[5], info[6]
-        if cadastrarCurso(idArea, nome, oferta, periodo, carga, horas, alunos):
+        if cadastrarCurso(idArea, info):
             validarAcao()
             
     
