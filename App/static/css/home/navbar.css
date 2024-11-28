@@ -1,0 +1,203 @@
+/* ===================== Root Personalizado ===================== */
+:root {
+  /* Cores */
+  --cor-primaria: #161aee;
+  --cor-secundaria: #f1f5f8;
+  --cor-ativo: #ff8c00;
+  --cor-hover-bg: rgba(255, 255, 255, 0.15);
+  --cor-dropdown-bg: #ffffff;
+  --cor-dropdown-item: #2c3e50;
+  --cor-icone: #4660f1;
+  --cor-hover-icone: #ff8c00;
+
+  /* Tamanhos e espaçamentos */
+  --font-size-link: 1.2rem;
+  --font-size-icone: 1.3rem;
+  --font-size-dropdown: 1rem;
+  --padding-nav: 0.75rem 1.5rem;
+  --padding-link: 0.5rem 1rem;
+  --padding-dropdown-item: 0.75rem 1.25rem;
+  --nav-background: #ffffff;
+
+  /* Efeitos e bordas */
+  --border-radius: 8px;
+  --border-radius-hover: 6px;
+  --transition-duration: 0.3s;
+  --transition-ease: ease;
+  --transform-hover: translateY(-4px);
+}
+
+/* ===================== Navegação ===================== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  background-color: var(--cor-primaria);
+  padding: var(--padding-nav);
+  gap: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Links da navegação */
+nav a {
+  text-decoration: none;
+  color: var(--cor-secundaria);
+  font-size: var(--font-size-link);
+  font-weight: 600;
+  position: relative;
+  padding: var(--padding-link);
+  transition: color var(--transition-duration) var(--transition-ease),
+              background-color var(--transition-duration) var(--transition-ease),
+              transform var(--transition-duration) var(--transition-ease);
+  outline: none;
+}
+
+/* Efeito de hover nos links */
+nav a:hover {
+  color: var(--cor-ativo);
+  transform: var(--transform-hover);
+  background-color: var(--cor-hover-bg);
+  border-radius: var(--border-radius-hover);
+}
+
+/* Link ativo */
+nav a.active {
+  color: var(--cor-ativo);
+  border-bottom: 2px solid var(--cor-ativo);
+}
+
+/* Remover borda ao clicar (focar) no link */
+nav a:focus {
+  outline: none;
+  border-bottom: none;
+}
+
+.navbar {
+  background-color: var(--nav-background);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 600;
+  color: var(--cor-primaria);
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  transition: color var(--transition-duration) var(--transition-ease), transform var(--transition-duration) var(--transition-ease);
+}
+
+/* Efeito de hover no nome da marca */
+.navbar-brand:hover {
+  color: var(--cor-ativo);
+  transform: translateY(-1px);
+}
+
+/* Dropdown */
+nav .nav-item.dropdown:hover > .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transition: opacity var(--transition-duration) var(--transition-ease);
+}
+
+.dropdown-menu {
+  display: none;
+  opacity: 0;
+  transition: opacity var(--transition-duration) var(--transition-ease);
+  background-color: var(--cor-dropdown-bg);
+  border-radius: var(--border-radius);
+  min-width: 220px;
+}
+
+/* Itens do dropdown */
+.dropdown-item {
+  font-size: var(--font-size-dropdown);
+  padding: var(--padding-dropdown-item);
+  color: var(--cor-dropdown-item);
+  transition: color var(--transition-duration) var(--transition-ease),
+              background-color var(--transition-duration) var(--transition-ease);
+  text-align: left;
+}
+
+/* Efeito hover nos itens do dropdown */
+.dropdown-item:hover {
+  color: var(--cor-ativo);
+  background-color: var(--cor-hover-bg);
+}
+
+/* Ícones nos links */
+nav .nav-item a i {
+  margin-right: 0.5rem;
+  color: var(--cor-icone);
+  font-size: var(--font-size-icone);
+  transition: color var(--transition-duration) var(--transition-ease);
+}
+
+/* Efeito hover nos ícones */
+nav .nav-item a:hover i {
+  color: var(--cor-hover-icone);
+}
+
+/* ===================== Responsividade ===================== */
+@media (max-width: 991px) {
+  nav {
+      padding: 0.5rem 1rem;
+  }
+
+  .navbar {
+      padding: 0.25rem 0.5rem;
+  }
+
+  .navbar-toggler {
+      border-color: var(--cor-secundaria);
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-collapse {
+      background-color: var(--cor-secundaria);
+  }
+
+  .navbar-nav {
+      padding-top: 1rem;
+  }
+}
+
+
+/* ===================== Responsividade ===================== */
+@media (max-width: 991px) {
+  nav {
+      padding: 0.5rem 1rem;
+  }
+  nav a:focus {
+    outline: none;
+    border-bottom: none;
+  }
+
+  .navbar {
+      padding: 0.25rem 0.5rem;
+  }
+
+  .navbar-toggler {
+      border-color: var(--cor-secundaria);
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-collapse {
+      background-color: var(--cor-secundaria);
+  }
+
+  nav a:focus {
+    outline: none;
+    border-bottom: none;
+  }
+
+  .navbar-nav {
+      padding-top: 1rem;
+  }
+}

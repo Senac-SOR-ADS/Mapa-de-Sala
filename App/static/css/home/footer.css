@@ -1,0 +1,47 @@
+/* ===================== Custom Root Variables ===================== */
+:root {
+    --rodape-fundo: #081b29;
+    --rodape-texto: #ffffff;
+    --sombra-caixa: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --rodape-padding: 20px 0;
+    --rodape-font-family: "Poppins", sans-serif;
+    --rodape-margin-top: 50px;
+    --texto-primario: #ffffff;
+    --cor-destaque: #ffcc00;
+    --transition-ease: 0.3s ease;
+}
+
+/* ===================== Rodapé (footer) ===================== */
+footer.rodape {
+    background-color: var(--rodape-fundo);
+    color: var(--rodape-texto);
+    padding: var(--rodape-padding);
+    box-shadow: var(--sombra-caixa);
+    font-family: var(--rodape-font-family);
+    z-index: 10;
+    margin-top: var(--rodape-margin-top);
+    position: relative;
+    text-align: center;
+}
+
+footer.rodape section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+footer.rodape small {
+    font-size: 0.9rem;
+}
+
+/* ===================== Responsividade ===================== */
+@media (max-width: 768px) {
+    footer.rodape {
+        padding: 15px 0;
+    }
+
+    footer.rodape small {
+        font-size: 0.8rem;
+    }
+}

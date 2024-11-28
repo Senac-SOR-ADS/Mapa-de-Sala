@@ -5,13 +5,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Mapa de Sala - Senac</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/message.css') }}" />
-    <!-- Incluindo Font Awesome mais atualizada para ícones -->
+    <title>Login - Sistema Mapa de Sala</title>
+    <meta name="description"
+        content="Tela de login do sistema Mapa de Sala do Senac. Acesse seu ambiente de sala de aula." />
+    <meta name="author" content="Senac" />
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login/login.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/error/message.css') }}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-    <meta name="description" content="Tela de login do sistema Mapa de Sala do Senac. Acesse seu ambiente de sala de aula.">
-    <meta name="author" content="Senac">
 </head>
 
 <body>
@@ -23,14 +24,15 @@
         <div class="container-login">
             <!-- Imagem de Login -->
             <section class="img-box" aria-hidden="true">
-                <img src="{{ url_for('static', filename='img/login/' + image) }}" alt="Ilustração de login" class="login-image" />
+                <img src="{{ url_for('static', filename='img/login/' + image) }}" alt="Ilustração de login"
+                    class="login-image" />
             </section>
-            
+
             <section class="logo-empresa" aria-hidden="true">
-                <img src="{{ url_for('static', filename='img/default.png') }}" alt="Logo da Empresa" class="logo-image" />
+                <img src="{{ url_for('static', filename='img/default.png') }}" alt="Logo da Empresa"
+                    class="logo-image" />
             </section>
-                       
-            <!-- Caixa de Conteúdo -->
+
             <section class="content-box">
                 <div class="form-box">
                     <h2>Login</h2>
@@ -47,6 +49,8 @@
                             <small id="emailHelp" class="form-text text-muted">
                                 Seu e-mail será utilizado para autenticação.
                             </small>
+                            <!-- Área para mensagens de validação do e-mail -->
+                            <small id="emailMessage" class="form-text"></small>
                         </div>
 
                         <!-- Campo de Senha -->
@@ -58,7 +62,8 @@
                                     placeholder="Digite sua senha" aria-label="Digite sua senha"
                                     autocomplete="current-password" />
                                 <i class="fa-solid fa-eye toggle-password" id="toggleSenha"
-                                    aria-label="Mostrar ou ocultar senha" role="button" tabindex="0" aria-controls="senha"></i>
+                                    aria-label="Mostrar ou ocultar senha" role="button" tabindex="0"
+                                    aria-controls="senha"></i>
                             </div>
                         </div>
 
@@ -87,6 +92,6 @@
     {% endblock %}
 </body>
 
-<script src="{{ url_for('static', filename='js/formLogin.js') }}"></script>
+<script src="{{ url_for('static', filename='js/login/formLogin.js') }}"></script>
 
 </html>

@@ -1,0 +1,323 @@
+/* ===================== Root Personalizado ===================== */
+:root {
+  /* Cores */
+  --primary-text-color: #2c3e50;
+  --accent-color: #056abd;
+  --card-background: #ffffff;
+  --card-hover-background: #ffffffde;
+  --banner-background: #f5fafd;
+  --title-text-color: #2c3e50;
+  
+  /* Tamanhos e Espaçamentos */
+  --header-padding: 20px;
+  --header-mobile-padding: 15px;
+  --logo-font-size: 2rem;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --banner-padding: clamp(20px, 5vw, 20px) 5vw;
+  --main-padding: clamp(20px, 5vw, 40px);
+  --card-padding: 20px;
+  --info-card-gap: 20px;
+  --transition-ease: 0.3s ease;
+  --transition-transform: 0.2s ease;
+}
+
+/* ===================== Banner ===================== */
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--banner-padding));
+  margin: 20px 0 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.banner .banner-text {
+  flex: 1;
+  font-size: clamp(1.05rem, 4vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.5;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  order: 1;
+}
+
+/* ===================== Banner Image ===================== */
+.banner img {
+  justify-content: center;
+  width: clamp(80px, 30vw, 200px);
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  order: -1;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.banner img:hover {
+  transform: scale(1.1);
+  opacity: 0.85;
+}
+
+/* ===================== Responsividade Mobile ===================== */
+@media (max-width: 768px) {
+  .banner img {
+    margin-left: 0; 
+    margin-bottom: 15px;
+    order: -1;
+  }
+
+  .banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 5vw;
+  }
+
+  .banner .banner-text {
+    max-width: 90%;
+    font-size: 1.3rem;
+    margin-right: 0;
+    margin-bottom: 15px;
+    order: 1;
+  }
+}
+
+/* ===================== Módulos ===================== */
+.main-content {
+  padding: var(--main-padding);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.infoCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--info-card-gap);
+  margin-top: 20px;
+  justify-content: center;
+}
+
+/* ===================== Cards ===================== */
+.card {
+  flex: 1 1 calc(10% - 15px);
+  padding: 5px;
+  background: var(--card-background);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition-transform), box-shadow var(--transition-ease), background var(--transition-ease);
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  transform: scale(1);
+  will-change: transform, box-shadow;
+  margin-bottom: 30px;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  background: var(--card-hover-background);
+}
+
+.card img {
+  width: 80%;
+  max-width: 180px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  transition: transform var(--transition-transform), box-shadow var(--transition-ease);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover img {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card .cardContent {
+  padding: 12px;
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100px;
+}
+
+/* Grayscale em outros cards ao passar o mouse */
+.container:hover .card:not(:hover) {
+  filter: grayscale(80%);
+}
+
+/* Ajuste responsivo */
+@media (max-width: 1024px) {
+  .card { flex: 1 1 calc(60% - 20px); }
+}
+
+@media (max-width: 768px) {
+  .card { flex: 1 1 100%; }
+}
+
+
+/* ===================== Títulos ===================== */
+h1, h2 {
+  text-align: center;
+  color: var(--accent-color);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 400;
+  margin: 20px 0;
+  line-height: 1.3;
+}
+
+/* ===================== Parágrafos ===================== */
+p {
+  font-size: clamp(1rem, 3.5vw, 1.4rem);
+  color: #555;
+  line-height: 1.5;
+  text-align: justify;
+  margin: 0 auto 30px;
+  max-width: 800px;
+  transition: color 0.3s ease;
+}
+
+/* ===================== Span do Mapa ===================== */
+span.mapa {
+  color: var(--cor-ativo);
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+
+/* ===================== Article Estilizado ===================== */
+article {
+  padding: 40px;
+  text-align: center;
+  color: var(--primary-text-color);
+  margin-top: -50px;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+article:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+article h2 {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--accent-color);
+  line-height: 1.3;
+  text-transform: capitalize;
+}
+
+article p {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #555;
+  text-align: justify;
+  padding: 0 20px;
+}
+
+/* ===================== Responsividade ===================== */
+@media (max-width: 768px) {
+  article {
+    padding: 20px;
+    margin-top: 30px;
+  }
+
+  article h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  article p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding: 0 15px;
+  }
+}
+
+/* ===================== Estilo do Botão ===================== */
+.btn {
+  display: inline-block;
+  padding: 14px 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  color: #fff;
+  background-color: var(--accent-color);
+  border: 2px solid transparent;
+}
+
+/* Efeito de Hover */
+.btn:hover {
+  background-color: var(--cor-ativo);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Efeito de Foco (para acessibilidade) */
+.btn:focus {
+  outline: none;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(var(--primary-color-rgb), 0.2);
+}
+
+/* Efeito de Clique (ativo) */
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===================== Responsividade do Botão ===================== */
+@media (max-width: 768px) {
+  .btn {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1.1rem;
+  }
+}
+
+
+/* ===================== Ajuste de altura no conteúdo principal ===================== */
+main {
+  padding-top: calc(var(--padding-cabecalho) + 60px);
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-top: calc(var(--padding-cabecalho) + 40px);
+  }
+}
+

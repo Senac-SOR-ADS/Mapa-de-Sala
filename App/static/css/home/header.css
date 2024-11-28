@@ -1,0 +1,125 @@
+/* ===================== Custom Root Variables ===================== */
+:root {
+    /* Cores principais */
+    --cabecalho-gradiente-inicio: #003366;
+    --cabecalho-gradiente-fim: #66b3ff;
+    --texto-primario: #ffffff;
+    --cor-destaque: #f78c42;
+    --primary-text-color: #333;
+    --accent-color: #4a90e2;
+    --nav-background: #ffffff;
+    --cor-texto-secundario: #666;
+
+    /* Transições */
+    --transition-ease: 0.3s ease;
+    --transition-transform: 0.2s ease;
+
+    /* Espaçamento */
+    --padding-cabecalho: 1rem 2rem;
+    --padding-cabecalho-mobile: 1rem;
+
+    /* Fontes */
+    --fonte-logo: 2rem;
+    --fonte-nav: 1rem;
+
+    /* Sombras */
+    --sombra-caixa: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===================== Body ===================== */
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--cor-texto-secundario);
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color var(--transition-ease), color var(--transition-ease);
+}
+
+/* ===================== Cabeçalho ===================== */
+header {
+    background: linear-gradient(135deg, var(--cabecalho-gradiente-inicio), var(--cabecalho-gradiente-fim));
+    color: var(--texto-primario);
+    padding: var(--padding-cabecalho);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: var(--sombra-caixa);
+    border-radius: 0 0 10px 10px;
+    transition: background-color var(--transition-ease), padding var(--transition-ease), box-shadow var(--transition-ease);
+}
+
+/* Logo */
+header .logo {
+    font-size: var(--fonte-logo);
+    font-weight: bold;
+    color: var(--texto-primario);
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color var(--transition-ease), transform var(--transition-ease);
+}
+
+header .logo:hover {
+    color: var(--cor-destaque);
+    transform: scale(1.05);
+}
+
+/* Links de navegação */
+header nav a {
+    font-size: var(--fonte-nav);
+    color: var(--texto-primario);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color var(--transition-ease), color var(--transition-ease);
+}
+
+header nav a:hover {
+    color: var(--cor-destaque);
+}
+
+/* Menu mobile */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: var(--padding-cabecalho-mobile);
+    }
+
+    header .logo {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    header nav {
+        display: none;
+    }
+
+    header nav.open {
+        display: block;
+    }
+
+    header nav a {
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+}
+
+/* Efeito de rolagem no cabeçalho */
+header.scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Foco nos links */
+header .logo:focus,
+header nav a:focus {
+    outline: 3px solid var(--cor-destaque);
+    outline-offset: 3px;
+}

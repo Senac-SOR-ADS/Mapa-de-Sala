@@ -27,6 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
         emailHelp.style.color = color;
     }
 
+    // Função para validar o e-mail com uma expressão regular simples
+    function validateEmail(email) {
+        const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        return regex.test(email);
+    }
+
     // Função para salvar o e-mail no localStorage
     function saveCredentials() {
         if (rememberCheckbox.checked) {
@@ -54,25 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função para validar o e-mail com uma expressão regular simples
-    function validateEmail(email) {
-        const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        return regex.test(email);
-    }
-
-    // Evento para validar o e-mail enquanto o usuário digita
-    emailField.addEventListener('input', () => {
-        const email = emailField.value.trim();
-        if (email && validateEmail(email)) {
-            showEmailMessage('Estamos prontos para a autenticação.', '#4caf50');
-        } else {
-            showEmailMessage('Por favor, insira um e-mail válido.', '#ff5722');
-        }
-    });
-
     // Evento para alternar a visibilidade da senha
     toggleSenhaBtn.addEventListener('click', () => {
-        // Alternar o tipo do campo
         if (senhaInput.type === 'password') {
             senhaInput.type = 'text';
             toggleSenhaBtn.classList.remove('fa-eye');
@@ -81,6 +70,28 @@ document.addEventListener('DOMContentLoaded', () => {
             senhaInput.type = 'password';
             toggleSenhaBtn.classList.remove('fa-eye-slash');
             toggleSenhaBtn.classList.add('fa-eye');
+        }
+    });
+
+    // Validar e-mail enquanto o usuário digita
+    emailField.addEventListener('input', () => {
+        const email = emailField.value.trim();
+        if (email && validateEmail(email)) {
+            showEmailMessage('Estamos prontos para a autenticação.', '#4caf50');
+            emailField.setAttribute('aria-invalid', 'false');
+        } else {
+            showEmailMessage('Por favor, insira um e-mail válido.', '#ff5722');
+            emailField.setAttribute('aria-invalid', 'true');
+        }
+    });
+
+    // Validar e-mail ao submeter o formulário
+    document.querySelector('form').addEventListener('submit', (event) => {
+        const email = emailField.value.trim();
+        if (!validateEmail(email)) {
+            event.preventDefault(); // Impede o envio do formulário
+            showMessage('Por favor, insira um e-mail válido.', '#ff5722');
+            emailField.setAttribute('aria-invalid', 'true');
         }
     });
 
