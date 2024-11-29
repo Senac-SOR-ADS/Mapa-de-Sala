@@ -44,7 +44,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../Downloads/check_circle_24dp_008000_FILL0_wght400_GRAD0_opsz24.png</pixmap>
+      <pixmap>icones/iconConcluido.png</pixmap>
      </property>
     </widget>
    </item>

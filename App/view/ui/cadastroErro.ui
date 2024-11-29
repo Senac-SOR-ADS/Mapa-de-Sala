@@ -59,7 +59,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../Downloads/cancel_24dp_FF0000_FILL0_wght400_GRAD0_opsz24.png</pixmap>
+      <pixmap>icones/iconErro.png</pixmap>
      </property>
     </widget>
    </item>

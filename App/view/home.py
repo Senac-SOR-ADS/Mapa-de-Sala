@@ -146,18 +146,35 @@ class HomePrincipal(QMainWindow):
             
 
     def mousePressEvent(self, event):
-        if event.button() == Qt.RightButton:
-            return
         if event.button() == Qt.LeftButton:
-            self.moving = True
-            self.offset = event.pos()
+            if self.childAt(event.pos()) == self.cabecalho:  
+                self.moving = True
+                self.offset = event.pos()
 
     def mouseMoveEvent(self, event):
         if self.moving and not self.isMaximized():
             self.move(self.pos() + event.pos() - self.offset)
 
+    def mouseDoubleClickEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            if self.childAt(event.pos()) == self.cabecalho:  
+                if self.isMaximized():
+                    self.showNormal()
+                    self.btnTelaCheia.setStyleSheet("""
+                                       #btnTelaCheia {
+                                           icon: url("App/view/ui/icones/iconTelaCheia.png");
+                                        }"""
+                                    )
+                else:
+                    self.showMaximized()
+                    self.btnTelaCheia.setStyleSheet("""
+                                       #btnTelaCheia {
+                                           icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png");
+                                        }"""
+                                    )
     def mouseReleaseEvent(self, event):
         self.moving = False
+
     
     @pyqtSlot()
     def on_btnFecharMenuQuebrado_clicked(self):
