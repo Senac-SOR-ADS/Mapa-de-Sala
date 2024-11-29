@@ -80,6 +80,7 @@ class Reserva:
         cls.__banco.desconectar()
         if resultado:
             return resultado
+        log.info(f"{__name__}: Reserva já existe dentro das datas requisitadas.")
         return False
     
     @classmethod
