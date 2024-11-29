@@ -1,4 +1,3 @@
-
 from PyQt5.QtWidgets import QWidget, QDateEdit
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer, QDate, pyqtSlot
@@ -84,8 +83,8 @@ class ReservaInterface(QWidget):
         validacao = validarCadastro(info, diasValidos)
         if not validacao:
             fazendoReserva(idLogin, info, diasValidos)
-        elif len(validacao) > 0:
-            print(f'Não foi possivel fazer a reserva {validacao}')
+        elif validacao:
+            print(f'Não foi possivel fazer a reserva')
     
     
     def setDataMinima(self):
