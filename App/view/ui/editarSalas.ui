@@ -301,6 +301,15 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>nomeSala</tabstop>
+  <tabstop>tipoSala</tabstop>
+  <tabstop>nomePredio</tabstop>
+  <tabstop>tipoEquipamento</tabstop>
+  <tabstop>mediaCapacidade</tabstop>
+  <tabstop>feedbackText</tabstop>
+  <tabstop>btnEditarSala</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
