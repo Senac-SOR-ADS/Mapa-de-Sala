@@ -14,6 +14,7 @@ from .editarArea import EditarArea
 from .editarCurso import EditarCurso
 from .editarLogin import EditarLogin
 from .editarReserva import EditarReserva
+from .editarSala import EditarSala
 
 from .reserva import ReservaInterface
 
@@ -25,6 +26,7 @@ class HomePrincipal(QMainWindow):
         self.moving = False
         self.subMenuLateral.hide()
         self.subMenuQuebrado.hide()
+        self.btnHome.setChecked(True)
         
    # Criando parte interativa do menu
    
@@ -53,6 +55,7 @@ class HomePrincipal(QMainWindow):
         self.interfEditCurso = EditarCurso
         self.interfEditLogin = EditarLogin
         self.interfEditReserva = EditarReserva
+        self.interfEditSala = EditarSala
 
         
     #Telas dentro do menu para alterar as janelas pelo sub menu
@@ -82,6 +85,7 @@ class HomePrincipal(QMainWindow):
         self.btnEditarArea.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditArea))
         self.btnEditaCurso.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditCurso))
         self.btnEditarLogin.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditLogin))
+        self.btnEditarSala.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditSala))
 
         self.btnConfiguracoes.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
         self.btnConfig.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
