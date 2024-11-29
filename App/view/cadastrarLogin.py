@@ -13,6 +13,7 @@ class CadastroLogin(QWidget):
     #input Senha = senha
     #btn cadastroLogin = btnCdastrarLogin
     #checkbox sla = nivelAcesso
+    #msgs de erro ou sucesso = respostas
     
         
         

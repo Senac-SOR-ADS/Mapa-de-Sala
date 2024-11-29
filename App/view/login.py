@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QDialog, QMenu, QApplication
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt, QTimer, QPoint
 from PyQt5.QtCore import pyqtSlot
@@ -7,11 +7,12 @@ from PyQt5.QtCore import pyqtSlot
 
 from App.controller.login import validarLogin
 
+#respostasErros = aviso erros
 
 class LoginInterface(QDialog):
     def __init__(self):
         super().__init__()
-        loadUi('App/view/ui/interfaceLogin.ui',self)
+        loadUi('App/view/ui/Login.ui',self)
         # Remove a barra de título e as bordas da janela
         self.setWindowFlags(Qt.FramelessWindowHint)
         # Define a janela como transparente
@@ -69,13 +70,13 @@ class LoginInterface(QDialog):
         return (email, senha)        
 
     def validandoDados(self):
-        self.respostaLoginLogando.setText('LOGANDO...')
-        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaLoginLogando))
+        self.respostasErros.setText('LOGANDO...')
+        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostasErros))
 
     def dadosInvalidos(self):
         texto = 'DADOS INCOMPLETOS.'
-        self.respostaLoginDadosIncompleto.setText(texto)
-        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostaLoginDadosIncompleto))
+        self.respostasErros.setText(texto)
+        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostasErros))
 
     @pyqtSlot()
     def on_btnEntrar_clicked(self):

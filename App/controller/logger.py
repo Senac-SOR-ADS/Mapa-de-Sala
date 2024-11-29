@@ -1,13 +1,18 @@
 import logging
-
+import os
 
 class Log:
 
     def __init__(self, name="basic") -> None:
         self.logger = logging.getLogger(name)
         self.logger.setLevel(logging.DEBUG)
+
+        caminho = 'env/log'
+        if (not os.path.exists(caminho)):
+            os.mkdir(caminho)
+
         # HANDLER (ARQUIVO)
-        file_handler = logging.FileHandler(f"{name}.log", encoding="utf-8")
+        file_handler = logging.FileHandler(f"{caminho}/{name}.log", encoding="utf-8")
         file_handler.setLevel(logging.DEBUG)
         file_handler.setFormatter( logging.Formatter("%(asctime)s %(levelname)s %(message)s", datefmt="%d-%m-%Y %H:%M:%S"))
         self.logger.addHandler(file_handler)
@@ -26,7 +31,6 @@ class Log:
 
     def critical(self, mensagemErro):
         self.logger.critical(mensagemErro)
-
 
 if __name__ == "__main__":
     bd = Log("banco")

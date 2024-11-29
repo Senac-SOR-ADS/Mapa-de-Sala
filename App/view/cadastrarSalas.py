@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
-from App.controller.sala import cadastrarSala, validarInputs
+from App.controller.sala import cadastrarSala
+from App.controller.utils import validarInputs
 
 
 class CadastrarSalas(QWidget):
@@ -21,12 +22,12 @@ class CadastrarSalas(QWidget):
         return (nome, sala, predio, equipamento, capacidade, feedback)
     
     def iniciandoCadastro(self):
+        print('iniciando')
         valores = self.getCadastroSalas()
-        if not validarInputs(valores):
+        if not validarInputs(valores[:-1]):
             return False
 
-        if cadastrarSala(*self.getCadastroSalas()):
+        if cadastrarSala(valores[0], valores[1], valores[2], valores[3], valores[4], valores[5]):
             return True
-        else:
-            return False
+        return False
     

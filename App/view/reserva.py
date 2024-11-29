@@ -1,21 +1,20 @@
+
 from PyQt5.QtWidgets import QWidget, QDateEdit
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer, QDate, pyqtSlot
-from App.model.reserva import Reserva
+
+# from App.model.reserva import Reserva
+# from App.model.login import Login
+# Não está sendo utilizado no arquivo
 
 from App.controller.curso import listarCursos
-from App.controller.pessoa import buscaPessoas, modificarData
+from App.controller.pessoa import buscarPessoas
 from App.controller.sala import listarSala
+from App.controller.utils import modificarData
 from App.controller.reserva import fazendoReserva, validarCadastro
 
-from App.model.login import Login
 
 class ReservaInterface(QWidget):
-    curso = listarCursos()
-    pessoa = buscaPessoas()
-    sala = listarSala()
-    
-    
     def __init__(self):
         super().__init__()
         loadUi('App/view/ui/reserva.ui',self)
@@ -27,7 +26,8 @@ class ReservaInterface(QWidget):
 
         self.diaInicio.setCalendarPopup(True)
         self.diaInicio.setDisplayFormat('dd/MM/yyyy')
-        self.diaInicio.setDate(QDate.currentDate())  
+        self.diaInicio.setDate(QDate.currentDate())
+        self.diaInicio.dateChanged.connect(self.setDataMinima)
 
         self.diaFim.setCalendarPopup(True)
         self.diaFim.setDisplayFormat('dd/MM/yyyy')
@@ -35,12 +35,16 @@ class ReservaInterface(QWidget):
 
     def getDados(self)->dict:
         """Pegando o dados na interface e retornando os valores"""
+        pessoas = buscarPessoas()
+        sala = listarSala()
+        curso = listarCursos() 
         nomeDocenteResponsavel = self.nomeDocente.currentText().strip()
-        idDocente = self.pessoa[nomeDocenteResponsavel]
+        idDocente = pessoas[nomeDocenteResponsavel]
         nomeSala = self.salaReserva.currentText().strip()
-        idSala = self.sala[nomeSala]
+        idSala = sala[nomeSala]
         nomeCurso = self.cursoReserva.currentText().strip()
-        idCurso = self.curso[nomeCurso]
+        idCurso = curso[nomeCurso]
+        
         
         equipamentos = self.equipamentosReserva.text().strip() 
         diaInicio = modificarData(self.diaInicio.text().strip() )
@@ -77,23 +81,40 @@ class ReservaInterface(QWidget):
         info = self.getDados()
         idLogin = 8
         diasValidos = (info['seg'], info['ter'], info['qua'], info['qui'], info['sexta'], info['sab'], False)
-        if validarCadastro(idLogin, info, diasValidos):
+        validacao = validarCadastro(info, diasValidos)
+        if not validacao:
             fazendoReserva(idLogin, info, diasValidos)
+        elif len(validacao) > 0:
+            print(f'Não foi possivel fazer a reserva {validacao}')
+    
+    
+    def setDataMinima(self):
+        primeiroDia = self.diaInicio.date()
+        self.diaFim.setMinimumDate(primeiroDia)
+    
         
-
     def popularJanela(self):
+        """Popula os comboBoxes com dados do banco."""
         self.comboBoxCurso()
         self.comboBoxPessoa()
         self.comboBoxSala()
 
     def comboBoxCurso(self):
-        self.cursoReserva.addItems(self.curso.keys())
+        cursos = listarCursos()
+        self.cursoReserva.clear()
+        self.cursoReserva.addItems(cursos.keys())
 
     def comboBoxPessoa(self):
-        self.nomeDocente.addItems(self.pessoa.keys())
+        """Busca as pessoas no banco e popula o comboBox."""
+        pessoas = buscarPessoas()
+        self.nomeDocente.clear()
+        self.nomeDocente.addItems(pessoas.keys())
 
     def comboBoxSala(self):
-        self.salaReserva.addItems(self.sala.keys())
+        """Busca as salas no banco e popula o comboBox."""
+        salas = listarSala()
+        self.salaReserva.clear()
+        self.salaReserva.addItems(salas.keys())
 
     def validandoDados(self):
         self.feedbackReserva.setText('Reserva realizada.')

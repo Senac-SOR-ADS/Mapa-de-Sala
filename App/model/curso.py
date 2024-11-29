@@ -53,7 +53,9 @@ class Curso:
         params = [id_area, self.__nome, self.__oferta, self.__periodo, self.__cargaHoraria, self.__horasDia, self.__qtdAlunos]
         resultado = self.__banco.alterarDados(query, params)
         self.__banco.desconectar()
-        return resultado
+        if resultado:
+            return True
+        return False
  
     @classmethod
     def retorna_todos_cursos(cls):
@@ -88,6 +90,29 @@ class Curso:
         resultado = cls.__banco.buscarTodos(query)
         cls.__banco.desconectar()
         return resultado
+
+    @classmethod
+    def deletar(cls, idCurso):
+        cls.__banco.conectar()
+        query = "DELETE FROM curso WHERE idCurso = %s"
+        param = [idCurso]
+        resultado = cls.__banco.alterarDados(query, param)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            print('curso deletado')
+            return True
+        return False
+    
+    @classmethod
+    def atualizar(cls, idCurso, idArea, nome, oferta, periodo, cargaHoraria, horasDia, qtdAlunos):
+        cls.__banco.conectar()
+        query = "UPDATE curso SET idArea = %s, nome = %s, oferta = %s, periodo = %s, cargaHoraria = %s, horasDia = %s, qtdAlunos = %s WHERE idCurso = %s"
+        params = [idArea, nome, oferta, periodo, cargaHoraria, horasDia, qtdAlunos, idCurso]
+        resultado = cls.__banco.alterarDados(query, params)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            return True
+        return False
 
 #  EXEMPLO PESQUISA AREA
 if __name__ == "__main__":

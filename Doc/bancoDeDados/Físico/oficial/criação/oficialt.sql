@@ -18,11 +18,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `mapasalat`
+-- Banco de dados: `oficialt`
 --
-CREATE DATABASE IF NOT EXISTS `teste`
+CREATE DATABASE IF NOT EXISTS `oficialt`
 COLLATE 'utf8_bin';
-USE `teste`;
+USE `oficialt`;
 
 -- --------------------------------------------------------
 
@@ -134,6 +134,7 @@ CREATE TABLE `reserva` (
   `dia` date NOT NULL COMMENT 'Dia da reserva',
   `hrInicio` time NOT NULL COMMENT 'Horário de início',
   `hrFim` time NOT NULL COMMENT 'Horário de término',
+  `chaveDevolvida` tinyint(1) NOT NULL COMMENT 'Se a chave já foi devolvida',
   `observacao` varchar(255) DEFAULT NULL COMMENT 'Observação',
   PRIMARY KEY (`idReserva`),
   FOREIGN KEY (`idLogin`) REFERENCES `login`(`idLogin`) ON DELETE CASCADE,
