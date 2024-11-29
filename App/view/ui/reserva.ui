@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>863</width>
-    <height>651</height>
+    <width>865</width>
+    <height>655</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,8 +15,9 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QLineEdit, QComboBox, QTimeEdit, QDateEdit {
-	background-color:rgba(0,0,0,0);
+	background-color: white;
 	border:2px solid rgba(0,0,0,0);
+	border-radius: 3px;
 	border-bottom-color:rgba(46,82,101,200);
 	color:rgb(0,0,0);
 	padding-bottom:7px;
@@ -25,12 +26,16 @@
 #btnFazerReserva {
 	background-color: #01498a;
 	color: #FFF;
-border: none;
-border-radius: 15px;
+	border: none;
+	border-radius: 15px;
 }
  
 #btnFazerReserva:hover {
 	background-color: #f6921e;
+}
+
+#observacaoReserva {
+	background-color: white;
 }
  
 #respostas {
@@ -50,7 +55,7 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>560</x>
-        <y>67</y>
+        <y>60</y>
         <width>91</width>
         <height>16</height>
        </rect>
@@ -63,7 +68,7 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>140</y>
+        <y>130</y>
         <width>41</width>
         <height>16</height>
        </rect>
@@ -88,11 +93,22 @@ border-radius: 15px;
      <widget class="QPushButton" name="btnFazerReserva">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>20</x>
         <y>570</y>
-        <width>811</width>
-        <height>41</height>
+        <width>801</width>
+        <height>47</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>762</width>
+        <height>47</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
@@ -105,7 +121,7 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>68</y>
+        <y>60</y>
         <width>161</width>
         <height>16</height>
        </rect>
@@ -118,7 +134,7 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>320</x>
-        <y>68</y>
+        <y>60</y>
         <width>31</width>
         <height>16</height>
        </rect>
@@ -130,11 +146,16 @@ border-radius: 15px;
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>340</x>
-        <y>20</y>
-        <width>101</width>
+        <x>310</x>
+        <y>10</y>
+        <width>151</width>
         <height>16</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>RESERVA  DE SALA</string>
@@ -143,9 +164,9 @@ border-radius: 15px;
      <widget class="QLineEdit" name="observacaoReserva">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>30</x>
         <y>450</y>
-        <width>791</width>
+        <width>781</width>
         <height>101</height>
        </rect>
       </property>
@@ -186,9 +207,9 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>560</x>
-        <y>92</y>
+        <y>82</y>
         <width>113</width>
-        <height>20</height>
+        <height>31</height>
        </rect>
       </property>
      </widget>
@@ -222,41 +243,41 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>320</x>
-        <y>90</y>
+        <y>81</y>
         <width>111</width>
-        <height>22</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="editable">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QComboBox" name="cursoReserva">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>160</y>
+        <y>151</y>
         <width>161</width>
-        <height>22</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="editable">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QComboBox" name="nomeDocente">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>90</y>
+        <y>81</y>
         <width>161</width>
-        <height>22</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
@@ -270,9 +291,9 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>171</x>
-        <y>216</y>
+        <y>207</y>
         <width>81</width>
-        <height>22</height>
+        <height>31</height>
        </rect>
       </property>
      </widget>
@@ -280,9 +301,9 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>171</x>
-        <y>267</y>
+        <y>257</y>
         <width>81</width>
-        <height>21</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
@@ -293,16 +314,16 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>320</x>
-        <y>160</y>
+        <y>151</y>
         <width>111</width>
-        <height>22</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="editable">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <item>
        <property name="text">
@@ -363,9 +384,9 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>401</x>
-        <y>266</y>
+        <y>257</y>
         <width>118</width>
-        <height>22</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
@@ -376,9 +397,9 @@ border-radius: 15px;
       <property name="geometry">
        <rect>
         <x>401</x>
-        <y>216</y>
+        <y>207</y>
         <width>118</width>
-        <height>22</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
