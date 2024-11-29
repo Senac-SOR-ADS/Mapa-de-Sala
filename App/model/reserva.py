@@ -1,5 +1,8 @@
 
 from App.model.conexao import ConexaoBD
+from App.controller.logger import Log
+
+log = Log('model')
 
 
 class Reserva:
@@ -142,7 +145,9 @@ class Reserva:
         resultado = cls.__banco.alterarDados(query, parametro)
         cls.__banco.desconectar()
         if resultado.rowcount:
+            log.info(f"{__name__}: Reserva deletada com sucesso.")
             return True
+        log.info(f"{__name__}: Reserva não foi deletada.")
         return False
     
     
@@ -155,6 +160,7 @@ class Reserva:
         cls.__banco.desconectar()
         if resultado.rowcount:
             return True
+        log.error(f"{__name__}: Reserva não foi atualizada.")
         return False
  
     
@@ -167,6 +173,7 @@ class Reserva:
         cls.__banco.desconectar()
         if resultado.rowcount:
             return True
+        log.error(f"{__name__}: Salas não foram trocadas.")
         return False
         
 
