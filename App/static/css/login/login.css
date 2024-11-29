@@ -111,12 +111,15 @@ body {
 .container-login {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1100px;
+    opacity: 0.9;
     width: 100%;
+    max-width: 850px;
+    min-height: 480px;
     background-color: var(--form-bg-color);
     box-shadow: 0 4px 20px var(--shadow-color);
     border-radius: 12px;
     overflow: hidden;
+    
 }
 
 /* =================== Caixa de Imagem =================== */
@@ -300,6 +303,14 @@ body {
     transform: translateY(-50%);
     color: #aaa;
     transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+/* ===================  emailHelp =================== */
+#emailHelp {
+    font-size: 0.70rem;
+    color: var(--cor-laranja-suave);
+    margin-top: 5px;
+    font-weight: bold;      
 }
 
 /* =================== Estilo para o ícone de mostrar/ocultar senha =================== */

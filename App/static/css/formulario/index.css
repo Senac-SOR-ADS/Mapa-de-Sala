@@ -3,29 +3,19 @@
     max-width: 1200px; 
     margin: 0 auto; 
     padding: 20px 15px; 
-    background-color: var(--bg-color); /* Cinza claro */
+    background-color: var(--bg-color, #f4f4f4);
     border-radius: 10px;
-    box-shadow: var(--box-shadow); 
+    box-shadow: var(--box-shadow, 0 4px 8px rgba(0, 0, 0, 0.1)); 
     box-sizing: border-box; 
-}
-
-/* =================== Estilo para o Título =================== */
-h1 {
-    font-size: 2.5rem; 
-    margin-bottom: 20px; 
-    text-align: center; 
-    color: var(--primary-color); /* Azul suave */
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 /* =================== Estilo para Fieldset =================== */
 fieldset {
-    border: 1px solid var(--border-color);  /* Borda padrão */
+    border: 1px solid var(--border-color, #ddd);
     border-radius: 10px; 
     padding: 20px; 
     margin-bottom: 20px;
-    background-color: var(--light-bg-color); /* Fundo branco */
+    background-color: var(--light-bg-color, #fff);
 }
 
 /* =================== Estilo para Legend =================== */
@@ -33,8 +23,8 @@ legend {
     font-weight: bold; 
     padding: 0 12px; 
     border-radius: 4px; 
-    background-color: var(--header-bg-color); /* Branco para o cabeçalho */
-    box-shadow: var(--box-shadow); 
+    background-color: var(--header-bg-color, #f7f7f7);
+    box-shadow: var(--box-shadow, 0 2px 4px rgba(0, 0, 0, 0.1)); 
 }
 
 /* =================== Estilo para Formulários =================== */
@@ -48,13 +38,13 @@ legend {
 .form-funcionario {
     padding: 20px; 
     border-radius: 8px; 
-    background-color: var(--light-bg-color); /* Branco para seções claras */
-    box-shadow: var(--box-shadow); /* Sombra leve */
+    background-color: var(--light-bg-color, #fff);
+    box-shadow: var(--box-shadow, 0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
 /* Estilo comum para controles de formulário */
 .form-control {
-    border: 1px solid var(--border-color); /* Borda padrão */
+    border: 1px solid var(--border-color, #ccc);
     border-radius: 0.25rem; 
     padding: 12px;
     transition: border-color 0.2s, box-shadow 0.2s;
@@ -62,7 +52,7 @@ legend {
 
 /* Foco nos controles de formulário */
 .form-control:focus {
-    border-color: var(--secondary-color); /* Azul escuro */
+    border-color: var(--secondary-color, #005bbf);
     box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
 }
 
@@ -70,7 +60,7 @@ legend {
 /* Esconde feedback de erro por padrão */
 .invalid-feedback {
     display: none;
-    color: var(--error-color);
+    color: var(--error-color, #e74c3c);
 }
 
 /* Exibe feedback de erro apenas quando o formulário tem a classe `was-validated` */
@@ -83,14 +73,14 @@ legend {
     width: 100%; 
     border-collapse: collapse; 
     margin-top: 20px; 
-    border: 2px solid var(--border-color); /* Cinza claro para bordas */
+    border: 2px solid var(--border-color, #ddd);
     border-radius: 8px; 
     overflow: hidden; 
 }
 
 /* =================== Estilo do Cabeçalho da Tabela =================== */
 .table thead {
-    background-color: var(--secondary-color); /* Azul escuro */
+    background-color: var(--secondary-color, #005bbf);
     color: white; 
     text-transform: uppercase;
 }
@@ -99,7 +89,7 @@ legend {
 .table td {
     padding: 15px; 
     text-align: left; 
-    border-bottom: 1px solid var(--border-color); /* Cinza claro para bordas */
+    border-bottom: 1px solid var(--border-color, #ddd);
 }
 
 /* Estilos para células da tabela */

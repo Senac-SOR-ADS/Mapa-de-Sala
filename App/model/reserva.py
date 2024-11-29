@@ -1,10 +1,11 @@
+
 from App.model.conexao import ConexaoBD
 
 
 class Reserva:
     __banco = ConexaoBD()
     
-    def __init__(self, idLogin, idPessoa, idCurso, idSala, dia, horaInicio, horaFim, observacao = None):
+    def __init__(self, idLogin, idPessoa, idCurso, idSala, dia, horaInicio, horaFim, chaveDevolvida = 0, observacao = None):
         self.__idLogin = idLogin
         self.__idPessoa = idPessoa
         self.__idCurso = idCurso
@@ -12,6 +13,7 @@ class Reserva:
         self.__dia = dia
         self.__horaInicio = horaInicio
         self.__horaFim = horaFim
+        self.__chaveDevolvida = chaveDevolvida
         self.__observacao = observacao
 
     def get_idLogin(self):
@@ -58,27 +60,24 @@ class Reserva:
 
     def fazer_reserva(self):
         """Uma função para você tentar fazer uma reserva, caso já exista uma reserva no mesmo horário, dia e sala, ele alerta você. Caso contrário ele faz a reserva"""
-        if self.validar_periodo():
-            self.__banco.conectar()
-            query = "INSERT INTO reserva (idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, observacao) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-            parametros = (self.__idLogin, self.__idPessoa, self.__idCurso, self.__idSala, self.__dia, self.__horaInicio, self.__horaFim, self.__observacao)
-            self.__banco.alterarDados(query, parametros)
-            self.__banco.desconectar()
-            return True
-        else:
-            return False
-            
-
-    def validar_periodo(self):
-        """Verifica se já existe uma reserva na data que foi requisitada"""
         self.__banco.conectar()
-        query_verifica = "SELECT * FROM reserva WHERE idSala = %s AND dia = %s AND ((hrInicio < %s AND hrFim > %s) OR (hrInicio >= %s AND hrFim <= %s))"
-        parametros_verifica = (self.__idSala, self.__dia, self.__horaFim, self.__horaInicio, self.__horaInicio, self.__horaFim)
-        resultado = self.__banco.buscarTodos(query_verifica, parametros_verifica)
+        query = "INSERT INTO reserva (idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, chaveDevolvida, observacao) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        parametros = (self.__idLogin, self.__idPessoa, self.__idCurso, self.__idSala, self.__dia, self.__horaInicio, self.__horaFim, self.__chaveDevolvida ,self.__observacao)
+        self.__banco.alterarDados(query, parametros)
         self.__banco.desconectar()
-        if resultado:
-            return False
         return True
+            
+    @classmethod
+    def validar_periodo(cls, idSala, dia, horaInicio, horaFim):
+        """Verifica se já existe uma reserva na data que foi requisitada"""
+        cls.__banco.conectar()
+        query_verifica = "SELECT * FROM reserva WHERE idSala = %s AND dia = %s AND ((hrInicio < %s AND hrFim > %s) OR (hrInicio >= %s AND hrFim <= %s))"
+        parametros_verifica = (idSala, dia, horaFim, horaInicio, horaInicio, horaFim)
+        resultado = cls.__banco.buscarTodos(query_verifica, parametros_verifica)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        return False
     
     @classmethod
     def validar_troca(cls, idSala, dia, hrInicio, hrFim):
@@ -148,10 +147,10 @@ class Reserva:
     
     
     @classmethod
-    def atualizar(cls, idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, observacao, idReserva):
+    def atualizar(cls, idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, chaveDevolvida, observacao, idReserva):
         cls.__banco.conectar()
-        query = "UPDATE reserva SET idLogin= %s, idPessoa= %s,idCurso= %s,idSala= %s,dia= %s,hrInicio= %s,hrFim= %s,observacao= %s WHERE idReserva = %s"
-        parametro = [idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, observacao, idReserva]
+        query = "UPDATE reserva SET idLogin= %s, idPessoa= %s,idCurso= %s,idSala= %s,dia= %s,hrInicio= %s,hrFim= %s, chaveDevolvida= %s , observacao= %s WHERE idReserva = %s"
+        parametro = [idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, chaveDevolvida, observacao, idReserva]
         resultado = cls.__banco.alterarDados(query, parametro)
         cls.__banco.desconectar()
         if resultado.rowcount:
