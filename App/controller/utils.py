@@ -20,7 +20,7 @@ def formatarTelefone(telefone):
     return re.sub(r'(\d{2})(\d{4,5})(\d{4})', r'(\1) \2-\3', telefone)
 
 # =================== criada para controller Sala ===================
-def validarInputs(valores):
+def validarInputs(valores:list):
     for i in valores:
         if not i:
             return False
@@ -32,5 +32,6 @@ def modificarDataReserva(data):
     return f'{data[2]}/{data[1]}/{data[0]}'
 
 # Validar ação
-def validarAcao():
-    print("ok")
+def validarAcao(status:bool=True):
+    status = 'Cadastrado com sucesso' if status else 'Campos pendentes'
+    print(status)

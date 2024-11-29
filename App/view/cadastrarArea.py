@@ -3,6 +3,8 @@ from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer, pyqtSlot
 from App.controller.area import cadastroDeArea
 from App.controller.utils import validarAcao
+from App.controller.utils import validarInputs
+
 
 class CadastrarArea(QWidget):
     def __init__(self):
@@ -12,16 +14,14 @@ class CadastrarArea(QWidget):
     @pyqtSlot()
     def on_btnCadastrarArea_clicked(self):
         nomeArea = self.getCadastroArea()
-        if cadastroDeArea(nomeArea):
-           validarAcao() 
-            
+        if validarInputs([nomeArea]):
+            cadastroDeArea(nomeArea)
+            validarAcao()
+        validarAcao(False)
         
     def getCadastroArea(self):
         area = self.cadastrarArea.text().strip()
-
         return(area)
-
-
 
     def validandoDados(self):
         self.resposta.setText('CADASTRANDO...')
@@ -34,7 +34,3 @@ class CadastrarArea(QWidget):
 
     def limparCampos(self, campo):
         campo.clear()
-
-
-
-
