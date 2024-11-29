@@ -115,9 +115,6 @@ class ReservaInterface(QWidget):
         salas = listarSala()
         self.salaReserva.clear()
         self.salaReserva.addItems(salas.keys())
-        
-        
- 
 
     def validandoDados(self):
         self.feedbackReserva.setText('Reserva realizada.')
