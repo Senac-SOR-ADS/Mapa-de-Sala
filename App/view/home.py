@@ -14,6 +14,7 @@ from .editarArea import EditarArea
 from .editarCurso import EditarCurso
 from .editarLogin import EditarLogin
 from .editarReserva import EditarReserva
+from .editarSala import EditarSala
 
 from .reserva import ReservaInterface
 
@@ -25,6 +26,7 @@ class HomePrincipal(QMainWindow):
         self.moving = False
         self.subMenuLateral.hide()
         self.subMenuQuebrado.hide()
+        self.btnHome.setChecked(True)
         
    # Criando parte interativa do menu
    
@@ -53,6 +55,7 @@ class HomePrincipal(QMainWindow):
         self.interfEditCurso = EditarCurso
         self.interfEditLogin = EditarLogin
         self.interfEditReserva = EditarReserva
+        self.interfEditSala = EditarSala
 
         
     #Telas dentro do menu para alterar as janelas pelo sub menu
@@ -82,6 +85,7 @@ class HomePrincipal(QMainWindow):
         self.btnEditarArea.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditArea))
         self.btnEditaCurso.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditCurso))
         self.btnEditarLogin.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditLogin))
+        self.btnEditarSala.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditSala))
 
         self.btnConfiguracoes.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
         self.btnConfig.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
@@ -142,18 +146,35 @@ class HomePrincipal(QMainWindow):
             
 
     def mousePressEvent(self, event):
-        if event.button() == Qt.RightButton:
-            return
         if event.button() == Qt.LeftButton:
-            self.moving = True
-            self.offset = event.pos()
+            if self.childAt(event.pos()) == self.cabecalho:  
+                self.moving = True
+                self.offset = event.pos()
 
     def mouseMoveEvent(self, event):
         if self.moving and not self.isMaximized():
             self.move(self.pos() + event.pos() - self.offset)
 
+    def mouseDoubleClickEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            if self.childAt(event.pos()) == self.cabecalho:  
+                if self.isMaximized():
+                    self.showNormal()
+                    self.btnTelaCheia.setStyleSheet("""
+                                       #btnTelaCheia {
+                                           icon: url("App/view/ui/icones/iconTelaCheia.png");
+                                        }"""
+                                    )
+                else:
+                    self.showMaximized()
+                    self.btnTelaCheia.setStyleSheet("""
+                                       #btnTelaCheia {
+                                           icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png");
+                                        }"""
+                                    )
     def mouseReleaseEvent(self, event):
         self.moving = False
+
     
     @pyqtSlot()
     def on_btnFecharMenuQuebrado_clicked(self):
