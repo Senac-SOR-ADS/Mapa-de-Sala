@@ -1,18 +1,22 @@
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QWidget, QStackedWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt, pyqtSlot
+
+# Interfaces
 from .cadastroPessoas import cadastroPessoas
-from .reserva import ReservaInterface
 from .cadastrarArea import CadastrarArea
 from .cadastrarCurso import CadastrarCurso
 from .cadastrarLogin import CadastroLogin
 from .cadastrarSalas import CadastrarSalas
 from .configurarTela import ConfigurarTela
+from .editarPessoas import EditarPessoas
 from .editarArea import EditarArea
 from .editarCurso import EditarCurso
 from .editarLogin import EditarLogin
 from .editarReserva import EditarReserva
-from .editarPessoas import EditarPessoas
+from .editarSala import EditarSala
+
+from .reserva import ReservaInterface
 
 
 class HomePrincipal(QMainWindow):
@@ -22,6 +26,7 @@ class HomePrincipal(QMainWindow):
         self.moving = False
         self.subMenuLateral.hide()
         self.subMenuQuebrado.hide()
+        self.btnHome.setChecked(True)
         
    # Criando parte interativa do menu
    
@@ -38,19 +43,20 @@ class HomePrincipal(QMainWindow):
 
    # Criando instancias das interfaces
         self.setWindowFlags(Qt.FramelessWindowHint)
-        self.interfCasPessoa = cadastroPessoas()
-        self.interfReserva = ReservaInterface()
-        self.interfCasArea = CadastrarArea()
-        self.interfCasCurso = CadastrarCurso()
-        self.interfCasLogin = CadastroLogin()
-        self.interfcasSala = CadastrarSalas()
-        self.interfEditArea = EditarArea()
-        self.interfEditCurso = EditarCurso()
-        self.interfEditLogin = EditarLogin()
-        self.interfEditReserva = EditarReserva()
-        self.interfEditPessoas = EditarPessoas()
-        self.interfCongiguracoes = ConfigurarTela()
-        self.inserirTelas( [self.interfcasSala, self.interfCasPessoa, self.interfReserva, self.interfCasArea, self.interfCasCurso, self.interfCasLogin, self.interfCongiguracoes, self.interfEditArea, self.interfEditCurso, self.interfEditLogin, self.interfEditReserva, self.interfEditPessoas] )
+        self.interfCasPessoa = cadastroPessoas
+        self.interfcasSala = CadastrarSalas
+        self.interfCasArea = CadastrarArea
+        self.interfCasLogin = CadastroLogin
+        self.interfCongiguracoes = ConfigurarTela
+        self.interfCasCurso = CadastrarCurso
+        self.interfReserva = ReservaInterface
+        self.interfEditPessoa = EditarPessoas
+        self.interfEditArea = EditarArea
+        self.interfEditCurso = EditarCurso
+        self.interfEditLogin = EditarLogin
+        self.interfEditReserva = EditarReserva
+        self.interfEditSala = EditarSala
+
         
     #Telas dentro do menu para alterar as janelas pelo sub menu
         self.btnPessoa.clicked.connect(lambda: self.trocarTelaMenu(self.cadastros))
@@ -60,46 +66,66 @@ class HomePrincipal(QMainWindow):
         self.btnEditarSimples.clicked.connect(lambda: self.trocarTelaMenu(self.editar)) 
         self.btnEditar.clicked.connect(lambda: self.trocarTelaMenu(self.editar)) 
         
-    #btns da propria interface   
-        self.btnEditarArea.clicked.connect(lambda: self.trocarTela(self.interfEditArea))
-        self.btnEditaCurso.clicked.connect(lambda: self.trocarTela(self.interfEditCurso))
-        self.btnEditarLogin.clicked.connect(lambda: self.trocarTela(self.interfEditLogin))
-        self.btnEditarReserva.clicked.connect(lambda: self.trocarTela(self.interfEditReserva))
-        self.btnEditarPessoas.clicked.connect(lambda: self.trocarTela(self.interfEditPessoas))
-        self.btnCadastarSala.clicked.connect(lambda: self.trocarTela(self.interfcasSala))
-        self.btnCadastroPessoa.clicked.connect(lambda: self.trocarTela(self.interfCasPessoa))
-        self.btnReserva.clicked.connect(lambda: self.trocarTela(self.interfReserva))
-        self.btnIncio.clicked.connect(lambda: self.container.setCurrentWidget(self.inicio))
-        self.btnHome.clicked.connect(lambda: self.container.setCurrentWidget(self.inicio))
-        self.btnArea.clicked.connect(lambda: self.container.setCurrentWidget(self.interfCasArea))
-        self.btnCurso.clicked.connect(lambda: self.container.setCurrentWidget(self.interfCasCurso))
-        self.btnCadastroLogin.clicked.connect(lambda: self.container.setCurrentWidget(self.interfCasLogin))
-        self.btnConfiguracoes.clicked.connect(lambda: self.container.setCurrentWidget(self.interfCongiguracoes))
-        self.btnConfig.clicked.connect(lambda: self.container.setCurrentWidget(self.interfCongiguracoes))
+    #btns da propria interface
+    
+        # Forma Corrigida para Setar Interface
+        #######################################
+        self.btnIncio.clicked.connect(lambda: self.setInterfaceOnHome(self.inicio))
+        self.btnHome.clicked.connect(lambda: self.setInterfaceOnHome(self.inicio))
+        self.btnHomeAtalho.clicked.connect(lambda: self.setInterfaceOnHome(self.inicio))
+
+        self.btnCadastroLogin.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCasLogin))
+        self.btnArea.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCasArea))
+        self.btnCadastarSala.clicked.connect(lambda: self.setInterfaceOnHome(self.interfcasSala))
+        self.btnCadastroPessoa.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCasPessoa))
+        self.btnCurso.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCasCurso))
+        self.btnReserva.clicked.connect(lambda: self.setInterfaceOnHome(self.interfReserva))
+        self.btnEditarPessoas.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditPessoa))
+        self.btnEditarReserva.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditReserva))
+        self.btnEditarArea.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditArea))
+        self.btnEditaCurso.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditCurso))
+        self.btnEditarLogin.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditLogin))
+        self.btnEditarSala.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditSala))
+
+        self.btnConfiguracoes.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
+        self.btnConfig.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
+        #######################################
+
         self.btnMinimizar.clicked.connect(self.showMinimized)
         self.btnFecharPagina.clicked.connect(self.close)
         self.btnTelaCheia.clicked.connect(self.windowConnect)
         
+    ################################
+    # Função correta para inserir interface
+    def setInterfaceOnHome(self, interface:QWidget):
+        self.container: QStackedWidget
+        if type(interface) != QWidget: # precisa instanciar a interface
+            interface = interface()
+        if self.container.currentIndex() != 0:
+            self.container.removeWidget(self.container.currentWidget())
+        if interface != self.inicio:
+            self.container.addWidget(interface)
+        self.container.setCurrentWidget(interface)
+
+    ################################
+
     # Faz o botão de Tela Cheia ao ser executado, retornar ao normal
     def windowConnect(self):
         if self.isMaximized():
             self.showNormal()
             self.btnTelaCheia.setStyleSheet("""
                                        #btnTelaCheia {
-                                           icon: url("App/view/ui/icones/square-rounded-regular-24.png"); 
+                                           icon: url("App/view/ui/icones/iconTelaCheia.png"); 
                                         }"""
                                     )
         else:
             self.showMaximized()
             self.btnTelaCheia.setStyleSheet("""
                                        #btnTelaCheia {
-                                           icon: url("App/view/ui/icones/select_window_2_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"); 
+                                           icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png"); 
                                         }"""
                                     )
 
-    def inserirTelas(self, telas):
-        for interface in telas:
-            self.container.addWidget(interface)
     
     def inserirTelasMenu(self, menu):
         for i in menu:
@@ -120,18 +146,35 @@ class HomePrincipal(QMainWindow):
             
 
     def mousePressEvent(self, event):
-        if event.button() == Qt.RightButton:
-            return
         if event.button() == Qt.LeftButton:
-            self.moving = True
-            self.offset = event.pos()
+            if self.childAt(event.pos()) == self.cabecalho:  
+                self.moving = True
+                self.offset = event.pos()
 
     def mouseMoveEvent(self, event):
-        if self.moving:
+        if self.moving and not self.isMaximized():
             self.move(self.pos() + event.pos() - self.offset)
 
+    def mouseDoubleClickEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            if self.childAt(event.pos()) == self.cabecalho:  
+                if self.isMaximized():
+                    self.showNormal()
+                    self.btnTelaCheia.setStyleSheet("""
+                                       #btnTelaCheia {
+                                           icon: url("App/view/ui/icones/iconTelaCheia.png");
+                                        }"""
+                                    )
+                else:
+                    self.showMaximized()
+                    self.btnTelaCheia.setStyleSheet("""
+                                       #btnTelaCheia {
+                                           icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png");
+                                        }"""
+                                    )
     def mouseReleaseEvent(self, event):
         self.moving = False
+
     
     @pyqtSlot()
     def on_btnFecharMenuQuebrado_clicked(self):
