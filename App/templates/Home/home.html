@@ -11,21 +11,16 @@
 <div class="banner">
     <div class="banner-text" data-aos="fade-up" data-aos-duration="1200">
         <h1>Seja Bem-vindo ao <span class="mapa">Mapa de Sala</span></h1>
-        <p>Gerencie suas atividades de forma <strong>eficiente</strong>, <strong>intuitiva</strong> e <strong>simples</strong>. Comece agora!</p>
-    </div>
-    <div class="banner-image" data-aos="fade-down" data-aos-duration="1500">
-        <img src="{{ url_for('static', filename='img/default.png') }}" alt="Ilustração do sistema com mapa de salas" loading="lazy" class="responsive-img">
     </div>
 </div>
 
 <!-- Seção de Módulos -->
-<section id="modules" class="main-content">
     <div class="container">
         <div class="infoCards">
             <!-- Card: Gestão de Salas -->
             <div class="card" data-aos="fade-up" data-aos-duration="1100">
                 <div class="cardContent">
-                    <h2>Reserva de <br>Salas</h2>
+                    <h2>Reserva de Salas</h2>
                     <p>Gerencie as salas disponíveis com agilidade e eficiência. Organize as reservas de forma prática.</p>
                     <a href="{{ url_for('reserva_route.cadastrar_Reserva') }}" class="card-link">
                         <div class="card-btn">
@@ -62,15 +57,5 @@
             </div>
         </div>
     </div>
-</section>
-
-<!-- Seção de Artigo -->
-<article class="container mb-5">
-    <h2 class="fs-3 fw-bold text-primary mb-3">Explore o Sistema Mapa de Sala</h2>
-    <p class="fs-5 text-muted mb-4">
-        Simplifique a gestão de salas e otimize seu fluxo de trabalho com recursos avançados. Conheça todas as funcionalidades e torne sua rotina mais eficiente. Aproveite as ferramentas inovadoras para melhorar sua organização.
-    </p>
-    <a href="#" class="btn">Explore Agora</a>
-</article>
 
 {% endblock %}

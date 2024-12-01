@@ -1,8 +1,10 @@
 from App.model.area import Area
+from App.controller.utils import validarInputs
+
 
 def cadastroDeArea(nomeArea):
     areaModel = Area(nomeArea)
-    if areaModel.cadastrar_area():
+    if validarInputs(areaModel.cadastrar_area()):
         return True
     return False
 

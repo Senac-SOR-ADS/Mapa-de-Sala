@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from App.model.reserva import Reserva
 from App.controller.utils import modificarDataReserva
 
+
 def fazendoReserva(idLogin, dados, diasValidos):
     diaInicio = modificarDataReserva(dados['diaInicio'])
     diaInicio = datetime.strptime(diaInicio, "%d/%m/%Y")
@@ -33,7 +34,6 @@ def validarCadastro(dados, diasValidos):
             if validar:
                 listaDias.append(validar[0])
         diaAtual += timedelta(days=1)
-    
     if listaDias != []:
         return listaDias
     return False
@@ -41,9 +41,7 @@ def validarCadastro(dados, diasValidos):
 def trocar_reserva(dados1, dados2):
     if Reserva.atualizar(dados1['idLogin'], dados1['idPessoa'], dados1['idcurso'], dados1['idSala'], dados1['dia'], dados1['inicioCurso'], dados1['fimCurso'], dados1['observações'],  dados1['idReserva']):
         Reserva.atualizar(dados2['idLogin'], dados2['idPessoa'], dados2['idcurso'], dados2['idSala'], dados2['dia'], dados2['inicioCurso'], dados2['fimCurso'], dados2['observações'],  dados2['idReserva'])
-        
-        
-    
+
 def deletarReserva(idReserva):
     if Reserva.deletar(idReserva):
         return True

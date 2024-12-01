@@ -4,56 +4,94 @@
 
 {% block content %}
 <div class="container my-4">
-    <h1 class="text-center mb-4">Gestão de Reservas</h1>
+    <h3 class="text-center mb-4">Gestão de Reservas</h3>
 
     <!-- Formulário para reservar uma sala -->
-    <form action="/reserva" method="POST" class="form-reserva">
+    <form action="/reserva" method="POST" class="form-reserva needs-validation" novalidate>
         <fieldset>
             <legend class="mb-3">Reservar Sala</legend>
 
+            <div class="row">
+                <!-- Campo Sala -->
+                <div class="form-group col-md-6 mb-4">
+                    <label for="idSala">Sala:</label>
+                    <select id="idSala" name="idSala" required class="form-control" aria-describedby="salaFeedback">
+                        <option value="" disabled selected>Selecione a Sala</option>
+                        {% for sala in salas %}
+                            <option value="{{ sala }}">{{ sala }}</option>
+                        {% endfor %}
+                    </select>
+                    <div id="salaFeedback" class="invalid-feedback">Por favor, selecione uma sala.</div>
+                </div>
+
+                <!-- Campo Funcionário -->
+                <div class="form-group col-md-6 mb-4">
+                    <label for="idPessoa">Funcionário:</label>
+                    <select id="idPessoa" name="idPessoa" required class="form-control" aria-describedby="pessoaFeedback">
+                        <option value="" disabled selected>Selecione o Funcionário</option>
+                        {% for pessoa in pessoas %}
+                            <option value="{{ pessoa }}">{{ pessoa }}</option>
+                        {% endfor %}
+                    </select>
+                    <div id="pessoaFeedback" class="invalid-feedback">Por favor, selecione um funcionário.</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Campo Data da Reserva -->
+                <div class="form-group col-md-6 mb-4">
+                    <label for="dia">Data da Reserva:</label>
+                    <input type="date" id="dia" name="dia" required class="form-control" aria-label="Data da Reserva" aria-describedby="dataFeedback">
+                    <div id="dataFeedback" class="invalid-feedback">Por favor, preencha a data da reserva.</div>
+                </div>
+
+                <!-- Campo Hora de Início -->
+                <div class="form-group col-md-3 mb-4">
+                    <label for="horaInicio">Hora de Início:</label>
+                    <input type="time" id="horaInicio" name="horaInicio" required class="form-control" aria-label="Hora de Início" aria-describedby="horaInicioFeedback">
+                    <div id="horaInicioFeedback" class="invalid-feedback">Por favor, preencha a hora de início.</div>
+                </div>
+
+                <!-- Campo Hora de Fim -->
+                <div class="form-group col-md-3 mb-4">
+                    <label for="horaFim">Hora de Fim:</label>
+                    <input type="time" id="horaFim" name="horaFim" required class="form-control" aria-label="Hora de Fim" aria-describedby="horaFimFeedback">
+                    <div id="horaFimFeedback" class="invalid-feedback">Por favor, preencha a hora de fim.</div>
+                </div>
+            </div>
+
+            <!-- Campo Dias da Semana -->
             <div class="form-group mb-3">
-                <label for="idSala">Sala:</label>
-                <select id="idSala" name="idSala" required class="form-control">
-                    <option value="" disabled selected>Selecione a Sala</option>
-                    {% for sala in salas %}
-                        <option value="sala">{{ sala }}</option>
+                <label for="chaveDevolvida">Dias da Semana:</label>
+                <div class="d-flex flex-wrap justify-content-start" style="gap: 15px;">
+                    {% set dias = [
+                    ('segunda', 'Segunda'),
+                    ('terca', 'Terça'),
+                    ('quarta', 'Quarta'),
+                    ('quinta', 'Quinta'),
+                    ('sexta', 'Sexta'),
+                    ('sabado', 'Sábado'),
+                    ('domingo', 'Domingo')
+                    ] %}
+                    {% for dia, label in dias %}
+                    <div class="form-check d-flex flex-column align-items-center" style="flex-shrink: 0;">
+                        <input type="checkbox" id="{{ dia }}" name="chaveDevolvida[]" value="{{ dia }}" class="form-check-input" style="margin-bottom: 5px;">
+                        <label class="form-check-label" for="{{ dia }}" style="font-size: 0.8rem;">{{ label }}</label>
+                    </div>
                     {% endfor %}
-                </select>
-                <div class="invalid-feedback">Por favor, selecione uma sala.</div>
+                </div>
             </div>
 
-            <div class="form-group mb-3">
-                <label for="idFuncionario">Funcionário:</label>
-                <select id="idFuncionario" name="idFuncionario" required class="form-control">
-                    <option value="" disabled selected>Selecione o Funcionário</option>
-                    {% for pessoa in pessoas %}
-                        <option value="pessoa">{{ pessoa }}</option>
-                    {% endfor %}
-                </select>
-                <div class="invalid-feedback">Por favor, selecione um funcionário.</div>
-            </div>
-
-            <div class="form-group mb-3">
-                <label for="dataReserva">Data da Reserva:</label>
-                <input type="date" id="dataReserva" name="dataReserva" required class="form-control" aria-label="Data da Reserva">
-                <div class="invalid-feedback">Por favor, preencha a data da reserva.</div>
-            </div>
-
-            <div class="form-group mb-3">
-                <label for="horaInicio">Hora de Início:</label>
-                <input type="time" id="horaInicio" name="horaInicio" required class="form-control" aria-label="Hora de Início">
-                <div class="invalid-feedback">Por favor, preencha a hora de início.</div>
-            </div>
-
+            <!-- Campo Observação -->
             <div class="form-group mb-4">
-                <label for="horaFim">Hora de Fim:</label>
-                <input type="time" id="horaFim" name="horaFim" required class="form-control" aria-label="Hora de Fim">
-                <div class="invalid-feedback">Por favor, preencha a hora de fim.</div>
+                <label for="observacao">Observação:</label>
+                <textarea id="observacao" name="observacao" class="form-control" rows="3" placeholder="Detalhes sobre a reserva (opcional)"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Reservar Sala</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Reservar Sala</button>
         </fieldset>
     </form>
-    <hr>
+
 </div>
+
 {% endblock %}

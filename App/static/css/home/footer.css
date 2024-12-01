@@ -1,47 +1,60 @@
-/* ===================== Custom Root Variables ===================== */
-:root {
-    --rodape-fundo: #081b29;
-    --rodape-texto: #ffffff;
-    --sombra-caixa: 0 4px 8px rgba(0, 0, 0, 0.2);
-    --rodape-padding: 20px 0;
-    --rodape-font-family: "Poppins", sans-serif;
-    --rodape-margin-top: 50px;
-    --texto-primario: #ffffff;
-    --cor-destaque: #ffcc00;
-    --transition-ease: 0.3s ease;
-}
-
-/* ===================== Rodapé (footer) ===================== */
-footer.rodape {
-    background-color: var(--rodape-fundo);
-    color: var(--rodape-texto);
-    padding: var(--rodape-padding);
-    box-shadow: var(--sombra-caixa);
-    font-family: var(--rodape-font-family);
-    z-index: 10;
-    margin-top: var(--rodape-margin-top);
-    position: relative;
+/* ===================== Rodapé ===================== */
+footer {
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    color: var(--cor-footer-texto);
     text-align: center;
-}
-
-footer.rodape section {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    flex-direction: column;
+    padding: 0.5rem;
 }
 
-footer.rodape small {
-    font-size: 0.9rem;
+footer section {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 0.25rem;
 }
 
-/* ===================== Responsividade ===================== */
+footer small {
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    line-height: 1.4;
+}
+
+footer a {
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    margin-top: 1px;
+}
+
+footer a:hover {
+    color: var(--cor-footer-link-hover);
+    transform: translateY(-1px);
+}
+
+/* Ajustes responsivos */
 @media (max-width: 768px) {
-    footer.rodape {
-        padding: 15px 0;
+    footer {
+        padding: 0.5rem 1rem;
     }
 
-    footer.rodape small {
+    footer small {
+        font-size: 0.8rem;
+    }
+}
+
+/* Ajustes para telas muito pequenas (menos de 480px) */
+@media (max-width: 480px) {
+    footer {
+        padding: 0.5rem 0.75rem;
+    }
+
+    footer small {
+        font-size: 0.7rem;
+    }
+
+    footer a {
         font-size: 0.8rem;
     }
 }

@@ -4,41 +4,134 @@
 
 {% block content %}
 <div class="container my-4">
-    <h1 class="text-center mb-4">Equipamentos</h1>
-    
-    <fieldset>
-        <legend class="mb-3">Lista de Equipamentos</legend>
-        <table class="table table-striped table-responsive">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for value in valores %}
-                <tr>
-                    <td>{{ value }}</td>
-                    <td>
-                        <button class="btn btn-warning" aria-label="Editar {{ value }}" onclick="window.location.href='/equipamento/editar/{{ value }}'"> 
-                            <i class="fas fa-edit"></i> Editar
-                        </button>
-                        <button class="btn btn-danger" aria-label="Remover {{ value }}" onclick="confirmRemove('{{ value }}')"> 
-                            <i class="fas fa-trash"></i> Remover
-                        </button>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </fieldset>
+    <!-- Formulário de Pesquisa -->
+    <form method="GET" action="{{ url_for('equipamento_route.listar_Equipamento') }}" class="search-form" role="search">
+        <div class="input-group">
+            <input class="input" required autocomplete="off" type="text" name="search" id="search" placeholder=" " />
+            <label class="label" for="search">Pesquisar</label>
+
+            <div class="input-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary ml-2" id="clearSearch">Limpar</button>
+    </form>
+</div>
+
+<h3>Lista de Equipamentos</h3>
+
+<!-- Exibir mensagens de feedback -->
+{% include "Error/message.html" %}
+
+<!-- Botões para exibir a lista e cadastrar um novo -->
+<div class="d-flex flex-column flex-md-row justify-content-md-start align-items-md-center mb-4">
+    <button id="toggleTable" class="btn btn-info btn-sm mb-2 mb-md-0 me-md-3"
+        aria-label="Mostrar/Esconder lista de equipamentos">
+        <i class="fas fa-list"></i> Lista de Equipamentos
+    </button>
+    <a href="{{ url_for('equipamento_route.cadastrar_Equipamento') }}" class="btn btn-success btn-sm">
+        <i class="fas fa-plus-circle"></i> Cadastrar Novo Equipamento
+    </a>
+</div>
+
+<!-- Tabela de Equipamentos -->
+<div id="tableContainer" class="table-responsive d-none">
+    <table class="table table-striped table-bordered table-hover align-middle">
+        <caption class="visually-hidden">Tabela com lista de equipamentos e ações disponíveis</caption>
+        <thead class="table-dark">
+            <tr>
+                <th>Nome</th>
+                <th class="text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipamento in valores %}
+            <tr>
+                <td>{{ equipamento[0] }}</td>
+                <td class="text-center">
+                    <!-- Botão de Editar -->
+                    <a href=""#"" class="btn btn-primary btn-sm"
+                        aria-label="Editar {{ equipamento[0] }}">
+                        <i class="fas fa-edit"></i> Editar
+                    </a>
+                    <!-- Botão de Remover -->
+                    <button class="btn btn-danger btn-sm" aria-label="Remover {{ equipamento[0] }}"
+                        onclick="confirmRemove('{{ equipamento[1] }}', '{{ equipamento[0] }}')">
+                        <i class="fas fa-trash"></i> Remover
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+</div>
+
+<!-- Modal de Confirmação de Remoção -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirmar Remoção</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                Tem certeza que deseja remover o equipamento "<span id="equipmentName"></span>"? Esta ação não pode ser
+                desfeita.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmRemoveButton">Remover</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
-    function confirmRemove(name) {
-        if (confirm(`Você tem certeza que deseja remover o Equipamento "${name}"?`)) {
-            // Implementar a lógica de remoção aqui.
+    /* ===================== Remoção de Equipamento ===================== */
+    function confirmRemove(id, nome) {
+        document.getElementById('equipmentName').textContent = nome;
+
+        const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+        modal.show();
+
+        document.getElementById('confirmRemoveButton').onclick = function () {
+            window.location.replace(`/equipamento/remover/${id}`);
         }
     }
+
+    /* ===================== Alterna Visibilidade da Tabela ===================== */
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleTableBtn = document.getElementById('toggleTable');
+        const tableContainer = document.getElementById('tableContainer');
+
+        if (localStorage.getItem('tableVisible') === 'true') {
+            tableContainer.classList.remove('d-none');
+        } else {
+            tableContainer.classList.add('d-none');
+        }
+
+        toggleTableBtn.addEventListener('click', () => {
+            if (tableContainer.classList.contains('d-none')) {
+                tableContainer.classList.remove('d-none');
+                localStorage.setItem('tableVisible', 'true');
+            } else {
+                tableContainer.classList.add('d-none');
+                localStorage.setItem('tableVisible', 'false');
+            }
+        });
+
+        document.querySelectorAll('.pagination .page-link').forEach(link => {
+            link.addEventListener('click', () => {
+                localStorage.setItem('tableVisible', 'true');
+            });
+        });
+    });
 </script>
+
 {% endblock %}

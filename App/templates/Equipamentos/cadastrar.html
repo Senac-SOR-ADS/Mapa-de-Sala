@@ -1,48 +1,61 @@
 {% extends "base.html" %}
 
-{% block title %}Gestão de Equipamentos - Mapa de Sala{% endblock %}
+{% block title %}Gestão de Equipamentos - Cadastro de Equipamentos{% endblock %}
 
 {% block content %}
 <div class="container my-4">
-    <h1 class="text-center mb-4">Cadastro de Equipamentos</h1>
+    <h3 class="text-center mb-4">Cadastro de Equipamentos</h3>
+
+    <!-- Exibir mensagens de feedback -->
+    {% include "Error/message.html" %}
 
     <!-- Formulário para adicionar um novo equipamento -->
-    <form action="/cadastrar" method="POST" class="form-equipamento">
+    <form id="formCadastroEquipamento" action="{{ url_for('equipamento_route.cadastrar_Equipamento') }}" method="POST"
+        class="needs-validation form-equipamento">
         <fieldset>
-            <legend class="mb-3">Adicionar Novo Equipamento</legend>
-
-            <div class="form-group mb-3">
-                <label for="idArea">Área:</label>
-                <select id="idArea" name="idArea" required class="form-control">
-                    <option value="" disabled selected>Selecione a área</option>
-                    {% for area in areas %}
+            <div class="row">
+                <!-- Área -->
+                <div class="form-group mb-3 col-md-6">
+                    <label for="idArea">Área:</label>
+                    <select id="idArea" name="idArea" required class="form-control" aria-describedby="areaFeedback">
+                        <option value="" disabled selected>Selecione a área</option>
+                        {% for area in areas %}
                         <option value="area">{{ area }}</option>
-                    {% endfor %}
-                </select>
-                <div class="invalid-feedback">Por favor, selecione uma área.</div>
+                        {% endfor %}
+                    </select>
+                    <div id="areaFeedback" class="invalid-feedback">Por favor, selecione uma área.</div>
+                </div>
+
+                <!-- Nome do Equipamento -->
+                <div class="form-group mb-3 col-md-6">
+                    <label for="nome">Nome do Equipamento:</label>
+                    <input type="text" id="nome" name="nome" required maxlength="100" class="form-control"
+                        placeholder="Nome do Equipamento" aria-describedby="nomeFeedback">
+                    <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome do equipamento.</div>
+                </div>
             </div>
 
-            <div class="form-group mb-3">
-                <label for="nome">Nome do Equipamento:</label>
-                <input type="text" id="nome" name="nome" required maxlength="100" class="form-control">
-                <div class="invalid-feedback">Por favor, preencha o nome do equipamento.</div>
+            <div class="row">
+                <!-- Marca do Equipamento -->
+                <div class="form-group mb-3 col-md-6">
+                    <label for="marca">Marca do Equipamento:</label>
+                    <input type="text" id="marca" name="marca" required maxlength="100" class="form-control"
+                        placeholder="Marca do Equipamento" aria-describedby="marcaFeedback">
+                    <div id="marcaFeedback" class="invalid-feedback">Por favor, preencha a marca do equipamento.</div>
+                </div>
+
+                <!-- Quantidade -->
+                <div class="form-group mb-3 col-md-6">
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" name="quantidade" required min="1" class="form-control"
+                        placeholder="Quantidade" aria-describedby="quantidadeFeedback">
+                    <div id="quantidadeFeedback" class="invalid-feedback">Por favor, informe a quantidade.</div>
+                </div>
             </div>
 
-            <div class="form-group mb-3">
-                <label for="marca">Marca do Equipamento:</label>
-                <input type="text" id="marca" name="marca" required maxlength="100" class="form-control">
-                <div class="invalid-feedback">Por favor, preencha a marca do equipamento.</div>
-            </div>
-
-            <div class="form-group mb-4">
-                <label for="quantidade">Quantidade:</label>
-                <input type="number" id="quantidade" name="quantidade" required min="1" class="form-control">
-                <div class="invalid-feedback">Por favor, informe a quantidade.</div>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Adicionar Equipamento</button>
+            <!-- Botão de Submissão -->
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Adicionar Equipamento</button>
         </fieldset>
     </form>
-    <hr>
 </div>
 {% endblock %}

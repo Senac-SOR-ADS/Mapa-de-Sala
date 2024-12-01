@@ -27,7 +27,8 @@ class ReservaInterface(QWidget):
 
         self.diaInicio.setCalendarPopup(True)
         self.diaInicio.setDisplayFormat('dd/MM/yyyy')
-        self.diaInicio.setDate(QDate.currentDate())  
+        self.diaInicio.setDate(QDate.currentDate())
+        self.diaInicio.dateChanged.connect(self.setDataMinima)
 
         self.diaFim.setCalendarPopup(True)
         self.diaFim.setDisplayFormat('dd/MM/yyyy')
@@ -44,6 +45,7 @@ class ReservaInterface(QWidget):
         idSala = sala[nomeSala]
         nomeCurso = self.cursoReserva.currentText().strip()
         idCurso = curso[nomeCurso]
+        
         
         equipamentos = self.equipamentosReserva.text().strip() 
         diaInicio = modificarData(self.diaInicio.text().strip() )
@@ -85,7 +87,13 @@ class ReservaInterface(QWidget):
             fazendoReserva(idLogin, info, diasValidos)
         elif len(validacao) > 0:
             print(f'Não foi possivel fazer a reserva {validacao}')
-
+    
+    
+    def setDataMinima(self):
+        primeiroDia = self.diaInicio.date()
+        self.diaFim.setMinimumDate(primeiroDia)
+    
+        
     def popularJanela(self):
         """Popula os comboBoxes com dados do banco."""
         self.comboBoxCurso()

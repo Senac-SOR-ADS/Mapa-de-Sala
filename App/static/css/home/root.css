@@ -1,0 +1,276 @@
+:root {
+    --cor-primaria: #004080;
+    --cor-secundaria: #0066cc;
+    --cor-terciaria: #e8590c;
+    --cor-primaria-hover: #004080;
+    --cor-secundaria-hover: #0066cc;
+    --cor-background: #f1f3f5;
+    --cor-texto: #212529;
+    --cor-texto-secundario: #6c757d;
+    --cor-link-hover: #006bb3;
+    --cor-borda-botao: #ced4da;
+    --cor-borda-focus: #0056b3;
+}
+
+:root {
+    --cor-fundo: #ffffff;
+    --cor-fundo-hover: rgba(0, 123, 255, 0.05);
+    --cor-dropdown-bg: #f8f9fa;
+    --cor-dropdown-hover: rgba(0, 123, 255, 0.15);
+    --cor-icone: #007bff;
+    --cor-icone-hover: #0056b3;
+    --cor-sombra: rgba(0, 0, 0, 0.1);
+    --cor-sombra-forte: rgba(0, 0, 0, 0.2);
+    --cor-fundo-navbar: #003366;
+}
+
+:root {
+    --cor-texto-destaque: #212529;
+    --cor-banner: rgba(255, 255, 255, 0.85);
+    --cor-card-imagem: rgba(0, 0, 0, 0.07);
+}
+
+:root {
+    --cor-destaque: #fd7e14;
+    --cor-scrolled-background: rgba(33, 37, 41, 0.95);
+    --cor-scrolled-shadow: rgba(0, 0, 0, 0.25);
+    --cor-hover: #FF6347;
+    --cor-icone: #007BFF;
+    --cor-dropdown-item: #333333;
+    --cor-fundo-dropdown: #ffffff;
+    --cor-fundo-navbar: #007BFF;
+}
+
+:root {
+    --cor-footer-texto: #f8f9fa;
+    --cor-footer-link-hover: #fd7e14;
+}
+
+:root {
+    --cor-tabela-cabecalho: #003366;
+    --cor-tabela-texto: #212529;
+    --cor-tabela-fundo-hover: #e9ecef;
+    --cor-borda-input: #ced4da;
+    --cor-borda-input-focus: #006bb3;
+    --cor-borda-input-disabled: #e9ecef;
+    --cor-sombra-input-focus: rgba(0, 123, 255, 0.3);
+    --cor-sombra-botao-hover: rgba(253, 126, 20, 0.3);
+    --cor-botao-danger: #d9534f;
+    --cor-botao-danger-hover: #c9302c;
+    --cor-erro-texto: #d9534f;
+    --cor-sucesso-texto: #28a745;
+}
+
+/* Reset de Estilos - Normaliza os estilos entre navegadores */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===================== Body ===================== */
+body {
+    font-family: 'Montserrat', sans-serif, 'Arial', sans-serif;
+    color: var(--cor-texto);
+    overflow-x: hidden;
+    background-color: var(--cor-background);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ===================== Tipografia ===================== */
+h1, h2 {
+    text-align: center;
+    color: var(--cor-destaque); /* Azul mais forte */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+    margin: 30px 0;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--cor-secundaria);
+}
+
+h3, h4, h5, h6 {
+    font-weight: bold;
+    color: var(--cor-primaria);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* ===================== Tipografia ===================== */
+h1, h2 {
+    margin: 40px 0;
+}
+
+/* ===================== Botões Globais ===================== */
+button, .btn {
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+p {
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
+    color: var(--cor-texto-secundario);
+    margin: 0 auto 30px;
+    line-height: 1.8;
+    max-width: 800px;
+}
+
+/* ===================== Links Globais ===================== */
+a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+    color: var(--cor-secundaria-hover);
+    transform: scale(1.1);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+a:focus {
+    outline: none;
+    color: var(--cor-secundaria-hover); 
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================== Botões Globais ===================== */
+button, .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+button:hover, .btn:hover,
+button:focus, .btn:focus {
+    background-color: var(--cor-secundaria);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    border-color: var(--cor-secundaria);
+    outline: none;
+}
+
+button:active, .btn:active {
+    background-color: var(--cor-terciaria);
+    transform: scale(1.02);
+}
+
+button:disabled, .btn:disabled {
+    background-color: var(--cor-borda-botao);
+    color: #8a9ba8;
+    cursor: not-allowed;
+    box-shadow: none;
+    border-color: var(--cor-borda-botao);
+}
+
+/* ===================== Span do Mapa ===================== */
+span.mapa {
+    color: var(--cor-secundaria-hover);
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* ===================== Layout Global ===================== */
+.main-content {
+    padding: clamp(20px, 5vw, 40px) clamp(4vw, 3vw, 6vw);
+    gap: 30px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+/* ===================== Container ===================== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+/* ===================== Flex Containers ===================== */
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ===================== Scrollbar Personalizada ===================== */
+::-webkit-scrollbar {
+    width: 10px; /* Ajusta a largura da scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+/* ===================== Responsividade em Dispositivos Móveis ===================== */
+@media screen and (max-width: 768px) {
+    .main-content {
+        padding: 20px; /* Menos padding em telas menores */
+    }
+
+    .container {
+        padding: 0 15px; /* Ajusta o padding em telas menores */
+    }
+
+    .flex {
+        flex-direction: column; /* Alinha itens em coluna em telas menores */
+    }
+
+    .flex-column {
+        gap: 10px; /* Ajusta o espaçamento entre os itens */
+    }
+
+    h1 {
+        font-size: 2.5rem; /* Diminui o tamanho da fonte do título em telas menores */
+    }
+
+    p {
+        font-size: 1.2rem; /* Ajusta o tamanho da fonte do parágrafo em telas menores */
+    }
+}
