@@ -181,6 +181,7 @@ class HomePrincipal(QMainWindow):
                                     )
     def mouseReleaseEvent(self, event):
         self.moving = False
+
     
     @pyqtSlot()
     def on_btnFecharMenuQuebrado_clicked(self):
