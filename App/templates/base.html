@@ -12,7 +12,6 @@
     <!-- Ícone da Página -->
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
 
-
     <!-- Bootstrap CSS (Versão 5) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -20,14 +19,17 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- Estilos Personalizados -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home/footer.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home/navbar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/error/message.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home/root.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/formulario/index.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/error/message.css') }}">
 </head>
 
 <body class="light d-flex flex-column min-vh-100">
@@ -47,6 +49,11 @@
     <!-- Carregamento Assíncrono do JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+
+    <!-- Scripts Personalizados -->
+    <script src="{{ url_for('static', filename='js/formulario/invalidation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/formulario/form.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/home/navbar.js') }}"></script>
 </body>
 
 </html>

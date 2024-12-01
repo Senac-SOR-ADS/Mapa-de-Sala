@@ -4,71 +4,72 @@
 
 {% block content %}
 <div class="container my-4">
-    <h1 class="text-center mb-4">Cadastro de Funcionário</h1>
+    <h3 class="text-center mb-4">Cadastro de Funcionário</h3>
 
     <!-- Exibir mensagens de feedback -->
     {% include "Error/message.html" %}
 
     <!-- Formulário para adicionar uma nova pessoa -->
-    <form id="formCadastroFuncionario" action="{{ url_for('funcionario_route.cadastrar_Pessoa') }}" method="POST" class="needs-validation">
+    <form id="formCadastroFuncionario" action="{{ url_for('funcionario_route.cadastrar_Pessoa') }}" method="POST" class="needs-validation form-funcionario">
         <fieldset>
-            <legend class="mb-3">Adicionar Novo Funcionário</legend>
+            <div class="row">
+                <!-- Nome -->
+                <div class="form-group mb-3 col-md-6">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required maxlength="255" class="form-control" placeholder="Nome Completo" pattern="^[a-zA-Z\s]+$" aria-describedby="nomeFeedback">
+                    <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome corretamente (apenas letras e espaços).</div>
+                </div>
 
-            <!-- Nome -->
-            <div class="form-group mb-3">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required maxlength="255" class="form-control" pattern="^[a-zA-Z\s]+$" aria-describedby="nomeFeedback">
-                <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome corretamente (apenas letras e espaços).</div>
+                <!-- CPF/CNPJ -->
+                <div class="form-group mb-3 col-md-6">
+                    <label for="cpfCnpj">CPF/CNPJ:</label>
+                    <input type="text" id="cpfCnpj" name="cpfCnpj" required maxlength="18" class="form-control" placeholder="CPF ou CNPJ" pattern="(\d{3}\.\d{3}\.\d{3}-\d{2})|(\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2})" aria-describedby="cpfCnpjFeedback">
+                    <div id="cpfCnpjFeedback" class="invalid-feedback">Por favor, preencha o CPF/CNPJ corretamente.</div>
+                </div>
             </div>
 
-            <!-- CPF/CNPJ -->
-            <div class="form-group mb-3">
-                <label for="cpfCnpj">CPF/CNPJ:</label>
-                <input type="text" id="cpfCnpj" name="cpfCnpj" required maxlength="18" class="form-control" placeholder="CPF ou CNPJ" pattern="(\d{3}\.\d{3}\.\d{3}-\d{2})|(\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2})" aria-describedby="cpfCnpjFeedback">
-                <div id="cpfCnpjFeedback" class="invalid-feedback">Por favor, preencha o CPF/CNPJ corretamente.</div>
+            <div class="row">
+                <!-- Data de Nascimento -->
+                <div class="form-group mb-3 col-md-6">
+                    <label for="dataNasc">Data de Nascimento:</label>
+                    <input type="date" id="dataNasc" name="dataNasc" required class="form-control" min="1900-01-01" max="{{ currentYear }}-12-31" aria-describedby="dataNascFeedback">
+                    <div id="dataNascFeedback" class="invalid-feedback">Por favor, preencha a data de nascimento corretamente.</div>
+                </div>
+
+                <!-- Telefone -->
+                <div class="form-group mb-3 col-md-6">
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" required maxlength="15" class="form-control" placeholder="(00) 00000-0000" pattern="^\(\d{2}\) \d{4,5}-\d{4}$" aria-describedby="telefoneFeedback">
+                    <div id="telefoneFeedback" class="invalid-feedback">Por favor, preencha o telefone corretamente.</div>
+                </div>
             </div>
 
-            <!-- Data de Nascimento -->
-            <div class="form-group mb-3">
-                <label for="dataNasc">Data de Nascimento:</label>
-                <input type="date" id="dataNasc" name="dataNasc" required class="form-control" min="1900-01-01" max="{{ currentYear }}-12-31" aria-describedby="dataNascFeedback">
-                <div id="dataNascFeedback" class="invalid-feedback">Por favor, preencha a data de nascimento corretamente.</div>
-            </div>
+            <div class="row">
+                <!-- Email -->
+                <div class="form-group mb-3 col-md-6">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required maxlength="255" class="form-control" placeholder="exemplo@dominio.com" aria-describedby="emailFeedback">
+                    <div id="emailFeedback" class="invalid-feedback">Por favor, preencha um email válido.</div>
+                </div>
 
-            <!-- Telefone -->
-            <div class="form-group mb-3">
-                <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" name="telefone" required maxlength="15" class="form-control" placeholder="(00) 00000-0000" pattern="^\(\d{2}\) \d{4,5}-\d{4}$" aria-describedby="telefoneFeedback">
-                <div id="telefoneFeedback" class="invalid-feedback">Por favor, preencha o telefone corretamente.</div>
-            </div>
-
-            <!-- Email -->
-            <div class="form-group mb-3">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required maxlength="255" class="form-control" placeholder="exemplo@dominio.com" aria-describedby="emailFeedback">
-                <div id="emailFeedback" class="invalid-feedback">Por favor, preencha um email válido.</div>
-            </div>
-
-            <!-- Cargo -->
-            <div class="form-group mb-4">
-                <label for="cargo">Cargo:</label>
-                <select id="cargo" name="cargo" class="form-control" required aria-describedby="cargoFeedback">
-                    <option value="" disabled selected>Selecione o Cargo</option>
-                    <option value="Comum">Comum</option>
-                    <option value="Patrimonio">Patrimônio</option>
-                    <option value="Apoio">Apoio</option>
-                    <option value="Administrador">Administrador</option>
-                </select>
-                <div id="cargoFeedback" class="invalid-feedback">Por favor, selecione um cargo.</div>
+                <!-- Cargo -->
+                <div class="form-group mb-4 col-md-6">
+                    <label for="cargo">Cargo:</label>
+                    <select id="cargo" name="cargo" class="form-control" required aria-describedby="cargoFeedback">
+                        <option value="" disabled selected>Selecione o Cargo</option>
+                        <option value="Comum">Comum</option>
+                        <option value="Patrimonio">Patrimônio</option>
+                        <option value="Apoio">Apoio</option>
+                        <option value="Administrador">Administrador</option>
+                    </select>
+                    <div id="cargoFeedback" class="invalid-feedback">Por favor, selecione um cargo.</div>
+                </div>
             </div>
 
             <!-- Botão de Submissão -->
-            <button type="submit" class="btn btn-primary w-100">Cadastrar Funcionário</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar Funcionário</button>
         </fieldset>
     </form>
 </div>
 
-<!-- Scripts de validação -->
-<script src="{{ url_for('static', filename='js/formulario/formInvalidation.js') }}"></script>
-<script src="{{ url_for('static', filename='js/formulario/formFuncionario.js') }}"></script>
 {% endblock %}

@@ -4,91 +4,95 @@
 
 {% block content %}
 <div class="container my-4">
-    <h1 class="text-center my-4">Relatório de Reservas</h1>
+    <h3 class="text-center my-4">Relatório de Reservas</h3>
 
-    <!-- Formulário para gerar relatório -->
-    <form action="/relatorio" method="POST" class="form-relatorio">
+    <!-- Formulário compactado -->
+    <form action="/relatorio" method="POST" class="form-relatorio needs-validation" novalidate>
         <fieldset>
-            <legend class="mb-3">Gerar Relatório</legend>
+            <legend class="mb-4 text-secondary">Gerar Relatório</legend>
 
-            <div class="form-group mb-3">
-                <label for="horaInicio">Hora de Início:</label>
-                <input type="time" id="horaInicio" name="horaInicio" class="form-control" required>
-                <div class="invalid-feedback">Por favor, selecione a hora de início.</div>
-            </div>
+            <div class="row">
+                <!-- Reduzir o tamanho dos campos -->
+                <div class="col-md-4 form-group mb-3">
+                    <label for="horaInicio" class="font-weight-bold">Hora de Início:</label>
+                    <input type="time" id="horaInicio" name="horaInicio" class="form-control form-control-sm" required>
+                </div>
 
-            <div class="form-group mb-3">
-                <label for="horaFim">Hora de Fim:</label>
-                <input type="time" id="horaFim" name="horaFim" class="form-control" required>
-                <div class="invalid-feedback">Por favor, selecione a hora de fim.</div>
-            </div>
+                <div class="col-md-4 form-group mb-3">
+                    <label for="horaFim" class="font-weight-bold">Hora de Fim:</label>
+                    <input type="time" id="horaFim" name="horaFim" class="form-control form-control-sm" required>
+                </div>
 
-            <div class="form-group mb-4">
-                <label for="periodoDia">Período do Dia:</label>
-                <select id="periodoDia" name="periodoDia" class="form-control" required>
-                    <option value="" disabled selected>Selecione o Período do Dia</option>
-                    <option value="manha">Manhã</option>
-                    <option value="tarde">Tarde</option>
-                    <option value="noite">Noite</option>
-                    <option value="customizado">Customizado</option>
-                </select>
-                <div class="invalid-feedback">Por favor, selecione um período do dia.</div>
+                <div class="col-md-4 form-group mb-3">
+                    <label for="periodoDia" class="font-weight-bold">Período do Dia:</label>
+                    <select id="periodoDia" name="periodoDia" class="form-control form-control-sm" required>
+                        <option value="" disabled selected>Selecione</option>
+                        <option value="manha">Manhã</option>
+                        <option value="tarde">Tarde</option>
+                        <option value="noite">Noite</option>
+                        <option value="customizado">Customizado</option>
+                    </select>
+                </div>
             </div>
 
             <div id="customDateFields" style="display: none;">
-                <div class="form-group mb-3">
-                    <label for="dataInicio">Data de Início:</label>
-                    <input type="date" id="dataInicio" name="dataInicio" class="form-control">
-                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group mb-3">
+                        <label for="dataInicio" class="font-weight-bold">Data de Início:</label>
+                        <input type="date" id="dataInicio" name="dataInicio" class="form-control form-control-sm">
+                    </div>
 
-                <div class="form-group mb-3">
-                    <label for="dataFim">Data de Fim:</label>
-                    <input type="date" id="dataFim" name="dataFim" class="form-control">
+                    <div class="col-md-6 form-group mb-3">
+                        <label for="dataFim" class="font-weight-bold">Data de Fim:</label>
+                        <input type="date" id="dataFim" name="dataFim" class="form-control form-control-sm">
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group mb-4">
-                <label for="idFuncionario">Buscar Funcionário:</label>
-                <select id="idFuncionario" name="idFuncionario" class="form-control">
-                    <option value="" disabled selected>Selecione o Funcionário (opcional)</option>
-                    {% for pessoa in pessoas %}
-                        <option value="{{ pessoa }}">{{ pessoa }}</option>
-                    {% endfor %}
-                </select>
-            </div>           
+            <div class="row">
+                <div class="col-md-6 form-group mb-3">
+                    <label for="idFuncionario" class="font-weight-bold">Funcionário (opcional):</label>
+                    <select id="idFuncionario" name="idFuncionario" class="form-control form-control-sm">
+                        <option value="" disabled selected>Selecione</option>
+                        {% for pessoa in pessoas %}
+                            <option value="{{ pessoa }}">{{ pessoa }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
 
-            <div class="form-group mb-4">
-                <label for="idSala">Buscar Sala:</label>
-                <select id="idSala" name="idSala" class="form-control">
-                    <option value="" disabled selected>Selecione a Sala (opcional)</option>
-                    {% for sala in salas %}
-                        <option value="{{ sala }}">{{ sala }}</option>
-                    {% endfor %}
-                </select>
-            </div>           
+                <div class="col-md-6 form-group mb-3">
+                    <label for="idSala" class="font-weight-bold">Sala (opcional):</label>
+                    <select id="idSala" name="idSala" class="form-control form-control-sm">
+                        <option value="" disabled selected>Selecione</option>
+                        {% for sala in salas %}
+                            <option value="{{ sala }}">{{ sala }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
 
-            <div class="form-group mb-4">
-                <label for="curso">Buscar Curso:</label>
-                <select id="curso" name="curso" class="form-control">
-                    <option value="" disabled selected>Selecione o Curso (opcional)</option>
+            <div class="form-group mb-3">
+                <label for="curso" class="font-weight-bold">Curso (opcional):</label>
+                <select id="curso" name="curso" class="form-control form-control-sm">
+                    <option value="" disabled selected>Selecione</option>
                     {% for curso in cursos %}
                         <option value="{{ curso }}">{{ curso }}</option>
                     {% endfor %}
                 </select>
-            </div>            
+            </div>
 
-            <p class="text-muted">Preencha os campos desejados para filtrar o relatório.</p>
-
-            <button type="submit" class="btn btn-primary w-100">Gerar Relatório</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Gerar Relatório</button>
         </fieldset>
     </form>
-    <hr>
+
 </div>
 
 <script>
+    // Exibir campos personalizados apenas quando a opção "customizado" for escolhida
     document.getElementById('periodoDia').addEventListener('change', function() {
         const customDateFields = document.getElementById('customDateFields');
         customDateFields.style.display = (this.value === 'customizado') ? 'block' : 'none';
     });
+
 </script>
 {% endblock %}

@@ -1,49 +1,8 @@
-/* ===================== Custom Root Variables ===================== */
-:root {
-    /* Cores principais */
-    --cabecalho-gradiente-inicio: #003366;
-    --cabecalho-gradiente-fim: #66b3ff;
-    --texto-primario: #ffffff;
-    --cor-destaque: #f78c42;
-    --primary-text-color: #333;
-    --accent-color: #4a90e2;
-    --nav-background: #ffffff;
-    --cor-texto-secundario: #666;
-
-    /* Transições */
-    --transition-ease: 0.3s ease;
-    --transition-transform: 0.2s ease;
-
-    /* Espaçamento */
-    --padding-cabecalho: 1rem 2rem;
-    --padding-cabecalho-mobile: 1rem;
-
-    /* Fontes */
-    --fonte-logo: 2rem;
-    --fonte-nav: 1rem;
-
-    /* Sombras */
-    --sombra-caixa: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* ===================== Body ===================== */
-body {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--cor-texto-secundario);
-    background-color: #ffffff;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    transition: background-color var(--transition-ease), color var(--transition-ease);
-}
-
 /* ===================== Cabeçalho ===================== */
 header {
-    background: linear-gradient(135deg, var(--cabecalho-gradiente-inicio), var(--cabecalho-gradiente-fim));
-    color: var(--texto-primario);
-    padding: var(--padding-cabecalho);
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    color: var(--cor-texto);
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -51,20 +10,21 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    box-shadow: var(--sombra-caixa);
-    border-radius: 0 0 10px 10px;
-    transition: background-color var(--transition-ease), padding var(--transition-ease), box-shadow var(--transition-ease);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 8px;
+    transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+    max-width: 100%;
 }
 
 /* Logo */
 header .logo {
-    font-size: var(--fonte-logo);
+    font-size: 2rem;
     font-weight: bold;
-    color: var(--texto-primario);
+    color: var(--cor-texto);
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 1px;
-    transition: color var(--transition-ease), transform var(--transition-ease);
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 header .logo:hover {
@@ -74,30 +34,32 @@ header .logo:hover {
 
 /* Links de navegação */
 header nav a {
-    font-size: var(--fonte-nav);
-    color: var(--texto-primario);
+    font-size: 1rem;
+    color: var(--cor-texto);
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: background-color var(--transition-ease), color var(--transition-ease);
+    padding: 0.5rem 1.2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Efeito hover nos links */
 header nav a:hover {
-    color: var(--cor-destaque);
+    color: var(--cor-hover);
 }
 
 /* Menu mobile */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
-        padding: var(--padding-cabecalho-mobile);
+        padding: 1rem 2rem;
     }
 
     header .logo {
         font-size: 1.5rem;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     header nav {
+        width: 100%;
         display: none;
     }
 
@@ -107,14 +69,15 @@ header nav a:hover {
 
     header nav a {
         font-size: 1.2rem;
-        padding: 1rem;
+        padding: 1rem 2rem;
+        text-align: center;
     }
 }
 
 /* Efeito de rolagem no cabeçalho */
 header.scrolled {
-    background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background-color: var(--cor-scrolled-background);
+    box-shadow: 0 4px 12px var(--cor-scrolled-shadow);
 }
 
 /* Foco nos links */
