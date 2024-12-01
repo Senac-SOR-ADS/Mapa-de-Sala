@@ -140,6 +140,13 @@ class HomePrincipal(QMainWindow):
     def trocarTelaMenu(self, menu):
         if self.subMenuQuebrado.isVisible():
             self.menuQuebrado.setCurrentWidget(menu)
+            self.subMenuLateral.hide()
+            self.menuSimples.show()
+            self.btnMenu.setStyleSheet("""
+                                       #btnMenu {
+                                           icon: url("App/view/ui/icones/menu-regular-24 (1).png"); 
+                                        }"""
+                                    )
         else:
             self.subMenuQuebrado.show()
             self.menuQuebrado.setCurrentWidget(menu)
