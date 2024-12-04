@@ -1,5 +1,7 @@
 import bcrypt
+from App.controller.logger import Log
 
+log = Log('model')
 
 class Criptografia:
     TIPO_ENCODE = 'utf-8'
@@ -15,10 +17,9 @@ class Criptografia:
     def validarSenha(cls, senha: str, senhaCriptografada: bytes):
         """Valida se as senhas passadas são identicas"""
         if bcrypt.checkpw(senha.encode(cls.TIPO_ENCODE), senhaCriptografada):
-            print('Senhas identicas!')
             return True
         else:
-            print('Senhas não são iguais!')
+            log.error('Senhas não coincidem.')
             return False
         
 if __name__ == '__main__':

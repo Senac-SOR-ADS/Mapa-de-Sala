@@ -1,5 +1,7 @@
 from App.model.conexao import ConexaoBD
 from App.model.criptografia import Criptografia
+from App.controller.logger import Log
+
 
 class Login:
     def __init__(self, email=None, senha=None, nivel_acesso='user') -> None:
