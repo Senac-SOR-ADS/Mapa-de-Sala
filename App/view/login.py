@@ -71,14 +71,14 @@ class LoginInterface(QDialog):
         senha = self.inputSenha.text()
         return (email, senha)        
 
-    def validandoDados(self):
-        # self.respostasErros.setText('LOGANDO...')
-        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostasErros))
+    # def validandoDados(self):
+    #     # self.respostasErros.setText('LOGANDO...')
+    #     QTimer.singleShot(2000, lambda: self.limparCampos(self.respostasErros))
 
-    def dadosInvalidos(self):
-        texto = 'DADOS INCOMPLETOS.'
-        # self.respostasErros.setText(texto)
-        QTimer.singleShot(2000, lambda: self.limparCampos(self.respostasErros))
+    # def dadosInvalidos(self):
+    #     texto = 'DADOS INCOMPLETOS.'
+    #     # self.respostasErros.setText(texto)
+    #     QTimer.singleShot(2000, lambda: self.limparCampos(self.respostasErros))
 
     @pyqtSlot()
     def on_btnEntrar_clicked(self):
