@@ -71,7 +71,7 @@
       <string notr="true">color: #48752C</string>
      </property>
      <property name="text">
-      <string>Cadastro concluído com sucesso!</string>
+      <string/>
      </property>
     </widget>
    </item>

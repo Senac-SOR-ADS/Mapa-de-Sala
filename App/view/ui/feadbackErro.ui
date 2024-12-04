@@ -86,8 +86,7 @@
       <string notr="true">color: rgb(255, 0, 0);</string>
      </property>
      <property name="text">
-      <string>Cadastro não concluído! Algo deu errado durante o processo. 
-Por favor, revise as informações e tente novamente.</string>
+      <string/>
      </property>
     </widget>
    </item>
