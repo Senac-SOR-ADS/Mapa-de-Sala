@@ -924,7 +924,7 @@ QPushButton {
                    </size>
                   </property>
                   <property name="currentIndex">
-                   <number>2</number>
+                   <number>1</number>
                   </property>
                   <widget class="QWidget" name="cadastros">
                    <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1047,7 +1047,7 @@ QPushButton {
                   <widget class="QWidget" name="editar">
                    <layout class="QVBoxLayout" name="verticalLayout_10">
                     <item>
-                     <widget class="QPushButton" name="btnEditarPessoas">
+                     <widget class="QPushButton" name="btnEditarLogin">
                       <property name="minimumSize">
                        <size>
                         <width>119</width>
@@ -1058,7 +1058,7 @@ QPushButton {
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Pessoas</string>
+                       <string>Login</string>
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
@@ -1123,7 +1123,7 @@ QPushButton {
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="btnEditarLogin">
+                     <widget class="QPushButton" name="btnEditarSala">
                       <property name="minimumSize">
                        <size>
                         <width>119</width>
@@ -1134,7 +1134,23 @@ QPushButton {
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Login</string>
+                       <string>Sala</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btnEditarPessoas">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="text">
+                       <string>Pessoa</string>
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
@@ -1581,12 +1597,10 @@ QPushButton {
   <tabstop>btnCadastarSala</tabstop>
   <tabstop>btnCadastroPessoa</tabstop>
   <tabstop>btnEditarReserva</tabstop>
-  <tabstop>btnEditarPessoas</tabstop>
   <tabstop>btnArea</tabstop>
   <tabstop>btnCadastroLogin</tabstop>
   <tabstop>btnReserva</tabstop>
   <tabstop>btnEditaCurso</tabstop>
-  <tabstop>btnEditarLogin</tabstop>
  </tabstops>
  <resources/>
  <connections>
