@@ -19,6 +19,8 @@ class LoginInterface(QDialog):
         self.setAttribute(Qt.WA_TranslucentBackground)
 
         self.old_pos = None
+        
+        self.inputEmail.setFocus()
 
         # Faz a conexão do botão MenuBar
         self.btnMenuBar.clicked.connect(self.showMenu)
@@ -70,12 +72,12 @@ class LoginInterface(QDialog):
         return (email, senha)        
 
     def validandoDados(self):
-        self.respostasErros.setText('LOGANDO...')
+        # self.respostasErros.setText('LOGANDO...')
         QTimer.singleShot(2000, lambda: self.limparCampos(self.respostasErros))
 
     def dadosInvalidos(self):
         texto = 'DADOS INCOMPLETOS.'
-        self.respostasErros.setText(texto)
+        # self.respostasErros.setText(texto)
         QTimer.singleShot(2000, lambda: self.limparCampos(self.respostasErros))
 
     @pyqtSlot()
