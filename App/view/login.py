@@ -84,10 +84,10 @@ class LoginInterface(QDialog):
     def on_btnEntrar_clicked(self):
         campos = self.getEmailSenha()
         if validarLogin(campos[0], campos[1]):
-            self.validandoDados()
+            # self.validandoDados()
             self.accept()
-        else:
-            self.dadosInvalidos()
+        # else:
+        #     self.dadosInvalidos()
 
     def limparCampos(self, campo):
         campo.clear()
