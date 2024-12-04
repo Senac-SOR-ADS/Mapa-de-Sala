@@ -335,21 +335,6 @@ border-radius: 15px;
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QLabel" name="respostas">
-     <property name="font">
-      <font>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <tabstops>
