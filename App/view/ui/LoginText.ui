@@ -325,6 +325,9 @@ QPushButton::menu-indicator {
              <pointsize>9</pointsize>
             </font>
            </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
            <property name="placeholderText">
             <string>SENHA</string>
            </property>
