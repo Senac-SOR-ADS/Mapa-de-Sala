@@ -81,10 +81,10 @@ class ReservaInterface(QWidget):
         idLogin = 8
         diasValidos = (info['seg'], info['ter'], info['qua'], info['qui'], info['sexta'], info['sab'], False)
         validacao = validarCadastro(info, diasValidos)
-        if not validacao:
+        if type(validacao) == list:
+            print('Não foi possível fazer a reserva, já existe uma reserva nesse horário')
+        elif not validacao:
             fazendoReserva(idLogin, info, diasValidos)
-        elif validacao:
-            print(f'Não foi possivel fazer a reserva')
     
     
     def setDataMinima(self):
