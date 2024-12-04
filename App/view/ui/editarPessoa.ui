@@ -253,19 +253,6 @@ border-radius: 15px;
     <string>EDITAR</string>
    </property>
   </widget>
-  <widget class="QLabel" name="respostaCadastro">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>510</y>
-     <width>141</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
  </widget>
  <tabstops>
   <tabstop>nomePessoas</tabstop>

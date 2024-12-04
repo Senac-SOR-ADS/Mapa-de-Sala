@@ -275,19 +275,6 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="respostaCadastro">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>530</y>
-     <width>141</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
  </widget>
  <tabstops>
   <tabstop>nomePessoas</tabstop>

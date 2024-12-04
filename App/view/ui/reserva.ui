@@ -190,19 +190,6 @@
        <string>OBSERVAÇÕES:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="feedbackReserva">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>430</y>
-        <width>161</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QLineEdit" name="equipamentosReserva">
       <property name="geometry">
        <rect>

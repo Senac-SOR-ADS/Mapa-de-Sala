@@ -345,6 +345,9 @@ QPushButton::menu-indicator {
               <property name="echoMode">
                <enum>QLineEdit::Normal</enum>
               </property>
+              <property name="dragEnabled">
+               <bool>false</bool>
+              </property>
               <property name="placeholderText">
                <string>EMAIL</string>
               </property>

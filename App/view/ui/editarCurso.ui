@@ -218,32 +218,6 @@
      <string>Carga Horária do Curso</string>
     </property>
    </widget>
-   <widget class="QLabel" name="respostaCadastroIncompleto">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>500</y>
-      <width>201</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="respostaCadastrando">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>500</y>
-      <width>201</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QComboBox" name="periodoCurso">
     <property name="geometry">
      <rect>
