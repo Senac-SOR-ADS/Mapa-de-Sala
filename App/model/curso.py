@@ -1,5 +1,9 @@
 from App.model.conexao import ConexaoBD
- 
+from App.controller.logger import Log
+
+log = Log('model')
+
+
 class Curso:
     __banco = ConexaoBD()
  
@@ -99,8 +103,9 @@ class Curso:
         resultado = cls.__banco.alterarDados(query, param)
         cls.__banco.desconectar()
         if resultado.rowcount:
-            print('curso deletado')
+            log.info('curso deletado')
             return True
+        log.error('erro ao deletar curso.')
         return False
     
     @classmethod
