@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>780</width>
-    <height>611</height>
+    <width>819</width>
+    <height>664</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,7 +55,7 @@
    <item>
     <widget class="QFrame" name="frame">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -66,41 +66,6 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLineEdit" name="feedbackText">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>320</y>
-        <width>741</width>
-        <height>181</height>
-       </rect>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="placeholderText">
-       <string>Observações adicionais</string>
-      </property>
-      <property name="cursorMoveStyle">
-       <enum>Qt::VisualMoveStyle</enum>
-      </property>
-      <property name="clearButtonEnabled">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>300</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Observações</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
@@ -119,8 +84,8 @@
        <rect>
         <x>100</x>
         <y>139</y>
-        <width>131</width>
-        <height>31</height>
+        <width>231</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="alignment">
@@ -148,8 +113,8 @@
        <rect>
         <x>519</x>
         <y>69</y>
-        <width>133</width>
-        <height>31</height>
+        <width>231</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="placeholderText">
@@ -161,8 +126,8 @@
        <rect>
         <x>99</x>
         <y>69</y>
-        <width>131</width>
-        <height>31</height>
+        <width>231</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="cursor">
@@ -206,8 +171,8 @@
        <rect>
         <x>520</x>
         <y>9</y>
-        <width>131</width>
-        <height>31</height>
+        <width>231</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="cursor">
@@ -277,14 +242,49 @@
        <rect>
         <x>100</x>
         <y>8</y>
-        <width>131</width>
-        <height>31</height>
+        <width>231</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="placeholderText">
        <string>Nome da Sala</string>
       </property>
      </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Observações</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="feedbackText">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>721</width>
+       <height>201</height>
+      </size>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>Observações adicionais</string>
+     </property>
+     <property name="cursorMoveStyle">
+      <enum>Qt::VisualMoveStyle</enum>
+     </property>
+     <property name="clearButtonEnabled">
+      <bool>false</bool>
+     </property>
     </widget>
    </item>
    <item>
