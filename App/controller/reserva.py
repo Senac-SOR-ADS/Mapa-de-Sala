@@ -26,16 +26,19 @@ def validarCadastro(dados, diasValidos):
     diaAtual = diaInicio
     listaDias = []
     
-    while diaAtual <= diaFim:
-        diaSemana = diaAtual.weekday()
-        validar = Reserva.validar_periodo(dados['idSala'], diaAtual, dados['inicioCurso'], dados['fimCurso'])
-        if diasValidos[diaSemana]:
-            if validar:
-                listaDias.append(validar[0])
-        diaAtual += timedelta(days=1)
-    if listaDias != []:
-        return listaDias
-    return False
+    if validarDiaSemana(diaInicio, diasValidos):
+        while diaAtual <= diaFim:
+            diaSemana = diaAtual.weekday()
+            validar = Reserva.validar_periodo(dados['idSala'], diaAtual, dados['inicioCurso'], dados['fimCurso'])
+            if diasValidos[diaSemana]:
+                if validar:
+                    listaDias.append(validar[0])
+            diaAtual += timedelta(days=1)
+        if listaDias != []:
+            return listaDias
+        else:
+            return False
+    return True
 
 def trocar_reserva(dados1, dados2):
     if Reserva.atualizar(dados1['idLogin'], dados1['idPessoa'], dados1['idcurso'], dados1['idSala'], dados1['dia'], dados1['inicioCurso'], dados1['fimCurso'], dados1['observações'],  dados1['idReserva']):
@@ -49,4 +52,11 @@ def deletarReserva(idReserva):
 def atualizarReserva(idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, observacao, idReserva):
     if Reserva.atualizar(idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, observacao, idReserva):
         return True
+    return False
+
+def validarDiaSemana(dia, diaSemana):
+    dia = datetime.weekday(dia)
+    if diaSemana[dia]:
+        return True
+    print('Selecione o dia da semana certo!')
     return False
