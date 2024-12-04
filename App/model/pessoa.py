@@ -1,4 +1,8 @@
 from App.model.conexao import ConexaoBD
+from App.controller.logger import Log
+
+log = Log('model')
+
 
 class Pessoa:
     __banco = ConexaoBD()
@@ -76,6 +80,7 @@ class Pessoa:
             self.__set_idPessoa(resposta.lastrowid)
             return self.get_idPessoa()
         except Exception as e:
+            log.error(f'{__name__}: Erro ao cadastrar pessoa.')
             print(f"Erro ao cadastrar pessoa: {e}")
             return None
         finally:
@@ -104,6 +109,7 @@ class Pessoa:
             self.__banco.desconectar()
             return True
         except Exception:
+            log.error(f'{__name__}: Erro ao atualizar um cadastro de pessoa.')
             return False
 
     # =================== listar ===================
@@ -116,6 +122,7 @@ class Pessoa:
             cls.__banco.desconectar()
             return resposta
         except Exception:
+            log.error(f'{__name__}: Erro ao executar uma busca de pessoas.')
             return False
     
     # =================== buscar Id ===================
@@ -128,6 +135,7 @@ class Pessoa:
             cls.__banco.desconectar()
             return resposta
         except Exception:
+            log.error(f'{__name__}: Erro ao buscar uma pessoa pelo ID.')
             return False
 
     # =================== Remove ===================
@@ -141,6 +149,7 @@ class Pessoa:
             cls.__banco.desconectar()
             return True
         except Exception:
+            log.error(f'{__name__}: Erro ao deletar uma pessoa.')
             return False
 
 if __name__ == "__main__":

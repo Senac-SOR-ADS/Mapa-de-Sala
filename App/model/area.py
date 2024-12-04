@@ -1,5 +1,8 @@
 from App.model.conexao import ConexaoBD
+from App.controller.logger import Log
 
+
+log = Log('model')
 
 class Area:
     __banco = ConexaoBD()
@@ -19,9 +22,11 @@ class Area:
         query = "INSERT INTO area (nome) VALUES (%s)"
         parametro = [self.__nome]
         if self.__banco.alterarDados(query, parametro):
+            log.info(f'Inserção de área feita com sucesso!, {parametro}')
             self.__banco.desconectar()
             return True
         else:
+            log.error(f'{__name__}: Erro ao fazer o cadastro de uma nova área. {parametro}')
             self.__banco.desconectar()
             return False
     
