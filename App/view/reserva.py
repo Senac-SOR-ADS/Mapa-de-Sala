@@ -26,6 +26,7 @@ class ReservaInterface(QWidget):
         self.diaInicio.setCalendarPopup(True)
         self.diaInicio.setDisplayFormat('dd/MM/yyyy')
         self.diaInicio.setDate(QDate.currentDate())
+        self.setDataMinima()
         self.diaInicio.dateChanged.connect(self.setDataMinima)
 
         self.diaFim.setCalendarPopup(True)
