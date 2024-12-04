@@ -10,7 +10,7 @@ from App.controller.curso import listarCursos
 from App.controller.pessoa import buscarPessoas
 from App.controller.sala import listarSala
 from App.controller.utils import modificarData
-from App.controller.reserva import fazendoReserva, validarCadastro
+from App.controller.reserva import fazendoReserva, validarCadastro, validarDiaSemana
 
 
 class ReservaInterface(QWidget):
@@ -81,11 +81,14 @@ class ReservaInterface(QWidget):
         info = self.getDados()
         idLogin = 8
         diasValidos = (info['seg'], info['ter'], info['qua'], info['qui'], info['sexta'], info['sab'], False)
-        validacao = validarCadastro(info, diasValidos)
-        if type(validacao) == list:
-            print('Não foi possível fazer a reserva, já existe uma reserva nesse horário')
-        elif not validacao:
+        if validarDiaSemana(info['diaInicio'], diasValidos):
+            validacao = validarCadastro(info, diasValidos)
+            if len(validacao):
+                print('Não foi possível fazer a reserva, já existe uma reserva nesse horário')
+                return
             fazendoReserva(idLogin, info, diasValidos)
+            print('Reserva feita com sucesso!')
+        return
     
     
     def setDataMinima(self):
