@@ -18,7 +18,6 @@ class CadastrarArea(QWidget):
         
     def getCadastroArea(self):
         area = self.cadastrarArea.text().strip()
-
         return(area)
 
 
