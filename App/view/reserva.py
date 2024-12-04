@@ -21,13 +21,15 @@ class ReservaInterface(QWidget):
 
         # Os metodos abaixo servem para transformar o QDateEdit em um calendário
         self.diaInicio = self.findChild(QDateEdit, 'diaInicio') 
-        self.diaFim = self.findChild(QDateEdit, 'diaFim')  
+        self.diaFim = self.findChild(QDateEdit, 'diaFim')
 
         self.diaInicio.setCalendarPopup(True)
         self.diaInicio.setDisplayFormat('dd/MM/yyyy')
         self.diaInicio.setDate(QDate.currentDate())
         self.setDataMinima()
+        self.setHorarioMinimo()
         self.diaInicio.dateChanged.connect(self.setDataMinima)
+        self.inicioCurso.timeChanged.connect(self.setHorarioMinimo)
 
         self.diaFim.setCalendarPopup(True)
         self.diaFim.setDisplayFormat('dd/MM/yyyy')
@@ -95,6 +97,9 @@ class ReservaInterface(QWidget):
         primeiroDia = self.diaInicio.date()
         self.diaFim.setMinimumDate(primeiroDia)
     
+    def setHorarioMinimo(self):
+        horarioComeco = self.inicioCurso.time()
+        self.fimCurso.setMinimumTime(horarioComeco)
         
     def popularJanela(self):
         """Popula os comboBoxes com dados do banco."""
