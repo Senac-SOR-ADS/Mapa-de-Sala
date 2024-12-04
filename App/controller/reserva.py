@@ -15,7 +15,6 @@ def fazendoReserva(idLogin, dados, diasValidos):
         if diasValidos[diaSemana]:
             Reserva(idLogin, dados['idDocente'], dados['idCurso'], dados['idSala'], diaAtual, dados['inicioCurso'], dados['fimCurso'], 0, dados['observações']).fazer_reserva()
         diaAtual += timedelta(days=1)
-    print('Reserva feita com sucesso!')
     return True
         
 def validarCadastro(dados, diasValidos):
@@ -26,19 +25,14 @@ def validarCadastro(dados, diasValidos):
     diaAtual = diaInicio
     listaDias = []
     
-    if validarDiaSemana(diaInicio, diasValidos):
-        while diaAtual <= diaFim:
-            diaSemana = diaAtual.weekday()
-            validar = Reserva.validar_periodo(dados['idSala'], diaAtual, dados['inicioCurso'], dados['fimCurso'])
-            if diasValidos[diaSemana]:
-                if validar:
-                    listaDias.append(validar[0])
-            diaAtual += timedelta(days=1)
-        if listaDias != []:
-            return listaDias
-        else:
-            return False
-    return True
+    while diaAtual <= diaFim:
+        diaSemana = diaAtual.weekday()
+        validar = Reserva.validar_periodo(dados['idSala'], diaAtual, dados['inicioCurso'], dados['fimCurso'])
+        if diasValidos[diaSemana]:
+            if validar:
+                listaDias.append(validar[0])
+        diaAtual += timedelta(days=1)
+    return listaDias
 
 def trocar_reserva(dados1, dados2):
     if Reserva.atualizar(dados1['idLogin'], dados1['idPessoa'], dados1['idcurso'], dados1['idSala'], dados1['dia'], dados1['inicioCurso'], dados1['fimCurso'], dados1['observações'],  dados1['idReserva']):
@@ -55,7 +49,9 @@ def atualizarReserva(idLogin, idPessoa, idCurso, idSala, dia, hrInicio, hrFim, o
     return False
 
 def validarDiaSemana(dia, diaSemana):
-    dia = datetime.weekday(dia)
+    formatoDia = modificarDataReserva(dia)
+    formatoDia = datetime.strptime(formatoDia, "%d/%m/%Y")
+    dia = datetime.weekday(formatoDia)
     if diaSemana[dia]:
         return True
     print('Selecione o dia da semana certo!')
