@@ -1,12 +1,27 @@
 from App.model.login import Login
 
+__USUARIO_LOGADO = []
+
 # =================== validar ===================
 def validarLogin(email, senha):
+    global __USUARIO_LOGADO
     login = Login(email, senha)
     if login.validarLogin():
+        __USUARIO_LOGADO = [login]
         return True
     else:
         return False
+
+# =========== pegar usuario logado ============
+def pegarUsuarioLogado():
+    global __USUARIO_LOGADO
+    login = __USUARIO_LOGADO[0]
+    return {'id_login':login.getIdLogin(), 'id_pessoa':login.getIdPessoa(), 'email':login.getEmail(), 'nivel_acesso':login.getNivelAcesso()}
+
+# =========== remover usuario logado ============
+def removerUsuarioLogado():
+    global __USUARIO_LOGADO
+    __USUARIO_LOGADO = []
 
 # =================== cadastrar ===================
 def cadastrarLogin(idPessoa, cpf_cnpj, email, cargo):
