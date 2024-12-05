@@ -27,6 +27,8 @@ class HomePrincipal(QMainWindow):
         self.subMenuLateral.hide()
         self.subMenuQuebrado.hide()
         self.btnHome.setChecked(True)
+        self._resizing = False
+        self._resize_direction = None
         
    # Criando parte interativa do menu
    
@@ -150,10 +152,18 @@ class HomePrincipal(QMainWindow):
             if self.childAt(event.pos()) == self.cabecalho:  
                 self.moving = True
                 self.offset = event.pos()
+                if event.button() == Qt.LeftButton:
+                    self._resize_direction = self._get_resize_direction(event.pos())
+                    if self._resize_direction == "bottom-right":
+                        self._resizing = True
+                        self._offset = event.pos()
+
 
     def mouseMoveEvent(self, event):
         if self.moving and not self.isMaximized():
             self.move(self.pos() + event.pos() - self.offset)
+            if self._resizing and self._resize_direction == "bottom-right":
+                self._resize_window(event.globalPos())
 
     def mouseDoubleClickEvent(self, event):
         if event.button() == Qt.LeftButton:
@@ -174,6 +184,34 @@ class HomePrincipal(QMainWindow):
                                     )
     def mouseReleaseEvent(self, event):
         self.moving = False
+        self._resizing = False
+        self._resize_direction = None
+        self.setCursor(Qt.ArrowCursor)
+
+    def _get_resize_direction(self, pos):
+        x, y = pos.x(), pos.y()
+        width, height = self.width(), self.height()
+        margin = 10  
+
+    # Apenas verificar o canto inferior direito
+        if x > width - margin and y > height - margin:
+            return "bottom-right"
+
+        return None
+    
+    def _resize_window(self, global_pos):
+        rect = self.geometry()
+        min_width = 100
+        min_height = 100
+
+        dx = global_pos.x() - rect.x()
+        dy = global_pos.y() - rect.y()
+
+        if self._resize_direction == "bottom-right":
+            new_width = max(min_width, dx)
+            new_height = max(min_height, dy)
+            self.resize(new_width, new_height)
+
 
     
     @pyqtSlot()
