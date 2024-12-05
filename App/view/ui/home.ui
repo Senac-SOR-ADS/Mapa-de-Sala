@@ -43,7 +43,7 @@
 
 #btnFecharPagina:hover {
 	background-color: #E81123;
-	color: #FFF;
+	color: #fff;
 	icon: url(&quot;App/view/ui/icones/iconCloseBranco.png&quot;);
 }
 
