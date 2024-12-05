@@ -73,6 +73,7 @@ class Login:
     # =================== atualizar ===================
     def atualizar(self, idLogin, email, acesso, senha):
         """Atualiza o email e o nível de acesso do usuário no banco de dados."""
+        senha = Criptografia.criptografarSenha(senha)
         
         try:
             self.__banco.conectar()

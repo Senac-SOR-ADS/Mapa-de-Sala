@@ -3,6 +3,7 @@ from PyQt5.uic import loadUi
 from PyQt5.QtCore import pyqtSlot
 from App.controller.login import listarLogins, buscarLoginId, atualizarCadastro
 from App.controller.utils import validarInputs
+from App.model.criptografia import Criptografia
 
 class EditarLogin(QWidget):
     def __init__(self):
