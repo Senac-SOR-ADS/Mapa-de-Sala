@@ -15,11 +15,11 @@ def cadastrarLogin(idPessoa, cpf_cnpj, email, cargo):
     return login_model.cadastrar(idPessoa, cpf_cnpj, email, cargo)
 
 # =================== atualizar ===================
-def atualizarCadastro(idLogin, novoEmail, novoCargo, novaSenha):
-    """Atualiza o email e o cargo de um usuário."""
+def atualizarCadastro(idLogin, novoEmail, novoAcesso, novaSenha):
+    """Atualiza o email, cargo e acesso de um usuário."""
     try:
         login_model = Login()
-        if login_model.atualizar(idLogin, novoEmail, novoCargo, novaSenha):
+        if login_model.atualizar(idLogin, novoEmail, novoAcesso, novaSenha):
             print('login alterado.')
             return {"success": "Email e cargo atualizados com sucesso."}
         return {"error": "Falha ao atualizar email e cargo."}

@@ -71,10 +71,9 @@ class Login:
             self.__banco.desconectar()
 
     # =================== atualizar ===================
-    def atualizar(self, idLogin, email, cargo, senha):
+    def atualizar(self, idLogin, email, acesso, senha):
         """Atualiza o email e o nível de acesso do usuário no banco de dados."""
         
-        nivelAcesso = 'admin' if cargo == 'Administrador' else 'user'
         try:
             self.__banco.conectar()
 
@@ -83,7 +82,7 @@ class Login:
                 SET email = %s, nivelAcesso = %s, senha = %s
                 WHERE idLogin = %s
             '''
-            self.__banco.alterarDados(query_update, (email, nivelAcesso, senha, idLogin))
+            self.__banco.alterarDados(query_update, (email, acesso, senha, idLogin))
             return True
         except Exception as e:
             print(f"Erro ao atualizar login: {e}")
