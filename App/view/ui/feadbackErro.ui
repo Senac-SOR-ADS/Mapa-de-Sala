@@ -29,65 +29,144 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
+   <string notr="true">#btnConfirmar {
+	border: none;
+	background-color: #01498a;
+	color: #FFF;
+	padding: 7px;
+	border-radius: 15px;
+}</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
-    <widget class="QLabel" name="icon">
-     <property name="minimumSize">
-      <size>
-       <width>91</width>
-       <height>91</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>97</width>
-       <height>97</height>
-      </size>
-     </property>
-     <property name="sizeIncrement">
-      <size>
-       <width>91</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="midLineWidth">
-      <number>0</number>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap>icones/iconErro.png</pixmap>
-     </property>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="icon">
+        <property name="minimumSize">
+         <size>
+          <width>91</width>
+          <height>91</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>97</width>
+          <height>97</height>
+         </size>
+        </property>
+        <property name="sizeIncrement">
+         <size>
+          <width>91</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="midLineWidth">
+         <number>0</number>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>icones/iconErro.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="texto">
+        <property name="minimumSize">
+         <size>
+          <width>701</width>
+          <height>91</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>999999</width>
+          <height>999999</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>17</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 0, 0);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="texto">
-     <property name="minimumSize">
-      <size>
-       <width>701</width>
-       <height>91</height>
-      </size>
+    <widget class="QWidget" name="widget_2" native="true">
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
-     <property name="maximumSize">
-      <size>
-       <width>999999</width>
-       <height>999999</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>17</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(255, 0, 0);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>10</number>
+      </property>
+      <property name="bottomMargin">
+       <number>8</number>
+      </property>
+      <item alignment="Qt::AlignRight">
+       <widget class="QPushButton" name="btnConfirmar">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>OK</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>

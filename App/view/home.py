@@ -15,8 +15,9 @@ from .editarCurso import EditarCurso
 from .editarLogin import EditarLogin
 from .editarReserva import EditarReserva
 from .editarSala import EditarSala
-
 from .reserva import ReservaInterface
+from .telaConfirmacao import TelaConfirmacao
+from .login import LoginInterface
 
 
 class HomePrincipal(QMainWindow):
@@ -38,7 +39,6 @@ class HomePrincipal(QMainWindow):
         self.busca: QWidget
         self.editar: QWidget
         self.menuSimples: QWidget
-        
         self.btnHome: QPushButton
 
    # Criando instancias das interfaces
@@ -56,7 +56,6 @@ class HomePrincipal(QMainWindow):
         self.interfEditLogin = EditarLogin
         self.interfEditReserva = EditarReserva
         self.interfEditSala = EditarSala
-
         
     #Telas dentro do menu para alterar as janelas pelo sub menu
         self.btnPessoa.clicked.connect(lambda: self.trocarTelaMenu(self.cadastros))
@@ -65,9 +64,11 @@ class HomePrincipal(QMainWindow):
         self.btnPesquisa.clicked.connect(lambda: self.trocarTelaMenu(self.busca))
         self.btnEditarSimples.clicked.connect(lambda: self.trocarTelaMenu(self.editar)) 
         self.btnEditar.clicked.connect(lambda: self.trocarTelaMenu(self.editar)) 
+        self.btnSair.clicked.connect(self.chamarConfirmacao)
+        self.btnSairSimples.clicked.connect(self.chamarConfirmacao)
         
-    #btns da propria interface
-    
+        #btns da propria interface
+        
         # Forma Corrigida para Setar Interface
         #######################################
         self.btnIncio.clicked.connect(lambda: self.setInterfaceOnHome(self.inicio))
@@ -143,6 +144,13 @@ class HomePrincipal(QMainWindow):
         else:
             self.subMenuQuebrado.show()
             self.menuQuebrado.setCurrentWidget(menu)
+            
+    def chamarConfirmacao(self):
+        info = TelaConfirmacao('Tem certeza que deseja saír?')
+        login = LoginInterface()
+        if info.exec_():
+            self.close()
+            login.exec_()
             
 
     def mousePressEvent(self, event):
