@@ -1,14 +1,18 @@
 from App.model.conexao import ConexaoBD
+from App.controller.logger import Log
+
+log = Log('model')
 
 
 class Equipamentos:
+    __banco = ConexaoBD()
+    
     def __init__(self, nome, marca, quantidade, area) -> None:
         # caracteristicas atributos 
         self.__nome = nome
         self.__marca = marca
         self.quantidade = quantidade
         self.__area = area
-        self.__banco = ConexaoBD()
  
     def get_nome(self):
         return self.__nome
@@ -29,14 +33,16 @@ class Equipamentos:
         self.__area = area
 
     def cadastrar_equipamento(self, id_area):
-        """essa função é para cadastrar um equipamento"""
-        self.__banco.conectar()
-        query = "INSERT INTO `equipamento`(`idArea`, `nome`, `marca`, `quantidade`) VALUES (%s, %s, %s, %s)"
-        params = [id_area, self.__nome, self.__marca, self.quantidade]
-        resultado = self.__banco.alterarDados(query, params)
-        self.__banco.desconectar()
-        return resultado
-    
+        try:    
+            """essa função é para cadastrar um equipamento"""
+            self.__banco.conectar()
+            query = "INSERT INTO `equipamento`(`idArea`, `nome`, `marca`, `quantidade`) VALUES (%s, %s, %s, %s)"
+            params = [id_area, self.__nome, self.__marca, self.quantidade]
+            resultado = self.__banco.alterarDados(query, params)
+            self.__banco.desconectar()
+            return resultado
+        except:
+            log.error(f"{__name__}: Erro ao realizar um cadastro de equipamentos. {params}")
     
     @classmethod
     def retorna_equipamento_reservado(cls):
@@ -84,11 +90,27 @@ class Equipamentos:
         cls.__banco.desconectar()
         return resultado
     
+    @classmethod
+    def deletar(cls, idEquipamento):
+        cls.__banco.conectar()
+        query = "DELETE FROM equipamento WHERE idEquipamento = %s"
+        parametro = [idEquipamento]
+        resultado = cls.__banco.alterarDados(query, parametro)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            return True
+        return False
     
- 
+    @classmethod
+    def atualizar(cls, idArea, nome, marca, quantidade, idEquipamento):
+        cls.__banco.conectar()
+        query = "UPDATE equipamento SET `idArea`= %s,`nome`= %s,`marca`= %s,`quantidade`= %s WHERE idEquipamento = %s"
+        parametro = [idArea, nome, marca, quantidade, idEquipamento]
+        resultado = cls.__banco.alterarDados(query, parametro)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            return True
     
     
 if __name__ == "__main__":
-    teste = Equipamentos('Panela de Pressão', 'Eletrolux', 20, 'Gastronomia')
-    res = teste.cadastrar_equipamento() #<--NUMERO DA AREA DO EQUIPAMENTO QUANDO FOR CADASTRAR EQUIPAMENTO
-    print(res)
+    pass

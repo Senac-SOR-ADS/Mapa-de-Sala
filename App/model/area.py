@@ -1,5 +1,8 @@
 from App.model.conexao import ConexaoBD
+from App.controller.logger import Log
 
+
+log = Log('model')
 
 class Area:
     __banco = ConexaoBD()
@@ -19,9 +22,11 @@ class Area:
         query = "INSERT INTO area (nome) VALUES (%s)"
         parametro = [self.__nome]
         if self.__banco.alterarDados(query, parametro):
+            log.info(f'Inserção de área feita com sucesso!, {parametro}')
             self.__banco.desconectar()
             return True
         else:
+            log.error(f'{__name__}: Erro ao fazer o cadastro de uma nova área. {parametro}')
             self.__banco.desconectar()
             return False
     
@@ -59,6 +64,29 @@ class Area:
         resultado = self.__banco.buscarTodos(query, parametro)
         self.__banco.desconectar()
         return resultado
+    
+    @classmethod
+    def deletar(cls, idArea):
+        cls.__banco.conectar()
+        query = "DELETE FROM area WHERE idArea = %s"
+        parametro = [idArea]
+        resultado = cls.__banco.alterarDados(query, parametro)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            return True
+        return False            
+    
+    @classmethod
+    def atualizar(cls, idArea, nome):
+        cls.__banco.conectar()
+        query = "UPDATE area SET nome = %s WHERE idArea = %s"
+        parametro = [nome, idArea]
+        resultado = cls.__banco.alterarDados(query, parametro)
+        cls.__banco.desconectar()
+        if resultado.rowcount:
+            return True
+        return False
+        
 
 if __name__ == '__main__':
     pass

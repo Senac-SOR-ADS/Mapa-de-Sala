@@ -1,14 +1,21 @@
 from PyQt5.QtWidgets import QWidget, QLineEdit, QComboBox, QDateEdit
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import pyqtSlot
-
+from PyQt5.QtCore import pyqtSlot, QDate
 from App.controller.pessoa import cadastrarPessoa
+from App.controller.utils import modificarData
+from App.controller.utils import validarAcao
 from PyQt5.QtCore import QTimer
 
 class cadastroPessoas(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('App/view/ui/cadastroPessoas.ui',self)
+
+        self.dataDeNascimento = self.findChild(QDateEdit, 'dataDeNascimento')
+
+        self.dataDeNascimento.setCalendarPopup(True)
+        self.dataDeNascimento.setDisplayFormat('dd/MM/yyyy')
+        self.dataDeNascimento.setDate(QDate.currentDate()) 
     
     def getDadosCadastro(self):
         nomePessoas = self.nomePessoas.text().strip()
@@ -20,7 +27,7 @@ class cadastroPessoas(QWidget):
 
         dados = {"nome": nomePessoas,
                  "cpfCnpj": cpfCnpj,
-                 "dataDeNascimento": dataDeNascimento,
+                 "dataDeNascimento": modificarData(dataDeNascimento),
                  "telefone": telefone,
                  "email": email,
                  "cargo": cargo}
@@ -49,5 +56,6 @@ class cadastroPessoas(QWidget):
         campos = self.getDadosCadastro()
         if cadastrarPessoa(*campos.values()):
             self.validandoDados()
+            validarAcao()
         else:
             self.dadosInvalidos()
