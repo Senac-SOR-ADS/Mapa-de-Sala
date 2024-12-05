@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>662</width>
-    <height>611</height>
+    <width>819</width>
+    <height>664</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,8 @@
 	background-color: #01498a;
 	color: #FFF;
 	border: none;
-	border-radius: 15px;
+	border-radius: 12px;
+
 }
  
 #cadastrarSala:hover {
@@ -38,280 +39,276 @@
 	color: red;
 }</string>
   </property>
-  <widget class="QPushButton" name="cadastrarSala">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>510</y>
-     <width>621</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>15</pointsize>
-    </font>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="text">
-    <string>Cadastrar Sala</string>
-   </property>
-  </widget>
-  <widget class="QFrame" name="frame">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>40</y>
-     <width>621</width>
-     <height>461</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <widget class="QLineEdit" name="feedbackText">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>330</y>
-      <width>601</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="placeholderText">
-     <string>Observações adicionais</string>
-    </property>
-    <property name="cursorMoveStyle">
-     <enum>Qt::VisualMoveStyle</enum>
-    </property>
-    <property name="clearButtonEnabled">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>300</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Observações</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>21</x>
-      <y>150</y>
-      <width>65</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Capacidade</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="mediaCapacidade">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>139</y>
-      <width>133</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-    </property>
-    <property name="placeholderText">
-     <string>Capacidade Média</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>80</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Equipamentos</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="tipoEquipamento">
-    <property name="geometry">
-     <rect>
-      <x>389</x>
-      <y>69</y>
-      <width>133</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Cadastrar Equipamentos</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="nomePredio">
-    <property name="geometry">
-     <rect>
-      <x>99</x>
-      <y>69</y>
-      <width>81</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="editable">
-     <bool>false</bool>
-    </property>
-    <property name="currentText">
-     <string notr="true">Prédio 1</string>
-    </property>
-    <property name="insertPolicy">
-     <enum>QComboBox::InsertAlphabetically</enum>
-    </property>
-    <item>
-     <property name="text">
-      <string>Prédio 1</string>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item alignment="Qt::AlignHCenter|Qt::AlignBottom">
+    <widget class="QLabel" name="label_7">
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
      </property>
-    </item>
-    <item>
      <property name="text">
-      <string>Prédio 2</string>
+      <string>Cadastro de Salas</string>
      </property>
-    </item>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>80</y>
-      <width>41</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Prédios</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="tipoSala">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>9</y>
-      <width>81</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="editable">
-     <bool>false</bool>
-    </property>
-    <property name="currentText">
-     <string>Comum</string>
-    </property>
-    <property name="insertPolicy">
-     <enum>QComboBox::InsertAlphabetically</enum>
-    </property>
-    <property name="sizeAdjustPolicy">
-     <enum>QComboBox::AdjustToMinimumContentsLength</enum>
-    </property>
-    <item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>21</x>
+        <y>150</y>
+        <width>65</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Capacidade</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="mediaCapacidade">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>139</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>Capacidade Média</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>80</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Equipamentos</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="tipoEquipamento">
+      <property name="geometry">
+       <rect>
+        <x>519</x>
+        <y>69</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Cadastrar Equipamentos</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="nomePredio">
+      <property name="geometry">
+       <rect>
+        <x>99</x>
+        <y>69</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="editable">
+       <bool>false</bool>
+      </property>
+      <property name="currentText">
+       <string notr="true">Prédio 1</string>
+      </property>
+      <property name="insertPolicy">
+       <enum>QComboBox::InsertAlphabetically</enum>
+      </property>
+      <item>
+       <property name="text">
+        <string>Prédio 1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Prédio 2</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>80</y>
+        <width>41</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Prédios</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="tipoSala">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>9</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="editable">
+       <bool>false</bool>
+      </property>
+      <property name="currentText">
+       <string>Comum</string>
+      </property>
+      <property name="insertPolicy">
+       <enum>QComboBox::InsertAlphabetically</enum>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QComboBox::AdjustToMinimumContentsLength</enum>
+      </property>
+      <item>
+       <property name="text">
+        <string>Comum</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Laboratório</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Comum</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Área Externa</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>20</y>
+        <width>65</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Tipo de Sala</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>65</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nome da Sala</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="nomeSala">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>8</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Nome da Sala</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>Comum</string>
+      <string>Observações</string>
      </property>
-    </item>
-    <item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="feedbackText">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>721</width>
+       <height>201</height>
+      </size>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>Observações adicionais</string>
+     </property>
+     <property name="cursorMoveStyle">
+      <enum>Qt::VisualMoveStyle</enum>
+     </property>
+     <property name="clearButtonEnabled">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="cadastrarSala">
+     <property name="minimumSize">
+      <size>
+       <width>762</width>
+       <height>47</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="text">
-      <string>Laboratório</string>
+      <string>Cadastrar Sala</string>
      </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Comum</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Área Externa</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>20</y>
-      <width>65</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Tipo de Sala</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>65</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Nome da Sala</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="nomeSala">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>8</y>
-      <width>133</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Nome da Sala</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>233</x>
-     <y>10</y>
-     <width>141</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>13</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Cadastro de Salas</string>
-   </property>
-  </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <tabstops>
   <tabstop>nomeSala</tabstop>

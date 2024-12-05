@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1260</width>
-    <height>764</height>
+    <height>777</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,7 +43,7 @@
 
 #btnFecharPagina:hover {
 	background-color: #E81123;
-	color: #FFF;
+	color: #fff;
 	icon: url(&quot;App/view/ui/icones/iconCloseBranco.png&quot;);
 }
 
@@ -494,7 +494,7 @@ QPushButton {
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>icones/iconBusca.png</normaloff>icones/iconBusca.png</iconset>
+                    <normaloff>icones/iconRelatorioBranco.png</normaloff>icones/iconRelatorioBranco.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -806,11 +806,11 @@ QPushButton {
                       <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>Pesquisar</string>
+                      <string>Consultar Relatório</string>
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/iconBusca.png</normaloff>icones/iconBusca.png</iconset>
+                       <normaloff>icones/iconRelatorioBranco.png</normaloff>icones/iconRelatorioBranco.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -888,6 +888,12 @@ QPushButton {
                      <property name="icon">
                       <iconset>
                        <normaloff>icones/iconEdit.png</normaloff>icones/iconEdit.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>24</width>
+                       <height>24</height>
+                      </size>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
