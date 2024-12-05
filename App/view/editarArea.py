@@ -12,37 +12,28 @@ class EditarArea(QWidget):
         self.dicionarioDeAreas = listarAreas()
         self.comboxArea()
         self.alterarArea.currentIndexChanged.connect(self.popularArea)
-
-        
-        #btn de editar = btnEditarArea
-        #combobox editar = editarArea
-        
+ 
     def comboxArea(self):
         areas = self.dicionarioDeAreas.keys()
         self.alterarArea.addItems(areas)
-        
-        
-        #pegar id area para mudar
-    def getIdAra(self):
-        idArea = self.dicionarioDeAreas.values()
-        return idArea
-        
-        
-        #popular lineedit
+ 
     def popularArea(self):
-        area = self.dicionarioDeAreas.values()
-        print(area)
-        
+        areaSelecionada = self.alterarArea.currentText()
+        if areaSelecionada:
+            self.cadastrarArea.setText(areaSelecionada)
+ 
     @pyqtSlot()
     def on_btnEditarArea_clicked(self):
         nomeArea = self.getEditArea()
-        idArea = self.getIdAra()
+        idArea = self.getIdArea()
         if atualizarArea(idArea, nomeArea):
-            print('blz')
-        print('bla bla bla')
-
-    
+            print('blz!')
+        else:
+            print('deu erro ai')
+ 
     def getEditArea(self):
-        area = self.alterarArea.currentText().strip()
-        return area
-    
+        return self.cadastrarArea.text().strip()
+ 
+    def getIdArea(self):
+        areaSelecionada = self.alterarArea.currentText()
+        return self.dicionarioDeAreas.get(areaSelecionada)
