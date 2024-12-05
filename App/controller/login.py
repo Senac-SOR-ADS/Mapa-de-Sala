@@ -15,16 +15,23 @@ def cadastrarLogin(idPessoa, cpf_cnpj, email, cargo):
     return login_model.cadastrar(idPessoa, cpf_cnpj, email, cargo)
 
 # =================== atualizar ===================
-def atualizarCadastro(idLogin, novoEmail, novoCargo):
+def atualizarCadastro(idLogin, novoEmail, novoCargo, novaSenha):
     """Atualiza o email e o cargo de um usuário."""
     try:
         login_model = Login()
-        if login_model.atualizar(idLogin, novoEmail, novoCargo):
+        if login_model.atualizar(idLogin, novoEmail, novoCargo, novaSenha):
+            print('login alterado.')
             return {"success": "Email e cargo atualizados com sucesso."}
         return {"error": "Falha ao atualizar email e cargo."}
     
     except Exception as e:
         return {"error": f"Erro: {str(e)}"}
+
+# =================== listar ===================
+def listarLogins() -> dict:
+    logins = Login.buscar_todos()
+    lista = {i[2]:i[0] for i in logins}
+    return lista
 
 # =================== buscar Id ===================
 def buscarLoginId(idPessoa):
