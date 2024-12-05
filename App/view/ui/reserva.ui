@@ -184,7 +184,7 @@
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>259</y>
+        <y>228</y>
         <width>131</width>
         <height>20</height>
        </rect>
@@ -197,7 +197,7 @@
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>330</y>
+        <y>299</y>
         <width>131</width>
         <height>16</height>
        </rect>
@@ -276,7 +276,7 @@
       <property name="geometry">
        <rect>
         <x>400</x>
-        <y>250</y>
+        <y>219</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -292,7 +292,7 @@
       <property name="geometry">
        <rect>
         <x>400</x>
-        <y>321</y>
+        <y>290</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -347,8 +347,8 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>480</y>
+        <x>40</x>
+        <y>339</y>
         <width>91</width>
         <height>16</height>
        </rect>
@@ -361,7 +361,7 @@
       <property name="geometry">
        <rect>
         <x>580</x>
-        <y>260</y>
+        <y>229</y>
         <width>101</width>
         <height>16</height>
        </rect>
@@ -374,7 +374,7 @@
       <property name="geometry">
        <rect>
         <x>580</x>
-        <y>330</y>
+        <y>299</y>
         <width>91</width>
         <height>16</height>
        </rect>
@@ -387,7 +387,7 @@
       <property name="geometry">
        <rect>
         <x>690</x>
-        <y>321</y>
+        <y>290</y>
         <width>118</width>
         <height>31</height>
        </rect>
@@ -406,7 +406,7 @@
       <property name="geometry">
        <rect>
         <x>690</x>
-        <y>251</y>
+        <y>220</y>
         <width>118</width>
         <height>31</height>
        </rect>
@@ -424,10 +424,10 @@
      <widget class="QWidget" name="widget" native="true">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>500</y>
-        <width>911</width>
-        <height>121</height>
+        <x>40</x>
+        <y>359</y>
+        <width>931</width>
+        <height>111</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
