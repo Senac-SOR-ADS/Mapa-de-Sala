@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>639</width>
-    <height>541</height>
+    <width>812</width>
+    <height>556</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,8 +37,13 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
     <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>EDITAR SALA</string>
+      <string>Editar Sala</string>
      </property>
     </widget>
    </item>
@@ -56,46 +61,11 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLineEdit" name="feedbackText">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>330</y>
-        <width>601</width>
-        <height>101</height>
-       </rect>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="placeholderText">
-       <string>Observações adicionais</string>
-      </property>
-      <property name="cursorMoveStyle">
-       <enum>Qt::VisualMoveStyle</enum>
-      </property>
-      <property name="clearButtonEnabled">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>300</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Observações</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>21</x>
-        <y>150</y>
+        <x>23</x>
+        <y>161</y>
         <width>65</width>
         <height>16</height>
        </rect>
@@ -108,8 +78,8 @@
       <property name="geometry">
        <rect>
         <x>100</x>
-        <y>139</y>
-        <width>133</width>
+        <y>150</y>
+        <width>111</width>
         <height>31</height>
        </rect>
       </property>
@@ -123,10 +93,10 @@
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>310</x>
-        <y>80</y>
+        <x>500</x>
+        <y>90</y>
         <width>71</width>
-        <height>16</height>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
@@ -136,8 +106,8 @@
      <widget class="QLineEdit" name="tipoEquipamento">
       <property name="geometry">
        <rect>
-        <x>389</x>
-        <y>69</y>
+        <x>580</x>
+        <y>80</y>
         <width>133</width>
         <height>31</height>
        </rect>
@@ -149,9 +119,9 @@
      <widget class="QComboBox" name="nomePredio">
       <property name="geometry">
        <rect>
-        <x>99</x>
-        <y>69</y>
-        <width>81</width>
+        <x>101</x>
+        <y>80</y>
+        <width>111</width>
         <height>31</height>
        </rect>
       </property>
@@ -181,8 +151,8 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>80</y>
+        <x>22</x>
+        <y>91</y>
         <width>41</width>
         <height>16</height>
        </rect>
@@ -194,9 +164,9 @@
      <widget class="QComboBox" name="tipoSala">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>9</y>
-        <width>81</width>
+        <x>580</x>
+        <y>20</y>
+        <width>91</width>
         <height>31</height>
        </rect>
       </property>
@@ -239,9 +209,9 @@
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>310</x>
-        <y>20</y>
-        <width>65</width>
+        <x>500</x>
+        <y>28</y>
+        <width>71</width>
         <height>16</height>
        </rect>
       </property>
@@ -252,8 +222,8 @@
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>20</y>
+        <x>22</x>
+        <y>31</y>
         <width>65</width>
         <height>16</height>
        </rect>
@@ -265,9 +235,9 @@
      <widget class="QComboBox" name="nomeSala">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>10</y>
-        <width>81</width>
+        <x>102</x>
+        <y>21</y>
+        <width>111</width>
         <height>31</height>
        </rect>
       </property>
@@ -287,6 +257,35 @@
     </widget>
    </item>
    <item>
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Observações</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="feedbackText">
+     <property name="minimumSize">
+      <size>
+       <width>125</width>
+       <height>125</height>
+      </size>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>Observações adicionais</string>
+     </property>
+     <property name="cursorMoveStyle">
+      <enum>Qt::VisualMoveStyle</enum>
+     </property>
+     <property name="clearButtonEnabled">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QPushButton" name="btnEditarSala">
      <property name="minimumSize">
       <size>
@@ -294,8 +293,13 @@
        <height>41</height>
       </size>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>17</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>EDITAR SALA</string>
+      <string>Editar sala</string>
      </property>
     </widget>
    </item>
