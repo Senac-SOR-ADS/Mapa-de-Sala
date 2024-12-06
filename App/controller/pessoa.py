@@ -1,24 +1,31 @@
 from App.model.pessoa import Pessoa
 from App.controller.login import cadastrarLogin, atualizarCadastro
-from App.controller.utils import formatarCpf, formatarCnpj, formatarTelefone
+from App.controller.utils import formatarCpf, formatarCnpj, formatarTelefone, validarInputs
 
 # =================== cadastrar ===================
-def cadastrarPessoa(nome, cpf_cnpj, data_nasc, telefone, email, cargo):
-    """Cadastra uma nova pessoa e seu login associado no banco de dados."""
-    
+def cadastrarPessoa(nome: str, cpf_cnpj: str, data_nasc: str, telefone: str, email: str, cargo: str) -> dict:
+    """ Cadastra uma nova pessoa e seu login associado no banco de dados. """
+
+    # Validar todos os campos de entrada
+    if not validarInputs([nome, cpf_cnpj, data_nasc, telefone, email, cargo]):
+        return {"error": "Preencha todos os campos corretamente."}
+
     try:
+        # Cadastro da pessoa no banco de dados
         id_pessoa = Pessoa().cadastrar(nome, cpf_cnpj, data_nasc, telefone, email, cargo)
+        
         if id_pessoa:
+            # Cadastro do login associado à pessoa
             return cadastrarLogin(id_pessoa, cpf_cnpj, email, cargo)
+        
         return {"error": "Não foi possível cadastrar a pessoa."}
     
     except Exception as e:
-        return {"error": f"Erro ao cadastrar pessoa: {e}"}
+        return {"error": f"Erro ao cadastrar pessoa: {str(e)}"}
 
 # =================== atualizar ===================
-def atualizarPessoa(idPessoa, nome, cpfCnpj, dataNasc, telefone, email, cargo): 
-    """Atualiza os dados de uma pessoa existente no banco de dados e seu cadastro de login."""
-
+def atualizarPessoa(idPessoa: int, nome: str, cpfCnpj: str, dataNasc: str, telefone: str, email: str, cargo: str) -> dict:
+    """ Atualiza os dados de uma pessoa existente no banco de dados e seu cadastro de login. """
     try:
         pessoaModel = Pessoa()
         if pessoaModel.atualizar(idPessoa, nome, cpfCnpj, dataNasc, telefone, email, cargo):
@@ -28,24 +35,24 @@ def atualizarPessoa(idPessoa, nome, cpfCnpj, dataNasc, telefone, email, cargo):
         return {"error": "Falha ao atualizar os dados da pessoa."}
     
     except Exception as e:
-        return {"error": f"Erro ao atualizar os dados: {e}"}
+        return {"error": f"Erro ao atualizar os dados: {str(e)}"}
 
 # =================== listar ===================
 def buscarPessoas(search_query: str = '') -> dict:
-    """Retorna um dicionário com todas as pessoas cadastradas, usando o nome como chave e o ID como valor.
-    Filtra os resultados com base no nome se a query de pesquisa for fornecida."""
+    """ Retorna um dicionário com as pessoas cadastradas, usando o nome como chave e o ID como valor. Search_query filtra pelo nome se fornecido. """
+    try:
+        todasPessoas = Pessoa.buscar()
 
-    todasPessoas = Pessoa.buscar()
+        if search_query:
+            todasPessoas = [p for p in todasPessoas if search_query.lower() in p[1].lower()]
 
-    if search_query:
-        todasPessoas = [p for p in todasPessoas if search_query.lower() in p[1].lower()]
-    
-    return {i[1]: i[0] for i in todasPessoas} if todasPessoas else {}
+        return {i[1]: i[0] for i in todasPessoas} if todasPessoas else {}
+    except Exception as e:
+        return {"error": f"Erro ao listar pessoas: {str(e)}"}
 
 # =================== buscar Id ===================
-def buscarPessoaId(idPessoa):
-    """Busca uma pessoa pelo ID e retorna suas informações ou uma mensagem de erro se não for encontrada."""
-    
+def buscarPessoaId(idPessoa: int) -> dict:
+    """ Busca uma pessoa pelo ID e retorna suas informações ou uma mensagem de erro se não for encontrada. """
     if not isinstance(idPessoa, int):
         return {"error": "ID inválido. Deve ser um número inteiro."}
 
@@ -71,7 +78,12 @@ def buscarPessoaId(idPessoa):
     except Exception as e:
         return {"error": f"Erro ao buscar pessoa: {str(e)}"}
 
-# =================== Remove ===================
-def removerPessoa(idPessoa):
-    """Remove uma pessoa do banco de dados pelo ID."""
-    return Pessoa.deletar(idPessoa)
+# =================== Remover ===================
+def removerPessoa(idPessoa: int) -> dict:
+    """ Remove uma pessoa do banco de dados pelo ID. """
+    try:
+        if Pessoa.deletar(idPessoa):
+            return {"success": "Pessoa removida com sucesso."}
+        return {"error": "Não foi possível remover a pessoa."}
+    except Exception as e:
+        return {"error": f"Erro ao remover pessoa: {str(e)}"}
