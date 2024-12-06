@@ -1,13 +1,13 @@
 from flask import redirect, url_for, flash, session
 from App.controller.login import validarLogin
-from App.routes.auth.acesso import validar_acesso
+from App.routes.auth.acesso import validar_acesso, registrar_acesso
 from functools import wraps
 
 def autenticar(username, password):
     """Autentica um usuário verificando suas credenciais."""
     try:
         if validarLogin(username, password):
-            session['user'] = username
+            registrar_acesso()
             return True
     except Exception:
         pass

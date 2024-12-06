@@ -3,8 +3,9 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home_route.home') }}" aria-label="Ir para a página inicial">
-                <img src="{{ url_for('static', filename='img/favicon.ico') }}" alt="Logo"> 
+            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home_route.home') }}"
+                aria-label="Ir para a página inicial">
+                <img src="{{ url_for('static', filename='img/favicon.ico') }}" alt="Logo">
             </a>
             <!-- Botão de alternância da navegação -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -17,7 +18,8 @@
                     <!-- Menu de Reservas -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarReservas" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Menu de reservas">
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            aria-label="Menu de reservas">
                             <i class="bi bi-calendar2-check"></i><span class="ms-1">Reservas</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarReservas">
@@ -29,7 +31,8 @@
                     <!-- Menu de Relatórios -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarRelatorios" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Menu de relatórios">
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            aria-label="Menu de relatórios">
                             <i class="bi bi-bar-chart-line"></i><span class="ms-1">Relatórios</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarRelatorios">
@@ -39,11 +42,12 @@
                                     <i class="bi bi-wrench"></i> Equipamentos Ocupados</a></li>
                         </ul>
                     </li>
-
+                    {% if usuario['nivel_acesso'] == 'admin' %}
                     <!-- Menu de Consultas -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarConsultas" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Menu de consultas">
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            aria-label="Menu de consultas">
                             <i class="bi bi-search-heart"></i><span class="ms-1">Consulta</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarConsultas">
@@ -59,31 +63,35 @@
                                     <i class="bi bi-cpu"></i> Equipamentos</a></li>
                         </ul>
                     </li>
+                    
 
-                    <!-- Menu de Cadastro -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarCadastrar" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Menu de cadastro">
-                            <i class="bi bi-person-plus-fill"></i><span class="ms-1">Cadastrar</span>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarCadastrar">
-                            <li><a class="dropdown-item" href="{{ url_for('funcionario_route.cadastrar_Pessoa') }}">
-                                    <i class="bi bi-person-badge"></i> Funcionário</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('curso_route.cadastrar_Curso') }}">
-                                    <i class="bi bi-journal-bookmark"></i> Curso</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('sala_route.cadastrar_Sala') }}">
-                                    <i class="bi bi-door-closed"></i> Sala</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('area_route.cadastrar_Area') }}">
-                                    <i class="bi bi-diagram-2"></i> Área</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('equipamento_route.cadastrar_Equipamento') }}">
-                                    <i class="bi bi-tools"></i> Equipamento</a></li>
-                        </ul>
-                    </li>
-
+                        <!-- Menu de Cadastro -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarCadastrar" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                aria-label="Menu de cadastro">
+                                <i class="bi bi-person-plus-fill"></i><span class="ms-1">Cadastrar</span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarCadastrar">
+                                <li><a class="dropdown-item" href="{{ url_for('funcionario_route.cadastrar_Pessoa') }}">
+                                        <i class="bi bi-person-badge"></i> Funcionário</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('curso_route.cadastrar_Curso') }}">
+                                        <i class="bi bi-journal-bookmark"></i> Curso</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('sala_route.cadastrar_Sala') }}">
+                                        <i class="bi bi-door-closed"></i> Sala</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('area_route.cadastrar_Area') }}">
+                                        <i class="bi bi-diagram-2"></i> Área</a></li>
+                                <li><a class="dropdown-item"
+                                        href="{{ url_for('equipamento_route.cadastrar_Equipamento') }}">
+                                        <i class="bi bi-tools"></i> Equipamento</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
                     <!-- Menu de Perfil (Profile Dropdown) -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarPerfil" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Menu de perfil">
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            aria-label="Menu de perfil">
                             <i class="bi bi-person-circle"></i><span class="ms-1">Perfil</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarPerfil">
