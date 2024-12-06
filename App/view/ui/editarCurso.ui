@@ -198,7 +198,7 @@
        <rect>
         <x>600</x>
         <y>130</y>
-        <width>121</width>
+        <width>151</width>
         <height>31</height>
        </rect>
       </property>
@@ -206,7 +206,7 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="editable">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="label_8">
@@ -227,12 +227,15 @@
        <rect>
         <x>70</x>
         <y>130</y>
-        <width>141</width>
+        <width>151</width>
         <height>31</height>
        </rect>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="editable">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QSpinBox" name="quantidadeAlunos">
@@ -243,6 +246,9 @@
         <width>141</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="alignment">
        <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -260,11 +266,17 @@
         <height>31</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="alignment">
        <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
       </property>
       <property name="minimum">
        <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>3000</number>
       </property>
      </widget>
      <widget class="QSpinBox" name="horasPorDia">
@@ -276,11 +288,17 @@
         <height>31</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="alignment">
        <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
       </property>
       <property name="minimum">
        <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>3000</number>
       </property>
      </widget>
     </widget>
@@ -308,6 +326,16 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>ofertaCurso</tabstop>
+  <tabstop>nomeCurso</tabstop>
+  <tabstop>campoArea</tabstop>
+  <tabstop>periodoCurso</tabstop>
+  <tabstop>cargaCurso</tabstop>
+  <tabstop>horasPorDia</tabstop>
+  <tabstop>quantidadeAlunos</tabstop>
+  <tabstop>btnEditarCurso</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
