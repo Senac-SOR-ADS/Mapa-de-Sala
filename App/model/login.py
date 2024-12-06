@@ -165,6 +165,7 @@ class Login:
                 if Criptografia.validarSenha(senhaUsuario, senhaBanco):
                     self.setIdLogin(resultado[0])
                     self.setIdPessoa(resultado[1])
+                    self.setNivelAcesso(resultado[4])
                     return True
         except Exception as e:
             print(f"Erro na validação de login: {e}")
