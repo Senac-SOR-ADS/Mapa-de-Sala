@@ -104,45 +104,31 @@ border-radius: 15px;
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QPushButton" name="btnCadastrarArea">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>47</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>17</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Cadastrar</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
      </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnCadastrarArea">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>47</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>17</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Cadastrar</string>
+     </property>
     </widget>
    </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>cadastrarArea</tabstop>
-  <tabstop>btnCadastrarArea</tabstop>
  </tabstops>
  <resources/>
  <connections/>
