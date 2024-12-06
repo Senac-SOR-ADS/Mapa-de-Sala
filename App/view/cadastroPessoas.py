@@ -33,14 +33,6 @@ class cadastroPessoas(QWidget):
                  "cargo": cargo}
         return dados
         
-    def validandoDados(self):
-        self.respostaCadastro.setText('Cadastro realizado.')
-        QTimer.singleShot(2000, lambda: self.limparCampos(self.nomePessoas, self.cpfCnpj, self.email, self.dataDeNascimento, self.cargo, self.telefone))
-
-    def dadosInvalidos(self):
-        self.respostaCadastro.setText('Dados incompletos.')
-        QTimer.singleShot(2000, lambda: self.limparCampos(self.nomePessoas, self.cpfCnpj, self.email, self.dataDeNascimento, self.cargo, self.telefone))
-
     def limparCampos(self, *campos):
         for campo in campos:
             if isinstance(campo, QLineEdit):
@@ -55,7 +47,7 @@ class cadastroPessoas(QWidget):
     def on_btnCadastrar_clicked(self):
         campos = self.getDadosCadastro()
         if cadastrarPessoa(*campos.values()):
-            self.validandoDados()
+            print('Pessoa cadastrada com sucesso!')
             validarAcao()
         else:
-            self.dadosInvalidos()
+            print('Erro ao cadastrar pessoa!')
