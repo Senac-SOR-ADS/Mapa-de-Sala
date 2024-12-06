@@ -51,8 +51,14 @@ class Sala:
         cls.__banco.desconectar()
         return resultado
     
-
-
+    @classmethod
+    def pesquisar_id(cls, idSala):
+        cls.__banco.conectar()
+        query = '''SELECT * FROM sala WHERE idSala = %s'''
+        params = [idSala]
+        resultado = cls.__banco.buscar(query, params)
+        return resultado
+    
     def cadastrar_sala(self):
         self.__banco.conectar()
         query = '''INSERT INTO `sala`(`nome`, `tipo`, `predio`, `equipamentos`, `capacidade`, `observacao`) VALUES (%s, %s, %s, %s, %s, %s); '''
