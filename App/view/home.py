@@ -22,7 +22,6 @@ from App.controller.login import pegarUsuarioLogado, removerUsuarioLogado
 
 class HomePrincipal(QMainWindow):
     def __init__(self):
-        print('User:', pegarUsuarioLogado())
         super().__init__()
         loadUi('App/view/ui/home.ui',self)
         self.moving = False
