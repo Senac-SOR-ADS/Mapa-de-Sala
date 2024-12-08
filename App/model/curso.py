@@ -94,6 +94,15 @@ class Curso:
         resultado = cls.__banco.buscarTodos(query)
         cls.__banco.desconectar()
         return resultado
+    
+    @classmethod
+    def retorna_curso_id(cls, idCurso):
+        cls.__banco.conectar()
+        query = "SELECT * FROM curso WHERE idCurso = %s"
+        param = [idCurso]
+        resultado = cls.__banco.buscar(query, param)
+        if resultado:
+            return resultado
 
     @classmethod
     def deletar(cls, idCurso):
