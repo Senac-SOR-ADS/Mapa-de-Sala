@@ -1,7 +1,9 @@
-from PyQt5.QtWidgets import QDialog, QMenu
+from PyQt5.QtWidgets import QDialog, QMenu, QApplication
+from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt, QTimer, QPoint
 from PyQt5.QtCore import pyqtSlot
-from PyQt5.uic import loadUi
+
+
 
 from App.controller.login import validarLogin
 
@@ -11,16 +13,20 @@ class LoginInterface(QDialog):
     def __init__(self):
         super().__init__()
         loadUi('App/view/ui/Login.ui',self)
+        # Remove a barra de título e as bordas da janela
         self.setWindowFlags(Qt.FramelessWindowHint)
+        # Define a janela como transparente
         self.setAttribute(Qt.WA_TranslucentBackground)
 
         self.old_pos = None
+        
         self.inputEmail.setFocus()
 
         # Faz a conexão do botão MenuBar
         self.btnMenuBar.clicked.connect(self.showMenu)
-        # self.btnEntrar.clicked.connect(self.validarLogin)
 
+
+        # self.btnEntrar.clicked.connect(self.validarLogin)
 
     def showMenu(self):
         # Cria o menu suspenso
@@ -88,7 +94,6 @@ class LoginInterface(QDialog):
 
 
 if __name__ == "__main__":
-    from PyQt5.QtWidgets import QApplication
     app = QApplication([])
     widget = LoginInterface()
     widget.show()

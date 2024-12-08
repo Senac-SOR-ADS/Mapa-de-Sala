@@ -18,27 +18,6 @@ def deletarCurso(idCurso):
     if Curso.deletar(idCurso):
         return True
     return False
-
-def buscarCursoId(idCurso):
-    if not isinstance(idCurso, int):
-        print('Coloque um id como númerico')
-    try:
-        resultado = Curso.retorna_curso_id(idCurso)
-
-        if resultado:
-            return {
-                "idCurso": resultado[0],
-                "idArea": resultado[1],
-                "nome": resultado[2],
-                "oferta": resultado[3],
-                "periodo": resultado[4],
-                "cargaHoraria": resultado[5],
-                "horasDia": resultado[6],
-                "qtdAlunos": resultado[7],
-            }
-        return {"erro": "Curso não encontrado"}
-    except Exception as e:
-        return {"erro": f"Erro ao buscar curso: {e}"}
  
 def atualizarCurso(idCurso, idArea, nome, oferta, periodo, cargaHoraria, horasDia, qtdAlunos):
     if Curso.atualizar(idCurso, idArea, nome, oferta, periodo, cargaHoraria, horasDia, qtdAlunos):
