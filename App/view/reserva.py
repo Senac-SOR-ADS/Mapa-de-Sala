@@ -6,7 +6,7 @@ from PyQt5.QtCore import QTimer, QDate, QTime, pyqtSlot
 # from App.model.login import Login
 # Não está sendo utilizado no arquivo
 
-from App.controller.curso import listarCursos, buscarCursoId
+from App.controller.curso import infosCursos
 from App.controller.pessoa import buscarPessoas
 from App.controller.sala import listarSala
 from App.controller.utils import modificarData
@@ -42,7 +42,7 @@ class ReservaInterface(QWidget):
         """Pegando o dados na interface e retornando os valores"""
         pessoas = buscarPessoas()
         sala = listarSala()
-        curso = listarCursos() 
+        curso = infosCursos() 
         nomeDocenteResponsavel = self.nomeDocente.currentText().strip()
         idDocente = pessoas[nomeDocenteResponsavel]
         nomeSala = self.salaReserva.currentText().strip()
@@ -113,7 +113,7 @@ class ReservaInterface(QWidget):
         self.comboBoxSala()
 
     def comboBoxCurso(self):
-        cursos = listarCursos()
+        cursos = infosCursos()
         self.cursoReserva.clear()
         self.cursoReserva.addItems(cursos.keys())
 
