@@ -19,7 +19,7 @@ if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     resp = FeadbackErro('sla')
     app = QApplication([])
-    if resp.show():
+    if resp.exec_():
         print('ok')
     else:
         print('negado')
