@@ -243,6 +243,9 @@ border-radius: 15px;
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
+      <property name="editable">
+       <bool>true</bool>
+      </property>
      </widget>
     </widget>
    </item>
