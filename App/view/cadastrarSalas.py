@@ -22,7 +22,6 @@ class CadastrarSalas(QWidget):
         return (nome, sala, predio, equipamento, capacidade, feedback)
     
     def iniciandoCadastro(self):
-        print('iniciando')
         valores = self.getCadastroSalas()
         if not validarInputs(valores[:-1]):
             return False
