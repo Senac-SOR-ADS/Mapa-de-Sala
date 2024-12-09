@@ -16,6 +16,7 @@ from .editarLogin import EditarLogin
 from .editarReserva import EditarReserva
 from .editarSala import EditarSala
 from .reserva import ReservaInterface
+from .telaConfirmacao import TelaConfirmacao
 
 from App.controller.login import pegarUsuarioLogado, removerUsuarioLogado
 
@@ -65,6 +66,8 @@ class HomePrincipal(QMainWindow):
         self.btnPesquisa.clicked.connect(lambda: self.trocarTelaMenu(self.busca))
         self.btnEditarSimples.clicked.connect(lambda: self.trocarTelaMenu(self.editar)) 
         self.btnEditar.clicked.connect(lambda: self.trocarTelaMenu(self.editar)) 
+        
+        #btns da propria interface
         
         # btns da propria interface
         # Forma Corrigida para Setar Interface
@@ -214,8 +217,12 @@ class HomePrincipal(QMainWindow):
         self.subMenuQuebrado.hide()
 
     def fazer_logout(self):
-        removerUsuarioLogado()
-        self.close()
+        confirmacao = TelaConfirmacao("Tem certeza que deseja sair?", "Sim")
+        if confirmacao.exec_():
+            removerUsuarioLogado()
+            self.close()
+        else:
+            pass
 
     
 if __name__ == "__main__":

@@ -12,6 +12,7 @@ from App.controller.pessoa import buscarPessoas
 from App.controller.sala import listarSala
 from App.controller.utils import modificarData
 from App.controller.reserva import fazendoReserva, validarCadastro, validarDiaSemana
+from App.controller.login import pegarUsuarioLogado
 
 
 class ReservaInterface(QWidget):
@@ -82,14 +83,14 @@ class ReservaInterface(QWidget):
     @pyqtSlot()
     def on_btnFazerReserva_clicked(self):
         info = self.getDados()
-        idLogin = 8
+        idLogin = pegarUsuarioLogado()
         diasValidos = (info['seg'], info['ter'], info['qua'], info['qui'], info['sexta'], info['sab'], False)
         if validarDiaSemana(info['diaInicio'], diasValidos):
             validacao = validarCadastro(info, diasValidos)
             if len(validacao):
                 print('Não foi possível fazer a reserva, já existe uma reserva nesse horário')
                 return
-            fazendoReserva(idLogin, info, diasValidos)
+            fazendoReserva(idLogin.get('id_login'), info, diasValidos)
             print('Reserva feita com sucesso!')
         return
     
