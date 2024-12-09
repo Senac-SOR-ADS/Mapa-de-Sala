@@ -50,6 +50,16 @@ def buscarPessoas(search_query: str = '') -> dict:
     except Exception as e:
         return {"error": f"Erro ao listar pessoas: {str(e)}"}
 
+# =================== Remover ===================
+def removerPessoa(idPessoa: int) -> dict:
+    """ Remove uma pessoa do banco de dados pelo ID. """
+    try:
+        if Pessoa.deletar(idPessoa):
+            return {"success": "Pessoa removida com sucesso."}
+        return {"error": "Não foi possível remover a pessoa."}
+    except Exception as e:
+        return {"error": f"Erro ao remover pessoa: {str(e)}"}
+
 # =================== buscar Id ===================
 def buscarPessoaId(idPessoa: int) -> dict:
     """ Busca uma pessoa pelo ID e retorna suas informações ou uma mensagem de erro se não for encontrada. """
@@ -77,13 +87,3 @@ def buscarPessoaId(idPessoa: int) -> dict:
         }
     except Exception as e:
         return {"error": f"Erro ao buscar pessoa: {str(e)}"}
-
-# =================== Remover ===================
-def removerPessoa(idPessoa: int) -> dict:
-    """ Remove uma pessoa do banco de dados pelo ID. """
-    try:
-        if Pessoa.deletar(idPessoa):
-            return {"success": "Pessoa removida com sucesso."}
-        return {"error": "Não foi possível remover a pessoa."}
-    except Exception as e:
-        return {"error": f"Erro ao remover pessoa: {str(e)}"}
