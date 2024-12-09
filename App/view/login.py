@@ -74,6 +74,7 @@ class LoginInterface(QDialog):
     def dadosInvalidos(self):
         texto = 'DADOS INCOMPLETOS.'
         resposta = FeadbackErro(texto)
+        # resposta.mudarFoto("Validado")
         if resposta.exec_():
             print('erro')
         
@@ -83,7 +84,6 @@ class LoginInterface(QDialog):
     def on_btnEntrar_clicked(self):
         campos = self.getEmailSenha()
         if validarLogin(campos[0], campos[1]):
-            # self.validandoDados()
             self.accept()
         else:
             self.dadosInvalidos()

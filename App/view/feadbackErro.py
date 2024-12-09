@@ -8,12 +8,28 @@ class FeadbackErro(QDialog):
         loadUi('App/view/ui/feadbackErro.ui',self)
         
         self.texto.setText(txt)
-        # self.setStyleSheet(icon)
-        
-        self.btnConfirmar.clicked.connect(self.reject)
         
         # Remove a barra de título e as bordas da janela
         self.setWindowFlags(Qt.FramelessWindowHint)
+        
+        self.btnConfirmar.clicked.connect(self.reject)
+        self.btnFechar.clicked.connect(self.reject)
+        
+    def mudarFoto(self, img):
+        if img == 'Validado':
+            self.setStyleSheet("""
+                                #icon {
+                                    image: url(App/view/ui/icones/iconConcluido.png)
+                                }
+                                    """)
+        else:
+            self.setStyleSheet("""
+                                #icon {
+                                    image: url(App/view/ui/icones/iconErro.png)
+                                }
+                                    """)
+        
+        
     
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
