@@ -39,7 +39,6 @@ class Area:
         resultado = cls.__banco.buscar(query, param)
         resultado_string = resultado[0]
         cls.__banco.desconectar()
-        print("resultado controller", resultado_string)
         return resultado_string
 
     @classmethod

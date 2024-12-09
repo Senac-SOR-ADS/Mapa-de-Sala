@@ -1,7 +1,9 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import QTimer, pyqtSlot
 
-from App.controller.curso import listarCurso, buscarCursosId, timedelta_to_int
+from App.controller.curso import listarCurso, buscarCursosId, atualizarCurso
+from App.model.curso import *
+from App.controller.area import listarAreas
 
 from PyQt5.uic import loadUi
 
@@ -10,20 +12,31 @@ class EditarCurso(QWidget):
         super().__init__()
         loadUi('App/view/ui/editarCurso.ui',self)
         self.dicionarioDeCursos = listarCurso()
+        self.dicionarioDeAreas = listarAreas()
         self.popularJanela()
         self.ofertaCurso.currentIndexChanged.connect(self.popularCurso)
 
     def popularJanela(self):
         self.comboOferta()
+        self.comboArea()
 
     @pyqtSlot()
     def on_btnEditarCurso_clicked(self):
-        ...
+        idCurso = self.getIdOferta()
+        infos = self.getEditarCurso()
+
+        if(Curso.atualizar(idCurso, infos[0], infos[1], infos[2], infos[3], infos[4], infos[5], infos[6])):
+            print("atualizar curso")
+            return True
+        return False
 
     def comboOferta(self):
         dados = self.dicionarioDeCursos.keys()
-        print(dados)
         self.ofertaCurso.addItems(dados)
+
+    def comboArea(self):
+        dados = self.dicionarioDeAreas.keys()
+        self.campoArea.addItems(dados)
 
     def popularCurso(self):
         idCurso = self.getIdOferta()
@@ -36,14 +49,6 @@ class EditarCurso(QWidget):
         qtdAlunos = info['qtdAlunos']
 
         if (nome, cargaHoraria, periodo, area, horasDia, qtdAlunos):
-            
-            print("nome:", nome)
-            print("carga horaria", cargaHoraria)
-            print("periodo", periodo)
-            print("area", area)
-            print("horas por dia", horasDia)
-            print("quantidade de alunos", qtdAlunos)
-
             self.nomeCurso.setText(nome)
             self.cargaCurso.setValue(cargaHoraria)
             self.periodoCurso.setCurrentText(periodo)
@@ -51,32 +56,23 @@ class EditarCurso(QWidget):
             self.horasPorDia.setValue(horasDia)
             self.quantidadeAlunos.setValue(int(qtdAlunos))
 
-    # def popularSala(self):
-    #     idSalaCombobox = self.getIdSala()
-    #     info = buscarSalaId(idSalaCombobox)
-    #     nomeSala = info["nome"]
-    #     tipoSala = info["tipo"]
-    #     predio = info["predio"]
-    #     equipamentos = info["equipamentos"]
-    #     capacidade = info["capacidade"]
-    #     obs = info["observacao"]
-    #     if (nomeSala, tipoSala, predio, equipamentos, capacidade, obs):
-    #         self.tipoSala.setCurrentText(tipoSala)
-    #         self.nomePredio.setCurrentText(predio)
-    #         self.tipoEquipamento.setText(equipamentos)
-    #         self.mediaCapacidade.setText(str(capacidade))
-    #         self.feedbackText.setText(obs)
-
-    # def getEditarCurso(self):
-    #     oferta = self.ofertaCurso.currentText().strip()
-    #     nome = self.nomeCurso.text().strip()
-    #     area = self.campoArea.currentText().strip()
-    #     periodo = self.periodoCurso.currentText().strip()
-    #     carga = self.cargaCurso.text().strip()
-    #     horas = self.horasPorDia.text().strip()
-    #     alunos = self.quantidadeAlunos.text().strip()
-    #     return(nome, oferta, periodo, carga, area, horas, alunos)
+    def getEditarCurso(self):
+        oferta = self.ofertaCurso.currentText().strip()
+        nome = self.nomeCurso.text().strip()
+        area = self.getIdArea()
+        periodo = self.periodoCurso.currentText().strip()
+        carga = self.cargaCurso.text().strip()
+        horas = self.horasPorDia.text().strip()
+        alunos = self.quantidadeAlunos.text().strip()
+        return(area, nome, oferta, periodo, carga, horas, alunos)
+    
+    def getIdArea(self):
+        area = self.campoArea.currentText()
+        print(self.dicionarioDeAreas.get(area))
+        return self.dicionarioDeAreas.get(area)
 
     def getIdOferta(self):
         oferta = self.ofertaCurso.currentText()
         return self.dicionarioDeCursos.get(oferta)
+    
+    
