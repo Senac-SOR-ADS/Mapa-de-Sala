@@ -7,8 +7,7 @@ def cadastroDeArea(nomeArea: str) -> dict:
     
     # Validar dados de entrada
     if not validarInputs([nomeArea]):
-        print('Preencha todos os campos corretamente')
-        return False
+        return {"error": "Preencha todos os campos corretamente."}
     
     try:
         # Criação do objeto Area e cadastro no banco de dados
