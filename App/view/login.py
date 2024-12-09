@@ -1,7 +1,9 @@
 from PyQt5.QtWidgets import QDialog, QMenu
 from PyQt5.QtCore import Qt, QTimer, QPoint
 from PyQt5.QtCore import pyqtSlot
+from .feadbackErro import FeadbackErro
 from PyQt5.uic import loadUi
+
 
 from App.controller.login import validarLogin
 
@@ -69,19 +71,22 @@ class LoginInterface(QDialog):
     #     # self.respostasErros.setText('LOGANDO...')
     #     QTimer.singleShot(2000, lambda: self.limparCampos(self.respostasErros))
 
-    # def dadosInvalidos(self):
-    #     texto = 'DADOS INCOMPLETOS.'
-    #     # self.respostasErros.setText(texto)
-    #     QTimer.singleShot(2000, lambda: self.limparCampos(self.respostasErros))
+    def dadosInvalidos(self):
+        texto = 'DADOS INCOMPLETOS.'
+        resposta = FeadbackErro(texto)
+        # resposta.mudarFoto("Validado")
+        if resposta.exec_():
+            print('erro')
+        
+        
 
     @pyqtSlot()
     def on_btnEntrar_clicked(self):
         campos = self.getEmailSenha()
         if validarLogin(campos[0], campos[1]):
-            # self.validandoDados()
             self.accept()
-        # else:
-        #     self.dadosInvalidos()
+        else:
+            self.dadosInvalidos()
 
     def limparCampos(self, campo):
         campo.clear()
