@@ -125,19 +125,6 @@
        <string>CURSO:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>430</x>
-        <y>130</y>
-        <width>61</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>PERIODO:</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
@@ -306,43 +293,6 @@
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
-     </widget>
-     <widget class="QComboBox" name="periodoReserva">
-      <property name="geometry">
-       <rect>
-        <x>430</x>
-        <y>151</y>
-        <width>111</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>10</height>
-       </size>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="editable">
-       <bool>false</bool>
-      </property>
-      <item>
-       <property name="text">
-        <string>Manhã</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Tarde</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Noite</string>
-       </property>
-      </item>
      </widget>
      <widget class="QLabel" name="label_9">
       <property name="geometry">
@@ -696,7 +646,6 @@
   <tabstop>salaReserva</tabstop>
   <tabstop>equipamentosReserva</tabstop>
   <tabstop>cursoReserva</tabstop>
-  <tabstop>periodoReserva</tabstop>
   <tabstop>diaInicio</tabstop>
   <tabstop>inicioCurso</tabstop>
   <tabstop>diaFim</tabstop>

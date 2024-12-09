@@ -1,12 +1,12 @@
 from PyQt5.QtWidgets import QWidget, QDateEdit
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import QTimer, QDate, pyqtSlot
+from PyQt5.QtCore import QTimer, QDate, QTime, pyqtSlot
 
 # from App.model.reserva import Reserva
 # from App.model.login import Login
 # Não está sendo utilizado no arquivo
 
-from App.controller.curso import listarCursos
+from App.controller.curso import listarCursos, buscarCursoId
 from App.controller.pessoa import buscarPessoas
 from App.controller.sala import listarSala
 from App.controller.utils import modificarData
@@ -27,9 +27,11 @@ class ReservaInterface(QWidget):
         self.diaInicio.setDisplayFormat('dd/MM/yyyy')
         self.diaInicio.setDate(QDate.currentDate())
         self.setDataMinima()
-        self.setHorarioMinimo()
+        self.setMinimoFim()
+        self.setPeriodos()
         self.diaInicio.dateChanged.connect(self.setDataMinima)
-        self.inicioCurso.timeChanged.connect(self.setHorarioMinimo)
+        self.inicioCurso.timeChanged.connect(self.setMinimoFim)
+        self.cursoReserva.currentIndexChanged.connect(self.setPeriodos)
 
         self.diaFim.setCalendarPopup(True)
         self.diaFim.setDisplayFormat('dd/MM/yyyy')
@@ -94,10 +96,12 @@ class ReservaInterface(QWidget):
     
     
     def setDataMinima(self):
+        """Define a data mínima de término da reserva"""
         primeiroDia = self.diaInicio.date()
         self.diaFim.setMinimumDate(primeiroDia)
     
-    def setHorarioMinimo(self):
+    def setMinimoFim(self):
+        """Define o horário mínimo para acabar a reserva"""
         horarioComeco = self.inicioCurso.time()
         self.fimCurso.setMinimumTime(horarioComeco)
         
@@ -124,6 +128,45 @@ class ReservaInterface(QWidget):
         self.salaReserva.clear()
         self.salaReserva.addItems(salas.keys())
 
+    def setPeriodos(self):
+        """Verifica o período e depois define os horários"""
+        periodo = self.getPeriodoCurso()
+        horasDia = self.getHorasCurso()
+        intervalo = {'Manhã': (8,0,0), 'Tarde': (13,30,0), 'Noite': (19,0,0)}
+        horas = QTime()
+        horas.setHMS(*intervalo[periodo])
+        self.setHoraInicio(horas)
+        self.setMinimoFim()
+        horas.setHMS(horas.hour() + horasDia, horas.minute(), 0)
+        self.setHoraFim(horas)
+
+    def getPeriodoCurso(self):
+        idCurso = self.getIdCurso()
+        dados = buscarCursoId(idCurso)
+        periodo = dados.get('periodo')
+        return periodo
+
+    def getHorasCurso(self):
+        idCurso = self.getIdCurso()
+        dados = buscarCursoId(idCurso)
+        horasDia = dados.get('horasDia')
+        numero = horasDia.__str__()
+        hora = numero.split(':')[0]
+        return int(hora)
+    
+    def getIdCurso(self):
+        dados = self.getDados()
+        curso = dados.get('idCurso')
+        return curso
+
+    def setHoraInicio(self, hora):
+        """Define a hora de início"""
+        self.inicioCurso.setTime(hora)
+
+    def setHoraFim(self, hora):
+        """Define a hora de fim"""
+        self.fimCurso.setTime(hora)
+    
     def validandoDados(self):
         self.feedbackReserva.setText('Reserva realizada.')
         QTimer.singleShot(2000, lambda: self.limparCampos(self.feedbackReserva))

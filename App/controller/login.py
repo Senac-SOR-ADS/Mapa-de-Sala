@@ -1,6 +1,6 @@
 from App.model.login import Login
 
-__USUARIO_LOGADO = []
+__USUARIO_LOGADO = [Login()]
 
 # =================== validar ===================
 def validarLogin(email, senha):
@@ -16,12 +16,16 @@ def validarLogin(email, senha):
 def pegarUsuarioLogado():
     global __USUARIO_LOGADO
     login = __USUARIO_LOGADO[0]
-    return {'id_login':login.getIdLogin(), 'id_pessoa':login.getIdPessoa(), 'email':login.getEmail(), 'nivel_acesso':login.getNivelAcesso()}
+    return {'id_login': login.getIdLogin(),
+            'id_pessoa': login.getIdPessoa(),
+            'email': login.getEmail(),
+            'nivel_acesso': login.getNivelAcesso()
+            }
 
 # =========== remover usuario logado ============
 def removerUsuarioLogado():
     global __USUARIO_LOGADO
-    __USUARIO_LOGADO = []
+    __USUARIO_LOGADO = [Login()]
 
 # =================== cadastrar ===================
 def cadastrarLogin(idPessoa, cpf_cnpj, email, cargo):

@@ -14,7 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QLineEdit, QComboBox {
+   <string notr="true">QLineEdit, QComboBox, QSpinBox {
 	background-color: white;
 	border:2px solid rgba(0,0,0,0);
 	border-radius: 3px;
@@ -77,22 +77,6 @@
       </property>
       <property name="text">
        <string>Capacidade</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="mediaCapacidade">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>139</y>
-        <width>231</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-      <property name="placeholderText">
-       <string>Capacidade Média</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_4">
@@ -250,6 +234,22 @@
        <string>Nome da Sala</string>
       </property>
      </widget>
+     <widget class="QSpinBox" name="mediaCapacidade">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>140</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="maximum">
+       <number>1000</number>
+      </property>
+     </widget>
     </widget>
    </item>
    <item>
@@ -315,7 +315,6 @@
   <tabstop>tipoSala</tabstop>
   <tabstop>nomePredio</tabstop>
   <tabstop>tipoEquipamento</tabstop>
-  <tabstop>mediaCapacidade</tabstop>
   <tabstop>feedbackText</tabstop>
   <tabstop>cadastrarSala</tabstop>
  </tabstops>

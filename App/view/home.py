@@ -17,7 +17,8 @@ from .editarReserva import EditarReserva
 from .editarSala import EditarSala
 from .reserva import ReservaInterface
 from .telaConfirmacao import TelaConfirmacao
-from .login import LoginInterface
+
+from App.controller.login import pegarUsuarioLogado, removerUsuarioLogado
 
 
 class HomePrincipal(QMainWindow):
@@ -28,9 +29,10 @@ class HomePrincipal(QMainWindow):
         self.subMenuLateral.hide()
         self.subMenuQuebrado.hide()
         self.btnHome.setChecked(True)
-        
-   # Criando parte interativa do menu
-   
+        self._resizing = False
+        self._resize_direction = None
+
+        # Criando parte interativa do menu
         self.btnMenu: QPushButton
         self.subMenuLateral: QWidget
         self.subMenuQuebrado: QWidget
@@ -41,7 +43,7 @@ class HomePrincipal(QMainWindow):
         self.menuSimples: QWidget
         self.btnHome: QPushButton
 
-   # Criando instancias das interfaces
+        # Criando instancias das interfaces
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.interfCasPessoa = cadastroPessoas
         self.interfcasSala = CadastrarSalas
@@ -56,19 +58,18 @@ class HomePrincipal(QMainWindow):
         self.interfEditLogin = EditarLogin
         self.interfEditReserva = EditarReserva
         self.interfEditSala = EditarSala
-        
-    #Telas dentro do menu para alterar as janelas pelo sub menu
+
+        #Telas dentro do menu para alterar as janelas pelo sub menu
         self.btnPessoa.clicked.connect(lambda: self.trocarTelaMenu(self.cadastros))
         self.btnPessoas.clicked.connect(lambda: self.trocarTelaMenu(self.cadastros))
         self.btnBusca.clicked.connect(lambda: self.trocarTelaMenu(self.busca))
         self.btnPesquisa.clicked.connect(lambda: self.trocarTelaMenu(self.busca))
         self.btnEditarSimples.clicked.connect(lambda: self.trocarTelaMenu(self.editar)) 
         self.btnEditar.clicked.connect(lambda: self.trocarTelaMenu(self.editar)) 
-        self.btnSair.clicked.connect(self.chamarConfirmacao)
-        self.btnSairSimples.clicked.connect(self.chamarConfirmacao)
         
         #btns da propria interface
         
+        # btns da propria interface
         # Forma Corrigida para Setar Interface
         #######################################
         self.btnIncio.clicked.connect(lambda: self.setInterfaceOnHome(self.inicio))
@@ -90,17 +91,19 @@ class HomePrincipal(QMainWindow):
 
         self.btnConfiguracoes.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
         self.btnConfig.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
+        self.btnSair.clicked.connect(self.fazer_logout)
+        self.btnSairSimples.clicked.connect(self.fazer_logout)
         #######################################
 
         self.btnMinimizar.clicked.connect(self.showMinimized)
-        self.btnFecharPagina.clicked.connect(self.close)
         self.btnTelaCheia.clicked.connect(self.windowConnect)
+        self.btnFecharPagina.clicked.connect(self.close)
         
     ################################
     # Função correta para inserir interface
     def setInterfaceOnHome(self, interface:QWidget):
         self.container: QStackedWidget
-        if type(interface) != QWidget: # precisa instanciar a interface
+        if type(interface) != QWidget:  # precisa instanciar a interface
             interface = interface()
         if self.container.currentIndex() != 0:
             self.container.removeWidget(self.container.currentWidget())
@@ -108,36 +111,31 @@ class HomePrincipal(QMainWindow):
             self.container.addWidget(interface)
         self.container.setCurrentWidget(interface)
 
-    ################################
-
-    # Faz o botão de Tela Cheia ao ser executado, retornar ao normal
     def windowConnect(self):
         if self.isMaximized():
             self.showNormal()
             self.btnTelaCheia.setStyleSheet("""
-                                       #btnTelaCheia {
-                                           icon: url("App/view/ui/icones/iconTelaCheia.png"); 
-                                        }"""
-                                    )
+                                           #btnTelaCheia {
+                                               icon: url("App/view/ui/icones/iconTelaCheia.png"); 
+                                            }"""
+                                        )
         else:
             self.showMaximized()
             self.btnTelaCheia.setStyleSheet("""
-                                       #btnTelaCheia {
-                                           icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png"); 
-                                        }"""
-                                    )
+                                           #btnTelaCheia {
+                                               icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png"); 
+                                            }"""
+                                        )
 
-    
     def inserirTelasMenu(self, menu):
         for i in menu:
             self.menuQuebrado.addWidget(i)
 
     def trocarTela(self, tela):
-        """Função para trocar as tela. Necessario
+        """Função para trocar as tela. Necessário
         passar a classe da tela"""
-        
         self.container.setCurrentWidget(tela)
-    
+
     def trocarTelaMenu(self, menu):
         if self.subMenuQuebrado.isVisible():
             self.menuQuebrado.setCurrentWidget(menu)
@@ -145,22 +143,23 @@ class HomePrincipal(QMainWindow):
             self.subMenuQuebrado.show()
             self.menuQuebrado.setCurrentWidget(menu)
             
-    def chamarConfirmacao(self):
-        info = TelaConfirmacao('Tem certeza que deseja saír?')
-        login = LoginInterface()
-        if info.exec_():
-            self.close()
-            login.exec_()
-            
-
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
             if self.childAt(event.pos()) == self.cabecalho:  
                 self.moving = True
                 self.offset = event.pos()
+            self._resize_direction = self._get_resize_direction(event.pos())
+            if self._resize_direction == "bottom-right":
+                self._resizing = True
+                self._offset = event.globalPos() - self.geometry().bottomRight()
 
     def mouseMoveEvent(self, event):
         if self.moving and not self.isMaximized():
+            self.move(self.pos() + event.pos() - self.offset)
+            self._resize_direction = self._get_resize_direction(event.pos())
+        if self._resizing:
+            self._resize_window(event.globalPos())
+        elif self.moving and not self.isMaximized():
             self.move(self.pos() + event.pos() - self.offset)
 
     def mouseDoubleClickEvent(self, event):
@@ -169,10 +168,10 @@ class HomePrincipal(QMainWindow):
                 if self.isMaximized():
                     self.showNormal()
                     self.btnTelaCheia.setStyleSheet("""
-                                       #btnTelaCheia {
-                                           icon: url("App/view/ui/icones/iconTelaCheia.png");
-                                        }"""
-                                    )
+                        #btnTelaCheia {
+                            icon: url("App/view/ui/icones/iconTelaCheia.png");
+                        }
+                    """)
                 else:
                     self.showMaximized()
                     self.btnTelaCheia.setStyleSheet("""
@@ -180,19 +179,48 @@ class HomePrincipal(QMainWindow):
                                            icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png");
                                         }"""
                                     )
+                    
     def mouseReleaseEvent(self, event):
         self.moving = False
+        self._resizing = False
+        self._resize_direction = None
+        self.setCursor(Qt.ArrowCursor)
 
-    
+    def _get_resize_direction(self, pos):
+        margin = 10
+        if pos.x() > self.width() - margin and pos.y() > self.height() - margin:
+            self.setCursor(Qt.SizeFDiagCursor)  
+            return "bottom-right"
+        self.setCursor(Qt.ArrowCursor)  
+        return None
+
+
+
+    def _resize_window(self, global_pos):
+        if self.isMaximized():
+            return
+        rect = self.geometry()
+        new_width = max(200, global_pos.x() - rect.x())
+        new_height = max(200, global_pos.y() - rect.y())
+        self.setGeometry(rect.x(), rect.y(), new_width, new_height)
+
+
     @pyqtSlot()
     def on_btnFecharMenuQuebrado_clicked(self):
         self.subMenuQuebrado.hide()
-        
-        
+
+    def fazer_logout(self):
+        confirmacao = TelaConfirmacao("Tem certeza que deseja sair?", "Sim")
+        if confirmacao.exec_():
+            removerUsuarioLogado()
+            self.close()
+        else:
+            pass
+
+    
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
     widget = HomePrincipal()
     widget.show()
     app.exec_()
- 
