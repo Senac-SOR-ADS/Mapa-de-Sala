@@ -18,8 +18,8 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>1074</width>
-    <height>835</height>
+    <width>16777215</width>
+    <height>16777215</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -85,7 +85,7 @@
      </property>
     </spacer>
    </item>
-   <item alignment="Qt::AlignHCenter">
+   <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
     <widget class="QFrame" name="frame_2">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
