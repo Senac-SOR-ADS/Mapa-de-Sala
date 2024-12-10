@@ -17,8 +17,8 @@ class EditarLogin(QWidget):
     @pyqtSlot()
     def on_btnEditarLogin_clicked(self):
         dados = self.getValores()
-        if validarInputs(dados):
-            atualizarCadastro(dados[0], dados[1], dados[3], dados[2])
+        if validarInputs(dados[:-1]):
+            atualizarCadastro(dados[0], dados[1], dados[2], dados[3])
 
     def popularJanela(self):
         self.comboboxLogin()
@@ -46,7 +46,7 @@ class EditarLogin(QWidget):
         nome = self.alterarLogin.currentText()
         idLogin = self.dicionarioLogins.get(nome)
 
-        return (idLogin, email, senha, nivelAcesso)
+        return (idLogin, email, nivelAcesso, senha)
     
     def setNivelAcesso(self):
         key = self.getKey()

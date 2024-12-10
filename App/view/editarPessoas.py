@@ -16,6 +16,10 @@ class EditarPessoas(QWidget):
         self.dicionarioPessoas = buscarPessoas()
         self.popularJanela()
         self.nomePessoas.currentIndexChanged.connect(self.popularCampos)
+
+        self.dataDeNascimento.setCalendarPopup(True)
+        self.dataDeNascimento.setDisplayFormat('dd/MM/yyyy')
+        self.dataDeNascimento.setDate(QDate.currentDate())
         
 
     @pyqtSlot()
