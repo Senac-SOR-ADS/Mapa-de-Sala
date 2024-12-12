@@ -212,6 +212,7 @@ class HomePrincipal(QMainWindow):
         self.setGeometry(rect.x(), rect.y(), new_width, new_height)
 
 
+
     @pyqtSlot()
     def on_btnFecharMenuQuebrado_clicked(self):
         self.subMenuQuebrado.hide()
