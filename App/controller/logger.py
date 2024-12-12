@@ -1,10 +1,11 @@
 import logging
 import os
+from secrets import token_hex
 
 class Log:
 
     def __init__(self, name="basic") -> None:
-        self.logger = logging.getLogger(name)
+        self.logger = logging.getLogger(token_hex(4))
         self.logger.setLevel(logging.DEBUG)
 
         caminho = 'env/log'

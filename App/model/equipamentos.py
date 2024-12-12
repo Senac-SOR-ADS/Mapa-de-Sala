@@ -1,4 +1,7 @@
 from App.model.conexao import ConexaoBD
+from App.controller.logger import Log
+
+log = Log('model')
 
 
 class Equipamentos:
@@ -30,14 +33,16 @@ class Equipamentos:
         self.__area = area
 
     def cadastrar_equipamento(self, id_area):
-        """essa função é para cadastrar um equipamento"""
-        self.__banco.conectar()
-        query = "INSERT INTO `equipamento`(`idArea`, `nome`, `marca`, `quantidade`) VALUES (%s, %s, %s, %s)"
-        params = [id_area, self.__nome, self.__marca, self.quantidade]
-        resultado = self.__banco.alterarDados(query, params)
-        self.__banco.desconectar()
-        return resultado
-    
+        try:    
+            """essa função é para cadastrar um equipamento"""
+            self.__banco.conectar()
+            query = "INSERT INTO `equipamento`(`idArea`, `nome`, `marca`, `quantidade`) VALUES (%s, %s, %s, %s)"
+            params = [id_area, self.__nome, self.__marca, self.quantidade]
+            resultado = self.__banco.alterarDados(query, params)
+            self.__banco.desconectar()
+            return resultado
+        except:
+            log.error(f"{__name__}: Erro ao realizar um cadastro de equipamentos. {params}")
     
     @classmethod
     def retorna_equipamento_reservado(cls):

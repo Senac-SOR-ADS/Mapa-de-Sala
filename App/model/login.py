@@ -1,14 +1,17 @@
 from App.model.conexao import ConexaoBD
 from App.model.criptografia import Criptografia
+from App.controller.logger import Log
+
 
 class Login:
+    __banco = ConexaoBD()
+
     def __init__(self, email=None, senha=None, nivel_acesso='user') -> None:
         self.__email = email
         self.__senha = senha
         self.__idLogin = None
         self.__idPessoa = None
         self.__nivelAcesso = nivel_acesso
-        self.__banco = ConexaoBD()
 
     def getIdLogin(self):
         return self.__idLogin
@@ -68,19 +71,19 @@ class Login:
             self.__banco.desconectar()
 
     # =================== atualizar ===================
-    def atualizar(self, idLogin, email, cargo):
+    def atualizar(self, idLogin, email, acesso, senha):
         """Atualiza o email e o nível de acesso do usuário no banco de dados."""
+        senha = Criptografia.criptografarSenha(senha)
         
-        nivelAcesso = 'admin' if cargo == 'Administrador' else 'user'
         try:
             self.__banco.conectar()
 
             query_update = '''
                 UPDATE login
-                SET email = %s, nivelAcesso = %s
+                SET email = %s, nivelAcesso = %s, senha = %s
                 WHERE idLogin = %s
             '''
-            self.__banco.alterarDados(query_update, (email, nivelAcesso, idLogin))
+            self.__banco.alterarDados(query_update, (email, acesso, senha, idLogin))
             return True
         except Exception as e:
             print(f"Erro ao atualizar login: {e}")
@@ -106,6 +109,16 @@ class Login:
             return True
         return False
     
+    # =================== consultar ===================
+    @classmethod
+    def buscar_todos(cls):
+        """Busca todos os logins"""
+        cls.__banco.conectar()
+        query = "SELECT * FROM login"
+        resultado = cls.__banco.buscarTodos(query)
+        cls.__banco.desconectar()
+        return resultado
+
     # =================== buscar por Id ===================
     @classmethod
     def pesquisar_id(cls, idLogin):
@@ -152,6 +165,7 @@ class Login:
                 if Criptografia.validarSenha(senhaUsuario, senhaBanco):
                     self.setIdLogin(resultado[0])
                     self.setIdPessoa(resultado[1])
+                    self.setNivelAcesso(resultado[4])
                     return True
         except Exception as e:
             print(f"Erro na validação de login: {e}")

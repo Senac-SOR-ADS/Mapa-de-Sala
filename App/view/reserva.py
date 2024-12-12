@@ -1,4 +1,3 @@
-
 from PyQt5.QtWidgets import QWidget, QDateEdit
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer, QDate, pyqtSlot
@@ -12,7 +11,8 @@ from App.controller.curso import listarCursos
 from App.controller.pessoa import buscarPessoas
 from App.controller.sala import listarSala
 from App.controller.utils import modificarData
-from App.controller.reserva import fazendoReserva, validarCadastro
+from App.controller.reserva import fazendoReserva, validarCadastro, validarDiaSemana
+from App.controller.login import pegarUsuarioLogado
 
 
 class ReservaInterface(QWidget):
@@ -23,12 +23,15 @@ class ReservaInterface(QWidget):
 
         # Os metodos abaixo servem para transformar o QDateEdit em um calendário
         self.diaInicio = self.findChild(QDateEdit, 'diaInicio') 
-        self.diaFim = self.findChild(QDateEdit, 'diaFim')  
+        self.diaFim = self.findChild(QDateEdit, 'diaFim')
 
         self.diaInicio.setCalendarPopup(True)
         self.diaInicio.setDisplayFormat('dd/MM/yyyy')
         self.diaInicio.setDate(QDate.currentDate())
+        self.setDataMinima()
+        self.setHorarioMinimo()
         self.diaInicio.dateChanged.connect(self.setDataMinima)
+        self.inicioCurso.timeChanged.connect(self.setHorarioMinimo)
 
         self.diaFim.setCalendarPopup(True)
         self.diaFim.setDisplayFormat('dd/MM/yyyy')
@@ -80,19 +83,25 @@ class ReservaInterface(QWidget):
     @pyqtSlot()
     def on_btnFazerReserva_clicked(self):
         info = self.getDados()
-        idLogin = 8
+        idLogin = pegarUsuarioLogado()
         diasValidos = (info['seg'], info['ter'], info['qua'], info['qui'], info['sexta'], info['sab'], False)
-        validacao = validarCadastro(info, diasValidos)
-        if not validacao:
-            fazendoReserva(idLogin, info, diasValidos)
-        elif len(validacao) > 0:
-            print(f'Não foi possivel fazer a reserva {validacao}')
+        if validarDiaSemana(info['diaInicio'], diasValidos):
+            validacao = validarCadastro(info, diasValidos)
+            if len(validacao):
+                print('Não foi possível fazer a reserva, já existe uma reserva nesse horário')
+                return
+            fazendoReserva(idLogin.get('id_login'), info, diasValidos)
+            print('Reserva feita com sucesso!')
+        return
     
     
     def setDataMinima(self):
         primeiroDia = self.diaInicio.date()
         self.diaFim.setMinimumDate(primeiroDia)
     
+    def setHorarioMinimo(self):
+        horarioComeco = self.inicioCurso.time()
+        self.fimCurso.setMinimumTime(horarioComeco)
         
     def popularJanela(self):
         """Popula os comboBoxes com dados do banco."""

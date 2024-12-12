@@ -234,7 +234,7 @@ span.mapa {
 
 /* ===================== Scrollbar Personalizada ===================== */
 ::-webkit-scrollbar {
-    width: 10px; /* Ajusta a largura da scrollbar */
+    width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -251,26 +251,26 @@ span.mapa {
 /* ===================== Responsividade em Dispositivos Móveis ===================== */
 @media screen and (max-width: 768px) {
     .main-content {
-        padding: 20px; /* Menos padding em telas menores */
+        padding: 20px;
     }
 
     .container {
-        padding: 0 15px; /* Ajusta o padding em telas menores */
+        padding: 0 15px;
     }
 
     .flex {
-        flex-direction: column; /* Alinha itens em coluna em telas menores */
+        flex-direction: column;
     }
 
     .flex-column {
-        gap: 10px; /* Ajusta o espaçamento entre os itens */
+        gap: 10px;
     }
 
     h1 {
-        font-size: 2.5rem; /* Diminui o tamanho da fonte do título em telas menores */
+        font-size: 2.5rem;
     }
 
     p {
-        font-size: 1.2rem; /* Ajusta o tamanho da fonte do parágrafo em telas menores */
+        font-size: 1.2rem;
     }
 }

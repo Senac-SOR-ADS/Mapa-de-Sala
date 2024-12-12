@@ -1,5 +1,6 @@
 from flask import render_template, Blueprint, flash
 from App.routes.auth.autenticar import login_auth
+from App.routes.auth.acesso import pegar_acesso
 
 # Definindo o blueprint para a rota de home
 home_route = Blueprint('home_route', __name__, template_folder='templates/Home/')
@@ -9,7 +10,9 @@ home_route = Blueprint('home_route', __name__, template_folder='templates/Home/'
 @login_auth
 def home():
     """Rota para a página inicial, protegida por autenticação."""
-    return render_template('/Home/home.html')
+    valores = pegar_acesso()
+    print(valores)
+    return render_template('/Home/home.html', usuario=valores)
 
 @home_route.app_errorhandler(404)
 def page_not_found(error):

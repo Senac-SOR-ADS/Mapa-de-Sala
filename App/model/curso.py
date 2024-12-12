@@ -1,5 +1,9 @@
 from App.model.conexao import ConexaoBD
- 
+from App.controller.logger import Log
+
+log = Log('model')
+
+
 class Curso:
     __banco = ConexaoBD()
  
@@ -90,6 +94,15 @@ class Curso:
         resultado = cls.__banco.buscarTodos(query)
         cls.__banco.desconectar()
         return resultado
+    
+    @classmethod
+    def retorna_curso_id(cls, idCurso):
+        cls.__banco.conectar()
+        query = "SELECT * FROM curso WHERE idCurso = %s"
+        param = [idCurso]
+        resultado = cls.__banco.buscar(query, param)
+        if resultado:
+            return resultado
 
     @classmethod
     def deletar(cls, idCurso):
@@ -99,8 +112,9 @@ class Curso:
         resultado = cls.__banco.alterarDados(query, param)
         cls.__banco.desconectar()
         if resultado.rowcount:
-            print('curso deletado')
+            log.info('curso deletado')
             return True
+        log.error('erro ao deletar curso.')
         return False
     
     @classmethod
