@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>784</width>
-    <height>656</height>
+    <width>780</width>
+    <height>648</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -153,7 +153,7 @@
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>10</height>
+             <height>34</height>
             </size>
            </property>
            <property name="font">
@@ -187,7 +187,7 @@
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>10</height>
+             <height>34</height>
             </size>
            </property>
            <property name="font">
@@ -215,6 +215,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label_3">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>🎖 Nível de Acesso</string>
            </property>
@@ -222,6 +227,12 @@
          </item>
          <item>
           <widget class="QComboBox" name="nivelAcesso">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>34</height>
+            </size>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
