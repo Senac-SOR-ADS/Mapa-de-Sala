@@ -129,6 +129,8 @@ class Curso:
         if resultado.rowcount:
             return True
         return False
+    
+
 
 #  EXEMPLO PESQUISA AREA
 if __name__ == "__main__":

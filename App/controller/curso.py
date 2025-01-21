@@ -85,3 +85,28 @@ def atualizarCurso(idCurso, dados):
         if cursoModel.atualizar(idCurso, dados):
             return True
     return False
+
+    # =================== buscar Id ===================
+def buscarCursoId(idCurso: int) -> dict:
+    """ Busca um curso pelo ID e retorna suas informações ou uma mensagem de erro se não for encontrado. """
+    if not isinstance(idCurso, int):
+        return {"error": "ID inválido. Deve ser um número inteiro."}
+ 
+    try:
+        resultado = Curso.retorna_todas_infos_curso(idCurso)
+ 
+        if not resultado or len(resultado) < 8:
+            return {"error": "Curso não encontrado."}
+ 
+        return {
+            "idCurso": resultado[0],
+            "idArea": resultado[1],
+            "nome": resultado[2],
+            "oferta": resultado[3],
+            "periodo": resultado[4],
+            "cargaHoraria": resultado[5],
+            "horasDia": resultado[6],
+            "qtdAlunos": resultado[7],
+        }
+    except Exception as e:
+        return {"error": f"Erro ao buscar curso: {e}"}
