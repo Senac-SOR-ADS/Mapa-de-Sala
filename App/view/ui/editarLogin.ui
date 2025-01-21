@@ -40,14 +40,19 @@
 
 #btnMostrarSenha {
 	background-color: transparent;
-}</string>
+}
+
+#titulo {
+	color: #f6921e;
+}
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="titulo">
      <property name="font">
       <font>
-       <pointsize>13</pointsize>
+       <pointsize>17</pointsize>
       </font>
      </property>
      <property name="text">
