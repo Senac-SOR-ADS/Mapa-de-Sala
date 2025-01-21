@@ -25,7 +25,7 @@ class LoginInterface(QDialog):
         # self.btnEntrar.clicked.connect(self.validarLogin)
  
     def mostrarSenha(self):
-        if self.inputSenha.echoMode():
+        if self.inputSenha.echoMode() == 2:
            self.inputSenha.setEchoMode(self.inputSenha.EchoMode.Normal)
            self.btnMostrarSenha.setStyleSheet('''
                                               #btnMostrarSenha {

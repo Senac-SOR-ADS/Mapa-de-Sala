@@ -19,7 +19,7 @@ class CadastroLogin(QWidget):
    
     #Função para mudar visibilidade da senha
     def mostrarSenha(self):
-        if self.senha.echoMode():
+        if self.senha.echoMode() == 2:
            self.senha.setEchoMode(self.senha.EchoMode.Normal)
            self.btnMostrarSenha.setStyleSheet('''
                                               #btnMostrarSenha {
