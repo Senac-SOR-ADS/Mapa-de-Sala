@@ -13,8 +13,8 @@ class EditarCurso(QWidget):
         loadUi('App/view/ui/editarCurso.ui',self)
         self.dicionarioDeCursos = listarCurso()
         self.dicionarioDeAreas = listarAreas()
-        self.popularJanela()
-        self.ofertaCurso.currentIndexChanged.connect(self.popularCurso)
+        if (self.ofertaCurso.currentIndexChanged.connect(self.popularCurso)):
+            self.popularJanela()
 
     def popularJanela(self):
         self.comboOferta()
@@ -26,7 +26,7 @@ class EditarCurso(QWidget):
         infos = self.getEditarCurso()
 
         if(Curso.atualizar(idCurso, infos[0], infos[1], infos[2], infos[3], infos[4], infos[5], infos[6])):
-            print("atualizar curso")
+            print("Curso atualizado - editarCurso view")
             return True
         return False
 
@@ -56,6 +56,25 @@ class EditarCurso(QWidget):
             self.horasPorDia.setValue(horasDia)
             self.quantidadeAlunos.setValue(int(qtdAlunos))
 
+    # def limparCampos(self):
+    #     idCurso = self.getIdOferta()
+    #     print(idCurso)
+    #     info = buscarCursosId(idCurso)
+    #     nome = info['nome']
+    #     cargaHoraria = info['cargaHoraria']
+    #     periodo = info['periodo']
+    #     area = info['idArea']
+    #     horasDia = info['horasDia']
+    #     qtdAlunos = info['qtdAlunos']
+
+    #     if (nome, cargaHoraria, periodo, area, horasDia, qtdAlunos):
+    #         self.nomeCurso.clear()
+    #         self.cargaCurso.clear()
+    #         self.periodoCurso.clear()
+    #         self.campoArea.clear()
+    #         self.horasPorDia.clear()
+    #         self.quantidadeAlunos.clear()
+
     def getEditarCurso(self):
         oferta = self.ofertaCurso.currentText().strip()
         nome = self.nomeCurso.text().strip()
@@ -68,7 +87,7 @@ class EditarCurso(QWidget):
     
     def getIdArea(self):
         area = self.campoArea.currentText()
-        print(self.dicionarioDeAreas.get(area))
+        print(f"Get id area: {self.dicionarioDeAreas.get(area)}")
         return self.dicionarioDeAreas.get(area)
 
     def getIdOferta(self):
