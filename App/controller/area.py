@@ -45,6 +45,20 @@ def listarAreas(search_query: str = '') -> dict:
     except Exception as e:
         return {"error": f"Erro ao listar áreas: {str(e)}"}
 
+# =================== remover ===================
+def removerArea(idArea: int) -> dict:
+    """ Remove uma área do banco de dados pelo ID. """
+    try:
+        result = Area.deletar(idArea)
+        
+        if result:
+            return {"success": "Área removida com sucesso."}
+        
+        return {"error": "Não foi possível remover a área."}
+    
+    except Exception as e:
+        return {"error": f"Erro ao remover área: {e}"}
+
 # =================== buscar Id ===================
 def buscarAreaId(idArea: int) -> dict:
     """ Busca uma área pelo ID e retorna suas informações ou uma mensagem de erro se não for encontrada. """
@@ -64,17 +78,3 @@ def buscarAreaId(idArea: int) -> dict:
     
     except Exception as e:
         return {"error": f"Erro ao buscar área: {e}"}
-
-# =================== remover ===================
-def removerArea(idArea: int) -> dict:
-    """ Remove uma área do banco de dados pelo ID. """
-    try:
-        result = Area.deletar(idArea)
-        
-        if result:
-            return {"success": "Área removida com sucesso."}
-        
-        return {"error": "Não foi possível remover a área."}
-    
-    except Exception as e:
-        return {"error": f"Erro ao remover área: {e}"}
