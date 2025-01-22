@@ -6,7 +6,7 @@ from PyQt5.QtCore import QTimer, QDate, QTime, pyqtSlot
 # from App.model.login import Login
 # Não está sendo utilizado no arquivo
 
-from App.controller.curso import listarCursos, buscarCursoId
+from App.controller.curso import listarCurso, buscarCursoId
 from App.controller.pessoa import buscarPessoas
 from App.controller.sala import listarSala
 from App.controller.utils import modificarData
@@ -31,7 +31,7 @@ class ReservaInterface(QWidget):
         self.setMinimoFim()
         self.setPeriodos()
         self.diaInicio.dateChanged.connect(self.setDataMinima)
-        self.inicioCurso.timeChanged.connect(self.setMinimoFim)
+        self.inicioCurso.timeChanged.connect(self.setFimCurso)
         self.cursoReserva.currentIndexChanged.connect(self.setPeriodos)
 
         self.diaFim.setCalendarPopup(True)
@@ -42,7 +42,7 @@ class ReservaInterface(QWidget):
         """Pegando o dados na interface e retornando os valores"""
         pessoas = buscarPessoas()
         sala = listarSala()
-        curso = listarCursos() 
+        curso = listarCurso() 
         nomeDocenteResponsavel = self.nomeDocente.currentText().strip()
         idDocente = pessoas[nomeDocenteResponsavel]
         nomeSala = self.salaReserva.currentText().strip()
@@ -105,6 +105,10 @@ class ReservaInterface(QWidget):
         """Define o horário mínimo para acabar a reserva"""
         horarioComeco = self.inicioCurso.time()
         self.fimCurso.setMinimumTime(horarioComeco)
+
+    def setFimCurso(self):
+        self.setMinimoFim()
+        self.setIntervalo()
         
     def popularJanela(self):
         """Popula os comboBoxes com dados do banco."""
@@ -113,7 +117,7 @@ class ReservaInterface(QWidget):
         self.comboBoxSala()
 
     def comboBoxCurso(self):
-        cursos = listarCursos()
+        cursos = listarCurso()
         self.cursoReserva.clear()
         self.cursoReserva.addItems(cursos.keys())
 
@@ -141,13 +145,28 @@ class ReservaInterface(QWidget):
         horas.setHMS(horas.hour() + horasDia, horas.minute(), 0)
         self.setHoraFim(horas)
 
+    def setIntervalo(self):
+        horasDia = self.getHorasCurso()
+        intervalo = QTime()
+        horaInicio = self.getHoraInicio()
+        intervalo.setHMS(horaInicio.hour(), horaInicio.minute(), 0)
+        intervalo.setHMS(intervalo.hour() + horasDia, intervalo.minute(), 0)
+        self.setHoraFim(intervalo)
+
     def getPeriodoCurso(self):
+        """Retorna o período do curso"""
         idCurso = self.getIdCurso()
         dados = buscarCursoId(idCurso)
         periodo = dados.get('periodo')
         return periodo
 
+    def getHoraInicio(self):
+        """Retorna a hora de ínicio"""
+        horaInicio = self.inicioCurso.time()
+        return horaInicio
+
     def getHorasCurso(self):
+        """Retorna às horas diarias do curso"""
         idCurso = self.getIdCurso()
         dados = buscarCursoId(idCurso)
         horasDia = dados.get('horasDia')
@@ -156,6 +175,7 @@ class ReservaInterface(QWidget):
         return int(hora)
     
     def getIdCurso(self):
+        """Retorna o id do curso"""
         dados = self.getDados()
         curso = dados.get('idCurso')
         return curso

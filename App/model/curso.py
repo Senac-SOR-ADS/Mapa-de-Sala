@@ -88,21 +88,22 @@ class Curso:
         return resultado
     
     @classmethod
-    def retorna_nomeId_cursos(cls):
+    def retorna_ofertaId_cursos(cls):
         cls.__banco.conectar()
-        query = "SELECT idCurso, nome FROM curso"
+        query = "SELECT idCurso, oferta FROM curso"
         resultado = cls.__banco.buscarTodos(query)
         cls.__banco.desconectar()
         return resultado
     
     @classmethod
-    def retorna_curso_id(cls, idCurso):
+    def retorna_todas_infos_curso(cls, idCurso):
         cls.__banco.conectar()
         query = "SELECT * FROM curso WHERE idCurso = %s"
         param = [idCurso]
         resultado = cls.__banco.buscar(query, param)
-        if resultado:
-            return resultado
+        cls.__banco.desconectar()
+        return resultado
+
 
     @classmethod
     def deletar(cls, idCurso):
@@ -124,9 +125,12 @@ class Curso:
         params = [idArea, nome, oferta, periodo, cargaHoraria, horasDia, qtdAlunos, idCurso]
         resultado = cls.__banco.alterarDados(query, params)
         cls.__banco.desconectar()
+        print(f"array de itens atualizados: {params}")
         if resultado.rowcount:
             return True
         return False
+    
+
 
 #  EXEMPLO PESQUISA AREA
 if __name__ == "__main__":
