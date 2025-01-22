@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>808</width>
-    <height>585</height>
+    <width>626</width>
+    <height>469</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,14 +35,18 @@ border-radius: 15px;
 
 #resposta {
 	color: red;
+}
+
+#titulo {
+	color: #f6921e;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="titulo">
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>17</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
