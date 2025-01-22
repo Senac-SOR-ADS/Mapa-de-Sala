@@ -29,7 +29,18 @@ class Area:
             log.error(f'{__name__}: Erro ao fazer o cadastro de uma nova área. {parametro}')
             self.__banco.desconectar()
             return False
-    
+        
+    @classmethod
+    def buscar_nome_area(cls, idArea):
+        """Uma função que devolve o nome da área"""
+        cls.__banco.conectar()
+        query = "SELECT nome FROM area WHERE idArea = %s"
+        param = [idArea]
+        resultado = cls.__banco.buscar(query, param)
+        resultado_string = resultado[0]
+        cls.__banco.desconectar()
+        return resultado_string
+
     @classmethod
     def consulta_areas(cls):
         """Uma função que devolve todas as áreas"""
