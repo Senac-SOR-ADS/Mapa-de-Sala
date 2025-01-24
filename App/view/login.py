@@ -88,8 +88,7 @@ class LoginInterface(QDialog):
  
     def dadosInvalidos(self):
         texto = 'DADOS INCOMPLETOS.'
-        resposta = Feedback
-    (texto)
+        resposta = Feedback(texto)
         # resposta.mudarFoto("Validado")
         if resposta.exec_():
             print('erro')
