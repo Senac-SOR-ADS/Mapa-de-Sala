@@ -36,14 +36,17 @@ border-radius: 15px;
  
 #respostaCadastro {
 	color: red;
+}
+#titulo {
+	color: #f6921e;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item alignment="Qt::AlignHCenter|Qt::AlignBottom">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="titulo">
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>17</pointsize>
       </font>
      </property>
      <property name="text">
