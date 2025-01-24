@@ -100,6 +100,13 @@ class LoginInterface(QDialog):
         campos = self.getEmailSenha()
         if validarLogin(campos[0], campos[1]):
             self.accept()
+
+            # Limpando campos
+            self.limparCampos(self.inputEmail)
+            self.limparCampos(self.inputSenha)
+
+            # Focus no campo de email
+            self.inputEmail.setFocus()
         else:
             self.dadosInvalidos()
  
