@@ -33,10 +33,10 @@ class Feedback(QDialog):
             self._is_dragging = False
             event.accept()
 
-if __name__ == "__main__":
-    from PyQt5.QtWidgets import QApplication
-    app = QApplication([])
-    if Feedback('teste').exec_():
-        print('ok')
-    else:
-        print('negado')
+# if __name__ == "__main__":
+#     from PyQt5.QtWidgets import QApplication
+#     app = QApplication([])
+#     if Feedback('teste').exec_():
+#         print('ok')
+#     else:
+#         print('negado')
