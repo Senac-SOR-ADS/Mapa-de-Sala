@@ -1,9 +1,13 @@
 from PyQt5.QtWidgets import QDialog, QMenu
 from PyQt5.QtCore import Qt, QTimer, QPoint
 from PyQt5.QtCore import pyqtSlot
+import PyQt5.QtCore
 from .feedback import Feedback
 from PyQt5.uic import loadUi
- 
+from os import path
+import os
+from PyQt5 import QtMultimedia
+
  
 from App.controller.login import validarLogin
  
@@ -88,7 +92,12 @@ class LoginInterface(QDialog):
  
     def dadosInvalidos(self):
         texto = 'DADOS INCOMPLETOS.'
-        resposta = Feedback(texto)
+        resposta = Feedback(True,
+                            texto,
+                            './ui/icones/iconErro.png',
+                            'Aviso!',
+                            'algo teu errado, corrija as falhas e tente novamente')
+        
         # resposta.mudarFoto("Validado")
         if resposta.exec_():
             print('erro')
