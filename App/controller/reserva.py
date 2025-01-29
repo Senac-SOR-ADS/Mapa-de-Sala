@@ -11,15 +11,18 @@ def realizar_reserva_no_dia(idLogin, dados, lista_de_dias):
 
 def validarCadastro(dados, diasValidos)->list|None:
     lista_de_dias = listas_intervalo_dias(dados['diaInicio'], dados['diaFim'], diasValidos)
-    lista_dias_ocupados = {}
+    dias_livres = []
+    dias_ocupados = {}
     for diaAtual in lista_de_dias:
         validar = Reserva.validar_periodo(dados['idSala'], diaAtual, dados['inicioCurso'], dados['fimCurso'])
         if validar:
-            lista_de_dias.remove(diaAtual)
+            #lista_de_dias.remove(diaAtual)
             reserva_ocupada = validar[0]
             info_curso = Curso.retorna_todas_infos_curso(reserva_ocupada[3])
-            lista_dias_ocupados[diaAtual] = (reserva_ocupada, info_curso)
-    return (lista_de_dias, lista_dias_ocupados)
+            dias_ocupados[diaAtual] = (reserva_ocupada, info_curso)
+        else:
+            dias_livres.append(diaAtual)
+    return (dias_livres, dias_ocupados)
 
 
 def trocar_reserva(dados1, dados2):

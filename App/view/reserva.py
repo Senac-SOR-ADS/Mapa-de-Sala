@@ -7,6 +7,8 @@ from PyQt5.QtCore import QTimer, QDate, QTime, pyqtSlot
 # from App.model.login import Login
 # Não está sendo utilizado no arquivo
 
+from App.view.telaConfirmacao import TelaConfirmacao
+
 from App.controller.curso import listarCurso, buscarCursoId
 from App.controller.pessoa import buscarPessoas
 from App.controller.sala import listarSala
@@ -91,11 +93,17 @@ class ReservaInterface(QWidget):
             dias_livres, dias_ocupados = validarCadastro(info, diasValidos)
             if dias_livres:
                 if dias_ocupados:
-                    for dia, reserva in dias_ocupados.items():
-                        print(f'{dia} | {reserva[1][2]} - {reserva[1][3]}')
 
-                    if True:
+                    ####### jeff - bloco para acrescentar os dias em conflitos no popup
+                    txt = ''
+                    for dia, reserva in dias_ocupados.items():
+                        txt += f'{dia} | {reserva[1][2]} - {reserva[1][3]}\n'
+                    confirmacao = TelaConfirmacao( 'Conflitos', txt, 'Confirmar')
+                    #########
+
+                    if confirmacao.exec_():
                         realizar_reserva_no_dia(idLogin.get('id_login'), info, dias_livres)
+                        print('Reserva feita com sucesso!')
                         return
                     else:
                         print('Não foi possível fazer a reserva, já existe uma reserva nesse horário')
