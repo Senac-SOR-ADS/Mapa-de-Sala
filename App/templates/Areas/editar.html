@@ -3,26 +3,56 @@
 {% block title %}Gestão de Áreas - Editar Área{% endblock %}
 
 {% block content %}
-<div class="container my-4">
-    <h1 class="text-center mb-4">Editar Área</h1>
+<div class="container-fluid my-2">
+    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
 
-    <!-- Exibir mensagens de feedback -->
-    {% include "Error/message.html" %}
+        <!-- Formulário para editar área -->
+        <form action="{{ url_for('area_route.editar_Area', id=area.idArea) }}" method="POST" class="needs-validation form-area" novalidate>
+            <h2 class="text-center mb-4 fw-bold text-primary">Edição de Área</h2>
+            <fieldset>
+                <input type="hidden" id="id" name="id" value="{{ area.idArea }}">
 
-    <!-- Formulário para editar área -->
-    <form action="{{ url_for('area_route.editar_area', id=area.id) }}" method="POST" class="needs-validation form-area">
-        <fieldset>
-            <input type="hidden" id="id" name="id" value="{{ area.id }}" />
+                <div class="row g-2">
+                    <!-- Nome da Área -->
+                    <div class="col-md-6 mb-3">
+                        <label for="nomeArea" class="form-label text-dark fs-5">Nome da Área:</label>
+                        <input type="text" id="nomeArea" name="nomeArea" value="{{ area.nomeArea }}" required maxlength="50"
+                               class="form-control shadow-sm {% if 'error' in area %}is-invalid{% endif %}" placeholder="Nome da Área"
+                               pattern="^[a-zA-Z\s]+$" aria-required="true" aria-describedby="nomeAreaFeedback">
+                        <div id="nomeAreaFeedback" class="invalid-feedback">
+                            {% if 'error' in area %}
+                                {{ area['error'] }}
+                            {% else %}
+                                Por favor, preencha o nome da área corretamente (apenas letras e espaços).
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
 
-            <div class="form-group mb-3">
-                <label for="nomeArea">Nome da Área:</label>
-                <input type="text" id="nomeArea" name="nomeArea" value="{{ area.nomeArea }}" required maxlength="50" class="form-control" aria-label="Nome da Área" pattern="^[a-zA-Z\s]+$">
-                <div class="invalid-feedback">Por favor, preencha o nome da área corretamente (apenas letras e espaços).</div>
-            </div>
+                <!-- Botões de Ação -->
+                <div class="d-flex justify-content-between mt-3">
+                    <!-- Botão de Voltar à Esquerda -->
+                    <a href="javascript:history.back()" class="btn btn-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="bi bi-arrow-left-circle me-2"></i> Voltar
+                    </a>
 
-            <!-- Botão de Submissão -->
-            <button type="submit" class="btn btn-primary w-100">Editar Área</button>
-        </fieldset>
-    </form>
+                    <!-- Botão de Salvar à Direita -->
+                    <button type="submit" class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="bi bi-check-circle me-2"></i> Salvar Alterações
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </div>
+
+<script>
+    // Habilita o botão de submit quando o formulário for válido
+    document.querySelector(".form-area").addEventListener("input", function() {
+        const form = this;
+        const submitBtn = document.querySelector("button[type='submit']");
+        submitBtn.disabled = !form.checkValidity();
+    });
+</script>
+
 {% endblock %}

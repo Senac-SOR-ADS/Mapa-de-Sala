@@ -1,5 +1,5 @@
-import os
 from datetime import timedelta
+import os
 
 class Config:
     # Chave secreta usada para proteger sessões e cookies

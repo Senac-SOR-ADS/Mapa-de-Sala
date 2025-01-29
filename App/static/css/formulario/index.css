@@ -1,219 +1,216 @@
-/* ==================== Estilos Gerais de Formulários ==================== */
-input.form-control,
-select.form-control,
-textarea.form-control {
-  width: 100%;
-  padding: 0.85rem;
-  margin: 0.75rem 0;
-  font-size: 1rem;
-  border: 1px solid var(--cor-borda-input);
-  border-radius: 8px;
-  background-color: var(--cor-fundo);
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-input.form-control:focus,
-select.form-control:focus,
-textarea.form-control:focus {
-  border-color: var(--cor-principal);
-  outline: none;
-  box-shadow: 0 0 6px var(--cor-sombra-input-focus);
-  background-color: var(--cor-fundo-claro);
-}
-
-/* ==================== Estilos de Tabelas ==================== */
-.table-responsive {
-  margin-top: 1.5rem;
-}
-
-.table {
-  width: 100%;
-  font-size: 0.875rem;
-  border-collapse: collapse;
-}
-
-.table th,
-.table td {
-  padding: 12px 15px;
-  text-align: left;
-  vertical-align: middle;
-}
-
-.table th {
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  background-color: var(--cor-tabela-cabecalho);
-  color: #fff;
-  cursor: pointer;
-}
-
-.table td {
-  color: var(--cor-tabela-texto);
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.table .btn {
-  font-size: 0.875rem;
-  padding: 0.3rem 0.7rem;
-  border-radius: 5px;
-  transition: background-color 0.3s, border-color 0.3s;
-}
-
-.table .btn-sm {
-  font-size: 0.75rem;
-}
-
-.table .btn-primary:hover,
-.table .btn-primary:focus {
-  background-color: var(--cor-secundaria);
-  border-color: var(--cor-secundaria);
-}
-
-.table .btn-danger {
-  background-color: var(--cor-botao-danger);
-  border-color: var(--cor-botao-danger);
-}
-
-.table .btn-danger:hover,
-.table .btn-danger:focus {
-  background-color: var(--cor-botao-danger-hover);
-  border-color: var(--cor-botao-danger-hover);
-}
-
-/* ==================== Estilos para Formulário de Reserva ==================== */
-.form-reserva {
-  background-color: var(--cor-fundo);
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-top: 30px;
-}
-
-/* ==================== Estilos de Campo de Formulário ==================== */
-fieldset {
-  border: 1px solid var(--cor-borda-input);
-  border-radius: 10px;
-  padding: 35px;
-  margin-bottom: 30px;
-  background-color: #fafafa;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.form-group {
-  margin-bottom: 1.75rem;
+/* ==================== Estilo para o Formulário ==================== */
+form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
 }
 
-.form-group label {
+/* ==================== Estilo para o Fieldset ==================== */
+fieldset {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+fieldset:hover {
+  border-color: #0061f2;
+}
+
+legend {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* ==================== Estilo para os Labels ==================== */
+label {
   font-weight: 600;
   margin-bottom: 0.3rem;
-  font-size: 1rem;
-  color: #495057;
-  transition: color 0.3s ease;
+  color: #333;
+  font-size: 0.85rem;
+  display: block;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 10px 12px;
-  font-size: 1rem;
-  border: 1px solid var(--cor-borda-input);
-  border-radius: 4px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+/* ==================== Estilo para Inputs, Selects e Textareas ==================== */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #333;
+  font-size: 0.85rem;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  box-sizing: border-box;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: var(--cor-principal);
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #0061f2;
+  background-color: #f1faff;
+  box-shadow: 0 0 2px #0061f2;
+  outline: none;
 }
 
-.form-group input:disabled,
-.form-group select:disabled,
-.form-group textarea:disabled {
-  background-color: #e9ecef;
-  border-color: var(--cor-borda-input);
-  cursor: not-allowed;
+input.error,
+select.error,
+textarea.error {
+  border-color: #ff4d4f;
 }
 
-/* ==================== Estilos Responsivos ==================== */
-@media (max-width: 767px) {
-  .form-group {
-    margin-bottom: 1.25rem;
+input.success,
+select.success,
+textarea.success {
+  border-color: #4caf50;
+}
+
+/* ==================== Responsividade para dispositivos móveis ==================== */
+@media (max-width: 1024px) {
+  form {
+    padding: 0.8rem;
+    gap: 0.8rem;
   }
 
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    font-size: 0.95rem;
-    padding: 8px 10px;
+  input,
+  select,
+  textarea {
+    padding: 0.5rem;
   }
 }
 
-/* ==================== Estilos para Checkbox ==================== */
+@media (max-width: 768px) {
+  form {
+    padding: 0.8rem;
+    gap: 0.7rem;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  fieldset {
+    padding: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  form {
+    padding: 0.6rem;
+    gap: 0.6rem;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  fieldset {
+    padding: 0.8rem;
+  }
+
+  label {
+    font-size: 0.85rem;
+  }
+
+  legend {
+    font-size: 1rem;
+  }
+}
+
+/* ==================== Estilos de Checkbox ==================== */
 .d-flex {
-  gap: 20px;
+  gap: 6px;
 }
 
 .form-check {
-  margin-right: 20px;
-  margin-bottom: 15px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  transition: transform 0.2s ease-in-out;
 }
 
-.form-check input {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+/* Hover para feedback visual */
+.form-check:hover {
+  transform: scale(1.05);
 }
 
-.form-check-label {
-  font-size: 1rem;
-  font-weight: 400;
-  color: #444;
+/* Desktop */
+@media (min-width: 1024px) {
+  .form-check {
+    margin-bottom: 10px;
+  }
+
+  .form-check-label {
+    font-size: 1rem;
+  }
 }
 
-/* ==================== Estilos para Textarea ==================== */
-textarea.form-control {
-  resize: vertical;
-  min-height: 120px;
-  max-height: 250px;
-  font-size: 1rem;
-  padding: 14px;
-  border-radius: 8px;
+/* Tablet */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .form-check {
+    gap: 12px;
+  }
+
+  .form-check-label {
+    font-size: 0.9rem;
+  }
 }
 
-/* ==================== Estilos para Inputs de Data e Hora ==================== */
-input[type="date"],
-input[type="time"] {
-  font-size: 1rem;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid var(--cor-borda-input);
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
+/* Mobile */
+@media (max-width: 767px) {
+  .d-flex {
+    gap: 10px;
+  }
 
-input[type="date"]:focus,
-input[type="time"]:focus {
-  border-color: var(--cor-principal);
-  box-shadow: 0 0 5px var(--cor-sombra-input-focus);
+  .form-check {
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .form-check-label {
+    font-size: 0.85rem;
+  }
+
+  .form-check input {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+  }
+
+  /* Feedback visual no checkbox */
+  .form-check input:checked {
+    border: 2px solid #007bff;
+    background-color: #007bff;
+  }
 }
 
 /* ===================== Estilo para o Formulário de Busca ===================== */
 .search-form {
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
+  gap: 6px;
+  margin-bottom: 0.7rem;
+  padding: 0 0.7rem;
   width: 100%;
-  margin-bottom: 1rem;
-  padding: 0 1rem;
 }
 
 /* Contêiner do campo de entrada */
@@ -221,10 +218,8 @@ input[type="time"]:focus {
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 400px;
-  background: #e9f2f2;
+  max-width: 300px;
   border-radius: 12px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   position: relative;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -232,14 +227,15 @@ input[type="time"]:focus {
 /* Estilo do campo de entrada */
 .input {
   flex: 1;
-  font-size: 16px;
-  padding: 1rem;
+  font-size: 15px;
+  padding: 0.5rem;
   background: #fff;
   border: 2px solid #ccc;
   border-radius: 10px;
   color: #333;
   outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease-in-out;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.3s ease-in-out;
 }
 
 /* Estilo do placeholder */
@@ -250,8 +246,8 @@ input[type="time"]:focus {
 
 /* Estilo do campo de entrada quando está em foco */
 .input:focus {
-  border-color: #0066cc;
-  box-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
+  border-color: #e58e10;
+  box-shadow: 0 0 7px rgba(0, 102, 204, 0.3);
   transform: scale(1.02);
 }
 
@@ -262,12 +258,11 @@ input[type="time"]:focus {
   left: 1rem;
   transform: translateY(-50%);
   color: #8a8a8a;
-  font-size: 1rem;
+  font-size: 0.7rem;
   background: transparent;
-  padding: 0 0.4rem;
+  padding: 0 0.25rem;
   pointer-events: none;
   transition: all 0.3s ease, color 0.3s ease, transform 0.4s ease-out;
-  transition-timing-function: cubic-bezier(0.2, 0, 0.2, 1);
 }
 
 /* Animação da label ao focar ou quando o valor é preenchido */
@@ -286,21 +281,22 @@ input[type="time"]:focus {
   align-items: center;
   justify-content: center;
   color: #0066cc;
-  width: 40px;
-  height: 40px;
+  width: 27px;
+  height: 27px;
   border-radius: 10px;
   position: absolute;
-  right: 10px;
+  right: 7px;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s, filter 0.3s ease-in-out;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s,
+    filter 0.3s ease-in-out;
 }
 
 /* Estilo do ícone SVG */
 .input-wrapper svg {
-  width: 20px;
-  height: 20px;
+  width: 13px;
+  height: 13px;
   opacity: 0.7;
   transition: transform 0.4s, opacity 0.4s ease, filter 0.4s ease;
 }
@@ -308,76 +304,104 @@ input[type="time"]:focus {
 /* Efeito de foco no ícone */
 .input:focus ~ .label + .input-wrapper svg,
 .input:focus + .input-wrapper svg {
-  transform: scale(1.4);
+  transform: scale(1.1);
   opacity: 1;
   filter: brightness(1.3);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease-out, filter 0.4s ease;
-}
-
-/* Estilo do botão Limpar */
-#clearSearch {
-  padding: 0.5rem 1rem;
-  background-color: #4a72d0;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#clearSearch:hover {
-  background-color: #3a60a8;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease-out,
+    filter 0.4s ease;
 }
 
 /* ===================== Responsividade ===================== */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .search-form {
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .input-group {
-    max-width: 90%
+    max-width: 250px;
+  }
+
+  .input {
+    font-size: 13px;
+    padding: 0.6rem;
+  }
+
+  .label {
+    font-size: 0.7rem;
   }
 
   .input-wrapper {
-    width: 35px;
-    height: 35px;
+    width: 26px;
+    height: 26px;
   }
 
   .input-wrapper svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  #clearSearch {
-    font-size: 14px;
-    padding: 0.4rem 0.8rem;
+    width: 12px;
+    height: 12px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
   .input-group {
     max-width: 100%;
   }
 
+  .label {
+    font-size: 0.65rem;
+  }
+
   .input {
     font-size: 14px;
+    padding: 0.8rem;
   }
 
   .input-wrapper {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
 
   .input-wrapper svg {
-    width: 16px;
-    height: 16px;
+    width: 11px;
+    height: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-form {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
   }
 
-  #clearSearch {
-    font-size: 13px;
-    padding: 0.3rem 0.7rem;
+  .input-group {
+    max-width: 100%;
+    width: 100%;
   }
 
+  .input {
+    font-size: 16px;
+    padding: 1rem;
+  }
+
+  .input-wrapper {
+    width: 32px;
+    height: 32px;
+  }
+
+  .label {
+    font-size: 0.8rem;
+  }
+
+  .input-wrapper svg {
+    width: 12px;
+    height: 12px;
+  }
 }

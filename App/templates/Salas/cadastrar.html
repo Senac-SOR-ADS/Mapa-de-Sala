@@ -3,73 +3,91 @@
 {% block title %}Gestão de Salas - Cadastro de Salas{% endblock %}
 
 {% block content %}
-<div class="container my-4">
-    <h3 class="text-center mb-4">Cadastro de Sala</h3>
 
-    <!-- Exibir mensagens de feedback -->
-    {% include "Error/message.html" %}
+<div class="container-fluid my-2">
+    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
 
-    <!-- Formulário para adicionar uma nova sala -->
-    <form id="formCadastroSala" action="{{ url_for('sala_route.cadastrar_Sala') }}" method="POST" class="needs-validation form-sala">
-        <fieldset>
-            <div class="row">
-                <!-- Nome da Sala -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="nome">Nome da Sala:</label>
-                    <input type="text" id="nome" name="nome" required maxlength="50" class="form-control" placeholder="Nome da Sala" aria-describedby="nomeFeedback" pattern="^[a-zA-Z0-9\s]+$">
-                    <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome da sala corretamente.</div>
+        <!-- Formulário para adicionar uma nova sala -->
+        <form id="formCadastroSala" action="{{ url_for('sala_route.cadastrar_Sala') }}" method="POST" class="form-sala needs-validation" novalidate>
+            <h2 class="text-center mb-4 fw-bold text-primary">Cadastro de Sala</h2>
+            <fieldset>
+
+                <div class="row g-2">
+                    <!-- Nome da Sala -->
+                    <div class="col-md-6 mb-3">
+                        <label for="nome" class="form-label text-dark fs-5">Nome da Sala:</label>
+                        <input type="text" id="nome" name="nome" required maxlength="50" class="form-control shadow-sm" placeholder="Nome da Sala" pattern="^[a-zA-Z0-9\s]+$" aria-required="true" aria-describedby="nomeFeedback">
+                        <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome da sala corretamente (apenas letras, números e espaços).</div>
+                    </div>
+
+                    <!-- Tipo de Sala -->
+                    <div class="col-md-6 mb-3">
+                        <label for="tipo" class="form-label text-dark fs-5">Tipo de Sala:</label>
+                        <select id="tipo" name="tipo" class="form-select shadow-sm" required aria-describedby="tipoFeedback">
+                            <option value="" disabled selected>Selecione o Tipo de Sala</option>
+                            <option value="Comum">Comum</option>
+                            <option value="Laboratorio">Laboratório</option>
+                            <option value="Biblioteca">Biblioteca</option>
+                        </select>
+                        <div id="tipoFeedback" class="invalid-feedback">Por favor, selecione o tipo de sala.</div>
+                    </div>
                 </div>
 
-                <!-- Tipo de Sala -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="tipo">Tipo de Sala:</label>
-                    <select id="tipo" name="tipo" class="form-control" required aria-describedby="tipoFeedback">
-                        <option value="" disabled selected>Selecione o Tipo de Sala</option>
-                        <option value="Comum">Comum</option>
-                        <option value="Laboratorio">Laboratório</option>
-                        <option value="Biblioteca">Biblioteca</option>
-                    </select>
-                    <div id="tipoFeedback" class="invalid-feedback">Por favor, selecione o tipo de sala.</div>
-                </div>
-            </div>
+                <div class="row g-2">
+                    <!-- Prédio -->
+                    <div class="col-md-6 mb-3">
+                        <label for="predio" class="form-label text-dark fs-5">Prédio:</label>
+                        <select id="predio" name="predio" class="form-select shadow-sm" required aria-describedby="predioFeedback">
+                            <option value="" disabled selected>Selecione o Prédio</option>
+                            <option value="Prédio 1">Prédio 1</option>
+                            <option value="Prédio 2">Prédio 2</option>
+                        </select>
+                        <div id="predioFeedback" class="invalid-feedback">Por favor, selecione o prédio.</div>
+                    </div>
 
-            <div class="row">
-                <!-- Prédio -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="predio">Prédio:</label>
-                    <select id="predio" name="predio" class="form-control" required aria-describedby="predioFeedback">
-                        <option value="" disabled selected>Selecione o Prédio</option>
-                        <option value="Prédio 1">Prédio 1</option>
-                        <option value="Prédio 2">Prédio 2</option>
-                    </select>
-                    <div id="predioFeedback" class="invalid-feedback">Por favor, selecione o prédio.</div>
+                    <!-- Equipamento -->
+                    <div class="col-md-6 mb-3">
+                        <label for="equipamento" class="form-label text-dark fs-5">Equipamento:</label>
+                        <input type="text" id="equipamento" name="equipamento" maxlength="100" class="form-control shadow-sm" placeholder="Equipamento utilizado" aria-label="Equipamento">
+                    </div>
                 </div>
 
-                <!-- Equipamento -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="equipamento">Equipamento:</label>
-                    <input type="text" id="equipamento" name="equipamento" maxlength="100" class="form-control" placeholder="Equipamento utilizado" aria-label="Equipamento">
-                </div>
-            </div>
+                <div class="row g-2">
+                    <!-- Capacidade -->
+                    <div class="col-md-6 mb-3">
+                        <label for="capacidade" class="form-label text-dark fs-5">Capacidade:</label>
+                        <input type="number" id="capacidade" name="capacidade" required min="1" class="form-control shadow-sm" aria-label="Capacidade">
+                        <div class="invalid-feedback">Por favor, preencha a capacidade de alunos.</div>
+                    </div>
 
-            <div class="row">
-                <!-- Capacidade -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="capacidade">Capacidade:</label>
-                    <input type="number" id="capacidade" name="capacidade" required min="1" class="form-control" aria-label="Capacidade">
-                    <div class="invalid-feedback">Por favor, preencha a capacidade de alunos.</div>
+                    <!-- Observações -->
+                    <div class="col-md-6 mb-3">
+                        <label for="feedback" class="form-label text-dark fs-5">Observações:</label>
+                        <input type="text" id="feedback" name="feedback" maxlength="100" class="form-control shadow-sm" placeholder="Observações adicionais" aria-label="Observações">
+                    </div>
                 </div>
 
-                <!-- Observações -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="feedback">Observações:</label>
-                    <input type="text" id="feedback" name="feedback" maxlength="100" class="form-control" placeholder="Observações adicionais" aria-label="Observações">
+                <!-- Botões de Ação -->
+                <div class="d-flex justify-content-between mt-3">
+                    <button type="reset" class="btn btn-outline-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="bi bi-x-circle me-2"></i> Limpar
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center" id="submitBtn" disabled>
+                        <i class="bi bi-check-circle me-2"></i> Cadastrar Sala
+                    </button>
                 </div>
-            </div>
-
-            <!-- Botão de Submissão -->
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Adicionar Sala</button>
-        </fieldset>
-    </form>
+            </fieldset>
+        </form>
+    </div>
 </div>
+
+<script>
+    // Habilita o botão de submit quando o formulário for válido
+    document.getElementById("formCadastroSala").addEventListener("input", function() {
+        const form = this;
+        const submitBtn = document.getElementById("submitBtn");
+        submitBtn.disabled = !form.checkValidity();
+    });
+</script>
+
 {% endblock %}

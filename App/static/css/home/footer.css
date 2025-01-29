@@ -1,60 +1,101 @@
 /* ===================== Rodapé ===================== */
 footer {
-    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
-    color: var(--cor-footer-texto);
+    background: linear-gradient(135deg, #0051a0 30%, #007acc 60%, #00b3e6 100%);
+    color: #ffffff;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 0.5rem;
-}
-
-footer section {
+    min-height: 1.5rem;
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.08);
+    position: relative;
+    padding: 0.15rem;
+    gap: 0;
+  }
+  
+  /* Seção dentro do rodapé */
+  footer section {
     max-width: 1200px;
     width: 100%;
-    padding: 0 0.25rem;
-}
-
-footer small {
-    font-size: 0.85rem;
-    margin-top: 0.25rem;
-    line-height: 1.4;
-}
-
-footer a {
+    padding: 0 0.4rem;
+  }
+  
+  /* Estilo para o pequeno texto */
+  footer small {
+    font-size: 0.65rem;
+    margin-top: 0.2rem;
+    line-height: 1.3;
+    word-wrap: break-word;
+  }
+  
+  /* Links do rodapé */
+  footer a {
     text-decoration: none;
-    transition: color 0.3s ease, transform 0.2s ease;
-    margin-top: 1px;
-}
-
-footer a:hover {
-    color: var(--cor-footer-link-hover);
-    transform: translateY(-1px);
-}
-
-/* Ajustes responsivos */
-@media (max-width: 768px) {
+    transition: color 0.2s ease, transform 0.2s ease;
+    margin-top: 0.2rem;
+    font-size: 0.85rem;
+    color: #ffffff;
+  }
+  
+  /* ===================== Responsividade ===================== */
+  @media (min-width: 1024px) {
     footer {
-        padding: 0.5rem 1rem;
+      padding: 0.4rem;
     }
-
+  
+    footer section {
+      max-width: 1400px;
+    }
+  
     footer small {
-        font-size: 0.8rem;
+      font-size: 0.7rem;
     }
-}
-
-/* Ajustes para telas muito pequenas (menos de 480px) */
-@media (max-width: 480px) {
-    footer {
-        padding: 0.5rem 0.75rem;
-    }
-
-    footer small {
-        font-size: 0.7rem;
-    }
-
+  
     footer a {
-        font-size: 0.8rem;
+      font-size: 0.9rem;
     }
-}
+  }
+  
+  @media (max-width: 1024px) and (min-width: 600px) {
+    footer {
+      padding: 0.4rem;
+    }
+  
+    footer small {
+      font-size: 0.65rem;
+    }
+  
+    footer a {
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    footer {
+      padding: 0.35rem;
+    }
+  
+    footer small {
+      font-size: 0.6rem;
+    }
+  
+    footer a {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 360px) {
+    footer {
+      padding: 0.3rem;
+    }
+  
+    footer small {
+      font-size: 0.5rem;
+    }
+  
+    footer a {
+      font-size: 0.75rem;
+    }
+  }
+  

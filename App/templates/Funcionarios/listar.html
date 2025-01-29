@@ -3,149 +3,147 @@
 {% block title %}Gestão de Funcionário - Lista de Funcionários{% endblock %}
 
 {% block content %}
-<div class="container my-4">
-    <!-- Formulário de Pesquisa -->
-    <form method="GET" action="{{ url_for('funcionario_route.listar_Pessoa') }}" class="search-form" role="search">
-        <div class="input-group">
-            <input class="input" required autocomplete="off" type="text" name="search" id="search" placeholder=" " />
-            <label class="label" for="search">Pesquisar</label>
 
-            <div class="input-wrapper">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
+<div class="container-fluid my-2">
+    <div class="card shadow-sm p-4 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
+        <h2 class="text-center mb-4 fw-bold text-primary">Lista de Funcionários</h2>
+        <fieldset>
+            <legend class="visually-hidden">Detalhes das listas de Funcionários</legend>
+
+            <!-- Formulário de Pesquisa -->
+            <form method="GET" action="{{ url_for('funcionario_route.listar_Pessoa') }}" class="search-form" role="search" aria-labelledby="searchForm">
+                <div class="input-group mb-1 mb-md-0">
+                    <input class="input" required autocomplete="off" type="text" name="search" id="search" placeholder=" " value="{{ search_query }}" aria-label="Pesquisar funcionários" />
+                    <label class="label" for="search">Pesquisar</label>
+                    <div class="input-wrapper">
+                        <svg id="loadingIcon" class="d-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" class="animate-spin"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary ml-2" id="clearSearch" aria-label="Limpar pesquisa">Limpar</button>
+            </form>
+
+            <!-- Botões principais -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <button id="toggleTable" class="btn btn-info btn-sm" aria-label="Mostrar/Esconder lista de funcionários">
+                    <i class="fas fa-list"></i> Lista de Funcionários
+                </button>
+                <a href="{{ url_for('funcionario_route.cadastrar_Pessoa') }}" class="btn btn-success btn-sm">
+                    <i class="fas fa-plus"></i> Cadastrar Novo Funcionário
+                </a>
             </div>
-        </div>
-        <button type="button" class="btn btn-secondary ml-2" id="clearSearch">Limpar</button>
-    </form>
-</div>
 
-<h3>Lista de Funcionários</h3>
+            <!-- Tabela de Funcionários -->
+            <div id="tableContainer" class="table-responsive d-none mt-4">
+                <table class="table table-striped table-hover table-bordered align-middle rounded shadow-sm">
+                    <caption class="visually-hidden">Tabela com lista de funcionários</caption>
+                    <thead class="table-dark text-center">
+                        <tr>
+                            <th style="width: 70%;">Nome</th>
+                            <th class="text-center" style="width: 30%;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for funcionario in valores %}
+                            <tr>
+                                <td class="text-start">{{ funcionario[0] }}</td>
+                                <td class="text-center">
+                                    <a href="/funcionario/editar/{{ funcionario[1] }}" class="btn btn-primary btn-sm" aria-label="Editar {{ funcionario[0] }}">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </a>
+                                    <button class="btn btn-danger btn-sm" aria-label="Remover {{ funcionario[0] }}" onclick="confirmRemove('{{ funcionario[1] }}', '{{ funcionario[0] }}')">
+                                        <i class="fas fa-trash"></i> Remover
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
 
-<!-- Exibir mensagens de feedback -->
-{% include "Error/message.html" %}
-
-<!-- Botões para exibir a lista e cadastrar um novo -->
-<div class=" d-flex flex-column flex-md-row justify-content-md-start align-items-md-center mb-4">
-    <button id="toggleTable" class="btn btn-info btn-sm mb-2 mb-md-0 me-md-3" aria-label="Mostrar/Esconder lista de funcionários">
-        <i class="fas fa-list"></i> Lista de Funcionários
-    </button>
-    <a href="{{ url_for('funcionario_route.cadastrar_Pessoa') }}" class="btn btn-success btn-sm">
-        <i class="fas fa-user-plus"></i> Cadastrar Novo Funcionário
-    </a>
-</div>
-
-<!-- Tabela de Funcionários -->
-<div id="tableContainer" class="table-responsive d-none">
-    <table class="table table-striped table-bordered table-hover align-middle">
-        <caption class="visually-hidden">Tabela com lista de funcionários e ações disponíveis</caption>
-        <thead class="table-dark">
-            <tr>
-                <th>Nome</th>
-                <th class="text-center">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for funcionario in valores %}
-            <tr>
-                <td>{{ funcionario[0] }}</td>
-                <td class="text-center">
-                    <!-- Botão de Editar -->
-                    <a href="/funcionario/editar/{{ funcionario[1] }}" class="btn btn-primary btn-sm" aria-label="Editar {{ funcionario[0] }}">
-                        <i class="fas fa-edit"></i> Editar
-                    </a>
-                    <!-- Botão de Remover -->
-                    <button class="btn btn-danger btn-sm" aria-label="Remover {{ funcionario[0] }}" onclick="confirmRemove('{{ funcionario[1] }}', '{{ funcionario[0] }}')">
-                        <i class="fas fa-trash"></i> Remover
-                    </button>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <!-- Paginação -->
-    <ul class="pagination justify-content-center">
-        {% if page > 1 %}
-        <li class="page-item">
-            <a class="page-link" href="{{ url_for('funcionario_route.listar_Pessoa', page=page - 1, search=search_query) }}">Anterior</a>
-        </li>
-        {% endif %}
-        <li class="page-item disabled">
-            <span class="page-link">Página {{ page }} de {{ (total_items // per_page) + (1 if total_items % per_page > 0 else 0) }}</span>
-        </li>
-        {% if page * per_page < total_items %}
-        <li class="page-item">
-            <a class="page-link" href="{{ url_for('funcionario_route.listar_Pessoa', page=page + 1, search=search_query) }}">Próxima</a>
-        </li>
-        {% endif %}
-    </ul>
-</div>
-
-<!-- Modal de Confirmação de Remoção -->
-<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="confirmModalLabel">Confirmar Remoção</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                <!-- Paginação -->
+                <nav aria-label="Paginação">
+                    <ul class="pagination justify-content-center">
+                        {% if page > 1 %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('funcionario_route.listar_Pessoa', page=page - 1, search=search_query) }}">Anterior</a>
+                            </li>
+                        {% endif %}
+                        <li class="page-item disabled">
+                            <span class="page-link">Página {{ page }} de {{ (total_items // per_page) + (1 if total_items % per_page > 0 else 0) }}</span>
+                        </li>
+                        {% if page * per_page < total_items %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('funcionario_route.listar_Pessoa', page=page + 1, search=search_query) }}">Próxima</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
             </div>
-            <div class="modal-body">
-                Tem certeza que deseja remover o funcionário "<span id="employeeName"></span>"? Esta ação não pode ser desfeita.
+
+            <!-- Modal de Confirmação de Remoção -->
+            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmModalLabel">Confirmar Remoção</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                        </div>
+                        <div class="modal-body">
+                            Tem certeza que deseja remover o funcionário "<span id="employeeName"></span>"? Esta ação não pode ser desfeita.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-danger" id="confirmRemoveButton">Remover</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger" id="confirmRemoveButton">Remover</button>
-            </div>
-        </div>
+        </fieldset>
     </div>
 </div>
 
 <script>
-    /* ===================== Remoção de funcionário ===================== */
+    // Exibir modal de remoção
     function confirmRemove(id, nome) {
         document.getElementById('employeeName').textContent = nome;
-
         const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
         modal.show();
 
         document.getElementById('confirmRemoveButton').onclick = function () {
-            window.location.replace(`/funcionario/remover/${id}`);
-        }
+            window.location.href = `/funcionario/remover/${id}`;
+        };
     }
 
-    /* ===================== Alterna Visibilidade da Tabela ===================== */
+    // Alternar visibilidade da tabela
     document.addEventListener('DOMContentLoaded', () => {
         const toggleTableBtn = document.getElementById('toggleTable');
         const tableContainer = document.getElementById('tableContainer');
 
-        // Verifica o estado salvo no localStorage ao carregar a página
+        // Mantém a visibilidade da tabela entre sessões com localStorage
         if (localStorage.getItem('tableVisible') === 'true') {
             tableContainer.classList.remove('d-none');
-        } else {
-            tableContainer.classList.add('d-none');
         }
 
-        // Alterna a exibição da tabela ao clicar no botão
         toggleTableBtn.addEventListener('click', () => {
-            if (tableContainer.classList.contains('d-none')) {
-                tableContainer.classList.remove('d-none');
-                localStorage.setItem('tableVisible', 'true');
-            } else {
-                tableContainer.classList.add('d-none');
-                localStorage.setItem('tableVisible', 'false');
-            }
-        });
-
-        // Mantém a tabela visível ao usar paginação
-        document.querySelectorAll('.pagination .page-link').forEach(link => {
-            link.addEventListener('click', () => {
-                localStorage.setItem('tableVisible', 'true');
-            });
+            tableContainer.classList.toggle('d-none');
+            localStorage.setItem('tableVisible', !tableContainer.classList.contains('d-none'));
         });
     });
-</script>
 
+    // Feedback visual ao pesquisar
+    const searchInput = document.getElementById('search');
+    const loadingIcon = document.getElementById('loadingIcon');
+
+    searchInput.addEventListener('input', () => {
+        loadingIcon.classList.remove('d-none');
+    });
+
+    document.getElementById('clearSearch').addEventListener('click', () => {
+        if (confirm('Tem certeza que deseja limpar a pesquisa?')) {
+            searchInput.value = '';
+            loadingIcon.classList.add('d-none');
+        }
+    });
+</script>
 {% endblock %}
