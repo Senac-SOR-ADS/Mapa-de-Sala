@@ -1,3 +1,4 @@
+
 from PyQt5.QtWidgets import QWidget, QDateEdit
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer, QDate, QTime, pyqtSlot
@@ -9,8 +10,8 @@ from PyQt5.QtCore import QTimer, QDate, QTime, pyqtSlot
 from App.controller.curso import listarCurso, buscarCursoId
 from App.controller.pessoa import buscarPessoas
 from App.controller.sala import listarSala
-from App.controller.utils import modificarData
-from App.controller.reserva import fazendoReserva, validarCadastro, validarDiaSemana
+from App.controller.utils import modificarData, modificarDataReserva
+from App.controller.reserva import validarCadastro, validarDiaSemana, realizar_reserva_no_dia
 from App.controller.login import pegarUsuarioLogado
 
 
@@ -87,12 +88,23 @@ class ReservaInterface(QWidget):
         idLogin = pegarUsuarioLogado()
         diasValidos = (info['seg'], info['ter'], info['qua'], info['qui'], info['sexta'], info['sab'], False)
         if validarDiaSemana(info['diaInicio'], diasValidos):
-            validacao = validarCadastro(info, diasValidos)
-            if len(validacao):
-                print('Não foi possível fazer a reserva, já existe uma reserva nesse horário')
-                return
-            fazendoReserva(idLogin.get('id_login'), info, diasValidos)
-            print('Reserva feita com sucesso!')
+            dias_livres, dias_ocupados = validarCadastro(info, diasValidos)
+            if dias_livres:
+                if dias_ocupados:
+                    for dia, reserva in dias_ocupados.items():
+                        print(f'{dia} | {reserva[1][2]} - {reserva[1][3]}')
+
+                    if True:
+                        realizar_reserva_no_dia(idLogin.get('id_login'), info, dias_livres)
+                        return
+                    else:
+                        print('Não foi possível fazer a reserva, já existe uma reserva nesse horário')
+
+                else: # quando todos os dias estiverem livres
+                    realizar_reserva_no_dia(idLogin.get('id_login'), info, dias_livres)
+                    print('Reserva feita com sucesso!')
+            else:
+                print('ninhum dia disponivel para reserva')
         return
     
     
