@@ -14,7 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QLineEdit, QComboBox {
+   <string notr="true">QLineEdit, QComboBox, QDateTimeEdit, QSpinBox {
 	background-color: white;
 	border:2px solid rgba(0,0,0,0);
 	border-bottom-color:rgba(46,82,101,200);
@@ -238,7 +238,7 @@ border-radius: 15px;
               </property>
               <property name="font">
                <font>
-                <pointsize>19</pointsize>
+                <pointsize>13</pointsize>
                </font>
               </property>
               <property name="placeholderText">
@@ -440,6 +440,11 @@ border-radius: 15px;
                 <height>16777215</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
               <property name="cursor">
                <cursorShape>PointingHandCursor</cursorShape>
               </property>
@@ -516,26 +521,18 @@ border-radius: 15px;
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="cargaCurso">
+             <widget class="QSpinBox" name="cargaCurso">
               <property name="minimumSize">
                <size>
                 <width>366</width>
                 <height>39</height>
                </size>
               </property>
-              <property name="maximumSize">
-               <size>
-                <width>366</width>
-                <height>16777215</height>
-               </size>
+              <property name="minimum">
+               <number>1</number>
               </property>
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="placeholderText">
-               <string/>
+              <property name="maximum">
+               <number>3000</number>
               </property>
              </widget>
             </item>
@@ -604,17 +601,11 @@ border-radius: 15px;
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="horasPorDia">
+             <widget class="QDateTimeEdit" name="horasPorDia">
               <property name="minimumSize">
                <size>
                 <width>366</width>
                 <height>39</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>366</width>
-                <height>16777215</height>
                </size>
               </property>
               <property name="font">
@@ -622,8 +613,11 @@ border-radius: 15px;
                 <pointsize>10</pointsize>
                </font>
               </property>
-              <property name="placeholderText">
-               <string/>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="displayFormat">
+               <string>HH:mm</string>
               </property>
              </widget>
             </item>
@@ -652,17 +646,11 @@ border-radius: 15px;
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="quantidadeAlunos">
+             <widget class="QSpinBox" name="quantidadeAlunos">
               <property name="minimumSize">
                <size>
                 <width>366</width>
                 <height>39</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>366</width>
-                <height>16777215</height>
                </size>
               </property>
               <property name="font">
@@ -670,11 +658,11 @@ border-radius: 15px;
                 <pointsize>10</pointsize>
                </font>
               </property>
-              <property name="tabletTracking">
-               <bool>false</bool>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
               </property>
-              <property name="placeholderText">
-               <string/>
+              <property name="minimum">
+               <number>1</number>
               </property>
              </widget>
             </item>
@@ -741,9 +729,6 @@ border-radius: 15px;
   <tabstop>ofertaCurso</tabstop>
   <tabstop>campoArea</tabstop>
   <tabstop>periodoCurso</tabstop>
-  <tabstop>cargaCurso</tabstop>
-  <tabstop>horasPorDia</tabstop>
-  <tabstop>quantidadeAlunos</tabstop>
   <tabstop>btnCadastrarCurso</tabstop>
  </tabstops>
  <resources/>
