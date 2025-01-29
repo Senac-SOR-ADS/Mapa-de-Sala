@@ -156,7 +156,7 @@ color: #000000;
        <widget class="QWidget" name="imgLogin" native="true">
         <property name="minimumSize">
          <size>
-          <width>321</width>
+          <width>346</width>
           <height>0</height>
          </size>
         </property>
@@ -189,7 +189,7 @@ color: #000000;
            </property>
           </spacer>
          </item>
-         <item alignment="Qt::AlignVCenter">
+         <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
           <widget class="QLabel" name="label_2">
            <property name="text">
             <string/>
