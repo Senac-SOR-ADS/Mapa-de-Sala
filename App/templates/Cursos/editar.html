@@ -3,87 +3,111 @@
 {% block title %}Gestão de Cursos - Editar Curso{% endblock %}
 
 {% block content %}
-<div class="container my-4">
-    <h1 class="text-center mb-4">Editar Curso</h1>
+<div class="container-fluid my-2">
+    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
 
-    <!-- Exibir mensagens de feedback -->
-    {% include "Error/message.html" %}
+        <!-- Formulário para editar curso -->
+        <form action="{{ url_for('curso_route.editar_Curso', id=curso.idCurso) }}" method="POST" class="needs-validation form-curso" novalidate>
+            <h2 class="text-center mb-4 fw-bold text-primary">Edição de Curso</h2>
+            <fieldset>
+                <input type="hidden" id="id" name="id" value="{{ curso.idCurso }}">
 
-    <!-- Formulário para editar curso -->
-    <form action="{{ url_for('curso_route.editar_Curso', id=curso.id) }}" method="POST" class="needs-validation form-curso">
-        <fieldset>
-            <input type="hidden" id="id" name="id" value="{{ curso.id }}">
+                <div class="row g-2">
+                    <!-- Nome do Curso -->
+                    <div class="col-md-6 mb-3">
+                        <label for="nome" class="form-label text-dark fs-5">Nome do Curso:</label>
+                        <input type="text" id="nome" name="nome" value="{{ curso.nome }}" required maxlength="100"
+                               class="form-control shadow-sm" placeholder="Nome do Curso" aria-describedby="nomeFeedback">
+                        <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome do curso corretamente.</div>
+                    </div>
 
-            <div class="row">
-                <!-- Nome do Curso -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="nome">Nome do Curso:</label>
-                    <input type="text" id="nome" name="nome" value="{{ curso.nome }}" required maxlength="100" class="form-control" placeholder="Nome do Curso" aria-describedby="nomeFeedback">
-                    <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome do curso corretamente.</div>
+                    <!-- Oferta -->
+                    <div class="col-md-6 mb-3">
+                        <label for="oferta" class="form-label text-dark fs-5">Oferta:</label>
+                        <input type="text" id="oferta" name="oferta" value="{{ curso.oferta }}" required maxlength="50"
+                               class="form-control shadow-sm" placeholder="Oferta" aria-describedby="ofertaFeedback">
+                        <div id="ofertaFeedback" class="invalid-feedback">Por favor, preencha a oferta corretamente.</div>
+                    </div>
                 </div>
 
-                <!-- Oferta -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="oferta">Oferta:</label>
-                    <input type="text" id="oferta" name="oferta" value="{{ curso.oferta }}" required maxlength="50" class="form-control" placeholder="Oferta" aria-describedby="ofertaFeedback">
-                    <div id="ofertaFeedback" class="invalid-feedback">Por favor, preencha a oferta corretamente.</div>
-                </div>
-            </div>
+                <div class="row g-2">
+                    <!-- Período -->
+                    <div class="col-md-6 mb-3">
+                        <label for="periodo" class="form-label text-dark fs-5">Período do Dia:</label>
+                        <select id="periodo" name="periodo" class="form-select shadow-sm" required aria-describedby="periodoFeedback">
+                            <option value="" disabled>Selecione o Período do Dia</option>
+                            <option value="manha" {% if curso.periodo == 'manha' %} selected {% endif %}>Manhã</option>
+                            <option value="tarde" {% if curso.periodo == 'tarde' %} selected {% endif %}>Tarde</option>
+                            <option value="noite" {% if curso.periodo == 'noite' %} selected {% endif %}>Noite</option>
+                        </select>
+                        <div id="periodoFeedback" class="invalid-feedback">Por favor, selecione o período do dia.</div>
+                    </div>
 
-            <div class="row">
-                <!-- Período -->
-                <div class="form-group mb-4 col-md-6">
-                    <label for="periodo">Período do Dia:</label>
-                    <select id="periodo" name="periodo" class="form-control" required aria-describedby="periodoFeedback">
-                        <option value="" disabled>Selecione o Período do Dia</option>
-                        <option value="manha" {% if curso.periodo == 'manha' %} selected {% endif %}>Manhã</option>
-                        <option value="tarde" {% if curso.periodo == 'tarde' %} selected {% endif %}>Tarde</option>
-                        <option value="noite" {% if curso.periodo == 'noite' %} selected {% endif %}>Noite</option>
-                    </select>
-                    <div id="periodoFeedback" class="invalid-feedback">Por favor, selecione o período do dia.</div>
-                </div>
-
-                <!-- Carga Horária Total -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="carga">Carga Horária Total:</label>
-                    <input type="number" id="carga" name="carga" value="{{ curso.carga }}" required min="1" class="form-control" aria-describedby="cargaFeedback">
-                    <div id="cargaFeedback" class="invalid-feedback">Por favor, preencha a carga horária total corretamente.</div>
-                </div>
-            </div>
-
-            <div class="row">
-                <!-- Horas do Curso -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="horas">Horas do Curso:</label>
-                    <input type="time" id="horas" name="horas" value="{{ curso.horas }}" required class="form-control" aria-describedby="horasFeedback">
-                    <div id="horasFeedback" class="invalid-feedback">Por favor, preencha a carga horária diária do curso corretamente.</div>
+                    <!-- Carga Horária Total -->
+                    <div class="col-md-6 mb-3">
+                        <label for="carga" class="form-label text-dark fs-5">Carga Horária Total:</label>
+                        <input type="number" id="carga" name="carga" value="{{ curso.cargaHoraria }}" required min="1"
+                               class="form-control shadow-sm" aria-describedby="cargaFeedback">
+                        <div id="cargaFeedback" class="invalid-feedback">Por favor, preencha a carga horária total corretamente.</div>
+                    </div>
                 </div>
 
-                <!-- Número de Alunos -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="alunos">Número de Alunos:</label>
-                    <input type="number" id="alunos" name="alunos" value="{{ curso.alunos }}" required min="1" class="form-control" aria-describedby="alunosFeedback">
-                    <div id="alunosFeedback" class="invalid-feedback">Por favor, preencha o número de alunos corretamente.</div>
-                </div>
-            </div>
+                <div class="row g-2">
+                    <!-- Horas do Curso -->
+                    <div class="col-md-6 mb-3">
+                        <label for="horas" class="form-label text-dark fs-5">Horas do Curso:</label>
+                        <input type="time" id="horas" name="horas" value="{{ curso.horasDia }}" required class="form-control shadow-sm"
+                               aria-describedby="horasFeedback">
+                        <div id="horasFeedback" class="invalid-feedback">Por favor, preencha a carga horária diária do curso corretamente.</div>
+                    </div>
 
-            <div class="row">
-                <!-- Área do Curso -->
-                <div class="form-group mb-4 col-md-6">
-                    <label for="area">Área do Curso:</label>
-                    <select id="area" name="area" class="form-control" required aria-describedby="areaFeedback">
-                        <option value="" disabled>Selecione a Área do Curso</option>
-                        {% for value in valores %}
-                            <option value="{{ value }}" {% if curso.area == value %} selected {% endif %}>{{ value }}</option>
-                        {% endfor %}
-                    </select>
-                    <div id="areaFeedback" class="invalid-feedback">Por favor, selecione a área do curso.</div>
+                    <!-- Número de Alunos -->
+                    <div class="col-md-6 mb-3">
+                        <label for="alunos" class="form-label text-dark fs-5">Número de Alunos:</label>
+                        <input type="number" id="alunos" name="alunos" value="{{ curso.qtdAlunos }}" required min="1"
+                               class="form-control shadow-sm" aria-describedby="alunosFeedback">
+                        <div id="alunosFeedback" class="invalid-feedback">Por favor, preencha o número de alunos corretamente.</div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Botão de Submissão -->
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Salvar Alterações</button>
-        </fieldset>
-    </form>
+                <div class="row g-2">
+                    <!-- Área do Curso (ocupando toda a largura) -->
+                    <div class="col-md-12 mb-4">
+                        <label for="area" class="form-label text-dark fs-5">Área do Curso:</label>
+                        <select id="area" name="area" class="form-select shadow-sm w-100" required aria-describedby="areaFeedback">
+                            <option value="" disabled>Selecione a Área do Curso</option>
+                            {% for area, id in valores.items() %}
+                                <option value="{{ id }}" {% if curso.idArea == id %} selected {% endif %}>{{ area }}</option>
+                            {% endfor %}
+                        </select>
+                        <div id="areaFeedback" class="invalid-feedback">Por favor, selecione a área do curso.</div>
+                    </div>
+                </div>
+
+                <!-- Botões de Ação -->
+                <div class="d-flex justify-content-between mt-3">
+                    <!-- Botão de Voltar à Esquerda -->
+                    <a href="javascript:history.back()" class="btn btn-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="bi bi-arrow-left-circle me-2"></i> Voltar
+                    </a>
+
+                    <!-- Botão de Salvar à Direita -->
+                    <button type="submit" class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center ml-auto">
+                        <i class="bi bi-check-circle me-2"></i> Salvar Alterações
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </div>
+
+<script>
+    // Habilita o botão de submit quando o formulário for válido
+    document.querySelector(".form-curso").addEventListener("input", function() {
+        const form = this;
+        const submitBtn = document.querySelector("button[type='submit']");
+        submitBtn.disabled = !form.checkValidity();
+    });
+</script>
+
 {% endblock %}

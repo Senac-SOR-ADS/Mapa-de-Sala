@@ -4,9 +4,6 @@
 
 {% block content %}
 
-<!-- Mensagens de feedback -->
-{% include "Error/message.html" %}
-
 <!-- Banner Principal -->
 <div class="banner">
     <div class="banner-text" data-aos="fade-up" data-aos-duration="1200">
@@ -16,48 +13,99 @@
 
 <!-- Seção de Módulos -->
 
-    <div class="container">
-        <div class="infoCards">
-            <!-- Card: Gestão de Salas -->
-            <div class="card" data-aos="fade-up" data-aos-duration="1100">
-                <div class="cardContent">
-                    <h2>Reserva de Salas</h2>
-                    <p>Gerencie as salas disponíveis com agilidade e eficiência. Organize as reservas de forma prática.</p>
-                    <a href="{{ url_for('reserva_route.cadastrar_Reserva') }}" class="card-link">
-                        <div class="card-btn">
-                            <img src="{{ url_for('static', filename='img/home/reserva.svg') }}" alt="Ícone de reserva de sala" />
-                        </div>
-                    </a>
-                </div>
-            </div>
+<div class="container">
+    <div class="infoCards">
+        <!-- card: admin reservas -->
+        {% if session.get('usuario') and session['nivel_acesso'] == 'admin' %}
 
-            <!-- Card: Relatórios -->
-            <div class="card" data-aos="fade-up" data-aos-duration="1300">
-                <div class="cardContent">
-                    <h2>Relatórios de Reservas</h2>
-                    <p>Crie e visualize relatórios detalhados sobre o uso das salas e recursos do sistema.</p>
-                    <a href="{{ url_for('relatorio_route.listar_Reserva') }}" class="card-link">
-                        <div class="card-btn">
-                            <img src="{{ url_for('static', filename='img/home/relatorio.svg') }}" alt="Ícone de relatórios de reserva" />
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Card: Configurações -->
-            <div class="card" data-aos="fade-up" data-aos-duration="1500">
-                <div class="cardContent">
-                    <h2>Configurações</h2>
-                    <p>Personalize as configurações do sistema de acordo com suas necessidades e preferências.</p>
-                    <a href="#" class="card-link">
-                        <div class="card-btn">
-                            <img src="{{ url_for('static', filename='img/home/perfil.svg') }}" alt="Ícone de configurações" />
-                        </div>
-                    </a>
-                </div>
+        <!-- Card: Gestão de Salas -->
+        <div class="card" data-aos="fade-up" data-aos-duration="1100">
+            <div class="cardContent">
+                <h2>Reserva de Salas</h2>
+                <p>Gerencie as salas disponíveis com agilidade e eficiência. Organize as reservas de forma prática.</p>
+                <a href="{{ url_for('reserva_route.cadastrar_Reserva') }}" class="card-link">
+                    <div class="card-btn">
+                        <img src="{{ url_for('static', filename='img/home/reserva.svg') }}"
+                            alt="Ícone de reserva de sala" />
+                    </div>
+                </a>
             </div>
         </div>
+        {% endif %}
+
+        <!-- Card: Relatórios -->
+        <div class="card" data-aos="fade-up" data-aos-duration="1300">
+            <div class="cardContent">
+                <h2>Relatórios de Reservas</h2>
+                <p>Crie e visualize relatórios detalhados sobre o uso das salas e recursos do sistema.</p>
+                <a href="{{ url_for('relatorio_route.listar_Reserva') }}" class="card-link">
+                    <div class="card-btn">
+                        <img src="{{ url_for('static', filename='img/home/relatorio.svg') }}"
+                            alt="Ícone de relatórios de reserva" />
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card: Configurações -->
+        <div class="card" data-aos="fade-up" data-aos-duration="1500">
+            <div class="cardContent">
+                <h2>Configurações</h2>
+                <p>Personalize as configurações do sistema de acordo com suas necessidades e preferências.</p>
+                <a href="#" class="card-link">
+                    <div class="card-btn">
+                        <img src="{{ url_for('static', filename='img/home/perfil.svg') }}"
+                            alt="Ícone de configurações" />
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card: Configurações -->
+        <div class="card" data-aos="fade-up" data-aos-duration="1500">
+            <div class="cardContent">
+                <h2>Configurações</h2>
+                <p>Personalize as configurações do sistema de acordo com suas necessidades e preferências.</p>
+                <a href="#" class="card-link">
+                    <div class="card-btn">
+                        <img src="{{ url_for('static', filename='img/home/perfil.svg') }}"
+                            alt="Ícone de configurações" />
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card: Configurações -->
+        <div class="card" data-aos="fade-up" data-aos-duration="1500">
+            <div class="cardContent">
+                <h2>Configurações</h2>
+                <p>Personalize as configurações do sistema de acordo com suas necessidades e preferências.</p>
+                <a href="#" class="card-link">
+                    <div class="card-btn">
+                        <img src="{{ url_for('static', filename='img/home/perfil.svg') }}"
+                            alt="Ícone de configurações" />
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card: Configurações -->
+        <div class="card" data-aos="fade-up" data-aos-duration="1500">
+            <div class="cardContent">
+                <h2>Configurações</h2>
+                <p>Personalize as configurações do sistema de acordo com suas necessidades e preferências.</p>
+                <a href="#" class="card-link">
+                    <div class="card-btn">
+                        <img src="{{ url_for('static', filename='img/home/perfil.svg') }}"
+                            alt="Ícone de configurações" />
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
     </div>
+</div>
 
 
 {% endblock %}

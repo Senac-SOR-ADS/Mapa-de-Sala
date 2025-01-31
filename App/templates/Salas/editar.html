@@ -3,75 +3,95 @@
 {% block title %}Gestão de Salas - Editar Sala{% endblock %}
 
 {% block content %}
-<div class="container my-4">
-    <h1 class="text-center mb-4">Editar Sala</h1>
+<div class="container-fluid my-2">
+    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
 
-    <!-- Exibir mensagens de feedback -->
-    {% include "Error/message.html" %}
+        <!-- Formulário para editar sala -->
+        <form action="{{ url_for('sala_route.editar_Sala', id=sala.idSala) }}" method="POST" class="needs-validation form-sala" novalidate>
+            <h2 class="text-center mb-4 fw-bold text-primary">Edição de Sala</h2>
+            <fieldset>
+                <input type="hidden" id="id" name="id" value="{{ sala.idSala }}">
 
-    <!-- Formulário para editar sala -->
-    <form action="{{ url_for('sala_route.editar_sala', id=sala.id) }}" method="POST" class="needs-validation form-sala">
-        <fieldset>
-            <input type="hidden" id="id" name="id" value="{{ sala.id }}" />
+                <div class="row g-2">
+                    <!-- Nome da Sala -->
+                    <div class="col-md-6 mb-3">
+                        <label for="nome" class="form-label text-dark fs-5">Nome da Sala:</label>
+                        <input type="text" id="nome" name="nome" value="{{ sala.nome }}" required maxlength="100"
+                               class="form-control shadow-sm" placeholder="Nome da Sala" aria-describedby="nomeFeedback">
+                        <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome da sala corretamente.</div>
+                    </div>
 
-            <div class="row">
-                <!-- Nome da Sala -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="nome">Nome da Sala:</label>
-                    <input type="text" id="nome" name="nome" value="{{ sala.nome }}" required maxlength="100" class="form-control" placeholder="Nome da Sala" aria-describedby="nomeFeedback">
-                    <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome da sala corretamente.</div>
+                    <!-- Tipo de Sala -->
+                    <div class="col-md-6 mb-3">
+                        <label for="tipo" class="form-label text-dark fs-5">Tipo de Sala:</label>
+                        <select id="tipo" name="tipo" class="form-select shadow-sm" required aria-describedby="tipoFeedback">
+                            <option value="Comum" {% if sala.tipo == 'Comum' %} selected {% endif %}>Comum</option>
+                            <option value="Laboratorio" {% if sala.tipo == 'Laboratorio' %} selected {% endif %}>Laboratório</option>
+                            <option value="Biblioteca" {% if sala.tipo == 'Biblioteca' %} selected {% endif %}>Biblioteca</option>
+                        </select>
+                        <div id="tipoFeedback" class="invalid-feedback">Por favor, selecione o tipo de sala.</div>
+                    </div>
                 </div>
 
-                <!-- Tipo de Sala -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="tipo">Tipo de Sala:</label>
-                    <select id="tipo" name="tipo" class="form-control" required aria-describedby="tipoFeedback">
-                        <option value="Comum" {% if sala.tipo == 'Comum' %} selected {% endif %}>Comum</option>
-                        <option value="Laboratorio" {% if sala.tipo == 'Laboratorio' %} selected {% endif %}>Laboratório</option>
-                        <option value="Biblioteca" {% if sala.tipo == 'Biblioteca' %} selected {% endif %}>Biblioteca</option>
-                    </select>
-                    <div id="tipoFeedback" class="invalid-feedback">Por favor, selecione o tipo de sala.</div>
-                </div>
-            </div>
+                <div class="row g-2">
+                    <!-- Prédio -->
+                    <div class="col-md-6 mb-3">
+                        <label for="predio" class="form-label text-dark fs-5">Prédio:</label>
+                        <select id="predio" name="predio" class="form-select shadow-sm" required aria-describedby="predioFeedback">
+                            <option value="Prédio 1" {% if sala.predio == 'Prédio 1' %} selected {% endif %}>Prédio 1</option>
+                            <option value="Prédio 2" {% if sala.predio == 'Prédio 2' %} selected {% endif %}>Prédio 2</option>
+                        </select>
+                        <div id="predioFeedback" class="invalid-feedback">Por favor, selecione o prédio.</div>
+                    </div>
 
-            <div class="row">
-                <!-- Prédio -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="predio">Prédio:</label>
-                    <select id="predio" name="predio" class="form-control" required aria-describedby="predioFeedback">
-                        <option value="Prédio 1" {% if sala.predio == 'Prédio 1' %} selected {% endif %}>Prédio 1</option>
-                        <option value="Prédio 2" {% if sala.predio == 'Prédio 2' %} selected {% endif %}>Prédio 2</option>
-                    </select>
-                    <div id="predioFeedback" class="invalid-feedback">Por favor, selecione o prédio.</div>
+                    <!-- Equipamento -->
+                    <div class="col-md-6 mb-3">
+                        <label for="equipamento" class="form-label text-dark fs-5">Equipamento:</label>
+                        <input type="text" id="equipamento" name="equipamento" value="{{ sala.equipamentos }}" maxlength="100" class="form-control shadow-sm" placeholder="Digite o equipamento utilizado" aria-describedby="equipamentoFeedback">
+                        <div id="equipamentoFeedback" class="invalid-feedback">Por favor, preencha o campo de equipamento.</div>
+                    </div>
                 </div>
 
-                <!-- Equipamento -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="equipamento">Equipamento:</label>
-                    <input type="text" id="equipamento" name="equipamento" value="{{ sala.equipamento }}" maxlength="100" class="form-control" placeholder="Digite o equipamento utilizado" aria-describedby="equipamentoFeedback">
-                    <div id="equipamentoFeedback" class="invalid-feedback">Por favor, preencha o campo de equipamento.</div>
-                </div>
-            </div>
+                <div class="row g-2">
+                    <!-- Capacidade -->
+                    <div class="col-md-6 mb-3">
+                        <label for="capacidade" class="form-label text-dark fs-5">Capacidade:</label>
+                        <input type="number" id="capacidade" name="capacidade" value="{{ sala.capacidade }}" required min="1" class="form-control shadow-sm" placeholder="Capacidade de alunos" aria-describedby="capacidadeFeedback">
+                        <div id="capacidadeFeedback" class="invalid-feedback">Por favor, preencha a capacidade de alunos corretamente.</div>
+                    </div>
 
-            <div class="row">
-                <!-- Capacidade -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="capacidade">Capacidade:</label>
-                    <input type="number" id="capacidade" name="capacidade" value="{{ sala.capacidade }}" required min="1" class="form-control" placeholder="Capacidade de alunos" aria-describedby="capacidadeFeedback">
-                    <div id="capacidadeFeedback" class="invalid-feedback">Por favor, preencha a capacidade de alunos corretamente.</div>
+                    <!-- Observações -->
+                    <div class="col-md-6 mb-3">
+                        <label for="feedback" class="form-label text-dark fs-5">Observações:</label>
+                        <input type="text" id="feedback" name="feedback" value="{{ sala.observacao }}" maxlength="100" class="form-control shadow-sm" placeholder="Insira suas observações" aria-describedby="feedbackFeedback">
+                        <div id="feedbackFeedback" class="invalid-feedback">Por favor, preencha as observações corretamente.</div>
+                    </div>
                 </div>
 
-                <!-- Observações -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="feedback">Observações:</label>
-                    <input type="text" id="feedback" name="feedback" value="{{ sala.feedback }}" maxlength="100" class="form-control" placeholder="Insira suas observações" aria-describedby="feedbackFeedback">
-                    <div id="feedbackFeedback" class="invalid-feedback">Por favor, preencha as observações corretamente.</div>
-                </div>
-            </div>
+                <!-- Botões de Ação -->
+                <div class="d-flex justify-content-between mt-3">
+                    <!-- Botão de Voltar à Esquerda -->
+                    <a href="javascript:history.back()" class="btn btn-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="bi bi-arrow-left-circle me-2"></i> Voltar
+                    </a>
 
-            <!-- Botão de Submissão -->
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Salvar Alterações</button>
-        </fieldset>
-    </form>
+                    <!-- Botão de Salvar à Direita -->
+                    <button type="submit" class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center ml-auto">
+                        <i class="bi bi-check-circle me-2"></i> Salvar Alterações
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </div>
+
+<script>
+    // Habilita o botão de submit quando o formulário for válido
+    document.querySelector(".form-sala").addEventListener("input", function() {
+        const form = this;
+        const submitBtn = document.querySelector("button[type='submit']");
+        submitBtn.disabled = !form.checkValidity();
+    });
+</script>
+
 {% endblock %}

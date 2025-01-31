@@ -3,57 +3,80 @@
 {% block title %}Gestão de Equipamentos - Editar Equipamento{% endblock %}
 
 {% block content %}
-<div class="container my-4">
-    <h3 class="text-center mb-4">Edição de Equipamento</h3>
+<div class="container-fluid my-2">
+    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
 
-    <!-- Exibir mensagens de feedback -->
-    {% include "Error/message.html" %}
+        <!-- Formulário para editar equipamento -->
+        <form id="formEditarEquipamento" action="{{ url_for('equipamento_route.editar_equipamento', id=equipamento.id) }}"
+            method="POST" class="needs-validation form-equipamento" novalidate>
+            <h2 class="text-center mb-4 fw-bold text-primary">Edição de Equipamento</h2>
+            <fieldset>
+                <input type="hidden" id="id" name="id" value="{{ equipamento.id }}" />
 
-    <!-- Formulário para editar equipamento -->
-    <form id="formEditarEquipamento" action="{{ url_for('equipamento_route.editar_equipamento', id=equipamento.id) }}" method="POST" class="needs-validation form-equipamento">
-        <fieldset>
-            <input type="hidden" id="id" name="id" value="{{ equipamento.id }}" />
+                <div class="row g-2">
+                    <!-- Nome do Equipamento -->
+                    <div class="col-md-6 mb-3">
+                        <label for="nome" class="form-label text-dark fs-5">Nome do Equipamento:</label>
+                        <input type="text" id="nome" name="nome" value="{{ equipamento.nome }}" required maxlength="100"
+                            class="form-control shadow-sm" placeholder="Nome do Equipamento" aria-describedby="nomeFeedback">
+                        <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome do equipamento.</div>
+                    </div>
 
-            <div class="row">
-                <!-- Nome do Equipamento -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="nome">Nome do Equipamento:</label>
-                    <input type="text" id="nome" name="nome" value="{{ equipamento.nome }}" required maxlength="100" class="form-control" placeholder="Nome do Equipamento" aria-describedby="nomeFeedback">
-                    <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome do equipamento.</div>
+                    <!-- Marca do Equipamento -->
+                    <div class="col-md-6 mb-3">
+                        <label for="marca" class="form-label text-dark fs-5">Marca do Equipamento:</label>
+                        <input type="text" id="marca" name="marca" value="{{ equipamento.marca }}" required maxlength="100"
+                            class="form-control shadow-sm" placeholder="Marca do Equipamento" aria-describedby="marcaFeedback">
+                        <div id="marcaFeedback" class="invalid-feedback">Por favor, preencha a marca do equipamento.</div>
+                    </div>
                 </div>
 
-                <!-- Marca do Equipamento -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="marca">Marca do Equipamento:</label>
-                    <input type="text" id="marca" name="marca" value="{{ equipamento.marca }}" required maxlength="100" class="form-control" placeholder="Marca do Equipamento" aria-describedby="marcaFeedback">
-                    <div id="marcaFeedback" class="invalid-feedback">Por favor, preencha a marca do equipamento.</div>
-                </div>
-            </div>
+                <div class="row g-2">
+                    <!-- Quantidade -->
+                    <div class="col-md-6 mb-3">
+                        <label for="quantidade" class="form-label text-dark fs-5">Quantidade:</label>
+                        <input type="number" id="quantidade" name="quantidade" value="{{ equipamento.quantidade }}" required
+                            min="1" class="form-control shadow-sm" aria-describedby="quantidadeFeedback">
+                        <div id="quantidadeFeedback" class="invalid-feedback">Por favor, informe a quantidade.</div>
+                    </div>
 
-            <div class="row">
-                <!-- Quantidade -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="quantidade">Quantidade:</label>
-                    <input type="number" id="quantidade" name="quantidade" value="{{ equipamento.quantidade }}" required min="1" class="form-control" aria-describedby="quantidadeFeedback">
-                    <div id="quantidadeFeedback" class="invalid-feedback">Por favor, informe a quantidade.</div>
+                    <!-- Área -->
+                    <div class="col-md-6 mb-3">
+                        <label for="idArea" class="form-label text-dark fs-5">Área:</label>
+                        <select id="idArea" name="idArea" required class="form-select shadow-sm" aria-describedby="areaFeedback">
+                            <option value="" disabled>Selecione a área</option>
+                            {% for area in areas %}
+                                <option value="{{ area.id }}" {% if equipamento.idArea==area.id %}selected{% endif %}>{{ area.nome }}</option>
+                            {% endfor %}
+                        </select>
+                        <div id="areaFeedback" class="invalid-feedback">Por favor, selecione uma área.</div>
+                    </div>
                 </div>
 
-                <!-- Área -->
-                <div class="form-group mb-3 col-md-6">
-                    <label for="idArea">Área:</label>
-                    <select id="idArea" name="idArea" required class="form-control" aria-describedby="areaFeedback">
-                        <option value="" disabled>Selecione a área</option>
-                        {% for area in areas %}
-                            <option value="{{ area.id }}" {% if equipamento.idArea == area.id %}selected{% endif %}>{{ area.nome }}</option>
-                        {% endfor %}
-                    </select>
-                    <div id="areaFeedback" class="invalid-feedback">Por favor, selecione uma área.</div>
-                </div>
-            </div>
+                <!-- Botões de Ação -->
+                <div class="d-flex justify-content-between mt-3">
+                    <!-- Botão de Voltar à Esquerda -->
+                    <a href="javascript:history.back()" class="btn btn-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="bi bi-arrow-left-circle me-2"></i> Voltar
+                    </a>
 
-            <!-- Botão de Submissão -->
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Salvar Alterações</button>
-        </fieldset>
-    </form>
+                    <!-- Botão de Salvar à Direita -->
+                    <button type="submit" class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center ml-auto">
+                        <i class="bi bi-check-circle me-2"></i> Salvar Alterações
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </div>
+
+<script>
+    // Habilita o botão de submit quando o formulário for válido
+    document.querySelector(".form-equipamento").addEventListener("input", function() {
+        const form = this;
+        const submitBtn = document.querySelector("button[type='submit']");
+        submitBtn.disabled = !form.checkValidity();
+    });
+</script>
+
 {% endblock %}

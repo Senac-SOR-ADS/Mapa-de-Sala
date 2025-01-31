@@ -1,7 +1,5 @@
 from flask import Flask
 from .logger_setup import logger
-
-# Importa todas as rotas do sistema 
 from .home import home_route
 from .pessoa import funcionario_route
 from .reserva import reserva_route
@@ -32,23 +30,17 @@ def register_routes(app: Flask) -> None:
         (curso_route, '/curso'),
         (equipamento_route, '/equipamento')
     ]
+    
+    success = False
 
     for blueprint, url_prefix in blueprints:
+        blueprint_name = blueprint.name if hasattr(blueprint, 'name') else str(blueprint)
         try:
             app.register_blueprint(blueprint, url_prefix=url_prefix)
-            logger.info(f"Blueprint registrado: {blueprint} com o prefixo: {url_prefix}")
+            success = True
         except Exception as e:
-            logger.error(f"Erro ao registrar blueprint: {blueprint} com o prefixo: {url_prefix}. Erro: {e}", exc_info=True)
-
-def check_template_access(app: Flask) -> None:
-    """
-    Verifica se o template 'home.html' está acessível no ambiente Jinja da aplicação.
-
-    Args:
-        app (Flask): A instância da aplicação Flask usada para acessar os templates.
-    """
-    try:
-        app.jinja_env.get_template('/Home/home.html')
-        logger.info("Template 'home.html' encontrado com sucesso.")
-    except Exception as e:
-        logger.error(f"Erro ao acessar o template 'home.html': {e}", exc_info=True)
+            logger.error(f"Erro ao registrar blueprint '{blueprint_name}' com o prefixo '{url_prefix}': {e}")
+    
+    # Registra uma única vez se algum blueprint foi registrado com sucesso
+    if success:
+        logger.info("Blueprints registrados com sucesso")

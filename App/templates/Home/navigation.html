@@ -2,49 +2,35 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home_route.home') }}"
+            <a class="navbar-brand d-flex align-items-center me-auto" href="{{ url_for('home_route.home') }}"
                 aria-label="Ir para a página inicial">
                 <img src="{{ url_for('static', filename='img/favicon.ico') }}" alt="Logo do site">
             </a>
 
-            <!-- Botão para navegação responsiva -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Navegação principal -->
+            <!-- Botão para menu responsivo -->
+            <div class="d-flex align-items-center">
+                <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar visibilidade do menu de navegação"
+                    style="transition: transform 0.3s ease-in-out, background-color 0.3s; font-size: 1.5rem; padding: 10px 15px; cursor: pointer; border: none; border-radius: 8px; background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                    <span class="navbar-toggler-icon" style="width: 24px; height: 24px;"></span>
+                </button>
+            </div>
+            
+            <!-- Menu principal -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <!-- Menu de Reservas -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarReservas" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            aria-label="Menu de reservas">
-                            <i class="bi bi-calendar-check icon-lg"></i>
-                            <span class="ms-1">Reservas</span>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarReservas">
-                            <li>
-                                <a class="dropdown-item" href="{{ url_for('reserva_route.cadastrar_Reserva') }}">
-                                    <i class="bi bi-calendar-plus icon-sm"></i> Nova Reserva Sala
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
 
-                    <!-- Menu de Relatórios -->
+                    <!-- Relatórios -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarRelatorios" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            aria-label="Menu de relatórios">
+                            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu de Relatórios">
                             <i class="bi bi-graph-up icon-lg"></i>
                             <span class="ms-1">Relatórios</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarRelatorios">
                             <li>
                                 <a class="dropdown-item" href="{{ url_for('relatorio_route.listar_Reserva') }}">
-                                    <i class="bi bi-calendar-event icon-sm"></i> Reservas Salas
+                                    <i class="bi bi-calendar-event icon-sm"></i> Reservas
                                 </a>
                             </li>
                             <li>
@@ -55,10 +41,23 @@
                         </ul>
                     </li>
 
+                    <!-- Menu dinâmico para administradores -->
+                    {% if session.get('usuario') and session['nivel_acesso'] == 'admin' %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarReservas" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu de Reservas">
+                            <i class="bi bi-calendar-check icon-lg"></i>
+                            <span class="ms-1">Reservas</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarReservas">
+                            <li><a class="dropdown-item" href="{{ url_for('reserva_route.cadastrar_Reserva') }}"><i
+                                        class="bi bi-calendar-plus icon-sm"></i> Nova Reserva Sala</a></li>
+                        </ul>
+                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarConsultas" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            aria-label="Menu de consultas">
+                            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu de Consultas">
                             <i class="bi bi-search icon-lg"></i>
                             <span class="ms-1">Consulta</span>
                         </a>
@@ -75,10 +74,10 @@
                                         class="bi bi-cpu icon-sm"></i> Equipamentos</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarCadastrar" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            aria-label="Menu de cadastro">
+                            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu de Cadastro">
                             <i class="bi bi-person-plus-fill icon-lg"></i>
                             <span class="ms-1">Cadastrar</span>
                         </a>
@@ -96,19 +95,20 @@
                                         class="bi bi-tools icon-sm"></i> Equipamento</a></li>
                         </ul>
                     </li>
+                    {% endif %}
 
-                    <!-- Menu de Perfil -->
+                    <!-- Perfil -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarPerfil" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            aria-label="Menu de perfil">
+                            data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu de Perfil">
                             <i class="bi bi-person-circle icon-lg"></i>
                             <span class="ms-1">Perfil</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarPerfil">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-person icon-sm"></i> Ver Perfil</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-pencil icon-sm"></i> Editar Perfil</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-lock icon-sm"></i> Alterar Senha</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person icon-sm"></i> Ver Perfil</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-lock icon-sm"></i> Alterar Senha</a>
+                            </li>
                             <li><a class="dropdown-item" href="{{ url_for('logout_route.logout') }}"><i
                                         class="bi bi-box-arrow-in-right icon-sm"></i> Sair</a></li>
                         </ul>

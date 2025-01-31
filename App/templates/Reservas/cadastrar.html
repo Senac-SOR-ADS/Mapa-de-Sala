@@ -3,95 +3,162 @@
 {% block title %}Gestão de Reservas - Mapa de Sala{% endblock %}
 
 {% block content %}
-<div class="container my-4">
-    <h3 class="text-center mb-4">Gestão de Reservas</h3>
+<div class="container-fluid my-2">
+    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
+        <form id="formCadastroReserva" action="/reserva" method="POST" class="form-reserva needs-validation" novalidate>
+            <h2 class="text-center mb-3 fw-bold text-primary">Reservar Sala</h2>
+            <fieldset class="mb-4">
+                <legend class="visually-hidden">Detalhes da Reserva</legend>
 
-    <!-- Formulário para reservar uma sala -->
-    <form action="/reserva" method="POST" class="form-reserva needs-validation" novalidate>
-        <fieldset>
-            <legend class="mb-3">Reservar Sala</legend>
-
-            <div class="row">
-                <!-- Campo Sala -->
-                <div class="form-group col-md-6 mb-4">
-                    <label for="idSala">Sala:</label>
-                    <select id="idSala" name="idSala" required class="form-control" aria-describedby="salaFeedback">
-                        <option value="" disabled selected>Selecione a Sala</option>
-                        {% for sala in salas %}
-                            <option value="{{ sala }}">{{ sala }}</option>
-                        {% endfor %}
-                    </select>
-                    <div id="salaFeedback" class="invalid-feedback">Por favor, selecione uma sala.</div>
-                </div>
-
-                <!-- Campo Funcionário -->
-                <div class="form-group col-md-6 mb-4">
-                    <label for="idPessoa">Funcionário:</label>
-                    <select id="idPessoa" name="idPessoa" required class="form-control" aria-describedby="pessoaFeedback">
-                        <option value="" disabled selected>Selecione o Funcionário</option>
+                <!-- Seção de Funcionário -->
+                <div class="mb-3">
+                    <label for="idPessoa" class="form-label text-dark fs-5">Funcionário:</label>
+                    <select id="idPessoa" name="idPessoa" class="form-select shadow-sm" required aria-label="Selecione o responsável pela reserva">
+                        <option value="" disabled selected>Selecione o responsável pela reserva</option>
                         {% for pessoa in pessoas %}
-                            <option value="{{ pessoa }}">{{ pessoa }}</option>
+                        <option value="{{ pessoa }}">{{ pessoa }}</option>
                         {% endfor %}
                     </select>
-                    <div id="pessoaFeedback" class="invalid-feedback">Por favor, selecione um funcionário.</div>
-                </div>
-            </div>
-
-            <div class="row">
-                <!-- Campo Data da Reserva -->
-                <div class="form-group col-md-6 mb-4">
-                    <label for="dia">Data da Reserva:</label>
-                    <input type="date" id="dia" name="dia" required class="form-control" aria-label="Data da Reserva" aria-describedby="dataFeedback">
-                    <div id="dataFeedback" class="invalid-feedback">Por favor, preencha a data da reserva.</div>
+                    <div class="invalid-feedback">Por favor, selecione o responsável pela reserva.</div>
                 </div>
 
-                <!-- Campo Hora de Início -->
-                <div class="form-group col-md-3 mb-4">
-                    <label for="horaInicio">Hora de Início:</label>
-                    <input type="time" id="horaInicio" name="horaInicio" required class="form-control" aria-label="Hora de Início" aria-describedby="horaInicioFeedback">
-                    <div id="horaInicioFeedback" class="invalid-feedback">Por favor, preencha a hora de início.</div>
-                </div>
-
-                <!-- Campo Hora de Fim -->
-                <div class="form-group col-md-3 mb-4">
-                    <label for="horaFim">Hora de Fim:</label>
-                    <input type="time" id="horaFim" name="horaFim" required class="form-control" aria-label="Hora de Fim" aria-describedby="horaFimFeedback">
-                    <div id="horaFimFeedback" class="invalid-feedback">Por favor, preencha a hora de fim.</div>
-                </div>
-            </div>
-
-            <!-- Campo Dias da Semana -->
-            <div class="form-group mb-3">
-                <label for="chaveDevolvida">Dias da Semana:</label>
-                <div class="d-flex flex-wrap justify-content-start" style="gap: 15px;">
-                    {% set dias = [
-                    ('segunda', 'Segunda'),
-                    ('terca', 'Terça'),
-                    ('quarta', 'Quarta'),
-                    ('quinta', 'Quinta'),
-                    ('sexta', 'Sexta'),
-                    ('sabado', 'Sábado'),
-                    ('domingo', 'Domingo')
-                    ] %}
-                    {% for dia, label in dias %}
-                    <div class="form-check d-flex flex-column align-items-center" style="flex-shrink: 0;">
-                        <input type="checkbox" id="{{ dia }}" name="chaveDevolvida[]" value="{{ dia }}" class="form-check-input" style="margin-bottom: 5px;">
-                        <label class="form-check-label" for="{{ dia }}" style="font-size: 0.8rem;">{{ label }}</label>
+                <!-- Seção de Curso e Sala -->
+                <div class="row g-2 mb-3">
+                    <div class="col-md-6">
+                        <label for="curso" class="form-label text-dark fs-5">Curso:</label>
+                        <select id="curso" name="curso" class="form-select shadow-sm" aria-label="Selecione o curso relacionado à reserva">
+                            <option value="" disabled selected>Selecione o curso relacionado à reserva</option>
+                            {% for curso in cursos %}
+                            <option value="{{ curso }}">{{ curso }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
-                    {% endfor %}
+                    <div class="col-md-6">
+                        <label for="idSala" class="form-label text-dark fs-5">Sala:</label>
+                        <select id="idSala" name="idSala" class="form-select shadow-sm" required aria-label="Selecione a Sala disponível para o curso">
+                            <option value="" disabled selected>Selecione a Sala disponível para o curso</option>
+                            {% for sala in salas %}
+                            <option value="{{ sala }}">{{ sala }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="invalid-feedback">Por favor, selecione uma sala.</div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Campo Observação -->
-            <div class="form-group mb-4">
-                <label for="observacao">Observação:</label>
-                <textarea id="observacao" name="observacao" class="form-control" rows="3" placeholder="Detalhes sobre a reserva (opcional)"></textarea>
-            </div>
+                <!-- Seção de Período (Data) -->
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <h5 class="fw-bold fs-5 text-dark text-center mb-2">Selecione o Período</h5>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="dataInicio" class="form-label fw-semibold text-dark fs-6">Data Inicial <span class="text-danger">*</span>:</label>
+                                <input type="date" id="dataInicio" name="dataInicio" class="form-control shadow-sm" required aria-label="Escolha a data inicial" />
+                                <div class="invalid-feedback">Por favor, preencha a data inicial.</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="dataFim" class="form-label fw-semibold text-dark fs-6">Data Final <span class="text-danger">*</span>:</label>
+                                <input type="date" id="dataFim" name="dataFim" class="form-control shadow-sm" required aria-label="Escolha a data final" />
+                                <div class="invalid-feedback">Por favor, preencha a data final.</div>
+                            </div>
+                        </div>
+                    </div>
 
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Reservar Sala</button>
-        </fieldset>
-    </form>
+                    <!-- Seção de Horário -->
+                    <div class="col-md-6">
+                        <h5 class="fw-bold fs-5 text-dark text-center mb-2">Defina o Horário</h5>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="horaInicio" class="form-label fw-semibold text-dark fs-6">Hora de Início <span class="text-danger">*</span>:</label>
+                                <input type="time" id="horaInicio" name="horaInicio" class="form-control shadow-sm" required aria-label="Hora de início" />
+                                <div class="invalid-feedback">Por favor, preencha a hora de início.</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="horaFim" class="form-label fw-semibold text-dark fs-6">Hora de Fim <span class="text-danger">*</span>:</label>
+                                <input type="time" id="horaFim" name="horaFim" class="form-control shadow-sm" required aria-label="Hora de fim" />
+                                <div class="invalid-feedback">Por favor, preencha a hora de fim.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Seção de Dias da Semana -->
+                <div class="row g-2 mb-3 justify-content-center">
+                    <div class="col-12 text-center">
+                        <label for="diasSemana" class="form-label text-dark fs-6">Selecione os Dias da Semana:</label>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            {% for dia, label in [
+                            ('segunda', 'Segunda'),
+                            ('terca', 'Terça'),
+                            ('quarta', 'Quarta'),
+                            ('quinta', 'Quinta'),
+                            ('sexta', 'Sexta'),
+                            ('sabado', 'Sábado'),
+                            ('domingo', 'Domingo')
+                            ] %}
+                            <div class="form-check me-3 mb-2">
+                                <input type="checkbox" id="{{ dia }}" name="diasSemana[]" value="{{ dia }}" class="form-check-input shadow-sm" />
+                                <label class="form-check-label text-dark fs-6" for="{{ dia }}">
+                                    <span class="d-inline-block" style="min-width: 90px;">{{ label }}</span>
+                                </label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de Observação -->
+                <div class="col-12 mb-3">
+                    <label for="observacao" class="form-label text-dark fs-5">Observação:</label>
+                    <textarea id="observacao" name="observacao" class="form-control shadow-sm" rows="2" placeholder="Adicione detalhes importantes sobre a reserva."></textarea>
+                </div>
+
+                <!-- Botões de Ação -->
+                <div class="d-flex justify-content-between mt-3">
+                    <button type="reset" class="btn btn-outline-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="bi bi-x-circle me-2"></i> Limpar
+                    </button>
+                    <button id="submitBtn" type="submit" class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center" disabled>
+                        <i class="bi bi-check-circle me-2"></i> Cadastrar Reserva
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const dataInicio = document.getElementById("dataInicio");
+        const dataFim = document.getElementById("dataFim");
+        const horaInicio = document.getElementById("horaInicio");
+        const horaFim = document.getElementById("horaFim");
+        const form = document.getElementById("formCadastroReserva");
+        const submitBtn = document.getElementById("submitBtn");
+
+        // Enable submit button based on form validity
+        form.addEventListener("input", function() {
+            submitBtn.disabled = !form.checkValidity();
+        });
+
+        dataInicio.addEventListener("change", () => {
+            dataFim.min = dataInicio.value;
+        });
+
+        dataFim.addEventListener("change", () => {
+            const invalidMessage = dataFim.value < dataInicio.value
+                ? "A data final deve ser no mesmo dia ou após a data inicial."
+                : "";
+            dataFim.setCustomValidity(invalidMessage);
+        });
+
+        horaFim.addEventListener("change", () => {
+            if (horaFim.value < horaInicio.value) {
+                horaFim.setCustomValidity("A hora de fim deve ser após a hora de início.");
+            } else {
+                horaFim.setCustomValidity("");
+            }
+        });
+    });
+</script>
 
 {% endblock %}

@@ -1,92 +1,4 @@
-/* =================== Variáveis Globais de Cores =================== */
-:root {
-    /* Cores principais - Azuis */
-    --primary-color: #1e40af;
-    /* Azul principal */
-    --primary-hover-color: #2563eb;
-    /* Azul mais intenso para hover */
-
-    /* Cores de destaque - Laranja */
-    --accent-color: #f97316;
-    /* Laranja principal */
-    --accent-hover-color: #fb923c;
-    /* Laranja mais suave para hover */
-
-    /* Cores de texto e fundo */
-    --text-color: #111827;
-    /* Texto escuro para boa legibilidade */
-    --bg-color: #f1f5f9;
-    /* Fundo claro, suave e agradável */
-    --form-bg-color: #ffffff;
-    /* Fundo branco para formulários */
-
-    /* Sombra */
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    /* Sombra mais suave para melhor contraste */
-
-    /* Cores de status */
-    --success-color: #10b981;
-    /* Verde de sucesso */
-    --error-color: #ef4444;
-    /* Vermelho de erro */
-    --warning-color: #f59e0b;
-    /* Amarelo de alerta */
-    --info-color: #3b82f6;
-    /* Azul de informação */
-
-    /* Cores neutras */
-    --dark-color: #374151;
-    /* Cinza escuro neutro */
-    --light-color: #e5e7eb;
-    /* Cinza claro para fundos ou bordas */
-
-    /* Cores de links */
-    --link-color: #3b82f6;
-    /* Azul para links */
-    --link-hover-color: #2563eb;
-    /* Azul mais intenso para hover nos links */
-
-    /* Cores principais ajustadas */
-    --cor-branco: #ffffff;
-    /* Branco puro */
-    --cor-preto: #111827;
-    /* Preto para textos */
-
-    /* Cores de azul ajustadas */
-    --cor-azul-claro: #dbeafe;
-    /* Azul claro suave */
-    --cor-azul-claro-intenso: #bfdbfe;
-    /* Azul mais claro e suave */
-    --cor-azul-claro-escuro: #1e40af;
-    /* Azul forte para destaque */
-    --cor-azul-focus: var(--cor-azul-claro-intenso);
-    /* Azul suave de foco */
-
-    /* Cores de laranja ajustadas */
-    --cor-laranja-suave: #fdba74;
-    /* Laranja suave */
-    --cor-laranja-intenso: #f97316;
-    /* Laranja intenso */
-    --cor-laranja-focus: var(--cor-laranja-intenso);
-    /* Laranja intenso de foco */
-
-
-    --icon-color: #aaa;
-    /* Define a cor padrão para os ícones (cor cinza clara) */
-    --accent-color: #007bff;
-    /* Cor de destaque (azul) para o ícone de mostrar/ocultar senha quando em hover */
-    --icon-size: 20px;
-    /* Define o tamanho inicial para os ícones (20px) */
-    --icon-hover-size: 22px;
-    /* Aumenta o tamanho do ícone para 22px quando o mouse está sobre o ícone */
-    --toggle-password-size: 18px;
-    /* Tamanho inicial para o ícone de mostrar/ocultar senha */
-    --toggle-password-hover-size: 20px;
-    /* Aumenta o tamanho do ícone de mostrar/ocultar senha para 20px quando o mouse está sobre ele */
-
-}
-
-/* =================== Reset Básico =================== */
+/* =================== Variáveis de Cores (Substituídas por valores diretos) =================== */
 * {
     margin: 0;
     padding: 0;
@@ -100,9 +12,9 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: var(--bg-color);
+    background-color: #f1f5f9;
     font-size: 16px;
-    color: var(--text-color);
+    color: #111827;
     padding: 20px;
     overflow: hidden;
 }
@@ -115,11 +27,10 @@ body {
     width: 100%;
     max-width: 850px;
     min-height: 480px;
-    background-color: var(--form-bg-color);
-    box-shadow: 0 4px 20px var(--shadow-color);
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     overflow: hidden;
-    
 }
 
 /* =================== Caixa de Imagem =================== */
@@ -131,7 +42,7 @@ body {
     background-color: #e6f4ff;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 12px var(--shadow-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .img-box img {
@@ -154,14 +65,14 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: var(--form-bg-color);
+    background-color: #ffffff;
 }
 
 /* =================== Estilo dos Títulos =================== */
 .form-box h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: var(--primary-color);
+    color: #1e40af;
     font-size: 2.2rem;
     font-weight: 700;
     letter-spacing: 1px;
@@ -170,7 +81,7 @@ body {
 }
 
 .form-box h2:hover {
-    color: var(--accent-color);
+    color: #f97316;
 }
 
 /* =================== Lembre-se =================== */
@@ -193,7 +104,7 @@ body {
 .btn-submit {
     width: 100%;
     padding: 14px;
-    background-color: var(--accent-hover-color);
+    background-color: #fb923c;
     border: none;
     border-radius: 8px;
     color: #fff;
@@ -206,7 +117,7 @@ body {
 }
 
 .btn-submit:hover {
-    background-color: var(--accent-color);
+    background-color: #f97316;
     transform: scale(1.05);
 }
 
@@ -221,14 +132,14 @@ body {
 }
 
 .form-box .register a {
-    color: var(--link-color);
+    color: #3b82f6;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .form-box .register a:hover {
-    color: var(--link-hover-color);
+    color: #2563eb;
 }
 
 /* =================== Estilo do Box de Input =================== */
@@ -241,7 +152,7 @@ body {
 .input-box label {
     display: block;
     margin-bottom: 8px;
-    color: var(--cor-azul-claro-escuro);
+    color: #1e40af;
     font-weight: 600;
     font-size: 16px;
     transition: all 0.3s ease-in-out;
@@ -253,7 +164,7 @@ body {
     width: 100%;
     padding: 14px 14px 14px 35px;
     font-size: 16px;
-    color: var(--cor-azul-claro-escuro);
+    color: #1e40af;
     background: transparent;
     border: 1px solid #d9d9d9;
     border-radius: 8px;
@@ -264,7 +175,7 @@ body {
 
 /* Foco no input */
 .input-box input:focus {
-    border-color: var(--cor-laranja-focus);
+    border-color: #f97316;
     box-shadow: 0 0 8px rgba(255, 165, 0, 0.2);
 }
 
@@ -277,14 +188,14 @@ body {
 
 /* Estilos para o input com foco (rótulo se movendo para cima) */
 .input-box input:focus::placeholder {
-    color: var(--cor-laranja-focus);
+    color: #f97316;
 }
 
 /* Efeito de rótulo animado (movendo o label para cima quando o campo tem foco ou contém valor) */
 .input-box input:focus+label,
 .input-box input:not(:placeholder-shown)+label {
     font-size: 12px;
-    color: var(--cor-laranja-focus);
+    color: #f97316;
     transform: translateY(-10px);
 }
 
@@ -308,7 +219,7 @@ body {
 /* ===================  emailHelp =================== */
 #emailHelp {
     font-size: 0.70rem;
-    color: var(--cor-laranja-suave);
+    color: #fdba74;
     margin-top: 5px;
     font-weight: bold;      
 }
@@ -327,7 +238,7 @@ body {
 
 /* =================== Efeito de hover no ícone de mostrar/ocultar senha =================== */
 .input-with-icon .toggle-password:hover {
-    color: var(--accent-color);
+    color: #f97316;
     font-size: 20px;
     transform: translateY(-50%) scale(1.1);
 }
@@ -376,7 +287,7 @@ body {
         max-width: 400px;
         height: 80vh;
         max-height: 500px;
-        background-color: var(--cor-branco);
+        background-color: #ffffff;
         border-radius: 10px;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         border: none;

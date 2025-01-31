@@ -3,28 +3,45 @@
 {% block title %}Gestão de Áreas - Mapa de Sala{% endblock %}
 
 {% block content %}
-<div class="container my-4">
-    <h3 class="text-center mb-4">Cadastro de Área</h3>
 
-    <!-- Exibir mensagens de feedback -->
-    {% include "Error/message.html" %}
+<div class="container-fluid my-2">
+    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
 
-    <!-- Formulário para adicionar uma nova área -->
-    <form action="{{ url_for('area_route.cadastrar_Area') }}" method="POST" class="needs-validation form-area" novalidate>
-        <fieldset>
-            <div class="row">
-                <!-- Nome da Área -->
-                <div class="form-group mb-3 col-md-12">
-                    <label for="nomeArea">Nome da Área:</label>
-                    <input type="text" id="nomeArea" name="nomeArea" required maxlength="50" class="form-control" aria-label="Nome da Área" placeholder="Nome da Área">
-                    <div class="invalid-feedback">Por favor, preencha o nome da área corretamente.</div>
+        <!-- Formulário para adicionar uma nova área -->
+        <form id="formCadastroArea" action="{{ url_for('area_route.cadastrar_Area') }}" method="POST" class="needs-validation form-area" novalidate>
+            <h2 class="text-center mb-4 fw-bold text-primary">Cadastro de Área</h2>
+            <fieldset>
+
+                <div class="row g-2">
+                    <!-- Nome da Área -->
+                    <div class="col-md-12 mb-3">
+                        <label for="nomeArea" class="form-label text-dark fs-5">Nome da Área:</label>
+                        <input type="text" id="nomeArea" name="nomeArea" required maxlength="50" class="form-control shadow-sm" placeholder="Nome da Área" pattern="^[a-zA-Z\s]+$" aria-required="true" aria-describedby="nomeAreaFeedback">
+                        <div id="nomeAreaFeedback" class="invalid-feedback">Por favor, preencha o nome da área corretamente (apenas letras e espaços).</div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Botão de Submissão -->
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Adicionar Área</button>
-        </fieldset>
-    </form>
+                <!-- Botões de Ação -->
+                <div class="d-flex justify-content-between mt-3">
+                    <button type="reset" class="btn btn-outline-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="bi bi-x-circle me-2"></i> Limpar
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center" id="submitBtn" disabled>
+                        <i class="bi bi-check-circle me-2"></i> Cadastrar Área
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </div>
+
+<script>
+    // Habilita o botão de submit quando o formulário for válido
+    document.getElementById("formCadastroArea").addEventListener("input", function() {
+        const form = this;
+        const submitBtn = document.getElementById("submitBtn");
+        submitBtn.disabled = !form.checkValidity();
+    });
+</script>
 
 {% endblock %}
