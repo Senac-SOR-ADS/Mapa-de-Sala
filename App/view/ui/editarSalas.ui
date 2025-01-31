@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>812</width>
-    <height>556</height>
+    <height>563</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,7 +50,7 @@
      </property>
     </widget>
    </item>
-   <item alignment="Qt::AlignHCenter">
+   <item>
     <widget class="QFrame" name="frame_2">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -70,203 +70,299 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="label_5">
+     <widget class="QFrame" name="frame">
       <property name="geometry">
        <rect>
-        <x>23</x>
-        <y>161</y>
-        <width>65</width>
-        <height>16</height>
+        <x>0</x>
+        <y>0</y>
+        <width>381</width>
+        <height>311</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Capacidade</string>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
       </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QFrame" name="frame_3">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="label_7">
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nome da Sala</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="nomeSala">
+            <property name="minimumSize">
+             <size>
+              <width>231</width>
+              <height>41</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="editable">
+             <bool>true</bool>
+            </property>
+            <property name="currentText">
+             <string notr="true"/>
+            </property>
+            <property name="insertPolicy">
+             <enum>QComboBox::InsertAlphabetically</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_4">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Prédios</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="nomePredio">
+            <property name="minimumSize">
+             <size>
+              <width>231</width>
+              <height>41</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="editable">
+             <bool>true</bool>
+            </property>
+            <property name="currentText">
+             <string notr="true">Prédio 1</string>
+            </property>
+            <property name="insertPolicy">
+             <enum>QComboBox::InsertAlphabetically</enum>
+            </property>
+            <item>
+             <property name="text">
+              <string>Prédio 1</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Prédio 2</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_5">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Capacidade</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="mediaCapacidade">
+            <property name="minimumSize">
+             <size>
+              <width>231</width>
+              <height>41</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
      </widget>
-     <widget class="QLineEdit" name="mediaCapacidade">
+     <widget class="QFrame" name="frame_6">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>150</y>
-        <width>111</width>
-        <height>31</height>
+        <x>380</x>
+        <y>0</y>
+        <width>361</width>
+        <height>311</height>
        </rect>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
       </property>
-      <property name="placeholderText">
-       <string>Capacidade Média</string>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
       </property>
-     </widget>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>500</x>
-        <y>90</y>
-        <width>71</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Equipamentos</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="tipoEquipamento">
-      <property name="geometry">
-       <rect>
-        <x>580</x>
-        <y>80</y>
-        <width>133</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="placeholderText">
-       <string>Cadastrar Equipamentos</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="nomePredio">
-      <property name="geometry">
-       <rect>
-        <x>101</x>
-        <y>80</y>
-        <width>111</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="editable">
-       <bool>true</bool>
-      </property>
-      <property name="currentText">
-       <string notr="true">Prédio 1</string>
-      </property>
-      <property name="insertPolicy">
-       <enum>QComboBox::InsertAlphabetically</enum>
-      </property>
-      <item>
-       <property name="text">
-        <string>Prédio 1</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Prédio 2</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>22</x>
-        <y>91</y>
-        <width>41</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Prédios</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="tipoSala">
-      <property name="geometry">
-       <rect>
-        <x>580</x>
-        <y>20</y>
-        <width>91</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="editable">
-       <bool>true</bool>
-      </property>
-      <property name="currentText">
-       <string>Comum</string>
-      </property>
-      <property name="insertPolicy">
-       <enum>QComboBox::InsertAlphabetically</enum>
-      </property>
-      <property name="sizeAdjustPolicy">
-       <enum>QComboBox::AdjustToMinimumContentsLength</enum>
-      </property>
-      <item>
-       <property name="text">
-        <string>Comum</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Laboratório</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Comum</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Área Externa</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>500</x>
-        <y>28</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Tipo de Sala</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_7">
-      <property name="geometry">
-       <rect>
-        <x>22</x>
-        <y>31</y>
-        <width>65</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Nome da Sala</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="nomeSala">
-      <property name="geometry">
-       <rect>
-        <x>102</x>
-        <y>21</y>
-        <width>111</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="editable">
-       <bool>true</bool>
-      </property>
-      <property name="currentText">
-       <string notr="true"/>
-      </property>
-      <property name="insertPolicy">
-       <enum>QComboBox::InsertAlphabetically</enum>
-      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QFrame" name="frame_8">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Tipo de Sala</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="tipoSala">
+            <property name="minimumSize">
+             <size>
+              <width>231</width>
+              <height>41</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="editable">
+             <bool>true</bool>
+            </property>
+            <property name="currentText">
+             <string>Comum</string>
+            </property>
+            <property name="insertPolicy">
+             <enum>QComboBox::InsertAlphabetically</enum>
+            </property>
+            <property name="sizeAdjustPolicy">
+             <enum>QComboBox::AdjustToMinimumContentsLength</enum>
+            </property>
+            <item>
+             <property name="text">
+              <string>Comum</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Laboratório</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Comum</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Área Externa</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_7">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Equipamentos</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="tipoEquipamento">
+            <property name="minimumSize">
+             <size>
+              <width>231</width>
+              <height>41</height>
+             </size>
+            </property>
+            <property name="placeholderText">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </item>
    <item>
     <widget class="QLabel" name="label_6">
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>Observações</string>
      </property>

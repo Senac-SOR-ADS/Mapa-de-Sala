@@ -57,7 +57,7 @@ border-radius: 15px;
    <property name="bottomMargin">
     <number>12</number>
    </property>
-   <item alignment="Qt::AlignHCenter">
+   <item>
     <widget class="QWidget" name="widget" native="true">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="spacing">
@@ -361,6 +361,9 @@ border-radius: 15px;
           <height>16777215</height>
          </size>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0">
          <property name="spacing">
           <number>35</number>
@@ -527,6 +530,9 @@ border-radius: 15px;
                 <width>366</width>
                 <height>39</height>
                </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="minimum">
                <number>1</number>
