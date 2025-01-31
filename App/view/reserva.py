@@ -91,28 +91,30 @@ class ReservaInterface(QWidget):
         diasValidos = (info['seg'], info['ter'], info['qua'], info['qui'], info['sexta'], info['sab'], False)
         if validarDiaSemana(info['diaInicio'], diasValidos):
             dias_livres, dias_ocupados = validarCadastro(info, diasValidos)
-            if dias_livres:
-                if dias_ocupados:
 
-                    ####### jeff - bloco para acrescentar os dias em conflitos no popup
-                    txt = ''
-                    for dia, reserva in dias_ocupados.items():
-                        txt += f'{dia} | {reserva[1][2]} - {reserva[1][3]}\n'
-                    confirmacao = TelaConfirmacao( 'Conflitos', txt, 'Confirmar')
-                    #########
-
-                    if confirmacao.exec_():
-                        realizar_reserva_no_dia(idLogin.get('id_login'), info, dias_livres)
-                        print('Reserva feita com sucesso!')
-                        return
-                    else:
-                        print('Não foi possível fazer a reserva, já existe uma reserva nesse horário')
-
-                else: # quando todos os dias estiverem livres
+            if dias_livres and dias_ocupados:
+                #fazer a pergunta se quer cadastrar mesmo assim
+                txt = ''
+                for dia, reserva in dias_ocupados.items():
+                    txt += f'{dia} | {reserva[1][2]} - {reserva[1][3]}\n'
+                    
+                confirmacao = TelaConfirmacao( 'Conflitos', txt, 'Confirmar')
+                if confirmacao.exec_():
                     realizar_reserva_no_dia(idLogin.get('id_login'), info, dias_livres)
                     print('Reserva feita com sucesso!')
-            else:
+                    return
+                else:
+                    print('Não foi possível fazer a reserva, já existe uma reserva nesse horário')
+
+            elif dias_livres and not dias_ocupados:
+                # fazer reserva direto
+                realizar_reserva_no_dia(idLogin.get('id_login'), info, dias_livres)
+                print('Reserva feita com sucesso!')
+
+            elif not dias_livres:
+                # mostrar que nao tem dias disponiveis para reserva
                 print('ninhum dia disponivel para reserva')
+
         return
     
     

@@ -16,7 +16,6 @@ def validarCadastro(dados, diasValidos)->list|None:
     for diaAtual in lista_de_dias:
         validar = Reserva.validar_periodo(dados['idSala'], diaAtual, dados['inicioCurso'], dados['fimCurso'])
         if validar:
-            #lista_de_dias.remove(diaAtual)
             reserva_ocupada = validar[0]
             info_curso = Curso.retorna_todas_infos_curso(reserva_ocupada[3])
             dias_ocupados[diaAtual] = (reserva_ocupada, info_curso)
