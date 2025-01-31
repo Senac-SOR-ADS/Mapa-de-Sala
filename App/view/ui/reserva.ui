@@ -27,61 +27,61 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QLineEdit, QComboBox, QTimeEdit, QDateEdit {
-	background-color: white;
-	border:2px solid rgba(0,0,0,0);
-	border-radius: 3px;
-	border-bottom-color:rgba(46,82,101,200);
-	color:rgb(0,0,0);
-	padding-bottom:7px;
+  background-color: white;
+  border:2px solid rgba(0,0,0,0);
+  border-radius: 3px;
+  border-bottom-color:rgba(46,82,101,200);
+  color:rgb(0,0,0);
+  padding-bottom:7px;
 }
  
 #btnFazerReserva {
-	background-color: #01498a;
-	color: #FFF;
-	border: none;
-	border-radius: 15px;
+  background-color: #01498a;
+  color: #FFF;
+  border: none;
+  border-radius: 15px;
 }
  
 #btnFazerReserva:hover {
-	background-color: #f6921e;
+  background-color: #f6921e;
 }
-
+ 
 #observacaoReserva {
-	background-color: white;
+  background-color: white;
 }
-
+ 
 #segunda {
-	background-color: rgba(255, 255, 255, 0.8);
-	border-radius: 10px; 
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
 }
-
+ 
 #terca {
-	background-color: rgba(255, 255, 255, 0.8);
-	border-radius: 10px; 
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
 }
-
+ 
 #quarta {
-	background-color: rgba(255, 255, 255, 0.8);
-	border-radius: 10px; 
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
 }
-
+ 
 #quinta {
-	background-color: rgba(255, 255, 255, 0.8);
-	border-radius: 10px; 
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
 }
-
+ 
 #sexta {
-	background-color: rgba(255, 255, 255, 0.8);
-	border-radius: 10px; 
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
 }
-
+ 
 #sabado {
-	background-color: rgba(255, 255, 255, 0.8);
-	border-radius: 10px; 
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
 }
  
 #respostas {
-	color: red;
+  color: red;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">

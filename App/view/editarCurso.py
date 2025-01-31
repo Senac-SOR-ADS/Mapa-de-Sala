@@ -1,11 +1,12 @@
-from PyQt5.QtWidgets import QWidget
-from PyQt5.QtCore import QTimer, pyqtSlot
-
+from PyQt5.QtWidgets import QWidget, QDateTimeEdit
+from PyQt5.QtCore import QTimer, pyqtSlot, QDate, QTime
+from datetime import datetime, timedelta
 from App.controller.curso import listarCurso, buscarCursosId, atualizarCurso
 from App.model.curso import *
 from App.controller.area import listarAreas
 
 from PyQt5.uic import loadUi
+
 
 class EditarCurso(QWidget):
     def __init__(self):
@@ -45,7 +46,7 @@ class EditarCurso(QWidget):
         cargaHoraria = info['cargaHoraria']
         periodo = info['periodo']
         area = info['idArea']
-        horasDia = info['horasDia']
+        horasDia = self.obterDateTime(info['horasDia'])
         qtdAlunos = info['qtdAlunos']
 
         if (nome, cargaHoraria, periodo, area, horasDia, qtdAlunos):
@@ -53,8 +54,14 @@ class EditarCurso(QWidget):
             self.cargaCurso.setValue(cargaHoraria)
             self.periodoCurso.setCurrentText(periodo)
             self.campoArea.setCurrentText(area)
-            self.horasPorDia.setValue(horasDia)
+            self.horasPorDia.setDateTime(horasDia)
             self.quantidadeAlunos.setValue(int(qtdAlunos))
+    
+    def obterDateTime(self, horas:timedelta):
+        horas = int(horas.total_seconds())
+        time = self.horasPorDia.dateTime().addSecs(horas)
+        return time
+
 
     # def limparCampos(self):
     #     idCurso = self.getIdOferta()
