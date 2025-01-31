@@ -134,14 +134,20 @@ class ReservaInterface(QWidget):
         
     def popularJanela(self):
         """Popula os comboBoxes com dados do banco."""
-        self.comboBoxCurso()
+        self.comboBoxOferta()
         self.comboBoxPessoa()
         self.comboBoxSala()
 
-    def comboBoxCurso(self):
+    def comboBoxOferta(self):
         cursos = listarCurso()
         self.cursoReserva.clear()
         self.cursoReserva.addItems(cursos.keys())
+
+        dados = buscarCursoId(cursos.keys())
+        nome = dados['nome']
+
+        if (nome):
+            self.nomeCurso.setText(nome)
 
     def comboBoxPessoa(self):
         """Busca as pessoas no banco e popula o comboBox."""
