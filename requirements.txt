@@ -3,4 +3,4 @@ PyQt5==5.15.11
 python-dotenv==1.0.1
 bcrypt==4.2.0
 Flask==3.0.3
-winotify=1.1.0
+winotify==1.1.0
