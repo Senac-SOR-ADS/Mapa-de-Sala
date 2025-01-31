@@ -116,6 +116,12 @@ class LoginInterface(QDialog):
 
             # Focus no campo de email
             self.inputEmail.setFocus()
+
+            self.inputSenha.setEchoMode(self.inputSenha.EchoMode.Password)
+            self.btnMostrarSenha.setStyleSheet('''
+                                              #btnMostrarSenha {
+                                                icon: url("App/view/ui/icones/iconOlhoAberto.png");  
+                                              }''')
         else:
             self.dadosInvalidos()
  
