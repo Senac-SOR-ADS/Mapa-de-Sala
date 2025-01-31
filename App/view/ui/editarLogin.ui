@@ -85,7 +85,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>341</width>
+        <width>441</width>
         <height>581</height>
        </rect>
       </property>
@@ -171,8 +171,8 @@
             </property>
             <property name="iconSize">
              <size>
-              <width>30</width>
-              <height>30</height>
+              <width>20</width>
+              <height>20</height>
              </size>
             </property>
            </widget>
@@ -185,9 +185,9 @@
      <widget class="QFrame" name="frame_3">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>440</x>
         <y>0</y>
-        <width>401</width>
+        <width>391</width>
         <height>581</height>
        </rect>
       </property>
@@ -256,7 +256,7 @@
             </property>
            </widget>
           </item>
-          <item alignment="Qt::AlignLeft">
+          <item>
            <widget class="QComboBox" name="nivelAcesso">
             <property name="minimumSize">
              <size>
@@ -281,6 +281,19 @@
              </property>
             </item>
            </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </widget>
@@ -315,7 +328,6 @@
  <tabstops>
   <tabstop>email</tabstop>
   <tabstop>senha</tabstop>
-  <tabstop>nivelAcesso</tabstop>
   <tabstop>btnEditarLogin</tabstop>
  </tabstops>
  <resources/>

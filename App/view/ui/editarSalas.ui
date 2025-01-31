@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>812</width>
-    <height>563</height>
+    <height>571</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -340,7 +340,7 @@
            <widget class="QLineEdit" name="tipoEquipamento">
             <property name="minimumSize">
              <size>
-              <width>231</width>
+              <width>215</width>
               <height>41</height>
              </size>
             </property>
