@@ -101,6 +101,11 @@
       </item>
       <item alignment="Qt::AlignLeft|Qt::AlignBottom">
        <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Alterar Area:</string>
         </property>
@@ -110,8 +115,8 @@
        <widget class="QComboBox" name="alterarArea">
         <property name="minimumSize">
          <size>
-          <width>130</width>
-          <height>0</height>
+          <width>200</width>
+          <height>31</height>
          </size>
         </property>
         <property name="cursor">
