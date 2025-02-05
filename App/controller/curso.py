@@ -1,7 +1,7 @@
 from App.model.curso import Curso
 from App.model.area import Area
 from App.controller.utils import validarInputs
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 # =================== cadastrar ===================
 def cadastrarCurso(idArea: int, dados: list) -> dict:
@@ -68,7 +68,7 @@ def buscarCursosId(idCurso=1):
             "oferta": resultado[3],
             "periodo": resultado[4],
             "cargaHoraria": resultado[5],
-            "horasDia": timedelta_to_int(resultado[6]),
+            "horasDia": resultado[6],
             "qtdAlunos": resultado[7],
         }
     except Exception as e:
