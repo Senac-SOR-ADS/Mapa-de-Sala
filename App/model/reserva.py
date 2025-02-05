@@ -200,6 +200,93 @@ class Reserva:
         log.error(f"{__name__}: Salas não foram trocadas.")
         return False
         
+    @classmethod
+    def buscar_data(cls, diaInicio, diaFim):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s"
+        parametro = [diaInicio, diaFim]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva durante essas datas")
+
+    @classmethod
+    def buscar_data_oferta(cls, diaInicio, diaFim, idCurso):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idCurso = %s;"
+        parametro = [diaInicio, diaFim, idCurso]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva deste curso neste período")
+
+    @classmethod
+    def buscar_data_sala(cls, diaInicio, diaFim, idSala):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s;"
+        parametro = [diaInicio, diaFim, idSala]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva nesta sala durante esse período")
+
+    @classmethod
+    def buscar_data_periodo(cls, diaInicio, diaFim, horaInicio, horaFim):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s;"
+        parametro = [diaInicio, diaFim, horaInicio, horaFim]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva neste horário durante esse período")
+
+    @classmethod
+    def buscar_data_periodo_oferta(cls, diaInicio, diaFim, horaInicio, horaFim, idCurso):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s AND idCurso = %s;"
+        parametro = [diaInicio, diaFim, horaInicio, horaFim, idCurso]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva deste curso, durante este horário")
+
+    @classmethod
+    def buscar_periodo_sala(cls, diaInicio, diaFim, horaInicio, horaFim, idSala):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s AND idSala = %s;"
+        parametro = [diaInicio, diaFim, horaInicio, horaFim, idSala]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva nesta sala durante este horário")
+
+    @classmethod
+    def buscar_oferta_sala(cls, diaInicio, diaFim, idCurso, idSala):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s AND idCurso = %s;"
+        parametro = [diaInicio, diaFim, idSala, idCurso]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva deste curso nesta sala")
+
+    @classmethod
+    def buscar_periodo_sala_oferta(cls, diaInicio, diaFim, idSala, idCurso, horaInicio, horaFim):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s AND idCurso = %s AND hrInicio >= %s AND hrFim <= %s;"
+        parametro = [diaInicio, diaFim, idSala, idCurso, horaInicio, horaFim]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva deste curso nesta sala durante esse horário")
 
 if __name__ == "__main__":
     pass
