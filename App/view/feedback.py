@@ -12,7 +12,7 @@ from winotify import Notification, audio
 class Feedback(QDialog):
     CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
 
-    def __init__(self, type, txt, icon, aviso, typemsg):
+    def __init__(self, type, txt, aviso, typemsg):
         super().__init__()
         loadUi('App/view/ui/feedback.ui', self)
         
@@ -32,7 +32,7 @@ class Feedback(QDialog):
         
         #notificação de erro
         if type == False:
-            icon_path = os.path.join(self.CURRENT_DIR, icon)
+            icon_path = os.path.join(self.CURRENT_DIR, r'ui\icones\iconErro.png')
             self.icon.setPixmap(QPixmap(icon_path))
             # toca alertinha de erro
             filename = os.path.join(self.CURRENT_DIR, "./ui/sounds/erroToque.mp3")
@@ -52,7 +52,7 @@ class Feedback(QDialog):
             
         #notificação de sucesso
         if type == True:
-            icon_path = os.path.join(self.CURRENT_DIR, icon)
+            icon_path = os.path.join(self.CURRENT_DIR, r'ui\icones\iconConcluido.png')
             self.icon.setPixmap(QPixmap(icon_path))
             # toca alertinha de erro
             filename = os.path.join(self.CURRENT_DIR, "./ui/sounds/sucessoNotificacao.mp3")
