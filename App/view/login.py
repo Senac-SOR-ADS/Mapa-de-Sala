@@ -96,7 +96,7 @@ class LoginInterface(QDialog):
                             texto,
                             r'ui\icones\iconErro.png',
                             'Aviso!',
-                            'algo teu errado, corrija as falhas e tente novamente')
+                            'algo deu errado, corrija as falhas e tente novamente')
         
         # resposta.mudarFoto("Validado")
         if resposta.exec_():

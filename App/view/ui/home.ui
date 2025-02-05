@@ -43,8 +43,7 @@
 
 #btnFecharPagina:hover {
 	background-color: #E81123;
-	color: #fff;
-	icon: url(&quot;App/view/ui/icones/iconCloseBranco.png&quot;);
+	color: #FFF;
 }
 
 #suMenuLateral QPushButton {
@@ -1496,6 +1495,13 @@ QPushButton {
                   </property>
                   <widget class="QWidget" name="inicio">
                    <layout class="QHBoxLayout" name="horizontalLayout_5">
+                    <item>
+                     <widget class="QPushButton" name="teste">
+                      <property name="text">
+                       <string>Teste</string>
+                      </property>
+                     </widget>
+                    </item>
                     <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                      <widget class="QFrame" name="frame_4">
                       <property name="frameShape">

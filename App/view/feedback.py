@@ -22,6 +22,7 @@ class Feedback(QDialog):
         
         self.setWindowFlags(Qt.FramelessWindowHint)
         
+        self.btnFechar2.clicked.connect(self.reject)
         self.btnFechar.clicked.connect(self.accept)
         
         self.texto.setText(txt)
@@ -45,7 +46,7 @@ class Feedback(QDialog):
             notificacao = Notification( app_id='Mapa de Sala',
                                        title=aviso,
                                        msg=typemsg, 
-                                       icon=filenameNotificacao)
+                                       icon=filenameNotificacao )
             # notificacao.set_audio(audio.LoopingCall2, loop=False)
             notificacao.add_actions(label='Fechar')
             notificacao.show()

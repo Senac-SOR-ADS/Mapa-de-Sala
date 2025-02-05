@@ -31,6 +31,7 @@ class HomePrincipal(QMainWindow):
         self.btnHome.setChecked(True)
         self._resizing = False
         self._resize_direction = None
+        self.tema = 'claro'
 
         # Criando parte interativa do menu
         self.btnMenu: QPushButton
@@ -98,6 +99,22 @@ class HomePrincipal(QMainWindow):
         self.btnMinimizar.clicked.connect(self.showMinimized)
         self.btnTelaCheia.clicked.connect(self.windowConnect)
         self.btnFecharPagina.clicked.connect(self.close)
+
+        self.teste.clicked.connect(self.mudarTema)
+
+
+    def mudarTema(self): 
+        if self.tema == 'claro':
+            with open('App/view/ui/css/temaEscuro/temaPrincipal.css', 'r') as f:
+                cssTema = f.read()
+                self.setStyleSheet(cssTema)
+            self.tema = 'escuro'
+        else: 
+            with open('App/view/ui/css/temaClaro/temaPrincipal.css', 'r') as f:
+                cssTema = f.read()
+                self.setStyleSheet(cssTema)
+            self.tema = 'claro'
+        
         
     ################################
     # Função correta para inserir interface
@@ -114,18 +131,33 @@ class HomePrincipal(QMainWindow):
     def windowConnect(self):
         if self.isMaximized():
             self.showNormal()
-            self.btnTelaCheia.setStyleSheet("""
+            if self.tema == 'escuro': 
+                self.btnTelaCheia.setStyleSheet("""
                                            #btnTelaCheia {
                                                icon: url("App/view/ui/icones/iconTelaCheia.png"); 
                                             }"""
                                         )
+            self.btnTelaCheia.setStyleSheet("""
+                                        #btnTelaCheia {
+                                            icon: url("App/view/ui/icones/iconTelaCheiaBranco.png"); 
+                                        }"""
+                                    )
+                
+            
         else:
             self.showMaximized()
+            if self.tema == 'escuro':
+                self.btnTelaCheia.setStyleSheet("""
+                                            #btnTelaCheia {
+                                                icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png"); 
+                                                }"""
+                                            )
             self.btnTelaCheia.setStyleSheet("""
-                                           #btnTelaCheia {
-                                               icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png"); 
-                                            }"""
-                                        )
+                                        #btnTelaCheia {
+                                            icon: url("App/view/ui/icones/iconTeste.png"); 
+                                        }"""
+                                    )
+                
 
     def inserirTelasMenu(self, menu):
         for i in menu:

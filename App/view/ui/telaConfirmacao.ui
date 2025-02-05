@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>518</width>
-    <height>557</height>
+    <width>300</width>
+    <height>435</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -133,13 +133,13 @@ border-radius: 12px;
        <widget class="QLabel" name="titulo">
         <property name="minimumSize">
          <size>
-          <width>400</width>
+          <width>300</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>400</width>
+          <width>300</width>
           <height>16777215</height>
          </size>
         </property>
@@ -166,13 +166,13 @@ border-radius: 12px;
        <widget class="QLabel" name="aviso">
         <property name="minimumSize">
          <size>
-          <width>500</width>
+          <width>300</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>500</width>
+          <width>300</width>
           <height>16777215</height>
          </size>
         </property>
@@ -232,13 +232,13 @@ border-radius: 12px;
           <widget class="QPushButton" name="btnOk">
            <property name="minimumSize">
             <size>
-             <width>178</width>
+             <width>130</width>
              <height>46</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>178</width>
+             <width>130</width>
              <height>46</height>
             </size>
            </property>
@@ -259,13 +259,13 @@ border-radius: 12px;
           <widget class="QPushButton" name="btnCancelar">
            <property name="minimumSize">
             <size>
-             <width>178</width>
+             <width>130</width>
              <height>46</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>178</width>
+             <width>130</width>
              <height>46</height>
             </size>
            </property>
