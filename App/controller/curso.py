@@ -28,6 +28,8 @@ def infosCursos():
     print("reserva")
 
 def listarCurso():
+    """ Consulta retorna (id_curso, cod_oferta)
+    tranformando em um dicionario no formato: { cod_oferta : id_curso}"""
     todasSalas = Curso.retorna_ofertaId_cursos()
     listarCursos = {i[1]:i[0] for i in todasSalas}
     return(listarCursos)

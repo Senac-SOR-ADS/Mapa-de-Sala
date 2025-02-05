@@ -140,7 +140,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>CURSO:</string>
+       <string>Oferta:</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_13">
@@ -604,6 +604,29 @@
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>150</y>
+        <width>391</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>130</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nome curso:</string>
+      </property>
      </widget>
     </widget>
    </item>

@@ -1,5 +1,5 @@
 
-from PyQt5.QtWidgets import QWidget, QDateEdit
+from PyQt5.QtWidgets import QWidget, QDateEdit, QComboBox
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QTimer, QDate, QTime, pyqtSlot
 
@@ -16,11 +16,22 @@ from App.controller.utils import modificarData, modificarDataReserva
 from App.controller.reserva import validarCadastro, validarDiaSemana, realizar_reserva_no_dia
 from App.controller.login import pegarUsuarioLogado
 
+## JEFF
+from App.model.curso import Curso
+
 
 class ReservaInterface(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('App/view/ui/reserva.ui',self)
+        self.dadosConsultados = {
+            'pessoas': buscarPessoas(),
+            'salas': listarSala(),
+            'cursos': listarCurso()
+        }
+        x = Curso.retorna_info_cursos()
+        print('infos', x)
+
         self.popularJanela()
 
         # Os metodos abaixo servem para transformar o QDateEdit em um calendário
@@ -35,11 +46,14 @@ class ReservaInterface(QWidget):
         self.setPeriodos()
         self.diaInicio.dateChanged.connect(self.setDataMinima)
         self.inicioCurso.timeChanged.connect(self.setFimCurso)
-        self.cursoReserva.currentIndexChanged.connect(self.setPeriodos)
 
         self.diaFim.setCalendarPopup(True)
         self.diaFim.setDisplayFormat('dd/MM/yyyy')
         self.diaFim.setDate(QDate.currentDate()) 
+
+        self.cursoReserva.currentIndexChanged.connect(self.setPeriodos)
+        self.cursoReserva.currentIndexChanged.connect(self.jeffTeste)
+        
 
     def getDados(self)->dict:
         """Pegando o dados na interface e retornando os valores"""
@@ -139,27 +153,36 @@ class ReservaInterface(QWidget):
         self.comboBoxSala()
 
     def comboBoxOferta(self):
-        cursos = listarCurso()
+        cursos = self.dadosConsultados['cursos']
         self.cursoReserva.clear()
         self.cursoReserva.addItems(cursos.keys())
-
-        dados = buscarCursoId(cursos.keys())
-        nome = dados['nome']
-
-        if (nome):
-            self.nomeCurso.setText(nome)
-
+    
+    
     def comboBoxPessoa(self):
         """Busca as pessoas no banco e popula o comboBox."""
-        pessoas = buscarPessoas()
+        pessoas = self.dadosConsultados['pessoas']#buscarPessoas()
         self.nomeDocente.clear()
         self.nomeDocente.addItems(pessoas.keys())
 
     def comboBoxSala(self):
         """Busca as salas no banco e popula o comboBox."""
-        salas = listarSala()
+        salas = self.dadosConsultados['salas']#listarSala()
         self.salaReserva.clear()
         self.salaReserva.addItems(salas.keys())
+
+    # selecionar nome curso com base no valor da comboBox selecionada
+    def selecionarNomeCurso(self): # samuel esta modificando
+        print(self.cursoReserva.currentIndexChanged.connect(self.setPeriodos))
+
+    ##### JEFF
+    def jeffTeste(self):
+        idx = self.cursoReserva.currentIndex()
+        cursos = list(self.dadosConsultados['cursos'].keys())
+        print(f'alterado para: {idx}')
+        print(f'info ({idx}): {cursos[idx]}')
+
+    ###########
+
 
     def setPeriodos(self):
         """Verifica o período e depois define os horários"""
