@@ -17,6 +17,7 @@ from .editarReserva import EditarReserva
 from .editarSala import EditarSala
 from .reserva import ReservaInterface
 from .telaConfirmacao import TelaConfirmacao
+from .pesquisa import  TelaPesquisa
 
 from App.controller.login import pegarUsuarioLogado, removerUsuarioLogado
 
@@ -61,6 +62,7 @@ class HomePrincipal(QMainWindow):
         self.interfEditLogin = EditarLogin
         self.interfEditReserva = EditarReserva
         self.interfEditSala = EditarSala
+        self.interfPesquisa = TelaPesquisa
 
         # Telas dentro do menu para alterar as janelas pelo sub menu
         self.btnPessoa.clicked.connect(lambda: self.trocarTelaMenu(self.cadastros))
@@ -87,6 +89,7 @@ class HomePrincipal(QMainWindow):
         self.btnEditaCurso.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditCurso))
         self.btnEditarLogin.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditLogin))
         self.btnEditarSala.clicked.connect(lambda: self.setInterfaceOnHome(self.interfEditSala))
+        self.btnPesquisarSalas.clicked.connect(lambda: self.setInterfaceOnHome(self.interfPesquisa))
 
         self.btnConfiguracoes.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
         self.btnConfig.clicked.connect(lambda: self.setInterfaceOnHome(self.interfCongiguracoes))
