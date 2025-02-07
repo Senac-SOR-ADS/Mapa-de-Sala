@@ -94,7 +94,6 @@ class LoginInterface(QDialog):
         texto = 'DADOS INCOMPLETOS.'
         resposta = Feedback(False,
                             texto,
-                            r'ui\icones\iconErro.png',
                             'Aviso!',
                             'algo deu errado, corrija as falhas e tente novamente')
         
