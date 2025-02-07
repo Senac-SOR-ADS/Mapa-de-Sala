@@ -211,7 +211,7 @@
            </property>
            <property name="minimumSize">
             <size>
-             <width>231</width>
+             <width>0</width>
              <height>41</height>
             </size>
            </property>
@@ -288,7 +288,7 @@
           <widget class="QLineEdit" name="tipoEquipamento">
            <property name="minimumSize">
             <size>
-             <width>231</width>
+             <width>0</width>
              <height>41</height>
             </size>
            </property>
@@ -336,20 +336,15 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="nomeSala">
+          <widget class="QComboBox" name="nomeSala">
            <property name="minimumSize">
             <size>
-             <width>231</width>
+             <width>0</width>
              <height>41</height>
             </size>
            </property>
-           <property name="font">
-            <font>
-             <pointsize>13</pointsize>
-            </font>
-           </property>
-           <property name="placeholderText">
-            <string/>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
            </property>
           </widget>
          </item>
@@ -378,7 +373,7 @@
            </property>
            <property name="minimumSize">
             <size>
-             <width>231</width>
+             <width>0</width>
              <height>41</height>
             </size>
            </property>
@@ -452,7 +447,7 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>125</width>
+       <width>0</width>
        <height>125</height>
       </size>
      </property>
