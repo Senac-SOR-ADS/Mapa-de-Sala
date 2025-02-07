@@ -503,8 +503,14 @@
          </sizepolicy>
         </property>
         <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="2">
-          <widget class="QFrame" name="frame_7">
+         <item row="0" column="1">
+          <widget class="QFrame" name="conteudo">
+           <property name="maximumSize">
+            <size>
+             <width>200</width>
+             <height>200</height>
+            </size>
+           </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
            </property>

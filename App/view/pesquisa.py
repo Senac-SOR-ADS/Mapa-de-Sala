@@ -6,6 +6,9 @@ class TelaPesquisa(QWidget):
         super().__init__()
         loadUi('App/view/ui/pesquisa.ui',self)
 
+        self.dataInicio.setCalendarPopup(True)
+        self.dataFim.setCalendarPopup(True)
+
 
 ###########NOME DOS BTNS E INPUTS ##############
 
