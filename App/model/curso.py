@@ -18,6 +18,9 @@ class Curso:
 
     def __set_id(self, id):
         self.__id = id
+
+    def get_id(self):
+        return self.__id
     
     def get_nome(self):
         return self.__nome
@@ -67,17 +70,17 @@ class Curso:
     
     ######## JEFF
     @classmethod
-    def retorna_info_cursos(cls):
+    def retorna_info_cursos(cls)->list:
         cls.__banco.conectar()
         query = "SELECT * FROM curso"
         resultado = cls.__banco.buscarTodos(query)
         cls.__banco.desconectar()
-        lista = list()
+        lista_cursos = list()
         for item in resultado:
             curso = cls(item[2], item[3], item[4], item[5], item[6], item[7])
             curso.__set_id(item[0])
-            lista.append(curso)
-        return lista
+            lista_cursos.append(curso)
+        return lista_cursos
     ########
  
     @classmethod
