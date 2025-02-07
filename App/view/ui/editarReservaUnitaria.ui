@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>821</width>
+    <height>594</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QLineEdit, QComboBox, QTimeEdit, QDateEdit {
+  background-color: white;
+  border:2px solid rgba(0,0,0,0);
+  border-radius: 3px;
+  border-bottom-color:rgba(46,82,101,200);
+  color:rgb(0,0,0);
+  padding-bottom:7px;
+}
+ 
+#btnEditarReserva {
+  background-color: #01498a;
+  color: #FFF;
+border: none;
+border-radius: 15px;
+}
+ 
+#btnEditarReserva:hover {
+  background-color: #f6921e;
+}
+ 
+#segunda {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
+ 
+#terca {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
+ 
+#quarta {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
+ 
+#quinta {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
+ 
+#sexta {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
+ 
+#sabado {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
+ 
+#respostas {
+  color: red;
+}</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>9</y>
+     <width>168</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Editar Reserva de Sala</string>
+   </property>
+  </widget>
+  <widget class="QFrame" name="ReservaDeSala">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>36</y>
+     <width>781</width>
+     <height>521</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>50</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>EQUIPAMENTOS:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>50</y>
+      <width>41</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CURSO:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="nomeDocenteResponsavel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>50</y>
+      <width>161</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>NOME DOCENTES/RESPONSAVEL:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>50</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>SALA:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="feedbackReserva">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>430</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="equipamentosReserva">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>70</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>120</y>
+      <width>131</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DATA INÍCIAL DO CURSO:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>120</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DATA FINAL DO CURSO:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="salaReserva">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>70</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="nomeDocente">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QDateEdit" name="diaInicio">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>160</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+    </property>
+   </widget>
+   <widget class="QDateEdit" name="diaFim">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>160</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>120</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>HORA DE INÍCIO:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>120</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>HORA FIM:</string>
+    </property>
+   </widget>
+   <widget class="QTimeEdit" name="fimCurso">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>160</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+    </property>
+   </widget>
+   <widget class="QTimeEdit" name="inicioCurso">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>160</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>250</y>
+      <width>998</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>OBSERVAÇÕES:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="observacaoReserva">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>280</y>
+      <width>721</width>
+      <height>125</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="placeholderText">
+     <string>OBSERVAÇÕES A SEREM ACRESCENTADAS</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnEditarReserva">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>440</y>
+      <width>762</width>
+      <height>47</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>762</width>
+      <height>47</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string>EDITAR RESERVA</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>70</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>nomeDocente</tabstop>
+  <tabstop>salaReserva</tabstop>
+  <tabstop>equipamentosReserva</tabstop>
+  <tabstop>diaInicio</tabstop>
+  <tabstop>inicioCurso</tabstop>
+  <tabstop>diaFim</tabstop>
+  <tabstop>fimCurso</tabstop>
+  <tabstop>btnEditarReserva</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
