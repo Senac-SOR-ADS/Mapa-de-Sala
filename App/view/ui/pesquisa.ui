@@ -83,7 +83,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Pesquisar Salas</string>
+         <string>Editar Reservas</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -252,7 +252,7 @@
                  </property>
                  <item>
                   <property name="text">
-                   <string>Manhã</string>
+                   <string>Manha</string>
                   </property>
                  </item>
                  <item>
