@@ -20,6 +20,13 @@ class Reserva:
         self.__horaFim = horaFim
         self.__chaveDevolvida = chaveDevolvida
         self.__observacao = observacao
+        self.__id = None
+
+    def __setIdReserva(self, id):
+        self.__id = id
+
+    def get_idReserva(self):
+        return self.__id
 
     def get_idLogin(self):
         return self.__idLogin
@@ -97,13 +104,15 @@ class Reserva:
             return True
         return False
 
-    def retornar_reserva(self):
+    @classmethod
+    def retornar_reserva(cls):
         """Uma função para devolver os dados da tabela de reserva do banco"""
-        self.__banco.conectar()
+        cls.__banco.conectar()
         query = "SELECT * FROM reserva"
-        resultado = self.__banco.buscarTodos(query)
-        self.__banco.desconectar()
-        return resultado
+        resultado = cls.__banco.buscarTodos(query)
+        cls.__banco.desconectar()
+        listaReserva = cls.getListaReserva(resultado)
+        return listaReserva
     
     def retornar_reserva_login(self):
         """Retorna as reservas de um dia, junto com o horário da reserva, o nome de quem fez a reserva e a observação da reserva"""
@@ -139,6 +148,15 @@ class Reserva:
         resultado = self.__banco.buscarTodos(query, parametro)
         self.__banco.desconectar()
         return resultado
+    
+    @classmethod
+    def getListaReserva(cls, dados):
+        listaReservas = list()
+        for reserva in dados:
+            objetoReserva = cls(reserva[1], reserva[2], reserva[3], reserva[4], reserva[5], reserva[6], reserva[7], reserva[8])
+            objetoReserva.__setIdReserva(reserva[0])
+            listaReservas.append(objetoReserva)
+        return listaReservas
     
     @classmethod
     def deletar(cls, idReserva):
