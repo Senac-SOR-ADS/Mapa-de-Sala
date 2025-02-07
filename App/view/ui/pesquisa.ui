@@ -175,17 +175,20 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="campoOferta">
+                <widget class="QComboBox" name="campoOferta">
                  <property name="minimumSize">
                   <size>
-                   <width>139</width>
-                   <height>30</height>
+                   <width>201</width>
+                   <height>0</height>
                   </size>
                  </property>
                  <property name="font">
                   <font>
                    <pointsize>12</pointsize>
                   </font>
+                 </property>
+                 <property name="editable">
+                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
@@ -235,11 +238,11 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="campoPeriodo">
+                <widget class="QComboBox" name="campoPeriodo">
                  <property name="minimumSize">
                   <size>
-                   <width>139</width>
-                   <height>30</height>
+                   <width>201</width>
+                   <height>0</height>
                   </size>
                  </property>
                  <property name="font">
@@ -247,6 +250,21 @@
                    <pointsize>12</pointsize>
                   </font>
                  </property>
+                 <item>
+                  <property name="text">
+                   <string>Manhã</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Tarde</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Noite</string>
+                  </property>
+                 </item>
                 </widget>
                </item>
               </layout>
@@ -447,17 +465,23 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="campoSala">
+                <widget class="QComboBox" name="campoSala">
                  <property name="minimumSize">
                   <size>
-                   <width>139</width>
-                   <height>30</height>
+                   <width>201</width>
+                   <height>0</height>
                   </size>
                  </property>
                  <property name="font">
                   <font>
                    <pointsize>12</pointsize>
                   </font>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="editable">
+                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
@@ -630,11 +654,8 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>campoOferta</tabstop>
   <tabstop>dataInicio</tabstop>
   <tabstop>dataFim</tabstop>
-  <tabstop>campoPeriodo</tabstop>
-  <tabstop>campoSala</tabstop>
   <tabstop>btnExcluir</tabstop>
   <tabstop>btnEditar</tabstop>
  </tabstops>
