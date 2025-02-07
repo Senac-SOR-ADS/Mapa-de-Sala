@@ -39,13 +39,15 @@ class Feedback(QDialog):
             url = QtCore.QUrl.fromLocalFile(filename)
             self.player.setMedia(QtMultimedia.QMediaContent(url))
             self.player.play()
+            iconNotificação = os.path.join(self.CURRENT_DIR, r'ui\icones\iconNotificacao.png')
+
             
             #mostra uma notificação no windows para o usuario sobre o erro
             filenameNotificacao = os.path.join(self.CURRENT_DIR, r"ui\icones\iconNotificacao.png")
             notificacao = Notification( app_id='Mapa de Sala',
                                        title=aviso,
                                        msg=typemsg, 
-                                       icon=filenameNotificacao)
+                                       icon=iconNotificação)
             # notificacao.set_audio(audio.LoopingCall2, loop=False)
             notificacao.add_actions(label='Fechar')
             notificacao.show()
@@ -58,13 +60,14 @@ class Feedback(QDialog):
             filename = os.path.join(self.CURRENT_DIR, "./ui/sounds/sucessoNotificacao.mp3")
             url = QtCore.QUrl.fromLocalFile(filename)
             self.player.setMedia(QtMultimedia.QMediaContent(url))
+            iconNotificação = os.path.join(self.CURRENT_DIR, r'ui\icones\iconNotificacao.png')
             self.player.play()
             
             #mostra uma notificação no windows para o usuario sobre o erro
             notificacao = Notification( app_id='Mapa de Sala',
                                        title=aviso,
                                        msg=typemsg,
-                                       icon=r'C:\Users\richard.sleao\Documents\GitHub\interfaceS\App\view\ui\icones\iconNotificacao.png' )
+                                       icon=iconNotificação )
             # notificacao.set_audio(audio.LoopingCall2, loop=False)
             notificacao.add_actions(label='Fechar')
             notificacao.show()
