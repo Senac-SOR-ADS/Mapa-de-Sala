@@ -9,8 +9,8 @@ class EditarSala(QWidget):
         super().__init__()
         loadUi("App/view/ui/editarSalas.ui",self)
         self.dicionarioDeSala = listarSala()
-        self.comboxSala()
-        self.nomeSala.currentIndexChanged.connect(self.popularSala)
+        # self.comboxSala()
+        # self.nomeSala.currentIndexChanged.connect(self.popularSala)
         
         
     @pyqtSlot()
@@ -20,37 +20,36 @@ class EditarSala(QWidget):
         if atualizarSala(info[0], info[1], info[2], info[3], info[4], info[5], idSala):
             print('deu bom')
         
-    def comboxSala(self):
-        salas = self.dicionarioDeSala.keys()
-        self.nomeSala.addItems(salas)
+    # def comboxSala(self):
+    #     salas = self.dicionarioDeSala.keys()
+    #     self.nomeSala.addItems(salas)
         
-    def getIdSala(self):
-        salaSelecionada = self.nomeSala.currentText()
-        return self.dicionarioDeSala.get(salaSelecionada)
+    # def getIdSala(self):
+    #     salaSelecionada = self.nomeSala.currentText()
+    #     return self.dicionarioDeSala.get(salaSelecionada)
  
-    def popularSala(self):
-        idSalaCombobox = self.getIdSala()
-        info = buscarSalaId(idSalaCombobox)
-        nomeSala = info["nome"]
-        tipoSala = info["tipo"]
-        predio = info["predio"]
-        equipamentos = info["equipamentos"]
-        capacidade = info["capacidade"]
-        obs = info["observacao"]
-        if (nomeSala, tipoSala, predio, equipamentos, capacidade, obs):
-            self.nomeSala.setCurrentText(nomeSala)
-            self.tipoSala.setCurrentText(tipoSala)
-            self.nomePredio.setCurrentText(predio)
-            self.tipoEquipamento.setText(equipamentos)
-            self.mediaCapacidade.setText(str(capacidade))
-            self.feedbackText.setText(obs)
+    # def popularSala(self):
+    #     idSalaCombobox = self.getIdSala()
+    #     info = buscarSalaId(idSalaCombobox)
+    #     nomeSala = info["nome"]
+    #     tipoSala = info["tipo"]
+    #     predio = info["predio"]
+    #     equipamentos = info["equipamentos"]
+    #     capacidade = info["capacidade"]
+    #     obs = info["observacao"]
+    #     if (nomeSala, tipoSala, predio, equipamentos, capacidade, obs):
+    #         self.tipoSala.setCurrentText(tipoSala)
+    #         self.nomePredio.setCurrentText(predio)
+    #         self.tipoEquipamento.setText(equipamentos)
+    #         self.mediaCapacidade.setText(str(capacidade))
+    #         self.feedbackText.setText(obs)
             
     def getDadosSala(self):
-        nomeSala = self.nomeSala.currentText().strip()
-        tipoSala = self.tipoSala.currentText().strip()
-        predio = self.nomePredio.currentText().strip()
-        equipamentos = self.tipoEquipamento.text().strip()
-        capacidade = self.mediaCapacidade.text().strip()
+        nomeSala = self.nomeSala.text().strip(),
+        tipoSala = self.self.tipoSala.currentText().strip(),
+        predio = self.nomePredio.currentText().strip(),
+        equipamentos = self.tipoEquipamento.text().strip(),
+        capacidade = self.mediaCapacidade.text().strip(),
         obs = self.feedbackText.text().strip()
         
         return(nomeSala, tipoSala, predio, equipamentos, capacidade, obs)

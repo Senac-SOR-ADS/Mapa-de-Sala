@@ -10,10 +10,10 @@ class CadastrarCurso(QWidget):
         super().__init__()
         loadUi('App/view/ui/cadastroCurso.ui',self)
         self.dicionarioDeAreas = listarAreas()
-        self.popularJanela()
+        # self.popularJanela()
         
-    def popularJanela(self):
-        self.comboxArea()
+    # def popularJanela(self):
+    #     self.comboxArea()
         
     @pyqtSlot()
     def on_btnCadastrarCurso_clicked(self):
@@ -24,9 +24,9 @@ class CadastrarCurso(QWidget):
             
     
 
-    def comboxArea(self):
-        areas = self.dicionarioDeAreas.keys()
-        self.campoArea.addItems(areas)
+    # def comboxArea(self):
+    #     areas = self.dicionarioDeAreas.keys()
+    #     self.campoArea.addItems(areas)
             
         
     def getCadastroCurso(self):
