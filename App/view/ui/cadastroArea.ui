@@ -6,9 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>626</width>
-    <height>469</height>
+    <width>780</width>
+    <height>622</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -17,8 +35,8 @@
    <string notr="true">#btnCadastrarArea {
 	background-color: #01498a;
 	color: #FFF;
-border: none;
-border-radius: 15px;
+    border: none;
+    border-radius: 15px;
 }
 
 #btnCadastrarArea:hover {
@@ -30,7 +48,7 @@ border-radius: 15px;
 	border:2px solid rgba(0,0,0,0);
 	border-bottom-color:rgba(46,82,101,200);
 	border: none;
-	border-radius: 12px
+	border-radius: 12px;
 }
 
 #resposta {
@@ -55,20 +73,6 @@ border-radius: 15px;
      </property>
     </spacer>
    </item>
-   <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-    <widget class="QLabel" name="titulo">
-     <property name="font">
-      <font>
-       <pointsize>17</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Cadastro de Area</string>
-     </property>
-    </widget>
-   </item>
    <item>
     <widget class="QFrame" name="frame">
      <property name="sizePolicy">
@@ -85,6 +89,21 @@ border-radius: 15px;
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
+       <widget class="QLabel" name="titulo">
+        <property name="font">
+         <font>
+          <pointsize>17</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Cadastro de Área</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="verticalSpacer_2">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -99,6 +118,12 @@ border-radius: 15px;
       </item>
       <item>
        <widget class="QLineEdit" name="cadastrarArea">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -113,9 +138,6 @@ border-radius: 15px;
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
-        <property name="readOnly">
-         <bool>false</bool>
-        </property>
         <property name="placeholderText">
          <string>Digite a Área</string>
         </property>
@@ -126,9 +148,15 @@ border-radius: 15px;
    </item>
    <item>
     <widget class="QPushButton" name="btnCadastrarArea">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="minimumSize">
       <size>
-       <width>0</width>
+       <width>762</width>
        <height>47</height>
       </size>
      </property>
@@ -157,9 +185,6 @@ border-radius: 15px;
    </item>
   </layout>
  </widget>
- <tabstops>
-  <tabstop>cadastrarArea</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>

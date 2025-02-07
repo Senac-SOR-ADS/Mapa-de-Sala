@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Mapa de Salas</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>imagem/logoSenac.png</normaloff>imagem/logoSenac.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">#subMenuLateral QPushButton {
