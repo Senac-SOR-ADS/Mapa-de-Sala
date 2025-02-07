@@ -39,7 +39,7 @@ class Feedback(QDialog):
             url = QtCore.QUrl.fromLocalFile(filename)
             self.player.setMedia(QtMultimedia.QMediaContent(url))
             self.player.play()
-            iconNotificação = os.path.join(self.CURRENT_DIR, r'ui\icones\iconNotificacao.png')
+            # iconNotificação = os.path.join(self.CURRENT_DIR, r'ui\icones\iconNotificacao.png')
 
             
             #mostra uma notificação no windows para o usuario sobre o erro
@@ -47,7 +47,7 @@ class Feedback(QDialog):
             notificacao = Notification( app_id='Mapa de Sala',
                                        title=aviso,
                                        msg=typemsg, 
-                                       icon=iconNotificação)
+                                       icon=filenameNotificacao)
             # notificacao.set_audio(audio.LoopingCall2, loop=False)
             notificacao.add_actions(label='Fechar')
             notificacao.show()
