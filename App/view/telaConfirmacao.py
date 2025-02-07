@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 
 
 class TelaConfirmacao(QDialog):
-    def __init__(self, titulo, aviso, txtBtnOk):
+    def __init__(self, titulo, aviso, txtBtnOk, equipamentos):
         super().__init__()
         loadUi('App/view/ui/telaConfirmacao.ui', self)
         if aviso == '':
@@ -22,6 +22,11 @@ class TelaConfirmacao(QDialog):
         self.setAttribute(Qt.WA_TranslucentBackground)
         
         self.btnOk.setText(txtBtnOk)
+
+        if equipamentos == True:
+            self.containerEquipamentos.show()
+        else:
+            self.containerEquipamentos.hide()
         
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication

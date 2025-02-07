@@ -15,6 +15,8 @@ class Feedback(QDialog):
     def __init__(self, type, txt, icon, aviso, typemsg):
         super().__init__()
         loadUi('App/view/ui/feedback.ui', self)
+
+        self.checkBoxEquipamentos.stateChanged.connect(self.mudarIcone)
         
         # Variáveis para armazenar o estado da movimentação
         self._is_dragging = False
@@ -26,10 +28,10 @@ class Feedback(QDialog):
         self.btnFechar.clicked.connect(self.accept)
         
         self.texto.setText(txt)
-
         
 
         self.player = QtMultimedia.QMediaPlayer()
+
         
         #notificação de erro
         if type == False:
@@ -69,6 +71,20 @@ class Feedback(QDialog):
             # notificacao.set_audio(audio.LoopingCall2, loop=False)
             notificacao.add_actions(label='Fechar')
             notificacao.show()
+
+    def mudarIcone(self):
+        self.checkBoxEquipamentos.setStyleSheet("""
+                            QCheckBox::indicator {
+                                width: 30px;
+                                height: 30px;
+                            }
+                            QCheckBox::indicator:unchecked {
+                                icon: url("App/view/ui/icones/toggleOff.png");
+                            }
+                            QCheckBox::indicator:checked {
+                                icon: url("App/view/ui/icones/toggleOn.png");
+                            }
+                            """)
             
 
     def mousePressEvent(self, event):
