@@ -319,7 +319,7 @@ QPushButton {
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>icones/iconRelatorioBranco.png</normaloff>icones/iconRelatorioBranco.png</iconset>
+                    <normaloff>icones/iconBusca.png</normaloff>icones/iconBusca.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -631,11 +631,11 @@ QPushButton {
                       <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>Consultar Relatório</string>
+                      <string>Pesquisar</string>
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/iconRelatorioBranco.png</normaloff>icones/iconRelatorioBranco.png</iconset>
+                       <normaloff>icones/iconBusca.png</normaloff>icones/iconBusca.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
