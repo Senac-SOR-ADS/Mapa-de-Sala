@@ -38,6 +38,7 @@ class EditarSala(QWidget):
         capacidade = info["capacidade"]
         obs = info["observacao"]
         if (nomeSala, tipoSala, predio, equipamentos, capacidade, obs):
+            self.nomeSala.setCurrentText(nomeSala)
             self.tipoSala.setCurrentText(tipoSala)
             self.nomePredio.setCurrentText(predio)
             self.tipoEquipamento.setText(equipamentos)

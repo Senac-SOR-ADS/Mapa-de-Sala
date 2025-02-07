@@ -124,7 +124,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="1" column="0">
-       <widget class="QFrame" name="frame_10">
+       <widget class="QFrame" name="frame1">
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -145,7 +145,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="mediaCapacidade_3">
+          <widget class="QSpinBox" name="mediaCapacidade">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -172,7 +172,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QFrame" name="frame_9">
+       <widget class="QFrame" name="frame3">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -202,7 +202,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="tipoSala_3">
+          <widget class="QComboBox" name="tipoSala">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -285,7 +285,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="tipoEquipamento_3">
+          <widget class="QLineEdit" name="tipoEquipamento">
            <property name="minimumSize">
             <size>
              <width>231</width>
@@ -306,7 +306,7 @@
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QFrame" name="frame_8">
+       <widget class="QFrame" name="frame2">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -336,7 +336,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="nomeSala_3">
+          <widget class="QLineEdit" name="nomeSala">
            <property name="minimumSize">
             <size>
              <width>231</width>
@@ -369,7 +369,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="nomePredio_3">
+          <widget class="QComboBox" name="nomePredio">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
