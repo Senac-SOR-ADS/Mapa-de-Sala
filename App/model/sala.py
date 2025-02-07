@@ -11,7 +11,13 @@ class Sala:
         self.__equipamentos = equipamentos
         self.capacidade = capacidade
         self.observacao = observacao
+        self.__id = None
         
+    def __set_idSala(self, id):
+        self.__id = id
+
+    def get_idSala(self):
+        return self.__id
  
     def get_equipamentos(self):
         return self.__equipamentos
@@ -19,13 +25,27 @@ class Sala:
     def  set_equipamentos(self, equipamentos):
         self.__equipamentos = equipamentos
 
+    def get_nome(self):
+        return self.nome
+
+
+    @classmethod
+    def getListaSala(cls, dados):
+        listaSala = list()
+        for sala in dados:
+            objetoSala = cls(sala[1], sala[2], sala[3], sala[4], sala[5], sala[6])
+            objetoSala.__set_idSala(sala[0])
+            listaSala.append(objetoSala)
+        return listaSala
+
     @classmethod
     def buscar_sala(cls):
         cls.__banco.conectar()
         query = '''SELECT * FROM sala;'''
         resultado = cls.__banco.buscarTodos(query)
         cls.__banco.desconectar()
-        return resultado
+        listaSala = cls.getListaSala(resultado)
+        return listaSala
     
     @classmethod
     def buscar_sala_predio1(cls):
