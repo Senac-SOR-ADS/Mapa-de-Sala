@@ -629,6 +629,15 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>campoOferta</tabstop>
+  <tabstop>dataInicio</tabstop>
+  <tabstop>dataFim</tabstop>
+  <tabstop>campoPeriodo</tabstop>
+  <tabstop>campoSala</tabstop>
+  <tabstop>btnExcluir</tabstop>
+  <tabstop>btnEditar</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
