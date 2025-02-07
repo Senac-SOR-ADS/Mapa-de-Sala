@@ -24,10 +24,12 @@ def cadastrarCurso(idArea: int, dados: list) -> dict:
     except Exception as e:
         return {"error": f"Erro ao cadastrar curso: {e}"}
 
-def infosCursos():
-    print("reserva")
+def lista_de_cursos():
+    return Curso.retorna_info_cursos()
 
 def listarCurso():
+    """ Consulta retorna (id_curso, cod_oferta)
+    tranformando em um dicionario no formato: { cod_oferta : id_curso}"""
     todasSalas = Curso.retorna_ofertaId_cursos()
     listarCursos = {i[1]:i[0] for i in todasSalas}
     return(listarCursos)
@@ -86,7 +88,7 @@ def atualizarCurso(idCurso, dados):
             return True
     return False
 
-    # =================== buscar Id ===================
+# =================== buscar Id ===================
 def buscarCursoId(idCurso: int) -> dict:
     """ Busca um curso pelo ID e retorna suas informações ou uma mensagem de erro se não for encontrado. """
     if not isinstance(idCurso, int):
