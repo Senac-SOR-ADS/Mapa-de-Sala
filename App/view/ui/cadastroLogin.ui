@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1090</width>
-    <height>619</height>
+    <width>762</width>
+    <height>676</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>762</width>
+    <height>676</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -85,7 +97,7 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item alignment="Qt::AlignHCenter">
+      <item>
        <widget class="QLabel" name="titulo">
         <property name="font">
          <font>
@@ -95,12 +107,15 @@
         <property name="text">
          <string>Cadastrar Login</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QFrame" name="frame">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -127,34 +142,6 @@
          <property name="bottomMargin">
           <number>11</number>
          </property>
-         <item>
-          <widget class="QWidget" name="widget_3" native="true">
-           <layout class="QVBoxLayout" name="verticalLayout_2">
-            <item>
-             <widget class="QLabel" name="label_2">
-              <property name="minimumSize">
-               <size>
-                <width>300</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="pixmap">
-               <pixmap>imagem/logoSenac.png</pixmap>
-              </property>
-              <property name="scaledContents">
-               <bool>false</bool>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
          <item>
           <widget class="QWidget" name="widget_4" native="true">
            <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -190,14 +177,14 @@
              <widget class="QLineEdit" name="email">
               <property name="minimumSize">
                <size>
-                <width>705</width>
-                <height>34</height>
+                <width>0</width>
+                <height>47</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>705</width>
-                <height>34</height>
+                <width>16777215</width>
+                <height>16777215</height>
                </size>
               </property>
               <property name="font">
@@ -228,6 +215,12 @@
             </item>
             <item>
              <widget class="QFrame" name="frame_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
               </property>
@@ -239,14 +232,14 @@
                 <widget class="QLineEdit" name="senha">
                  <property name="minimumSize">
                   <size>
-                   <width>674</width>
-                   <height>34</height>
+                   <width>0</width>
+                   <height>47</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>649</width>
-                   <height>34</height>
+                   <width>16777215</width>
+                   <height>16777215</height>
                   </size>
                  </property>
                  <property name="font">
@@ -317,14 +310,14 @@
              <widget class="QComboBox" name="nivelAcesso">
               <property name="minimumSize">
                <size>
-                <width>705</width>
-                <height>34</height>
+                <width>0</width>
+                <height>47</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>705</width>
-                <height>34</height>
+                <width>16777215</width>
+                <height>16777215</height>
                </size>
               </property>
               <property name="cursor">
