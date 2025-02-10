@@ -20,6 +20,13 @@ class Reserva:
         self.__horaFim = horaFim
         self.__chaveDevolvida = chaveDevolvida
         self.__observacao = observacao
+        self.__id = None
+
+    def __setIdReserva(self, id):
+        self.__id = id
+
+    def get_idReserva(self):
+        return self.__id
 
     def get_idLogin(self):
         return self.__idLogin
@@ -97,13 +104,15 @@ class Reserva:
             return True
         return False
 
-    def retornar_reserva(self):
+    @classmethod
+    def retornar_reserva(cls):
         """Uma função para devolver os dados da tabela de reserva do banco"""
-        self.__banco.conectar()
+        cls.__banco.conectar()
         query = "SELECT * FROM reserva"
-        resultado = self.__banco.buscarTodos(query)
-        self.__banco.desconectar()
-        return resultado
+        resultado = cls.__banco.buscarTodos(query)
+        cls.__banco.desconectar()
+        listaReserva = cls.getListaReserva(resultado)
+        return listaReserva
     
     def retornar_reserva_login(self):
         """Retorna as reservas de um dia, junto com o horário da reserva, o nome de quem fez a reserva e a observação da reserva"""
@@ -139,6 +148,15 @@ class Reserva:
         resultado = self.__banco.buscarTodos(query, parametro)
         self.__banco.desconectar()
         return resultado
+    
+    @classmethod
+    def getListaReserva(cls, dados):
+        listaReservas = list()
+        for reserva in dados:
+            objetoReserva = cls(reserva[1], reserva[2], reserva[3], reserva[4], reserva[5], reserva[6], reserva[7], reserva[8])
+            objetoReserva.__setIdReserva(reserva[0])
+            listaReservas.append(objetoReserva)
+        return listaReservas
     
     @classmethod
     def deletar(cls, idReserva):
@@ -200,6 +218,93 @@ class Reserva:
         log.error(f"{__name__}: Salas não foram trocadas.")
         return False
         
+    @classmethod
+    def buscar_data(cls, diaInicio, diaFim):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s"
+        parametro = [diaInicio, diaFim]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva durante essas datas")
+
+    @classmethod
+    def buscar_data_oferta(cls, diaInicio, diaFim, idCurso):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idCurso = %s;"
+        parametro = [diaInicio, diaFim, idCurso]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva deste curso neste período")
+
+    @classmethod
+    def buscar_data_sala(cls, diaInicio, diaFim, idSala):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s;"
+        parametro = [diaInicio, diaFim, idSala]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva nesta sala durante esse período")
+
+    @classmethod
+    def buscar_data_periodo(cls, diaInicio, diaFim, horaInicio, horaFim):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s;"
+        parametro = [diaInicio, diaFim, horaInicio, horaFim]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva neste horário durante esse período")
+
+    @classmethod
+    def buscar_data_periodo_oferta(cls, diaInicio, diaFim, horaInicio, horaFim, idCurso):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s AND idCurso = %s;"
+        parametro = [diaInicio, diaFim, horaInicio, horaFim, idCurso]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva deste curso, durante este horário")
+
+    @classmethod
+    def buscar_periodo_sala(cls, diaInicio, diaFim, horaInicio, horaFim, idSala):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s AND idSala = %s;"
+        parametro = [diaInicio, diaFim, horaInicio, horaFim, idSala]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva nesta sala durante este horário")
+
+    @classmethod
+    def buscar_oferta_sala(cls, diaInicio, diaFim, idCurso, idSala):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s AND idCurso = %s;"
+        parametro = [diaInicio, diaFim, idSala, idCurso]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva deste curso nesta sala")
+
+    @classmethod
+    def buscar_periodo_sala_oferta(cls, diaInicio, diaFim, idSala, idCurso, horaInicio, horaFim):
+        cls.__banco.conectar()
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s AND idCurso = %s AND hrInicio >= %s AND hrFim <= %s;"
+        parametro = [diaInicio, diaFim, idSala, idCurso, horaInicio, horaFim]
+        resultado = cls.__banco.buscarTodos(query, parametro)
+        cls.__banco.desconectar()
+        if resultado:
+            return resultado
+        log.error(f"{__name__}: Nenhuma reserva deste curso nesta sala durante esse horário")
 
 if __name__ == "__main__":
     pass
