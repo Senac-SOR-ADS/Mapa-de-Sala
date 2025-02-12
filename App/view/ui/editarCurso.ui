@@ -409,7 +409,7 @@
                <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="editable">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>
