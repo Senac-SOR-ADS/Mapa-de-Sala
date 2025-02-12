@@ -13,10 +13,10 @@ class Sala:
         self.observacao = observacao
         self.__id = None
         
-    def __set_idSala(self, id):
+    def __set_id(self, id):
         self.__id = id
 
-    def get_idSala(self):
+    def get_id(self):
         return self.__id
  
     def get_equipamentos(self):
@@ -34,7 +34,7 @@ class Sala:
         listaSala = list()
         for sala in dados:
             objetoSala = cls(sala[1], sala[2], sala[3], sala[4], sala[5], sala[6])
-            objetoSala.__set_idSala(sala[0])
+            objetoSala.__set_id(sala[0])
             listaSala.append(objetoSala)
         return listaSala
 
