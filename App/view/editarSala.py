@@ -11,10 +11,11 @@ class EditarSala(QWidget):
         self.dicionarioDeSala = listarSala()
         self.comboxSala()
         self.nomeSala.currentIndexChanged.connect(self.popularSala)
+        self.popularSala()
        
        
     @pyqtSlot()
-    def on_btnEditarSala_clicked(self):
+    def on_cadastrarSala_clicked(self):
         idSala = self.getIdSala()
         info = self.getDadosSala()
         if atualizarSala(info[0], info[1], info[2], info[3], info[4], info[5], idSala):
@@ -41,7 +42,7 @@ class EditarSala(QWidget):
             self.tipoSala.setCurrentText(tipoSala)
             self.nomePredio.setCurrentText(predio)
             self.tipoEquipamento.setText(equipamentos)
-            self.mediaCapacidade.setText(str(capacidade))
+            self.mediaCapacidade.setValue(capacidade)
             self.feedbackText.setText(obs)
            
     def getDadosSala(self):
