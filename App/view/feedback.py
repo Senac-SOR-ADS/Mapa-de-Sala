@@ -61,6 +61,7 @@ class Feedback(QDialog):
             self.player.play()
             
             #mostra uma notificação no windows para o usuario sobre o erro
+            filenameNotificacao = os.path.join(self.CURRENT_DIR, r"ui\icones\iconNotificacao.png")
             notificacao = Notification( app_id='Mapa de Sala',
                                        title=aviso,
                                        msg=typemsg,
