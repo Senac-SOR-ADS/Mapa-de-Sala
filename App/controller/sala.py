@@ -50,12 +50,6 @@ def listarSala(search_query: str = '') -> dict:
         else:
             todasSalas = {sala.get_nome():sala.get_id() for sala in todasSalas}
         return todasSalas if todasSalas else {}
-        # if search_query:
-        #     todasSalas = [
-        #         sala for sala in todasSalas if search_query.lower() in sala[1].lower() or search_query.lower() in sala[2].lower()
-        #     ]
-        
-        # return {sala[1]: sala[0] for sala in todasSalas} if todasSalas else {}
     except Exception as e:
         return {"error": f"Erro ao listar salas: {str(e)}"}
 
