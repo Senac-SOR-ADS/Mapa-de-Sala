@@ -92,9 +92,9 @@ class LoginInterface(QDialog):
  
     def dadosInvalidos(self):
         texto = 'DADOS INCOMPLETOS.'
-        resposta = Feedback(False,
+        resposta = Feedback(True,
                             texto,
-                            r'ui\icones\iconErro.png',
+                            
                             'Aviso!',
                             'algo teu errado, corrija as falhas e tente novamente')
         

@@ -323,7 +323,7 @@ QPushButton {
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>icones/iconRelatorioBranco.png</normaloff>icones/iconRelatorioBranco.png</iconset>
+                    <normaloff>icones/iconBusca.png</normaloff>icones/iconBusca.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -635,11 +635,11 @@ QPushButton {
                       <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>Consultar Relatório</string>
+                      <string>Pesquisar</string>
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/iconRelatorioBranco.png</normaloff>icones/iconRelatorioBranco.png</iconset>
+                       <normaloff>icones/iconBusca.png</normaloff>icones/iconBusca.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -934,7 +934,7 @@ QPushButton {
                    </size>
                   </property>
                   <property name="currentIndex">
-                   <number>0</number>
+                   <number>2</number>
                   </property>
                   <widget class="QWidget" name="cadastros">
                    <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1171,25 +1171,6 @@ QPushButton {
                   </widget>
                   <widget class="QWidget" name="busca">
                    <layout class="QVBoxLayout" name="verticalLayout_9">
-                    <item>
-                     <widget class="QPushButton" name="pushButton_2">
-                      <property name="minimumSize">
-                       <size>
-                        <width>119</width>
-                        <height>56</height>
-                       </size>
-                      </property>
-                      <property name="cursor">
-                       <cursorShape>PointingHandCursor</cursorShape>
-                      </property>
-                      <property name="text">
-                       <string>Salas ocupadas</string>
-                      </property>
-                      <property name="autoExclusive">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
                     <item>
                      <widget class="QPushButton" name="pushButton_4">
                       <property name="minimumSize">
@@ -1596,7 +1577,6 @@ QPushButton {
   <tabstop>btnSairSimples</tabstop>
   <tabstop>btnSair</tabstop>
   <tabstop>btnFecharMenuQuebrado</tabstop>
-  <tabstop>pushButton_2</tabstop>
   <tabstop>pushButton_4</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>btnMinimizar</tabstop>
