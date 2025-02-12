@@ -100,7 +100,9 @@ class HomePrincipal(QMainWindow):
         self.btnTelaCheia.clicked.connect(self.windowConnect)
         self.btnFecharPagina.clicked.connect(self.close)
 
-    def setInterfaceOnHome(self, interface: QWidget):
+    ################################
+    # Função correta para inserir interface
+    def setInterfaceOnHome(self, interface:QWidget):
         self.container: QStackedWidget
         if type(interface) != QWidget:  # precisa instanciar a interface
             interface = interface()
@@ -114,15 +116,19 @@ class HomePrincipal(QMainWindow):
         if self.isMaximized():
             self.showNormal()
             self.btnTelaCheia.setStyleSheet("""
-                #btnTelaCheia {
-                    icon: url("App/view/ui/icones/iconTelaCheia.png"); 
-                }""")
+                                           #btnTelaCheia {
+                                               icon: url("App/view/ui/icones/iconTelaCheia.png"); 
+                                            }"""
+                                        )
+            
         else:
             self.showMaximized()
             self.btnTelaCheia.setStyleSheet("""
-                #btnTelaCheia {
-                    icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png"); 
-                }""")
+                                        #btnTelaCheia {
+                                            icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png"); 
+                                            }"""
+                                        )
+                
 
     def inserirTelasMenu(self, menu):
         for i in menu:
@@ -199,7 +205,7 @@ class HomePrincipal(QMainWindow):
         self.subMenuQuebrado.hide()
 
     def fazer_logout(self):
-        confirmacao = TelaConfirmacao("Tem certeza que deseja sair?", '', "Sim")
+        confirmacao = TelaConfirmacao("Tem certeza que deseja sair?", '', "Sim", False)
         if confirmacao.exec_():
             removerUsuarioLogado()
             self.close()
