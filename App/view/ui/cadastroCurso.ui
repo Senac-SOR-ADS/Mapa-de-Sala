@@ -35,14 +35,14 @@
 	padding-bottom:7px;
 }
  
-#btnEditarCurso {
+#btnCadastrarCurso {
 	background-color: #01498a;
 	color: #FFF;
 	border: none;
 	border-radius: 15px;
 }
  
-#btnEditarCurso:hover {
+#btnCadastrarCurso:hover {
 	background-color: #f6921e;
 }
  
