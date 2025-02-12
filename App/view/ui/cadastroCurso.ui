@@ -67,7 +67,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Editar Curso</string>
+      <string>Cadastro de Cursos</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -570,7 +570,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="btnEditarCurso">
+    <widget class="QPushButton" name="btnCadastrarCurso">
      <property name="minimumSize">
       <size>
        <width>762</width>
@@ -586,7 +586,7 @@
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="text">
-      <string>Editar Curso</string>
+      <string>Cadastrar Curso</string>
      </property>
     </widget>
    </item>
