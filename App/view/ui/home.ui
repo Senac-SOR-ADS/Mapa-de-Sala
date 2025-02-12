@@ -47,8 +47,7 @@
 
 #btnFecharPagina:hover {
 	background-color: #E81123;
-	color: #fff;
-	icon: url(&quot;App/view/ui/icones/iconCloseBranco.png&quot;);
+	color: #FFF;
 }
 
 #suMenuLateral QPushButton {

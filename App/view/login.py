@@ -92,11 +92,10 @@ class LoginInterface(QDialog):
  
     def dadosInvalidos(self):
         texto = 'DADOS INCOMPLETOS.'
-        resposta = Feedback(True,
+        resposta = Feedback(False,
                             texto,
-                            
                             'Aviso!',
-                            'algo teu errado, corrija as falhas e tente novamente')
+                            'algo deu errado, corrija as falhas e tente novamente')
         
         # resposta.mudarFoto("Validado")
         if resposta.exec_():
