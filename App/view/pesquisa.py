@@ -12,7 +12,12 @@ class TelaPesquisa(QWidget):
         self.stackReservas: QStackedWidget
         self.reservaMultipla: QWidget
 
-        self.teste.clicked.connect(self.stackReservas.setCurrentWidget(self.reservaMultipla))
+        self.teste.clicked.connect(lambda: self.trocarTela(self.reservaMultipla))
+        self.teste2.clicked.connect(lambda: self.trocarTela(self.reservaUnica))
+
+    def trocarTela(self, tela:QWidget):
+        self.stackReservas.setCurrentWidget(tela)
+
         
 
 

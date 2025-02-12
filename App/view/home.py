@@ -17,7 +17,7 @@ from .editarReserva import EditarReserva
 from .editarSala import EditarSala
 from .reserva import ReservaInterface
 from .telaConfirmacao import TelaConfirmacao
-from .pesquisa import  TelaPesquisa
+from .pesquisa import TelaPesquisa
 
 from App.controller.login import pegarUsuarioLogado, removerUsuarioLogado
 

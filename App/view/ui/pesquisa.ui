@@ -82,21 +82,6 @@
           <property name="bottomMargin">
            <number>0</number>
           </property>
-          <item alignment="Qt::AlignRight">
-           <widget class="QPushButton" name="teste">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="text">
-             <string>teste</string>
-            </property>
-           </widget>
-          </item>
           <item>
            <widget class="QLabel" name="titulo">
             <property name="font">
@@ -109,6 +94,21 @@
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignRight">
+           <widget class="QPushButton" name="teste">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>teste</string>
             </property>
            </widget>
           </item>
@@ -681,7 +681,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="page_4">
+     <widget class="QWidget" name="reservaMultipla">
       <widget class="QPushButton" name="teste2">
        <property name="geometry">
         <rect>
