@@ -128,8 +128,8 @@ border-radius: 15px;
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>50</y>
+      <x>440</x>
+      <y>140</y>
       <width>91</width>
       <height>16</height>
      </rect>
@@ -141,7 +141,7 @@ border-radius: 15px;
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>330</x>
       <y>50</y>
       <width>41</width>
       <height>16</height>
@@ -167,7 +167,7 @@ border-radius: 15px;
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>620</x>
       <y>50</y>
       <width>31</width>
       <height>16</height>
@@ -193,8 +193,8 @@ border-radius: 15px;
    <widget class="QLineEdit" name="equipamentosReserva">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>70</y>
+      <x>440</x>
+      <y>160</y>
       <width>171</width>
       <height>31</height>
      </rect>
@@ -204,32 +204,19 @@ border-radius: 15px;
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>120</y>
-      <width>131</width>
+      <y>130</y>
+      <width>91</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>DATA INÍCIAL DO CURSO:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>120</y>
-      <width>121</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>DATA FINAL DO CURSO:</string>
+     <string>DATA RESERVA:</string>
     </property>
    </widget>
    <widget class="QComboBox" name="salaReserva">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>620</x>
       <y>70</y>
       <width>131</width>
       <height>31</height>
@@ -247,7 +234,7 @@ border-radius: 15px;
      <rect>
       <x>20</x>
       <y>70</y>
-      <width>171</width>
+      <width>281</width>
       <height>31</height>
      </rect>
     </property>
@@ -271,24 +258,11 @@ border-radius: 15px;
      <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
     </property>
    </widget>
-   <widget class="QDateEdit" name="diaFim">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>160</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>120</y>
+      <x>150</x>
+      <y>130</y>
       <width>91</width>
       <height>16</height>
      </rect>
@@ -300,9 +274,9 @@ border-radius: 15px;
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>120</y>
-      <width>91</width>
+      <x>290</x>
+      <y>130</y>
+      <width>71</width>
       <height>16</height>
      </rect>
     </property>
@@ -313,7 +287,7 @@ border-radius: 15px;
    <widget class="QTimeEdit" name="fimCurso">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>290</x>
       <y>160</y>
       <width>111</width>
       <height>31</height>
@@ -326,9 +300,9 @@ border-radius: 15px;
    <widget class="QTimeEdit" name="inicioCurso">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>150</x>
       <y>160</y>
-      <width>141</width>
+      <width>101</width>
       <height>31</height>
      </rect>
     </property>
@@ -399,13 +373,29 @@ border-radius: 15px;
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>330</x>
       <y>70</y>
-      <width>171</width>
+      <width>271</width>
       <height>31</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>150</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>SALAS LIVRES</string>
     </property>
    </widget>
   </widget>
@@ -416,7 +406,6 @@ border-radius: 15px;
   <tabstop>equipamentosReserva</tabstop>
   <tabstop>diaInicio</tabstop>
   <tabstop>inicioCurso</tabstop>
-  <tabstop>diaFim</tabstop>
   <tabstop>fimCurso</tabstop>
   <tabstop>btnEditarReserva</tabstop>
  </tabstops>
