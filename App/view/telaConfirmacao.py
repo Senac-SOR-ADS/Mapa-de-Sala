@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 
 
 class TelaConfirmacao(QDialog):
-    def __init__(self, titulo, aviso, txtBtnOk, equipamentos):
+    def __init__(self, titulo, aviso, txtBtnOk, equipamentos=False):
         super().__init__()
         loadUi('App/view/ui/telaConfirmacao.ui', self)
         if aviso == '':
