@@ -46,8 +46,8 @@ CREATE TABLE `curso` (
   `idCurso` int(11) NOT NULL AUTO_INCREMENT,
   `idArea` int(11) NOT NULL COMMENT 'ID da área associada',
   `nome` varchar(100) NOT NULL COMMENT 'Nome do curso',
-  `oferta` varchar(50) NOT NULL COMMENT 'Oferta do curso',
-  `periodo` varchar(50) NOT NULL COMMENT 'Período do curso',
+  `oferta` varchar(50) NOT NULL UNIQUE COMMENT 'Oferta do curso',
+  `periodo` enum('Manha','Tarde','Noite') NOT NULL COMMENT 'Período do curso',
   `cargaHoraria` int(11) NOT NULL COMMENT 'Carga horária do curso',
   `horasDia` time NOT NULL COMMENT 'Horas diárias de aula',
   `qtdAlunos` int(11) NOT NULL COMMENT 'Quantidade de alunos',
@@ -96,11 +96,11 @@ CREATE TABLE `sala` (
 CREATE TABLE `pessoa` (
   `idPessoa` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL COMMENT 'Nome da pessoa',
-  `CPF_CNPJ` varchar(18) NOT NULL COMMENT 'CPF ou CNPJ',
+  `CPF_CNPJ` varchar(18) NOT NULL UNIQUE COMMENT 'CPF ou CNPJ',
   `nascimento` date NOT NULL COMMENT 'Data de nascimento',
   `telefone` varchar(15) NOT NULL COMMENT 'Telefone de contato',
   `email` varchar(100) NOT NULL UNIQUE COMMENT 'Email da pessoa',
-  `cargo` ENUM('Comum', 'Apoio', 'Patrimonio', 'Administrador') NOT NULL COMMENT 'Cargo ou função da pessoa',
+  `cargo` enum('Comum','Suporte','Administrador') NOT NULL COMMENT 'Cargo ou função da pessoa',
   PRIMARY KEY (`idPessoa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
