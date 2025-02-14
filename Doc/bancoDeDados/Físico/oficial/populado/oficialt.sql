@@ -53,7 +53,7 @@ CREATE TABLE `curso` (
   `idArea` int(11) NOT NULL COMMENT 'ID da área associada',
   `nome` varchar(100) NOT NULL COMMENT 'Nome do curso',
   `oferta` varchar(50) NOT NULL COMMENT 'Oferta do curso',
-  `periodo` varchar(50) NOT NULL COMMENT 'Período do curso',
+  `periodo` enum('Manha','Tarde','Noite') NOT NULL COMMENT 'Período do curso',
   `cargaHoraria` int(11) NOT NULL COMMENT 'Carga horária do curso',
   `horasDia` time NOT NULL COMMENT 'Horas diárias de aula',
   `qtdAlunos` int(11) NOT NULL COMMENT 'Quantidade de alunos'
@@ -119,7 +119,7 @@ CREATE TABLE `pessoa` (
   `nascimento` date NOT NULL COMMENT 'Data de nascimento',
   `telefone` varchar(15) NOT NULL COMMENT 'Telefone de contato',
   `email` varchar(100) NOT NULL COMMENT 'Email da pessoa',
-  `cargo` enum('Comum','Apoio','Patrimonio','Administrador') NOT NULL COMMENT 'Cargo ou função da pessoa'
+  `cargo` enum('Comum','Suporte','Administrador') NOT NULL COMMENT 'Cargo ou função da pessoa'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -246,7 +246,8 @@ ALTER TABLE `area`
 --
 ALTER TABLE `curso`
   ADD PRIMARY KEY (`idCurso`),
-  ADD KEY `idArea` (`idArea`);
+  ADD KEY `idArea` (`idArea`),
+  ADD UNIQUE KEY `oferta` (`oferta`);
 
 --
 -- Índices de tabela `equipamento`
@@ -275,7 +276,8 @@ ALTER TABLE `ocupado`
 --
 ALTER TABLE `pessoa`
   ADD PRIMARY KEY (`idPessoa`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `CPF_CNPJ` (`CPF_CNPJ`);
 
 --
 -- Índices de tabela `reserva`
