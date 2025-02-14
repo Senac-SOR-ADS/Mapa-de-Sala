@@ -6,6 +6,7 @@ from App.controller.curso import listarCurso
 from App.controller.sala import listarSala
 
 from .editarReservaUnitaria import ReservaUnitaria
+from .telaConfirmacao import TelaConfirmacao
 
 class TelaPesquisa(QWidget):
     def __init__(self):
@@ -35,6 +36,9 @@ class TelaPesquisa(QWidget):
         self.btnTrocarOfetaMultipla.clicked.connect(lambda: self.trocarTela(self.reservaMultipla))
         self.btnTrocarOfetaUnitaria.clicked.connect(lambda: self.trocarTela(self.reservaUnica))
 
+        self.btnEditar.clicked.connect(self.criarPopUp)
+        self.btnExcluir.clicked.connect(self.excluirReserva)
+
 
     def trocarTela(self, tela:QWidget):
         self.stackReservas.setCurrentWidget(tela)
@@ -59,6 +63,12 @@ class TelaPesquisa(QWidget):
         tela = ReservaUnitaria()
         if tela.exec_():
             pass
+
+    def excluirReserva(self):
+        confirmacao = TelaConfirmacao("Tem certeza que deseja excluir?", '', "Sim", False)
+        if confirmacao.exec_():
+            print('excluido')
+        print('Não excluido')
 
         
 
