@@ -5,6 +5,8 @@ from PyQt5.QtCore import QDate
 from App.controller.curso import listarCurso
 from App.controller.sala import listarSala
 
+from .editarReservaUnitaria import ReservaUnitaria
+
 class TelaPesquisa(QWidget):
     def __init__(self):
         super().__init__()
@@ -30,7 +32,7 @@ class TelaPesquisa(QWidget):
         self.stackReservas: QStackedWidget
         self.reservaMultipla: QWidget
 
-        self.teste.clicked.connect(lambda: self.trocarTela(self.reservaMultipla))
+        self.btnEditar.clicked.connect(self.criarPopUp)
         self.teste2.clicked.connect(lambda: self.trocarTela(self.reservaUnica))
 
     def trocarTela(self, tela:QWidget):
@@ -51,6 +53,11 @@ class TelaPesquisa(QWidget):
     def popularTela(self):
         self.comboboxOferta()
         self.comboboxSala()
+
+    def criarPopUp(self):
+        tela = ReservaUnitaria()
+        if tela.exec_():
+            pass
 
         
 
