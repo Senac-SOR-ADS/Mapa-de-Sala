@@ -1,3 +1,7 @@
+QLabel {
+	color: #FFFFFF;
+}
+
 #subMenuLateral QPushButton {
 	padding: 5px 10px;
 	text-align: left;
@@ -114,4 +118,16 @@ QPushButton {
 	background-color: #18dada;
 	border: none;
 	border-radius: 10px;
+}
+
+#btnMinimizar {
+	icon: url("App/view/ui/icones/iconMinimizarBranco.png"); 
+}
+
+#btnTelaCheia {
+	icon: url("App/view/ui/icones/iconTelaCheiaBranco.png"); 
+}
+
+#btnFecharPagina {
+	icon: url("App/view/ui/icones/iconCloseBranco.png"); 
 }

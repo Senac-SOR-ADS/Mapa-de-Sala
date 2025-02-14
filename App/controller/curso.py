@@ -1,7 +1,7 @@
 from App.model.curso import Curso
 from App.model.area import Area
 from App.controller.utils import validarInputs
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 # =================== cadastrar ===================
 def cadastrarCurso(idArea: int, dados: list) -> dict:
@@ -24,10 +24,12 @@ def cadastrarCurso(idArea: int, dados: list) -> dict:
     except Exception as e:
         return {"error": f"Erro ao cadastrar curso: {e}"}
 
-def infosCursos():
-    print("reserva")
+def lista_de_cursos():
+    return Curso.retorna_info_cursos()
 
 def listarCurso():
+    """ Consulta retorna (id_curso, cod_oferta)
+    tranformando em um dicionario no formato: { cod_oferta : id_curso}"""
     todasSalas = Curso.retorna_ofertaId_cursos()
     listarCursos = {i[1]:i[0] for i in todasSalas}
     return(listarCursos)
@@ -68,7 +70,7 @@ def buscarCursosId(idCurso=1):
             "oferta": resultado[3],
             "periodo": resultado[4],
             "cargaHoraria": resultado[5],
-            "horasDia": timedelta_to_int(resultado[6]),
+            "horasDia": resultado[6],
             "qtdAlunos": resultado[7],
         }
     except Exception as e:
@@ -86,7 +88,7 @@ def atualizarCurso(idCurso, dados):
             return True
     return False
 
-    # =================== buscar Id ===================
+# =================== buscar Id ===================
 def buscarCursoId(idCurso: int) -> dict:
     """ Busca um curso pelo ID e retorna suas informações ou uma mensagem de erro se não for encontrado. """
     if not isinstance(idCurso, int):

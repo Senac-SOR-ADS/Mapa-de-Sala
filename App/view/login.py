@@ -1,9 +1,13 @@
 from PyQt5.QtWidgets import QDialog, QMenu
 from PyQt5.QtCore import Qt, QTimer, QPoint
 from PyQt5.QtCore import pyqtSlot
-from .feadbackErro import FeadbackErro
+import PyQt5.QtCore
+from .feedback import Feedback
 from PyQt5.uic import loadUi
- 
+from os import path
+import os
+from PyQt5 import QtMultimedia
+
  
 from App.controller.login import validarLogin
  
@@ -88,7 +92,11 @@ class LoginInterface(QDialog):
  
     def dadosInvalidos(self):
         texto = 'DADOS INCOMPLETOS.'
-        resposta = FeadbackErro(texto)
+        resposta = Feedback(True,
+                            texto,
+                            'Aviso!',
+                            'algo deu errado, corrija as falhas e tente novamente')
+        
         # resposta.mudarFoto("Validado")
         if resposta.exec_():
             print('erro')
@@ -100,6 +108,19 @@ class LoginInterface(QDialog):
         campos = self.getEmailSenha()
         if validarLogin(campos[0], campos[1]):
             self.accept()
+
+            # Limpando campos
+            self.limparCampos(self.inputEmail)
+            self.limparCampos(self.inputSenha)
+
+            # Focus no campo de email
+            self.inputEmail.setFocus()
+
+            self.inputSenha.setEchoMode(self.inputSenha.EchoMode.Password)
+            self.btnMostrarSenha.setStyleSheet('''
+                                              #btnMostrarSenha {
+                                                icon: url("App/view/ui/icones/iconOlhoAberto.png");  
+                                              }''')
         else:
             self.dadosInvalidos()
  

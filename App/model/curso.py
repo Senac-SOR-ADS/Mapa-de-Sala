@@ -14,7 +14,14 @@ class Curso:
         self.__cargaHoraria = cargaHoraria
         self.__horasDia = horasDia
         self.__qtdAlunos = qtdAlunos
- 
+        self.__id = None
+
+    def __set_id(self, id):
+        self.__id = id
+
+    def get_id(self):
+        return self.__id
+    
     def get_nome(self):
         return self.__nome
  
@@ -60,6 +67,21 @@ class Curso:
         if resultado:
             return True
         return False
+    
+    ######## JEFF
+    @classmethod
+    def retorna_info_cursos(cls)->list:
+        cls.__banco.conectar()
+        query = "SELECT * FROM curso"
+        resultado = cls.__banco.buscarTodos(query)
+        cls.__banco.desconectar()
+        lista_cursos = list()
+        for item in resultado:
+            curso = cls(item[2], item[3], item[4], item[5], item[6], item[7])
+            curso.__set_id(item[0])
+            lista_cursos.append(curso)
+        return lista_cursos
+    ########
  
     @classmethod
     def retorna_todos_cursos(cls):

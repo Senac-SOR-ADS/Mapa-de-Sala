@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Mapa de Salas</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>imagem/logoSenac.png</normaloff>imagem/logoSenac.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">#subMenuLateral QPushButton {
@@ -43,8 +47,7 @@
 
 #btnFecharPagina:hover {
 	background-color: #E81123;
-	color: #fff;
-	icon: url(&quot;App/view/ui/icones/iconCloseBranco.png&quot;);
+	color: #FFF;
 }
 
 #suMenuLateral QPushButton {
@@ -319,7 +322,7 @@ QPushButton {
                   </property>
                   <property name="icon">
                    <iconset>
-                    <normaloff>icones/iconRelatorioBranco.png</normaloff>icones/iconRelatorioBranco.png</iconset>
+                    <normaloff>icones/iconBusca.png</normaloff>icones/iconBusca.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -631,11 +634,11 @@ QPushButton {
                       <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>Consultar Relatório</string>
+                      <string>Pesquisar</string>
                      </property>
                      <property name="icon">
                       <iconset>
-                       <normaloff>icones/iconRelatorioBranco.png</normaloff>icones/iconRelatorioBranco.png</iconset>
+                       <normaloff>icones/iconBusca.png</normaloff>icones/iconBusca.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -930,7 +933,7 @@ QPushButton {
                    </size>
                   </property>
                   <property name="currentIndex">
-                   <number>1</number>
+                   <number>2</number>
                   </property>
                   <widget class="QWidget" name="cadastros">
                    <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -965,7 +968,7 @@ QPushButton {
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
-                       <string>Reservar</string>
+                       <string>Reserva</string>
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
@@ -1167,25 +1170,6 @@ QPushButton {
                   </widget>
                   <widget class="QWidget" name="busca">
                    <layout class="QVBoxLayout" name="verticalLayout_9">
-                    <item>
-                     <widget class="QPushButton" name="pushButton_2">
-                      <property name="minimumSize">
-                       <size>
-                        <width>119</width>
-                        <height>56</height>
-                       </size>
-                      </property>
-                      <property name="cursor">
-                       <cursorShape>PointingHandCursor</cursorShape>
-                      </property>
-                      <property name="text">
-                       <string>Salas ocupadas</string>
-                      </property>
-                      <property name="autoExclusive">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
                     <item>
                      <widget class="QPushButton" name="pushButton_4">
                       <property name="minimumSize">
@@ -1592,7 +1576,6 @@ QPushButton {
   <tabstop>btnSairSimples</tabstop>
   <tabstop>btnSair</tabstop>
   <tabstop>btnFecharMenuQuebrado</tabstop>
-  <tabstop>pushButton_2</tabstop>
   <tabstop>pushButton_4</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>btnMinimizar</tabstop>
