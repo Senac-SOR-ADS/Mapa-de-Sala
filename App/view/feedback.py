@@ -15,63 +15,60 @@ class Feedback(QDialog):
     def __init__(self, type, txt, aviso, typemsg):
         super().__init__()
         loadUi('App/view/ui/feedback.ui', self)
-        
         # Variáveis para armazenar o estado da movimentação
         self._is_dragging = False
         self._start_pos = QPoint()
         
         self.setWindowFlags(Qt.FramelessWindowHint)
         
+        self.btnFechar2.clicked.connect(self.reject)
         self.btnFechar.clicked.connect(self.accept)
         
         self.texto.setText(txt)
-
         
 
         self.player = QtMultimedia.QMediaPlayer()
+
         
         #notificação de erro
         if type == False:
-            icon_path = os.path.join(self.CURRENT_DIR, r'ui\icones\iconErro.png')
+            icon_path = os.path.join(self.CURRENT_DIR, r"./ui/icones/iconErro.png")
             self.icon.setPixmap(QPixmap(icon_path))
             # toca alertinha de erro
             filename = os.path.join(self.CURRENT_DIR, "./ui/sounds/erroToque.mp3")
             url = QtCore.QUrl.fromLocalFile(filename)
             self.player.setMedia(QtMultimedia.QMediaContent(url))
             self.player.play()
-            # iconNotificação = os.path.join(self.CURRENT_DIR, r'ui\icones\iconNotificacao.png')
-
             
             #mostra uma notificação no windows para o usuario sobre o erro
             filenameNotificacao = os.path.join(self.CURRENT_DIR, r"ui\icones\iconNotificacao.png")
             notificacao = Notification( app_id='Mapa de Sala',
                                        title=aviso,
                                        msg=typemsg, 
-                                       icon=filenameNotificacao)
+                                       icon=filenameNotificacao )
             # notificacao.set_audio(audio.LoopingCall2, loop=False)
             notificacao.add_actions(label='Fechar')
             notificacao.show()
             
         #notificação de sucesso
         if type == True:
-            icon_path = os.path.join(self.CURRENT_DIR, r'ui\icones\iconConcluido.png')
+            icon_path = os.path.join(self.CURRENT_DIR, r"./ui/icones/iconConcluido.png")
             self.icon.setPixmap(QPixmap(icon_path))
             # toca alertinha de erro
             filename = os.path.join(self.CURRENT_DIR, "./ui/sounds/sucessoNotificacao.mp3")
             url = QtCore.QUrl.fromLocalFile(filename)
             self.player.setMedia(QtMultimedia.QMediaContent(url))
-            iconNotificação = os.path.join(self.CURRENT_DIR, r'ui\icones\iconNotificacao.png')
             self.player.play()
             
             #mostra uma notificação no windows para o usuario sobre o erro
+            filenameNotificacao = os.path.join(self.CURRENT_DIR, r"ui\icones\iconNotificacao.png")
             notificacao = Notification( app_id='Mapa de Sala',
                                        title=aviso,
                                        msg=typemsg,
-                                       icon=iconNotificação )
+                                       icon=filenameNotificacao )
             # notificacao.set_audio(audio.LoopingCall2, loop=False)
             notificacao.add_actions(label='Fechar')
             notificacao.show()
-            
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:

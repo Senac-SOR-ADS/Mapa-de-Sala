@@ -42,16 +42,14 @@ def atualizarSala(nome: str, tipo: str, predio: str, equipamento: str, capacidad
 def listarSala(search_query: str = '') -> dict:
     """Retorna um dicionário com todas as salas cadastradas.
     Filtra os resultados com base no nome ou tipo se a query de pesquisa for fornecida."""
-    
+    search_query = search_query.lower()
     try:
         todasSalas = Sala.buscar_sala()
-
         if search_query:
-            todasSalas = [
-                sala for sala in todasSalas if search_query.lower() in sala[1].lower() or search_query.lower() in sala[2].lower()
-            ]
-        
-        return {sala[1]: sala[0] for sala in todasSalas} if todasSalas else {}
+            todasSalas = {sala.get_nome():sala.get_id() for sala in todasSalas if search_query in sala.get_nome().lower() or search_query in sala.tipo.lower()}
+        else:
+            todasSalas = {sala.get_nome():sala.get_id() for sala in todasSalas}
+        return todasSalas if todasSalas else {}
     except Exception as e:
         return {"error": f"Erro ao listar salas: {str(e)}"}
 
