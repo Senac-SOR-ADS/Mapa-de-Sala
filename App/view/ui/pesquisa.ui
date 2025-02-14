@@ -195,7 +195,7 @@
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string>Oferta Multipla</string>
+                <string>Oferta Múltipla</string>
                </property>
               </widget>
              </item>
@@ -1052,7 +1052,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Listar Reservas Multiplas</string>
+             <string>Listar Reservas Múltiplas</string>
             </property>
            </widget>
           </item>
