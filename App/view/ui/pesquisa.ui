@@ -1103,10 +1103,17 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>campoOferta</tabstop>
+  <tabstop>campoPeriodo</tabstop>
   <tabstop>dataInicio</tabstop>
   <tabstop>dataFim</tabstop>
+  <tabstop>campoSala</tabstop>
+  <tabstop>btnPesquisar</tabstop>
+  <tabstop>gridContainer</tabstop>
   <tabstop>btnExcluir</tabstop>
   <tabstop>btnEditar</tabstop>
+  <tabstop>btnTrocarOfetaMultipla</tabstop>
+  <tabstop>btnTrocarOfetaUnitaria</tabstop>
  </tabstops>
  <resources/>
  <connections/>
