@@ -19,6 +19,8 @@ class TelaPesquisa(QWidget):
         self.dataFim = self.findChild(QDateEdit, 'dataFim')
         self.dataInicio.setCalendarPopup(True)
         self.dataFim.setCalendarPopup(True)
+        self.dataInicioMultiplo.setCalendarPopup(True)
+        self.dataFimMultiplo.setCalendarPopup(True)
 
         self.dataInicio.setDisplayFormat('dd/MM/yyyy')
         self.dataInicio.setDate(QDate.currentDate())
@@ -28,6 +30,19 @@ class TelaPesquisa(QWidget):
         self.popularTela()
 
         self.dataInicio.dateChanged.connect(self.setDataMinima)
+        
+        self.checks.setStyleSheet("""
+                QCheckBox::indicator {
+                    width: 30px;
+                    height: 30px;
+                }
+                QCheckBox::indicator:unchecked {
+                    image: url("App/view/ui/icones/checkBox.png");
+                }
+                QCheckBox::indicator:checked {
+                    image: url("App/view/ui/icones/iconCheckBoxAtivo.png");
+                }
+            """)
 
         self.stackReservas: QStackedWidget
         self.reservaMultipla: QWidget
@@ -60,6 +75,10 @@ class TelaPesquisa(QWidget):
         if tela.exec_():
             pass
 
+##########Tela Multipla########################
+
+
+############################################
         
 
 
