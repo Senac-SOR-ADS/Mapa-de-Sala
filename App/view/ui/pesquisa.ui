@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>670</width>
+    <width>807</width>
     <height>613</height>
    </rect>
   </property>
@@ -212,6 +212,11 @@
                      <property name="editable">
                       <bool>true</bool>
                      </property>
+                     <item>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </item>
                     </widget>
                    </item>
                   </layout>
@@ -272,6 +277,11 @@
                        <pointsize>12</pointsize>
                       </font>
                      </property>
+                     <item>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </item>
                      <item>
                       <property name="text">
                        <string>Manha</string>
@@ -505,6 +515,11 @@
                      <property name="editable">
                       <bool>true</bool>
                      </property>
+                     <item>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </item>
                     </widget>
                    </item>
                   </layout>
