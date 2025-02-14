@@ -35,14 +35,14 @@
 	padding-bottom:7px;
 }
  
-#btnEditarCurso {
+#btnCadastrarCurso {
 	background-color: #01498a;
 	color: #FFF;
 	border: none;
 	border-radius: 15px;
 }
  
-#btnEditarCurso:hover {
+#btnCadastrarCurso:hover {
 	background-color: #f6921e;
 }
  
@@ -67,7 +67,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Editar Curso</string>
+      <string>Cadastro de Cursos</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -158,7 +158,7 @@
                <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="editable">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -217,7 +217,7 @@
               </property>
               <item>
                <property name="text">
-                <string>Manhã</string>
+                <string>Manha</string>
                </property>
               </item>
               <item>
@@ -409,7 +409,7 @@
                <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="editable">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -570,7 +570,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="btnEditarCurso">
+    <widget class="QPushButton" name="btnCadastrarCurso">
      <property name="minimumSize">
       <size>
        <width>762</width>
@@ -586,7 +586,7 @@
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="text">
-      <string>Editar Curso</string>
+      <string>Cadastrar Curso</string>
      </property>
     </widget>
    </item>
