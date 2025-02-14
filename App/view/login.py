@@ -80,6 +80,16 @@ class LoginInterface(QDialog):
         # Libera a janela ao soltar o botão do mouse
         if event.button() == Qt.LeftButton:
             self.old_pos = None
+
+
+
+    def keyPressEvent(self, event):
+        # Captura ambas as teclas Enter
+        if event.key() in (Qt.Key_Return, Qt.Key_Enter):  
+            self.on_btnEntrar_clicked()
+        else:
+            super().keyPressEvent(event)
+
  
     def getEmailSenha(self):
         email = self.inputEmail.text().strip()
