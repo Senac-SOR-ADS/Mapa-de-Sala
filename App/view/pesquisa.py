@@ -54,9 +54,12 @@ class TelaPesquisa(QWidget):
 
     @pyqtSlot()
     def on_btnPesquisar_clicked(self):
-        dados = self.getDados()
+        dados = self.getDados() 
         reservas = verificarPesquisa(dados)
-        self.popularScrollArea(reservas)
+        if reservas:
+            self.popularScrollArea(reservas)
+        else:
+            print('não tem reseversa na pesquisa')
 
     def trocarTela(self, tela:QWidget):
         self.stackReservas.setCurrentWidget(tela)
@@ -124,23 +127,22 @@ class TelaPesquisa(QWidget):
             pass
 
     def popularScrollArea(self, reservas:list):
-
         self.btnPesquisar.setEnabled(False)
         container = QWidget()
         grid = QGridLayout(container)
-        card = CardPesquisa
         self.gridContainer.setWidget(container)
         max_colunas = 6
         coluna = 0
         linha = 0
-        # o numero do range será os itens da retorno da função de consulta
-        for i in reservas:
-            grid.addWidget(card(), linha, coluna)
+        for dados in reservas:
+            grid.addWidget(CardPesquisa(dados, self.dicionarioDeSala), linha, coluna)
             coluna += 1
             if coluna == max_colunas:
                 coluna = 0
                 linha += 1
         self.btnPesquisar.setEnabled(True)
+    
+
 
 ##########Tela Multipla########################
 
