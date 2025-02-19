@@ -54,7 +54,9 @@ class TelaPesquisa(QWidget):
 
     @pyqtSlot()
     def on_btnPesquisar_clicked(self):
-        self.popularScrollArea()
+        dados = self.getDados()
+        reservas = verificarPesquisa(dados)
+        self.popularScrollArea(reservas)
 
     def trocarTela(self, tela:QWidget):
         self.stackReservas.setCurrentWidget(tela)
@@ -89,13 +91,6 @@ class TelaPesquisa(QWidget):
             horaFim = '22:00:00'
             return horaInicio, horaFim
    
- 
-    @pyqtSlot()
-    def on_btnPesquisar_clicked(self):
-        dados = self.getDados()
-        reservas = verificarPesquisa(dados)
-        print(reservas)
- 
     def getDados(self):
         index_oferta = self.campoOferta.currentIndex()
         oferta = None
@@ -128,9 +123,9 @@ class TelaPesquisa(QWidget):
         if tela.exec_():
             pass
 
-    def popularScrollArea(self):
-        self.btnPesquisar.setEnabled(False)
+    def popularScrollArea(self, reservas:list):
 
+        self.btnPesquisar.setEnabled(False)
         container = QWidget()
         grid = QGridLayout(container)
         card = CardPesquisa
@@ -139,7 +134,7 @@ class TelaPesquisa(QWidget):
         coluna = 0
         linha = 0
         # o numero do range será os itens da retorno da função de consulta
-        for i in range(1200):
+        for i in reservas:
             grid.addWidget(card(), linha, coluna)
             coluna += 1
             if coluna == max_colunas:
