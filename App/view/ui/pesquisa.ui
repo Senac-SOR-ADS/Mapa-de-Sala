@@ -33,7 +33,12 @@ QPushButton:hover {
 #btnCancelar:hover {
 	background-color: red;
 }
-</string>
+
+QPushButton:disabled {
+	border: 1px solid #999999;
+  	background-color: #cccccc;
+  	color: #666666;
+}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -1590,6 +1595,9 @@ QPushButton:hover {
                 </item>
                 <item>
                  <widget class="QPushButton" name="btnConfirmar">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="minimumSize">
                    <size>
                     <width>109</width>
