@@ -80,20 +80,26 @@ class TelaPesquisa(QWidget):
             pass
 
     def popularScrollArea(self):
+        self.btnPesquisar.setEnabled(False)
+
         container = QWidget()
         grid = QGridLayout(container)
         card = CardPesquisa
         self.gridContainer.setWidget(container)
+
         import time
         ti = time.time()
 
-        for linha in range(400):
+        for linha in range(200):
             for coluna in range(6):
                 grid.addWidget(card(), linha, coluna)
+
         tf = time.time()
         tempo_total = tf - ti
         print(f"Tempo de execução: {tempo_total:.6f} segundos")
-        print('card chamado')
+
+        # print('card chamado')
+        self.btnPesquisar.setEnabled(True)
 
 ##########Tela Multipla########################
 
