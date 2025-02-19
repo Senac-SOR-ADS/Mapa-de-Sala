@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QStackedWidget, QDateEdit
+from PyQt5.QtWidgets import QWidget, QStackedWidget, QDateEdit, QGridLayout
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QDate, pyqtSlot
 
@@ -7,6 +7,7 @@ from App.controller.sala import listarSala
 from App.controller.reserva import verificarPesquisa
 
 from .editarReservaUnitaria import ReservaUnitaria
+from .cardPesquisa import CardPesquisa
 
 class TelaPesquisa(QWidget):
     def __init__(self):
@@ -51,6 +52,9 @@ class TelaPesquisa(QWidget):
         self.btnTrocarOfetaMultipla.clicked.connect(lambda: self.trocarTela(self.reservaMultipla))
         self.btnTrocarOfetaUnitaria.clicked.connect(lambda: self.trocarTela(self.reservaUnica))
 
+    @pyqtSlot()
+    def on_btnPesquisar_clicked(self):
+        self.popularScrollArea()
 
     def trocarTela(self, tela:QWidget):
         self.stackReservas.setCurrentWidget(tela)
@@ -123,6 +127,25 @@ class TelaPesquisa(QWidget):
         tela = ReservaUnitaria()
         if tela.exec_():
             pass
+
+    def popularScrollArea(self):
+        self.btnPesquisar.setEnabled(False)
+
+        container = QWidget()
+        grid = QGridLayout(container)
+        card = CardPesquisa
+        self.gridContainer.setWidget(container)
+        max_colunas = 6
+        coluna = 0
+        linha = 0
+        # o numero do range será os itens da retorno da função de consulta
+        for i in range(1200):
+            grid.addWidget(card(), linha, coluna)
+            coluna += 1
+            if coluna == max_colunas:
+                coluna = 0
+                linha += 1
+        self.btnPesquisar.setEnabled(True)
 
 ##########Tela Multipla########################
 
