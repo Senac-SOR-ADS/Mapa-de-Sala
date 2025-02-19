@@ -226,7 +226,8 @@ class Reserva:
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            return resultado
+            listaReserva = cls.getListaReserva(resultado)
+            return listaReserva
         log.error(f"{__name__}: Nenhuma reserva durante essas datas")
 
     @classmethod
@@ -237,7 +238,8 @@ class Reserva:
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            return resultado
+            listaReserva = cls.getListaReserva(resultado)
+            return listaReserva
         log.error(f"{__name__}: Nenhuma reserva deste curso neste período")
 
     @classmethod
@@ -248,7 +250,8 @@ class Reserva:
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            return resultado
+            listaReserva = cls.getListaReserva(resultado)
+            return listaReserva
         log.error(f"{__name__}: Nenhuma reserva nesta sala durante esse período")
 
     @classmethod
@@ -259,7 +262,8 @@ class Reserva:
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            return resultado
+            listaReserva = cls.getListaReserva(resultado)
+            return listaReserva
         log.error(f"{__name__}: Nenhuma reserva neste horário durante esse período")
 
     @classmethod
@@ -270,7 +274,8 @@ class Reserva:
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            return resultado
+            listaReserva = cls.getListaReserva(resultado)
+            return listaReserva
         log.error(f"{__name__}: Nenhuma reserva deste curso, durante este horário")
 
     @classmethod
@@ -281,7 +286,8 @@ class Reserva:
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            return resultado
+            listaReserva = cls.getListaReserva(resultado)
+            return listaReserva
         log.error(f"{__name__}: Nenhuma reserva nesta sala durante este horário")
 
     @classmethod
@@ -292,7 +298,8 @@ class Reserva:
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            return resultado
+            listaReserva = cls.getListaReserva(resultado)
+            return listaReserva
         log.error(f"{__name__}: Nenhuma reserva deste curso nesta sala")
 
     @classmethod
@@ -303,7 +310,8 @@ class Reserva:
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            return resultado
+            listaReserva = cls.getListaReserva(resultado)
+            return listaReserva
         log.error(f"{__name__}: Nenhuma reserva deste curso nesta sala durante esse horário")
 
 if __name__ == "__main__":
