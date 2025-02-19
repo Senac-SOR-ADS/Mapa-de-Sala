@@ -221,7 +221,7 @@ class Reserva:
     @classmethod
     def buscar_data(cls, diaInicio, diaFim):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s"
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s ORDER BY dia DESC;"
         parametro = [diaInicio, diaFim]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
@@ -233,7 +233,7 @@ class Reserva:
     @classmethod
     def buscar_data_oferta(cls, diaInicio, diaFim, idCurso):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idCurso = %s;"
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idCurso = %s ORDER BY dia DESC;"
         parametro = [diaInicio, diaFim, idCurso]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
@@ -245,7 +245,7 @@ class Reserva:
     @classmethod
     def buscar_data_sala(cls, diaInicio, diaFim, idSala):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s;"
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s ORDER BY dia DESC;"
         parametro = [diaInicio, diaFim, idSala]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
@@ -257,7 +257,7 @@ class Reserva:
     @classmethod
     def buscar_data_periodo(cls, diaInicio, diaFim, horaInicio, horaFim):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s;"
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s ORDER BY dia DESC;"
         parametro = [diaInicio, diaFim, horaInicio, horaFim]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
@@ -269,7 +269,7 @@ class Reserva:
     @classmethod
     def buscar_data_periodo_oferta(cls, diaInicio, diaFim, horaInicio, horaFim, idCurso):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s AND idCurso = %s;"
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s AND idCurso = %s ORDER BY dia DESC;"
         parametro = [diaInicio, diaFim, horaInicio, horaFim, idCurso]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
@@ -281,7 +281,7 @@ class Reserva:
     @classmethod
     def buscar_periodo_sala(cls, diaInicio, diaFim, horaInicio, horaFim, idSala):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s AND idSala = %s;"
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s AND idSala = %s ORDER BY dia DESC;"
         parametro = [diaInicio, diaFim, horaInicio, horaFim, idSala]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
@@ -293,7 +293,7 @@ class Reserva:
     @classmethod
     def buscar_oferta_sala(cls, diaInicio, diaFim, idCurso, idSala):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s AND idCurso = %s;"
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s AND idCurso = %s ORDER BY dia DESC;"
         parametro = [diaInicio, diaFim, idSala, idCurso]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
@@ -305,7 +305,7 @@ class Reserva:
     @classmethod
     def buscar_periodo_sala_oferta(cls, diaInicio, diaFim, idSala, idCurso, horaInicio, horaFim):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s AND idCurso = %s AND hrInicio >= %s AND hrFim <= %s;"
+        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s AND idCurso = %s AND hrInicio >= %s AND hrFim <= %s ORDER BY dia DESC;"
         parametro = [diaInicio, diaFim, idSala, idCurso, horaInicio, horaFim]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
