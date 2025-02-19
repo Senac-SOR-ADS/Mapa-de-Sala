@@ -49,6 +49,19 @@ class ReservaInterface(QWidget):
         self.diaInicio.dateChanged.connect(self.setDataMinima)
         self.inicioCurso.timeChanged.connect(self.setIntervaloHoras)
         self.cursoReserva.currentIndexChanged.connect(self.selecionarOferta)
+
+        self.checkFrame.setStyleSheet("""
+            QCheckBox::indicator {
+                width: 30px;
+                height: 30px;
+            }
+            QCheckBox::indicator:unchecked {
+                image: url("App/view/ui/icones/iconCheckLaranja.png");
+            }
+            QCheckBox::indicator:checked {
+                image: url("App/view/ui/icones/iconCheckAtivo.png");
+            }
+        """)
         
 
     def getDados(self)->dict:
