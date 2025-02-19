@@ -808,6 +808,11 @@ QPushButton:hover {
                   <property name="editable">
                    <bool>true</bool>
                   </property>
+                  <item>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </item>
                  </widget>
                 </item>
                </layout>
