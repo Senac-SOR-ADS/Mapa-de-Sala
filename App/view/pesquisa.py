@@ -1,11 +1,12 @@
-from PyQt5.QtWidgets import QWidget, QStackedWidget, QDateEdit
+from PyQt5.QtWidgets import QWidget, QStackedWidget, QDateEdit, QGridLayout
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import QDate
+from PyQt5.QtCore import QDate, pyqtSlot
 
 from App.controller.curso import listarCurso
 from App.controller.sala import listarSala
 
 from .editarReservaUnitaria import ReservaUnitaria
+from .cardPesquisa import CardPesquisa
 
 class TelaPesquisa(QWidget):
     def __init__(self):
@@ -50,6 +51,9 @@ class TelaPesquisa(QWidget):
         self.btnTrocarOfetaMultipla.clicked.connect(lambda: self.trocarTela(self.reservaMultipla))
         self.btnTrocarOfetaUnitaria.clicked.connect(lambda: self.trocarTela(self.reservaUnica))
 
+    @pyqtSlot()
+    def on_btnPesquisar_clicked(self):
+        self.popularScrollArea()
 
     def trocarTela(self, tela:QWidget):
         self.stackReservas.setCurrentWidget(tela)
@@ -74,6 +78,22 @@ class TelaPesquisa(QWidget):
         tela = ReservaUnitaria()
         if tela.exec_():
             pass
+
+    def popularScrollArea(self):
+        container = QWidget()
+        grid = QGridLayout(container)
+        card = CardPesquisa
+        self.gridContainer.setWidget(container)
+        import time
+        ti = time.time()
+
+        for linha in range(400):
+            for coluna in range(6):
+                grid.addWidget(card(), linha, coluna)
+        tf = time.time()
+        tempo_total = tf - ti
+        print(f"Tempo de execução: {tempo_total:.6f} segundos")
+        print('card chamado')
 
 ##########Tela Multipla########################
 
