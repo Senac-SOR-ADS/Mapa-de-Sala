@@ -39,7 +39,6 @@ class TelaPesquisa(QWidget):
 
         self.setDataMinima()
         self.setDataDiaria()
-        self.setDataDiariaMultiplo()
         self.popularTela()
 
         self.dataInicio.dateChanged.connect(self.setDataMinima)
