@@ -34,7 +34,7 @@ class TelaPesquisa(QWidget):
         self.dataFimMultiplo.setDisplayFormat('dd/MM/yyyy')
         self.dataFimMultiplo.setDate(QDate.currentDate())
 
-        self.dataInicioMultiplo = self.findChild(QDateEdit, 'dataInicio') 
+        self.dataInicioMultiplo = self.findChild(QDateEdit, 'dataInicioMultiplo')
         self.dataFimMultiplo = self.findChild(QDateEdit, 'dataFim')
 
         self.setDataMinima()
@@ -64,13 +64,14 @@ class TelaPesquisa(QWidget):
 
     def setDataDiaria(self):
         data = QDate.currentDate()
-        self.dataInicio.setMinimumDate(data)
         self.dataInicioMultiplo.setMinimumDate(data)
+        self.dataInicio.setMinimumDate(data)
     
 
 
 
     def trocarTela(self, tela:QWidget):
+        self.setDataDiaria()
         self.stackReservas.setCurrentWidget(tela)
 
     def setDataMinima(self):
