@@ -1,0 +1,39 @@
+#gridContainer #containerBtns {
+	background-color: rgba(0, 0, 0, 0.46);
+	border-radius: 15px; 
+}
+
+#btnEditar {
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+#btnEditar:hover {
+	background-color: #423d3d;
+}
+
+#btnExcluir {
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+
+#btnExcluir:hover {
+	background-color: red;
+}
+
+#conteudo {
+	background-color: #577C8B;
+	border-radius: 15px;
+}
+
+#conteudo QLabel {
+	color: #FFF;
+}
+
+#linhaCard {
+	background-color: #FFF;
+}
+
+#iconePeriodo {
+    image: url("../../icones/iconManhaBranco.png");
+}
