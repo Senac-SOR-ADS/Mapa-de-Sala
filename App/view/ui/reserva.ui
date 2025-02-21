@@ -252,7 +252,7 @@ color: #f6921e
                   </font>
                  </property>
                  <property name="text">
-                  <string>CURSO:</string>
+                  <string>CURSO</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -536,7 +536,7 @@ color: #f6921e
                </font>
               </property>
               <property name="text">
-               <string>DATA INICIAL:</string>
+               <string>DATA INICIAL</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -590,7 +590,7 @@ color: #f6921e
                </font>
               </property>
               <property name="text">
-               <string>DATA FINAL:</string>
+               <string>DATA FINAL</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -644,7 +644,7 @@ color: #f6921e
                </font>
               </property>
               <property name="text">
-               <string>HORA DE INICIO:</string>
+               <string>HORA DE INICIO</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -698,7 +698,7 @@ color: #f6921e
                </font>
               </property>
               <property name="text">
-               <string>HORA FINAL:</string>
+               <string>HORA FINAL</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
