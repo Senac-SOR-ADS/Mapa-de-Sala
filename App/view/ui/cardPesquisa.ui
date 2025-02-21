@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>218</width>
+    <height>218</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -54,6 +54,12 @@
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QFrame" name="conteudo">
+     <property name="minimumSize">
+      <size>
+       <width>200</width>
+       <height>200</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
        <width>200</width>
@@ -214,7 +220,7 @@
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap>icones/iconManha.png</pixmap>
+                  <pixmap>icones/iconNoite.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
