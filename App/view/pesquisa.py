@@ -35,13 +35,14 @@ class TelaPesquisa(QWidget):
         self.dataFimMultiplo.setDate(QDate.currentDate())
 
         self.dataInicioMultiplo = self.findChild(QDateEdit, 'dataInicioMultiplo')
-        self.dataFimMultiplo = self.findChild(QDateEdit, 'dataFim')
+        self.dataFimMultiplo = self.findChild(QDateEdit, 'dataFimMultiplo')
 
         self.setDataMinima()
         self.setDataDiaria()
         self.popularTela()
 
         self.dataInicio.dateChanged.connect(self.setDataMinima)
+        self.dataInicioMultiplo.dateChanged.connect(self.setDataMinima)
         
         self.checks.setStyleSheet("""
                 QCheckBox::indicator {
@@ -77,6 +78,9 @@ class TelaPesquisa(QWidget):
     def setDataMinima(self):
         data = self.dataInicio.date()
         self.dataFim.setMinimumDate(data)
+        dataMultiplo = self.dataInicioMultiplo.date()
+        self.dataFimMultiplo.setMinimumDate(dataMultiplo)
+
 
     def comboboxOferta(self):
         ofertas = self.dicionarioCursos.keys()
