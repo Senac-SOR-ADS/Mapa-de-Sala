@@ -188,7 +188,7 @@ class HomePrincipal(QMainWindow):
     def _get_resize_direction(self, pos):
         margin = 10
         if pos.x() > self.width() - margin and pos.y() > self.height() - margin:
-            self.setCursor()  
+            self.setCursor(Qt.SizeFDiagCursor)  
             return "bottom-right"
         self.setCursor(Qt.ArrowCursor)  
         return None
