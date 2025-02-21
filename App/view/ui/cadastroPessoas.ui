@@ -112,29 +112,12 @@ border-radius: 15px;
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="nomePessoas">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
+           <widget class="QLineEdit" name="nomePessoas">
             <property name="minimumSize">
              <size>
-              <width>330</width>
+              <width>0</width>
               <height>39</height>
              </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="editable">
-             <bool>true</bool>
             </property>
            </widget>
           </item>
