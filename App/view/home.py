@@ -35,6 +35,9 @@ class HomePrincipal(QMainWindow):
         self._resize_timer.setSingleShot(True)
         self._resize_timer.timeout.connect(self._apply_resize)
         self._resize_geometry = None
+        self.btnMenu.clicked.connect(self.alternarBotoesMenu)
+        self.btnMenu2.clicked.connect(self.alternarBotoesMenu)
+        
 
         # Criando parte interativa do menu
         self.btnMenu: QPushButton
@@ -199,6 +202,14 @@ class HomePrincipal(QMainWindow):
             new_width = max(200, global_pos.x() - rect.x())
             new_height = max(200, global_pos.y() - rect.y())
             self.setGeometry(rect.x(), rect.y(), new_width, new_height)
+
+    def alternarBotoesMenu(self):
+        if self.sender() == self.btnMenu:
+            self.btnMenu.setChecked(True)
+            self.btnMenu2.setChecked(False)
+        else:
+            self.btnMenu.setChecked(False)
+            self.btnMenu2.setChecked(True)
 
     @pyqtSlot()
     def on_btnFecharMenuQuebrado_clicked(self):

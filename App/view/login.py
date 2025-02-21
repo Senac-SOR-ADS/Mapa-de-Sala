@@ -80,6 +80,16 @@ class LoginInterface(QDialog):
         # Libera a janela ao soltar o botão do mouse
         if event.button() == Qt.LeftButton:
             self.old_pos = None
+
+
+
+    def keyPressEvent(self, event):
+        # Os dois enter funcionam para fazer o login
+        if event.key() in (Qt.Key_Return, Qt.Key_Enter):  
+            self.on_btnEntrar_clicked()
+        else:
+            super().keyPressEvent(event)
+
  
     def getEmailSenha(self):
         email = self.inputEmail.text().strip()
@@ -92,7 +102,7 @@ class LoginInterface(QDialog):
  
     def dadosInvalidos(self):
         texto = 'DADOS INCOMPLETOS.'
-        resposta = Feedback(True,
+        resposta = Feedback(False,
                             texto,
                             'Aviso!',
                             'algo deu errado, corrija as falhas e tente novamente')
