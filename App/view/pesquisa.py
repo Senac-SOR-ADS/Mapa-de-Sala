@@ -135,7 +135,7 @@ class TelaPesquisa(QWidget):
         coluna = 0
         linha = 0
         for dados in reservas:
-            grid.addWidget(CardPesquisa(dados, self.dicionarioDeSala), linha, coluna)
+            grid.addWidget(CardPesquisa(dados, self.dicionarioDeSala, self.dicionarioCursos), linha, coluna)
             coluna += 1
             if coluna == max_colunas:
                 coluna = 0
