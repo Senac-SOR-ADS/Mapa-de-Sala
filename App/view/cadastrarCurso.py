@@ -32,7 +32,7 @@ class CadastrarCurso(QWidget):
     def getCadastroCurso(self):
         area = self.campoArea.currentText().strip()
         nome = self.nomeCurso.text().strip()
-        oferta = self.ofertaCurso.currentText().strip()
+        oferta = self.ofertaCurso.text().strip()
         periodo = self.periodoCurso.currentText().strip()
         carga = self.cargaCurso.text().strip()
         horas = self.horasPorDia.text().strip()

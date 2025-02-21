@@ -141,29 +141,12 @@
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="ofertaCurso">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
+             <widget class="QLineEdit" name="ofertaCurso">
               <property name="minimumSize">
                <size>
                 <width>0</width>
                 <height>47</height>
                </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="editable">
-               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -618,7 +601,6 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>ofertaCurso</tabstop>
   <tabstop>nomeCurso</tabstop>
   <tabstop>campoArea</tabstop>
   <tabstop>quantidadeAlunos</tabstop>
