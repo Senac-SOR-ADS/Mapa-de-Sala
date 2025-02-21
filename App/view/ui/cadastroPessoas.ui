@@ -23,14 +23,14 @@
 	padding-bottom:7px;
 }
  
-#btnEditar {
+#btnCadastrar {
 	background-color: #01498a;
 	color: #FFF;
 border: none;
 border-radius: 15px;
 }
  
-#btnEditar:hover {
+#btnCadastrar:hover {
 	background-color: #f6921e;
 }
  
@@ -112,29 +112,12 @@ border-radius: 15px;
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="nomePessoas">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
+           <widget class="QLineEdit" name="nomePessoas">
             <property name="minimumSize">
              <size>
-              <width>330</width>
+              <width>0</width>
               <height>39</height>
              </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="editable">
-             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -233,12 +216,7 @@ border-radius: 15px;
             </item>
             <item>
              <property name="text">
-              <string>Apoio</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Patrimonio</string>
+              <string>Suporte</string>
              </property>
             </item>
             <item>
@@ -419,7 +397,7 @@ border-radius: 15px;
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="btnEditar">
+    <widget class="QPushButton" name="btnCadastrar">
      <property name="minimumSize">
       <size>
        <width>762</width>
@@ -435,7 +413,7 @@ border-radius: 15px;
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="text">
-      <string>Editar Cadastro</string>
+      <string>Cadastrar</string>
      </property>
     </widget>
    </item>
@@ -447,7 +425,7 @@ border-radius: 15px;
   <tabstop>dataDeNascimento</tabstop>
   <tabstop>cargo</tabstop>
   <tabstop>telefone</tabstop>
-  <tabstop>btnEditar</tabstop>
+  <tabstop>btnCadastrar</tabstop>
  </tabstops>
  <resources/>
  <connections/>
