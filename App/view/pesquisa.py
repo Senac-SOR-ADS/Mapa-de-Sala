@@ -1,9 +1,10 @@
 from PyQt5.QtWidgets import QWidget, QStackedWidget, QDateEdit
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import QDate
+from PyQt5.QtCore import QDate, pyqtSlot
 
 from App.controller.curso import listarCurso
 from App.controller.sala import listarSala
+from App.controller.reserva import verificarPesquisa
 
 from .editarReservaUnitaria import ReservaUnitaria
 
@@ -69,6 +70,54 @@ class TelaPesquisa(QWidget):
     def popularTela(self):
         self.comboboxOferta()
         self.comboboxSala()
+
+    def definirPeriodo(self):
+        if self.campoPeriodo.currentText() == 'Manha':
+            horaInicio = '08:00:00'
+            horaFim = '12:00:00'
+            return horaInicio, horaFim
+        if self.campoPeriodo.currentText() == 'Tarde':
+            horaInicio = '13:00:00'
+            horaFim = '18:00:00'
+            return horaInicio, horaFim
+        if self.campoPeriodo.currentText() == 'Noite':
+            horaInicio = '19:00:00'
+            horaFim = '22:00:00'
+            return horaInicio, horaFim
+   
+ 
+    @pyqtSlot()
+    def on_btnPesquisar_clicked(self):
+        dados = self.getDados()
+        reservas = verificarPesquisa(dados)
+        print(reservas)
+ 
+    def getDados(self):
+        index_oferta = self.campoOferta.currentIndex()
+        oferta = None
+        if index_oferta:
+            oferta = list(self.dicionarioCursos.values())[index_oferta-1]
+ 
+        index_sala = self.campoSala.currentIndex()
+        sala = None
+        if index_sala:
+            sala = list(self.dicionarioDeSala.values())[index_sala-1]
+ 
+        index_periodo = self.campoPeriodo.currentIndex()
+        horaInicio, horaFim = None, None
+        if index_periodo:
+            horaInicio, horaFim = self.definirPeriodo()
+ 
+        dataInicio = self.dataInicio.date().toString('yyyy-MM-dd')
+        dataFim = self.dataFim.date().toString('yyyy-MM-dd')
+       
+        dados = { 'oferta' : oferta,
+                 'horaInicio' : horaInicio,
+                 'horaFim' : horaFim,
+                 'dataInicio' : dataInicio,
+                 'dataFim' : dataFim,
+                 'sala' : sala }
+        return dados
 
     def criarPopUp(self):
         tela = ReservaUnitaria()
