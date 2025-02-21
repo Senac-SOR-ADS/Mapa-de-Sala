@@ -84,7 +84,7 @@ class LoginInterface(QDialog):
 
 
     def keyPressEvent(self, event):
-        # Captura ambas as teclas Enter
+        # Os dois enter funcionam para fazer o login
         if event.key() in (Qt.Key_Return, Qt.Key_Enter):  
             self.on_btnEntrar_clicked()
         else:
