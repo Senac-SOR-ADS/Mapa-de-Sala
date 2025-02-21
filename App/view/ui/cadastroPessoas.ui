@@ -233,12 +233,7 @@ border-radius: 15px;
             </item>
             <item>
              <property name="text">
-              <string>Apoio</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Patrimonio</string>
+              <string>Suporte</string>
              </property>
             </item>
             <item>
