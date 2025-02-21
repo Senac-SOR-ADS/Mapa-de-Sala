@@ -397,7 +397,7 @@ border-radius: 15px;
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="btnEditar">
+    <widget class="QPushButton" name="btnCadastrar">
      <property name="minimumSize">
       <size>
        <width>762</width>
@@ -413,7 +413,7 @@ border-radius: 15px;
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="text">
-      <string>Editar Cadastro</string>
+      <string>Cadastrar</string>
      </property>
     </widget>
    </item>
@@ -425,7 +425,7 @@ border-radius: 15px;
   <tabstop>dataDeNascimento</tabstop>
   <tabstop>cargo</tabstop>
   <tabstop>telefone</tabstop>
-  <tabstop>btnEditar</tabstop>
+  <tabstop>btnCadastrar</tabstop>
  </tabstops>
  <resources/>
  <connections/>
