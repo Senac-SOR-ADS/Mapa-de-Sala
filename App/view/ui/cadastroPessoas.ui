@@ -23,14 +23,14 @@
 	padding-bottom:7px;
 }
  
-#btnEditar {
+#btnCadastrar {
 	background-color: #01498a;
 	color: #FFF;
 border: none;
 border-radius: 15px;
 }
  
-#btnEditar:hover {
+#btnCadastrar:hover {
 	background-color: #f6921e;
 }
  
