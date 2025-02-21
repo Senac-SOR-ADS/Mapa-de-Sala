@@ -27,10 +27,22 @@ class TelaPesquisa(QWidget):
         self.dataInicio.setDate(QDate.currentDate())
         self.dataFim.setDisplayFormat('dd/MM/yyyy')
         self.dataFim.setDate(QDate.currentDate())
+
+
+        self.dataInicioMultiplo.setDisplayFormat('dd/MM/yyyy')
+        self.dataInicioMultiplo.setDate(QDate.currentDate())
+        self.dataFimMultiplo.setDisplayFormat('dd/MM/yyyy')
+        self.dataFimMultiplo.setDate(QDate.currentDate())
+
+        self.dataInicioMultiplo = self.findChild(QDateEdit, 'dataInicioMultiplo')
+        self.dataFimMultiplo = self.findChild(QDateEdit, 'dataFimMultiplo')
+
         self.setDataMinima()
+        self.setDataDiaria()
         self.popularTela()
 
         self.dataInicio.dateChanged.connect(self.setDataMinima)
+        self.dataInicioMultiplo.dateChanged.connect(self.setDataMinima)
         
         self.checks.setStyleSheet("""
                 QCheckBox::indicator {
@@ -51,17 +63,29 @@ class TelaPesquisa(QWidget):
         self.btnTrocarOfetaMultipla.clicked.connect(lambda: self.trocarTela(self.reservaMultipla))
         self.btnTrocarOfetaUnitaria.clicked.connect(lambda: self.trocarTela(self.reservaUnica))
 
+    def setDataDiaria(self):
+        data = QDate.currentDate()
+        self.dataInicioMultiplo.setMinimumDate(data)
+        self.dataInicio.setMinimumDate(data)
+    
+
+
 
     def trocarTela(self, tela:QWidget):
+        self.setDataDiaria()
         self.stackReservas.setCurrentWidget(tela)
 
     def setDataMinima(self):
         data = self.dataInicio.date()
         self.dataFim.setMinimumDate(data)
+        dataMultiplo = self.dataInicioMultiplo.date()
+        self.dataFimMultiplo.setMinimumDate(dataMultiplo)
+
 
     def comboboxOferta(self):
         ofertas = self.dicionarioCursos.keys()
         self.campoOferta.addItems(ofertas)
+        self.campoOfertaMultipla.addItems(ofertas)
 
     def comboboxSala(self):
         salas = self.dicionarioDeSala.keys()
