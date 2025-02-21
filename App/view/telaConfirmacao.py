@@ -7,6 +7,20 @@ class TelaConfirmacao(QDialog):
     def __init__(self, titulo, aviso, txtBtnOk, equipamentos=False):
         super().__init__()
         loadUi('App/view/ui/telaConfirmacao.ui', self)
+        
+        self.checkBoxEquipamentos.setStyleSheet("""
+            QCheckBox::indicator {
+                width: 30px;
+                height: 30px;
+            }
+            QCheckBox::indicator:unchecked {
+                image: url("App/view/ui/icones/toggleOff.png");
+            }
+            QCheckBox::indicator:checked {
+                image: url("App/view/ui/icones/toggleOn.png");
+            }
+        """)
+        
         if aviso == '':
             self.aviso.close()
         else:
