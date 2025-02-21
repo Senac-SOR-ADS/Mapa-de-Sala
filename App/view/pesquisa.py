@@ -80,7 +80,7 @@ class TelaPesquisa(QWidget):
     def comboboxOferta(self):
         ofertas = self.dicionarioCursos.keys()
         self.campoOferta.addItems(ofertas)
-        self.campoOfertaMultiplo.addItems(ofertas)
+        self.campoOfertaMultipla.addItems(ofertas)
 
     def comboboxSala(self):
         salas = self.dicionarioDeSala.keys()
