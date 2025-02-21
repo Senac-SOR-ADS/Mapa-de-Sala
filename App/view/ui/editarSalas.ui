@@ -123,29 +123,38 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
-      <item row="1" column="0">
-       <widget class="QFrame" name="frame1">
+      <item row="0" column="0">
+       <widget class="QFrame" name="frame2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_10">
+        <layout class="QVBoxLayout" name="verticalLayout_8">
          <item>
-          <widget class="QLabel" name="label_15">
+          <widget class="QLabel" name="label_11">
            <property name="font">
             <font>
-             <pointsize>13</pointsize>
+             <pointsize>12</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Capacidade:</string>
+            <string>Nome da Sala:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="mediaCapacidade">
+          <widget class="QComboBox" name="nomeSala">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -154,18 +163,70 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>13</pointsize>
+             <pointsize>12</pointsize>
             </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
-           <property name="minimum">
-            <number>1</number>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_12">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
            </property>
-           <property name="maximum">
-            <number>1000</number>
+           <property name="text">
+            <string>Prédios:</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="nomePredio">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>41</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="editable">
+            <bool>false</bool>
+           </property>
+           <property name="currentText">
+            <string notr="true">Prédio 1</string>
+           </property>
+           <property name="insertPolicy">
+            <enum>QComboBox::InsertAlphabetically</enum>
+           </property>
+           <item>
+            <property name="text">
+             <string>Prédio 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Prédio 2</string>
+            </property>
+           </item>
           </widget>
          </item>
         </layout>
@@ -190,7 +251,7 @@
           <widget class="QLabel" name="label_13">
            <property name="font">
             <font>
-             <pointsize>13</pointsize>
+             <pointsize>12</pointsize>
             </font>
            </property>
            <property name="text">
@@ -217,7 +278,7 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>13</pointsize>
+             <pointsize>12</pointsize>
             </font>
            </property>
            <property name="cursor">
@@ -294,7 +355,7 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>13</pointsize>
+             <pointsize>12</pointsize>
             </font>
            </property>
            <property name="placeholderText">
@@ -305,72 +366,29 @@
         </layout>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QFrame" name="frame2">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+      <item row="1" column="0">
+       <widget class="QFrame" name="frame1">
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_8">
+        <layout class="QVBoxLayout" name="verticalLayout_10">
          <item>
-          <widget class="QLabel" name="label_11">
+          <widget class="QLabel" name="label_15">
            <property name="font">
             <font>
-             <pointsize>13</pointsize>
+             <pointsize>12</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Nome da Sala:</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+            <string>Capacidade:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="nomeSala">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>41</height>
-            </size>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_12">
-           <property name="font">
-            <font>
-             <pointsize>13</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Prédios:</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="nomePredio">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
+          <widget class="QSpinBox" name="mediaCapacidade">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -379,31 +397,18 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>13</pointsize>
+             <pointsize>12</pointsize>
             </font>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
-           <property name="editable">
-            <bool>false</bool>
+           <property name="minimum">
+            <number>1</number>
            </property>
-           <property name="currentText">
-            <string notr="true">Prédio 1</string>
+           <property name="maximum">
+            <number>1000</number>
            </property>
-           <property name="insertPolicy">
-            <enum>QComboBox::InsertAlphabetically</enum>
-           </property>
-           <item>
-            <property name="text">
-             <string>Prédio 1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Prédio 2</string>
-            </property>
-           </item>
           </widget>
          </item>
         </layout>
@@ -450,6 +455,11 @@
        <width>0</width>
        <height>125</height>
       </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
