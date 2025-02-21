@@ -42,3 +42,29 @@ def validarDiaSemana(dia, diaSemana):
         return True
     print('Selecione o dia da semana certo!')
     return False
+
+def verificarPesquisa(dados):
+    # Usando somete a data
+    if dados['dataInicio'] and dados['dataFim'] and not dados['oferta'] and not dados['horaInicio'] and not dados['sala']:
+        return Reserva.buscar_data(dados['dataInicio'], dados['dataFim'])
+    # Usando a data e oferta
+    elif dados['dataInicio'] and dados['dataFim'] and dados['oferta'] and not dados['horaInicio'] and not dados['sala']:
+        return Reserva.buscar_data_oferta(dados['dataInicio'], dados['dataFim'], dados['oferta'])
+    # Usando a data e sala
+    elif dados['dataInicio'] and dados['dataFim'] and not dados['oferta'] and not dados['horaInicio'] and dados['sala']:
+        return Reserva.buscar_data_sala(dados['dataInicio'], dados['dataFim'], dados['sala'])
+    # Usando a data e período
+    elif dados['dataInicio'] and dados['dataFim'] and not dados['oferta'] and dados['horaInicio'] and not dados['sala']:
+        return Reserva.buscar_data_periodo(dados['dataInicio'], dados['dataFim'], dados['horaInicio'], dados['horaFim'])
+    # Usando a data, período e sala
+    elif dados['dataInicio'] and dados['dataFim'] and not dados['oferta'] and dados['horaInicio'] and dados['sala']:
+        return Reserva.buscar_periodo_sala(dados['dataInicio'], dados['dataFim'], dados['horaInicio'], dados['horaFim'], dados['sala'])
+    # Usando a data, oferta e sala
+    elif dados['dataInicio'] and dados['dataFim'] and dados['oferta'] and not dados['horaInicio'] and dados['sala']:
+        return Reserva.buscar_oferta_sala(dados['dataInicio'], dados['dataFim'], dados['oferta'], dados['sala'])
+    # Usando a data, oferta e período
+    elif dados['dataInicio'] and dados['dataFim'] and dados['oferta'] and dados['horaInicio'] and not dados['sala']:
+        return Reserva.buscar_data_periodo_oferta(dados['dataInicio'], dados['dataFim'], dados['horaInicio'], dados['horaFim'], dados['oferta'])
+    # Usando a data, oferta, período e sala
+    elif dados['dataInicio'] and dados['dataFim'] and dados['oferta'] and dados['horaInicio'] and dados['sala']:
+        return Reserva.buscar_periodo_sala_oferta(dados['dataInicio'], dados['dataFim'], dados['sala'], dados['oferta'], dados['horaInicio'], dados['horaFim'])
