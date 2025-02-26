@@ -18,14 +18,14 @@
 	color: #f6921e;
 }
 
-QPushButton {
+#btnTrocarOfetaMultipla, #btnPesquisar, #btnTrocarOfetaUnitaria, #btnPesquisarMultiplo, #btnCancelar, #btnConfirmar {
 	color: #fff;
 	background-color: #01498a;
 	border-radius: 15px;
 	border: none;
 }
 
-QPushButton:hover {
+#btnTrocarOfetaMultipla:hover, #btnPesquisar:hover, #btnTrocarOfetaUnitaria:hover, #btnPesquisarMultiplo:hover, #btnCancelar:hover, #btnConfirmar:hover {
 	color: #fff;
 	background-color: #f6921e;
 }
@@ -34,7 +34,7 @@ QPushButton:hover {
 	background-color: red;
 }
 
-QPushButton:disabled {
+#btnCancelar:disabled, #btnConfirmar:disabled {
 	border: 1px solid #999999;
   	background-color: #cccccc;
   	color: #666666;
