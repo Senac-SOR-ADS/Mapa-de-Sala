@@ -44,6 +44,10 @@ class TelaPesquisa(QWidget):
 
         self.dataInicio.dateChanged.connect(self.setDataMinima)
         self.dataInicioMultiplo.dateChanged.connect(self.setDataMinima)
+
+        self.container_GRID = QWidget()
+        self.grid = QGridLayout(self.container_GRID)
+        self.gridContainer.setWidget(self.container_GRID)
         
         self.checks.setStyleSheet("""
                 QCheckBox::indicator {
@@ -123,7 +127,8 @@ class TelaPesquisa(QWidget):
         index_oferta = self.campoOferta.currentIndex()
         oferta = None
         if index_oferta:
-            oferta = list(self.dicionarioCursos.values())[index_oferta-1]
+            # oferta = list(self.dicionarioCursos.values())[index_oferta-1]
+            oferta = self.campoOferta.currentText()
  
         index_sala = self.campoSala.currentIndex()
         sala = None
@@ -151,22 +156,61 @@ class TelaPesquisa(QWidget):
         if tela.exec_():
             pass
 
-    def popularScrollArea(self, reservas:list):
+    def popularScrollArea(self, lista_de_reservas: list):
         self.btnPesquisar.setEnabled(False)
-        container = QWidget()
-        grid = QGridLayout(container)
-        self.gridContainer.setWidget(container)
+
+        for card in self.grid.findChildren(QWidget):
+            card.deleteLater()
+            print('deletado')
+
+        # while self.grid.count():
+        #     item = self.grid.takeAt(0)
+        #     if item.widget():
+        #         print('deletado')
+        #         item.widget().deleteLater()
+
+        print('-' * 100)
+        print(lista_de_reservas)
+        print('-' * 100)
+
         max_colunas = 6
         coluna = 0
         linha = 0
-        for dados in reservas:
-            card = CardPesquisa(dados, self.dicionarioDeSala, self.dicionarioCursos)
-            grid.addWidget(card, linha, coluna)
+        for reserva in lista_de_reservas:
+            card = CardPesquisa(*reserva)
+            self.grid.addWidget(card, linha, coluna)
             coluna += 1
             if coluna == max_colunas:
                 coluna = 0
                 linha += 1
         self.btnPesquisar.setEnabled(True)
+
+
+    # def popularScrollArea(self, lista_de_reservas:list):
+    #     self.btnPesquisar.setEnabled(False)
+
+    #     for card in self.grid.findChildren(QWidget):
+    #         card.deleteLater()
+
+    #     # container = QWidget()
+    #     # grid = QGridLayout(container)
+    #     # self.gridContainer.setWidget(container)
+
+    #     print('-'*100)
+    #     print(lista_de_reservas)
+    #     print('-'*100)
+
+    #     max_colunas = 6
+    #     coluna = 0
+    #     linha = 0
+    #     for reserva in lista_de_reservas:
+    #         card = CardPesquisa(*reserva)
+    #         self.grid.addWidget(card, linha, coluna)
+    #         coluna += 1
+    #         if coluna == max_colunas:
+    #             coluna = 0
+    #             linha += 1
+    #     self.btnPesquisar.setEnabled(True)
     
 
 

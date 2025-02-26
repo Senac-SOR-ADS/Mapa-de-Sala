@@ -232,8 +232,9 @@ class Reserva:
     @classmethod
     def buscar_data_oferta(cls, diaInicio, diaFim, idCurso):
         cls.__banco.conectar()
-        query = "SELECT r.idReserva, s.nome AS nomeSala, c.nome AS nomeCurso, c.oferta, r.dia, r.hrInicio FROM reserva r RIGHT JOIN curso c ON %s = c.idCurso RIGHT JOIN sala s ON r.idSala = s.idSala WHERE r.dia >= %s AND r.dia <= %s ORDER BY dia ASC;"
+        query = "SELECT r.idReserva, s.nome AS nomeSala, c.nome AS nomeCurso, c.oferta, r.dia, r.hrInicio FROM reserva r RIGHT JOIN curso c ON %s = c.oferta RIGHT JOIN sala s ON r.idSala = s.idSala WHERE r.dia >= %s AND r.dia <= %s ORDER BY dia ASC;"
         parametro = [idCurso, diaInicio, diaFim]
+        print(query, parametro)
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
