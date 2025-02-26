@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>772</width>
-    <height>625</height>
+    <width>788</width>
+    <height>634</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -123,6 +123,60 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
+      <item row="1" column="0">
+       <widget class="QFrame" name="frame1">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_10">
+         <item>
+          <widget class="QLabel" name="label_15">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Capacidade:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="mediaCapacidade">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>112</width>
+             <height>47</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>99</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
       <item row="0" column="0">
        <widget class="QFrame" name="frame2">
         <property name="sizePolicy">
@@ -158,7 +212,7 @@
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>41</height>
+             <height>47</height>
             </size>
            </property>
            <property name="font">
@@ -170,6 +224,19 @@
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
           </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
          </item>
          <item>
           <widget class="QLabel" name="label_12">
@@ -197,7 +264,7 @@
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>41</height>
+             <height>47</height>
             </size>
            </property>
            <property name="font">
@@ -273,7 +340,7 @@
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>41</height>
+             <height>47</height>
             </size>
            </property>
            <property name="font">
@@ -308,15 +375,23 @@
            </item>
            <item>
             <property name="text">
-             <string>Comum</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
              <string>Área Externa</string>
             </property>
            </item>
           </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
          </item>
          <item>
           <widget class="QLabel" name="label_14">
@@ -350,7 +425,7 @@
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>41</height>
+             <height>47</height>
             </size>
            </property>
            <property name="font">
@@ -360,54 +435,6 @@
            </property>
            <property name="placeholderText">
             <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QFrame" name="frame1">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_10">
-         <item>
-          <widget class="QLabel" name="label_15">
-           <property name="font">
-            <font>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Capacidade:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="mediaCapacidade">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>41</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="maximum">
-            <number>1000</number>
            </property>
           </widget>
          </item>
