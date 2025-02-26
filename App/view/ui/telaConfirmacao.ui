@@ -164,6 +164,21 @@ color: #ffffff;
         </property>
        </widget>
       </item>
+      <item alignment="Qt::AlignHCenter">
+       <widget class="QPushButton" name="btnAbrirConflitos">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string>Ver Conflitos</string>
+        </property>
+       </widget>
+      </item>
       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
        <widget class="QLabel" name="aviso">
         <property name="minimumSize">
