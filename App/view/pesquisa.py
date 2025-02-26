@@ -160,7 +160,7 @@ class TelaPesquisa(QWidget):
         self.btnPesquisar.setEnabled(False)
 
         for card in self.grid.findChildren(QWidget):
-            card.deleteLater()
+            del card
             print('deletado')
 
         # while self.grid.count():
@@ -184,34 +184,6 @@ class TelaPesquisa(QWidget):
                 coluna = 0
                 linha += 1
         self.btnPesquisar.setEnabled(True)
-
-
-    # def popularScrollArea(self, lista_de_reservas:list):
-    #     self.btnPesquisar.setEnabled(False)
-
-    #     for card in self.grid.findChildren(QWidget):
-    #         card.deleteLater()
-
-    #     # container = QWidget()
-    #     # grid = QGridLayout(container)
-    #     # self.gridContainer.setWidget(container)
-
-    #     print('-'*100)
-    #     print(lista_de_reservas)
-    #     print('-'*100)
-
-    #     max_colunas = 6
-    #     coluna = 0
-    #     linha = 0
-    #     for reserva in lista_de_reservas:
-    #         card = CardPesquisa(*reserva)
-    #         self.grid.addWidget(card, linha, coluna)
-    #         coluna += 1
-    #         if coluna == max_colunas:
-    #             coluna = 0
-    #             linha += 1
-    #     self.btnPesquisar.setEnabled(True)
-    
 
 
 ##########Tela Multipla########################
