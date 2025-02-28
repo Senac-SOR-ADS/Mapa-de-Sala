@@ -41,3 +41,4 @@ class CardPesquisa(QWidget):
         confirmacao = TelaConfirmacao("Deseja mesmo excluir essa reserva?", '', "Sim", False)
         if confirmacao.exec_():
             Reserva.deletar(self.idReserva)
+            self.deleteLater()
