@@ -1,6 +1,7 @@
 
 import re
 from datetime import datetime, timedelta
+from App.view.feedback import Feedback
 
 # =================== criada para controller Pessoa ===================
 
@@ -33,9 +34,30 @@ def modificarDataReserva(data):
     data = data.split('-')
     return f'{data[2]}/{data[1]}/{data[0]}'
 
-# Validar ação
-def validarAcao():
-    print("ok")
+
+def sucessoEdicao(self):
+    texto = 'Edição Feito Com Sucesso!'
+    resposta = Feedback(True, texto, 'Sucesso!', 'Edição Concluido')
+    if resposta.exec_():
+        pass
+
+def erroEdicao(self):
+    texto = 'Erro Ao Fazer Edição!'
+    resposta = Feedback(False, texto, 'Erro!', 'Aconteceu Algo De Errado Ao Fazer A Edição..')
+    if resposta.exec_():
+        pass
+
+def sucessoCadastro(self):
+    texto = 'Cadastro Feito Com Sucesso!'
+    resposta = Feedback(True, texto, 'Sucesso!', 'Cadastro Concluido')
+    if resposta.exec_():
+        pass
+
+def erroCadastro(self):
+    texto = 'Erro Ao Fazer Cadastro!'
+    resposta = Feedback(False, texto, 'Erro!', 'Aconteceu Algo De Errado Ao Fazer O Cadastro..')
+    if resposta.exec_():
+        pass
 
 
 def listas_intervalo_dias(dataInicio:str, dataFim:str, dias_semana:list=[1,1,1,1,1,0,0])->list:

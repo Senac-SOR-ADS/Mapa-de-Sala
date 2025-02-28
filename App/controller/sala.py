@@ -6,7 +6,7 @@ def cadastrarSala(nome: str, tipo: str, predio: str, equipamento: str, capacidad
     """Cadastra uma nova sala no banco de dados."""
     
     # Validação dos dados de entrada
-    if not validarInputs([nome, tipo, predio, equipamento, capacidade, observacao]):
+    if not validarInputs([nome, tipo, predio, equipamento, capacidade]):
         return {"error": "Preencha todos os campos corretamente."}
     
     try:
