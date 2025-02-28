@@ -3,6 +3,8 @@ from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt, QUrl
 from os.path import join, dirname, realpath
 from PyQt5.QtGui import QPixmap
+from App.model.reserva import Reserva
+from .telaConfirmacao import TelaConfirmacao
 
  
 class CardPesquisa(QWidget):
@@ -32,4 +34,10 @@ class CardPesquisa(QWidget):
 
         self.label_8.setText(f"{cod_oferta} - {curso}")
         self.label_9.setText(sala)
-        
+
+        self.btnExcluir.clicked.connect(self.excluirReserva)
+
+    def excluirReserva(self):
+        confirmacao = TelaConfirmacao("Deseja mesmo excluir essa reserva?", '', "Sim", False)
+        if confirmacao.exec_():
+            Reserva.deletar(self.idReserva)
