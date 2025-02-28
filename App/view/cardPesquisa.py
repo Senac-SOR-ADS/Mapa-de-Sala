@@ -1,10 +1,11 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt, QUrl
+from PyQt5.QtCore import Qt, QUrl, pyqtSlot
 from os.path import join, dirname, realpath
 from PyQt5.QtGui import QPixmap
 from App.model.reserva import Reserva
 from .telaConfirmacao import TelaConfirmacao
+from .editarReservaUnitaria import ReservaUnitaria
 
  
 class CardPesquisa(QWidget):
@@ -26,6 +27,11 @@ class CardPesquisa(QWidget):
         self.label_9.setText(sala)
 
         self.btnExcluir.clicked.connect(self.excluirReserva)
+
+    @pyqtSlot()
+    def on_btnEditar_clicked(self):
+        tela = ReservaUnitaria(self.idReserva)
+        tela.exec_()
 
     def excluirReserva(self):
         confirmacao = TelaConfirmacao("Deseja mesmo excluir essa reserva?", '', "Sim", False)
