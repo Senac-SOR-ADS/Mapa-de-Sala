@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import pyqtSlot
 from App.controller.sala import atualizarSala, listarSala, buscarSalaId
- 
+from  App. controller.utils import erroEdicao, sucessoEdicao
  
 class EditarSala(QWidget):
     def __init__(self):
@@ -19,7 +19,10 @@ class EditarSala(QWidget):
         idSala = self.getIdSala()
         info = self.getDadosSala()
         if atualizarSala(info[0], info[1], info[2], info[3], info[4], info[5], idSala):
-            print('deu bom')
+            sucessoEdicao(self)
+            self.setIndexInicial()
+        else:
+            erroEdicao(self)
        
     def comboxSala(self):
         salas = self.dicionarioDeSala.keys()
@@ -54,3 +57,7 @@ class EditarSala(QWidget):
         obs = self.feedbackText.text().strip()
        
         return(nomeSala, tipoSala, predio, equipamentos, capacidade, obs)
+    
+    def setIndexInicial(self):
+        self.nomeSala.setCurrentIndex(0)
+ 

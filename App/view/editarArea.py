@@ -3,6 +3,7 @@ from PyQt5.uic import loadUi
 from PyQt5.QtCore import pyqtSlot
 from App.controller.area import listarAreas
 from App.controller.area import atualizarArea
+from App.controller.utils import erroEdicao, sucessoEdicao
 
 
 class EditarArea(QWidget):
@@ -11,6 +12,7 @@ class EditarArea(QWidget):
         loadUi('App/view/ui/editarArea.ui',self)
         self.dicionarioDeAreas = listarAreas()
         self.comboxArea()
+        self.popularArea()
         self.alterarArea.currentIndexChanged.connect(self.popularArea)
  
     def comboxArea(self):
@@ -27,9 +29,10 @@ class EditarArea(QWidget):
         nomeArea = self.getEditArea()
         idArea = self.getIdArea()
         if atualizarArea(idArea, nomeArea):
-            print('blz!')
+            sucessoEdicao(self)
+            self.setIndexInicial()
         else:
-            print('deu erro ai')
+            erroEdicao(self)
  
     def getEditArea(self):
         return self.cadastrarArea.text().strip()
@@ -37,3 +40,7 @@ class EditarArea(QWidget):
     def getIdArea(self):
         areaSelecionada = self.alterarArea.currentText()
         return self.dicionarioDeAreas.get(areaSelecionada)
+    
+    def setIndexInicial(self):
+        self.alterarArea.setCurrentIndex(0)
+ 
