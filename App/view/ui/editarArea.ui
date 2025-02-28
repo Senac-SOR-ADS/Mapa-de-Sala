@@ -115,9 +115,14 @@
        <widget class="QComboBox" name="alterarArea">
         <property name="minimumSize">
          <size>
-          <width>200</width>
+          <width>250</width>
           <height>31</height>
          </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
         </property>
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>

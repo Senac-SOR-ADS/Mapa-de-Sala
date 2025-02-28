@@ -221,97 +221,270 @@ class Reserva:
     @classmethod
     def buscar_data(cls, diaInicio, diaFim):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s ORDER BY dia DESC;"
+        query = '''SELECT 
+    r.idReserva, 
+    s.nome AS nome_sala, 
+    c.nome AS nome_curso, 
+    c.oferta AS codigo_oferta, 
+    r.dia, 
+    CASE 
+        WHEN r.hrInicio BETWEEN '06:00:00' AND '12:00:00' THEN 'Manha'
+        WHEN r.hrInicio BETWEEN '12:00:00' AND '18:00:00' THEN 'Tarde'
+        WHEN r.hrInicio BETWEEN '18:00:00' AND '23:00:00' THEN 'Noite'
+        ELSE 'Fora do período' 
+    END AS periodo
+FROM 
+    reserva r
+JOIN 
+    sala s ON r.idSala = s.idSala
+JOIN 
+    curso c ON r.idCurso = c.idCurso
+WHERE 
+    r.dia BETWEEN %s AND %s
+ORDER BY 
+    r.dia, r.hrInicio;'''
         parametro = [diaInicio, diaFim]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            listaReserva = cls.getListaReserva(resultado)
-            return listaReserva
+            return resultado
         log.error(f"{__name__}: Nenhuma reserva durante essas datas")
 
     @classmethod
     def buscar_data_oferta(cls, diaInicio, diaFim, idCurso):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idCurso = %s ORDER BY dia DESC;"
+        query = '''SELECT 
+    r.idReserva, 
+    s.nome AS nome_sala, 
+    c.nome AS nome_curso, 
+    c.oferta AS codigo_oferta, 
+    r.dia, 
+    CASE 
+        WHEN r.hrInicio BETWEEN '06:00:00' AND '12:00:00' THEN 'Manha'
+        WHEN r.hrInicio BETWEEN '12:00:00' AND '18:00:00' THEN 'Tarde'
+        WHEN r.hrInicio BETWEEN '18:00:00' AND '23:00:00' THEN 'Noite'
+        ELSE 'Fora do período' 
+    END AS periodo
+FROM 
+    reserva r
+JOIN 
+    sala s ON r.idSala = s.idSala
+JOIN 
+    curso c ON r.idCurso = c.idCurso
+WHERE 
+    r.dia BETWEEN %s AND %s  -- Substitua as datas conforme necessário
+    AND r.idCurso = %s  -- Substitua pelo ID do curso desejado
+ORDER BY 
+    r.dia, r.hrInicio;'''
         parametro = [diaInicio, diaFim, idCurso]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            listaReserva = cls.getListaReserva(resultado)
-            return listaReserva
+            return resultado
         log.error(f"{__name__}: Nenhuma reserva deste curso neste período")
 
     @classmethod
     def buscar_data_sala(cls, diaInicio, diaFim, idSala):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s ORDER BY dia DESC;"
-        parametro = [diaInicio, diaFim, idSala]
+        query = '''SELECT 
+    r.idReserva, 
+    s.nome AS nome_sala, 
+    c.nome AS nome_curso, 
+    c.oferta AS codigo_oferta, 
+    r.dia, 
+    CASE 
+        WHEN r.hrInicio BETWEEN '06:00:00' AND '12:00:00' THEN 'Manha'
+        WHEN r.hrInicio BETWEEN '12:00:00' AND '18:00:00' THEN 'Tarde'
+        WHEN r.hrInicio BETWEEN '18:00:00' AND '23:00:00' THEN 'Noite'
+        ELSE 'Fora do período' 
+    END AS periodo
+FROM 
+    reserva r
+JOIN 
+    sala s ON r.idSala = s.idSala
+JOIN 
+    curso c ON r.idCurso = c.idCurso
+WHERE 
+    r.dia BETWEEN %s AND %s  -- Substitua as datas conforme necessário
+    AND r.idSala = %s  -- Substitua pelo ID da sala desejada
+ORDER BY 
+    r.dia, r.hrInicio;'''
+        parametro = [ diaInicio, diaFim, idSala]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            listaReserva = cls.getListaReserva(resultado)
-            return listaReserva
+            return resultado
         log.error(f"{__name__}: Nenhuma reserva nesta sala durante esse período")
 
     @classmethod
     def buscar_data_periodo(cls, diaInicio, diaFim, horaInicio, horaFim):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s ORDER BY dia DESC;"
+        query = '''SELECT 
+    r.idReserva, 
+    s.nome AS nome_sala, 
+    c.nome AS nome_curso, 
+    c.oferta AS codigo_oferta, 
+    r.dia, 
+    CASE 
+        WHEN r.hrInicio BETWEEN '06:00:00' AND '12:00:00' THEN 'Manha'
+        WHEN r.hrInicio BETWEEN '12:00:00' AND '18:00:00' THEN 'Tarde'
+        WHEN r.hrInicio BETWEEN '18:00:00' AND '23:00:00' THEN 'Noite'
+        ELSE 'Fora do período' 
+    END AS periodo
+FROM 
+    reserva r
+JOIN 
+    sala s ON r.idSala = s.idSala
+JOIN 
+    curso c ON r.idCurso = c.idCurso
+WHERE 
+    r.dia BETWEEN %s AND %s  -- Substitua as datas conforme necessário
+    AND r.hrInicio BETWEEN %s AND %s  -- Intervalo de horário das 6h às 12h
+ORDER BY 
+    r.dia, r.hrInicio;
+ '''
         parametro = [diaInicio, diaFim, horaInicio, horaFim]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            listaReserva = cls.getListaReserva(resultado)
-            return listaReserva
+            return resultado
         log.error(f"{__name__}: Nenhuma reserva neste horário durante esse período")
 
     @classmethod
     def buscar_data_periodo_oferta(cls, diaInicio, diaFim, horaInicio, horaFim, idCurso):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s AND idCurso = %s ORDER BY dia DESC;"
-        parametro = [diaInicio, diaFim, horaInicio, horaFim, idCurso]
+        query = '''SELECT 
+    r.idReserva, 
+    s.nome AS nome_sala, 
+    c.nome AS nome_curso, 
+    c.oferta AS codigo_oferta, 
+    r.dia, 
+    CASE 
+        WHEN r.hrInicio BETWEEN '06:00:00' AND '12:00:00' THEN 'Manha'
+        WHEN r.hrInicio BETWEEN '12:00:00' AND '18:00:00' THEN 'Tarde'
+        WHEN r.hrInicio BETWEEN '18:00:00' AND '23:00:00' THEN 'Noite'
+        ELSE 'Fora do período' 
+    END AS periodo
+FROM 
+    reserva r
+JOIN 
+    sala s ON r.idSala = s.idSala
+JOIN 
+    curso c ON r.idCurso = c.idCurso
+WHERE 
+    r.dia BETWEEN %s AND %s  -- Substitua as datas conforme necessário
+    AND r.idCurso = %s  -- Substitua pelo ID do curso desejado
+    AND r.hrInicio BETWEEN %s AND %s  -- Intervalo de horário das 6h às 12h
+ORDER BY 
+    r.dia, r.hrInicio;'''
+        parametro = [ diaInicio, diaFim, idCurso, horaInicio, horaFim]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            listaReserva = cls.getListaReserva(resultado)
-            return listaReserva
+            return resultado
         log.error(f"{__name__}: Nenhuma reserva deste curso, durante este horário")
 
     @classmethod
     def buscar_periodo_sala(cls, diaInicio, diaFim, horaInicio, horaFim, idSala):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND hrInicio >= %s AND hrFim <= %s AND idSala = %s ORDER BY dia DESC;"
+        query = """SELECT 
+    r.idReserva, 
+    s.nome AS nome_sala, 
+    c.nome AS nome_curso, 
+    c.oferta AS codigo_oferta, 
+    r.dia, 
+    CASE 
+        WHEN r.hrInicio BETWEEN '06:00:00' AND '12:00:00' THEN 'Manha'
+        WHEN r.hrInicio BETWEEN '12:00:00' AND '18:00:00' THEN 'Tarde'
+        WHEN r.hrInicio BETWEEN '18:00:00' AND '23:00:00' THEN 'Noite'
+        ELSE 'Fora do período' 
+    END AS periodo
+FROM 
+    reserva r
+JOIN 
+    sala s ON r.idSala = s.idSala
+JOIN 
+    curso c ON r.idCurso = c.idCurso
+WHERE 
+    r.dia BETWEEN %s AND %s  -- Substitua as datas conforme necessário
+    AND r.hrInicio BETWEEN %s AND %s  -- Intervalo de horário das 6h às 12h
+    AND r.idSala = %s  -- Substitua pelo ID da sala desejada
+ORDER BY 
+    r.dia, r.hrInicio;"""
         parametro = [diaInicio, diaFim, horaInicio, horaFim, idSala]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            listaReserva = cls.getListaReserva(resultado)
-            return listaReserva
+            return resultado
         log.error(f"{__name__}: Nenhuma reserva nesta sala durante este horário")
 
     @classmethod
     def buscar_oferta_sala(cls, diaInicio, diaFim, idCurso, idSala):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s AND idCurso = %s ORDER BY dia DESC;"
-        parametro = [diaInicio, diaFim, idSala, idCurso]
+        query = """SELECT 
+    r.idReserva, 
+    s.nome AS nome_sala, 
+    c.nome AS nome_curso, 
+    c.oferta AS codigo_oferta, 
+    r.dia, 
+    CASE 
+        WHEN r.hrInicio BETWEEN '06:00:00' AND '12:00:00' THEN 'Manha'
+        WHEN r.hrInicio BETWEEN '12:00:00' AND '18:00:00' THEN 'Tarde'
+        WHEN r.hrInicio BETWEEN '18:00:00' AND '23:00:00' THEN 'Noite'
+        ELSE 'Fora do período' 
+    END AS periodo
+FROM 
+    reserva r
+JOIN 
+    sala s ON r.idSala = s.idSala
+JOIN 
+    curso c ON r.idCurso = c.idCurso
+WHERE 
+    r.dia BETWEEN %s AND %s  -- Substitua as datas conforme necessário
+    AND c.idCurso = %s  -- Substitua pelo ID do curso
+    AND r.idSala = %s  -- Substitua pelo ID da sala desejada
+ORDER BY 
+    r.dia, r.hrInicio;"""
+        parametro = [diaInicio, diaFim, idCurso, idSala]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            listaReserva = cls.getListaReserva(resultado)
-            return listaReserva
+            return resultado
         log.error(f"{__name__}: Nenhuma reserva deste curso nesta sala")
 
     @classmethod
     def buscar_periodo_sala_oferta(cls, diaInicio, diaFim, idSala, idCurso, horaInicio, horaFim):
         cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE dia >= %s AND dia <= %s AND idSala = %s AND idCurso = %s AND hrInicio >= %s AND hrFim <= %s ORDER BY dia DESC;"
-        parametro = [diaInicio, diaFim, idSala, idCurso, horaInicio, horaFim]
+        query = """SELECT 
+    r.idReserva, 
+    s.nome AS nome_sala, 
+    c.nome AS nome_curso, 
+    c.oferta AS codigo_oferta, 
+    r.dia, 
+    CASE 
+        WHEN r.hrInicio BETWEEN '06:00:00' AND '12:00:00' THEN 'Manha'
+        WHEN r.hrInicio BETWEEN '12:00:00' AND '18:00:00' THEN 'Tarde'
+        WHEN r.hrInicio BETWEEN '18:00:00' AND '23:00:00' THEN 'Noite'
+        ELSE 'Fora do período' 
+    END AS periodo
+FROM 
+    reserva r
+JOIN 
+    sala s ON r.idSala = s.idSala
+JOIN 
+    curso c ON r.idCurso = c.idCurso
+WHERE 
+    r.dia BETWEEN %s AND %s  -- Substitua as datas conforme necessário
+    AND r.idCurso = %s  -- Substitua pelo ID do curso desejado
+    AND r.idSala = %s  -- Substitua pelo ID da sala desejada
+    AND r.hrInicio BETWEEN %s AND %s -- Intervalo de horário das 6h às 12h
+ORDER BY 
+    r.dia, r.hrInicio;"""
+        parametro = [diaInicio, diaFim, idCurso, idSala,  horaInicio, horaFim]
         resultado = cls.__banco.buscarTodos(query, parametro)
         cls.__banco.desconectar()
         if resultado:
-            listaReserva = cls.getListaReserva(resultado)
-            return listaReserva
+            return resultado
         log.error(f"{__name__}: Nenhuma reserva deste curso nesta sala durante esse horário")
 
 if __name__ == "__main__":

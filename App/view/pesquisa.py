@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QStackedWidget, QDateEdit
+from PyQt5.QtWidgets import QWidget, QStackedWidget, QDateEdit, QGridLayout
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QDate, pyqtSlot
 
@@ -7,6 +7,7 @@ from App.controller.sala import listarSala
 from App.controller.reserva import verificarPesquisa
 
 from .editarReservaUnitaria import ReservaUnitaria
+from .cardPesquisa import CardPesquisa
 
 class TelaPesquisa(QWidget):
     def __init__(self):
@@ -27,10 +28,22 @@ class TelaPesquisa(QWidget):
         self.dataInicio.setDate(QDate.currentDate())
         self.dataFim.setDisplayFormat('dd/MM/yyyy')
         self.dataFim.setDate(QDate.currentDate())
+
+
+        self.dataInicioMultiplo.setDisplayFormat('dd/MM/yyyy')
+        self.dataInicioMultiplo.setDate(QDate.currentDate())
+        self.dataFimMultiplo.setDisplayFormat('dd/MM/yyyy')
+        self.dataFimMultiplo.setDate(QDate.currentDate())
+
+        self.dataInicioMultiplo = self.findChild(QDateEdit, 'dataInicioMultiplo')
+        self.dataFimMultiplo = self.findChild(QDateEdit, 'dataFimMultiplo')
+
         self.setDataMinima()
+        self.setDataDiaria()
         self.popularTela()
 
         self.dataInicio.dateChanged.connect(self.setDataMinima)
+        self.dataInicioMultiplo.dateChanged.connect(self.setDataMinima)
         
         self.checks.setStyleSheet("""
                 QCheckBox::indicator {
@@ -51,17 +64,39 @@ class TelaPesquisa(QWidget):
         self.btnTrocarOfetaMultipla.clicked.connect(lambda: self.trocarTela(self.reservaMultipla))
         self.btnTrocarOfetaUnitaria.clicked.connect(lambda: self.trocarTela(self.reservaUnica))
 
+    @pyqtSlot()
+    def on_btnPesquisar_clicked(self):
+        dados = self.getDados() 
+        reservas = verificarPesquisa(dados)
+        self.limparScrollArea()
+        if reservas:
+            self.popularScrollArea(reservas)
+        else:
+            print('não tem reseversa na pesquisa')
+
+    def setDataDiaria(self):
+        data = QDate.currentDate()
+        self.dataInicioMultiplo.setMinimumDate(data)
+        self.dataInicio.setMinimumDate(data)
+    
+
+
 
     def trocarTela(self, tela:QWidget):
+        self.setDataDiaria()
         self.stackReservas.setCurrentWidget(tela)
 
     def setDataMinima(self):
         data = self.dataInicio.date()
         self.dataFim.setMinimumDate(data)
+        dataMultiplo = self.dataInicioMultiplo.date()
+        self.dataFimMultiplo.setMinimumDate(dataMultiplo)
+
 
     def comboboxOferta(self):
         ofertas = self.dicionarioCursos.keys()
         self.campoOferta.addItems(ofertas)
+        self.campoOfertaMultipla.addItems(ofertas)
 
     def comboboxSala(self):
         salas = self.dicionarioDeSala.keys()
@@ -85,18 +120,12 @@ class TelaPesquisa(QWidget):
             horaFim = '22:00:00'
             return horaInicio, horaFim
    
- 
-    @pyqtSlot()
-    def on_btnPesquisar_clicked(self):
-        dados = self.getDados()
-        reservas = verificarPesquisa(dados)
-        print(reservas)
- 
     def getDados(self):
         index_oferta = self.campoOferta.currentIndex()
         oferta = None
         if index_oferta:
-            oferta = list(self.dicionarioCursos.values())[index_oferta-1]
+            # oferta = list(self.dicionarioCursos.values())[index_oferta-1]
+            oferta = self.campoOferta.currentText()
  
         index_sala = self.campoSala.currentIndex()
         sala = None
@@ -123,6 +152,28 @@ class TelaPesquisa(QWidget):
         tela = ReservaUnitaria()
         if tela.exec_():
             pass
+
+    def popularScrollArea(self, lista_de_reservas: list):
+        self.btnPesquisar.setEnabled(False)
+
+        max_colunas = 6
+        coluna = 0
+        linha = 0
+        for reserva in lista_de_reservas:
+            card = CardPesquisa(*reserva)
+            self.scrollAreaWidgetContents.layout().addWidget(card, linha, coluna)
+            coluna += 1
+            if coluna == max_colunas:
+                coluna = 0
+                linha += 1
+        self.btnPesquisar.setEnabled(True)
+
+    def limparScrollArea(self):
+        layout = self.scrollAreaWidgetContents.layout()
+        for i in range(layout.count()):
+            card = layout.itemAt(i).widget()
+            card.deleteLater()
+
 
 ##########Tela Multipla########################
 
