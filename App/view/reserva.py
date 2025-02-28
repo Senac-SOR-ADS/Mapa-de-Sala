@@ -121,7 +121,7 @@ class ReservaInterface(QWidget):
                 for dia, reserva in dias_ocupados.items():
                     txt += f'{dia} | {reserva[1][2]} - {reserva[1][3]}\n'
                     
-                confirmacao = TelaConfirmacao( 'Conflitos', txt, 'Confirmar')
+                confirmacao = TelaConfirmacao( 'Conflitos', '', 'Confirmar', True, True)
                 if confirmacao.exec_():
                     realizar_reserva_no_dia(idLogin.get('id_login'), info, dias_livres)
                     print('Reserva feita com sucesso!')
