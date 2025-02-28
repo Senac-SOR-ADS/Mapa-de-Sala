@@ -3,6 +3,12 @@
 	border-radius: 15px; 
 }
 
+#cabecalho {
+	background-color: rgba(0, 0, 0, 0.2);
+	border-top-left-radius: 17px;
+	border-top-right-radius: 17px;
+}
+
 #btnEditar {
 	border-top-right-radius: 15px;
 	border-bottom-right-radius: 15px;
@@ -23,7 +29,7 @@
 
 #conteudo {
 	background-color: #D58E3D;
-	border-radius: 10px;
+	border-radius: 17px;
 }
 
 #conteudo QLabel {
