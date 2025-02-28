@@ -37,7 +37,14 @@ border-radius: 15px;
 color: #ffffff;
 }
 
-#btnOk:hover {
+#btnAbrirConflitos {
+	background-color: #01498a;
+border: none;
+border-radius: 10px;
+color: #ffffff;
+}
+
+#btnOk:hover, #btnAbrirConflitos:hover {
     background-color: #f6921e;
 }
 
@@ -166,6 +173,12 @@ color: #ffffff;
       </item>
       <item alignment="Qt::AlignHCenter">
        <widget class="QPushButton" name="btnAbrirConflitos">
+        <property name="minimumSize">
+         <size>
+          <width>121</width>
+          <height>29</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <pointsize>12</pointsize>
