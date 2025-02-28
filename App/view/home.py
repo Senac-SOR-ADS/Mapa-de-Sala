@@ -210,7 +210,7 @@ class HomePrincipal(QMainWindow):
         self.subMenuQuebrado.hide()
 
     def fazer_logout(self):
-        confirmacao = TelaConfirmacao("Tem certeza que deseja sair?", '', "Sim", False)
+        confirmacao = TelaConfirmacao("Tem certeza que deseja sair?", '', "Sim")
         if confirmacao.exec_():
             removerUsuarioLogado()
             self.close()
