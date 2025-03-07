@@ -41,9 +41,12 @@ class cadastroPessoas(QWidget):
     def on_btnCadastrar_clicked(self):
         campos = self.getDadosCadastro()
         if validarInputs(campos):
-            if cadastrarPessoa(campos[0], campos[1], campos[2], campos[3], campos[4], campos[5]):
+            cadastro = cadastrarPessoa(campos[0], campos[1], campos[2], campos[3], campos[4], campos[5])
+            if cadastro == True:
                 sucessoCadastro(self)
                 self.setIndexInicial()
+            else:
+                erroCadastro(self)
         else:
             erroCadastro(self)
 

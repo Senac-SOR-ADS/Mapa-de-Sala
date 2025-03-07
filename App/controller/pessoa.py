@@ -13,10 +13,15 @@ def cadastrarPessoa(nome: str, cpf_cnpj: str, data_nasc: str, telefone: str, ema
     try:
         # Cadastro da pessoa no banco de dados
         id_pessoa = Pessoa().cadastrar(nome, cpf_cnpj, data_nasc, telefone, email, cargo)
-        
         if id_pessoa:
             # Cadastro do login associado à pessoa
-            return cadastrarLogin(id_pessoa, cpf_cnpj, email, cargo)
+            cadastro_login = cadastrarLogin(id_pessoa, cpf_cnpj, email, cargo)
+            if cadastro_login: #login cadastrado no banco de dados
+                return cadastro_login
+            
+            else: # caso de erro no cadastro do login - deve esxluir a pessoa
+                Pessoa.deletar(id_pessoa)
+                raise Exception('login não foi cadastrado')
         
         return {"error": "Não foi possível cadastrar a pessoa."}
     
