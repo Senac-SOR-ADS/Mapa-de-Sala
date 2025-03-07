@@ -1,35 +1,50 @@
 #gridContainer #containerBtns {
-	background-color: rgba(0, 0, 0, 0.46);
+	background-color: rgba(255, 255, 255, 0.24);
 	border-radius: 15px; 
+}
+
+#cabecalho {
+	background-color: rgba(0, 0, 0, 0.077);
+	border-top-left-radius: 17px;
+	border-top-right-radius: 17px;
 }
 
 #btnEditar {
 	border-top-right-radius: 15px;
 	border-bottom-right-radius: 15px;
+	icon: url("App/view/ui/icones/iconEditarPreto.png");
 }
 
 #btnEditar:hover {
-	background-color: #423d3d;
+	background-color: rgb(241, 204, 72);
 }
 
 #btnExcluir {
 	border-top-left-radius: 15px;
 	border-bottom-left-radius: 15px;
+	icon: url("App/view/ui/icones/iconLixeiraPreto.png");
 }
 
 #btnExcluir:hover {
 	background-color: red;
+	icon: url("App/view/ui/icones/iconLixeira.png");
 }
 
 #conteudo {
-	background-color: #F1D469;
-	border-radius: 15px;
+	background-color: rgb(241, 212, 105);
+	border-radius: 17px;
+}
+
+#conteudo:hover {
+	background-color: rgb(250, 216, 92);
+	border-radius: 17px;
+	border: 3px solid rgb(233, 201, 85);
 }
 
 #conteudo QLabel {
-	color: #FFF;
+	color: #000;
 }
 
 #linhaCard {
-	background-color: #FFF;
+	background-color: #000;
 }
