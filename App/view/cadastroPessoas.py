@@ -21,7 +21,7 @@ class cadastroPessoas(QWidget):
         nomePessoas = self.nomePessoas.text().strip()
         cpfCnpj = self.cpfCnpj.text().strip()
         email = self.email.text().strip()
-        dataDeNascimento = self.dataDeNascimento.text().strip()
+        dataDeNascimento = modificarData(self.dataDeNascimento.text().strip())
         cargo = self.cargo.currentText()
         telefone = self.telefone.text().strip()
         
@@ -40,7 +40,6 @@ class cadastroPessoas(QWidget):
     @pyqtSlot()
     def on_btnCadastrar_clicked(self):
         campos = self.getDadosCadastro()
-        print(campos)
         if validarInputs(campos):
             if cadastrarPessoa(campos[0], campos[1], campos[2], campos[3], campos[4], campos[5]):
                 sucessoCadastro(self)
