@@ -22,15 +22,16 @@
 	color: #f6921e;
 }
 
-#btnFechar:hover {
+#btnFechar {
 	background-color: #FF0000;
+	border-radius: 10px;
 	icon: url(&quot;App/view/ui/icones/iconCloseBranco.png&quot;);
 }
 
-#btnFechar,#btnTelaCheia {
+#btnTelaCheia {
 	border: none;
 	background-color: transparent;
-	border-radius: 12px;
+	border-radius: 10px;
 }
 
 #btnTelaCheia:hover {
@@ -127,10 +128,16 @@
          </item>
          <item>
           <widget class="QPushButton" name="btnTelaCheia">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
-             <width>34</width>
-             <height>30</height>
+             <width>45</width>
+             <height>27</height>
             </size>
            </property>
            <property name="font">
@@ -148,19 +155,31 @@
             <iconset>
              <normaloff>icones/iconTelaCheia.png</normaloff>icones/iconTelaCheia.png</iconset>
            </property>
+           <property name="iconSize">
+            <size>
+             <width>17</width>
+             <height>17</height>
+            </size>
+           </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="btnFechar">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
-             <width>34</width>
-             <height>30</height>
+             <width>45</width>
+             <height>27</height>
             </size>
            </property>
            <property name="font">
             <font>
-             <pointsize>12</pointsize>
+             <pointsize>8</pointsize>
             </font>
            </property>
            <property name="cursor">
@@ -171,7 +190,13 @@
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>../../../../../../Users/richard.sleao/source/repos/interfaceS/App/view/ui/icones/iconClosePreto.png</normaloff>../../../../../../Users/richard.sleao/source/repos/interfaceS/App/view/ui/icones/iconClosePreto.png</iconset>
+             <normaloff>icones/iconClosePreto.png</normaloff>icones/iconClosePreto.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -203,8 +228,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>397</width>
-           <height>558</height>
+           <width>399</width>
+           <height>562</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">

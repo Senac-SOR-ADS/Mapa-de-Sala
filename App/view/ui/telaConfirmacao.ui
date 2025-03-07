@@ -15,10 +15,16 @@
   </property>
   <property name="styleSheet">
    <string notr="true">#fundo {
-    background-color: #f4f4f4;
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, 
+                                stop:0 #E3F2FD, stop:1 #AFCDE7);
+    border: 1px solid #6B8EBE;
+    border-radius: 4px;
+}
+
+#fundo_2 {
+	background-color: #f4f4f4;
     border: 1px solid #ccc;
     padding: 5px;
-  
 }
 
 #btnCancelar {
@@ -75,7 +81,7 @@
     color: #333333;
     line-height: 1.5;
     border: 1px solid #ccc;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 #aviso strong {
@@ -185,7 +191,19 @@ QPushButton#btnFechar:hover {
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="frame_2">
+       <widget class="QFrame" name="fundo_2">
+        <property name="minimumSize">
+         <size>
+          <width>662</width>
+          <height>253</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>662</width>
+          <height>253</height>
+         </size>
+        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -253,6 +271,9 @@ QPushButton#btnFechar:hover {
               <layout class="QVBoxLayout" name="verticalLayout_6">
                <item>
                 <widget class="QLabel" name="titulo">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
@@ -271,14 +292,19 @@ QPushButton#btnFechar:hover {
                </item>
                <item>
                 <widget class="QLabel" name="aviso">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>41</height>
+                   <height>56</height>
                   </size>
                  </property>
                  <property name="font">
-                  <font/>
+                  <font>
+                   <pointsize>10</pointsize>
+                  </font>
                  </property>
                  <property name="text">
                   <string/>
@@ -356,6 +382,9 @@ QPushButton#btnFechar:hover {
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -363,6 +392,11 @@ QPushButton#btnFechar:hover {
                </item>
                <item>
                 <widget class="QLabel" name="label_3">
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>Levar Equipamentos</string>
                  </property>
