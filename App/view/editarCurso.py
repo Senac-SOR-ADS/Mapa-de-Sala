@@ -54,12 +54,15 @@ class EditarCurso(QWidget):
             self.cargaCurso.setValue(cargaHoraria)
             self.periodoCurso.setCurrentText(periodo)
             self.campoArea.setCurrentText(area)
-            self.horasPorDia.setDateTime(horasDia)
+            self.horasPorDia.setTime(horasDia)
             self.quantidadeAlunos.setValue(int(qtdAlunos))
     
-    def obterDateTime(self, horas:timedelta):
-        horas = int(horas.total_seconds())
-        time = self.horasPorDia.dateTime().addSecs(horas)
+    def obterDateTime(self, horasCurso:timedelta):
+        time = QTime()
+        stringHoras = str(horasCurso)
+        hora = int(stringHoras.split(':')[0])
+        minuto = int(stringHoras.split(':')[1])
+        time.setHMS(hora, minuto, 0)
         return time
 
 
