@@ -147,7 +147,6 @@ class Curso:
         params = [idArea, nome, oferta, periodo, cargaHoraria, horasDia, qtdAlunos, idCurso]
         resultado = cls.__banco.alterarDados(query, params)
         cls.__banco.desconectar()
-        print(f"array de itens atualizados: {params}")
         if resultado.rowcount:
             return True
         return False

@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from App.controller.curso import listarCurso, buscarCursosId, atualizarCurso
 from App.model.curso import *
 from App.controller.area import listarAreas
+from App.controller.utils import erroEdicao, sucessoEdicao
 
 from PyQt5.uic import loadUi
 
@@ -27,8 +28,10 @@ class EditarCurso(QWidget):
         infos = self.getEditarCurso()
 
         if(Curso.atualizar(idCurso, infos[0], infos[1], infos[2], infos[3], infos[4], infos[5], infos[6])):
-            print("Curso atualizado - editarCurso view")
+            sucessoEdicao(self)
+            self.setIndexInicial()
             return True
+        erroEdicao(self)
         return False
 
     def comboOferta(self):
@@ -62,26 +65,6 @@ class EditarCurso(QWidget):
         time = self.horasPorDia.dateTime().addSecs(horas)
         return time
 
-
-    # def limparCampos(self):
-    #     idCurso = self.getIdOferta()
-    #     print(idCurso)
-    #     info = buscarCursosId(idCurso)
-    #     nome = info['nome']
-    #     cargaHoraria = info['cargaHoraria']
-    #     periodo = info['periodo']
-    #     area = info['idArea']
-    #     horasDia = info['horasDia']
-    #     qtdAlunos = info['qtdAlunos']
-
-    #     if (nome, cargaHoraria, periodo, area, horasDia, qtdAlunos):
-    #         self.nomeCurso.clear()
-    #         self.cargaCurso.clear()
-    #         self.periodoCurso.clear()
-    #         self.campoArea.clear()
-    #         self.horasPorDia.clear()
-    #         self.quantidadeAlunos.clear()
-
     def getEditarCurso(self):
         oferta = self.ofertaCurso.currentText().strip()
         nome = self.nomeCurso.text().strip()
@@ -94,7 +77,6 @@ class EditarCurso(QWidget):
     
     def getIdArea(self):
         area = self.campoArea.currentText()
-        print(f"Get id area: {self.dicionarioDeAreas.get(area)}")
         return self.dicionarioDeAreas.get(area)
 
     def getIdOferta(self):
@@ -102,3 +84,6 @@ class EditarCurso(QWidget):
         return self.dicionarioDeCursos.get(oferta)
     
     
+    def setIndexInicial(self):
+            self.ofertaCurso.setCurrentIndex(0)
+ 

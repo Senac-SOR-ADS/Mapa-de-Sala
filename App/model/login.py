@@ -60,7 +60,8 @@ class Login:
             VALUES (%s, %s, %s, %s)
             '''
             params_login = (self.getIdPessoa(), self.getEmail(), senha_criptografada, nivelAcesso)
-            self.__banco.alterarDados(query_login, params_login)
+            reposta = self.__banco.alterarDados(query_login, params_login)
+            reposta.lastrowid
             return True
 
         except Exception as e:
