@@ -19,7 +19,14 @@ class CardPesquisa(QWidget):
         cssFile = join(self.CURRENT_DIR, f"./ui/css/cards/{horario.lower()}.css")
         with open(cssFile, 'r') as css:
             self.setStyleSheet(css.read())
-        icone = join(self.CURRENT_DIR, f"./ui/icones/icon{horario}.png")
+
+        if horario == 'Manha':
+            icone = join(self.CURRENT_DIR, f"./ui/icones/icon{horario}Preto.png")
+            # icone_lixo = join(self.CURRENT_DIR, f"./ui/icones/iconLixeiraPreto.png")
+        else:
+            icone = join(self.CURRENT_DIR, f"./ui/icones/icon{horario}.png")
+            # icone = join(self.CURRENT_DIR, f"./ui/icones/iconLixeira.png")
+
         self.iconePeriodo.setPixmap(QPixmap(icone))
 
         self.label_6.setText(data.strftime("%d/%m/%Y"))
