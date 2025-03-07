@@ -1,5 +1,5 @@
 #gridContainer #containerBtns {
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: rgba(255, 255, 255, 0.24);
 	border-radius: 15px; 
 }
 
@@ -12,6 +12,7 @@
 #btnEditar {
 	border-top-right-radius: 15px;
 	border-bottom-right-radius: 15px;
+	icon: url("App/view/ui/icones/iconEditarPreto.png");
 }
 
 #btnEditar:hover {
@@ -21,10 +22,12 @@
 #btnExcluir {
 	border-top-left-radius: 15px;
 	border-bottom-left-radius: 15px;
+	icon: url("App/view/ui/icones/iconLixeiraPreto.png");
 }
 
 #btnExcluir:hover {
 	background-color: red;
+	icon: url("App/view/ui/icones/iconLixeira.png");
 }
 
 #conteudo {
@@ -39,9 +42,9 @@
 }
 
 #conteudo QLabel {
-	color: #FFF;
+	color: #000;
 }
 
 #linhaCard {
-	background-color: #FFF;
+	background-color: #000;
 }
