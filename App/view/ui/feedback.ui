@@ -51,6 +51,7 @@
 }
 
 #btnFechar2:hover {
+	icon: url(&quot;App/view/ui/icones/iconCloseBranco.png&quot;);
 	background-color: #eb0001;
 }</string>
   </property>
@@ -96,6 +97,9 @@
       </property>
       <item alignment="Qt::AlignRight">
        <widget class="QPushButton" name="btnFechar2">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -143,13 +147,13 @@
               <property name="minimumSize">
                <size>
                 <width>70</width>
-                <height>50</height>
+                <height>65</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
                 <width>70</width>
-                <height>57</height>
+                <height>65</height>
                </size>
               </property>
               <property name="font">
