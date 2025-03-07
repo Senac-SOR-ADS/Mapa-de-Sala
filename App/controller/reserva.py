@@ -67,6 +67,7 @@ def verificarPesquisa(dados):
         return Reserva.buscar_data_periodo_oferta(dados['dataInicio'], dados['dataFim'], dados['horaInicio'], dados['horaFim'], dados['oferta'])
     # Usando a data, oferta, período e sala
     elif dados['dataInicio'] and dados['dataFim'] and dados['oferta'] and dados['horaInicio'] and dados['sala']:
+        return Reserva.buscar_periodo_sala_oferta(dados['dataInicio'], dados['dataFim'], dados['sala'], dados['oferta'], dados['horaInicio'], dados['horaFim'])
         
 def getReserva(idReserva):
     return Reserva.retornar_uma_reserva(idReserva)
