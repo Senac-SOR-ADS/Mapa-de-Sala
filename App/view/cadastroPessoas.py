@@ -43,5 +43,15 @@ class cadastroPessoas(QWidget):
         if validarInputs(campos):
             if cadastrarPessoa(campos[0], campos[1], campos[2], campos[3], campos[4], campos[5]):
                 sucessoCadastro(self)
+                self.setIndexInicial()
         else:
             erroCadastro(self)
+
+    def setIndexInicial(self):
+        data = QDate.currentDate()
+        self.nomePessoas.setText('')
+        self.cpfCnpj.setText('')
+        self.email.setText('')
+        self.dataDeNascimento.setDate(data)
+        self.cargo.setCurrentIndex(0)
+        self.telefone.setText('')
