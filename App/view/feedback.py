@@ -21,6 +21,7 @@ class Feedback(QDialog):
         self._start_pos = QPoint()
         
         self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
         
         self.btnFechar2.clicked.connect(self.reject)
         self.btnFechar.clicked.connect(self.accept)
@@ -32,7 +33,7 @@ class Feedback(QDialog):
         # notificação de sucesso
         icon_path = os.path.join(self.CURRENT_DIR, r"./ui/icones/iconConcluido.png")
         if tipo == False:
-            icon_path = os.path.join(self.CURRENT_DIR, r"./ui/icones/iconErro.png")
+            icon_path = os.path.join(self.CURRENT_DIR, r"./ui/icones/iconErro2.png")
         self.icon.setPixmap(QPixmap(icon_path))
         
 
