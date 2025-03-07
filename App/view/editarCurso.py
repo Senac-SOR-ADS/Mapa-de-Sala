@@ -77,7 +77,6 @@ class EditarCurso(QWidget):
     
     def getIdArea(self):
         area = self.campoArea.currentText()
-        print(f"Get id area: {self.dicionarioDeAreas.get(area)}")
         return self.dicionarioDeAreas.get(area)
 
     def getIdOferta(self):
