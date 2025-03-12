@@ -97,7 +97,7 @@ class TelaPesquisa(QWidget):
 
 
     def comboboxOferta(self):
-        ofertas = self.dicionarioCursos.keys()
+        ofertas = self.dicionarioCursos.values()
         self.campoOferta.addItems(ofertas)
         self.campoOfertaMultipla.addItems(ofertas)
 
@@ -127,9 +127,8 @@ class TelaPesquisa(QWidget):
         index_oferta = self.campoOferta.currentIndex()
         oferta = None
         if index_oferta:
-            # oferta = list(self.dicionarioCursos.values())[index_oferta-1]
-            oferta = self.campoOferta.currentText()
- 
+            oferta = list(self.dicionarioCursos.keys())[index_oferta-1]
+
         index_sala = self.campoSala.currentIndex()
         sala = None
         if index_sala:
@@ -149,6 +148,7 @@ class TelaPesquisa(QWidget):
                  'dataInicio' : dataInicio,
                  'dataFim' : dataFim,
                  'sala' : sala }
+        print(dados)
         return dados
 
     def criarPopUp(self):
@@ -162,13 +162,6 @@ class TelaPesquisa(QWidget):
         for card in self.grid.findChildren(QWidget):
             del card
             print('deletado')
-
-        # while self.grid.count():
-        #     item = self.grid.takeAt(0)
-        #     if item.widget():
-        #         print('deletado')
-        #         item.widget().deleteLater()
-
         print('-' * 100)
         print(lista_de_reservas)
         print('-' * 100)
