@@ -12,7 +12,7 @@ from App.view.telaConfirmacao import TelaConfirmacao
 from App.controller.curso import listarCurso, buscarCursoId, lista_de_cursos
 from App.controller.pessoa import buscarPessoas
 from App.controller.sala import listarSala
-from App.controller.utils import modificarData, modificarDataReserva
+from App.controller.utils import modificarData, sucessoCadastro, erroCadastro
 from App.controller.reserva import validarCadastro, validarDiaSemana, realizar_reserva_no_dia
 from App.controller.login import pegarUsuarioLogado
 
@@ -122,22 +122,21 @@ class ReservaInterface(QWidget):
                 for dia, reserva in dias_ocupados.items():
                     txt += f'{dia} | {reserva[1][2]} - {reserva[1][3]}\n'
                     
-                confirmacao = TelaConfirmacao( 'Conflitos', txt, 'Confirmar')
+                confirmacao = TelaConfirmacao( 'Conflitos', '', 'Confirmar', True, True)
                 if confirmacao.exec_():
                     realizar_reserva_no_dia(idLogin.get('id_login'), info, dias_livres)
-                    print('Reserva feita com sucesso!')
+                    sucessoCadastro(self)
                     return
                 else:
-                    print('Não foi possível fazer a reserva, já existe uma reserva nesse horário')
+                    erroCadastro(self)
 
             elif dias_livres and not dias_ocupados:
                 # fazer reserva direto
                 realizar_reserva_no_dia(idLogin.get('id_login'), info, dias_livres)
-                print('Reserva feita com sucesso!')
+                sucessoCadastro(self)
 
             elif not dias_livres:
-                # mostrar que nao tem dias disponiveis para reserva
-                print('ninhum dia disponivel para reserva')
+                erroCadastro(self)
 
         return
     

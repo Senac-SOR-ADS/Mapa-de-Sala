@@ -46,6 +46,8 @@ class LoginInterface(QDialog):
     def showMenu(self):
         # Cria o menu suspenso
         self.menu = QMenu(self)
+        # self.menu.setStyleSheet ('''background-color: red;
+        #                          border-radius: 5px;''')
        
         # Adiciona ação "Minimizar"
         minimize_action = self.menu.addAction("Minimizar")
