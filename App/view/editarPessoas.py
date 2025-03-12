@@ -29,7 +29,7 @@ class EditarPessoas(QWidget):
             atualizarPessoa(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6])
 
     def popularNomes(self):
-        pessoas = self.dicionarioPessoas.keys()
+        pessoas = self.dicionarioPessoas.values()
         self.nomePessoas.addItems(pessoas)
     
     def popularJanela(self):
@@ -49,9 +49,9 @@ class EditarPessoas(QWidget):
         return (ID_PESSOA, nome, cpfCnpj, dataNascimento, telefone, email, cargo)
 
     def getKey(self):
-        nome = self.nomePessoas.currentText()
-        key = self.dicionarioPessoas.get(nome)
-        return key
+        indice = self.nomePessoas.currentIndex()
+        key = list(self.dicionarioPessoas.keys())
+        return key[indice]
     
     def popularCampos(self):
         key = self.getKey()
