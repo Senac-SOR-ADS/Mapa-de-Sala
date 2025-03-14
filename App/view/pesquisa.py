@@ -94,7 +94,7 @@ class TelaPesquisa(QWidget):
 
 
     def comboboxOferta(self):
-        ofertas = self.dicionarioCursos.keys()
+        ofertas = self.dicionarioCursos.values()
         self.campoOferta.addItems(ofertas)
         self.campoOfertaMultipla.addItems(ofertas)
 
@@ -124,9 +124,8 @@ class TelaPesquisa(QWidget):
         index_oferta = self.campoOferta.currentIndex()
         oferta = None
         if index_oferta:
-            # oferta = list(self.dicionarioCursos.values())[index_oferta-1]
-            oferta = self.campoOferta.currentText()
- 
+            oferta = list(self.dicionarioCursos.keys())[index_oferta-1]
+
         index_sala = self.campoSala.currentIndex()
         sala = None
         if index_sala:
@@ -155,7 +154,6 @@ class TelaPesquisa(QWidget):
 
     def popularScrollArea(self, lista_de_reservas: list):
         self.btnPesquisar.setEnabled(False)
-
         max_colunas = 6
         coluna = 0
         linha = 0
