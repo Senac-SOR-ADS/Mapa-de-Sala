@@ -37,6 +37,7 @@ class HomePrincipal(QMainWindow):
         self._resize_geometry = None
         self.btnMenu.clicked.connect(self.alternarBotoesMenu)
         self.btnMenu2.clicked.connect(self.alternarBotoesMenu)
+        self.verificarPermissoes()
         
 
         # Criando parte interativa do menu
@@ -214,6 +215,16 @@ class HomePrincipal(QMainWindow):
         if confirmacao.exec_():
             removerUsuarioLogado()
             self.close()
+
+    def verificarPermissoes(self):
+        usuario = pegarUsuarioLogado()
+        tipo_conta = usuario.get("nivel_acesso", "user")
+ 
+        if tipo_conta == 'user':
+            self.btnPessoas.hide()
+            self.btnPessoa.hide()
+            self.btnEditarSimples.hide()
+            self.btnEditar.hide()
 
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
