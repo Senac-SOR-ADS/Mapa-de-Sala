@@ -12,23 +12,21 @@ class ReservaUnitaria(QDialog):
         self.dadosReserva = getReserva(idReserva)
         self.dadosConsultados = {
             'pessoas': buscarPessoas(),
-            'pessoaAtual': self.dadosReserva[2],
             'salas': listarSala(),
+            'pessoaAtual': self.dadosReserva[2],
             'salaAtual': self.dadosReserva[4],
         }
 
         print("id da reserva", idReserva)
         print('pessoaAtual', self.dadosReserva[2])
         print(self.dadosConsultados['pessoas'])
-        self.popularJanela()
-
-    def popularJanela(self):
+        
         self.comboBoxPessoa()
         self.comboBoxSala()
     
     def get_indice_pessoa_atual(self):
         pessoas = self.dadosConsultados['pessoas']
-        for i in range(len(pessoas.values())):
+        for i in range(len(pessoas.keys())):
             if list(pessoas.values())[i] == self.dadosConsultados['pessoaAtual']:
                 print(f'pessoa atual: ID({i})- Nome({list(pessoas.keys())[i]})')
                 return i
@@ -36,30 +34,33 @@ class ReservaUnitaria(QDialog):
     
     def get_indice_sala_atual(self):
         salas = self.dadosConsultados['salas']
-        for i in range(len(salas.values())):
-            if list(salas.values())[i] == self.dadosConsultados['salaAtual']:
-                return i
-        return 0
+        salaAtual = self.dadosConsultados['salaAtual']
+        indice = list(salas.values()).index(salaAtual)
+        return indice
+        # for i in range(len(salas.values())):
+        #     if list(salas.values())[i] == salaAtual:
+        #         return i
+        # return 0
 
     def comboBoxPessoa(self):
         """Busca as pessoas no banco e popula o comboBox."""
         pessoas = self.dadosConsultados['pessoas'] #buscarPessoas()
         self.nomeDocente.clear()
-        self.nomeDocente.addItems(pessoas.keys())
-        print('*'*50)
-        print(f'pessoas ADD: {pessoas.keys()}')
-        print('*'*50)
+        self.nomeDocente.addItems(pessoas.values())
+        # print('*'*50)
+        # print(f'pessoas ADD: {pessoas.keys()}')
+        # print('*'*50)
 
-        pessoa_atual = self.get_indice_pessoa_atual()
-        self.nomeDocente.setCurrentIndex(pessoa_atual)
-        print(f'indice pessoa atual: {pessoa_atual}')
-        print(f'pessoa selecionada: {self.nomeDocente.currentIndex()}')
+        # pessoa_atual = self.get_indice_pessoa_atual()
+        # self.nomeDocente.setCurrentIndex(pessoa_atual)
+        # print(f'indice pessoa atual: {pessoa_atual}')
+        # print(f'pessoa selecionada: {self.nomeDocente.currentIndex()}')
 
     def comboBoxSala(self):
         """Busca as salas no banco e popula o comboBox."""
-        salas = self.dadosConsultados['salas'] #listarSala()
+        salas = self.dadosConsultados['salas']
         self.salaReserva.clear()
         self.salaReserva.addItems(salas.keys())
 
         sala_atual = self.get_indice_sala_atual()
-        self.nomeDocente.setCurrentIndex(sala_atual)
+        self.salaReserva.setCurrentIndex(sala_atual)
