@@ -1,9 +1,10 @@
 from PyQt5.QtWidgets import QWidget, QDateTimeEdit
 from PyQt5.QtCore import QTimer, pyqtSlot, QDate, QTime
 from datetime import datetime, timedelta
-from App.controller.curso import listarCurso, buscarCursosId, atualizarCurso
+from App.controller.curso import listarCurso, lista_de_cursos, buscarCursosId, atualizarCurso
 from App.model.curso import *
 from App.controller.area import listarAreas
+from App.controller.utils import erroEdicao, sucessoEdicao
 
 from PyQt5.uic import loadUi
 
@@ -27,12 +28,14 @@ class EditarCurso(QWidget):
         infos = self.getEditarCurso()
 
         if(Curso.atualizar(idCurso, infos[0], infos[1], infos[2], infos[3], infos[4], infos[5], infos[6])):
-            print("Curso atualizado - editarCurso view")
+            sucessoEdicao(self)
+            self.setIndexInicial()
             return True
+        erroEdicao(self)
         return False
 
     def comboOferta(self):
-        dados = self.dicionarioDeCursos.keys()
+        dados = self.dicionarioDeCursos.values()
         self.ofertaCurso.addItems(dados)
 
     def comboArea(self):
@@ -54,38 +57,21 @@ class EditarCurso(QWidget):
             self.cargaCurso.setValue(cargaHoraria)
             self.periodoCurso.setCurrentText(periodo)
             self.campoArea.setCurrentText(area)
-            self.horasPorDia.setDateTime(horasDia)
+            self.horasPorDia.setTime(horasDia)
             self.quantidadeAlunos.setValue(int(qtdAlunos))
     
-    def obterDateTime(self, horas:timedelta):
-        horas = int(horas.total_seconds())
-        time = self.horasPorDia.dateTime().addSecs(horas)
+    def obterDateTime(self, horasCurso:timedelta):
+        time = QTime()
+        stringHoras = str(horasCurso)
+        hora = int(stringHoras.split(':')[0])
+        minuto = int(stringHoras.split(':')[1])
+        time.setHMS(hora, minuto, 0)
         return time
 
-
-    # def limparCampos(self):
-    #     idCurso = self.getIdOferta()
-    #     print(idCurso)
-    #     info = buscarCursosId(idCurso)
-    #     nome = info['nome']
-    #     cargaHoraria = info['cargaHoraria']
-    #     periodo = info['periodo']
-    #     area = info['idArea']
-    #     horasDia = info['horasDia']
-    #     qtdAlunos = info['qtdAlunos']
-
-    #     if (nome, cargaHoraria, periodo, area, horasDia, qtdAlunos):
-    #         self.nomeCurso.clear()
-    #         self.cargaCurso.clear()
-    #         self.periodoCurso.clear()
-    #         self.campoArea.clear()
-    #         self.horasPorDia.clear()
-    #         self.quantidadeAlunos.clear()
-
     def getEditarCurso(self):
-        oferta = self.ofertaCurso.currentText().strip()
-        nome = self.nomeCurso.text().strip()
         area = self.getIdArea()
+        nome = self.nomeCurso.text().strip()
+        oferta = self.getIdOferta()
         periodo = self.periodoCurso.currentText().strip()
         carga = self.cargaCurso.text().strip()
         horas = self.horasPorDia.text().strip()
@@ -94,11 +80,13 @@ class EditarCurso(QWidget):
     
     def getIdArea(self):
         area = self.campoArea.currentText()
-        print(f"Get id area: {self.dicionarioDeAreas.get(area)}")
         return self.dicionarioDeAreas.get(area)
 
     def getIdOferta(self):
-        oferta = self.ofertaCurso.currentText()
-        return self.dicionarioDeCursos.get(oferta)
+        oferta = self.ofertaCurso.currentIndex()
+        return list(self.dicionarioDeCursos.keys())[oferta]
     
     
+    def setIndexInicial(self):
+            self.ofertaCurso.setCurrentIndex(0)
+ 

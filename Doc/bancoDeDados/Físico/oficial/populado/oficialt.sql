@@ -84,7 +84,7 @@ CREATE TABLE `login` (
   `idPessoa` int(11) NOT NULL COMMENT 'ID da pessoa associada',
   `email` varchar(100) NOT NULL COMMENT 'Email do login',
   `senha` varchar(100) NOT NULL COMMENT 'Senha do login',
-  `nivelAcesso` enum('admin','user') NOT NULL DEFAULT 'user' COMMENT 'Nível de acesso do usuário'
+  `nivelAcesso` enum('admin', 'suporte','user') NOT NULL DEFAULT 'user' COMMENT 'Nível de acesso do usuário'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --

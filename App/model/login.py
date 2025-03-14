@@ -1,174 +1,217 @@
 from App.model.conexao import ConexaoBD
 from App.model.criptografia import Criptografia
-from App.controller.logger import Log
-
+from App.model.logger import logger_model
 
 class Login:
-    __banco = ConexaoBD()
-
     def __init__(self, email=None, senha=None, nivel_acesso='user') -> None:
-        self.__email = email
-        self.__senha = senha
-        self.__idLogin = None
-        self.__idPessoa = None
-        self.__nivelAcesso = nivel_acesso
+        self.__banco = ConexaoBD()
+        self.__email, self.__senha, self.__idLogin, self.__idPessoa, self.__nivelAcesso = email, senha, None, None, nivel_acesso
 
-    def getIdLogin(self):
-        return self.__idLogin
+    # =================== Getters ===================
+    def getIdLogin(self): return self.__idLogin
+    def getIdPessoa(self): return self.__idPessoa
+    def getEmail(self): return self.__email
+    def getSenha(self): return self.__senha
+    def getNivelAcesso(self): return self.__nivelAcesso
 
-    def setIdLogin(self, id):
-        self.__idLogin = id
+    # =================== Setters ===================
+    def setIdLogin(self, id): self.__idLogin = id
+    def setIdPessoa(self, id): self.__idPessoa = id
+    def setEmail(self, email): self.__email = email
+    def setSenha(self, senha): self.__senha = senha
+    def setNivelAcesso(self, nivel_acesso): self.__nivelAcesso = nivel_acesso
 
-    def getIdPessoa(self):
-        return self.__idPessoa
-
-    def setIdPessoa(self, id):
-        self.__idPessoa = id
-
-    def getEmail(self):
-        return self.__email
-
-    def setEmail(self, email):
-        self.__email = email
-
-    def getSenha(self):
-        return self.__senha
-
-    def setSenha(self, senha):
-        self.__senha = senha
-
-    def getNivelAcesso(self):
-        return self.__nivelAcesso
-
-    def setNivelAcesso(self, nivel_acesso):
-        self.__nivelAcesso = nivel_acesso
-
-    # =================== cadastrar ===================
+    # =================== cadastrar Login ===================
     def cadastrar(self, idPessoa, cpf_cnpj, email, cargo):
         self.setIdPessoa(idPessoa)
         self.setEmail(email)
         self.setSenha(cpf_cnpj)
-
+        
         senha_criptografada = Criptografia.criptografarSenha(cpf_cnpj)
-        nivelAcesso = 'admin' if cargo == 'Administrador' else 'user'
+        nivelAcesso = {"Administrador": "admin", "Suporte": "suporte"}.get(cargo, "user")
 
         try:
             self.__banco.conectar()
-
-            query_login = '''
-            INSERT INTO login (idPessoa, email, senha, nivelAcesso)
-            VALUES (%s, %s, %s, %s)
-            '''
-            params_login = (self.getIdPessoa(), self.getEmail(), senha_criptografada, nivelAcesso)
-            self.__banco.alterarDados(query_login, params_login)
+            query_login = """
+                INSERT INTO login (idPessoa, email, senha, nivelAcesso)
+                VALUES (%s, %s, %s, %s)
+            """
+            self.__banco.alterarDados(query_login, (idPessoa, email, senha_criptografada, nivelAcesso))
+            
+            logger_model.success("[CADASTRO] Login cadastrado com sucesso - ID: %s, Email: %s, Nível de Acesso: %s", idPessoa, email, nivelAcesso)
             return True
-
+        
         except Exception as e:
-            print(f"Erro ao cadastrar login: {e}")
+            logger_model.error("[CADASTRO] Erro ao cadastrar login - Email: %s, Erro: %s", email, str(e))
             return False
-
+        
         finally:
             self.__banco.desconectar()
+            logger_model.debug("[CADASTRO] Conexão com o banco encerrada.")
 
-    # =================== atualizar ===================
-    def atualizar(self, idLogin, email, acesso, senha):
-        """Atualiza o email e o nível de acesso do usuário no banco de dados."""
-        senha = Criptografia.criptografarSenha(senha)
+    # =================== Atualizar Módulo WEB ===================
+    def atualizarWEB(self, idLogin, email, cargo, senha=None):
+        """Atualiza o email, nível de acesso e, opcionalmente, a senha de um usuário, com base no cargo."""
         
+        nivelAcesso = {"Administrador": "admin", "Suporte": "suporte"}.get(cargo, "user")
+
         try:
             self.__banco.conectar()
 
+            if senha:
+                query_update = 'UPDATE login SET email = %s, nivelAcesso = %s, senha = %s WHERE idLogin = %s'
+                valores = (email, nivelAcesso, Criptografia.criptografarSenha(senha), idLogin)
+            else:
+                query_update = 'UPDATE login SET email = %s, nivelAcesso = %s WHERE idLogin = %s'
+                valores = (email, nivelAcesso, idLogin)
+
+            self.__banco.alterarDados(query_update, valores)
+            logger_model.info("[ATUALIZACAO] Cadastro atualizado com sucesso - ID: %s, Email: %s, Nível de Acesso: %s", idLogin, email, nivelAcesso)
+            return True
+        except Exception as e:
+            logger_model.error("[ATUALIZACAO] Erro ao atualizar cadastro - ID: %s, Erro: %s", idLogin, str(e))
+            return False
+        finally:
+            self.__banco.desconectar()
+            logger_model.debug("[ATUALIZACAO] Conexão com o banco de dados encerrada.")
+
+
+    # =================== Atualizar Módulo Desktop ===================
+    def atualizar(self, idLogin, email, acesso, senha):
+        """Atualiza o email, nível de acesso e a senha de um usuário."""
+        
+        senha = Criptografia.criptografarSenha(senha)
+
+        try:
+            self.__banco.conectar()
             query_update = '''
                 UPDATE login
                 SET email = %s, nivelAcesso = %s, senha = %s
                 WHERE idLogin = %s
             '''
-            self.__banco.alterarDados(query_update, (email, acesso, senha, idLogin))
+            valores = (email, acesso, senha, idLogin)
+            self.__banco.alterarDados(query_update, valores)
+            logger_model.info("[ATUALIZACAO] Cadastro atualizado com sucesso - ID: %s, Email: %s, Nível de Acesso: %s", idLogin, email, acesso)
             return True
         except Exception as e:
-            print(f"Erro ao atualizar login: {e}")
+            logger_model.error("[ATUALIZACAO] Erro ao atualizar cadastro - ID: %s, Erro: %s", idLogin, str(e))
             return False
         finally:
             self.__banco.desconectar()
+            logger_model.debug("[ATUALIZACAO] Conexão com o banco de dados encerrada.")
 
-    # =================== listar ===================
+    # =================== buscar Login ===================
     def buscar(self, idLogin):
-        self.__banco.conectar()
+        try:
+            self.__banco.conectar()
+            query = "SELECT * FROM login WHERE idLogin = %s;"
+            resultado = self.__banco.buscar(query, (idLogin,))
+            
+            if resultado:
+                self.setIdLogin(resultado[0])
+                self.setIdPessoa(resultado[1])
+                self.setEmail(resultado[2])
+                self.setSenha(resultado[3])
+                self.setNivelAcesso(resultado[4])
+                
+                logger_model.info("[BUSCA ID] Login encontrado - ID: %s, Email: %s", idLogin, resultado[2])
+                return True
+            
+            logger_model.warning("[BUSCA ID] Nenhum login encontrado - ID: %s", idLogin)
+            return False
 
-        query = "SELECT * FROM login WHERE idLogin = %s;"
-        parametro = (idLogin,)
-        resultado = self.__banco.buscar(query, parametro)
-        self.__banco.desconectar()
+        except Exception as e:
+            logger_model.error("[BUSCA ID] Erro ao buscar login - ID: %s, Erro: %s", idLogin, str(e))
+            return False
 
-        if resultado:
-            self.setIdLogin(resultado[0])
-            self.setIdPessoa(resultado[1])
-            self.setEmail(resultado[2])
-            self.setSenha(resultado[3])
-            self.setNivelAcesso(resultado[4])
-            return True
-        return False
-    
-    # =================== consultar ===================
+        finally:
+            self.__banco.desconectar()
+            logger_model.debug("[BUSCA ID] Conexão com o banco de dados encerrada.")
+
+    # =================== buscar todos ===================
     @classmethod
     def buscar_todos(cls):
-        """Busca todos os logins"""
-        cls.__banco.conectar()
-        query = "SELECT * FROM login"
-        resultado = cls.__banco.buscarTodos(query)
-        cls.__banco.desconectar()
-        return resultado
+        banco = ConexaoBD()
+        try:
+            banco.conectar()
+            resultado = banco.buscarTodos("SELECT * FROM login")
+            logger_model.info("[BUSCA] Todos os logins foram buscados - Total: %d", len(resultado))
+            return resultado
+        except Exception as e:
+            logger_model.error("[BUSCA] Erro ao buscar todos os logins - Erro: %s", str(e))
+            return []
+        finally:
+            banco.desconectar()
+            logger_model.debug("[BUSCA] Conexão com o banco de dados encerrada.")
 
-    # =================== buscar por Id ===================
+    # =================== Buscar ID ===================
     @classmethod
     def pesquisar_id(cls, idLogin):
+        banco = ConexaoBD()
         try:
-            cls.__banco.conectar()
-            query = 'SELECT * FROM login WHERE idLogin = %s;'
-            resposta = cls.__banco.buscar(query, (idLogin,))
-            cls.__banco.desconectar()
+            banco.conectar()
+            resposta = banco.buscar('SELECT * FROM login WHERE idLogin = %s;', (idLogin,))
+            
+            if resposta:
+                logger_model.info("[BUSCA ID] Login encontrado - ID: %s", idLogin)
+            else:
+                logger_model.warning("[BUSCA ID] Nenhum login encontrado - ID: %s", idLogin)
+            
             return resposta if resposta else False
+
         except Exception as e:
-            print(f"Erro ao pesquisar login: {e}")
+            logger_model.error("[BUSCA ID] Erro ao pesquisar login - ID: %s, Erro: %s", idLogin, str(e))
             return False
 
-    # =================== Remove ===================
+        finally:
+            banco.desconectar()
+            logger_model.debug("[BUSCA ID] Conexão com o banco de dados encerrada.")
+
+    # =================== deletar Login ===================
     @classmethod
     def deletar(cls, idLogin):
+        banco = ConexaoBD()
         try:
-            cls.__banco.conectar()
-            query = 'DELETE FROM login WHERE idLogin = %s;'
-            params = (idLogin,)
-            cls.__banco.alterarDados(query, params)
+            banco.conectar()
+            banco.alterarDados('DELETE FROM login WHERE idLogin = %s;', (idLogin,))
+            logger_model.info("[DELECAO] Login deletado com sucesso - ID: %s", idLogin)
             return True
         except Exception as e:
-            print(f"Erro ao deletar login: {e}")
+            logger_model.error("[DELECAO] Erro ao deletar login - ID: %s, Erro: %s", idLogin, str(e))
             return False
         finally:
-            cls.__banco.desconectar()
+            banco.desconectar()
+            logger_model.debug("[DELECAO] Conexão com o banco de dados encerrada.")
 
-
-    # =================== validar ===================
+    # =================== validar login ===================
     def validarLogin(self):
-        self.__banco.conectar()
-
+        email = self.getEmail()
+        senha = self.getSenha()
         query = "SELECT * FROM login WHERE email = %s;"
-        parametro = [self.getEmail()]
-        resultado = self.__banco.buscar(query, parametro)
-        self.__banco.desconectar()
 
         try:
-            if resultado:
-                senhaBanco = resultado[3].encode('utf-8')
-                senhaUsuario = self.getSenha()
+            self.__banco.conectar()
+            resultado = self.__banco.buscar(query, [email])
 
-                if Criptografia.validarSenha(senhaUsuario, senhaBanco):
-                    self.setIdLogin(resultado[0])
-                    self.setIdPessoa(resultado[1])
-                    self.setNivelAcesso(resultado[4])
-                    return True
+            if not resultado or not resultado[3]:
+                logger_model.warning("[VALIDACAO] Usuário encontrado, mas senha não cadastrada - Email: %s", email)
+                return False
+
+            senha_hash = resultado[3].encode('utf-8')
+            if Criptografia.validarSenha(senha, senha_hash):
+                self.setIdLogin(resultado[0])
+                self.setIdPessoa(resultado[1])
+                self.setNivelAcesso(resultado[4])
+                logger_model.info("[VALIDACAO] Login validado com sucesso - Email: %s", email)
+                return True
+
         except Exception as e:
-            print(f"Erro na validação de login: {e}")
+            logger_model.error("[VALIDACAO] Erro na validação de login - Email: %s, Erro: %s", email, str(e))
+
+        finally:
+            self.__banco.desconectar()
+            logger_model.debug("[VALIDACAO] Conexão com o banco de dados encerrada.")
+
         return False
 
 if __name__ == "__main__":

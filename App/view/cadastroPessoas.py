@@ -3,7 +3,7 @@ from PyQt5.uic import loadUi
 from PyQt5.QtCore import pyqtSlot, QDate
 from App.controller.pessoa import cadastrarPessoa
 from App.controller.utils import modificarData
-from App.controller.utils import validarAcao
+from App.controller.utils import  validarInputs, sucessoCadastro, erroCadastro
 from PyQt5.QtCore import QTimer
 
 class cadastroPessoas(QWidget):
@@ -21,17 +21,11 @@ class cadastroPessoas(QWidget):
         nomePessoas = self.nomePessoas.text().strip()
         cpfCnpj = self.cpfCnpj.text().strip()
         email = self.email.text().strip()
-        dataDeNascimento = self.dataDeNascimento.text().strip()
+        dataDeNascimento = modificarData(self.dataDeNascimento.text().strip())
         cargo = self.cargo.currentText()
         telefone = self.telefone.text().strip()
-
-        dados = {"nome": nomePessoas,
-                 "cpfCnpj": cpfCnpj,
-                 "dataDeNascimento": modificarData(dataDeNascimento),
-                 "telefone": telefone,
-                 "email": email,
-                 "cargo": cargo}
-        return dados
+        
+        return (nomePessoas, cpfCnpj, dataDeNascimento, telefone, email, cargo)
         
     def limparCampos(self, *campos):
         for campo in campos:
@@ -46,8 +40,21 @@ class cadastroPessoas(QWidget):
     @pyqtSlot()
     def on_btnCadastrar_clicked(self):
         campos = self.getDadosCadastro()
-        if cadastrarPessoa(*campos.values()):
-            print('Pessoa cadastrada com sucesso!')
-            validarAcao()
+        if validarInputs(campos):
+            cadastro = cadastrarPessoa(campos[0], campos[1], campos[2], campos[3], campos[4], campos[5])
+            if cadastro == True:
+                sucessoCadastro(self)
+                self.setIndexInicial()
+            else:
+                erroCadastro(self)
         else:
-            print('Erro ao cadastrar pessoa!')
+            erroCadastro(self)
+
+    def setIndexInicial(self):
+        data = QDate.currentDate()
+        self.nomePessoas.setText('')
+        self.cpfCnpj.setText('')
+        self.email.setText('')
+        self.dataDeNascimento.setDate(data)
+        self.cargo.setCurrentIndex(0)
+        self.telefone.setText('')

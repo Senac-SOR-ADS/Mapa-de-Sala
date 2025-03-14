@@ -3,13 +3,19 @@
 	border-radius: 15px; 
 }
 
+#cabecalho {
+	background-color: rgba(0, 0, 0, 0.2);
+	border-top-left-radius: 17px;
+	border-top-right-radius: 17px;
+}
+
 #btnEditar {
 	border-top-right-radius: 15px;
 	border-bottom-right-radius: 15px;
 }
 
 #btnEditar:hover {
-	background-color: #423d3d;
+	background-color: rgba(64, 73, 155, 1);
 }
 
 #btnExcluir {
@@ -22,8 +28,14 @@
 }
 
 #conteudo {
-	background-color: #40499B;
-	border-radius: 10px;
+	background-color: rgba(52, 60, 132, 1);
+	border-radius: 17px;
+}
+
+#conteudo:hover {
+	border-radius: 17px;
+	background-color: rgb(87, 95, 169);
+	border: 3px solid rgba(50, 115, 228, 0.942);
 }
 
 #conteudo QLabel {

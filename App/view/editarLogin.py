@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import pyqtSlot
 from App.controller.login import listarLogins, buscarLoginId, atualizarCadastro
-from App.controller.utils import validarInputs
+from App.controller.utils import validarInputs, erroEdicao, sucessoEdicao
  
 class EditarLogin(QWidget):
     def __init__(self):
@@ -34,7 +34,11 @@ class EditarLogin(QWidget):
     def on_btnEditarLogin_clicked(self):
         dados = self.getValores()
         if validarInputs(dados[:-1]):
-            atualizarCadastro(dados[0], dados[1], dados[2], dados[3])
+            if atualizarCadastro(dados[0], dados[1], dados[2], dados[3]):
+                sucessoEdicao(self)
+                self.setIndexInicial()
+        else:
+            erroEdicao(self)
  
     def popularJanela(self):
         self.comboboxLogin()
@@ -68,3 +72,6 @@ class EditarLogin(QWidget):
         key = self.getKey()
         dados = buscarLoginId(key)
         self.nivelAcesso.setCurrentText(dados.get('nivelAcesso'))
+    
+    def setIndexInicial(self):
+        self.alterarLogin.setCurrentIndex(0)

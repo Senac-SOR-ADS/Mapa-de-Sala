@@ -1,6 +1,12 @@
 #gridContainer #containerBtns {
-	background-color: rgba(0, 0, 0, 0.46);
+	background-color: rgba(129, 78, 19, 0.418);
 	border-radius: 15px; 
+}
+
+#cabecalho {
+	background-color: rgba(0, 0, 0, 0.2);
+	border-top-left-radius: 17px;
+	border-top-right-radius: 17px;
 }
 
 #btnEditar {
@@ -9,7 +15,7 @@
 }
 
 #btnEditar:hover {
-	background-color: #423d3d;
+	background-color: rgba(219, 150, 72, 0.815);
 }
 
 #btnExcluir {
@@ -22,8 +28,13 @@
 }
 
 #conteudo {
-	background-color: #D58E3D;
-	border-radius: 10px;
+	background-color: rgb(213, 142, 61);
+	border-radius: 17px;
+}
+#conteudo:hover {
+	background-color: rgb(236, 166, 85);
+	border-radius: 17px;
+	border: 3px solid rgb(206, 135, 55);
 }
 
 #conteudo QLabel {

@@ -2,9 +2,9 @@
 
 from App.model.conexao import ConexaoBD
 from App.model.curso import Curso
-from App.controller.logger import Log
+from App.model.logger import logger_model
 
-log = Log('model')
+log = logger_model
 
 
 class Reserva:

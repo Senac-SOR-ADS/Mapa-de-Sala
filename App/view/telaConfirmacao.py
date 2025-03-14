@@ -1,10 +1,11 @@
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt, QPoint
+from .telaConflitos import TelaConflitos
 
 
 class TelaConfirmacao(QDialog):
-    def __init__(self, titulo, aviso, txtBtnOk, equipamentos=False):
+    def __init__(self, titulo, aviso, txtBtnOk, btnConflitos=False, equipamentos=False):
         super().__init__()
         loadUi('App/view/ui/telaConfirmacao.ui', self)
         self._is_dragging = False
@@ -23,14 +24,22 @@ class TelaConfirmacao(QDialog):
             }
         """)
         
+        if btnConflitos == False:
+            self.btnAbrirConflitos.hide()
+        else: 
+            self.btnAbrirConflitos.show()
+        
         if aviso == '':
             self.aviso.close()
         else:
             self.aviso.setText(aviso)
+            
+            
         self.titulo.setText(titulo)
         self.btnOk.clicked.connect(self.accept)
         self.btnCancelar.clicked.connect(self.reject)
         self.btnFechar.clicked.connect(self.reject)
+        self.btnAbrirConflitos.clicked.connect(self.chamarTelaConflitos)
         
         # Remove a barra de título e as bordas da janela
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -43,6 +52,12 @@ class TelaConfirmacao(QDialog):
             self.containerEquipamentos.show()
         else:
             self.containerEquipamentos.hide()
+            
+            
+    def chamarTelaConflitos(self):
+        conflitos = TelaConflitos('')
+        if conflitos.exec_():
+            pass
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
