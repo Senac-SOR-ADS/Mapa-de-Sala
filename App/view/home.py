@@ -37,6 +37,7 @@ class HomePrincipal(QMainWindow):
         self._resize_geometry = None
         self.btnMenu.clicked.connect(self.alternarBotoesMenu)
         self.btnMenu2.clicked.connect(self.alternarBotoesMenu)
+        self.verificarPermissoes()
         
 
         # Criando parte interativa do menu
@@ -103,9 +104,7 @@ class HomePrincipal(QMainWindow):
         self.btnTelaCheia.clicked.connect(self.windowConnect)
         self.btnFecharPagina.clicked.connect(self.close)
 
-    ################################
-    # Função correta para inserir interface
-    def setInterfaceOnHome(self, interface:QWidget):
+    def setInterfaceOnHome(self, interface: QWidget):
         self.container: QStackedWidget
         if type(interface) != QWidget:  # precisa instanciar a interface
             interface = interface()
@@ -119,19 +118,15 @@ class HomePrincipal(QMainWindow):
         if self.isMaximized():
             self.showNormal()
             self.btnTelaCheia.setStyleSheet("""
-                                           #btnTelaCheia {
-                                               icon: url("App/view/ui/icones/iconTelaCheia.png"); 
-                                            }"""
-                                        )
-            
+                #btnTelaCheia {
+                    icon: url("App/view/ui/icones/iconTelaCheia.png"); 
+                }""")
         else:
             self.showMaximized()
             self.btnTelaCheia.setStyleSheet("""
-                                        #btnTelaCheia {
-                                            icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png"); 
-                                            }"""
-                                        )
-                
+                #btnTelaCheia {
+                    icon: url("App/view/ui/icones/iconRestaurarTamanhoTela.png"); 
+                }""")
 
     def inserirTelasMenu(self, menu):
         for i in menu:
@@ -220,6 +215,16 @@ class HomePrincipal(QMainWindow):
         if confirmacao.exec_():
             removerUsuarioLogado()
             self.close()
+
+    def verificarPermissoes(self):
+        usuario = pegarUsuarioLogado()
+        tipo_conta = usuario.get("nivel_acesso", "user")
+ 
+        if tipo_conta == 'user':
+            self.btnPessoas.hide()
+            self.btnPessoa.hide()
+            self.btnEditarSimples.hide()
+            self.btnEditar.hide()
 
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
