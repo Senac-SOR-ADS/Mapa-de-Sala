@@ -20,15 +20,15 @@ class ReservaUnitaria(QDialog):
         print("id da reserva", idReserva)
         print('pessoaAtual', self.dadosReserva[2])
         print(self.dadosConsultados['pessoas'])
-        
+
         self.comboBoxPessoa()
         self.comboBoxSala()
     
     def get_indice_pessoa_atual(self):
         pessoas = self.dadosConsultados['pessoas']
         for i in range(len(pessoas.keys())):
-            if list(pessoas.values())[i] == self.dadosConsultados['pessoaAtual']:
-                print(f'pessoa atual: ID({i})- Nome({list(pessoas.keys())[i]})')
+            if list(pessoas.keys())[i] == self.dadosConsultados['pessoaAtual']:
+                # print(f'pessoa atual: ID({i})- Nome({list(pessoas.keys())[i]})')
                 return i
         return 0
     
@@ -37,24 +37,17 @@ class ReservaUnitaria(QDialog):
         salaAtual = self.dadosConsultados['salaAtual']
         indice = list(salas.values()).index(salaAtual)
         return indice
-        # for i in range(len(salas.values())):
-        #     if list(salas.values())[i] == salaAtual:
-        #         return i
-        # return 0
 
     def comboBoxPessoa(self):
         """Busca as pessoas no banco e popula o comboBox."""
         pessoas = self.dadosConsultados['pessoas'] #buscarPessoas()
         self.nomeDocente.clear()
         self.nomeDocente.addItems(pessoas.values())
-        # print('*'*50)
-        # print(f'pessoas ADD: {pessoas.keys()}')
-        # print('*'*50)
 
-        # pessoa_atual = self.get_indice_pessoa_atual()
-        # self.nomeDocente.setCurrentIndex(pessoa_atual)
+        pessoa_atual = self.get_indice_pessoa_atual()
+        self.nomeDocente.setCurrentIndex(pessoa_atual)
+
         # print(f'indice pessoa atual: {pessoa_atual}')
-        # print(f'pessoa selecionada: {self.nomeDocente.currentIndex()}')
 
     def comboBoxSala(self):
         """Busca as salas no banco e popula o comboBox."""
