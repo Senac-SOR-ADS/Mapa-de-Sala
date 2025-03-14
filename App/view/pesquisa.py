@@ -44,10 +44,6 @@ class TelaPesquisa(QWidget):
 
         self.dataInicio.dateChanged.connect(self.setDataMinima)
         self.dataInicioMultiplo.dateChanged.connect(self.setDataMinima)
-
-        self.container_GRID = QWidget()
-        self.grid = QGridLayout(self.container_GRID)
-        self.gridContainer.setWidget(self.container_GRID)
         
         self.checks.setStyleSheet("""
                 QCheckBox::indicator {
@@ -149,7 +145,6 @@ class TelaPesquisa(QWidget):
                  'dataInicio' : dataInicio,
                  'dataFim' : dataFim,
                  'sala' : sala }
-        # print(dados)
         return dados
 
     def criarPopUp(self):
@@ -159,7 +154,6 @@ class TelaPesquisa(QWidget):
 
     def popularScrollArea(self, lista_de_reservas: list):
         self.btnPesquisar.setEnabled(False)
-
         max_colunas = 6
         coluna = 0
         linha = 0
