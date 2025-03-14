@@ -15,6 +15,8 @@ class CardPesquisa(QWidget):
         super().__init__()
         loadUi('App/view/ui/cardPesquisa.ui',self)
         self.idReserva = id_reserva
+        self.data = data
+        self.curso = curso
 
         cssFile = join(self.CURRENT_DIR, f"./ui/css/cards/{horario.lower()}.css")
         with open(cssFile, 'r') as css:
@@ -37,7 +39,7 @@ class CardPesquisa(QWidget):
 
     @pyqtSlot()
     def on_btnEditar_clicked(self):
-        tela = ReservaUnitaria(self.idReserva)
+        tela = ReservaUnitaria(self.idReserva, self.data)
         tela.exec_()
 
     def excluirReserva(self):
