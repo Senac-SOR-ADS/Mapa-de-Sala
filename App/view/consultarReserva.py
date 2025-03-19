@@ -1,6 +1,8 @@
 from PyQt5.QtWidgets import QWidget, QDateEdit
 from PyQt5.QtCore import QDate, pyqtSlot
 from PyQt5.uic import loadUi
+from App.controller.relatorio import relatorioSalaLivre, gerarRelatorio
+from App.controller.utils import modificarData
 
 class ConsultarReserva(QWidget):
     def __init__(self):
@@ -29,12 +31,12 @@ class ConsultarReserva(QWidget):
 
     @pyqtSlot()
     def on_salasLivres_clicked(self):
-        self.buscarData
-        self.horaInicio
-        self.horaFim
-        print('gerar relatório salas livres')
+        dia = modificarData(self.buscarData.text().strip() )
+        h_inicio = self.horaInicio.text()
+        h_fim = self.horaFim.text()
+        relatorioSalaLivre(dia, h_inicio, h_fim)
     
     @pyqtSlot()
     def on_buscarRelatorios_clicked(self):
-        self.dataRelatorio
-        print('gerar relatório por dia')
+        dia = modificarData(self.dataRelatorio.text().strip() )
+        gerarRelatorio(dia)

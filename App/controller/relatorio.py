@@ -12,7 +12,8 @@ def gerarRelatorio(data: Optional[datetime.date] = None) -> List[dict]:
     
     # Buscando as reservas para o dia especificado
     reservas = Relatorio.buscar_reservas_por_dia(data) or []
-    
+    if not isinstance(data, str):
+        data = data.strftime('%d/%m/%Y')
     # Renderizando o template com as reservas
     diretorio = join(abspath(__file__), '../../view/relatorio')
     env = Environment(loader=FileSystemLoader(diretorio))
