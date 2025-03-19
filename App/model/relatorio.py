@@ -3,9 +3,6 @@ from App.model.conexao import ConexaoBD
 class Relatorio:
     __banco = ConexaoBD()
  
-    def __init__(self):
-        pass
- 
     @classmethod
     def relatorioDia(cls, dia):
        cls.__banco.conectar()
@@ -13,7 +10,6 @@ class Relatorio:
        params = [dia]
        resultado = cls.__banco.buscarTodos(query, params)
        cls.__banco.desconectar()
-       print(resultado)
        return resultado
     
     @classmethod
@@ -23,7 +19,15 @@ class Relatorio:
         params = [diaInicio, diaFim, idSala]
         resultado = cls.__banco.buscarTodos(query, params)
         cls.__banco.desconectar()
-        print(resultado)
+        return resultado
+    
+    @classmethod
+    def relatorioSalaLivre(cls, dia, horaInicio, horaFim ):
+        cls.__banco.conectar()
+        query = '''SELECT DISTINCT s.nome, s.tipo, s.predio FROM sala s JOIN reserva r ON r.idSala != s.idSala WHERE r.dia = %s AND r.hrInicio BETWEEN %s AND %s AND r.hrFim BETWEEN %s AND %s'''
+        params = [dia, horaInicio, horaFim, horaInicio, horaFim]
+        resultado = cls.__banco.buscarTodos(query, params)
+        cls.__banco.desconectar()
         return resultado
     
     @classmethod
@@ -33,15 +37,4 @@ class Relatorio:
         params = [diaInicio, diaFim, idPessoa]
         resultado = cls.__banco.buscarTodos(query, params)
         cls.__banco.desconectar()
-        print(resultado)
-        return resultado
-
-    @classmethod
-    def relatorioSalaLivre(cls, dia, horaInicio, horaFim ):
-        cls.__banco.conectar()
-        query = '''SELECT DISTINCT s.nome, s.tipo, s.predio FROM sala s JOIN reserva r ON r.idSala != s.idSala WHERE r.dia = %s AND r.hrInicio BETWEEN %s AND %s AND r.hrFim BETWEEN %s AND %s'''
-        params = [dia, horaInicio, horaFim, horaInicio, horaFim]
-        resultado = cls.__banco.buscarTodos(query, params)
-        cls.__banco.desconectar()
-        print(resultado)
         return resultado
