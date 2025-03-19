@@ -65,3 +65,12 @@ class Relatorio:
         ]
         cls.__banco.desconectar()
         return reservas
+
+    @classmethod
+    def relatorioCursosFinalizando(cls, diaInicio, diaFim):
+        cls.__banco.conectar()
+        query = '''WITH CursoReservas AS (SELECT r.idcurso, MIN(r.dia) AS diaInicioCurso FROM  reserva r GROUP BY r.idcurso), UltimaReservaPeriodo AS (SELECT r.idcurso, MAX(r.dia) AS diaFimCurso FROM reserva r WHERE r.dia BETWEEN %s AND %s GROUP BY r.idcurso) SELECT c.nome AS nomeCurso, cr.diaInicioCurso, urp.diaFimCurso, r.hrInicio, r.hrFim FROM CursoReservas cr JOIN UltimaReservaPeriodo urp ON cr.idcurso = urp.idcurso JOIN curso c ON cr.idcurso = c.idcurso JOIN  reserva r ON urp.idcurso = r.idcurso AND r.dia = urp.diaFimCurso'''
+        params = [diaInicio, diaFim]
+        resultado = cls.__banco.buscarTodos(query, params)
+        cls.__banco.desconectar()
+        return resultado
