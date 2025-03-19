@@ -18,7 +18,7 @@ from .editarSala import EditarSala
 from .reserva import ReservaInterface
 from .telaConfirmacao import TelaConfirmacao
 from .pesquisa import TelaPesquisa
-from .consultarRelatorio import ConsultarRelatorio
+from .consultarReserva import ConsultarReserva
 
 from App.controller.login import pegarUsuarioLogado, removerUsuarioLogado
 
@@ -40,7 +40,6 @@ class HomePrincipal(QMainWindow):
         self.btnMenu2.clicked.connect(self.alternarBotoesMenu)
         self.verificarPermissoes()
         
-
         # Criando parte interativa do menu
         self.btnMenu: QPushButton
         self.subMenuLateral: QWidget
@@ -68,7 +67,7 @@ class HomePrincipal(QMainWindow):
         self.interfEditReserva = EditarReserva
         self.interfEditSala = EditarSala
         self.interfPesquisa = TelaPesquisa
-        self.interfConsultaRelatorio = ConsultarRelatorio
+        self.interfConsultaRelatorio = ConsultarReserva
 
         # Telas dentro do menu para alterar as janelas pelo sub menu
         self.btnPessoa.clicked.connect(lambda: self.trocarTelaMenu(self.cadastros))
