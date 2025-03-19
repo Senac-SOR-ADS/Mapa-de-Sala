@@ -22,6 +22,7 @@ class ReservaUnitaria(QDialog):
         self.inicio = self.getHoraFormatada(self.dadosReserva[6])
         self.fim = self.getHoraFormatada(self.dadosReserva[7])
         self.observacao = self.dadosReserva[9]
+        self.curso = self.dadosReserva[3]
 
         self.diaInicio.setCalendarPopup(True)
         self.diaInicio.setDisplayFormat('dd/MM/yyyy')
@@ -37,6 +38,7 @@ class ReservaUnitaria(QDialog):
 
     def popularJanela(self, horaInicio, horaFim, observacao):
         self.comboBoxPessoa()
+        self.setCurso()
         self.comboBoxSala()
         self.setHoraInicio(horaInicio)
         self.setHoraFim(horaFim)
@@ -67,6 +69,12 @@ class ReservaUnitaria(QDialog):
         self.nomeDocente.setCurrentIndex(pessoa_atual)
 
         # print(f'indice pessoa atual: {pessoa_atual}')
+
+    def setCurso(self):
+        curso = self.curso
+        print(curso)
+        # self.nomeCurso.clear()
+        # self.nomeCurso.setText(curso)
 
     def comboBoxSala(self):
         """Busca as salas no banco e popula o comboBox."""
@@ -103,17 +111,8 @@ class ReservaUnitaria(QDialog):
 
     @pyqtSlot()
     def on_btnEditarReserva_clicked(self):
-        # docente = self.nomeDocente.currentIndex()
-        # # curso
-        # sala = self.salaReserva.currentText()
-        # hrInicio = self.inicioCurso.time().toString('HH:mm')
-        # hrFim = self.fimCurso.time().toString('HH:mm')
-        diaInicio = self.diaInicio.date().toString('dd/MM/yyyy')
-        #observações
-        # print(f"IDs do docente: {docente}, sala: {sala}, hrInicio: {hrInicio}, hrFim: {hrFim}, dataInicio: {diaInicio}")
-
         docente = self.dadosConsultados['pessoaAtual']
-        # curso
+        curso = self.curso
         sala = self.dadosConsultados['salaAtual']
         hrInicio = self.inicio
         hrFim = self.fim
@@ -121,7 +120,7 @@ class ReservaUnitaria(QDialog):
         obs = self.observacao
 
 
-        print(f"IDs do docente: {docente}, sala: {sala}, hrInicio: {hrInicio}, hrFim: {hrFim}, diaInicio: {diaInicio} obs: {obs}")
+        print(f"IDs do docente: {docente}, curso: {curso}, sala: {sala}, hrInicio: {hrInicio}, hrFim: {hrFim}, diaInicio: {diaInicio} obs: {obs}")
         
         # docente
         # sala
