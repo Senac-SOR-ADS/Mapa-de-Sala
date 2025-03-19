@@ -8,6 +8,7 @@ from App.model.reserva import Reserva
 from App.controller.curso import listar_id_e_nome_cursos
 from App.controller.utils import modificarData
 from App.view.feedback import Feedback
+from App.controller.relatorio import relatorioSalaLivre
 
 class ReservaUnitaria(QDialog):
     def __init__(self, idReserva, dataReserva):
@@ -170,4 +171,11 @@ class ReservaUnitaria(QDialog):
         else:
             resposta = Feedback(False, 'Erro ao Atualizar', 'não atualizado', 'não atualizado')
             resposta.exec_()
+
+    @pyqtSlot()
+    def on_btnSalaLivre_clicked(self):
+        dia = modificarData(self.diaInicio.text().strip())
+        hrInicio = self.inicioCurso.text()
+        hrFim = self.fimCurso.text()
+        relatorioSalaLivre(dia, hrInicio, hrFim)
 

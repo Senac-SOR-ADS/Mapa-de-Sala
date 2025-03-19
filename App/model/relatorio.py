@@ -24,7 +24,7 @@ class Relatorio:
     @classmethod
     def relatorioSalaLivre(cls, dia, horaInicio, horaFim ):
         cls.__banco.conectar()
-        query = '''SELECT DISTINCT s.nome, s.tipo, s.predio FROM sala s JOIN reserva r ON r.idSala != s.idSala WHERE r.dia = %s AND r.hrInicio BETWEEN %s AND %s AND r.hrFim BETWEEN %s AND %s'''
+        query = '''SELECT DISTINCT s.nome, s.tipo, s.predio FROM sala s LEFT JOIN reserva r ON r.idSala = s.idSala AND r.dia = %s AND r.hrInicio BETWEEN %s AND %s AND r.hrFim BETWEEN %s AND %s WHERE r.idSala IS NULL;'''
         params = [dia, horaInicio, horaFim, horaInicio, horaFim]
         resultado = cls.__banco.buscarTodos(query, params)
         cls.__banco.desconectar()
