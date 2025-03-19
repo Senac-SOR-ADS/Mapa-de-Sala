@@ -933,7 +933,7 @@ QPushButton {
                    </size>
                   </property>
                   <property name="currentIndex">
-                   <number>0</number>
+                   <number>2</number>
                   </property>
                   <widget class="QWidget" name="cadastros">
                    <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1189,6 +1189,22 @@ QPushButton {
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButton_2">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>ForbiddenCursor</cursorShape>
+                      </property>
+                      <property name="text">
+                       <string>consultar Reserva</string>
                       </property>
                      </widget>
                     </item>
