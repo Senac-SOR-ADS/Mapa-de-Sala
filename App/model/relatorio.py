@@ -1,7 +1,4 @@
 from App.model.conexao import ConexaoBD
-from App.model.logger import logger_model
- 
-# log = Log('model')
  
 class Relatorio:
     __banco = ConexaoBD()
