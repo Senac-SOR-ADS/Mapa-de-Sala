@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QDateEdit
-from PyQt5.QtCore import QDate
+from PyQt5.QtCore import QDate, pyqtSlot
 from PyQt5.uic import loadUi
 
 class ConsultarReserva(QWidget):
@@ -26,3 +26,15 @@ class ConsultarReserva(QWidget):
         """Define a data mínima de término da reserva"""
         primeiroDia = self.buscarData.date()
         self.buscarData.setMinimumDate(primeiroDia)
+
+    @pyqtSlot()
+    def on_salasLivres_clicked(self):
+        self.buscarData
+        self.horaInicio
+        self.horaFim
+        print('gerar relatório salas livres')
+    
+    @pyqtSlot()
+    def on_buscarRelatorios_clicked(self):
+        self.dataRelatorio
+        print('gerar relatório por dia')
