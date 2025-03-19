@@ -38,3 +38,30 @@ class Relatorio:
         resultado = cls.__banco.buscarTodos(query, params)
         cls.__banco.desconectar()
         return resultado
+    
+    @classmethod
+    def buscar_reservas_por_dia(cls, dia):
+        cls.__banco.conectar()
+
+        query = """SELECT p.nome AS nomePessoa, c.nome AS nomeCurso, s.nome AS nomeSala, r.hrInicio, r.hrFim, r.observacao
+                    FROM reserva r
+                    JOIN pessoa p ON r.idPessoa = p.idPessoa
+                    JOIN curso c ON r.idCurso = c.idCurso
+                    JOIN sala s ON r.idSala = s.idSala
+                    WHERE DATE(r.dia) = %s
+                    ORDER BY r.hrInicio"""
+
+        resultados = cls.__banco.buscarTodos(query, (dia,))
+        reservas = [
+            {
+                "nomePessoa": res[0],
+                "nomeCurso": res[1],
+                "nomeSala": res[2],
+                "horaInicio": res[3],
+                "horaFim": res[4],
+                "observacao": res[5]
+            }
+            for res in resultados
+        ]
+        cls.__banco.desconectar()
+        return reservas
