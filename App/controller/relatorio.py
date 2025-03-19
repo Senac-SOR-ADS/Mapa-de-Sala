@@ -1,7 +1,7 @@
 from jinja2 import Environment, FileSystemLoader
 import datetime
 from typing import List, Optional
-from App.model.reserva import Relatorio
+from App.model.relatorio import Relatorio
 
 # from App.model.reserva import buscar_reservas_por_dia
 import webbrowser
@@ -19,7 +19,6 @@ def gerarRelatorio(data: Optional[datetime.date] = None) -> List[dict]:
     env = Environment(loader=FileSystemLoader(diretorio))
 
     template = env.get_template("listarDia.html")
-
     relatorio = template.render(reservas=reservas, data=data)
 
     resultado = join(diretorio, 'output.html')

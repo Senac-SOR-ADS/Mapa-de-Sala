@@ -57,8 +57,8 @@ class Relatorio:
                 "nomePessoa": res[0],
                 "nomeCurso": res[1],
                 "nomeSala": res[2],
-                "horaInicio": res[3],
-                "horaFim": res[4],
+                "horaInicio": res[3].__str__(),
+                "horaFim": res[4].__str__(),
                 "observacao": res[5]
             }
             for res in resultados
