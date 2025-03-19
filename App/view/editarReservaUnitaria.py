@@ -31,9 +31,9 @@ class ReservaUnitaria(QDialog):
         self.popularJanela(self.inicio, self.fim, self.observacao)
         self.setDataReserva()
 
-        print("id da reserva", idReserva)
-        print('pessoaAtual', self.dadosReserva[2])
-        print(self.dadosConsultados['pessoas'])
+        # print("id da reserva", idReserva)
+        # print('pessoaAtual', self.dadosReserva[2])
+        # print(self.dadosConsultados['pessoas'])
 
     def popularJanela(self, horaInicio, horaFim, observacao):
         self.comboBoxPessoa()
@@ -103,4 +103,28 @@ class ReservaUnitaria(QDialog):
 
     @pyqtSlot()
     def on_btnEditarReserva_clicked(self):
-        docente = self.nomeDocente.currentText()
+        # docente = self.nomeDocente.currentIndex()
+        # # curso
+        # sala = self.salaReserva.currentText()
+        # hrInicio = self.inicioCurso.time().toString('HH:mm')
+        # hrFim = self.fimCurso.time().toString('HH:mm')
+        diaInicio = self.diaInicio.date().toString('dd/MM/yyyy')
+        #observações
+        # print(f"IDs do docente: {docente}, sala: {sala}, hrInicio: {hrInicio}, hrFim: {hrFim}, dataInicio: {diaInicio}")
+
+        docente = self.dadosConsultados['pessoaAtual']
+        # curso
+        sala = self.dadosConsultados['salaAtual']
+        hrInicio = self.inicio
+        hrFim = self.fim
+        diaInicio = self.diaInicio.date().toString('dd/MM/yyyy')
+        obs = self.observacao
+
+
+        print(f"IDs do docente: {docente}, sala: {sala}, hrInicio: {hrInicio}, hrFim: {hrFim}, diaInicio: {diaInicio} obs: {obs}")
+        
+        # docente
+        # sala
+        # hr inicio
+        # hr fim
+        # data
