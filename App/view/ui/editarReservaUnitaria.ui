@@ -385,7 +385,7 @@ border-radius: 15px;
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btnSalaLivre">
     <property name="geometry">
      <rect>
       <x>660</x>

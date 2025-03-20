@@ -45,13 +45,13 @@ def atualizarPessoa(idPessoa: int, nome: str, cpfCnpj: str, dataNasc: str, telef
 # =================== listar ===================
 def buscarPessoas(search_query: str = '') -> dict:
     """ Retorna um dicionário com as pessoas cadastradas, usando o nome como chave e o ID como valor. Search_query filtra pelo nome se fornecido. """
+    print('buscou pessoa')
     try:
         todasPessoas = Pessoa.buscar()
 
         if search_query:
             todasPessoas = [p for p in todasPessoas if search_query.lower() in p[1].lower()]
-
-        return {i[1]: i[0] for i in todasPessoas} if todasPessoas else {}
+        return {i[0]: i[1] for i in todasPessoas} if todasPessoas else {}
     except Exception as e:
         return {"error": f"Erro ao listar pessoas: {str(e)}"}
 

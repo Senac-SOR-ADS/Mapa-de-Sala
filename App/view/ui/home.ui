@@ -939,6 +939,9 @@ QPushButton {
                    <layout class="QVBoxLayout" name="verticalLayout_7">
                     <item>
                      <widget class="QPushButton" name="btnCadastroLogin">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
                       <property name="maximumSize">
                        <size>
                         <width>119</width>
@@ -1186,6 +1189,22 @@ QPushButton {
                       </property>
                       <property name="autoExclusive">
                        <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btnConsultaRelatorio">
+                      <property name="minimumSize">
+                       <size>
+                        <width>119</width>
+                        <height>56</height>
+                       </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>ForbiddenCursor</cursorShape>
+                      </property>
+                      <property name="text">
+                       <string>consultar Reserva</string>
                       </property>
                      </widget>
                     </item>
