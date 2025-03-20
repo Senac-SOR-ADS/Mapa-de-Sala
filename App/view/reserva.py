@@ -66,17 +66,16 @@ class ReservaInterface(QWidget):
 
     def getDados(self)->dict:
         """Pegando o dados na interface e retornando os valores"""
-        pessoas =  self.dadosConsultados['pessoas']
-        indiceDocenteResponsavel = self.nomeDocente.currentIndex()
-        idDocente = list(pessoas.keys())[indiceDocenteResponsavel]
-
-        sala = self.dadosConsultados['salas']
+        pessoas = buscarPessoas()
+        sala = listarSala()
+        curso = listarCurso() 
+        nomeDocenteResponsavel = self.nomeDocente.currentText().strip()
+        idDocente = pessoas[nomeDocenteResponsavel]
         nomeSala = self.salaReserva.currentText().strip()
         idSala = sala[nomeSala]
-
-        indiceCurso = self.cursoReserva.currentIndex()
-        curso = self.dadosConsultados['cursos'][indiceCurso]
-        idCurso = curso.get_id()
+        nomeCurso = self.cursoReserva.currentText().strip()
+        idCurso = curso[nomeCurso]
+        
         
         equipamentos = self.equipamentosReserva.text().strip() 
         diaInicio = modificarData(self.diaInicio.text().strip() )
@@ -160,9 +159,9 @@ class ReservaInterface(QWidget):
     
     def comboBoxPessoa(self):
         """Busca as pessoas no banco e popula o comboBox."""
-        pessoas = self.dadosConsultados['pessoas']
+        pessoas = self.dadosConsultados['pessoas']#buscarPessoas()
         self.nomeDocente.clear()
-        self.nomeDocente.addItems(pessoas.values())
+        self.nomeDocente.addItems(pessoas.keys())
 
     def comboBoxSala(self):
         """Busca as salas no banco e popula o comboBox."""

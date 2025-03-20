@@ -32,7 +32,7 @@ class EditarPessoas(QWidget):
         else:
             erroEdicao(self)
     def popularNomes(self):
-        pessoas = self.dicionarioPessoas.values()
+        pessoas = self.dicionarioPessoas.keys()
         self.nomePessoas.addItems(pessoas)
     
     def popularJanela(self):
@@ -52,9 +52,9 @@ class EditarPessoas(QWidget):
         return (ID_PESSOA, nome, cpfCnpj, dataNascimento, telefone, email, cargo)
 
     def getKey(self):
-        indice = self.nomePessoas.currentIndex()
-        key = list(self.dicionarioPessoas.keys())
-        return key[indice]
+        nome = self.nomePessoas.currentText()
+        key = self.dicionarioPessoas.get(nome)
+        return key
     
     def popularCampos(self):
         key = self.getKey()

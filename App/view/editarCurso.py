@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QDateTimeEdit
 from PyQt5.QtCore import QTimer, pyqtSlot, QDate, QTime
 from datetime import datetime, timedelta
-from App.controller.curso import listarCurso, lista_de_cursos, buscarCursosId, atualizarCurso
+from App.controller.curso import listarCurso, buscarCursosId, atualizarCurso
 from App.model.curso import *
 from App.controller.area import listarAreas
 from App.controller.utils import erroEdicao, sucessoEdicao
@@ -35,7 +35,7 @@ class EditarCurso(QWidget):
         return False
 
     def comboOferta(self):
-        dados = self.dicionarioDeCursos.values()
+        dados = self.dicionarioDeCursos.keys()
         self.ofertaCurso.addItems(dados)
 
     def comboArea(self):
@@ -69,9 +69,9 @@ class EditarCurso(QWidget):
         return time
 
     def getEditarCurso(self):
-        area = self.getIdArea()
+        oferta = self.ofertaCurso.currentText().strip()
         nome = self.nomeCurso.text().strip()
-        oferta = self.getIdOferta()
+        area = self.getIdArea()
         periodo = self.periodoCurso.currentText().strip()
         carga = self.cargaCurso.text().strip()
         horas = self.horasPorDia.text().strip()
@@ -83,8 +83,8 @@ class EditarCurso(QWidget):
         return self.dicionarioDeAreas.get(area)
 
     def getIdOferta(self):
-        oferta = self.ofertaCurso.currentIndex()
-        return list(self.dicionarioDeCursos.keys())[oferta]
+        oferta = self.ofertaCurso.currentText()
+        return self.dicionarioDeCursos.get(oferta)
     
     
     def setIndexInicial(self):

@@ -339,17 +339,12 @@
               </property>
               <item>
                <property name="text">
-                <string>User</string>
+                <string>admin</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Suporte</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Admin</string>
+                <string>user</string>
                </property>
               </item>
              </widget>

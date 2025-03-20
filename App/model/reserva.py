@@ -114,15 +114,6 @@ class Reserva:
         listaReserva = cls.getListaReserva(resultado)
         return listaReserva
     
-    @classmethod
-    def retornar_uma_reserva(cls, idReserva):
-        cls.__banco.conectar()
-        query = "SELECT * FROM reserva WHERE idReserva = %s"
-        parametro = [idReserva]
-        resultado = cls.__banco.buscar(query, parametro)
-        cls.__banco.desconectar()
-        return resultado
-    
     def retornar_reserva_login(self):
         """Retorna as reservas de um dia, junto com o horário da reserva, o nome de quem fez a reserva e a observação da reserva"""
         self.__banco.conectar()

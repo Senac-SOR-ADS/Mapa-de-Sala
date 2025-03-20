@@ -27,15 +27,11 @@ def cadastrarCurso(idArea: int, dados: list) -> dict:
 def lista_de_cursos():
     return Curso.retorna_info_cursos()
 
-def listar_id_e_nome_cursos():
-    todos_cursos = Curso.retorna_todos_nomes_cursos()
-    listarCursos = {i[0]:i[1] for i in todos_cursos}
-    return listarCursos
-
 def listarCurso():
-    """ Consulta retorna [(id_curso, cod_oferta), ...]"""
+    """ Consulta retorna (id_curso, cod_oferta)
+    tranformando em um dicionario no formato: { cod_oferta : id_curso}"""
     todasSalas = Curso.retorna_ofertaId_cursos()
-    listarCursos = {i[0]:i[1] for i in todasSalas}
+    listarCursos = {i[1]:i[0] for i in todasSalas}
     return(listarCursos)
 
 def timedelta_to_int(td: timedelta) -> int:
