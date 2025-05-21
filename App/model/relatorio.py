@@ -24,7 +24,7 @@ class Relatorio:
     @classmethod
     def relatorioSalaLivre(cls, dia, horaInicio, horaFim ):
         cls.__banco.conectar()
-        query = '''SELECT DISTINCT s.nome, s.tipo, s.predio FROM sala s JOIN reserva r ON r.idSala != s.idSala WHERE r.dia = %s AND r.hrInicio BETWEEN %s AND %s AND r.hrFim BETWEEN %s AND %s'''
+        query = '''SELECT DISTINCT s.nome, s.tipo, s.predio FROM sala s LEFT JOIN reserva r ON r.idSala = s.idSala AND r.dia = %s AND r.hrInicio BETWEEN %s AND %s AND r.hrFim BETWEEN %s AND %s WHERE r.idSala IS NULL;'''
         params = [dia, horaInicio, horaFim, horaInicio, horaFim]
         resultado = cls.__banco.buscarTodos(query, params)
         cls.__banco.desconectar()
@@ -57,11 +57,20 @@ class Relatorio:
                 "nomePessoa": res[0],
                 "nomeCurso": res[1],
                 "nomeSala": res[2],
-                "horaInicio": res[3],
-                "horaFim": res[4],
+                "horaInicio": res[3].__str__(),
+                "horaFim": res[4].__str__(),
                 "observacao": res[5]
             }
             for res in resultados
         ]
         cls.__banco.desconectar()
         return reservas
+
+    @classmethod
+    def relatorioCursosFinalizando(cls, diaInicio, diaFim):
+        cls.__banco.conectar()
+        query = '''WITH CursoReservas AS (SELECT r.idcurso, MIN(r.dia) AS diaInicioCurso FROM  reserva r GROUP BY r.idcurso), UltimaReservaPeriodo AS (SELECT r.idcurso, MAX(r.dia) AS diaFimCurso FROM reserva r WHERE r.dia BETWEEN %s AND %s GROUP BY r.idcurso) SELECT c.nome AS nomeCurso, cr.diaInicioCurso, urp.diaFimCurso, r.hrInicio, r.hrFim FROM CursoReservas cr JOIN UltimaReservaPeriodo urp ON cr.idcurso = urp.idcurso JOIN curso c ON cr.idcurso = c.idcurso JOIN  reserva r ON urp.idcurso = r.idcurso AND r.dia = urp.diaFimCurso'''
+        params = [diaInicio, diaFim]
+        resultado = cls.__banco.buscarTodos(query, params)
+        cls.__banco.desconectar()
+        return resultado

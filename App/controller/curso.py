@@ -27,6 +27,11 @@ def cadastrarCurso(idArea: int, dados: list) -> dict:
 def lista_de_cursos():
     return Curso.retorna_info_cursos()
 
+def listar_id_e_nome_cursos():
+    todos_cursos = Curso.retorna_todos_nomes_cursos()
+    listarCursos = {i[0]:i[1] for i in todos_cursos}
+    return listarCursos
+
 def listarCurso():
     """ Consulta retorna [(id_curso, cod_oferta), ...]"""
     todasSalas = Curso.retorna_ofertaId_cursos()
