@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Cursos - Cadastro{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid my-2">
+    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
+
+        <!-- Formulário para adicionar um novo curso -->
+        <form id="formCadastroCurso" action="{{ url_for('curso_route.cadastrar_Curso') }}" method="POST"
+            class="needs-validation form-curso" novalidate>
+            <h2 class="text-center mb-4 fw-bold text-primary">Cadastro de Curso</h2>
+
+            <div class="d-flex justify-content-end">
+                <a href="{{ url_for('curso_route.listar_Curso') }}" class="btn btn-success btn-sm">
+                    <i class="fas fa-list"></i> Lista de Cursos
+                </a>
+            </div>
+            <br>
+
+            <fieldset>
+
+                <div class="row g-2">
+                    <!-- Nome do Curso -->
+                    <div class="col-md-6 mb-3">
+                        <label for="nome" class="form-label text-dark fs-5">Nome do Curso:</label>
+                        <input type="text" id="nome" name="nome" required maxlength="100" class="form-control shadow-sm"
+                            placeholder="Nome do Curso" pattern="^[a-zA-Z0-9\s]+$" aria-required="true"
+                            aria-describedby="nomeFeedback">
+                        <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome do curso corretamente
+                            (apenas letras, números e espaços).</div>
+                    </div>
+
+                    <!-- Oferta -->
+                    <div class="col-md-6 mb-3">
+                        <label for="oferta" class="form-label text-dark fs-5">Oferta:</label>
+                        <input type="text" id="oferta" name="oferta" required maxlength="50"
+                            class="form-control shadow-sm" placeholder="Digite apenas números" pattern="^\d+$"
+                            inputmode="numeric" aria-required="true" aria-describedby="ofertaFeedback">
+                        <div id="ofertaFeedback" class="invalid-feedback">Por favor, preencha a oferta corretamente
+                            (apenas números).</div>
+                    </div>
+
+                    <div class="row g-2">
+                        <!-- Período do Dia -->
+                        <div class="col-md-6 mb-3">
+                            <label for="periodo" class="form-label text-dark fs-5">Período do Dia:</label>
+                            <select id="periodo" name="periodo" class="form-select shadow-sm" required
+                                aria-describedby="periodoFeedback">
+                                <option value="" disabled selected>Selecione o Período do Dia</option>
+                                <option value="Manha">Manhã</option>
+                                <option value="Tarde">Tarde</option>
+                                <option value="Noite">Noite</option>
+                            </select>
+                            <div id="periodoFeedback" class="invalid-feedback">Por favor, selecione o período do dia.
+                            </div>
+                        </div>
+
+                        <!-- Carga Horária Total -->
+                        <div class="col-md-6 mb-3">
+                            <label for="carga" class="form-label text-dark fs-5">Carga Horária Total:</label>
+                            <input type="number" id="carga" name="carga" required min="1" class="form-control shadow-sm"
+                                placeholder="Ex.: 120" aria-required="true" aria-describedby="cargaFeedback">
+                            <div id="cargaFeedback" class="invalid-feedback">Por favor, preencha a carga horária total
+                                corretamente.</div>
+                        </div>
+                    </div>
+
+                    <div class="row g-2">
+                        <!-- Horas do Curso -->
+                        <div class="col-md-6 mb-3">
+                            <label for="horas" class="form-label text-dark fs-5">Horas Diárias:</label>
+                            <input type="time" id="horas" name="horas" required class="form-control shadow-sm"
+                                aria-required="true" aria-describedby="horasFeedback">
+                            <div id="horasFeedback" class="invalid-feedback">Por favor, preencha as horas diárias
+                                corretamente.</div>
+                        </div>
+
+                        <!-- Número de Alunos -->
+                        <div class="col-md-6 mb-3">
+                            <label for="alunos" class="form-label text-dark fs-5">Número de Alunos:</label>
+                            <input type="number" id="alunos" name="alunos" required min="1"
+                                class="form-control shadow-sm" placeholder="Ex.: 30" aria-required="true"
+                                aria-describedby="alunosFeedback">
+                            <div id="alunosFeedback" class="invalid-feedback">Por favor, preencha o número de alunos
+                                corretamente.</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mb-4">
+                        <!-- Área do Curso -->
+                        <label for="area" class="form-label text-dark fs-5">Área do Curso:</label>
+                        <select id="area" name="area" class="form-select shadow-sm" required
+                            aria-describedby="areaFeedback">
+                            <option value="" disabled selected>Selecione a Área do Curso</option>
+                            {% for area, id in valores.items() %}
+                            <option value="{{ id }}">{{ area }}</option>
+                            {% endfor %}
+                        </select>
+                        <div id="areaFeedback" class="invalid-feedback">Por favor, selecione a área do curso.</div>
+                    </div>
+
+                    <!-- Botões de Ação -->
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="reset"
+                            class="btn btn-outline-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                            <i class="bi bi-x-circle me-2"></i> Limpar
+                        </button>
+                        <button type="submit"
+                            class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center"
+                            id="submitBtn" disabled>
+                            <i class="bi bi-check-circle me-2"></i> Cadastrar Curso
+                        </button>
+                    </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Habilita o botão de submit quando o formulário for válido
+    document.getElementById("formCadastroCurso").addEventListener("input", function () {
+        const form = this;
+        const submitBtn = document.getElementById("submitBtn");
+        submitBtn.disabled = !form.checkValidity();
+    });
+</script>
+
+{% endblock %}

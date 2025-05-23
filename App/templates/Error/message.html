@@ -1,0 +1,25 @@
+<!-- Exibir mensagens de feedback -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="alert-container" aria-live="polite" role="alert">
+            {% for category, message in messages %}
+                <div class="alert alert-dismissible fade show auto-dismiss alert-{{ category }}" role="alert">
+                    <span class="alert-icon">
+                        {% if category == 'success' %}
+                            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                        {% elif category == 'error' %}
+                            <i class="bi bi-x-circle-fill" aria-hidden="true"></i>
+                        {% elif category == 'info' %}
+                            <i class="bi bi-info-circle-fill" aria-hidden="true"></i>
+                        {% elif category == 'warning' %}
+                            <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+                        {% endif %}
+                    </span>
+                    <span class="alert-message">{{ message }}</span>
+                    <button type="button" class="btn-close custom-close-btn" aria-label="Fechar" onclick="this.closest('.alert').remove();"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+<script src="{{ url_for('static', filename='js/error/autoAlert.js') }}"></script>

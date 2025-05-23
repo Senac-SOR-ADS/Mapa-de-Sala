@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Logout - Mapa de Sala{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-2">
+    <h1 class="text-center mb-4">Logout</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        <div class="alert-container">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} text-center" role="alert" aria-live="polite">
+              <i class="bi bi-info-circle"></i>
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    
+    <a href="{{ url_for('home_route.home') }}" class="btn btn-primary btn-lg w-100 mt-3">Voltar à Página Inicial</a>
+    <p class="text-center mt-4">
+        Se você não for redirecionado, <a href="{{ url_for('login_route.login') }}">clique aqui</a> para fazer login novamente.
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}Relatório - Mapa de Sala{% endblock %}
+{% block content %}
+
+<fieldset class="bg-light">
+    <div class="header-section mb-4">
+        <div class="d-flex justify-content-between align-items-center w-100">
+            <!-- Título centralizado -->
+            <legend class="fw-bold fs-4 text-primary mb-2 mb-md-0 text-center w-100">
+                Reservas do Dia
+            </legend>
+
+            <!-- Container flexível para o campo de data e botão de impressão -->
+            <div class="d-flex align-items-center gap-3">
+                <!-- Campo de seleção de data -->
+                <input type="date" id="searchDate" class="form-control form-control-sm"
+                    value="{{ request.args.get('data', '') }}" onchange="searchByDate()"
+                    title="Selecione uma data para filtrar as reservas" aria-describedby="dateHelp">
+
+                <!-- Botão de Imprimir -->
+                <button class="btn btn-outline-primary btn-sm d-flex align-items-center gap-1" onclick="window.print()"
+                    aria-label="Clique para imprimir o relatório" title="Clique para imprimir o relatório">
+                    <i class="bi bi-printer" aria-hidden="true"></i>
+                    <span>Imprimir</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-container mb-4">
+        <div class="text-center mb-3">
+            <strong>Data:</strong>
+            <span id="currentDate">{{ request.args.get('data', hoje.strftime('%d/%m/%Y')) }}</span> |
+            <span id="currentDay"></span>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover table-bordered align-middle">
+                <thead class="table-white">
+                    <tr>
+                        <th colspan="2" class="text-center" scope="col">Reserva / Sala</th>
+                        <th colspan="2" class="text-center" scope="col">Docente / Curso</th>
+                        <th class="text-center" scope="col">Entrega</th>
+                        <th class="text-center" scope="col">Devolução</th>
+                        <th class="text-center" scope="col">Observação</th>
+                    </tr>
+                </thead>
+                <tbody style="background-color: white;">
+                    {% if reservas %}
+                    {% for reserva in reservas %}
+                    <tr>
+                        <td colspan="2" class="text-nowrap" style="max-width: 150px; word-wrap: break-word;">
+                            {{ reserva.hora_inicio }} - {{ reserva.hora_fim }} <br> {{ reserva.nomeSala }}
+                        </td>
+                        <td colspan="2" class="text-nowrap" style="max-width: 200px; word-wrap: break-word;">
+                            {{ reserva.nomePessoa }} <br> {{ reserva.nomeCurso }}
+                        </td>
+                        <td class="text-center" style="width: 10%; min-width: 100px;"></td>
+                        <td class="text-center" style="width: 10%; min-width: 100px;"></td>
+                        <td class="text-center" style="width: 20%; max-width: 200px; word-wrap: break-word;">
+                            {{ reserva.observacao }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center text-muted">Nenhuma reserva encontrada para este dia.
+                        </td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+</fieldset>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedDate = urlParams.get("data");
+        const today = new Date();
+
+        const weekDays = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+
+        let dateToShow = selectedDate ? new Date(selectedDate) : today;
+        if (selectedDate) {
+            dateToShow = new Date(selectedDate + "T00:00:00");
+        }
+
+        const dayIndex = dateToShow.getDay();
+        document.getElementById("currentDay").textContent = weekDays[dayIndex];
+
+        const dateInput = document.getElementById("searchDate");
+        if (dateInput && !selectedDate) {
+            dateInput.value = today.toISOString().slice(0, 10);
+        }
+    });
+
+    function searchByDate() {
+        const selectedDate = document.getElementById("searchDate")?.value;
+        if (selectedDate && !isNaN(Date.parse(selectedDate))) {
+            window.location.href = `/relatorio/relatorio?data=${selectedDate}`;
+        } else {
+            alert("Por favor, selecione uma data válida no formato YYYY-MM-DD.");
+        }
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Funcionário - Cadastro de Funcionário{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid my-2">
+    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
+
+        <!-- Formulário para adicionar uma nova pessoa -->
+        <form id="formCadastroFuncionario" action="{{ url_for('funcionario_route.cadastrar_Pessoa') }}" method="POST"
+            class="form-funcionario needs-validation" novalidate>
+            <h2 class="text-center mb-4 fw-bold text-primary">Cadastro de Funcionário</h2>
+
+            <div class="d-flex justify-content-end">
+                <a href="{{ url_for('funcionario_route.listar_Pessoa') }}" class="btn btn-success btn-sm">
+                    <i class="fas fa-list"></i> Lista de Funcionários
+                </a>
+            </div>
+            <br>
+
+            <fieldset>
+                <div class="row g-2">
+                    <!-- Nome -->
+                    <div class="col-md-6 mb-3">
+                        <label for="nome" class="form-label text-dark fs-5">Nome:</label>
+                        <input type="text" id="nome" name="nome" required maxlength="255" class="form-control shadow-sm"
+                            placeholder="Nome Completo" pattern="^[a-zA-Z\s]+$" aria-required="true"
+                            aria-describedby="nomeFeedback">
+                        <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome corretamente.</div>
+                    </div>
+
+                    <!-- CPF/CNPJ -->
+                    <div class="col-md-6 mb-3">
+                        <label for="cpfCnpj" class="form-label text-dark fs-5">CPF/CNPJ:</label>
+                        <input type="text" id="cpfCnpj" name="cpfCnpj" required maxlength="18"
+                            class="form-control shadow-sm" placeholder="CPF ou CNPJ"
+                            pattern="(\d{3}\.\d{3}\.\d{3}-\d{2})|(\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2})" aria-required="true"
+                            aria-describedby="cpfCnpjFeedback">
+                        <div id="cpfCnpjFeedback" class="invalid-feedback">Por favor, preencha o CPF/CNPJ corretamente.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-2">
+                    <!-- Data de Nascimento -->
+                    <div class="col-md-6 mb-3">
+                        <label for="dataNasc" class="form-label text-dark fs-5">Data de Nascimento:</label>
+                        <input type="date" id="dataNasc" name="dataNasc" required class="form-control shadow-sm"
+                            min="1900-01-01" max="{{ currentYear }}-12-31" aria-required="true"
+                            aria-describedby="dataNascFeedback">
+                        <div id="dataNascFeedback" class="invalid-feedback">Por favor, preencha a data de nascimento
+                            corretamente.</div>
+                    </div>
+
+                    <!-- Telefone -->
+                    <div class="col-md-6 mb-3">
+                        <label for="telefone" class="form-label text-dark fs-5">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" required maxlength="15"
+                            class="form-control shadow-sm" placeholder="(00) 00000-0000"
+                            pattern="^\(\d{2}\) \d{4,5}-\d{4}$" aria-required="true"
+                            aria-describedby="telefoneFeedback">
+                        <div id="telefoneFeedback" class="invalid-feedback">Por favor, preencha o telefone corretamente.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-2">
+                    <!-- Email -->
+                    <div class="col-md-6 mb-3">
+                        <label for="email" class="form-label text-dark fs-5">Email:</label>
+                        <input type="email" id="email" name="email" required maxlength="255"
+                            class="form-control shadow-sm" placeholder="exemplo@dominio.com" aria-required="true"
+                            aria-describedby="emailFeedback">
+                        <div id="emailFeedback" class="invalid-feedback">Por favor, preencha um email válido.</div>
+                    </div>
+
+                    <!-- Cargo -->
+                    <div class="col-md-6 mb-4">
+                        <label for="cargo" class="form-label text-dark fs-5">Cargo:</label>
+                        <select id="cargo" name="cargo" class="form-select shadow-sm" required aria-describedby="cargoFeedback">
+                            <option value="Comum" {% if funcionario and funcionario.cargo == 'Comum' %} selected {% endif %}>Comum</option>
+                            <option value="Suporte" {% if funcionario and funcionario.cargo == 'Suporte' %} selected {% endif %}>Suporte</option>
+                            <option value="Administrador" 
+                                    {% if funcionario and funcionario.cargo == 'Administrador' %} selected {% endif %}
+                                    {% if session.get('usuario') and session['nivel_acesso'] != 'admin' %} disabled {% endif %}>
+                                Administrador
+                            </option>
+                        </select>
+                        <div id="cargoFeedback" class="invalid-feedback">Por favor, selecione um cargo.</div>
+                    </div>
+                    
+
+                <!-- Botões de Ação -->
+                <div class="d-flex justify-content-between mt-3">
+                    <button type="reset"
+                        class="btn btn-outline-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="bi bi-x-circle me-2"></i> Limpar
+                    </button>
+                    <button type="submit"
+                        class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center"
+                        id="submitBtn" disabled>
+                        <i class="bi bi-check-circle me-2"></i> Cadastrar Funcionário
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Habilita o botão de submit quando o formulário for válido
+    document.getElementById("formCadastroFuncionario").addEventListener("input", function () {
+        const form = this;
+        const submitBtn = document.getElementById("submitBtn");
+        submitBtn.disabled = !form.checkValidity();
+    });
+</script>
+
+{% endblock %}

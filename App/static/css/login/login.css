@@ -1,0 +1,312 @@
+/* =================== Variáveis de Cores (Substituídas por valores diretos) =================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* =================== Estilo do Body =================== */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f1f5f9;
+    font-size: 16px;
+    color: #111827;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* =================== Container de Login =================== */
+.container-login {
+    display: flex;
+    flex-wrap: wrap;
+    opacity: 0.9;
+    width: 100%;
+    max-width: 850px;
+    min-height: 480px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* =================== Caixa de Imagem =================== */
+.img-box {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e6f4ff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.img-box img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Ocultar logo por padrão em telas grandes */
+.logo-empresa {
+    display: none;
+}
+
+/* =================== Caixa de Formulário =================== */
+.content-box {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+/* =================== Estilo dos Títulos =================== */
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1e40af;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.3;
+    transition: color 0.3s ease-in-out;
+}
+
+.form-box h2:hover {
+    color: #f97316;
+}
+
+/* =================== Lembre-se =================== */
+.remember {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.remember label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* =================== Botão de Enviar =================== */
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background-color: #fb923c;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #f97316;
+    transform: scale(1.05);
+}
+
+.btn-submit:active {
+    transform: scale(1);
+}
+
+/* =================== Estilo de Link de Cadastro =================== */
+.form-box .register {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-box .register a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.form-box .register a:hover {
+    color: #2563eb;
+}
+
+/* =================== Estilo do Box de Input =================== */
+.input-box {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Estilo do rótulo (label) */
+.input-box label {
+    display: block;
+    margin-bottom: 8px;
+    color: #1e40af;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    padding-left: 5px;
+}
+
+/* Estilo do input */
+.input-box input {
+    width: 100%;
+    padding: 14px 14px 14px 35px;
+    font-size: 16px;
+    color: #1e40af;
+    background: transparent;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+/* Foco no input */
+.input-box input:focus {
+    border-color: #f97316;
+    box-shadow: 0 0 8px rgba(255, 165, 0, 0.2);
+}
+
+/* Placeholder */
+.input-box input::placeholder {
+    color: #bbb;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Estilos para o input com foco (rótulo se movendo para cima) */
+.input-box input:focus::placeholder {
+    color: #f97316;
+}
+
+/* Efeito de rótulo animado (movendo o label para cima quando o campo tem foco ou contém valor) */
+.input-box input:focus+label,
+.input-box input:not(:placeholder-shown)+label {
+    font-size: 12px;
+    color: #f97316;
+    transform: translateY(-10px);
+}
+
+/* =================== Estilo para o contêiner do input com ícone =================== */
+.input-with-icon {
+    position: relative;
+    width: 100%;
+}
+
+/* =================== Estilo para o ícone de entrada =================== */
+.input-with-icon .icon {
+    font-size: 18px;
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+/* ===================  emailHelp =================== */
+#emailHelp {
+    font-size: 0.70rem;
+    color: #fdba74;
+    margin-top: 5px;
+    font-weight: bold;      
+}
+
+/* =================== Estilo para o ícone de mostrar/ocultar senha =================== */
+.input-with-icon .toggle-password {
+    font-size: 18px;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s ease, font-size 0.3s ease, transform 0.2s ease;
+}
+
+/* =================== Efeito de hover no ícone de mostrar/ocultar senha =================== */
+.input-with-icon .toggle-password:hover {
+    color: #f97316;
+    font-size: 20px;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* =================== Responsividade para Smartphones e Tablets =================== */
+@media (max-width: 768px) {
+    .img-box {
+        display: none;
+    }
+
+    .logo-empresa {
+        display: block;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .logo-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .content-box {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100vh;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .container-login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        gap: 16px;
+        width: 80vw;
+        max-width: 400px;
+        height: 80vh;
+        max-height: 500px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        border: none;
+    }
+
+    .container-login {
+        width: 90vw;
+        height: auto;
+        max-width: 350px;
+        max-height: none;
+    }
+
+    .form-container {
+        padding: 20px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    #emailHelp {
+        display: none;
+    }
+}

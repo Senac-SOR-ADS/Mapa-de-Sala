@@ -1,0 +1,410 @@
+/* ===================== Reset de Estilos ===================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===================== Layout Global ===================== */
+body {
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(220, 220, 220, 0.1));
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Default container styles */
+.container {
+  width: fit-content;
+  min-width: 80%;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* Container with full width and margins for fluid layout */
+.container-fluid {
+  width: 100%;
+  margin: 0 20px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 1200px) {
+  .container {
+    min-width: 70%; /* Adjust minimum width for medium screens */
+    max-width: 85%; /* Adjust maximum width for medium screens */
+  }
+
+  .container-fluid {
+    margin: 0 15px; /* Reduce margins for smaller screens */
+  }
+}
+
+/* Further responsiveness for mobile screens */
+@media (max-width: 768px) {
+  .container {
+    min-width: 60%; /* Adjust minimum width for mobile screens */
+    max-width: 80%; /* Adjust maximum width for mobile screens */
+  }
+
+  .container-fluid {
+    margin: 0 10px; /* Adjust margin for better fit on mobile */
+  }
+}
+
+/* Even smaller screens (e.g., very small devices) */
+@media (max-width: 480px) {
+  .container {
+    min-width: 100%; /* Ensure full width on very small screens */
+    max-width: 100%;
+  }
+
+  .container-fluid {
+    margin: 0 5px; /* Further adjust margins for small screens */
+  }
+}
+
+/* ===================== Tipografia ===================== */
+h1,
+h2,
+h3 {
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #006bb3;
+  line-height: 1.3;
+  text-transform: uppercase;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+h1 {
+  font-weight: 200;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.1em;
+}
+
+h1:hover {
+  color: #e58e10;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 5vw, 3.2rem);
+  font-weight: 500;
+  margin: 15px 0;
+  color: #005f99;
+}
+
+h2:hover {
+  color: #e58e10;
+}
+
+h3 {
+  font: 500 clamp(1.4rem, 4vw, 2.8rem) / 1.4;
+  margin: 12px 0;
+  color: #007bff;
+}
+
+h3:hover {
+  color: #e58e10;
+}
+
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: #007bff;
+  margin: 15px 0 5px;
+  font-size: clamp(1rem, 2.8vw, 1.4rem);
+}
+
+@media (max-width: 1200px) {
+  h1 {
+    font-size: clamp(1.8rem, 5.5vw, 3.5rem);
+  }
+  h2 {
+    font-size: clamp(1.5rem, 4.5vw, 2.8rem);
+  }
+  h3 {
+    font-size: clamp(1.3rem, 4vw, 2.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: clamp(1.4rem, 6.5vw, 2.8rem);
+  }
+  h2 {
+    font-size: clamp(1.4rem, 6vw, 2.6rem);
+  }
+  h3 {
+    font-size: clamp(1.2rem, 5vw, 2.3rem);
+  }
+  h4,
+  h5,
+  h6 {
+    font-size: clamp(1rem, 4.5vw, 1.2rem);
+  }
+}
+
+/* ===================== Banner ===================== */
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1.2rem 2.5rem;
+  background: linear-gradient(135deg, rgba(255, 165, 0, 0.8), rgba(255, 255, 255, 0.10));
+  border: 1px solid rgba(34, 193, 195, 0.35);
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); margin-bottom: 0.5rem;
+}
+
+.banner .banner-text {
+  font-size: clamp(0.5rem, 2vw, 1.2rem);
+  font-weight: 600;
+  text-align: center;
+  line-height: 1;
+  margin: 0;
+  color: #222;
+}
+
+@media (min-width: 1024px) {
+  .banner {
+    max-width: 70rem;
+    padding: 1rem 1rem;
+  }
+
+  .banner .banner-text {
+    font-size: clamp(1rem, 1vw, 1rem);
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .banner {
+    padding: 1rem 3vw;
+    gap: 1rem;
+  }
+
+  .banner .banner-text {
+    font-size: clamp(1rem, 4vw, 1.6rem);
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 767px) {
+  .banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.2rem 4vw;
+    gap: 1rem;
+  }
+
+  .banner .banner-text {
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+    max-width: 90%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ===================== Botões Globais ===================== */
+/* Estilos padrão para desktop */
+button,
+.btn {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background-color: #007acc;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease, filter 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+/* Efeito de hover */
+button:hover,
+.btn:hover {
+  background-color: #28a745;
+}
+
+/* Responsividade para tablet (de 768px a 1024px) */
+@media (max-width: 1024px) {
+  button,
+  .btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    width: auto;
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* Responsividade para dispositivos móveis (até 767px) */
+@media (max-width: 767px) {
+  button,
+  .btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    width: auto;
+    max-width: 70%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* Responsividade para telas muito pequenas (até 480px) */
+@media (max-width: 480px) {
+  button,
+  .btn {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.85rem;
+    width: auto; 
+    max-width: 70%;
+    margin: 0 auto;
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* Responsividade para telas extra pequenas (até 320px) */
+@media (max-width: 320px) {
+  button,
+  .btn {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+    width: auto;
+    max-width: 70%;
+    margin: 0 auto;
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* ===================== Cards ===================== */
+.card {
+  flex: 1 1 calc(30% - 0.8rem);
+  width: 100%;
+  height: auto;
+  padding: 0.6rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(200, 200, 200, 0.15));
+  border: 1px solid rgba(2, 141, 255, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.card h2 {
+  font-size: 0.8rem;
+}
+
+.card p {
+  font-size: 0.6rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.card:hover {
+  transform: translateY(-0.4rem) scale(0.95);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 40%;
+  max-width: 5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito de hover na imagem */
+.card:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card .cardContent:hover {
+  color: #2980b9;
+}
+
+.container:hover .card:not(:hover) {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+/* Card Link - garante que o link envolva o card inteiro */
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Responsividade - Desktop e telas grandes */
+@media (max-width: 1200px) {
+  .card {
+    flex: 1 1 calc(33.33% - 0.8rem);
+  }
+}
+
+/* Responsividade - Tablet (768px a 1024px) */
+@media (max-width: 1024px) {
+  .card {
+    flex: 1 1 calc(47% - 0.8rem);
+    padding: 0.7rem;
+  }
+
+  .card .cardContent {
+    font-size: 0.9rem;
+    min-height: 4.5rem;
+  }
+
+  .card h2 {
+    font-size: 0.95rem;
+  }
+
+  .card p {
+    font-size: 0.65rem;
+  }
+
+  .card img {
+    width: 58%;
+    max-width: 8.5rem;
+  }
+}
+
+/* Responsividade - Celular (até 768px) */
+@media (max-width: 768px) {
+  .card {
+    flex: 0 0 calc(48% - 1rem);
+    padding: 0.5rem;
+  }
+
+  .card .cardContent {
+    font-size: 0.75rem;
+    min-height: 4.5rem;
+  }
+
+  .card h2 {
+    font-size: 1rem;
+  }
+
+  .card p {
+    display: none;
+  }
+
+  .card img {
+    width: 100%;
+    max-width: 8rem;
+  }
+}

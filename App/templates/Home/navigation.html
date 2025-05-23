@@ -1,0 +1,117 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center me-auto" href="{{ url_for('home_route.home') }}"
+                aria-label="Página Inicial">
+                <img src="{{ url_for('static', filename='img/favicon.ico') }}" alt="Logo do site">
+            </a>
+
+            <!-- Botão do menu responsivo -->
+            <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu principal -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+
+                    <!-- Relatórios -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarRelatorios" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-graph-up fs-5 me-1"></i> Relatórios
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarRelatorios">
+                            <li><a class="dropdown-item" href="{{ url_for('relatorio_route.listar_Relatorio') }}"><i
+                                        class="bi bi-calendar-check fs-6 me-1"></i> Reservas do Dia</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Reservas -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarReservas" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-calendar-event fs-5 me-1"></i> Reservas
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarReservas">
+                            {% if session.get('usuario') and session['nivel_acesso'] in ['admin', 'suporte'] %}
+                            <li><a class="dropdown-item" href="{{ url_for('reserva_route.cadastrar_Reserva') }}"><i
+                                        class="bi bi-plus-circle fs-6 me-1"></i> Nova Reserva</a></li>
+                            {% endif %}
+                            <li><a class="dropdown-item" href="{{ url_for('reserva_route.pesquisar_Multipla') }}"><i
+                                        class="bi bi-list-ul fs-6 me-1"></i> Consulta Múltipla</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('reserva_route.pesquisar_Unitaria') }}"><i
+                                        class="bi bi-search fs-6 me-1"></i> Consulta Unitária</a></li>
+                            <!-- {% if session.get('usuario') and session['nivel_acesso'] in ['admin', 'suporte'] %}
+                            <li><a class="dropdown-item"
+                                    href="{{ url_for('equipamento_route.ocupado_Equipamento') }}"><i
+                                        class="bi bi-exclamation-diamond fs-6 me-1"></i> Equipamentos Ocupados</a></li>
+                            {% endif %} -->
+                        </ul>
+
+                    </li>
+
+                    <!-- Consultas -->
+                    {% if session.get('usuario') and session['nivel_acesso'] in ['admin', 'suporte'] %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarConsultas" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-search fs-5 me-1"></i> Consultas
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarConsultas">
+                            <li><a class="dropdown-item" href="{{ url_for('area_route.listar_Area') }}"><i
+                                        class="bi bi-diagram-2 fs-6 me-1"></i> Áreas</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('curso_route.listar_Curso') }}"><i
+                                        class="bi bi-mortarboard fs-6 me-1"></i> Cursos</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('equipamento_route.listar_Equipamento') }}"><i
+                                        class="bi bi-cpu fs-6 me-1"></i> Equipamentos</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('funcionario_route.listar_Pessoa') }}"><i
+                                        class="bi bi-people fs-6 me-1"></i> Funcionários</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('sala_route.listar_Sala') }}"><i
+                                        class="bi bi-house-door fs-6 me-1"></i> Salas</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Cadastros -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarCadastrar" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-plus fs-5 me-1"></i> Cadastros
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarCadastrar">
+                            <li><a class="dropdown-item" href="{{ url_for('area_route.cadastrar_Area') }}"><i
+                                        class="bi bi-grid-1x2-fill fs-6 me-1"></i> Área</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('curso_route.cadastrar_Curso') }}"><i
+                                        class="bi bi-journal-bookmark fs-6 me-1"></i> Curso</a></li>
+                            <li><a class="dropdown-item"
+                                    href="{{ url_for('equipamento_route.cadastrar_Equipamento') }}"><i
+                                        class="bi bi-hammer fs-6 me-1"></i> Equipamento</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('funcionario_route.cadastrar_Pessoa') }}"><i
+                                        class="bi bi-person-workspace fs-6 me-1"></i> Funcionário</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('sala_route.cadastrar_Sala') }}"><i
+                                        class="bi bi-door-open fs-6 me-1"></i> Sala</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+
+                    <!-- Perfil -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('funcionario_route.perfil') }}" aria-label="Perfil">
+                            <i class="bi bi-person-circle fs-5 me-1"></i> Perfil
+                        </a>
+                    </li>
+
+
+                    <!-- Sair -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout_route.logout') }}" aria-label="Sair">
+                            <i class="bi bi-box-arrow-right fs-5 me-1"></i> Sair
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

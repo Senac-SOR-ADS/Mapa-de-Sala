@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}Página Inicial - Mapa de Sala{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <!-- Banner Principal -->
+    <div class="banner">
+        <div class="banner-text" data-aos="fade-up" data-aos-duration="1200">
+            <h1>Seja Bem-vindo ao <span class="mapa">Mapa de Sala</span></h1>
+        </div>
+    </div>
+
+    <!-- Seção de Módulos -->
+    <div class="row g-4 justify-content-center">
+
+        <!-- Card: Reserva de Salas -->
+        {% if session.get('usuario') and session['nivel_acesso'] in ['admin', 'suporte'] %}
+        <div class="col-12 col-md-5 col-lg-3">
+            <a href="{{ url_for('reserva_route.cadastrar_Reserva') }}" class="text-decoration-none">
+                <div class="card shadow-lg rounded-lg p-3 w-100 h-100" data-aos="fade-up">
+                    <div class="card-body text-center position-relative">
+                        <h2 class="fw-bold text-uppercase mb-3">Reserva de Salas</h2>
+                        <p class="small">Gerencie as salas disponíveis com agilidade e eficiência.</p>
+                        <div class="card-btn">
+                            <img src="{{ url_for('static', filename='img/home/reserva.svg') }}" alt="Ícone de reserva de sala">
+                        </div>
+                        <span class="stretched-link"></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endif %}
+
+        <!-- Card: Consulta Múltipla -->
+        <div class="col-12 col-md-5 col-lg-3">
+            <a href="{{ url_for('reserva_route.pesquisar_Multipla') }}" class="text-decoration-none">
+                <div class="card shadow-lg rounded-lg p-3 w-100 h-100" data-aos="fade-up">
+                    <div class="card-body text-center position-relative">
+                        <h2 class="fw-bold text-uppercase mb-3">Reserva Consulta Múltipla</h2>
+                        <p class="small">Pesquise múltiplas reservas de forma eficiente.</p>
+                        <div class="card-btn">
+                            <img src="{{ url_for('static', filename='img/home/reservaM.svg') }}" alt="Ícone de consulta múltipla">
+                        </div>
+                        <span class="stretched-link"></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Card: Consulta Unitária -->
+        <div class="col-12 col-md-5 col-lg-3">
+            <a href="{{ url_for('reserva_route.pesquisar_Unitaria') }}" class="text-decoration-none">
+                <div class="card shadow-lg rounded-lg p-3 w-100 h-100" data-aos="fade-up">
+                    <div class="card-body text-center position-relative">
+                        <h2 class="fw-bold text-uppercase mb-3">Reserva Consulta Unitária</h2>
+                        <p class="small">Pesquise uma reserva específica rapidamente.</p>
+                        <div class="card-btn">
+                            <img src="{{ url_for('static', filename='img/home/reservaU.svg') }}" alt="Ícone de consulta unitária">
+                        </div>
+                        <span class="stretched-link"></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Card: Relatórios -->
+        <div class="col-12 col-md-5 col-lg-3">
+            <a href="{{ url_for('relatorio_route.listar_Relatorio') }}" class="text-decoration-none">
+                <div class="card shadow-lg rounded-lg p-3 w-100 h-100" data-aos="fade-up">
+                    <div class="card-body text-center position-relative">
+                        <h2 class="fw-bold text-uppercase mb-3">Relatórios de Reservas</h2>
+                        <p class="small">Crie e visualize relatórios detalhados sobre o uso das salas.</p>
+                        <div class="card-btn">
+                            <img src="{{ url_for('static', filename='img/home/relatorio.svg') }}" alt="Ícone de relatórios de reserva">
+                        </div>
+                        <span class="stretched-link"></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Card: Cadastrar Funcionário -->
+        {% if session.get('usuario') and session['nivel_acesso'] in ['admin', 'suporte'] %}
+        <div class="col-12 col-md-5 col-lg-3">
+            <a href="{{ url_for('funcionario_route.cadastrar_Pessoa') }}" class="text-decoration-none">
+                <div class="card shadow-lg rounded-lg p-3 w-100 h-100" data-aos="fade-up">
+                    <div class="card-body text-center position-relative">
+                        <h2 class="fw-bold text-uppercase mb-3">Cadastrar Funcionário</h2>
+                        <p class="small">Adicione novos funcionários ao sistema.</p>
+                        <div class="card-btn">
+                            <img src="{{ url_for('static', filename='img/home/cadastrar.svg') }}" alt="Ícone de configurações">
+                        </div>
+                        <span class="stretched-link"></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endif %}
+
+        <!-- Card: Meu Perfil -->
+        <div class="col-12 col-md-5 col-lg-3">
+            <a href="{{ url_for('funcionario_route.perfil') }}" class="text-decoration-none">
+                <div class="card shadow-lg rounded-lg p-3 w-100 h-100" data-aos="fade-up">
+                    <div class="card-body text-center position-relative">
+                        <h2 class="fw-bold text-uppercase mb-3">Meu Perfil</h2>
+                        <p class="small">Altere sua senha ou informações pessoais.</p>
+                        <div class="card-btn">
+                            <img src="{{ url_for('static', filename='img/home/perfil1.svg') }}" alt="Ícone de configurações">
+                        </div>
+                        <span class="stretched-link"></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

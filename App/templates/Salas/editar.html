@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Salas - Editar Sala{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-2">
+    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
+
+        <!-- Formulário para editar sala -->
+        <form action="{{ url_for('sala_route.editar_Sala', id=sala.idSala) }}" method="POST"
+            class="needs-validation form-sala" novalidate>
+            <h2 class="text-center mb-4 fw-bold text-primary">Edição de Sala</h2>
+            <fieldset>
+                <input type="hidden" id="id" name="id" value="{{ sala.idSala }}">
+
+                <div class="row g-2">
+                    <!-- Nome da Sala -->
+                    <div class="col-md-6 mb-3">
+                        <label for="nome" class="form-label text-dark fs-5">Nome da Sala:</label>
+                        <input type="text" id="nome" name="nome" value="{{ sala.nome }}" required maxlength="100"
+                            class="form-control shadow-sm" placeholder="Nome da Sala" pattern="^[a-zA-Z0-9\s]+$"
+                            aria-describedby="nomeFeedback">
+                        <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome da sala corretamente
+                            (apenas letras, números e espaços).</div>
+                    </div>
+
+                    <!-- Tipo de Sala -->
+                    <div class="col-md-6 mb-3">
+                        <label for="tipo" class="form-label text-dark fs-5">Tipo de Sala:</label>
+                        <select id="tipo" name="tipo" class="form-select shadow-sm" required
+                            aria-describedby="tipoFeedback">
+                            <option value="Comum" {% if sala.tipo=='Comum' %} selected {% endif %}>Comum</option>
+                            <option value="Laboratorio" {% if sala.tipo=='Laboratorio' %} selected {% endif %}>
+                                Laboratório</option>
+                            <option value="Biblioteca" {% if sala.tipo=='Biblioteca' %} selected {% endif %}>
+                                Biblioteca</option>
+                        </select>
+                        <div id="tipoFeedback" class="invalid-feedback">Por favor, selecione o tipo de sala.</div>
+                    </div>
+                </div>
+
+                <div class="row g-2">
+                    <!-- Prédio -->
+                    <div class="col-md-6 mb-3">
+                        <label for="predio" class="form-label text-dark fs-5">Prédio:</label>
+                        <select id="predio" name="predio" class="form-select shadow-sm" required
+                            aria-describedby="predioFeedback">
+                            <option value="Predio 1" {% if sala.predio=='Predio 1' %} selected {% endif %}>Prédio 1
+                            </option>
+                            <option value="Predio 2" {% if sala.predio=='Predio 2' %} selected {% endif %}>Prédio 2
+                            </option>
+                        </select>
+                        <div id="predioFeedback" class="invalid-feedback">Por favor, selecione o prédio.</div>
+                    </div>
+
+                    <!-- Equipamento -->
+                    <div class="col-md-6 mb-3">
+                        <label for="equipamento" class="form-label text-dark fs-5">Equipamento (opcional):</label>
+                        <input type="text" id="equipamento" name="equipamento" value="{{ sala.equipamentos or '' }}"
+                            maxlength="100" class="form-control shadow-sm" placeholder="Digite o equipamento utilizado"
+                            aria-describedby="equipamentoFeedback">
+                        <div id="equipamentoFeedback" class="invalid-feedback">Por favor, preencha o campo de
+                            equipamento.</div>
+                    </div>
+                </div>
+
+                <div class="row g-2">
+                    <!-- Capacidade -->
+                    <div class="col-md-6 mb-3">
+                        <label for="capacidade" class="form-label text-dark fs-5">Capacidade:</label>
+                        <input type="number" id="capacidade" name="capacidade" value="{{ sala.capacidade }}" required
+                            min="1" class="form-control shadow-sm" placeholder="Capacidade de alunos"
+                            aria-describedby="capacidadeFeedback">
+                        <div id="capacidadeFeedback" class="invalid-feedback">Por favor, preencha a capacidade de
+                            alunos corretamente.</div>
+                    </div>
+
+                    <!-- Observações -->
+                    <div class="col-md-6 mb-3">
+                        <label for="feedback" class="form-label text-dark fs-5">Observações (opcional):</label>
+                        <input type="text" id="feedback" name="feedback" value="{{ sala.observacao or '' }}"
+                            maxlength="100" class="form-control shadow-sm" placeholder="Insira suas observações"
+                            aria-describedby="feedbackFeedback">
+                        <div id="feedbackFeedback" class="invalid-feedback">Por favor, preencha as observações
+                            corretamente.</div>
+                    </div>
+                </div>
+
+                <!-- Botões de Ação -->
+                <div class="d-flex justify-content-between mt-3">
+                    <!-- Botão de Voltar à Esquerda -->
+                    <a href="javascript:history.back()"
+                        class="btn btn-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="bi bi-arrow-left-circle me-2"></i> Voltar
+                    </a>
+
+                    <!-- Botão de Salvar à Direita -->
+                    <button type="submit"
+                        class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center ml-auto">
+                        <i class="bi bi-check-circle me-2"></i> Salvar Alterações
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Habilita o botão de submit quando o formulário for válido
+    document.querySelector(".form-sala").addEventListener("input", function () {
+        const form = this;
+        const submitBtn = document.querySelector("button[type='submit']");
+        submitBtn.disabled = !form.checkValidity();
+    });
+</script>
+
+{% endblock %}

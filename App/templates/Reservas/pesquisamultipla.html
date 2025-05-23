@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Reservas - Mapa de Sala{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid my-2">
+    <div class="card shadow-sm p-4 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
+        <h2 class="text-center mb-4 fw-bold text-primary">Pesquisar Múltipla</h2>
+
+        <!-- Formulário de Pesquisa -->
+        <form method="GET" action="#" class="search-form" role="search" aria-labelledby="searchForm">
+            <div class="input-group mb-1 mb-md-0">
+                <input class="input" required autocomplete="off" type="text" name="search" id="search" placeholder=" "
+                    value="{{ search_query }}" aria-label="Pesquisar Ofertas" />
+                <label class="label" for="search">Pesquisar Ofertas</label>
+                <div class="input-wrapper">
+                    <svg id="loadingIcon" class="d-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"
+                            class="animate-spin"></circle>
+                    </svg>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary ml-2" id="clearSearch"
+                aria-label="Limpar pesquisa">Limpar</button>
+        </form>
+
+        <!-- Botões principais -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            {% if session.get('usuario') and session['nivel_acesso'] in ['admin', 'suporte'] %}
+            <a href="{{ url_for('reserva_route.cadastrar_Reserva') }}" class="btn btn-success btn-sm">
+                <i class="fas fa-plus"></i> Nova Reserva
+            </a>
+            {% endif %}
+            <a href="{{ url_for('reserva_route.pesquisar_Unitaria') }}" class="btn btn-success btn-sm">
+                <i class="fas fa-plus"></i> Pesquisa Unitária
+            </a>
+        </div>        
+
+        <fieldset class="mb-4">
+            <legend class="visually-hidden">Detalhes da Reserva</legend>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="dataInicio" class="form-label fw-semibold text-dark fs-6">Data Inicial <span
+                            class="text-danger">*</span>:</label>
+                    <input type="date" id="dataInicio" name="dataInicio" class="form-control shadow-sm" required
+                        aria-label="Escolha a data inicial" />
+                    <div class="invalid-feedback">
+                        Por favor, preencha a data inicial.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="dataFim" class="form-label fw-semibold text-dark fs-6">Data Final <span
+                            class="text-danger">*</span>:</label>
+                    <input type="date" id="dataFim" name="dataFim" class="form-control shadow-sm" required
+                        aria-label="Escolha a data final" />
+                    <div class="invalid-feedback">
+                        Por favor, preencha a data final.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de Dias da Semana -->
+            <div class="row g-2 mb-3 justify-content-center">
+                <div class="col-12 text-center">
+                    <label for="diasSemana" class="form-label text-dark fs-6">Selecione os Dias da Semana:</label>
+                    <div class="d-flex flex-wrap justify-content-center">
+                        {% for dia, label in [ ('segunda', 'Segunda'), ('terca', 'Terça'),
+                        ('quarta', 'Quarta'), ('quinta', 'Quinta'), ('sexta', 'Sexta'),
+                        ('sabado', 'Sábado'), ] %}
+                        <div class="form-check me-3 mb-2">
+                            <input type="checkbox" id="{{ dia }}" name="diasSemana[]" value="{{ dia }}"
+                                class="form-check-input shadow-sm" />
+                            <label class="form-check-label text-dark fs-6" for="{{ dia }}">
+                                <span class="d-inline-block" style="min-width: 90px">{{ label }}</span>
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botões de Ação -->
+            <div class="d-flex justify-content-between mt-3">
+                <button type="reset"
+                    class="btn btn-outline-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                    <i class="bi bi-x-circle me-2"></i> Limpar
+                </button>
+                <button id="submitBtn" type="submit"
+                    class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center"
+                    disabled>
+                    <i class="bi bi-check-circle me-2"></i> Pesquisar
+                </button>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<script>
+
+    // Alternar visibilidade da tabela
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleTableBtn = document.getElementById('toggleTable');
+        const tableContainer = document.getElementById('tableContainer');
+
+        if (localStorage.getItem('tableVisible') === 'true') {
+            tableContainer.classList.remove('d-none');
+        }
+
+        toggleTableBtn.addEventListener('click', () => {
+            tableContainer.classList.toggle('d-none');
+            localStorage.setItem('tableVisible', !tableContainer.classList.contains('d-none'));
+        });
+    });
+
+    // Feedback visual ao pesquisar
+    const searchInput = document.getElementById('search');
+    const loadingIcon = document.getElementById('loadingIcon');
+
+    searchInput.addEventListener('input', () => {
+        loadingIcon.classList.remove('d-none');
+    });
+
+    document.getElementById('clearSearch').addEventListener('click', () => {
+        if (confirm('Tem certeza que deseja limpar a pesquisa?')) {
+            searchInput.value = '';
+            loadingIcon.classList.add('d-none');
+        }
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const dataInicio = document.getElementById("dataInicio");
+        const dataFim = document.getElementById("dataFim");
+        const horaInicio = document.getElementById("horaInicio");
+        const horaFim = document.getElementById("horaFim");
+        const form = document.getElementById("formCadastroReserva");
+        const submitBtn = document.getElementById("submitBtn");
+
+        // Enable submit button based on form validity
+        form.addEventListener("input", function () {
+            submitBtn.disabled = !form.checkValidity();
+        });
+
+        dataInicio.addEventListener("change", () => {
+            dataFim.min = dataInicio.value;
+        });
+
+        dataFim.addEventListener("change", () => {
+            const invalidMessage =
+                dataFim.value < dataInicio.value
+                    ? "A data final deve ser no mesmo dia ou após a data inicial."
+                    : "";
+            dataFim.setCustomValidity(invalidMessage);
+        });
+
+        horaFim.addEventListener("change", () => {
+            if (horaFim.value < horaInicio.value) {
+                horaFim.setCustomValidity(
+                    "A hora de fim deve ser após a hora de início."
+                );
+            } else {
+                horaFim.setCustomValidity("");
+            }
+        });
+    });
+</script>
+{% endblock %}

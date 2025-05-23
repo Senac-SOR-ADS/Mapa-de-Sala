@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+
+{% block title %}Gerenciamento de Equipamentos Ocupados - Mapa de Sala{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-2">
+    <!-- Formulário de Adicionar Ocupação -->
+    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
+        <form action="/ocupado" method="POST" class="form-ocupado needs-validation" novalidate>
+            <h2 class="text-center mb-3 fw-bold text-primary">Adicionar Ocupação de Equipamento</h2>
+
+            <div class="d-flex justify-content-end align-items-center mb-4">
+                <a href="{{ url_for('equipamento_route.listar_Equipamento') }}" class="btn btn-success btn-sm">
+                    <i class="fas fa-list"></i> Lista de Equipamentos
+                </a>
+                <a href="{{ url_for('equipamento_route.cadastrar_Equipamento') }}" class="btn btn-success btn-sm">
+                    <i class="fas fa-plus"></i> Cadastrar Equipamento
+                </a>
+            </div>
+            <br>
+
+            <fieldset>
+                <legend class="visually-hidden">Detalhes do Equipamento Ocupado</legend>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label for="idReserva" class="form-label text-dark fs-5">Reserva:</label>
+                        <select id="idReserva" name="idReserva" required class="form-select shadow-sm">
+                            <option value="" disabled selected>Selecione a reserva</option>
+                            <option value="1">Reserva 1</option>
+                            <option value="2">Reserva 2</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor, selecione uma reserva.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="idEquipamento" class="form-label text-dark fs-5">Equipamento:</label>
+                        <select id="idEquipamento" name="idEquipamento" required class="form-select shadow-sm">
+                            <option value="" disabled selected>Selecione o equipamento</option>
+                            <option value="1">Equipamento 1</option>
+                            <option value="2">Equipamento 2</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor, selecione um equipamento.</div>
+                    </div>
+                </div>
+
+                <!-- Botões de Ação -->
+                <div class="d-flex justify-content-between mt-3">
+                    <button type="reset"
+                        class="btn btn-outline-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="bi bi-x-circle me-2"></i> Limpar
+                    </button>
+                    <button type="submit" id="submitBtn"
+                        class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center"
+                        disabled>
+                        <i class="bi bi-check-circle me-2"></i> Cadastrar Equipamento Ocupado
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <br>
+
+    <!-- Lista de Ocupações -->
+    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
+        <h2 class="text-center mb-3 fw-bold text-primary">Lista de Ocupações de Equipamentos</h2>
+        <fieldset>
+            <legend class="visually-hidden">Detalhes das listas de Equipamentos</legend>
+
+            <!-- Formulário de Pesquisa -->
+            <form method="GET" action="#" class="search-form" role="search">
+                <div class="input-group mb-1 mb-md-0">
+                    <input class="input" required autocomplete="off" type="text" name="search" id="search"
+                        placeholder=" " value="{{ search_query }}" />
+                    <label class="label" for="search">Pesquisar</label>
+
+                    <div class="input-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary ml-2" id="clearSearch">Limpar</button>
+            </form>
+
+            <!-- Botões para exibir a lista -->
+            <div class="d-flex flex-column flex-md-row justify-content-md-start align-items-md-center mb-4">
+                <button id="toggleTable" class="btn btn-info btn-sm mb-2 mb-md-0 me-md-3"
+                    aria-label="Mostrar/Esconder lista de ocupações">
+                    <i class="fas fa-list"></i> Lista de Ocupações
+                </button>
+            </div>
+
+            <!-- Tabela de Ocupações -->
+            <div id="tableContainer" class="table-responsive d-none">
+                <table class="table table-striped table-bordered table-hover align-middle">
+                    <caption class="visually-hidden">Tabela com lista de ocupações de equipamentos</caption>
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Reserva</th>
+                            <th>Equipamento</th>
+                            <th class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ocupacao in ocupacoes %}
+                        <tr>
+                            <td>{{ ocupacao.reserva }}</td>
+                            <td>{{ ocupacao.equipamento }}</td>
+                            <td class="text-center">
+                                <button class="btn btn-danger btn-sm"
+                                    aria-label="Remover ocupação de {{ ocupacao.equipamento }}"
+                                    onclick="confirmRemove('{{ ocupacao.id }}', '{{ ocupacao.equipamento }}')">
+                                    <i class="fas fa-trash"></i> Remover
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Modal de Confirmação de Remoção -->
+            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmModalLabel">Confirmar Remoção</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Fechar"></button>
+                        </div>
+                        <div class="modal-body">
+                            Tem certeza que deseja remover a ocupação do equipamento "<span id="equipmentName"></span>"?
+                            Esta ação não pode ser desfeita.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-danger" id="confirmRemoveButton">Remover</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<script>
+    /* ===================== Alterna Visibilidade da Tabela ===================== */
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleTableBtn = document.getElementById('toggleTable');
+        const tableContainer = document.getElementById('tableContainer');
+
+        // Verifica o estado salvo no localStorage ao carregar a página
+        if (localStorage.getItem('tableVisible') === 'true') {
+            tableContainer.classList.remove('d-none');
+        } else {
+            tableContainer.classList.add('d-none');
+        }
+
+        // Alterna a exibição da tabela ao clicar no botão
+        toggleTableBtn.addEventListener('click', () => {
+            if (tableContainer.classList.contains('d-none')) {
+                tableContainer.classList.remove('d-none');
+                localStorage.setItem('tableVisible', 'true');
+            } else {
+                tableContainer.classList.add('d-none');
+                localStorage.setItem('tableVisible', 'false');
+            }
+        });
+
+        // Mantém a tabela visível ao usar paginação
+        document.querySelectorAll('.pagination .page-link').forEach(link => {
+            link.addEventListener('click', () => {
+                localStorage.setItem('tableVisible', 'true');
+            });
+        });
+
+        // Habilita o botão de submit quando o formulário for válido
+        const form = document.querySelector('.form-ocupado');
+        const submitBtn = document.getElementById("submitBtn");
+
+        form.addEventListener("input", function () {
+            submitBtn.disabled = !form.checkValidity();
+        });
+    });
+</script>
+
+{% endblock %}

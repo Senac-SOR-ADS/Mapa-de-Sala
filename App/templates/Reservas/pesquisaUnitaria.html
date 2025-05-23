@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Reservas - Mapa de Sala{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-4">
+    <div class="card shadow-sm p-4 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
+        <h2 class="text-center mb-4 fw-bold text-primary">Pesquisar Unitária</h2>
+
+        <!-- Formulário de Pesquisa -->
+        <form method="POST" action="{{ url_for('reserva_route.pesquisar_Unitaria') }}" class="search-form" role="search" aria-labelledby="searchForm" id="searchForm">
+            <div class="input-group mb-4">
+                <input class="form-control shadow-sm rounded-pill custom-search-input" autocomplete="off" type="text"
+                    name="search" id="search" placeholder="Pesquisar Ofertas" value="{{ search_query }}"
+                    aria-label="Pesquisar Ofertas" />
+                <label class="visually-hidden" for="search">Pesquisar Ofertas</label>
+                <button type="button" class="btn btn-outline-danger btn-sm" id="clearSearch"
+                    aria-label="Limpar pesquisa">
+                    <i class="bi bi-x-circle"></i> Limpar
+                </button>
+            </div>
+        </form>
+
+        <!-- Filtros de Pesquisa -->
+        <form method="POST" action="{{ url_for('reserva_route.pesquisar_Unitaria') }}" class="search-form" role="search" aria-labelledby="searchForm" id="filtersForm">
+            <div class="row g-4 mb-4">
+                <div class="col-md-4 col-sm-12">
+                    <label for="idSala" class="form-label fs-5 text-dark">Sala:</label>
+                    <select id="idSala" name="sala" class="form-select shadow-sm rounded-3 form-control-lg"
+                        aria-label="Selecione a Sala">
+                        <option value="" disabled selected>Selecione a Sala</option>
+                        {% for sala in salas %}
+                        <option value="{{ sala }}" {% if sala == search_query %} selected {% endif %}>{{ sala }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label for="periodo" class="form-label fs-5 text-dark">Período:</label>
+                    <select id="periodo" name="periodo" class="form-select shadow-sm rounded-3 form-control-lg">
+                        <option value="" disabled selected>Selecione o Período</option>
+                        <option value="Manha" {% if search_query == 'Manha' %} selected {% endif %}>Manhã</option>
+                        <option value="Tarde" {% if search_query == 'Tarde' %} selected {% endif %}>Tarde</option>
+                        <option value="Noite" {% if search_query == 'Noite' %} selected {% endif %}>Noite</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Data -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-4 col-sm-12">
+                    <label for="dataInicio" class="form-label fw-semibold text-dark fs-6">Data Inicial:</label>
+                    <input type="text" id="dataInicio" name="dataInicio" class="form-control shadow-sm rounded-3 form-control-lg"
+                        value="{{ request.form.get('dataInicio') }}" />
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label for="dataFim" class="form-label fw-semibold text-dark fs-6">Data Final:</label>
+                    <input type="text" id="dataFim" name="dataFim" class="form-control shadow-sm rounded-3 form-control-lg"
+                        value="{{ request.form.get('dataFim') }}" />
+                </div>
+            </div>
+
+            <!-- Botões de Ação (Alinhamento horizontal com flex) -->
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center mb-4">
+                <!-- Botão Limpar -->
+                <button type="button" class="btn btn-outline-danger btn-sm mb-2 mb-sm-0" id="clearAllFields">
+                    <i class="bi bi-x-circle me-2"></i> Limpar
+                </button>
+                <!-- Botão Pesquisar -->
+                <button id="submitBtn" type="submit" class="btn btn-outline-success btn-sm">
+                    <i class="bi bi-check-circle me-2"></i> Pesquisar
+                </button>
+            </div>
+        </form>
+
+        <!-- Exibição dos Resultados -->
+        {% if resultados %}
+        <div class="container mt-5">
+            <h2 class="text-center mb-4">Resultados da Pesquisa:</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-3">
+                {% for resultado in resultados %}
+                <div class="col">
+                    <div class="card border-0 rounded-4 shadow-sm result-card" style="transition: all 0.3s ease-in-out;">
+                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0"><i class="bi bi-check-circle me-2"></i>{{ loop.index }}. Resultado</h5>
+                            <small class="text-light"><i class="bi bi-clock"></i> Atualizado recentemente</small>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><strong>Data:</strong> <span class="text-muted">{{ resultado[4] }}</span></li>
+                                <li><strong>Número da Oferta:</strong> <span class="text-primary">{{ resultado[3] }}</span></li>
+                                <li><strong>Período:</strong> <span class="text-info">{{ resultado[5] }}</span></li>
+                                <li><strong>Curso:</strong> <span class="badge bg-secondary">{{ resultado[2] }}</span></li>
+                                <li><strong>Sala:</strong> <span class="font-weight-bold">{{ resultado[1] }}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <p class="text-center mt-3 text-danger">Nenhum resultado encontrado.</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Inclusão do Flatpickr -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        flatpickr("#dataInicio", {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            defaultDate: "today",
+            locale: "pt"
+        });
+
+        flatpickr("#dataFim", {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            defaultDate: "today",
+            locale: "pt"
+        });
+    });
+
+    // Prevenir o envio do formulário se necessário
+    document.getElementById('filtersForm').addEventListener('submit', function (event) {
+        event.preventDefault();  // Previne o envio real do formulário se houver problemas
+
+        // Ação adicional caso você queira fazer algo antes de enviar o formulário
+        this.submit(); // Força o envio do formulário depois de garantir que não houve erro
+    });
+
+    // Limpar todos os campos do formulário
+    document.getElementById('clearAllFields').addEventListener('click', function () {
+        // Limpar dados dos campos do formulário
+        const form = document.getElementById('filtersForm');
+        form.reset(); // Limpar o formulário
+
+        // Limpar datas com Flatpickr
+        flatpickr("#dataInicio").clear();
+        flatpickr("#dataFim").clear();
+    });
+
+    // Limpar a pesquisa de ofertas (sem afetar o restante do formulário)
+    document.getElementById('clearSearch').addEventListener('click', function () {
+        document.getElementById('search').value = ''; // Limpar pesquisa sem enviar o formulário
+    });
+
+    // Limpar pesquisa sem alerta
+    document.getElementById('clearSearch').addEventListener('click', function () {
+        document.getElementById('search').value = '';
+    });
+</script>
+
+{% endblock %}

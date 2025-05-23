@@ -1,0 +1,83 @@
+<!-- header.html -->
+{% include "Home/header.html" %}
+
+<!-- Estilos específicos para Login -->
+{% block css_login %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login/login.css') }}" />
+{% endblock %}
+
+<!-- Conteúdo da Página de login -->
+{% block content %}
+<main>
+    <div class="container-login">
+        <!-- Imagem de Login -->
+        <section class="img-box" aria-hidden="true">
+            <img src="{{ url_for('static', filename='img/login/' + image) }}" alt="Ilustração de login"
+                class="login-image" />
+        </section>
+
+        <section class="logo-empresa" aria-hidden="true">
+            <img src="{{ url_for('static', filename='img/default.png') }}" alt="Logo da Empresa"
+                class="logo-image" />
+        </section>
+
+        <section class="content-box">
+            <div class="form-box">
+                <h2>Login</h2>
+                <form action="{{ url_for('login_route.login') }}" method="POST" class="form-container" novalidate>
+                    <!-- Campo de E-mail -->
+                    <div class="input-box">
+                        <label for="email">E-mail:</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-user-circle icon" aria-hidden="true"></i>
+                            <input type="email" id="email" name="email" required maxlength="100"
+                                placeholder="Digite seu e-mail" aria-label="Digite seu e-mail de usuário"
+                                autocomplete="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                        </div>
+                        <small id="emailHelp" class="form-text text-muted">
+                            Seu e-mail será utilizado para autenticação.
+                        </small>
+                        <!-- Área para mensagens de validação do e-mail -->
+                        <small id="emailMessage" class="form-text"></small>
+                    </div>
+
+                    <!-- Campo de Senha -->
+                    <div class="input-box">
+                        <label for="senha">Senha:</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-key icon" aria-hidden="true"></i>
+                            <input type="password" id="senha" name="senha" required minlength="3"
+                                placeholder="Digite sua senha" aria-label="Digite sua senha"
+                                autocomplete="current-password" />
+                            <i class="fa-solid fa-eye toggle-password" id="toggleSenha"
+                                aria-label="Mostrar ou ocultar senha" role="button" tabindex="0"
+                                aria-controls="senha"></i>
+                        </div>
+                    </div>
+
+                    <!-- Lembrar-me e Esqueceu a Senha -->
+                    <div class="remember">
+                        <label for="lembrar">
+                            <input type="checkbox" id="lembrar" name="lembrar" />
+                            Lembrar-me
+                        </label>
+                    </div>
+
+                    <!-- Botão de Login -->
+                    <div class="input-box">
+                        <button type="submit" class="btn-submit" aria-label="Entrar">
+                            Entrar
+                        </button>
+                    </div>
+
+                    <!-- Mensagens de Feedback -->
+                    <p id="message" class="hidden" role="alert"></p>
+                </form>
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}
+
+<script src="{{ url_for('static', filename='js/login/formLogin.js') }}"></script>
+</html>

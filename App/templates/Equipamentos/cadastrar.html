@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Gestão de Equipamentos - Cadastro de Equipamentos{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid my-2">
+    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
+
+        <!-- Formulário para adicionar um novo equipamento -->
+        <form id="formCadastroEquipamento" action="{{ url_for('equipamento_route.cadastrar_Equipamento') }}"
+            method="POST" class="form-equipamento needs-validation" novalidate>
+            <h2 class="text-center mb-4 fw-bold text-primary">Cadastro de Equipamento</h2>
+
+            <div class="d-flex justify-content-end align-items-center mb-4">
+                <a href="{{ url_for('equipamento_route.listar_Equipamento') }}" class="btn btn-success btn-sm">
+                    <i class="fas fa-list"></i> Lista de Equipamentos
+                </a>
+                <a href="{{ url_for('equipamento_route.ocupado_Equipamento') }}" class="btn btn-success btn-sm">
+                    <i class="fas fa-list"></i> Equipamentos Ocupados
+                </a>
+            </div>
+
+            <fieldset>
+
+                <div class="row g-2">
+                    <!-- Área -->
+                    <div class="col-md-6 mb-3">
+                        <label for="idArea" class="form-label text-dark fs-5">Área:</label>
+                        <select id="idArea" name="idArea" class="form-select shadow-sm" required
+                            aria-describedby="areaFeedback">
+                            <option value="" disabled selected>Selecione a Área</option>
+                            {% for area, id in valores.items() %}
+                            <option value="{{ id }}">{{ area }}</option>
+                            {% endfor %}
+                        </select>
+                        <div id="areaFeedback" class="invalid-feedback">Por favor, selecione uma área.</div>
+                    </div>
+
+                    <!-- Nome do Equipamento -->
+                    <div class="col-md-6 mb-3">
+                        <label for="nome" class="form-label text-dark fs-5">Nome do Equipamento:</label>
+                        <input type="text" id="nome" name="nome" required maxlength="100" class="form-control shadow-sm"
+                            placeholder="Nome do Equipamento" pattern="^[a-zA-Z0-9\s]+$" aria-required="true"
+                            aria-describedby="nomeFeedback">
+                        <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome do equipamento
+                            corretamente (apenas letras, números e espaços).</div>
+                    </div>
+
+                    <!-- Marca do Equipamento -->
+                    <div class="col-md-6 mb-3">
+                        <label for="marca" class="form-label text-dark fs-5">Marca do Equipamento:</label>
+                        <input type="text" id="marca" name="marca" required maxlength="100"
+                            class="form-control shadow-sm" placeholder="Marca do Equipamento"
+                            pattern="^[a-zA-Z0-9\s]+$" aria-required="true" aria-describedby="marcaFeedback">
+                        <div id="marcaFeedback" class="invalid-feedback">Por favor, preencha a marca do equipamento
+                            corretamente (apenas letras, números e espaços).</div>
+                    </div>
+
+                    <!-- Quantidade -->
+                    <div class="col-md-6 mb-3">
+                        <label for="quantidade" class="form-label text-dark fs-5">Quantidade:</label>
+                        <input type="number" id="quantidade" name="quantidade" required min="1"
+                            class="form-control shadow-sm" placeholder="Quantidade" aria-required="true"
+                            aria-describedby="quantidadeFeedback">
+                        <div id="quantidadeFeedback" class="invalid-feedback">Por favor, informe a quantidade
+                            corretamente.</div>
+                    </div>
+                </div>
+
+                <!-- Botões de Ação -->
+                <div class="d-flex justify-content-between mt-3">
+                    <button type="reset"
+                        class="btn btn-outline-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="bi bi-x-circle me-2"></i> Limpar
+                    </button>
+                    <button type="submit"
+                        class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center"
+                        id="submitBtn" disabled>
+                        <i class="bi bi-check-circle me-2"></i> Cadastrar Equipamento
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("formCadastroEquipamento");
+        const submitBtn = document.getElementById("submitBtn");
+
+        if (form && submitBtn) {
+            form.addEventListener("input", function () {
+                submitBtn.disabled = !form.checkValidity();
+            });
+        }
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+
+<head>
+    <!-- Metadados Essenciais -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Turma de Análise e Desenvolvimento de Sistemas - Senac 2024">
+
+    <!-- Título e Meta Descrição -->
+    <title>{% block title %}Mapa de Sala - Senac{% endblock %}</title>
+    <meta name="description"
+        content="{% block description %}Sistema para gerenciamento de reservas de salas.{% endblock %}">
+
+    <!-- Ícone da Página -->
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/error/message.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Scripts -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/disable-devtool@0.3.8" disable-devtool-auto></script> -->
+
+</head>
+
+<body>
+    <!-- Mensagens de Feedback -->
+    {% include "Error/message.html" %}
+</body>
+
+</html>
