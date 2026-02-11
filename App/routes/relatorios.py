@@ -1,22 +1,31 @@
-from flask import render_template, Blueprint
+import datetime
+from flask import render_template, Blueprint, request
 from App.routes.auth.autenticar import login_auth
-from App.controller.pessoa import buscarPessoas
-from App.controller.curso import listarCursos
-from App.controller.sala import listarSala
+from App.controllerWeb.relatorio import pesquisarDia
+from App.model.logger import logger
 
 # Definindo o blueprint
 relatorio_route = Blueprint('relatorio_route', __name__, template_folder='templates/Relatorios/')
 
-@relatorio_route.route("/reservas", methods=['GET', 'POST'])
+@relatorio_route.route("/relatorio", methods=['GET', 'POST'])
 @login_auth
-def listar_Reserva():
-    salas = listarSala()
-    pessoas = buscarPessoas()
-    cursos = listarCursos()
+def listar_Relatorio():
+    hoje = datetime.date.today()
+    data_selecionada = request.args.get("data", str(hoje))
 
-    return render_template('/Relatorios/listarReservas.html', salas=salas, pessoas=pessoas, cursos=cursos)
+    try:
+        data_formatada = datetime.datetime.strptime(data_selecionada, "%Y-%m-%d").date()
+    except ValueError:
+        logger.warning(f"Data inválida informada: {data_selecionada}")
+        return render_template('/Relatorios/listarDia.html', reservas=[], hoje=hoje)
 
-@relatorio_route.route("/ocupado", methods=['GET', 'POST'])
-@login_auth
-def ocupado_Equipamento():
-    return render_template('/Relatorios/ocupadoEquipamento.html')
+    reservas_formatadas = pesquisarDia(data_formatada)
+
+    if reservas_formatadas:
+        logger.info(f"{len(reservas_formatadas)} reservas encontradas para {data_formatada}.")
+    else:
+        logger.warning(f"Nenhuma reserva encontrada para {data_formatada}.")
+
+    # Corrigido o nome da variável para 'reservas' e passando os dados corretamente.
+    return render_template('/Relatorios/listarDia.html', reservas=reservas_formatadas, hoje=hoje)
+

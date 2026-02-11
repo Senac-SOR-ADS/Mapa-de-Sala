@@ -7,46 +7,50 @@
     <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
 
         <!-- Formulário para editar equipamento -->
-        <form id="formEditarEquipamento" action="{{ url_for('equipamento_route.editar_equipamento', id=equipamento.id) }}"
-            method="POST" class="needs-validation form-equipamento" novalidate>
+        <form id="formEditarEquipamento" action="{{ url_for('equipamento_route.editar_Equipamento', id=equipamento.idEquipamento) }}" method="POST" class="form-equipamento needs-validation" novalidate>
             <h2 class="text-center mb-4 fw-bold text-primary">Edição de Equipamento</h2>
+
+            <div class="d-flex justify-content-end align-items-center mb-4">
+                <a href="{{ url_for('equipamento_route.listar_Equipamento') }}" class="btn btn-success btn-sm">
+                    <i class="fas fa-list"></i> Lista de Equipamentos
+                </a>
+                <a href="{{ url_for('equipamento_route.ocupado_Equipamento') }}" class="btn btn-success btn-sm">
+                    <i class="fas fa-list"></i> Equipamentos Ocupados
+                </a>
+            </div>
+
             <fieldset>
-                <input type="hidden" id="id" name="id" value="{{ equipamento.id }}" />
+                <input type="hidden" id="id" name="id" value="{{ equipamento.idEquipamento }}" />
 
                 <div class="row g-2">
                     <!-- Nome do Equipamento -->
                     <div class="col-md-6 mb-3">
                         <label for="nome" class="form-label text-dark fs-5">Nome do Equipamento:</label>
-                        <input type="text" id="nome" name="nome" value="{{ equipamento.nome }}" required maxlength="100"
-                            class="form-control shadow-sm" placeholder="Nome do Equipamento" aria-describedby="nomeFeedback">
-                        <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome do equipamento.</div>
+                        <input type="text" id="nome" name="nome" value="{{ equipamento.nome }}" required maxlength="100" class="form-control shadow-sm" placeholder="Nome do Equipamento" pattern="^[a-zA-Z0-9\s]+$" aria-describedby="nomeFeedback">
+                        <div id="nomeFeedback" class="invalid-feedback">Por favor, preencha o nome do equipamento corretamente (apenas letras, números e espaços).</div>
                     </div>
 
                     <!-- Marca do Equipamento -->
                     <div class="col-md-6 mb-3">
                         <label for="marca" class="form-label text-dark fs-5">Marca do Equipamento:</label>
-                        <input type="text" id="marca" name="marca" value="{{ equipamento.marca }}" required maxlength="100"
-                            class="form-control shadow-sm" placeholder="Marca do Equipamento" aria-describedby="marcaFeedback">
-                        <div id="marcaFeedback" class="invalid-feedback">Por favor, preencha a marca do equipamento.</div>
+                        <input type="text" id="marca" name="marca" value="{{ equipamento.marca }}" required maxlength="100" class="form-control shadow-sm" placeholder="Marca do Equipamento" pattern="^[a-zA-Z0-9\s]+$" aria-describedby="marcaFeedback">
+                        <div id="marcaFeedback" class="invalid-feedback">Por favor, preencha a marca do equipamento corretamente (apenas letras, números e espaços).</div>
                     </div>
-                </div>
 
-                <div class="row g-2">
                     <!-- Quantidade -->
                     <div class="col-md-6 mb-3">
                         <label for="quantidade" class="form-label text-dark fs-5">Quantidade:</label>
-                        <input type="number" id="quantidade" name="quantidade" value="{{ equipamento.quantidade }}" required
-                            min="1" class="form-control shadow-sm" aria-describedby="quantidadeFeedback">
-                        <div id="quantidadeFeedback" class="invalid-feedback">Por favor, informe a quantidade.</div>
+                        <input type="number" id="quantidade" name="quantidade" value="{{ equipamento.quantidade }}" required min="1" class="form-control shadow-sm" placeholder="Quantidade" aria-describedby="quantidadeFeedback">
+                        <div id="quantidadeFeedback" class="invalid-feedback">Por favor, informe a quantidade corretamente.</div>
                     </div>
 
                     <!-- Área -->
                     <div class="col-md-6 mb-3">
                         <label for="idArea" class="form-label text-dark fs-5">Área:</label>
-                        <select id="idArea" name="idArea" required class="form-select shadow-sm" aria-describedby="areaFeedback">
-                            <option value="" disabled>Selecione a área</option>
-                            {% for area in areas %}
-                                <option value="{{ area.id }}" {% if equipamento.idArea==area.id %}selected{% endif %}>{{ area.nome }}</option>
+                        <select id="idArea" name="idArea" class="form-select shadow-sm" required aria-describedby="areaFeedback">
+                            <option value="" disabled>Selecione a Área</option>
+                            {% for area, id in valores.items() %}
+                                <option value="{{ id }}" {% if equipamento.idArea == id %}selected{% endif %}>{{ area }}</option>
                             {% endfor %}
                         </select>
                         <div id="areaFeedback" class="invalid-feedback">Por favor, selecione uma área.</div>
@@ -55,13 +59,13 @@
 
                 <!-- Botões de Ação -->
                 <div class="d-flex justify-content-between mt-3">
-                    <!-- Botão de Voltar à Esquerda -->
+                    <!-- Botão de Voltar -->
                     <a href="javascript:history.back()" class="btn btn-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
                         <i class="bi bi-arrow-left-circle me-2"></i> Voltar
                     </a>
 
-                    <!-- Botão de Salvar à Direita -->
-                    <button type="submit" class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center ml-auto">
+                    <!-- Botão de Salvar -->
+                    <button type="submit" class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center" id="submitBtn" disabled>
                         <i class="bi bi-check-circle me-2"></i> Salvar Alterações
                     </button>
                 </div>
@@ -71,11 +75,15 @@
 </div>
 
 <script>
-    // Habilita o botão de submit quando o formulário for válido
-    document.querySelector(".form-equipamento").addEventListener("input", function() {
-        const form = this;
-        const submitBtn = document.querySelector("button[type='submit']");
-        submitBtn.disabled = !form.checkValidity();
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("formEditarEquipamento");
+        const submitBtn = document.getElementById("submitBtn");
+
+        if (form && submitBtn) {
+            form.addEventListener("input", function () {
+                submitBtn.disabled = !form.checkValidity();
+            });
+        }
     });
 </script>
 

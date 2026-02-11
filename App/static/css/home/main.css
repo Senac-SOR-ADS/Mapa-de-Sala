@@ -10,48 +10,63 @@
 /* ===================== Layout Global ===================== */
 body {
   font-family: "Montserrat", sans-serif;
-  color: #212529;
-  background-color: #ffffff;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(220, 220, 220, 0.1));
+  color: #333;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   overflow-x: hidden;
   transition: background-color 0.3s, color 0.3s;
 }
 
+/* Default container styles */
 .container {
-  width: 100%;
-  max-width: 1200px;
+  width: fit-content;
+  min-width: 80%;
+  max-width: 90%;
   margin: 0 auto;
 }
 
-/* ===================== Main Content ===================== */
-.main-content {
-  padding: clamp(20px, 5vw, 40px) clamp(4vw, 3vw, 6vw);
-  gap: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+/* Container with full width and margins for fluid layout */
+.container-fluid {
+  width: 100%;
+  margin: 0 20px;
 }
 
-@media (min-width: 1024px) {
-  .main-content {
-    flex-direction: row;
-    gap: 40px;
+/* Responsive styles for smaller screens */
+@media (max-width: 1200px) {
+  .container {
+    min-width: 70%; /* Adjust minimum width for medium screens */
+    max-width: 85%; /* Adjust maximum width for medium screens */
+  }
+
+  .container-fluid {
+    margin: 0 15px; /* Reduce margins for smaller screens */
   }
 }
 
-@media (max-width: 1024px) and (min-width: 768px) {
-  .main-content {
-    flex-direction: column;
-    gap: 30px;
-  }
-}
-
+/* Further responsiveness for mobile screens */
 @media (max-width: 768px) {
-  .main-content {
-    padding: 10px;
-    gap: 20px;
+  .container {
+    min-width: 60%; /* Adjust minimum width for mobile screens */
+    max-width: 80%; /* Adjust maximum width for mobile screens */
+  }
+
+  .container-fluid {
+    margin: 0 10px; /* Adjust margin for better fit on mobile */
+  }
+}
+
+/* Even smaller screens (e.g., very small devices) */
+@media (max-width: 480px) {
+  .container {
+    min-width: 100%; /* Ensure full width on very small screens */
+    max-width: 100%;
+  }
+
+  .container-fluid {
+    margin: 0 5px; /* Further adjust margins for small screens */
   }
 }
 
@@ -142,42 +157,46 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.8rem;
   width: 100%;
   max-width: 80rem;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 1.2rem 2.5rem;
+  background: linear-gradient(135deg, rgba(255, 165, 0, 0.8), rgba(255, 255, 255, 0.10));
+  border: 1px solid rgba(34, 193, 195, 0.35);
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); margin-bottom: 0.5rem;
 }
 
 .banner .banner-text {
-  font-size: clamp(1rem, 4vw, 1.8rem);
+  font-size: clamp(0.5rem, 2vw, 1.2rem);
   font-weight: 600;
   text-align: center;
-  line-height: 1.5;
+  line-height: 1;
   margin: 0;
-  max-width: 90%;
+  color: #222;
 }
 
 @media (min-width: 1024px) {
   .banner {
-    max-width: 85rem;
-    padding: 0 4rem;
+    max-width: 70rem;
+    padding: 1rem 1rem;
   }
 
   .banner .banner-text {
-    font-size: clamp(1rem, 3vw, 2rem);
+    font-size: clamp(1rem, 1vw, 1rem);
   }
 }
 
 @media (max-width: 1023px) and (min-width: 768px) {
   .banner {
     padding: 1rem 3vw;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .banner .banner-text {
     font-size: clamp(1rem, 4vw, 1.6rem);
-    max-width: 85%;
+    max-width: 60%;
   }
 }
 
@@ -186,149 +205,13 @@ h6 {
     flex-direction: column;
     text-align: center;
     padding: 1.2rem 4vw;
-    gap: 1.2rem;
+    gap: 1rem;
   }
 
   .banner .banner-text {
     font-size: clamp(1.2rem, 5vw, 1.5rem);
     max-width: 90%;
-    margin-bottom: 1rem;
-  }
-}
-
-/* ===================== infoCards ===================== */
-.infoCards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-top: 1rem;
-  justify-content: center;
-  width: 100%;
-  align-items: stretch;
-  padding: 0 0.8rem;
-}
-
-/* ===================== Cards ===================== */
-.card {
-  flex: 1 1 calc(24% - 0.8rem);
-  padding: 0.8rem;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
-  transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
-  text-align: center;
-  cursor: pointer;
-  overflow: hidden;
-  min-width: 225px;
-}
-
-.card .cardContent {
-  padding: 0.5rem;
-  font-size: 0.9rem;
-  color: #333;
-  line-height: 1.3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 5rem;
-}
-
-.card h2 {
-  font-size: 1.05rem;
-}
-
-.card p {
-  font-size: 0.7rem;
-  line-height: 1.2;
-  margin-bottom: 0.5rem;
-  color: #7f8c8d;
-}
-
-.card:hover {
-  transform: translateY(-0.4rem) scale(0.95);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
-}
-
-.card img {
-  width: 65%;
-  max-width: 10rem;
-  margin-bottom: 0.5rem;
-  border-radius: 0.4rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-}
-
-.card:hover img {
-  transform: scale(1);
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
-}
-
-.card .cardContent:hover {
-  color: #2980b9;
-}
-
-.container:hover .card:not(:hover) {
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
-}
-
-/* Responsividade - Tablet */
-@media (max-width: 1024px) {
-  .card {
-    flex: 1 1 calc(47% - 0.8rem);
-    padding: 0.7rem;
-  }
-
-  .card .cardContent {
-    font-size: 0.9rem;
-    min-height: 4.5rem;
-  }
-
-  .card h2 {
-    font-size: 0.95rem;
-  }
-
-  .card p {
-    font-size: 0.65rem;
-  }
-
-  .card img {
-    width: 58%;
-    max-width: 8.5rem;
-  }
-}
-
-/* Responsividade - Celular */
-@media (max-width: 768px) {
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  .card {
-    flex: 0 0 calc(40% - 1rem);
-    padding: 0.5rem;
-  }
-
-  .card .cardContent {
-    font-size: 0.75rem;
-    min-height: 4.5rem;
-  }
-
-  .card h2 {
-    font-size: 1rem;
-  }
-
-  .card p {
-    display: none;
-  }
-
-  .card img {
-    width: 100%;
-    max-width: 8rem;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -404,5 +287,124 @@ button:hover,
     max-width: 70%;
     margin: 0 auto;
     margin-bottom: 0.2rem;
+  }
+}
+
+/* ===================== Cards ===================== */
+.card {
+  flex: 1 1 calc(30% - 0.8rem);
+  width: 100%;
+  height: auto;
+  padding: 0.6rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(200, 200, 200, 0.15));
+  border: 1px solid rgba(2, 141, 255, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.card h2 {
+  font-size: 0.8rem;
+}
+
+.card p {
+  font-size: 0.6rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.card:hover {
+  transform: translateY(-0.4rem) scale(0.95);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 40%;
+  max-width: 5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito de hover na imagem */
+.card:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card .cardContent:hover {
+  color: #2980b9;
+}
+
+.container:hover .card:not(:hover) {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+/* Card Link - garante que o link envolva o card inteiro */
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Responsividade - Desktop e telas grandes */
+@media (max-width: 1200px) {
+  .card {
+    flex: 1 1 calc(33.33% - 0.8rem);
+  }
+}
+
+/* Responsividade - Tablet (768px a 1024px) */
+@media (max-width: 1024px) {
+  .card {
+    flex: 1 1 calc(47% - 0.8rem);
+    padding: 0.7rem;
+  }
+
+  .card .cardContent {
+    font-size: 0.9rem;
+    min-height: 4.5rem;
+  }
+
+  .card h2 {
+    font-size: 0.95rem;
+  }
+
+  .card p {
+    font-size: 0.65rem;
+  }
+
+  .card img {
+    width: 58%;
+    max-width: 8.5rem;
+  }
+}
+
+/* Responsividade - Celular (até 768px) */
+@media (max-width: 768px) {
+  .card {
+    flex: 0 0 calc(48% - 1rem);
+    padding: 0.5rem;
+  }
+
+  .card .cardContent {
+    font-size: 0.75rem;
+    min-height: 4.5rem;
+  }
+
+  .card h2 {
+    font-size: 1rem;
+  }
+
+  .card p {
+    display: none;
+  }
+
+  .card img {
+    width: 100%;
+    max-width: 8rem;
   }
 }

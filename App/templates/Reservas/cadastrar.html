@@ -4,101 +4,169 @@
 
 {% block content %}
 <div class="container-fluid my-2">
-    <div class="card shadow-sm p-3 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
-        <form id="formCadastroReserva" action="/reserva" method="POST" class="form-reserva needs-validation" novalidate>
-            <h2 class="text-center mb-3 fw-bold text-primary">Reservar Sala</h2>
-            <fieldset class="mb-4">
+    <div class="card shadow-sm p-2 rounded-3" style="box-shadow: inherit !important; transform: none !important">
+        <form id="formCadastroReserva" action="{{ url_for('reserva_route.cadastrar_Reserva') }}" method="POST"
+            class="form-reserva needs-validation" novalidate>
+            <h2 class="text-center mb-2 fw-bold text-primary fs-4">Reservar Sala</h2>
+
+            <!-- Campo oculto para idLogin (ajuste conforme sua implementação de autenticação) -->
+            <input type="hidden" name="idLogin"
+                value="{{ session['idLogin'] if session['idLogin'] is defined else '' }}">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <a href="{{ url_for('reserva_route.pesquisar_Unitaria') }}" class="btn btn-success btn-sm">
+                    <i class="fas fa-search"></i> Pesquisa Unitária
+                </a>
+                <a href="{{ url_for('reserva_route.pesquisar_Multipla') }}" class="btn btn-success btn-sm">
+                    <i class="fas fa-search"></i> Pesquisa Múltipla
+                </a>
+            </div>
+
+            <fieldset class="mb-3">
                 <legend class="visually-hidden">Detalhes da Reserva</legend>
 
-                <!-- Seção de Funcionário -->
-                <div class="mb-3">
-                    <label for="idPessoa" class="form-label text-dark fs-5">Funcionário:</label>
-                    <select id="idPessoa" name="idPessoa" class="form-select shadow-sm" required aria-label="Selecione o responsável pela reserva">
-                        <option value="" disabled selected>Selecione o responsável pela reserva</option>
-                        {% for pessoa in pessoas %}
-                        <option value="{{ pessoa }}">{{ pessoa }}</option>
-                        {% endfor %}
-                    </select>
-                    <div class="invalid-feedback">Por favor, selecione o responsável pela reserva.</div>
-                </div>
-
-                <!-- Seção de Curso e Sala -->
+                <!-- Seção de Funcionário e Sala -->
                 <div class="row g-2 mb-3">
                     <div class="col-md-6">
-                        <label for="curso" class="form-label text-dark fs-5">Curso:</label>
-                        <select id="curso" name="curso" class="form-select shadow-sm" aria-label="Selecione o curso relacionado à reserva">
-                            <option value="" disabled selected>Selecione o curso relacionado à reserva</option>
-                            {% for curso in cursos %}
-                            <option value="{{ curso }}">{{ curso }}</option>
+                        <label for="idPessoa" class="form-label text-dark fs-6">Funcionário:</label>
+                        <select id="idPessoa" name="idPessoa" class="form-select form-select-sm shadow-sm" required
+                            aria-label="Selecione o responsável pela reserva">
+                            <option value="" disabled selected>
+                                Selecione o responsável pela reserva
+                            </option>
+                            {% for nome, id in pessoas.items() %}
+                            <option value="{{ id }}">{{ nome }}</option>
                             {% endfor %}
                         </select>
+                        <div class="invalid-feedback">
+                            Por favor, selecione o responsável pela reserva.
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="idSala" class="form-label text-dark fs-5">Sala:</label>
-                        <select id="idSala" name="idSala" class="form-select shadow-sm" required aria-label="Selecione a Sala disponível para o curso">
-                            <option value="" disabled selected>Selecione a Sala disponível para o curso</option>
-                            {% for sala in salas %}
-                            <option value="{{ sala }}">{{ sala }}</option>
+                        <label for="idSala" class="form-label text-dark fs-6">Sala:</label>
+                        <select id="idSala" name="idSala" class="form-select form-select-sm shadow-sm" required
+                            aria-label="Selecione a Sala disponível para o curso">
+                            <option value="" disabled selected>
+                                Selecione a Sala disponível para o curso
+                            </option>
+                            {% for nome, id in salas.items() %}
+                            <option value="{{ id }}">{{ nome }}</option>
                             {% endfor %}
                         </select>
                         <div class="invalid-feedback">Por favor, selecione uma sala.</div>
                     </div>
                 </div>
 
+                <!-- Seção de Curso e Equipamento -->
+                <div class="row g-2 mb-3">
+                    <div class="col-md-6">
+                        <label for="curso" class="form-label text-dark fs-6">Curso:</label>
+                        <select id="curso" name="curso" class="form-select form-select-sm shadow-sm"
+                            aria-label="Selecione o curso relacionado à reserva">
+                            <option value="" disabled selected>Selecione o curso relacionado à reserva</option>
+                            {% for nome, id in cursos.items() %}
+                            <option value="{{ id }}">{{ nome }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="idEquipamento" class="form-label text-dark fs-6">Equipamento (opcional):</label>
+                        <select id="idEquipamento" name="idEquipamento" class="form-select form-select-sm shadow-sm">
+                            <option value="" disabled selected>Selecione o equipamento disponível</option>
+                            {% for nome, id in equipamentos.items() %}
+                            <option value="{{ id }}">{{ nome }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="invalid-feedback">Por favor, selecione ao menos um equipamento.</div>
+
+                        <!-- Botões para manipular os equipamentos -->
+                        <div class="d-flex gap-2 mt-2">
+                            <button type="button" id="addItemBtn" class="btn btn-primary btn-sm"
+                                style="display: none;">Adicionar Equipamento</button>
+                            <button type="button" id="viewSelectedItemsBtn" class="btn btn-secondary btn-sm"
+                                style="display: none;">Ver Equipamentos Selecionados</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Seção de Período (Data) -->
                 <div class="row g-3 mb-3">
                     <div class="col-md-6">
-                        <h5 class="fw-bold fs-5 text-dark text-center mb-2">Selecione o Período</h5>
+                        <h5 class="fw-bold fs-6 text-dark text-center mb-2">
+                            Selecione o Período
+                        </h5>
                         <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="dataInicio" class="form-label fw-semibold text-dark fs-6">Data Inicial <span class="text-danger">*</span>:</label>
-                                <input type="date" id="dataInicio" name="dataInicio" class="form-control shadow-sm" required aria-label="Escolha a data inicial" />
-                                <div class="invalid-feedback">Por favor, preencha a data inicial.</div>
+                            <div class="col-md-6 mb-2">
+                                <label for="dataInicio" class="form-label fw-semibold text-dark fs-6">Data Inicial <span
+                                        class="text-danger">*</span>:</label>
+                                <input type="date" id="dataInicio" name="dataInicio"
+                                    class="form-control form-control-sm shadow-sm" required
+                                    aria-label="Escolha a data inicial" />
+                                <div class="invalid-feedback">
+                                    Por favor, preencha a data inicial.
+                                </div>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="dataFim" class="form-label fw-semibold text-dark fs-6">Data Final <span class="text-danger">*</span>:</label>
-                                <input type="date" id="dataFim" name="dataFim" class="form-control shadow-sm" required aria-label="Escolha a data final" />
-                                <div class="invalid-feedback">Por favor, preencha a data final.</div>
+                            <div class="col-md-6 mb-2">
+                                <label for="dataFim" class="form-label fw-semibold text-dark fs-6">Data Final <span
+                                        class="text-danger">*</span>:</label>
+                                <input type="date" id="dataFim" name="dataFim"
+                                    class="form-control form-control-sm shadow-sm" required
+                                    aria-label="Escolha a data final" />
+                                <div class="invalid-feedback">
+                                    Por favor, preencha a data final.
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Seção de Horário -->
                     <div class="col-md-6">
-                        <h5 class="fw-bold fs-5 text-dark text-center mb-2">Defina o Horário</h5>
+                        <h5 class="fw-bold fs-6 text-dark text-center mb-2">
+                            Defina o Horário
+                        </h5>
                         <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="horaInicio" class="form-label fw-semibold text-dark fs-6">Hora de Início <span class="text-danger">*</span>:</label>
-                                <input type="time" id="horaInicio" name="horaInicio" class="form-control shadow-sm" required aria-label="Hora de início" />
-                                <div class="invalid-feedback">Por favor, preencha a hora de início.</div>
+                            <div class="col-md-6 mb-2">
+                                <label for="horaInicio" class="form-label fw-semibold text-dark fs-6">Hora de Início
+                                    <span class="text-danger">*</span>:</label>
+                                <input type="time" id="horaInicio" name="horaInicio"
+                                    class="form-control form-control-sm shadow-sm" required
+                                    aria-label="Hora de início" />
+                                <div class="invalid-feedback">
+                                    Por favor, preencha a hora de início.
+                                </div>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="horaFim" class="form-label fw-semibold text-dark fs-6">Hora de Fim <span class="text-danger">*</span>:</label>
-                                <input type="time" id="horaFim" name="horaFim" class="form-control shadow-sm" required aria-label="Hora de fim" />
-                                <div class="invalid-feedback">Por favor, preencha a hora de fim.</div>
+                            <div class="col-md-6 mb-2">
+                                <label for="horaFim" class="form-label fw-semibold text-dark fs-6">Hora de Fim <span
+                                        class="text-danger">*</span>:</label>
+                                <input type="time" id="horaFim" name="horaFim"
+                                    class="form-control form-control-sm shadow-sm" required aria-label="Hora de fim" />
+                                <div class="invalid-feedback">
+                                    Por favor, preencha a hora de fim.
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Seção de Dias da Semana -->
-                <div class="row g-2 mb-3 justify-content-center">
+                <div class="row g-2 mb-2 justify-content-center">
                     <div class="col-12 text-center">
                         <label for="diasSemana" class="form-label text-dark fs-6">Selecione os Dias da Semana:</label>
                         <div class="d-flex flex-wrap justify-content-center">
                             {% for dia, label in [
-                            ('segunda', 'Segunda'),
-                            ('terca', 'Terça'),
-                            ('quarta', 'Quarta'),
-                            ('quinta', 'Quinta'),
-                            ('sexta', 'Sexta'),
-                            ('sabado', 'Sábado'),
+                            ('segunda', 'Segunda'), ('terca', 'Terça'),
+                            ('quarta', 'Quarta'), ('quinta', 'Quinta'),
+                            ('sexta', 'Sexta'), ('sabado', 'Sábado'),
                             ('domingo', 'Domingo')
                             ] %}
-                            <div class="form-check me-3 mb-2">
-                                <input type="checkbox" id="{{ dia }}" name="diasSemana[]" value="{{ dia }}" class="form-check-input shadow-sm" />
+                            <div class="form-check me-2 mb-1" {% if dia=='domingo' %} style="display: none;" {% endif
+                                %}>
+                                <input type="checkbox" id="{{ dia }}" name="diasSemana[]" value="{{ dia }}"
+                                    class="form-check-input shadow-sm" {% if dia=='domingo' %} disabled {% endif %} />
+                                <!-- Domingo desativado -->
                                 <label class="form-check-label text-dark fs-6" for="{{ dia }}">
-                                    <span class="d-inline-block" style="min-width: 90px;">{{ label }}</span>
+                                    <span class="d-inline-block" style="min-width: 80px">{{ label }}</span>
                                 </label>
                             </div>
                             {% endfor %}
@@ -106,18 +174,45 @@
                     </div>
                 </div>
 
+                <!-- 🔹 Adiciona um campo oculto para garantir que "domingo" sempre seja enviado como "0" -->
+                <input type="hidden" name="diasSemana[]" value="domingo_nao_marcado">
+
+                <!-- Modal para exibir a lista completa de equipamentos selecionados -->
+                <div class="modal fade" id="modalItensSelecionados" tabindex="-1"
+                    aria-labelledby="modalItensSelecionadosLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalItensSelecionadosLabel">Equipamentos Selecionados</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul id="modalItemList" class="list-group"></ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Seção de Observação -->
-                <div class="col-12 mb-3">
-                    <label for="observacao" class="form-label text-dark fs-5">Observação:</label>
-                    <textarea id="observacao" name="observacao" class="form-control shadow-sm" rows="2" placeholder="Adicione detalhes importantes sobre a reserva."></textarea>
+                <div class="col-12 mb-2">
+                    <label for="observacao" class="form-label text-dark fs-6">Observação (opcional):</label>
+                    <textarea id="observacao" name="observacao" class="form-control form-control-sm shadow-sm" rows="2"
+                        placeholder="Adicione detalhes importantes sobre a reserva."></textarea>
                 </div>
 
                 <!-- Botões de Ação -->
-                <div class="d-flex justify-content-between mt-3">
-                    <button type="reset" class="btn btn-outline-secondary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                <div class="d-flex justify-content-between mt-2">
+                    <button type="reset"
+                        class="btn btn-outline-secondary btn-sm w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center">
                         <i class="bi bi-x-circle me-2"></i> Limpar
                     </button>
-                    <button id="submitBtn" type="submit" class="btn btn-primary btn-lg w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center" disabled>
+                    <button id="submitBtn" type="submit"
+                        class="btn btn-primary btn-sm w-45 rounded-3 shadow-sm d-flex align-items-center justify-content-center"
+                        disabled>
                         <i class="bi bi-check-circle me-2"></i> Cadastrar Reserva
                     </button>
                 </div>
@@ -127,38 +222,118 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", () => {
+        // Elementos principais
+        const form = document.getElementById("formCadastroReserva");
+        const submitBtn = document.getElementById("submitBtn");
         const dataInicio = document.getElementById("dataInicio");
         const dataFim = document.getElementById("dataFim");
         const horaInicio = document.getElementById("horaInicio");
         const horaFim = document.getElementById("horaFim");
-        const form = document.getElementById("formCadastroReserva");
-        const submitBtn = document.getElementById("submitBtn");
+        const selectEquipamento = document.getElementById('idEquipamento');
+        const addItemBtn = document.getElementById('addItemBtn');
+        const viewSelectedItemsBtn = document.getElementById('viewSelectedItemsBtn');
+        const modalItemList = document.getElementById('modalItemList');
+        const observacaoTextarea = document.getElementById('observacao');
+        const selectedItemsDict = new Set();
+        const hoje = new Date().toISOString().split("T")[0];
 
-        // Enable submit button based on form validity
-        form.addEventListener("input", function() {
+        // Definindo o mínimo para a data de início
+        dataInicio.min = hoje;
+
+        // Função para ativar/desativar o botão de envio
+        const toggleSubmitBtn = () => {
             submitBtn.disabled = !form.checkValidity();
-        });
+        };
 
-        dataInicio.addEventListener("change", () => {
-            dataFim.min = dataInicio.value;
-        });
+        // Função para validar a data final
+        const validateDataFim = () => {
+            const dataFimValue = dataFim.value;
+            dataFim.setCustomValidity(dataFimValue < dataInicio.value ? "A data final deve ser igual ou posterior à data inicial." : "");
+        };
 
-        dataFim.addEventListener("change", () => {
-            const invalidMessage = dataFim.value < dataInicio.value
-                ? "A data final deve ser no mesmo dia ou após a data inicial."
-                : "";
-            dataFim.setCustomValidity(invalidMessage);
-        });
+        // Função para validar a hora final
+        const validateHoraFim = () => {
+            const horaFimValue = horaFim.value;
+            horaFim.setCustomValidity(horaFimValue < horaInicio.value ? "A hora de fim deve ser posterior à hora de início." : "");
+        };
 
-        horaFim.addEventListener("change", () => {
-            if (horaFim.value < horaInicio.value) {
-                horaFim.setCustomValidity("A hora de fim deve ser após a hora de início.");
+        // Função para exibir ou esconder botões de adicionar e visualizar itens
+        const toggleButtons = () => {
+            addItemBtn.style.display = selectEquipamento.value && !selectedItemsDict.has(selectEquipamento.value) ? 'block' : 'none';
+            viewSelectedItemsBtn.style.display = selectedItemsDict.size > 0 ? 'block' : 'none';
+        };
+
+        // Função para adicionar um item selecionado à lista
+        const addItemToSelected = () => {
+            const selectedItem = selectEquipamento.value;
+            const selectedName = selectEquipamento.options[selectEquipamento.selectedIndex].text;
+            if (selectedItem && !selectedItemsDict.has(selectedItem)) {
+                selectedItemsDict.add(selectedName);
+                toggleButtons();
+            }
+        };
+
+        // Função para atualizar o conteúdo do modal de itens selecionados
+        const updateModal = () => {
+            modalItemList.innerHTML = '';
+            selectedItemsDict.forEach(item => {
+                const li = document.createElement('li');
+                li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+                li.textContent = item;
+                const removeBtn = document.createElement('button');
+                removeBtn.classList.add('btn', 'btn-danger', 'btn-sm');
+                removeBtn.textContent = 'Remover';
+                removeBtn.onclick = () => {
+                    selectedItemsDict.delete(item);
+                    updateModal();
+                    updateObservacao();
+                };
+                li.appendChild(removeBtn);
+                modalItemList.appendChild(li);
+            });
+        };
+
+        // Função para atualizar o campo de observação com os itens selecionados
+        const updateObservacao = () => {
+            if (selectedItemsDict.size > 0) {
+                const equipamentosList = 'Equipamentos: ' + Array.from(selectedItemsDict).join(', ');
+                observacaoTextarea.value = equipamentosList;
             } else {
-                horaFim.setCustomValidity("");
+                observacaoTextarea.value = '';
+            }
+        };
+
+        // Manipulador para visualizar os itens selecionados
+        const viewSelectedItems = () => {
+            updateModal();
+            new bootstrap.Modal(document.getElementById('modalItensSelecionados')).show();
+        };
+
+        // Configuração inicial dos campos e botões
+        form.addEventListener("input", toggleSubmitBtn);
+        dataInicio.addEventListener("change", () => {
+            if (dataInicio.value < hoje) dataInicio.setCustomValidity("A data inicial não pode ser anterior a hoje.");
+            else {
+                dataInicio.setCustomValidity("");
+                dataFim.min = dataInicio.value;
             }
         });
+
+        dataFim.addEventListener("change", validateDataFim);
+        horaFim.addEventListener("change", validateHoraFim);
+
+        selectEquipamento.addEventListener('change', toggleButtons);
+        addItemBtn.addEventListener('click', addItemToSelected);
+        viewSelectedItemsBtn.addEventListener('click', viewSelectedItems);
+
+        // Atualiza a observação quando o modal for fechado
+        document.getElementById('modalItensSelecionados').addEventListener('hidden.bs.modal', updateObservacao);
+
+        // Inicializa o estado dos botões
+        toggleButtons();
     });
 </script>
+
 
 {% endblock %}

@@ -1,119 +1,74 @@
-from flask import render_template, Blueprint, request, flash, redirect, url_for
-from App.routes.auth.autenticar import login_auth
-from App.controller.curso import listarCursos, cadastrarCurso, buscarCursoId, atualizarCurso, removerCurso
-from App.controller.area import listarAreas
+from flask import render_template, Blueprint, request, redirect, url_for
+from App.routes.auth.autenticar import admin_auth, admin_suporte_auth
+from App.controllerWeb.curso import listarCursos, cadastrarCurso, buscarCursoId, atualizarCurso, removerCurso
+from App.controllerWeb.area import listarAreas
+from App.routes.utils import processar_mensagem, processar_resultado, processar_paginacao, processar_validacao, renderizar_com_mensagem
 
-# Definindo o blueprint
 curso_route = Blueprint('curso_route', __name__, template_folder='templates/Cursos/')
 
-# =================== listar ===================
+# -------------------------- Funções Auxiliares ------------------------
+CAMPOS_CURSO = ['area', 'nome', 'oferta', 'periodo', 'carga', 'horas', 'alunos']
+VALIDACOES = {'nome': lambda nome: True if 3 <= len(nome) <= 100 and nome.replace(' ', '').isalnum() else "O nome do curso deve ter entre 3 e 100 caracteres e ser alfanumérico."}
+
+def processar_dados(dados: dict) -> dict:
+    return {campo: dados.get(campo, '').strip() if campo != 'nome' else dados.get(campo, '').strip().title() for campo in CAMPOS_CURSO}
+
+def validar(dados: dict) -> bool:
+    return processar_validacao(dados, tipo="obrigatorio", validacoes_adicionais=VALIDACOES)
+
+# =================== Listagem de Cursos ===================
 @curso_route.route("/", methods=['GET'])
-@login_auth
+@admin_suporte_auth
 def listar_Curso():
-    page = request.args.get('page', 1, type=int)
-    per_page = 10
-    search_query = request.args.get('search', '', type=str)
+    page, per_page, search_query = request.args.get('page', 1, type=int), 10, request.args.get('search', '', type=str)
+    all_courses = listarCursos(search_query)
+    if not isinstance(all_courses, dict):
+        return renderizar_com_mensagem('Cursos/listar.html', {'valores': [], 'total_items': 0, 'page': 1, 'per_page': per_page, 'search_query': search_query}, 'Erro ao listar cursos. Tente novamente mais tarde. Se o problema persistir, verifique sua conexão com a internet.', "ERROR", "danger")
+    course_list = list(all_courses.items())
+    cursos_paginated, total_items, total_pages, current_page, has_next, has_prev = processar_paginacao(course_list, page, per_page)
+    return render_template('Cursos/listar.html', valores=cursos_paginated, total_items=total_items, total_pages=total_pages, page=current_page, per_page=per_page, search_query=search_query, has_next=has_next, has_prev=has_prev)
 
-    try:
-        all_courses = listarCursos(search_query)
-        if not isinstance(all_courses, dict):
-            raise ValueError("Esperava um dicionário de cursos")
-
-        course_list = [(key, value) for key, value in all_courses.items()]
-        total_items = len(course_list)
-        start = (page - 1) * per_page
-        end = start + per_page
-        cursos_paginated = course_list[start:end]
-
-    except Exception as e:
-        flash(f'Erro ao listar cursos: {str(e)}', 'danger')
-        return render_template('Cursos/listar.html', valores=[], total_items=0, page=1, per_page=per_page, search_query=search_query)
-    
-    return render_template('Cursos/listar.html', valores=cursos_paginated, total_items=total_items, page=page, per_page=per_page, search_query=search_query)
-
-# =================== cadastrar ===================
+# =================== Cadastro de Curso ===================
 @curso_route.route("/cadastrar", methods=['GET', 'POST'])
-@login_auth
+@admin_suporte_auth
 def cadastrar_Curso():
     if request.method == 'POST':
-        dados = {
-            'area': request.form.get('area'),
-            'nome': request.form.get('nome'),
-            'oferta': request.form.get('oferta'),
-            'periodo': request.form.get('periodo'),
-            'carga': request.form.get('carga'),
-            'horas': request.form.get('horas'),
-            'alunos': request.form.get('alunos')
-        }
-
-        # Print para debug: mostra todos os dados recebidos do formulário
-        print(f"Dados recebidos do formulário: {dados}")
-
-        if not all(dados.values()):
-            flash('Todos os campos são obrigatórios.', 'danger')
-            return render_template('Cursos/cadastrar.html', valores=listarAreas())
-
-        try:
-            resultado = cadastrarCurso(dados['area'], list(dados.values()))
-
-            if "success" in resultado:
-                flash(resultado["success"], 'success')
-                return redirect(url_for('curso_route.listar_Curso'))
-            else:
-                flash(resultado["error"], 'danger')
-        except Exception as e:
-            flash(f'Erro ao cadastrar curso: {str(e)}', 'danger')
-
+        dados = request.form.to_dict()
+        if not validar(dados): 
+            return renderizar_com_mensagem('Cursos/cadastrar.html', {'valores': listarAreas()}, 'Erro de validação. Verifique os campos obrigatórios e tente novamente.', "ERROR", "danger")
+        dados_processados = processar_dados(dados)
+        if 'error' in dados_processados:
+            return renderizar_com_mensagem('Cursos/cadastrar.html', {'valores': listarAreas()}, dados_processados['error'], "ERROR", "danger")
+        result = cadastrarCurso(dados_processados['area'], list(dados_processados.values()))
+        if processar_resultado(result, f"Curso {dados['nome']} cadastrado com sucesso!", "Erro ao cadastrar o curso. Verifique os dados e tente novamente. Se o problema persistir, entre em contato com o suporte.") :
+            return redirect(url_for('curso_route.listar_Curso'))
     return render_template('Cursos/cadastrar.html', valores=listarAreas())
 
-# =================== editar ===================
+# =================== Edição de Curso ===================
 @curso_route.route('/editar/<int:id>', methods=['GET', 'POST'])
-@login_auth
+@admin_suporte_auth
 def editar_Curso(id):
     curso = buscarCursoId(id)
-
-    if request.method == 'GET':
-        if 'error' in curso:
-            flash(curso['error'], 'danger')
-            return redirect(url_for('curso_route.listar_Curso'))
-        return render_template('Cursos/editar.html', curso=curso)
-
+    if not curso or 'error' in curso:
+        return renderizar_com_mensagem('Cursos/editar.html', {}, 'Curso não encontrado. Verifique o ID e tente novamente. Se o erro continuar, certifique-se de que o ID está correto.', "WARNING", "warning")
     if request.method == 'POST':
-        dados = request.form
-        area = dados.get('area')
-        nome = dados.get('nome')
-        oferta = dados.get('oferta')
-        periodo = dados.get('periodo')
-        carga = dados.get('carga')
-        horas = dados.get('horas')
-        alunos = dados.get('alunos')
+        dados = request.form.to_dict()
+        if not validar(dados): 
+            return renderizar_com_mensagem('Cursos/editar.html', {'curso': curso, 'valores': listarAreas()}, 'Erro de validação. Verifique os campos obrigatórios e tente novamente.', "ERROR", "danger")
+        dados_processados = processar_dados(dados)
+        result = atualizarCurso(id, *list(dados_processados.values()))
+        if processar_resultado(result, f"Curso {dados['nome']} com ID {id} atualizado com sucesso!", "Erro ao atualizar o curso. Verifique os dados e tente novamente. Caso o erro persista, entre em contato com o suporte.") :
+            return redirect(url_for('curso_route.listar_Curso'))
+    return render_template('Cursos/editar.html', curso=curso, valores=listarAreas())
 
-        if not all([area, nome, oferta, periodo, carga, horas, alunos]):
-            flash('Todos os campos são obrigatórios.', 'danger')
-            return render_template('Cursos/editar.html', curso=curso)
-
-        try:
-            if atualizarCurso(id, area, nome, oferta, periodo, carga, horas, alunos):
-                flash('Curso atualizado com sucesso!', 'success')
-                return redirect(url_for('curso_route.listar_Curso'))
-            else:
-                flash('Erro ao atualizar curso.', 'danger')
-        except Exception as e:
-            flash(f'Erro ao atualizar curso: {str(e)}', 'danger')
-
-    return render_template('Cursos/editar.html', curso=curso)
-
-# =================== remover ===================
+# =================== Remoção de Curso ===================
 @curso_route.route('/remover/<int:id>', methods=['GET'])
-@login_auth
+@admin_auth
 def remover_Curso(id):
-    """Remove um curso do banco de dados pelo ID."""
     try:
-        if removerCurso(id):
-            flash('Curso removido com sucesso!', 'success')
-        else:
-            flash('Erro ao remover curso.', 'danger')
+        result = removerCurso(id)
+        if not processar_resultado(result, "Curso removido com sucesso!", "Erro ao remover o curso. Tente novamente mais tarde. Se o erro persistir, entre em contato com o suporte.") :
+            raise Exception(f"Falha ao remover o curso com ID {id}.")
     except Exception as e:
-        flash(f'Erro ao remover curso: {str(e)}', 'danger')
-
+        processar_mensagem(mensagem=f"Erro ao remover o curso: {str(e)}. Verifique se o ID está correto e tente novamente.", nivel="ERROR", tipo_flash="danger", contexto_extra={'id': id})
     return redirect(url_for('curso_route.listar_Curso'))

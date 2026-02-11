@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Perfil do Usuário{% endblock %}
+
+{% block content %}
+<main class="container py-5">
+  <section id="profile-card" class="card shadow-lg rounded-lg p-4">
+    <div class="card-body text-center position-relative">
+      <button id="theme-toggle-btn" class="btn btn-light position-absolute top-0 end-0 m-3 shadow-sm" aria-label="Alternar Tema">
+        🌙
+      </button>
+      <h1 class="card-title fw-bold text-uppercase mb-4">Dados Pessoais</h1>
+      <hr class="border-light mb-4" />
+      <div class="row align-items-center">
+        <!-- Perfil e Dados -->
+        <div class="col-12 col-md-4 text-center mb-4 mb-md-0">
+          <img src="{{ url_for('static', filename='img/home/perfil.svg') }}" alt="Imagem de Perfil" 
+               class="img-fluid rounded-circle profile-img shadow-sm mb-3 d-block mx-auto" 
+               style="width: 100% !important; max-width: 10rem !important;" />
+          <div class="form-floating">
+            <input type="text" class="form-control" id="nivel_de_acesso" value="{{ nivel_acesso }}" disabled>
+            <label for="nivel_de_acesso">Nível de Acesso</label>
+          </div>
+        </div>
+
+        <!-- Formulário de Dados Pessoais -->
+        <div class="col-12 col-md-8">
+          <form>
+            <div class="row">
+              {% for label, valor in [('Nome', funcionario.nome), ('CPF/CNPJ', funcionario.cpfCnpj),
+              ('E-mail', funcionario.email), ('Data de Nascimento', funcionario.dataNasc),
+              ('Telefone', funcionario.telefone), ('Cargo', funcionario.cargo)] %}
+              <div class="col-12 col-md-6 mb-4">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="{{ label | lower | replace(' ', '_') }}" value="{{ valor }}" disabled>
+                  <label for="{{ label | lower | replace(' ', '_') }}">{{ label }}</label>
+                </div>
+              </div>
+              {% endfor %}
+              <div class="col-12 mt-3">
+                <button type="button" class="btn btn-outline-primary btn-lg w-100" id="mudarSenhaBtn">Mudar Senha</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Modal de Alteração de Senha -->
+<div class="modal fade" id="alterarSenhaModal" tabindex="-1" aria-labelledby="alterarSenhaModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="alterarSenhaModalLabel">Alterar Senha</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="alterarSenhaForm" method="POST">
+          <input type="hidden" name="senha" id="senhaInput">
+
+          <!-- Campo Nova Senha -->
+          <div class="mb-4 form-floating">
+            <input type="password" id="passwordInput" class="form-control" placeholder="Nova Senha" required>
+            <label for="passwordInput">Nova Senha</label>
+            <small class="text-muted d-block mt-1">A senha deve ter pelo menos 8 caracteres.</small>
+          </div>
+
+          <!-- Campo Confirmar Senha -->
+          <div class="mb-4 form-floating">
+            <input type="password" id="confirmPasswordInput" class="form-control" placeholder="Confirmar Senha" required>
+            <label for="confirmPasswordInput">Confirmar Nova Senha</label>
+          </div>
+
+          <!-- Botão Mostrar Senha -->
+          <div class="mb-3 text-center">
+            <button type="button" class="btn btn-outline-secondary d-flex align-items-center gap-2" id="togglePassword">
+              <i class="bi bi-eye"></i> <span>Mostrar Senha</span>
+            </button>
+          </div>
+
+          <!-- Barra de Força da Senha -->
+          <div class="progress" style="height: 6px;">
+            <div id="passwordStrength" class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-success" id="salvarSenhaBtn" disabled>Salvar Nova Senha</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,5 +1,5 @@
 from flask import Flask
-from .logger_setup import logger
+from App.model.logger import logger
 from .home import home_route
 from .pessoa import funcionario_route
 from .reserva import reserva_route
@@ -39,8 +39,7 @@ def register_routes(app: Flask) -> None:
             app.register_blueprint(blueprint, url_prefix=url_prefix)
             success = True
         except Exception as e:
-            logger.error(f"Erro ao registrar blueprint '{blueprint_name}' com o prefixo '{url_prefix}': {e}")
+            logger.error("Erro ao registrar blueprint '%s' com o prefixo '%s': %s", blueprint_name, url_prefix, str(e))
     
-    # Registra uma única vez se algum blueprint foi registrado com sucesso
     if success:
         logger.info("Blueprints registrados com sucesso")

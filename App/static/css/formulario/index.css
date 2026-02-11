@@ -1,16 +1,7 @@
-/* ==================== Estilo para o Formulário ==================== */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 0;
-  margin: 0;
-}
-
 /* ==================== Estilo para o Fieldset ==================== */
 fieldset {
-  padding: 1rem;
-  margin-bottom: 1rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   transition: border-color 0.3s ease-in-out;
@@ -22,11 +13,11 @@ fieldset:hover {
 
 legend {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.5rem;
   color: #333;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.2rem;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 }
 
 /* ==================== Estilo para os Labels ==================== */
@@ -43,36 +34,61 @@ input,
 select,
 textarea {
   width: 100%;
-  padding: 0.4rem 0.6rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  background-color: #ffffff;
+  padding: 0.5rem 0.5rem;
   color: #333;
-  font-size: 0.85rem;
-  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
   box-sizing: border-box;
 }
 
+/* Estilo de foco para inputs, selects e textareas */
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: #0061f2;
-  background-color: #f1faff;
-  box-shadow: 0 0 2px #0061f2;
+  border-color: #4a90e2;
   outline: none;
 }
 
+/* Erro */
 input.error,
 select.error,
 textarea.error {
   border-color: #ff4d4f;
 }
 
+/* Sucesso */
 input.success,
 select.success,
 textarea.success {
   border-color: #4caf50;
+}
+
+/* ==================== Estilo comum para todos os formulários ==================== */
+.form-sala,
+.form-reserva,
+.form-funcionario,
+.form-equipamento,
+.form-curso,
+.form-area {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+/* Para telas menores */
+@media (max-width: 768px) {
+  .form-sala,
+  .form-reserva,
+  .form-funcionario,
+  .form-equipamento,
+  .form-curso,
+  .form-area {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
 }
 
 /* ==================== Responsividade para dispositivos móveis ==================== */
@@ -309,6 +325,71 @@ textarea.success {
   filter: brightness(1.3);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease-out,
     filter 0.4s ease;
+}
+
+
+/* ===================== Estilo de impressão ===================== */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .table-container * {
+    visibility: visible;
+  }
+
+  .table-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+  }
+
+  .btn-print {
+    display: none;
+  }
+
+  /* Estilos para a tabela */
+  .table {
+    width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+    page-break-inside: avoid;
+  }
+
+  /* Estilo comum para cabeçalhos e células */
+  .table th,
+  .table td {
+    padding: 6px;
+    text-align: center;
+    font-size: 12px;
+    word-wrap: break-word;
+    word-break: break-word;
+    min-width: 80px;
+    height: 25px;
+  }
+
+  /* Estilo para cabeçalhos */
+  .table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+
+  /* Ajustes gerais para o corpo da página */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+  }
+    /* Ajustes gerais para o corpo da página */
+  @page {
+    margin: 10mm;
+  }
 }
 
 /* ===================== Responsividade ===================== */

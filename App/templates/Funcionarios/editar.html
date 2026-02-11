@@ -63,14 +63,23 @@
                     <!-- Cargo -->
                     <div class="col-md-6 mb-4">
                         <label for="cargo" class="form-label text-dark fs-5">Cargo:</label>
-                        <select id="cargo" name="cargo" class="form-select shadow-sm" required aria-describedby="cargoFeedback">
-                            <option value="Comum" {% if funcionario.cargo == 'Comum' %} selected {% endif %}>Comum</option>
-                            <option value="Patrimonio" {% if funcionario.cargo == 'Patrimonio' %} selected {% endif %}>Patrimônio</option>
-                            <option value="Apoio" {% if funcionario.cargo == 'Apoio' %} selected {% endif %}>Apoio</option>
-                            <option value="Administrador" {% if funcionario.cargo == 'Administrador' %} selected {% endif %}>Administrador</option>
+                        <select id="cargo" name="cargo" class="form-select shadow-sm" required aria-describedby="cargoFeedback"
+                                {% if funcionario and funcionario.cargo == 'Administrador' and session.get('nivel_acesso') != 'admin' %} disabled {% endif %}>
+                            <option value="Comum" {% if funcionario and funcionario.cargo == 'Comum' %} selected {% endif %}>Comum</option>
+                            <option value="Suporte" {% if funcionario and funcionario.cargo == 'Suporte' %} selected {% endif %}>Suporte</option>
+                            <option value="Administrador"
+                                    {% if funcionario and funcionario.cargo == 'Administrador' %} selected {% endif %}
+                                    {% if session.get('nivel_acesso') != 'admin' %} disabled {% endif %}>
+                                Administrador
+                            </option>
                         </select>
                         <div id="cargoFeedback" class="invalid-feedback">Por favor, selecione um cargo.</div>
-                    </div>
+                    
+                        <!-- Campo oculto para garantir que o cargo "Administrador" seja enviado -->
+                        {% if funcionario and funcionario.cargo == 'Administrador' and session.get('nivel_acesso') != 'admin' %}
+                            <input type="hidden" name="cargo" value="Administrador">
+                        {% endif %}
+                    </div>                                                                       
                 </div>
 
                 <!-- Botões de Ação -->

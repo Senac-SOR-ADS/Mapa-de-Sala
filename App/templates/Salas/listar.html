@@ -7,6 +7,14 @@
 <div class="container-fluid my-2">
     <div class="card shadow-sm p-4 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
         <h2 class="text-center mb-4 fw-bold text-primary">Lista de Salas</h2>
+
+        <div class="d-flex justify-content-end align-items-center mb-4">
+            <a href="{{ url_for('sala_route.cadastrar_Sala') }}" class="btn btn-success btn-sm">
+                <i class="fas fa-plus"></i> Cadastrar Sala
+            </a>
+        </div>
+        <br>
+
         <fieldset>
             <legend class="visually-hidden">Detalhes das listas de Salas</legend>
 
@@ -35,9 +43,6 @@
                 <button id="toggleTable" class="btn btn-info btn-sm" aria-label="Mostrar/Esconder lista de salas">
                     <i class="fas fa-list"></i> Lista de Salas
                 </button>
-                <a href="{{ url_for('sala_route.cadastrar_Sala') }}" class="btn btn-success btn-sm">
-                    <i class="fas fa-plus"></i> Cadastrar Nova Sala
-                </a>
             </div>
 
             <!-- Tabela de Salas -->
@@ -59,10 +64,12 @@
                                     aria-label="Editar {{ sala[0] }}">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
+                                {% if session.get('usuario') and session['nivel_acesso'] == 'admin' %}
                                 <button class="btn btn-danger btn-sm" aria-label="Remover {{ sala[0] }}"
                                     onclick="confirmRemove('{{ sala[1] }}', '{{ sala[0] }}')">
                                     <i class="fas fa-trash"></i> Remover
                                 </button>
+                                {% endif %}
                             </td>
                         </tr>
                         {% endfor %}
@@ -149,13 +156,6 @@
 
     searchInput.addEventListener('input', () => {
         loadingIcon.classList.remove('d-none');
-    });
-
-    document.getElementById('clearSearch').addEventListener('click', () => {
-        if (confirm('Tem certeza que deseja limpar a pesquisa?')) {
-            searchInput.value = '';
-            loadingIcon.classList.add('d-none');
-        }
     });
 </script>
 {% endblock %}

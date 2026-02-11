@@ -1,0 +1,46 @@
+#gridContainer #containerBtns {
+	background-color: rgba(129, 78, 19, 0.418);
+	border-radius: 15px; 
+}
+
+#cabecalho {
+	background-color: rgba(0, 0, 0, 0.2);
+	border-top-left-radius: 17px;
+	border-top-right-radius: 17px;
+}
+
+#btnEditar {
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+#btnEditar:hover {
+	background-color: rgba(219, 150, 72, 0.815);
+}
+
+#btnExcluir {
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+
+#btnExcluir:hover {
+	background-color: red;
+}
+
+#conteudo {
+	background-color: rgb(213, 142, 61);
+	border-radius: 17px;
+}
+#conteudo:hover {
+	background-color: rgb(236, 166, 85);
+	border-radius: 17px;
+	border: 3px solid rgb(206, 135, 55);
+}
+
+#conteudo QLabel {
+	color: #FFF;
+}
+
+#linhaCard {
+	background-color: #FFF;
+}

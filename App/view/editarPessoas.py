@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget, QComboBox, QLineEdit, QDateEdit
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import QDate, pyqtSlot
 from App.controller.pessoa import buscarPessoas, buscarPessoaId, atualizarPessoa
-from App.controller.utils import validarInputs
+from App.controller.utils import validarInputs, erroEdicao, sucessoEdicao
 ID_PESSOA = 0
 
 class EditarPessoas(QWidget):
@@ -26,10 +26,13 @@ class EditarPessoas(QWidget):
     def on_btnEditar_clicked(self):
         dados = self.getValores()
         if validarInputs(dados):
-            atualizarPessoa(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6])
-
+            if atualizarPessoa(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6]):
+                sucessoEdicao(self)
+                self.setIndexInicial()
+        else:
+            erroEdicao(self)
     def popularNomes(self):
-        pessoas = self.dicionarioPessoas.keys()
+        pessoas = self.dicionarioPessoas.values()
         self.nomePessoas.addItems(pessoas)
     
     def popularJanela(self):
@@ -49,9 +52,9 @@ class EditarPessoas(QWidget):
         return (ID_PESSOA, nome, cpfCnpj, dataNascimento, telefone, email, cargo)
 
     def getKey(self):
-        nome = self.nomePessoas.currentText()
-        key = self.dicionarioPessoas.get(nome)
-        return key
+        indice = self.nomePessoas.currentIndex()
+        key = list(self.dicionarioPessoas.keys())
+        return key[indice]
     
     def popularCampos(self):
         key = self.getKey()
@@ -78,3 +81,7 @@ class EditarPessoas(QWidget):
     def setIdPessoa(self, id):
         global ID_PESSOA
         ID_PESSOA = id
+
+    def setIndexInicial(self):
+        self.nomePessoas.setCurrentIndex(0)
+ 

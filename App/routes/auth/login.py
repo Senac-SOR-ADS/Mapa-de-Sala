@@ -1,6 +1,6 @@
 import os
 import random
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for
 from App.routes.auth.autenticar import validar_acesso, autenticar
 
 # Definindo o blueprint para a rota de login
@@ -26,7 +26,6 @@ def login():
         senha = request.form.get("senha")
         if autenticar(email, senha):
             return redirect(url_for('home_route.home'))
-        flash('Credenciais inválidas. Verifique seu e-mail e senha e tente novamente.', 'error')
     
     elif request.method == 'GET' and validar_acesso():
         return redirect(url_for('home_route.home'))

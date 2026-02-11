@@ -1,0 +1,191 @@
+/* ========================== */
+/* 🌝 Modo Claro e 🌙 Modo Escuro */
+/* ========================== */
+:root {
+    --primary-color: #B0BEC5;
+    --primary-dark: #607D8B;
+    --background-light: #F5F5F5;
+    --background-dark: #37474F;
+    --modal-dark: #455A64;
+    --input-dark: #546E7A;
+    --text-light: #ECEFF1;
+    --text-dark: #263238;
+    --border-color: #90A4AE;
+    --shadow-color: rgba(0, 0, 0, 0.12);
+    --shadow-dark: rgba(0, 0, 0, 0.25);
+    --text-muted-dark: #78909C;
+}
+
+/* ========================== */
+/* 📌 Estrutura do Profile Card */
+/* ========================== */
+#profile-card {
+    background: var(--background-light);
+    border-radius: 18px;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    padding: 32px;
+    width: 85%;
+    max-width: 780px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: auto;
+}
+
+#profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px var(--shadow-color);
+}
+
+.dark-mode #profile-card {
+    background: var(--modal-dark);
+    box-shadow: 0 8px 26px var(--shadow-dark);
+    color: var(--text-light);
+}
+
+/* ========================== */
+/* 🎨 Botão de Alternância de Tema */
+/* ========================== */
+#theme-toggle-btn {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#theme-toggle-btn:hover {
+    color: var(--primary-dark);
+    background-color: rgba(52, 168, 83, 0.2);
+    transform: scale(1.1);
+}
+
+/* ========================== */
+/* 📑 Labels no Modal (Modo Escuro Melhorado) */
+/* ========================== */
+.dark-mode .form-floating label {
+    color: var(--text-muted-dark); /* Cor mais suave para as labels */
+    font-weight: 500; /* Peso da fonte um pouco mais suave */
+    transition: color 0.3s ease;
+}
+
+.dark-mode .form-floating input:focus ~ label,
+.dark-mode .form-floating input:not(:placeholder-shown) ~ label {
+    color: var(--primary-color); /* Cor do label em foco para destaque */
+}
+
+/* ========================== */
+/* 🔑 Estilo do Modal (Modo Escuro Melhorado) */
+/* ========================== */
+.modal-content {
+    border-radius: 14px;
+    padding: 24px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    background-color: var(--background-light);
+}
+
+.dark-mode .modal-content {
+    background-color: var(--background-dark);
+    color: var(--text-light); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid #444;
+}
+
+.dark-mode .modal-title {
+    color: #ffffff;
+}
+
+.dark-mode .modal-body {
+    color: var(--text-light);
+}
+
+.dark-mode .text-muted {
+    color: var(--text-muted-dark) !important;
+    opacity: 0.7;
+}
+
+/* ========================== */
+/* 🔄 Estilo do Botão de Fechar (Modo Escuro Melhorado) */
+/* ========================== */
+#theme-toggle-btn {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode #theme-toggle-btn {
+    color: var(--text-light);
+}
+
+.dark-mode #theme-toggle-btn:hover {
+    color: var(--primary-dark);
+    background-color: rgba(52, 168, 83, 0.3);
+    transform: scale(1.1);
+}
+
+/* ========================== */
+/* ✔️ Campos de Formulário */
+/* ========================== */
+.form-floating input {
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #bbb;
+    font-size: 0.95rem;
+}
+
+.dark-mode .form-floating input {
+    background-color: var(--input-dark);
+    color: #ffffff;
+    border: 1px solid var(--border-color);
+}
+
+.dark-mode .form-floating input::placeholder {
+    color: transparent;
+    opacity: 0;
+}
+
+/* ========================== */
+/* 🔋 Barra de Progresso da Senha */
+/* ========================== */
+.progress {
+    background-color: #ddd;
+    height: 6px;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+}
+
+.dark-mode .progress {
+    background-color: var(--input-dark);
+}
+
+.dark-mode .progress-bar {
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-in-out;
+    height: 6px;
+    border-radius: 4px;
+}
+
+/* ========================== */
+/* 📱 Responsividade */
+/* ========================== */
+@media (max-width: 600px) {
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .dark-mode .form-floating input {
+        font-size: 0.95rem;
+    }
+
+    .dark-mode .btn {
+        width: 100%;
+        padding: 10px;
+    }
+}
+

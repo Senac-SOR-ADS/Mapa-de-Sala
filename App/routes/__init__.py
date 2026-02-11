@@ -1,5 +1,5 @@
 # Importação do logger e rotas
-from .logger_setup import logger
+from .utils import logger
 from .home import home_route
 from .pessoa import funcionario_route
 from .reserva import reserva_route

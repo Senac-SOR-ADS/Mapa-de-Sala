@@ -7,6 +7,14 @@
 <div class="container-fluid my-2">
     <div class="card shadow-sm p-4 rounded-3" style="box-shadow: inherit !important; transform: none !important;">
         <h2 class="text-center mb-4 fw-bold text-primary">Lista de Áreas</h2>
+
+        <div class="d-flex justify-content-end align-items-center mb-4">
+            <a href="{{ url_for('area_route.cadastrar_Area') }}" class="btn btn-success btn-sm">
+                <i class="fas fa-plus"></i> Cadastrar Área
+            </a>
+        </div>
+        <br>
+
         <fieldset>
             <legend class="visually-hidden">Detalhes das listas de Áreas</legend>
 
@@ -29,9 +37,6 @@
                 <button id="toggleTable" class="btn btn-info btn-sm" aria-label="Mostrar/Esconder lista de áreas">
                     <i class="fas fa-list"></i> Lista de Áreas
                 </button>
-                <a href="{{ url_for('area_route.cadastrar_Area') }}" class="btn btn-success btn-sm">
-                    <i class="fas fa-plus"></i> Cadastrar Nova Área
-                </a>
             </div>
 
             <!-- Tabela de Áreas -->
@@ -52,9 +57,11 @@
                                     <a href="{{ url_for('area_route.editar_Area', id=area[1]) }}" class="btn btn-primary btn-sm" aria-label="Editar {{ area[0] }}">
                                         <i class="fas fa-edit"></i> Editar
                                     </a>
+                                    {% if session.get('usuario') and session['nivel_acesso'] == 'admin' %}
                                     <button class="btn btn-danger btn-sm" aria-label="Remover {{ area[0] }}" onclick="confirmRemove('{{ area[1] }}', '{{ area[0] }}')">
                                         <i class="fas fa-trash"></i> Remover
                                     </button>
+                                    {% endif %}
                                 </td>
                             </tr>
                         {% endfor %}
@@ -136,13 +143,6 @@
 
     searchInput.addEventListener('input', () => {
         loadingIcon.classList.remove('d-none');
-    });
-
-    document.getElementById('clearSearch').addEventListener('click', () => {
-        if (confirm('Tem certeza que deseja limpar a pesquisa?')) {
-            searchInput.value = '';
-            loadingIcon.classList.add('d-none');
-        }
     });
 </script>
 {% endblock %}
